@@ -104,8 +104,25 @@ def p_inc_cell():
     return 0.5 * np.cos(config.INC_ANGLE_RAD) * config.PX_NM * config.PY_NM
 
 
+_ITO_SPLINES = None
+
+
 def eps_ito_of_lambda(lam_nm):
-    """Complex ITO permittivity from the Phase-1 CSV loader (for spectra)."""
-    sys.path.insert(0, str(config.ENZ_TARGET_DIR))
-    from ito_material import ITOMaterial  # noqa: E402
-    return complex(ITOMaterial().eps(lam_nm))
+    """Complex ITO permittivity from the Phase-1 CSV (cubic spline).
+
+    Loads the CSV directly (not via the enz_target package) to avoid a
+    module-name collision between the two phases' config modules.
+    """
+    global _ITO_SPLINES
+    if _ITO_SPLINES is None:
+        import pandas as pd
+        from scipy.interpolate import CubicSpline
+        df = pd.read_csv(config.ENZ_TARGET_DIR / "data"
+                         / "ito_digitized_dense_1nm_physical.csv")
+        wl = df["wavelength_nm"].to_numpy(float)
+        re_col = [c for c in df.columns if "epsilon_real" in c][0]
+        im_col = [c for c in df.columns if "epsilon_imag" in c][0]
+        _ITO_SPLINES = (CubicSpline(wl, df[re_col].to_numpy(float)),
+                        CubicSpline(wl, df[im_col].to_numpy(float)))
+    return complex(float(_ITO_SPLINES[0](lam_nm)),
+                   float(_ITO_SPLINES[1](lam_nm)))
