@@ -4,3 +4,21 @@
 [target] eps_ITO = -0.2765 + 0.7566i, normalization = integral_ITO_abs_Ez_squared_dz_equals_1_z_in_nm
 [target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 1.11e-16 (dV = 118.903 nm^3, direction +x)
 [target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 118.903 nm^3, direction -x)
+
+geometry                              F_bidir   eta_pm      B_ITO       T       R       A
+uniform a-Si slab, rho = 0.25       0.000e+00    0.000  0.000e+00   0.893   0.061   0.046
+uniform a-Si slab, rho = 0.50       0.000e+00    0.000  0.000e+00   0.706   0.257   0.037
+uniform a-Si slab, rho = 0.75       0.000e+00    0.000  0.000e+00   0.558   0.414   0.029
+uniform a-Si slab, rho = 1.00       0.000e+00    0.000  0.000e+00   0.470   0.506   0.024
+3-period grating, duty = 0.2        6.141e+00    0.604  1.016e+01   0.910   0.022   0.068
+3-period grating, duty = 0.3        1.353e+01    0.804  1.683e+01   0.907   0.013   0.080
+3-period grating, duty = 0.4        2.732e+01    0.955  2.861e+01   0.888   0.011   0.101
+3-period grating, duty = 0.5        3.952e+01    0.969  4.079e+01   0.859   0.019   0.122
+3-period grating, duty = 0.6        4.335e+01    0.933  4.648e+01   0.829   0.039   0.132
+3-period grating, duty = 0.7        3.139e+01    0.871  3.602e+01   0.770   0.120   0.110
+3-period grating, duty = 0.8        1.082e+01    0.796  1.359e+01   0.641   0.299   0.060
+freeform optimized                  4.356e+01    0.943  4.619e+01   0.836   0.032   0.132
+
+best simple grating: duty 0.6, F = 4.335e+01
+freeform / best-grating F ratio = 1.005
+saved: /home/user/ENZ/enz_inverse_design/outputs/histories/baselines.json

@@ -34,12 +34,16 @@ C_NM_FS = 299.792458
 
 def bare_pole_reference():
     """Exact bare-slab pole + AAA method validation on bare r_p data."""
+    import pandas as pd
     sys.path.insert(0, str(config.ENZ_TARGET_DIR))
-    from ito_material import ITOMaterial
-    from tm_slab_mode import r123_tm
-    m = ITOMaterial()
-    w_dat = 2 * np.pi * C_NM_FS / m.wl
-    eps_dat = m.eps(m.wl)
+    from tm_slab_mode import r123_tm     # physics only, no config import
+    df = pd.read_csv(config.ENZ_TARGET_DIR / "data"
+                     / "ito_digitized_dense_1nm_physical.csv")
+    wl = df["wavelength_nm"].to_numpy(float)
+    re_col = [c for c in df.columns if "epsilon_real" in c][0]
+    im_col = [c for c in df.columns if "epsilon_imag" in c][0]
+    w_dat = 2 * np.pi * C_NM_FS / wl
+    eps_dat = df[re_col].to_numpy(float) + 1j * df[im_col].to_numpy(float)
 
     def drude(p, om):
         return p[0] - p[1] ** 2 / (om ** 2 + 1j * p[2] * om)
