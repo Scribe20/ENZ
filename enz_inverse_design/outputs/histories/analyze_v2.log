@@ -1,0 +1,12 @@
+[target] loaded /home/user/ENZ/enz_target/target_enz_mode_periodic.npz
+[target] keys: ['Ex', 'Ez', 'Hy', 'K_imag_per_nm', 'K_note', 'K_real_per_nm', 'drude_fit_eps_inf_wp_gamma', 'eps_air', 'eps_ito_imag', 'eps_ito_pole_imag', 'eps_ito_pole_real', 'eps_ito_real', 'field_units', 'glass_index', 'glass_index_is_paper_value', 'harmonic_order', 'ito_thickness_nm', 'ito_z_range_nm', 'k0_per_nm', 'kz_air_per_nm', 'kz_glass_per_nm', 'kz_ito_per_nm', 'normalization', 'omega_pole_rad_per_fs_imag', 'omega_pole_rad_per_fs_real', 'omega_rad_per_s', 'period_nm', 'pole_Q', 'pole_residual', 'time_convention', 'wavelength_nm', 'z_nm']
+[target] lambda = 1470.76 nm, K/k0 = 5.7302+0.0000j, d_ITO = 23.0 nm, n_glass = 1.4446
+[target] eps_ITO = -0.2765 + 0.7566i, normalization = integral_ITO_abs_Ez_squared_dz_equals_1_z_in_nm
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig1_convergence.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig2_geometry.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig3_target_field.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig4_Ez_scat_initial.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig5_Ez_scat_final.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig6_complex_comparison.png
+[target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 1.11e-16 (dV = 118.903 nm^3, direction +x)
+[target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 118.903 nm^3, direction -x)
