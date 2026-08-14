@@ -10,3 +10,51 @@ figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig5_Ez_scat_f
 figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig6_complex_comparison.png
 [target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 1.11e-16 (dV = 118.903 nm^3, direction +x)
 [target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 118.903 nm^3, direction -x)
+  lambda   1360: T=0.876 R=0.039 A=0.086 F=2.498e+01
+  lambda   1370: T=0.873 R=0.038 A=0.089 F=2.642e+01
+  lambda   1380: T=0.871 R=0.037 A=0.093 F=2.796e+01
+  lambda   1390: T=0.868 R=0.036 A=0.096 F=2.958e+01
+  lambda   1400: T=0.865 R=0.035 A=0.100 F=3.127e+01
+  lambda   1410: T=0.861 R=0.034 A=0.105 F=3.303e+01
+  lambda   1420: T=0.858 R=0.033 A=0.109 F=3.483e+01
+  lambda   1430: T=0.854 R=0.033 A=0.113 F=3.666e+01
+  lambda   1440: T=0.850 R=0.032 A=0.118 F=3.848e+01
+  lambda   1450: T=0.845 R=0.032 A=0.123 F=4.025e+01
+  lambda   1460: T=0.841 R=0.032 A=0.127 F=4.193e+01
+  lambda   1470: T=0.836 R=0.032 A=0.132 F=4.345e+01
+  lambda   1480: T=0.832 R=0.032 A=0.136 F=4.477e+01
+  lambda   1490: T=0.828 R=0.032 A=0.140 F=4.582e+01
+  lambda   1500: T=0.824 R=0.033 A=0.143 F=4.655e+01
+  lambda   1510: T=0.821 R=0.033 A=0.146 F=4.690e+01
+  lambda   1520: T=0.818 R=0.033 A=0.148 F=4.686e+01
+  lambda   1530: T=0.816 R=0.034 A=0.150 F=4.641e+01
+  lambda   1540: T=0.815 R=0.034 A=0.151 F=4.555e+01
+  lambda   1550: T=0.814 R=0.035 A=0.151 F=4.433e+01
+  lambda   1560: T=0.814 R=0.035 A=0.151 F=4.278e+01
+  lambda   1570: T=0.815 R=0.035 A=0.150 F=4.097e+01
+  lambda   1580: T=0.816 R=0.035 A=0.148 F=3.896e+01
+  lambda   1590: T=0.818 R=0.035 A=0.146 F=3.681e+01
+  lambda   1600: T=0.820 R=0.035 A=0.145 F=3.460e+01
+  lambda   1610: T=0.823 R=0.035 A=0.142 F=3.237e+01
+  lambda   1620: T=0.825 R=0.034 A=0.140 F=3.017e+01
+  lambda   1630: T=0.828 R=0.034 A=0.138 F=2.804e+01
+  lambda   1640: T=0.830 R=0.033 A=0.136 F=2.599e+01
+  lambda   1650: T=0.833 R=0.033 A=0.134 F=2.405e+01
+  lambda   1660: T=0.835 R=0.032 A=0.133 F=2.223e+01
+  lambda   1670: T=0.838 R=0.031 A=0.131 F=2.054e+01
+  lambda   1680: T=0.840 R=0.031 A=0.130 F=1.896e+01
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig7_spectral_response.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fig8_overlap_spectrum.png
+[target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 1.11e-16 (dV = 118.903 nm^3, direction +x)
+Traceback (most recent call last):
+  File "/home/user/ENZ/enz_inverse_design/analyze_result.py", line 268, in <module>
+    main(quick=args.quick)
+  File "/home/user/ENZ/enz_inverse_design/analyze_result.py", line 261, in main
+    convergence_checks(tgt, rho_final)
+  File "/home/user/ENZ/enz_inverse_design/analyze_result.py", line 222, in convergence_checks
+    sim = fwd.build_solved_sim(rho_t, lam, eps_ito, config.N_GLASS)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ENZ/enz_inverse_design/torcwa_forward.py", line 55, in build_solved_sim
+    eps_layer = rho_projected * (complex(eps_asi) - 1.0) + 1.0
+                                 ^^^^^^^^^^^^^^^^
+TypeError: complex() first argument must be a string or a number, not 'NoneType'

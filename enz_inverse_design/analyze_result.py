@@ -243,6 +243,9 @@ def main(quick=False):
     config.ITO_THICKNESS_NM = float(tgt["ito_thickness_nm"])
     config.N_GLASS = float(tgt["glass_index"])
     lam0 = float(tgt["wavelength_nm"])
+    if config.EPS_ASI is None:
+        import torcwa_forward as fwd
+        config.EPS_ASI = fwd.eps_asi_of_lambda(lam0)
     rho_final = np.load(OUT / "geometries" / "rho_proj_final.npy")
 
     fig1_convergence(hist)
