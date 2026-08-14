@@ -14,3 +14,52 @@
   lambda  1348.0: |a+| = 1.8605e+03
   lambda  1356.0: |a+| = 1.9026e+03
   lambda  1364.0: |a+| = 1.9459e+03
+  lambda  1372.0: |a+| = 1.9903e+03
+  lambda  1380.0: |a+| = 2.0357e+03
+  lambda  1388.0: |a+| = 2.0821e+03
+  lambda  1396.0: |a+| = 2.1291e+03
+  lambda  1404.0: |a+| = 2.1767e+03
+  lambda  1412.0: |a+| = 2.2245e+03
+  lambda  1420.0: |a+| = 2.2722e+03
+  lambda  1428.0: |a+| = 2.3194e+03
+  lambda  1436.0: |a+| = 2.3656e+03
+  lambda  1444.0: |a+| = 2.4104e+03
+  lambda  1452.0: |a+| = 2.4530e+03
+  lambda  1460.0: |a+| = 2.4930e+03
+  lambda  1468.0: |a+| = 2.5294e+03
+  lambda  1476.0: |a+| = 2.5617e+03
+  lambda  1484.0: |a+| = 2.5892e+03
+  lambda  1492.0: |a+| = 2.6110e+03
+  lambda  1500.0: |a+| = 2.6267e+03
+  lambda  1508.0: |a+| = 2.6356e+03
+  lambda  1516.0: |a+| = 2.6373e+03
+  lambda  1524.0: |a+| = 2.6318e+03
+  lambda  1532.0: |a+| = 2.6187e+03
+  lambda  1540.0: |a+| = 2.5984e+03
+  lambda  1548.0: |a+| = 2.5711e+03
+  lambda  1556.0: |a+| = 2.5373e+03
+  lambda  1564.0: |a+| = 2.4975e+03
+  lambda  1572.0: |a+| = 2.4525e+03
+  lambda  1580.0: |a+| = 2.4029e+03
+  lambda  1588.0: |a+| = 2.3497e+03
+  lambda  1596.0: |a+| = 2.2936e+03
+  lambda  1604.0: |a+| = 2.2352e+03
+  lambda  1612.0: |a+| = 2.1754e+03
+  lambda  1620.0: |a+| = 2.1147e+03
+  lambda  1628.0: |a+| = 2.0538e+03
+  lambda  1636.0: |a+| = 1.9930e+03
+  lambda  1644.0: |a+| = 1.9328e+03
+  lambda  1652.0: |a+| = 1.8735e+03
+  lambda  1660.0: |a+| = 1.8154e+03
+  lambda  1668.0: |a+| = 1.7586e+03
+  lambda  1676.0: |a+| = 1.7035e+03
+  lambda  1684.0: |a+| = 1.6500e+03
+  lambda  1692.0: |a+| = 1.5982e+03
+  lambda  1700.0: |a+| = 1.5482e+03
+[hybrid] poles from a_plus: 1.16318-0.00037i (lam=1619.4 nm, Q=1565.32), 1.17853-0.00045i (lam=1598.3 nm, Q=1314.97), 1.33394-0.00064i (lam=1412.1 nm, Q=1038.77)
+[hybrid] poles from a_minus: 1.16330-0.00042i (lam=1619.2 nm, Q=1397.73), 1.17875-0.00047i (lam=1598.0 nm, Q=1244.33), 1.35596-0.00085i (lam=1389.2 nm, Q=797.26)
+[hybrid] poles from ITO_energy: 1.35733-0.00000i (lam=1387.8 nm, Q=2503120905077831.00), 1.32604-0.00000i (lam=1420.5 nm, Q=1590290985945884.00), 1.48680-0.00000i (lam=1266.9 nm, Q=1148965965250755.75)
+[stability] leading a+ pole under 2x coarser sampling: 1.37260-0.00288i (relative change 1.80e-01)
+
+[result] leading hybrid pole: Re lambda = 1619.4 nm, Q = 1565.32; drift vs bare pole: +148.6 nm
+saved: hybrid_pole_scan.npz, hybrid_pole.json

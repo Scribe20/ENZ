@@ -90,11 +90,20 @@ def sample_hybrid_response(rho, lam_grid):
     return np.array(a_p), np.array(a_m), np.array(en)
 
 
-def poles_from(oms, vals, band=(1.0, 1.6)):
-    poles = AAA(oms, vals).poles()
-    cand = [q for q in poles if q.imag < 0 and band[0] < q.real < band[1]]
-    cand.sort(key=lambda q: abs(q.imag))     # least-damped first
-    return cand
+def poles_from(oms, vals, band=(1.05, 1.45)):
+    """Physical poles ranked by |residue| (largest first).
+
+    Ranking by residue magnitude, not by damping: AAA plants spurious
+    near-real-axis pole-zero pairs (Froissart doublets) with tiny residues
+    when interpolating structured data, so 'least-damped first' selects
+    exactly the artifacts.  A minimum damping cut (|Im| > 0.005 rad/fs)
+    removes the remaining doublets sitting on the sampling grid.
+    """
+    fit = AAA(oms, vals)
+    cand = [(q, r) for q, r in zip(fit.poles(), fit.residues())
+            if q.imag < -0.005 and band[0] < q.real < band[1]]
+    cand.sort(key=lambda t: -abs(t[1]))
+    return [q for q, _ in cand]
 
 
 def main():
