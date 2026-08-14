@@ -74,6 +74,10 @@ def main(smoke=False, n_iter=None):
     if config.N_GLASS is None:
         config.N_GLASS = float(tgt["glass_index"])
     eps_ito = complex(float(tgt["eps_ito_real"]), float(tgt["eps_ito_imag"]))
+    if config.EPS_ASI is None:
+        config.EPS_ASI = fwd.eps_asi_of_lambda(lam)
+    print(f"[setup] eps_aSi({lam:.1f} nm) = {config.EPS_ASI:.4f} "
+          f"(n = {config.EPS_ASI**0.5:.4f}) from measured POSTECH n,k file")
 
     target_mode.momentum_diagnostic(tgt)
 
@@ -131,16 +135,28 @@ def main(smoke=False, n_iter=None):
         if want_diags:
             with torch.no_grad():
                 R, T = fwd.specular_RT(sim)
-                diags.update(R=float(R), T=float(T),
-                             ito_Ez2=float(torch.sum(
-                                 torch.abs(Ez_full) ** 2).real * dV),
+                # dimensionless review metrics:
+                #   eta_pm: fraction of the ITO Ez_scat energy in the {T+,T-}
+                #           subspace (targets are grid-orthonormal, checked)
+                #   B_ITO:  ITO |Ez|^2 buildup per incident power
+                I_scat = float(torch.sum(torch.abs(Ez_scat) ** 2).real * dV)
+                eta = (float(torch.abs(diags["a_plus"]) ** 2)
+                       + float(torch.abs(diags["a_minus"]) ** 2)) / I_scat \
+                    if I_scat > 0 else 0.0
+                ito_Ez2 = float(torch.sum(torch.abs(Ez_full) ** 2).real * dV)
+                diags.update(R=float(R), T=float(T), ito_Ez2=ito_Ez2,
+                             eta_pm=eta, B_ITO=ito_Ez2 / p_inc,
                              Ez_full=Ez_full.detach(),
                              Ez_scat=Ez_scat.detach())
         return F, diags
 
     hist = {k: [] for k in ("F", "absa_plus", "absa_minus", "R", "T",
-                            "ito_Ez2", "grad_norm", "binarization", "beta",
-                            "lr")}
+                            "ito_Ez2", "eta_pm", "B_ITO", "grad_norm",
+                            "binarization", "beta", "lr")}
+    # orthogonality of the two targets on the overlap grid (must be ~0 for
+    # the eta_pm metric to be a clean projection)
+    t_cross = float(torch.abs(torch.sum(torch.conj(T_plus) * T_minus)) * dV)
+    print(f"[setup] |<T+,T->| on grid = {t_cross:.2e} (orthogonal)")
     F_initial = None
     t0 = time.time()
 
@@ -177,6 +193,8 @@ def main(smoke=False, n_iter=None):
             hist["R"].append(diags.get("R", np.nan))
             hist["T"].append(diags.get("T", np.nan))
             hist["ito_Ez2"].append(diags.get("ito_Ez2", np.nan))
+            hist["eta_pm"].append(diags.get("eta_pm", np.nan))
+            hist["B_ITO"].append(diags.get("B_ITO", np.nan))
             hist["grad_norm"].append(gnorm)
             hist["binarization"].append(binarization_metric(rho_proj))
             hist["beta"].append(float(beta_sched[it]))
@@ -237,9 +255,19 @@ def main(smoke=False, n_iter=None):
     print("\n================ summary ================")
     print(f"Initial F_ENZ       = {F_initial:.6e}")
     print(f"Final F_ENZ         = {F_final:.6e}")
-    print(f"Enhancement         = {F_final/F_initial:.2f}x")
-    print(f"Initial |a_ENZ|     = {hist['absa_plus'][0]:.4e}")
-    print(f"Final |a_ENZ|       = {float(torch.abs(diags_fin['a_plus'])):.4e}")
+    print(f"Enhancement         = {F_final/F_initial:.2f}x "
+          "(ratio vs a near-orthogonal random start; see eta_pm for the "
+          "dimensionless picture)")
+    print(f"Initial |a+|,|a-|   = {hist['absa_plus'][0]:.4e}, "
+          f"{hist['absa_minus'][0]:.4e}")
+    print(f"Final |a+|,|a-|     = {float(torch.abs(diags_fin['a_plus'])):.4e}, "
+          f"{float(torch.abs(diags_fin['a_minus'])):.4e}")
+    print(f"Initial eta_pm      = {hist['eta_pm'][0]:.4f}  "
+          "(fraction of ITO Ez_scat energy in the +-K target subspace)")
+    print(f"Final eta_pm        = {diags_fin['eta_pm']:.4f}")
+    print(f"Initial B_ITO       = {hist['B_ITO'][0]:.4e}  "
+          "(ITO int|Ez|^2 dV / P_inc, units nm)")
+    print(f"Final B_ITO         = {diags_fin['B_ITO']:.4e}")
     print(f"Initial ITO |Ez|^2  = {hist['ito_Ez2'][0]:.4e}")
     print(f"Final ITO |Ez|^2    = {diags_fin['ito_Ez2']:.4e}")
     print(f"Initial T, R        = {hist['T'][0]:.4f}, {hist['R'][0]:.4f}")

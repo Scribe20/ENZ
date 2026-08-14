@@ -144,6 +144,8 @@ def spectra(lams, rho_proj, tgt, quick=False):
                                       config.Z_SAMPLES_ITO)
     T_plus, dV = target_mode.build_target_field(
         tgt, x_axis.cpu().numpy(), y_axis.cpu().numpy(), z_prop, "+x")
+    T_minus, _ = target_mode.build_target_field(
+        tgt, x_axis.cpu().numpy(), y_axis.cpu().numpy(), z_prop, "-x")
     p_inc = fwd.p_inc_cell()
     rho_t = torch.as_tensor(rho_proj, dtype=config.GEO_DTYPE,
                             device=config.DEVICE)
@@ -151,12 +153,15 @@ def spectra(lams, rho_proj, tgt, quick=False):
     with torch.no_grad():
         for lam in lams:
             eps_ito = fwd.eps_ito_of_lambda(lam)
+            eps_asi = fwd.eps_asi_of_lambda(lam)      # dispersive a-Si
             sim_ref = fwd.build_solved_sim(None, lam, eps_ito, config.N_GLASS)
             Ez_ref = fwd.ez_in_ito(sim_ref, x_axis, y_axis, z_prop)
-            sim = fwd.build_solved_sim(rho_t, lam, eps_ito, config.N_GLASS)
+            sim = fwd.build_solved_sim(rho_t, lam, eps_ito, config.N_GLASS,
+                                       eps_asi=eps_asi)
             Ez_scat = fwd.ez_in_ito(sim, x_axis, y_axis, z_prop) - Ez_ref
             F, _ = obj.enz_objective(T_plus, Ez_scat, dV, p_inc,
-                                     direction="+x")
+                                     target_minus=T_minus,
+                                     direction=config.TARGET_DIRECTION)
             R, T = fwd.specular_RT(sim)
             out["lam"].append(lam); out["F"].append(float(F))
             out["R"].append(float(R)); out["T"].append(float(T))

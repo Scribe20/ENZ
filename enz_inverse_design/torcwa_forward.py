@@ -28,14 +28,18 @@ def grid_axes():
     return x, y
 
 
-def build_solved_sim(rho_projected, lam_nm, eps_ito, n_glass):
+def build_solved_sim(rho_projected, lam_nm, eps_ito, n_glass, eps_asi=None):
     """Build and solve the stack for one design (or the bare reference).
 
     rho_projected: (Nx, Ny) tensor in [0,1], or None for the reference
     (air / ITO / glass: the a-Si layer is present with eps = 1 so that the
     z-coordinates, layer indexing, and phase conventions are IDENTICAL).
+    eps_asi: complex a-Si permittivity; defaults to config.EPS_ASI (which is
+    resolved from the measured POSTECH n,k file at startup).
     Returns the solved sim with the plane-wave source set.
     """
+    if eps_asi is None:
+        eps_asi = config.EPS_ASI
     order = config.FOURIER_ORDER
     L = [config.PX_NM, config.PY_NM]
     sim = torcwa.rcwa(freq=1.0 / lam_nm, order=order, L=L,
@@ -48,7 +52,7 @@ def build_solved_sim(rho_projected, lam_nm, eps_ito, n_glass):
     if rho_projected is None:
         sim.add_layer(thickness=config.ASI_THICKNESS_NM, eps=1.0)
     else:
-        eps_layer = rho_projected * (config.EPS_ASI - 1.0) + 1.0
+        eps_layer = rho_projected * (complex(eps_asi) - 1.0) + 1.0
         sim.add_layer(thickness=config.ASI_THICKNESS_NM,
                       eps=eps_layer.to(config.SIM_DTYPE))
     sim.add_layer(thickness=float(config.ITO_THICKNESS_NM), eps=eps_ito)
@@ -102,6 +106,31 @@ def p_inc_cell():
     (c = eps0 = mu0 = 1): P = 0.5 * n_in * cos(theta) * |E0|^2 * A,
     with |E0| = 1 and air input (n_in = 1)."""
     return 0.5 * np.cos(config.INC_ANGLE_RAD) * config.PX_NM * config.PY_NM
+
+
+_ASI_SPLINES = None
+
+
+def eps_asi_of_lambda(lam_nm):
+    """Complex a-Si permittivity from the measured POSTECH n,k file.
+
+    File: wavelength(nm), n, k; 246-999 nm ellipsometry, 1000-2000 nm Cauchy
+    fit (k = 0, transparent below the gap).  eps = (n + i k)^2.
+    """
+    global _ASI_SPLINES
+    if _ASI_SPLINES is None:
+        import numpy as _np
+        from scipy.interpolate import CubicSpline
+        dat = _np.loadtxt(config.ASI_NK_FILE, comments="#")
+        _ASI_SPLINES = (CubicSpline(dat[:, 0], dat[:, 1]),
+                        CubicSpline(dat[:, 0], dat[:, 2]),
+                        float(dat[0, 0]), float(dat[-1, 0]))
+    n_sp, k_sp, lo, hi = _ASI_SPLINES
+    if not (lo <= lam_nm <= hi):
+        raise ValueError(f"lambda {lam_nm} nm outside measured a-Si range "
+                         f"[{lo}, {hi}] nm - refusing to extrapolate")
+    nk = complex(float(n_sp(lam_nm)), float(k_sp(lam_nm)))
+    return nk ** 2
 
 
 _ITO_SPLINES = None

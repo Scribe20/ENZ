@@ -1,0 +1,53 @@
+[target] loaded /home/user/ENZ/enz_target/target_enz_mode_periodic.npz
+[target] keys: ['Ex', 'Ez', 'Hy', 'K_imag_per_nm', 'K_note', 'K_real_per_nm', 'drude_fit_eps_inf_wp_gamma', 'eps_air', 'eps_ito_imag', 'eps_ito_pole_imag', 'eps_ito_pole_real', 'eps_ito_real', 'field_units', 'glass_index', 'glass_index_is_paper_value', 'harmonic_order', 'ito_thickness_nm', 'ito_z_range_nm', 'k0_per_nm', 'kz_air_per_nm', 'kz_glass_per_nm', 'kz_ito_per_nm', 'normalization', 'omega_pole_rad_per_fs_imag', 'omega_pole_rad_per_fs_real', 'omega_rad_per_s', 'period_nm', 'pole_Q', 'pole_residual', 'time_convention', 'wavelength_nm', 'z_nm']
+[target] lambda = 1470.76 nm, K/k0 = 5.7302+0.0000j, d_ITO = 23.0 nm, n_glass = 1.4446
+[target] eps_ITO = -0.2765 + 0.7566i, normalization = integral_ITO_abs_Ez_squared_dz_equals_1_z_in_nm
+[setup] eps_aSi(1470.8 nm) = 8.7775+0.0000j (n = 2.9627+0.0000j) from measured POSTECH n,k file
+[momentum] target Re(K)/k0 = 5.7302; best harmonic (m,n) = (-3,0) with |k_par+G|/k0 = 5.7302
+[momentum] relative mismatch delta_K = 0.00e+00 (threshold 0.05)
+[momentum] target K is real (real-K/complex-omega pole formulation - self-consistent with the periodic cell); modal damping lives in Im(omega): Q = 5.53
+[target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 1.11e-16 (dV = 118.903 nm^3, direction +x)
+[target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 118.903 nm^3, direction -x)
+[setup] P_inc_cell = 296450.0 (LH units, |E0|=1)
+[reference] air/ITO/glass: R = 0.0468, T = 0.9062, max|Ez_ref| = 0.000e+00 (normal incidence: Ez_ref ~ 0 as expected)
+[setup] |<T+,T->| on grid = 3.55e-17 (orthogonal)
+it    0  F = 6.511022e-04  |a+| = 9.8130e+00  |grad| = 4.607e-03  binar = 0.999  t = 5s
+it    1  F = 1.079273e-02  |a+| = 3.9992e+01  |grad| = 1.917e-02  binar = 0.999  t = 9s
+it    2  F = 6.167025e-02  |a+| = 9.5616e+01  |grad| = 4.699e-02  binar = 0.997  t = 13s
+it    3  F = 1.816380e-01  |a+| = 1.6410e+02  |grad| = 8.307e-02  binar = 0.993  t = 16s
+it    4  F = 3.911526e-01  |a+| = 2.4083e+02  |grad| = 1.262e-01  binar = 0.987  t = 19s
+it    5  F = 7.120547e-01  |a+| = 3.2493e+02  |grad| = 1.770e-01  binar = 0.977  t = 22s
+it    6  F = 1.169814e+00  |a+| = 4.1649e+02  |grad| = 2.369e-01  binar = 0.963  t = 25s
+it    7  F = 1.794395e+00  |a+| = 5.1583e+02  |grad| = 3.075e-01  binar = 0.945  t = 28s
+it    8  F = 2.620625e+00  |a+| = 6.2339e+02  |grad| = 3.903e-01  binar = 0.921  t = 31s
+it    9  F = 3.687823e+00  |a+| = 7.3951e+02  |grad| = 4.861e-01  binar = 0.892  t = 35s
+it   10  F = 5.038108e+00  |a+| = 8.6436e+02  |grad| = 5.944e-01  binar = 0.858  t = 38s
+it   11  F = 6.712426e+00  |a+| = 9.9771e+02  |grad| = 7.121e-01  binar = 0.818  t = 41s
+it   12  F = 8.743191e+00  |a+| = 1.1387e+03  |grad| = 8.323e-01  binar = 0.772  t = 44s
+it   13  F = 1.114298e+01  |a+| = 1.2855e+03  |grad| = 9.438e-01  binar = 0.722  t = 47s
+it   14  F = 1.389024e+01  |a+| = 1.4352e+03  |grad| = 1.031e+00  binar = 0.668  t = 50s
+it   15  F = 1.691581e+01  |a+| = 1.5838e+03  |grad| = 1.076e+00  binar = 0.612  t = 53s
+it   16  F = 2.009703e+01  |a+| = 1.7263e+03  |grad| = 1.067e+00  binar = 0.555  t = 56s
+it   17  F = 2.326880e+01  |a+| = 1.8575e+03  |grad| = 9.990e-01  binar = 0.500  t = 58s
+it   18  F = 2.625602e+01  |a+| = 1.9731e+03  |grad| = 8.835e-01  binar = 0.447  t = 61s
+it   19  F = 2.891635e+01  |a+| = 2.0707e+03  |grad| = 7.430e-01  binar = 0.398  t = 64s
+it   20  F = 3.117127e+01  |a+| = 2.1498e+03  |grad| = 6.038e-01  binar = 0.353  t = 68s
+it   21  F = 3.301343e+01  |a+| = 2.2124e+03  |grad| = 4.878e-01  binar = 0.314  t = 72s
+it   22  F = 3.448964e+01  |a+| = 2.2613e+03  |grad| = 4.060e-01  binar = 0.281  t = 75s
+it   23  F = 3.567207e+01  |a+| = 2.2997e+03  |grad| = 3.570e-01  binar = 0.252  t = 77s
+it   24  F = 3.663391e+01  |a+| = 2.3304e+03  |grad| = 3.307e-01  binar = 0.227  t = 80s
+it   25  F = 3.742822e+01  |a+| = 2.3556e+03  |grad| = 3.165e-01  binar = 0.206  t = 83s
+it   26  F = 3.803408e+01  |a+| = 2.3745e+03  |grad| = 3.116e-01  binar = 0.189  t = 86s
+it   27  F = 3.840685e+01  |a+| = 2.3860e+03  |grad| = 3.181e-01  binar = 0.177  t = 89s
+it   28  F = 3.866855e+01  |a+| = 2.3941e+03  |grad| = 3.264e-01  binar = 0.167  t = 92s
+it   29  F = 3.891747e+01  |a+| = 2.4018e+03  |grad| = 3.307e-01  binar = 0.158  t = 94s
+it   30  F = 3.916995e+01  |a+| = 2.4096e+03  |grad| = 3.317e-01  binar = 0.150  t = 97s
+it   31  F = 3.943275e+01  |a+| = 2.4176e+03  |grad| = 3.299e-01  binar = 0.143  t = 100s
+it   32  F = 3.970252e+01  |a+| = 2.4259e+03  |grad| = 3.258e-01  binar = 0.136  t = 103s
+it   33  F = 3.997608e+01  |a+| = 2.4342e+03  |grad| = 3.197e-01  binar = 0.130  t = 105s
+it   34  F = 4.025045e+01  |a+| = 2.4426e+03  |grad| = 3.117e-01  binar = 0.124  t = 109s
+it   35  F = 4.052214e+01  |a+| = 2.4508e+03  |grad| = 3.022e-01  binar = 0.118  t = 113s
+it   36  F = 4.078716e+01  |a+| = 2.4588e+03  |grad| = 2.913e-01  binar = 0.113  t = 116s
+it   37  F = 4.104418e+01  |a+| = 2.4665e+03  |grad| = 2.792e-01  binar = 0.107  t = 119s
+it   38  F = 4.129200e+01  |a+| = 2.4740e+03  |grad| = 2.659e-01  binar = 0.103  t = 123s
+it   39  F = 4.152908e+01  |a+| = 2.4811e+03  |grad| = 2.515e-01  binar = 0.098  t = 126s

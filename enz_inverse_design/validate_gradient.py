@@ -22,6 +22,8 @@ def build_problem():
     lam = float(tgt["wavelength_nm"])
     config.ITO_THICKNESS_NM = float(tgt["ito_thickness_nm"])
     config.N_GLASS = float(tgt["glass_index"])
+    if config.EPS_ASI is None:
+        config.EPS_ASI = fwd.eps_asi_of_lambda(lam)
     eps_ito = complex(float(tgt["eps_ito_real"]), float(tgt["eps_ito_imag"]))
     x_axis, y_axis = fwd.grid_axes()
     z_prop = target_mode.ito_z_slices(config.ITO_THICKNESS_NM,

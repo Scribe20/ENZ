@@ -75,9 +75,15 @@ def momentum_diagnostic(tgt, px_nm=None, py_nm=None, max_order=8,
               f"best harmonic (m,n) = ({m},{n}) with |k_par+G|/k0 = {g/k0:.4f}")
         print(f"[momentum] relative mismatch delta_K = {delta:.2e} "
               f"(threshold {config.MOMENTUM_MISMATCH_MAX})")
-        print(f"[momentum] Im(K) diagnostic: 1/|Im K| = {1/abs(K_im):.1f} nm "
-              f"(vs period {px:.0f} nm) - overdamped mode; Im K is NOT built "
-              "into the periodic target (see module docstring)")
+        if K_im != 0.0:
+            print(f"[momentum] Im(K) diagnostic: 1/|Im K| = {1/abs(K_im):.1f} "
+                  f"nm (vs period {px:.0f} nm) - overdamped mode; Im K is NOT "
+                  "built into the periodic target (see module docstring)")
+        else:
+            print("[momentum] target K is real (real-K/complex-omega pole "
+                  "formulation - self-consistent with the periodic cell); "
+                  "modal damping lives in Im(omega): Q = "
+                  f"{float(tgt.get('pole_Q', np.nan)):.2f}")
         if delta > config.MOMENTUM_MISMATCH_MAX:
             print("[momentum] WARNING: the current fixed lattice period is not "
                   "well matched to the target ENZ momentum, so the present "

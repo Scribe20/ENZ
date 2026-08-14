@@ -40,13 +40,17 @@ def enz_objective(target_plus, ez_scat, dV, p_inc, target_minus=None,
         a_minus = overlap_amplitude(target_minus, ez_scat, dV)
         diags["a_minus"] = a_minus
 
-    if direction == "bidir":
+    if direction == "+x":
+        F = fom_from_amplitude(a_plus, p_inc)
+    elif direction == "-x":
+        if target_minus is None:
+            raise ValueError("-x objective requires target_minus")
+        F = fom_from_amplitude(diags["a_minus"], p_inc)
+    elif direction == "bidir":
         if target_minus is None:
             raise ValueError("bidir objective requires target_minus")
         F = fom_from_amplitude(a_plus, p_inc) + fom_from_amplitude(
             diags["a_minus"], p_inc)
-    elif direction in ("+x", "-x"):
-        F = fom_from_amplitude(a_plus, p_inc)
     else:
         raise ValueError(f"unknown target direction {direction}")
     return F, diags

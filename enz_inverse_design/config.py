@@ -27,8 +27,13 @@ _HERE = Path(__file__).resolve().parent
 # Paths
 # --------------------------------------------------------------------------
 TORCWA_DIR = _HERE / "third_party"          # vendored supplied torcwa package
-TARGET_MODE_FILE = _HERE.parent / "enz_target" / "target_enz_mode.npz"
+# v2 target (review fix): real K = 3G, complex-omega pole of the bare slab
+# (~1470.8 nm), produced by ../enz_target/solve_periodic_target.py.  The
+# original complex-K target (1527 nm) is kept for reference as
+# target_enz_mode.npz but is NOT self-consistent with a periodic cell.
+TARGET_MODE_FILE = _HERE.parent / "enz_target" / "target_enz_mode_periodic.npz"
 ENZ_TARGET_DIR = _HERE.parent / "enz_target"   # Phase-1 package (ITO material)
+ASI_NK_FILE = _HERE / "data_aSi_H_measured_Postech_extended_to_2000nm.txt"
 OUT_DIR = _HERE / "outputs"
 
 # --------------------------------------------------------------------------
@@ -51,7 +56,10 @@ PY_NM = 770.0             # lattice period y
 ASI_THICKNESS_NM = 140.0  # Karimi EDR a-Si thickness
 ITO_THICKNESS_NM = None   # None -> read from target npz (23 nm)
 N_GLASS = None            # None -> read from target npz (1.4446)
-EPS_ASI = (3.48 + 0.0j) ** 2   # explicit parameter (see provenance note)
+# a-Si permittivity: resolved at startup from the measured POSTECH n,k file
+# (ASI_NK_FILE) at the design wavelength; the old n=3.48 assumption is
+# retired (review fix - at 1471 nm the measured n is ~2.963, eps ~ 8.78).
+EPS_ASI = None            # None -> from ASI_NK_FILE at the design wavelength
 INC_ANGLE_RAD = 0.0
 AZI_ANGLE_RAD = 0.0
 POLARIZATION = "x"        # incident E along x (couples to x-propagating TM ENZ)
@@ -59,7 +67,11 @@ POLARIZATION = "x"        # incident E along x (couples to x-propagating TM ENZ)
 # --------------------------------------------------------------------------
 # Target-mode handling
 # --------------------------------------------------------------------------
-TARGET_DIRECTION = "+x"   # "+x" | "-x" | "bidir"  (primary objective: "+x")
+# Primary objective is the +-K modal subspace (review fix): a reciprocal,
+# mirror-symmetric cell at normal incidence excites +K and -K degenerately
+# (the v1 run gave |a-|/|a+| = 0.9995), so optimizing |a+|^2 alone renames a
+# standing wave as directional. "bidir" makes the actual physics explicit.
+TARGET_DIRECTION = "bidir"   # "+x" | "-x" | "bidir"
 MOMENTUM_MISMATCH_MAX = 0.05   # allowed |ReK - |G|| / ReK before warning hard
 Z_SAMPLES_ITO = 7         # midpoint z-slices inside ITO for the overlap
 

@@ -130,7 +130,9 @@ class ModeField:
     """
 
     def __init__(self, K, k0, eps2, d, eps1=1.0, eps3=1.0, sheet1=+1, sheet3=+1):
-        self.K, self.k0, self.d = complex(K), float(k0), float(d)
+        # k0 may be complex: evaluating the mode profile at a complex-omega
+        # pole (real-K formulation) uses k0 = omega_tilde / c.
+        self.K, self.k0, self.d = complex(K), complex(k0), float(d)
         self.eps = (complex(eps1), complex(eps2), complex(eps3))
         self.sheet1, self.sheet3 = sheet1, sheet3
         kz1, kz2, kz3 = _kzs(self.K, k0, eps1, eps2, eps3, sheet1, sheet3)

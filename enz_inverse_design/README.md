@@ -1,5 +1,21 @@
 # Phase 2: freeform a-Si metasurface optimized for ENZ-mode overlap
 
+> **v2 (review corrections).** The first run used the Phase-1 complex-K
+> target (1527 nm) with Im K dropped — but |D(Re K, 1527)| ≈ 1.86, so that
+> real-K/real-λ combination is *not* a pole of the bare slab, and the run
+> demonstrated field-pattern synthesis rather than self-consistent
+> ENZ-pole targeting. v2 fixes this: the target is now the
+> **real-K (K = 3G), complex-ω pole** of the bare slab
+> (`../enz_target/solve_periodic_target.py`: λ_pole = 1470.76 nm, Q = 5.53,
+> ω̃ = 1.280731 − 0.115779i rad/fs, profile = exact QNM), the a-Si uses the
+> **measured POSTECH n,k** (n = 2.963 at 1471 nm, not the old 3.48
+> assumption), the primary objective is the **±K subspace** (`bidir`), the
+> `-x` direction bug in `objective.py` is fixed, and dimensionless metrics
+> η± (target-subspace fraction of the ITO Ez_scat energy) and B_ITO
+> (∫|Ez|²dV / P_inc) are logged alongside the raw FoM. `baselines.py`
+> compares the freeform result against uniform slabs and ideal 3-period
+> binary gratings (duty sweep).
+
 Differentiable TORCWA inverse design of the lateral a-Si pattern rho(x,y)
 in the stack **air / a-Si(140 nm, freeform) / ITO(23 nm) / glass**, maximizing
 the *target ENZ excitation FoM*
