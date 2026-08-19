@@ -11,3 +11,12 @@
 [09:35:22] P0870_H0100_seed011_lam1332p5: it  100/150  F_co=+4.1119  S_ED=54.3868  S_MD=68.5541  bal=0.793  beta=  100.0  lr=0.00500  t=  179.7s
 [09:35:40] P0870_H0100_seed011_lam1332p5: it  110/150  F_co=+4.1143  S_ED=54.5479  S_MD=68.6875  bal=0.794  beta=  158.5  lr=0.00331  t=  197.6s
 [09:35:58] P0870_H0100_seed011_lam1332p5: it  120/150  F_co=+4.1159  S_ED=54.6866  S_MD=68.7237  bal=0.796  beta=  251.2  lr=0.00191  t=  215.1s
+[09:36:15] P0870_H0100_seed011_lam1332p5: it  130/150  F_co=+4.1170  S_ED=54.7719  S_MD=68.7791  bal=0.796  beta=  398.1  lr=0.00086  t=  232.8s
+[09:36:32] P0870_H0100_seed011_lam1332p5: it  140/150  F_co=+4.1173  S_ED=54.8003  S_MD=68.7829  bal=0.797  beta=  631.0  lr=0.00022  t=  249.7s
+[09:36:48] P0870_H0100_seed011_lam1332p5: it  149/150  F_co=+4.1175  S_ED=54.8157  S_MD=68.7841  bal=0.797  beta=  955.0  lr=0.00000  t=  265.1s
+[09:36:53] P0870_H0100_seed011_lam1332p5: completed after 265s  final(projected)={'F_co': 4.117452621459961, 'S_ED': 54.81410598754883, 'S_MD': 68.78303527832031, 'balance': 0.7969131469726562}
+[09:36:55] P0870_H0100_seed011_lam1332p5: already completed - skipping.
+[09:41:23] P0870_H0100_seed011_lam1332p5: already completed - skipping.
+[09:45:54] P0870_H0100_seed011_lam1332p5: already completed - skipping.
+[09:50:21] P0870_H0100_seed011_lam1332p5: already completed - skipping.
+[09:54:50] P0870_H0100_seed011_lam1332p5: already completed - skipping.

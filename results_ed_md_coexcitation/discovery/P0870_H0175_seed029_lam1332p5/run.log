@@ -5,3 +5,17 @@
 [09:35:34] P0870_H0175_seed029_lam1332p5: it   40/150  F_co=+1.2634  S_ED=3.3139  S_MD=3.7764  bal=0.878  beta=    6.3  lr=0.01669  t=   70.8s
 [09:35:51] P0870_H0175_seed029_lam1332p5: it   50/150  F_co=+1.7216  S_ED=5.1184  S_MD=6.1128  bal=0.837  beta=   10.0  lr=0.01500  t=   87.9s
 [09:36:09] P0870_H0175_seed029_lam1332p5: it   60/150  F_co=+1.9233  S_ED=6.1997  S_MD=7.5547  bal=0.821  beta=   15.8  lr=0.01309  t=  105.4s
+[09:36:26] P0870_H0175_seed029_lam1332p5: it   70/150  F_co=+1.9083  S_ED=6.1032  S_MD=7.4469  bal=0.820  beta=   25.1  lr=0.01105  t=  122.6s
+[09:36:43] P0870_H0175_seed029_lam1332p5: it   80/150  F_co=+1.9237  S_ED=6.1976  S_MD=7.5631  bal=0.819  beta=   39.8  lr=0.00895  t=  139.6s
+[09:37:01] P0870_H0175_seed029_lam1332p5: it   90/150  F_co=+1.9255  S_ED=6.2096  S_MD=7.5757  bal=0.820  beta=   63.1  lr=0.00691  t=  157.1s
+[09:37:18] P0870_H0175_seed029_lam1332p5: it  100/150  F_co=+1.9254  S_ED=6.2089  S_MD=7.5752  bal=0.820  beta=  100.0  lr=0.00500  t=  174.5s
+[09:37:35] P0870_H0175_seed029_lam1332p5: it  110/150  F_co=+1.9256  S_ED=6.2093  S_MD=7.5768  bal=0.820  beta=  158.5  lr=0.00331  t=  191.9s
+[09:37:53] P0870_H0175_seed029_lam1332p5: it  120/150  F_co=+1.9256  S_ED=6.2096  S_MD=7.5775  bal=0.819  beta=  251.2  lr=0.00191  t=  209.4s
+[09:38:10] P0870_H0175_seed029_lam1332p5: it  130/150  F_co=+1.9257  S_ED=6.2097  S_MD=7.5777  bal=0.819  beta=  398.1  lr=0.00086  t=  226.8s
+[09:38:28] P0870_H0175_seed029_lam1332p5: it  140/150  F_co=+1.9257  S_ED=6.2098  S_MD=7.5779  bal=0.819  beta=  631.0  lr=0.00022  t=  244.2s
+[09:38:43] P0870_H0175_seed029_lam1332p5: it  149/150  F_co=+1.9256  S_ED=6.2096  S_MD=7.5776  bal=0.819  beta=  955.0  lr=0.00000  t=  259.7s
+[09:38:48] P0870_H0175_seed029_lam1332p5: completed after 260s  final(projected)={'F_co': 1.9256532192230225, 'S_ED': 6.209619998931885, 'S_MD': 7.577677249908447, 'balance': 0.8194621801376343}
+[09:38:51] P0870_H0175_seed029_lam1332p5: already completed - skipping.
+[09:43:18] P0870_H0175_seed029_lam1332p5: already completed - skipping.
+[09:48:01] P0870_H0175_seed029_lam1332p5: already completed - skipping.
+[09:52:29] P0870_H0175_seed029_lam1332p5: already completed - skipping.

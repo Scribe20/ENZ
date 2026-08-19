@@ -16,3 +16,7 @@
 [09:34:16] P0870_H0150_seed011_lam1332p5: it  149/150  F_co=+2.1500  S_ED=7.8346  S_MD=9.4067  bal=0.833  beta=  955.0  lr=0.00000  t=  264.5s
 [09:34:21] P0870_H0150_seed011_lam1332p5: completed after 265s  final(projected)={'F_co': 2.1499710083007812, 'S_ED': 7.834481716156006, 'S_MD': 9.406559944152832, 'balance': 0.8328742384910583}
 [09:34:23] P0870_H0150_seed011_lam1332p5: already completed - skipping.
+[09:38:51] P0870_H0150_seed011_lam1332p5: already completed - skipping.
+[09:43:18] P0870_H0150_seed011_lam1332p5: already completed - skipping.
+[09:48:01] P0870_H0150_seed011_lam1332p5: already completed - skipping.
+[09:52:29] P0870_H0150_seed011_lam1332p5: already completed - skipping.
