@@ -1,0 +1,69 @@
+{
+  "run_id": "P0790_H0175_seed011_lam1332p5",
+  "stage": "discovery",
+  "period_nm": 790,
+  "height_nm": 175,
+  "seed": 11,
+  "target_wavelength_nm": 1332.5,
+  "nx": 158,
+  "ny": 158,
+  "dx_nm": 5.0,
+  "fourier_order": [
+    7,
+    7
+  ],
+  "iters": 150,
+  "blur_radius_nm": 20.0,
+  "eps_F": 1e-12,
+  "z_slice_fracs": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "eval_grid_n": 64,
+  "gar_initial": 0.02,
+  "adam_beta1": 0.9,
+  "adam_beta2": 0.999,
+  "adam_eps": 1e-08,
+  "substrate_eps": 2.1315999999999997,
+  "silicon_eps": [
+    8.922149658203125,
+    0.05305527150630951
+  ],
+  "inc_ang_rad": 0.0,
+  "azi_ang_rad": 0.0,
+  "source_amplitude": [
+    1.0,
+    0.0
+  ],
+  "source_direction": "forward",
+  "normalization": "Lorentz-Heaviside Z0=1: E_inc=1, H_inc=n_sub=1.4600",
+  "symmetry_projection": "NONE",
+  "sim_dtype": "torch.complex64",
+  "geo_dtype": "torch.float32",
+  "torcwa_version": "0.1.4.2",
+  "torch_version": "2.13.0+cu130",
+  "status": "completed",
+  "runtime_s": 265.26444125175476,
+  "best": {
+    "F_co": 3.6737351417541504,
+    "S_ED": 34.19097900390625,
+    "S_MD": 45.399837493896484,
+    "iteration": 4
+  },
+  "final_scores": {
+    "projected": {
+      "F_co": 3.607272148132324,
+      "S_ED": 29.033918380737305,
+      "S_MD": 46.809207916259766,
+      "balance": 0.6202608346939087
+    },
+    "binary": {
+      "F_co": 3.6058692932128906,
+      "S_ED": 28.989736557006836,
+      "S_MD": 46.749176025390625,
+      "balance": 0.6201122403144836
+    }
+  },
+  "fill_fraction": 0.630988597869873
+}

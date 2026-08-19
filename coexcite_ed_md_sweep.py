@@ -343,7 +343,10 @@ def optimize_single_run(period_nm, height_nm, seed, out_dir, *,
         st = json.loads(cfg_path.read_text()).get('status', '')
         if st == 'completed':
             log(f"{run_id}: already completed - skipping.")
-            return 'completed'
+            return 'skipped'
+        if st.startswith('failed'):
+            log(f"{run_id}: previously failed ({st}) - skipping (retry manually).")
+            return 'skipped'
 
     nx, ny = configure_geometry(period_nm, dx_nm)
     g_fft = build_filter(nx, ny, period_nm, BLUR_RADIUS_NM)
@@ -735,21 +738,36 @@ def discovery_run_list():
     return runs
 
 
-def run_discovery_sweep(shard_idx=0, shard_total=1, iters=DISCOVERY_ITERS):
+def run_discovery_sweep(shard_idx=0, shard_total=1, iters=DISCOVERY_ITERS,
+                        max_runs=None):
+    """max_runs limits how many NEW runs this process executes; a bash
+    respawn loop restarts a fresh process per batch, which caps the RSS
+    growth from allocator fragmentation that OOM-killed long-lived shard
+    processes (cgroup limit ~15 GB, 4 workers)."""
     runs = discovery_run_list()[shard_idx::shard_total]
     print(f"Discovery shard {shard_idx}/{shard_total}: {len(runs)} runs")
+    executed = 0
     for (P, Hh, seed) in runs:
+        if max_runs is not None and executed >= max_runs:
+            print('SHARD_CONTINUE (max_runs reached, pending work remains)',
+                  flush=True)
+            return
         rid = run_identifier(P, Hh, seed)
         out = RESULTS_ROOT / 'discovery' / rid
         try:
-            optimize_single_run(P, Hh, seed, out, iters=iters,
-                                dx_nm=DISCOVERY_DX_NM, order=DISCOVERY_ORDER,
-                                stage='discovery')
+            status = optimize_single_run(P, Hh, seed, out, iters=iters,
+                                         dx_nm=DISCOVERY_DX_NM,
+                                         order=DISCOVERY_ORDER,
+                                         stage='discovery')
+            if status != 'skipped':
+                executed += 1
         except Exception:
             (out / 'run.log').parent.mkdir(parents=True, exist_ok=True)
             with open(out / 'run.log', 'a') as f:
                 f.write('FATAL:\n' + traceback.format_exc() + '\n')
             print(f"{rid}: FATAL error, continuing sweep\n{traceback.format_exc()}")
+            executed += 1
+    print('SHARD_COMPLETE (no pending work)', flush=True)
 
 
 def refine_candidate(discovery_dir, iters=REFINE_ITERS):
@@ -898,6 +916,8 @@ def main():
     ap.add_argument('--iters', type=int, default=None)
     ap.add_argument('--shard', type=int, nargs=2, default=[0, 1],
                     metavar=('IDX', 'TOTAL'))
+    ap.add_argument('--max-runs', type=int, default=None,
+                    help='max new runs per process (process-recycling for RSS)')
     ap.add_argument('--threads', type=int, default=1)
     ap.add_argument('--run-dir', type=str, default=None,
                     help='run directory for refine/verify/spectra/multipole-data')
@@ -925,7 +945,8 @@ def main():
         if args.shard[0] == 0:
             preflight(iters=args.iters or DISCOVERY_ITERS)
         run_discovery_sweep(args.shard[0], args.shard[1],
-                            iters=args.iters or DISCOVERY_ITERS)
+                            iters=args.iters or DISCOVERY_ITERS,
+                            max_runs=args.max_runs)
     elif args.mode == 'refine':
         refine_candidate(args.run_dir, iters=args.iters or REFINE_ITERS)
     elif args.mode == 'verify':
