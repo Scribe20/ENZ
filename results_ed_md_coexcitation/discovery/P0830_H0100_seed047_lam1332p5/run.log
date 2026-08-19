@@ -7,3 +7,15 @@
 [09:00:50] P0830_H0100_seed047_lam1332p5: it   60/150  F_co=+4.0312  S_ED=48.1781  S_MD=65.8621  bal=0.731  beta=   15.8  lr=0.01309  t=  109.8s
 [09:01:08] P0830_H0100_seed047_lam1332p5: it   70/150  F_co=+4.0405  S_ED=49.0595  S_MD=65.8945  bal=0.745  beta=   25.1  lr=0.01105  t=  128.1s
 [09:01:27] P0830_H0100_seed047_lam1332p5: it   80/150  F_co=+4.0568  S_ED=50.2763  S_MD=66.4223  bal=0.757  beta=   39.8  lr=0.00895  t=  146.8s
+[09:01:46] P0830_H0100_seed047_lam1332p5: it   90/150  F_co=+4.0642  S_ED=50.8136  S_MD=66.7022  bal=0.762  beta=   63.1  lr=0.00691  t=  165.5s
+[09:02:03] P0830_H0100_seed047_lam1332p5: it  100/150  F_co=+4.0671  S_ED=51.1446  S_MD=66.6504  bal=0.767  beta=  100.0  lr=0.00500  t=  183.3s
+[09:02:21] P0830_H0100_seed047_lam1332p5: it  110/150  F_co=+4.0696  S_ED=51.3456  S_MD=66.7341  bal=0.769  beta=  158.5  lr=0.00331  t=  201.1s
+[09:02:39] P0830_H0100_seed047_lam1332p5: it  120/150  F_co=+4.0703  S_ED=51.4414  S_MD=66.7033  bal=0.771  beta=  251.2  lr=0.00191  t=  219.0s
+[09:02:57] P0830_H0100_seed047_lam1332p5: it  130/150  F_co=+4.0714  S_ED=51.5170  S_MD=66.7402  bal=0.772  beta=  398.1  lr=0.00086  t=  236.8s
+[09:03:15] P0830_H0100_seed047_lam1332p5: it  140/150  F_co=+4.0712  S_ED=51.5149  S_MD=66.7166  bal=0.772  beta=  631.0  lr=0.00022  t=  254.5s
+[09:03:31] P0830_H0100_seed047_lam1332p5: it  149/150  F_co=+4.0717  S_ED=51.5456  S_MD=66.7548  bal=0.772  beta=  955.0  lr=0.00000  t=  270.4s
+[09:03:36] P0830_H0100_seed047_lam1332p5: completed after 270s  final(projected)={'F_co': 4.071705341339111, 'S_ED': 51.5434684753418, 'S_MD': 66.75205993652344, 'balance': 0.7721629738807678}
+[09:03:38] P0830_H0100_seed047_lam1332p5: already completed - skipping.
+[09:08:06] P0830_H0100_seed047_lam1332p5: already completed - skipping.
+[09:12:38] P0830_H0100_seed047_lam1332p5: already completed - skipping.
+[09:17:13] P0830_H0100_seed047_lam1332p5: already completed - skipping.
