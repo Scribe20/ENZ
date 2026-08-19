@@ -9,3 +9,11 @@
 [convergence] T at lambda_E, with ITO, hard-binary design:
     order [7, 7]: T = 0.67159
     order [9, 9]: T = 0.67428
+    order [11, 11]: T = 0.67536
+    relative change [7,7]->[9,9]: 0.40%, [9,9]->[11,11]: 0.16%
+[spectra] Case A: freeform / glass (no ITO)
+  [A] lambda  1200.0: T = 0.7473, R = 0.2527
+  [A] lambda  1280.0: T = 0.7351, R = 0.2649
+  [A] lambda  1360.0: T = 0.7983, R = 0.2017
+  [A] lambda  1440.0: T = 0.8219, R = 0.1781
+  [A] lambda  1520.0: T = 0.8368, R = 0.1632
