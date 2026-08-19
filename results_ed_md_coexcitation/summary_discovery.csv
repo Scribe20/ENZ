@@ -1,0 +1,6 @@
+run_id,period_nm,height_nm,seed,target_wavelength_nm,final_Fco,best_Fco,final_S_ED,final_S_MD,balance,binary_Fco,binary_S_ED,binary_S_MD,fill_fraction,nx,ny,fourier_order_x,fourier_order_y,runtime_s,status
+P0870_H0150_seed029_lam1332p5,870.0,150.0,29,1332.5,2.41351580619812,2.9114990234375,9.951205253601074,12.545197486877441,0.793228268623352,2.413383722305298,9.950188636779785,12.54316520690918,0.6085348129272461,174,174,7,7,95.33720469474792,completed
+P0750_H0100_seed011_lam1332p5,750,100,11,1332.5,nan,nan,nan,nan,nan,nan,nan,nan,nan,150,150,7,7,nan,running
+P0750_H0100_seed029_lam1332p5,750,100,29,1332.5,nan,nan,nan,nan,nan,nan,nan,nan,nan,150,150,7,7,nan,running
+P0750_H0100_seed047_lam1332p5,750,100,47,1332.5,nan,nan,nan,nan,nan,nan,nan,nan,nan,150,150,7,7,nan,running
+P0750_H0125_seed011_lam1332p5,750,125,11,1332.5,nan,nan,nan,nan,nan,nan,nan,nan,nan,150,150,7,7,nan,running

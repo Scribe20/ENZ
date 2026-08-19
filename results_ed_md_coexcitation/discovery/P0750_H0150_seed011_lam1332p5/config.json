@@ -1,8 +1,8 @@
 {
-  "run_id": "P0750_H0125_seed011_lam1332p5",
+  "run_id": "P0750_H0150_seed011_lam1332p5",
   "stage": "discovery",
   "period_nm": 750,
-  "height_nm": 125,
+  "height_nm": 150,
   "seed": 11,
   "target_wavelength_nm": 1332.5,
   "nx": 150,
@@ -43,27 +43,5 @@
   "geo_dtype": "torch.float32",
   "torcwa_version": "0.1.4.2",
   "torch_version": "2.13.0+cu130",
-  "status": "completed",
-  "runtime_s": 275.69840240478516,
-  "best": {
-    "F_co": 0.1887262910604477,
-    "S_ED": 1.1014407873153687,
-    "S_MD": 1.324233055114746,
-    "iteration": 149
-  },
-  "final_scores": {
-    "projected": {
-      "F_co": 0.18876701593399048,
-      "S_ED": 1.1014724969863892,
-      "S_MD": 1.3243027925491333,
-      "balance": 0.8317376375198364
-    },
-    "binary": {
-      "F_co": 0.18878616392612457,
-      "S_ED": 1.1014915704727173,
-      "S_MD": 1.3243305683135986,
-      "balance": 0.8317345976829529
-    }
-  },
-  "fill_fraction": 0.41280001401901245
+  "status": "running"
 }

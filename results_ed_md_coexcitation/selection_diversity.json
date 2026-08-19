@@ -1,0 +1,20 @@
+{
+  "metric": "1 - IoU of binary masks on common 64x64 normalized grid",
+  "threshold": 0.3,
+  "relaxed_final_threshold": 0.03529469999999999,
+  "n_completed": 1,
+  "selected": [
+    {
+      "rank": 1,
+      "run_id": "P0870_H0150_seed029_lam1332p5",
+      "final_Fco": 2.41351580619812,
+      "final_S_ED": 9.951205253601074,
+      "final_S_MD": 12.545197486877441,
+      "balance": 0.793228268623352,
+      "min_distance_to_previously_selected": 1.0
+    }
+  ],
+  "full_ranked_list": [
+    "P0870_H0150_seed029_lam1332p5"
+  ]
+}
