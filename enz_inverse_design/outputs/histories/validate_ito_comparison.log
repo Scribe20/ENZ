@@ -17,3 +17,81 @@
   [A] lambda  1360.0: T = 0.7983, R = 0.2017
   [A] lambda  1440.0: T = 0.8219, R = 0.1781
   [A] lambda  1520.0: T = 0.8368, R = 0.1632
+  [A] lambda  1600.0: T = 0.8481, R = 0.1519
+  [A] lambda  1680.0: T = 0.8576, R = 0.1424
+[spectra] Case B: freeform / ITO / glass
+  [B] lambda  1200.0: T = 0.6836, R = 0.1962
+  [B] lambda  1280.0: T = 0.6918, R = 0.1698
+  [B] lambda  1360.0: T = 0.7103, R = 0.1288
+  [B] lambda  1440.0: T = 0.6679, R = 0.1243
+  [B] lambda  1520.0: T = 0.6635, R = 0.1370
+  [B] lambda  1600.0: T = 0.7234, R = 0.1269
+  [B] lambda  1680.0: T = 0.7747, R = 0.1050
+[consistency] max|A(lambda)| no-ITO = 2.72e-14 (a-Si and glass lossless -> ~0)
+[spectra] EDR-like cuboid 560x500x140, no ITO
+  [EDR-A] lambda  1200.0: T = 0.8269, R = 0.1731
+  [EDR-A] lambda  1280.0: T = 0.3909, R = 0.6091
+  [EDR-A] lambda  1360.0: T = 0.6979, R = 0.3021
+  [EDR-A] lambda  1440.0: T = 0.7885, R = 0.2115
+  [EDR-A] lambda  1520.0: T = 0.8319, R = 0.1681
+  [EDR-A] lambda  1600.0: T = 0.8579, R = 0.1421
+  [EDR-A] lambda  1680.0: T = 0.8754, R = 0.1246
+[spectra] EDR-like cuboid, with ITO
+  [EDR-B] lambda  1200.0: T = 0.6850, R = 0.2106
+  [EDR-B] lambda  1280.0: T = 0.4690, R = 0.3514
+  [EDR-B] lambda  1360.0: T = 0.6464, R = 0.1825
+  [EDR-B] lambda  1440.0: T = 0.6605, R = 0.1393
+  [EDR-B] lambda  1520.0: T = 0.6886, R = 0.1298
+  [EDR-B] lambda  1600.0: T = 0.7580, R = 0.1062
+  [EDR-B] lambda  1680.0: T = 0.8089, R = 0.0798
+[dips] freeform_noITO: ['1228 nm (T=0.128)']
+  [freeform_noITO fine] lambda  1208.0: T = 0.7134, R = 0.2866
+  [freeform_noITO fine] lambda  1218.0: T = 0.6353, R = 0.3647
+  [freeform_noITO fine] lambda  1228.0: T = 0.1282, R = 0.8718
+  [freeform_noITO fine] lambda  1238.0: T = 0.5389, R = 0.4611
+  [freeform_noITO fine] lambda  1248.0: T = 0.6335, R = 0.3665
+[dips] freeform_ITO: ['1228 nm (T=0.450)', '1484 nm (T=0.654)']
+  [freeform_ITO fine] lambda  1208.0: T = 0.6565, R = 0.2068
+  [freeform_ITO fine] lambda  1218.0: T = 0.6081, R = 0.2257
+  [freeform_ITO fine] lambda  1228.0: T = 0.4503, R = 0.2917
+  [freeform_ITO fine] lambda  1238.0: T = 0.5861, R = 0.2344
+  [freeform_ITO fine] lambda  1248.0: T = 0.6317, R = 0.2102
+  [freeform_ITO fine] lambda  1464.0: T = 0.6572, R = 0.1286
+  [freeform_ITO fine] lambda  1474.0: T = 0.6548, R = 0.1306
+  [freeform_ITO fine] lambda  1484.0: T = 0.6539, R = 0.1326
+  [freeform_ITO fine] lambda  1494.0: T = 0.6546, R = 0.1343
+  [freeform_ITO fine] lambda  1504.0: T = 0.6569, R = 0.1357
+[dips] EDR_noITO: ['1240 nm (T=0.000)']
+  [EDR_noITO fine] lambda  1220.0: T = 0.7082, R = 0.2918
+  [EDR_noITO fine] lambda  1230.0: T = 0.2026, R = 0.7974
+  [EDR_noITO fine] lambda  1240.0: T = 0.0000, R = 1.0000
+  [EDR_noITO fine] lambda  1250.0: T = 0.0705, R = 0.9295
+  [EDR_noITO fine] lambda  1260.0: T = 0.1912, R = 0.8088
+[dips] EDR_ITO: ['1230 nm (T=0.046)']
+  [EDR_ITO fine] lambda  1210.0: T = 0.6155, R = 0.2579
+  [EDR_ITO fine] lambda  1220.0: T = 0.4951, R = 0.3376
+  [EDR_ITO fine] lambda  1230.0: T = 0.0459, R = 0.6476
+  [EDR_ITO fine] lambda  1240.0: T = 0.1437, R = 0.5946
+  [EDR_ITO fine] lambda  1250.0: T = 0.2539, R = 0.5172
+[saved] /home/user/ENZ/enz_inverse_design/outputs/histories/resonance_summary.csv
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/T1_freeform_with_without_ITO.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/T2_RTA.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/T3_fine_scans.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/T4_EDR_benchmark.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fieldmap_freeform_noITO_1228nm.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fieldmap_freeform_ITO_1228nm.png
+figure written: /home/user/ENZ/enz_inverse_design/outputs/figures/fieldmap_freeform_ITO_1485nm.png
+[fourier] |Ez| channel amplitudes at 1228.0 nm (with / without ITO):
+    (0, 0)   : 5.817e-10 / 5.929e-10  (ratio 0.98)
+    (1, 0)   : 1.469e+00 / 1.834e+00  (ratio 0.80)
+    (-1, 0)  : 1.469e+00 / 1.834e+00  (ratio 0.80)
+    (0, 1)   : 3.974e-14 / 1.319e-13  (ratio 0.30)
+    (0, -1)  : 1.500e-13 / 4.708e-13  (ratio 0.32)
+    (1, 1)   : 1.372e-14 / 3.094e-14  (ratio 0.44)
+    (1, -1)  : 4.673e-14 / 1.956e-13  (ratio 0.24)
+    (-1, 1)  : 1.420e-14 / 3.126e-14  (ratio 0.45)
+    (-1, -1) : 5.152e-14 / 1.768e-13  (ratio 0.29)
+    (2, 0)   : 2.071e-01 / 4.119e-01  (ratio 0.50)
+    (-2, 0)  : 2.071e-01 / 4.119e-01  (ratio 0.50)
+
+[done] all validation outputs saved.
