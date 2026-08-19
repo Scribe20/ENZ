@@ -31,7 +31,7 @@ TORCWA_DIR = _HERE / "third_party"          # vendored supplied torcwa package
 # (~1470.8 nm), produced by ../enz_target/solve_periodic_target.py.  The
 # original complex-K target (1527 nm) is kept for reference as
 # target_enz_mode.npz but is NOT self-consistent with a periodic cell.
-TARGET_MODE_FILE = _HERE.parent / "enz_target" / "target_enz_mode_periodic.npz"
+TARGET_MODE_FILE = _HERE.parent / "enz_target" / "target_enz_mode_periodic_850_g10.npz"
 ENZ_TARGET_DIR = _HERE.parent / "enz_target"   # Phase-1 package (ITO material)
 ASI_NK_FILE = _HERE / "data_aSi_H_measured_Postech_extended_to_2000nm.txt"
 OUT_DIR = _HERE / "outputs"
@@ -51,8 +51,8 @@ N_THREADS = 4
 # Fixed physical configuration (NOT optimized in this phase)
 # --------------------------------------------------------------------------
 WAVELENGTH_NM = None      # None -> read from the target npz (1527 nm)
-PX_NM = 770.0             # lattice period x (see provenance note above)
-PY_NM = 770.0             # lattice period y
+PX_NM = 850.0             # FROZEN benchmark period (Karimi EDR lattice)
+PY_NM = 850.0             # FROZEN benchmark period
 ASI_THICKNESS_NM = 140.0  # Karimi EDR a-Si thickness
 ITO_THICKNESS_NM = None   # None -> read from target npz (23 nm)
 N_GLASS = None            # None -> read from target npz (1.4446)
