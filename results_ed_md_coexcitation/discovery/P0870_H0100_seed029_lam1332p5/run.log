@@ -8,3 +8,4 @@
 [08:55:46] P0870_H0100_seed029_lam1332p5: it   70/150  F_co=+4.0905  S_ED=53.2283  S_MD=67.1152  bal=0.793  beta=   25.1  lr=0.01105  t=  125.1s
 [08:56:37] P0870_H0100_seed029_lam1332p5: resuming from checkpoint at iteration 50.
 [08:56:39] P0870_H0100_seed029_lam1332p5: it   50/150  F_co=+4.0346  S_ED=50.4610  S_MD=63.3067  bal=0.797  beta=   10.0  lr=0.01500  t=    1.9s
+[08:56:57] P0870_H0100_seed029_lam1332p5: it   60/150  F_co=+4.0657  S_ED=51.9618  S_MD=65.4273  bal=0.794  beta=   15.8  lr=0.01309  t=   19.7s
