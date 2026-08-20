@@ -55,3 +55,4 @@
 [04:15:39] P0900_H0100_seed029_lam1332p5: it  470/550  F_co=+4.3035  S_ED=70.2096  S_MD=77.9003  bal=0.901  beta=  895.9  lr=0.00103  t=  630.5s
 [04:17:10] P0900_H0100_seed029_lam1332p5: it  480/550  F_co=+4.3032  S_ED=70.2010  S_MD=77.8740  bal=0.901  beta=  990.5  lr=0.00079  t=  721.8s
 [04:46:25] P0900_H0100_seed029_lam1332p5: resuming from checkpoint at iteration 475.
+[04:47:08] P0900_H0100_seed029_lam1332p5: it  480/550  F_co=+4.3032  S_ED=70.2010  S_MD=77.8740  bal=0.901  beta=  990.5  lr=0.00079  t=   42.6s
