@@ -32,3 +32,4 @@
 [07:24:19] P0830_H0100_seed011_lam1332p5: it  310/550  F_co=+4.0448  S_ED=50.1438  S_MD=65.0229  bal=0.771  beta=  179.7  lr=0.00801  t= 1848.5s
 [07:25:18] P0830_H0100_seed011_lam1332p5: it  320/550  F_co=+4.0450  S_ED=50.1732  S_MD=65.0123  bal=0.772  beta=  198.7  lr=0.00746  t= 1907.4s
 [07:26:17] P0830_H0100_seed011_lam1332p5: it  330/550  F_co=+4.0482  S_ED=50.3589  S_MD=65.1885  bal=0.773  beta=  219.7  lr=0.00691  t= 1966.3s
+[08:12:38] P0830_H0100_seed011_lam1332p5: resuming from checkpoint at iteration 325.
