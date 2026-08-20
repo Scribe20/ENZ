@@ -43,5 +43,27 @@
   "geo_dtype": "torch.float32",
   "torcwa_version": "0.1.4.2",
   "torch_version": "2.13.0+cu130",
-  "status": "running"
+  "status": "completed",
+  "runtime_s": 4486.203481197357,
+  "best": {
+    "F_co": 4.16618537902832,
+    "S_ED": 60.40811538696289,
+    "S_MD": 68.8030014038086,
+    "iteration": 463
+  },
+  "final_scores": {
+    "projected": {
+      "F_co": 4.1645426750183105,
+      "S_ED": 60.3217887878418,
+      "S_MD": 68.67546081542969,
+      "balance": 0.8783601522445679
+    },
+    "binary": {
+      "F_co": 4.164263725280762,
+      "S_ED": 60.3057861328125,
+      "S_MD": 68.65538024902344,
+      "balance": 0.878383994102478
+    }
+  },
+  "fill_fraction": 0.6966903805732727
 }
