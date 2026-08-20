@@ -10,9 +10,16 @@ NPAR=${1:-4}
 R=results_ed_md_coexcitation
 
 echo "=== Phase 2: summary + selection ==="
+# Filesystem is the source of truth: the selection file is FROZEN once
+# written, so re-running this controller after a worker restart is
+# idempotent (refinement resumes from checkpoints, completed stages skip).
 python analyze_coexcite_results.py --mode summary || exit 1
-python analyze_coexcite_results.py --mode select || exit 1
-python analyze_coexcite_results.py --mode contact --stage discovery
+if [ ! -f "$R/selection_diversity.json" ]; then
+  python analyze_coexcite_results.py --mode select || exit 1
+else
+  echo "selection_diversity.json exists - reusing frozen selection"
+fi
+[ -f "$R/contact_sheet_discovery.png" ] || python analyze_coexcite_results.py --mode contact --stage discovery
 
 SELECTED=$(python - <<'EOF'
 import json
@@ -37,16 +44,16 @@ for round in 1 2 3 4 5; do
 done
 
 echo "=== Verification (orders 9/11/13, binary+projected) ==="
-ls -d "$R"/refine/*_refined | OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 xargs -P "$NPAR" -I{} \
-  python coexcite_ed_md_sweep.py --mode verify --run-dir {} --threads 1
+ls -d "$R"/refine/*_refined | OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 MALLOC_ARENA_MAX=2 xargs -P "$NPAR" -I{} \
+  bash -c '[ -f "{}/verification.csv" ] && echo "skip verify {}" || python coexcite_ed_md_sweep.py --mode verify --run-dir "{}" --threads 1'
 
 echo "=== Diagnostic wavelength sweeps (binary geometry) ==="
-ls -d "$R"/refine/*_refined | OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 xargs -P "$NPAR" -I{} \
-  python coexcite_ed_md_sweep.py --mode spectra --run-dir {} --geometry binary --threads 1
+ls -d "$R"/refine/*_refined | OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 MALLOC_ARENA_MAX=2 xargs -P "$NPAR" -I{} \
+  bash -c '[ -f "{}/spectra.csv" ] && echo "skip spectra {}" || python coexcite_ed_md_sweep.py --mode spectra --run-dir "{}" --geometry binary --threads 1'
 
 echo "=== Multipole-decomposition data export ==="
-ls -d "$R"/refine/*_refined | OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 xargs -P "$NPAR" -I{} \
-  python coexcite_ed_md_sweep.py --mode multipole-data --run-dir {} --geometry binary --threads 1
+ls -d "$R"/refine/*_refined | OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 MALLOC_ARENA_MAX=2 xargs -P "$NPAR" -I{} \
+  bash -c '[ -f "{}/multipole_data.npz" ] && echo "skip multipole {}" || python coexcite_ed_md_sweep.py --mode multipole-data --run-dir "{}" --geometry binary --threads 1'
 
 echo "=== Final analysis ==="
 python analyze_coexcite_results.py --mode summary --stage refine

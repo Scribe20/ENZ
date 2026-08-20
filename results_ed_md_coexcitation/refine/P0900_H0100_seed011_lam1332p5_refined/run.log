@@ -49,3 +49,9 @@
 [03:45:43] P0900_H0100_seed011_lam1332p5: it  370/550  F_co=+4.2537  S_ED=65.2876  S_MD=75.8408  bal=0.861  beta=  328.3  lr=0.00484  t= 1324.8s
 [03:46:51] P0900_H0100_seed011_lam1332p5: it  380/550  F_co=+4.2549  S_ED=65.4000  S_MD=75.8854  bal=0.862  beta=  363.0  lr=0.00436  t= 1393.2s
 [03:47:59] P0900_H0100_seed011_lam1332p5: it  390/550  F_co=+4.2550  S_ED=65.4436  S_MD=75.8562  bal=0.863  beta=  401.3  lr=0.00389  t= 1460.7s
+[04:05:08] P0900_H0100_seed011_lam1332p5: resuming from checkpoint at iteration 375.
+[04:06:25] P0900_H0100_seed011_lam1332p5: it  380/550  F_co=+4.2549  S_ED=65.4000  S_MD=75.8854  bal=0.862  beta=  363.0  lr=0.00436  t=   76.6s
+[04:14:53] P0900_H0100_seed011_lam1332p5: it  390/550  F_co=+4.2550  S_ED=65.4436  S_MD=75.8562  bal=0.863  beta=  401.3  lr=0.00389  t=  584.7s
+[04:16:25] P0900_H0100_seed011_lam1332p5: it  400/550  F_co=+4.2567  S_ED=65.5808  S_MD=75.9581  bal=0.863  beta=  443.7  lr=0.00345  t=  676.1s
+[04:46:25] P0900_H0100_seed011_lam1332p5: resuming from checkpoint at iteration 400.
+[04:46:36] P0900_H0100_seed011_lam1332p5: it  400/550  F_co=+4.2567  S_ED=65.5808  S_MD=75.9581  bal=0.863  beta=  443.7  lr=0.00345  t=   11.4s
