@@ -476,6 +476,12 @@ def optimize_single_run(period_nm, height_nm, seed, out_dir, *,
     # Final evaluation + saving (everything below is post-gradient, so
     # detaching here cannot affect the optimization)
     # ------------------------------------------------------------------
+    # free optimizer state before the final one-shot evaluations: refine
+    # workers peaked ~5 GB in this phase and OOM'd the cgroup with 4 workers
+    import gc
+    momentum = velocity = None
+    gc.collect()
+
     with torch.no_grad():
         beta_final = float(beta_schedule[-1])
         rho_final = rho.detach()
@@ -485,6 +491,7 @@ def optimize_single_run(period_nm, height_nm, seed, out_dir, *,
         final_scores = {}
         try:
             for tag, dens in [('projected', rho_projected), ('binary', rho_binary)]:
+                gc.collect()
                 F_co, S_ED, S_MD = evaluate_density(
                     dens, period_nm, height_nm, lamb_nm, order, si_eps)
                 final_scores[tag] = {'F_co': float(F_co), 'S_ED': float(S_ED),

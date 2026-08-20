@@ -27,12 +27,23 @@ sel = json.load(open('results_ed_md_coexcitation/selection_diversity.json'))
 print('\n'.join(s['run_id'] for s in sel['selected']))
 EOF
 )
-echo "=== Refining $(echo "$SELECTED" | wc -l) candidates (${NPAR} workers) ==="
-# up to 5 rounds: interrupted runs (e.g. OOM kills) resume from checkpoints;
+# Refinement runs at most 3 workers: [9,9]-order workers peak near ~5 GB
+# during the end-of-run evaluation phase, and 4 concurrent peaks OOM'd the
+# ~15 GB cgroup (dmesg pids 4206, 4688).
+NPAR_REFINE=$(( NPAR < 3 ? NPAR : 3 ))
+echo "=== Refining $(echo "$SELECTED" | wc -l) candidates (${NPAR_REFINE} workers) ==="
+# up to 6 rounds: interrupted runs (e.g. OOM kills) resume from checkpoints;
 # completed runs are skipped on re-entry, so extra rounds are cheap no-ops.
-for round in 1 2 3 4 5; do
+for round in 1 2 3 4 5 6; do
+  # QUIESCENCE GUARD: never start a round while any refine worker is still
+  # alive (an OOM-killed xargs can orphan live workers; starting a new round
+  # then would attach a duplicate worker to the same run directory).
+  while pgrep -f "coexcite_ed_md_sweep.py --mode refine" > /dev/null; do
+    echo "waiting for surviving refine workers to finish before round $round..."
+    sleep 60
+  done
   echo "--- refinement round $round ---"
-  echo "$SELECTED" | OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 MALLOC_ARENA_MAX=2 xargs -P "$NPAR" -I{} \
+  echo "$SELECTED" | OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 MALLOC_ARENA_MAX=2 xargs -P "$NPAR_REFINE" -I{} \
     python coexcite_ed_md_sweep.py --mode refine --run-dir "$R/discovery/{}" --threads 1
   pending=0
   for rid in $SELECTED; do
