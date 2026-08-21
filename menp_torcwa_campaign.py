@@ -190,17 +190,31 @@ def log(msg):
     print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
+def load_partial(path, keyfn):
+    """Load an existing (possibly partial) stage CSV; return (rows, keys)
+    so a restarted stage can skip already-computed entries."""
+    import csv as _csv
+    rows, keys = [], set()
+    if Path(path).exists():
+        for r in _csv.DictReader(open(path)):
+            rows.append(r)
+            keys.add(keyfn(r))
+    return rows, keys
+
+
 # ---------------------------------------------------------------------------
 # Stages
 # ---------------------------------------------------------------------------
 
 def stage_fine(cand, name, out):
     path = out / 'fine_decomposition.csv'
-    if path.exists():
-        log(f'{name}: fine exists - skip')
+    rows, done = load_partial(path, lambda r: round(float(r['lam_nm']), 2))
+    if len(done) >= len(FINE_LAMS):
+        log(f'{name}: fine complete - skip')
         return
-    rows = []
     for lam in FINE_LAMS:
+        if round(float(lam), 2) in done:
+            continue
         t0 = time.time()
         fl = solve_dense(cand['rho'], cand['P'], cand['H'], float(lam), [13, 13])
         rec = decompose(fl)
@@ -219,11 +233,13 @@ def stage_fine(cand, name, out):
 
 def stage_orders(cand, name, out):
     path = out / 'order_scan.csv'
-    if path.exists():
-        log(f'{name}: orders exists - skip')
+    rows, done = load_partial(path, lambda r: int(r['order']))
+    if len(done) >= len(ORDER_LIST):
+        log(f'{name}: orders complete - skip')
         return
-    rows = []
     for order in ORDER_LIST:
+        if order[0] in done:
+            continue
         t0 = time.time()
         try:
             fl = solve_dense(cand['rho'], cand['P'], cand['H'], LAM0, order)
@@ -238,18 +254,20 @@ def stage_orders(cand, name, out):
 
 def stage_grids(cand, name, out):
     path = out / 'grid_scan.csv'
-    if path.exists():
-        log(f'{name}: grids exists - skip')
+    rows, done = load_partial(path, lambda r: (int(r['n_xy']), int(r['nz'])))
+    if len(done) >= len(GRID_LIST):
+        log(f'{name}: grids complete - skip')
         return
-    rows = []
     for (nxy, nz) in GRID_LIST:
+        if (nxy, nz) in done:
+            continue
         fl = solve_dense(cand['rho'], cand['P'], cand['H'], LAM0, [13, 13],
                          n_xy=nxy, nz=nz)
         rec = rec_to_row(decompose(fl))
         rec['n_xy'], rec['nz'] = nxy, nz
         rows.append(rec)
+        save_rows(path, rows)   # checkpoint per grid point
         log(f"{name}: grid {nxy}x{nxy}x{nz} done")
-    save_rows(path, rows)
 
 
 def stage_origins(cand, name, out):
@@ -290,24 +308,30 @@ def stage_origins(cand, name, out):
 
 def stage_substrate(cand, name, out):
     path = out / 'substrate_scan.csv'
-    if path.exists():
-        log(f'{name}: substrate exists - skip')
+    rows, done = load_partial(
+        path, lambda r: (r['substrate'], round(float(r['lam_nm']), 2), int(r['order'])))
+    if len(done) >= 24:
+        log(f'{name}: substrate complete - skip')
         return
-    rows = []
     for sub_tag, sub_eps in [('silica', sweep.SUBSTRATE_EPS), ('air', 1.0)]:
         for lam in np.arange(LAM0 - 10, LAM0 + 10.01, 2.0):
+            key = (sub_tag, round(float(lam), 2), 11)
+            if key in done:
+                continue
             fl = solve_dense(cand['rho'], cand['P'], cand['H'], float(lam),
                              [11, 11], substrate_eps=sub_eps)
             rec = rec_to_row(decompose(fl))
             rec['substrate'], rec['order'] = sub_tag, 11
             rows.append(rec)
-        fl = solve_dense(cand['rho'], cand['P'], cand['H'], LAM0, [13, 13],
-                         substrate_eps=sub_eps)
-        rec = rec_to_row(decompose(fl))
-        rec['substrate'], rec['order'] = sub_tag, 13
-        rows.append(rec)
+            save_rows(path, rows)   # checkpoint per lambda
+        if (sub_tag, round(LAM0, 2), 13) not in done:
+            fl = solve_dense(cand['rho'], cand['P'], cand['H'], LAM0, [13, 13],
+                             substrate_eps=sub_eps)
+            rec = rec_to_row(decompose(fl))
+            rec['substrate'], rec['order'] = sub_tag, 13
+            rows.append(rec)
+            save_rows(path, rows)
         log(f"{name}: substrate={sub_tag} done")
-        save_rows(path, rows)
 
 
 def stage_material(cand, name, out):
@@ -317,11 +341,15 @@ def stage_material(cand, name, out):
     The resonance shifts, so each n gets a proxy scan to relocate the
     joint peak, then a fine decomposition around it."""
     path = out / 'material_scan.csv'
-    if path.exists():
-        log(f'{name}: material exists - skip')
+    rows, done = load_partial(
+        path, lambda r: (float(r['n_si']), round(float(r['lam_nm']), 2)))
+    if len(done) >= 34:
+        log(f'{name}: material complete - skip')
         return
-    rows = []
+    done_nsi = {k[0] for k in done}
     for n_si in [3.30, 3.45]:
+        if sum(1 for k in done if k[0] == n_si) >= 17:
+            continue
         si_eps = complex(n_si ** 2, 2 * n_si * 0.003)   # small NIR loss
         # coarse proxy relocation scan
         best_lam, best_fom = None, -1e30
