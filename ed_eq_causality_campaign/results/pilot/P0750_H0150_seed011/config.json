@@ -1,0 +1,23 @@
+{
+ "run_id": "P0750_H0150_seed011",
+ "P": 750.0,
+ "h": 150.0,
+ "seed": 11,
+ "lam0": 1332.5,
+ "order": [
+  7,
+  7
+ ],
+ "n_mask": 150,
+ "n_xy": 48,
+ "nz": 7,
+ "iters": 120,
+ "material": "aSi_Franta2013",
+ "eps_si": [
+  13.335111239257166,
+  4.2434823994767005e-05
+ ],
+ "objective": "F_ED_EQ=0.5[log S_px + log S_Qxz]; Q excluded",
+ "symmetry": "NONE",
+ "status": "running"
+}
