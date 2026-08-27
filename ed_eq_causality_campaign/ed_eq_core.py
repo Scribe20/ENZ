@@ -288,6 +288,6 @@ def channel_amplitudes(sim):
 def bare_stack_amplitudes(P, h, lam_nm, order):
     """Same stack with an EMPTY (air) patterned layer - the scattering
     background for the induced-current picture."""
-    rho0 = torch.zeros((8, 8), dtype=GEO_DTYPE, device=DEVICE)
+    rho0 = torch.zeros((64, 64), dtype=GEO_DTYPE, device=DEVICE)
     sim = build_sim(rho0, P, h, lam_nm, order, eps_si=1.0 + 0j)
     return channel_amplitudes(sim)
