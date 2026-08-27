@@ -1,0 +1,45 @@
+{
+ "o9": {
+  "tag": "P0750_H0350_seed029_o9",
+  "lam_pole": 1309.7998948196237,
+  "Q_pole": 276.1741835287196,
+  "Q_unc": 0.5859569443517321,
+  "fwhm_nm": 4.742658702142654,
+  "samples_in_fwhm": 21,
+  "rms_rel": 0.0013893426645599127,
+  "window_stability": 0.005873162639297555,
+  "energy_res_worst": 0.0009021335425991595,
+  "order": 9,
+  "Q_RESOLVED": true,
+  "complex_freq_Q": 8.42424300327501,
+  "complex_freq_lam": 1318.9724154014698,
+  "complex_freq_converged": false,
+  "complex_freq_abs_t": 1.1953206672426813
+ },
+ "o11": {
+  "tag": "P0750_H0350_seed029_o11",
+  "lam_pole": 1303.89887157329,
+  "Q_pole": 261.7249364520738,
+  "Q_unc": 0.5456515788744914,
+  "fwhm_nm": 4.981943597919474,
+  "samples_in_fwhm": 22,
+  "rms_rel": 0.0021114436181293265,
+  "window_stability": 0.0056774081784615625,
+  "energy_res_worst": 0.0014984762811387498,
+  "order": 11,
+  "Q_RESOLVED": true
+ },
+ "eroded": {
+  "tag": "P0750_H0350_seed029_eroded",
+  "lam_pole": 1271.674759915728,
+  "Q_pole": 170.9858982349314,
+  "Q_unc": 1.4714833187696492,
+  "fwhm_nm": 7.437307830897676,
+  "samples_in_fwhm": 5,
+  "rms_rel": 0.0019910316444181893,
+  "window_stability": 0.005990735175510242,
+  "energy_res_worst": 0.00018731963066476176,
+  "order": 9,
+  "Q_RESOLVED": false
+ }
+}
