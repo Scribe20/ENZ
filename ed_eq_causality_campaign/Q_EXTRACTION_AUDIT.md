@@ -132,4 +132,20 @@ Findings:
 
 ## 6. Order-[11,11] recheck of the two energy-gate failures
 
-(to be filled by ed_eq_o11_recheck.py — running)
+Outcome (results/q_validation_v2_o11.csv): higher Fourier order does NOT
+heal either candidate — the in-window energy violation GROWS with order:
+
+| candidate | Q at [9,9] | Q at [11,11] | energy resid [9,9] → [11,11] | verdict |
+|---|---|---|---|---|
+| P0550_H0150_seed011 | 881.0 ± 1.7 @ 1330.67 | 903.4 ± 6.0 @ 1330.23 | 0.041 → **0.236** | UNRESOLVED at all tested orders |
+| P0750_H0250_seed029 | 542.7 ± 0.2 @ 1312.04 | 545.4 ± 0.5 @ 1308.89 | 0.0075 → **0.0212** | UNRESOLVED at all tested orders |
+
+Interpretation: the fitted Q values are *reproducible* (2.5% and 0.5%
+across orders) and the features are certainly real spectral resonances,
+but the RCWA solution underneath them is not converged at the resonance
+(|T+R−1| up to 24% in-window at [11,11] for the first), so no
+precision-Q claim is certified for either. Stage-A statements that used
+these numbers (notably "ED-only control Q ≈ 905") must be phrased as
+"a sharp feature with apparent Q ~ 900, numerically uncertified at the
+tested orders". Certification would require substantially higher orders
+or an independent solver — out of scope for this audit.
