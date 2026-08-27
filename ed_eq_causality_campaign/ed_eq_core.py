@@ -192,6 +192,16 @@ def torch_moments(E, eps_grid3, x_nm, z_nm, lam_nm, origin_nm=None):
     out['Qxy'] = Qe(X, Y, Jx, Jy, False)
     out['Qxz'] = Qe(X, Z, Jx, Jz, False)
     out['Qyz'] = Qe(Y, Z, Jy, Jz, False)
+    # magnetic quadrupole, exact kernel j2/(kr)^2, CORRECTED symmetrization
+    # (the MENP dQmxz bug is not reproduced here); added by the Stage-A
+    # forensic audit - the original Stage-A code omitted Qm entirely.
+    c_Qm = -1j * omega * EPS0 * lam ** 5 * 15
+    out['Qmxx'] = c_Qm * T(2 * X * rxJx * K2)
+    out['Qmyy'] = c_Qm * T(2 * Y * rxJy * K2)
+    out['Qmzz'] = c_Qm * T(2 * Z * rxJz * K2)
+    out['Qmxy'] = c_Qm * T((X * rxJy + Y * rxJx) * K2)
+    out['Qmxz'] = c_Qm * T((X * rxJz + Z * rxJx) * K2)
+    out['Qmyz'] = c_Qm * T((Y * rxJz + Z * rxJy) * K2)
     # long-wavelength toroidal diagnostic
     out['Tx'] = c_T * T(rJ * X - 2 * rr * Jx)
     out['Ty'] = c_T * T(rJ * Y - 2 * rr * Jy)
@@ -211,7 +221,19 @@ def scores_from_moments(mo, A_cell_m2):
 
 def family_weights(mo):
     """Formal per-family radiation weights (validated MENP constants) for
-    monitoring; NOT the periodic radiated power."""
+    monitoring; NOT the periodic radiated power.
+    AUDIT NOTE: the Stage-A version returned only (Cp, Cm, CQe); the
+    fractions EDEQ_frac=(Cp+CQe)/(Cp+Cm+CQe) and MD_frac=Cm/(Cp+Cm+CQe)
+    therefore EXCLUDED the magnetic quadrupole from the denominator (it
+    was not computed at all), which is why they summed to 1. The audited
+    form includes CQm; use family_weights4 for the complete partition."""
+    Cp, Cm, CQe, _ = family_weights4(mo)
+    return Cp, Cm, CQe
+
+
+def family_weights4(mo):
+    """Complete exact family partition (Cp, Cm, CQe, CQm) with the same
+    MENP constants: CQm = const/120*(k/c)^2*sum|Qm|^2 (off-diag doubled)."""
     k = mo['k']
     cE = k ** 4 / (6 * math.pi * EPS0 ** 2)
     Cp = cE * sum(torch.abs(mo[t]) ** 2 for t in ('px', 'py', 'pz'))
@@ -219,7 +241,10 @@ def family_weights(mo):
     n2Qe = (sum(torch.abs(mo[t]) ** 2 for t in ('Qxx', 'Qyy', 'Qzz'))
             + 2 * sum(torch.abs(mo[t]) ** 2 for t in ('Qxy', 'Qxz', 'Qyz')))
     CQe = cE / 120 * k ** 2 * n2Qe
-    return Cp, Cm, CQe
+    n2Qm = (sum(torch.abs(mo[t]) ** 2 for t in ('Qmxx', 'Qmyy', 'Qmzz'))
+            + 2 * sum(torch.abs(mo[t]) ** 2 for t in ('Qmxy', 'Qmxz', 'Qmyz')))
+    CQm = cE / 120 * (k / C0) ** 2 * n2Qm
+    return Cp, Cm, CQe, CQm
 
 
 def eval_objective(rho_tilda, P, h, lam_nm, order, n_xy=48, nz=7,
