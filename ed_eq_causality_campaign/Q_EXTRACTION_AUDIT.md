@@ -63,3 +63,73 @@ Re(eps)·|E|²` in TORCWA units — a dimensionless near-field energy-LIKE
 proxy. It was never inserted into Q = ωU/P (Q came only from linewidths /
 poles), and it carries no dispersive-material energy correction
 (∂(ωε)/∂ω). It remains labeled a proxy; trend use only.
+
+## 5. REFIT OUTCOMES (fixed gates; adaptive joint t/r shared-pole fits)
+
+Machine-readable: results/q_validation_v2.csv (refit targets),
+results/q_validation_v2_full.csv (all 18 candidates),
+results/audit/needle_forensics.json, figures/qfit_*.png.
+
+Targets = every v1 ledger candidate with Qfit_ok and 100 < Q < 1e5
+(5 candidates) + the needle (dedicated forensics). The remaining 12
+candidates have no qualifying resonance (broad response or failed v1
+fit, Q < 100); P0750_H0150_seed029's v1 "Q = 7.4e6" was already
+invalid in v1 (fit failed, pole at 1634.7 nm — far outside the scanned
+window) and stays excluded.
+
+| candidate | v1 Q (1-nm fit) | audit Q_pole | change | FWHM (nm) | samples/FWHM | worst in-window energy resid | Q_RESOLVED |
+|---|---|---|---|---|---|---|---|
+| P0550_H0150_seed011 | 905 | 881.0 +- 1.7 | -2.7% | 1.510 | 26 | 0.041 | **NO** (energy gate) |
+| P0550_H0350_seed011 | 292 | 280.0 +- 0.1 | -4.1% | 4.757 | 22 | 0.0024 | YES |
+| P0650_H0350_seed011 | 297 | 267.4 +- 0.1 | -10.1% | 4.982 | 22 | 0.0024 | YES |
+| P0750_H0250_seed011 (champion) | 559 | 357.6 +- 1.2 | **-36%** | 3.721 | 20 | 0.0026 | YES |
+| P0750_H0250_seed029 | 597 | 542.7 +- 0.2 | -9.1% | 2.418 | 28 | 0.0075 | **NO** (energy gate, marginal) |
+| P0750_H0350_seed029 (needle) | 1.45e7 | 276.2 +- 0.6 | -100% (artifact) | 4.743 | 21 | 0.0009 | YES |
+
+Findings:
+
+1. **The champion's Stage-A qualify Q was overestimated by 56%**
+   (559.5 -> 357.6): the constant-background t-only 1-nm fit is
+   systematically unreliable on this sloped Fano background. (The
+   trajectory's 0.25-nm fit of the same structure gave ~370 — within 3%
+   of the audited value; the error was resolution + background model,
+   dominated by the qualify grid.) All other surviving values shifted
+   -3% to -10%.
+2. **The needle is an artifact, definitively**: adaptive refinement down
+   to 5e-4-nm local steps finds an ordinary resonance, Q = 276.2 (order
+   [9,9]) / 261.7 (order [11,11]), pole drifting 1309.80 -> 1303.90 nm
+   with order. No sub-nm feature exists anywhere in the refined windows.
+   A complex-frequency Newton probe was attempted and honestly failed to
+   converge (recorded converged=false); it is moot given the resolved
+   real-axis fits. Single-pixel erosion moves the resonance to
+   1271.7 nm, Q ~ 171 (indicative, 5 samples/FWHM) — a smooth
+   perturbation response, not needle fragility. The Stage-A flag
+   "unresolved, not claimed" was correct; the number 1.4e7 is hereby
+   voided.
+3. **Energy gating retires two Q values at order [9,9]**:
+   P0550_H0150_seed011 (Q = 881; worst in-window |T+R-1| = 0.041) and
+   P0750_H0250_seed029 (Q = 543; 0.0075 vs the 5e-3 gate). Both fits
+   are internally excellent (rms 0.2-0.6%, stability < 0.2%) — the data,
+   not the fit, is untrusted at [9,9]. An order-[11,11] recheck is
+   running; its outcome updates this section (see §6).
+4. **Method agreement**: for every RESOLVED candidate, the independent
+   Stage-A single-pole t-only fit and the audit joint t+r shared-pole
+   fit agree within 3-10% (and the champion's two fine-grid methods
+   within 3%); the two Fourier orders agree within 5% where both ran
+   (needle 276 vs 262; champion 358 vs 347). Q values are therefore
+   established by at least two independent extractions wherever
+   Q_RESOLVED = true.
+5. **Q_abs remains an algebraic inference** (1/Q_abs = 1/Q_loaded -
+   1/Q_rad). No independent absorption-integral extraction was performed
+   in Stage A or in this audit; every Q_abs statement must carry this
+   label. Q_rad and Q_loaded were, and remain, independently fitted.
+6. **Detuning-trajectory Q values** (620 -> 165 vs alpha) were fitted on
+   the 0.25-nm fine grid with the v1 method: adequate for the monotone
+   factor-4 TREND that supports the causal conclusion (the champion
+   cross-check above bounds the method error at ~3% on that grid), but
+   NOT precision values; the alpha = 1.0 point is superseded by
+   Q = 357.6 +- 1.2.
+
+## 6. Order-[11,11] recheck of the two energy-gate failures
+
+(to be filled by ed_eq_o11_recheck.py — running)
