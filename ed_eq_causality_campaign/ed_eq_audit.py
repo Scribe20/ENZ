@@ -248,7 +248,7 @@ def adaptive_qrefine(rho, P, h, lam_seed, tag, max_rounds=5, order=ORDER_A):
             span *= 1.5
             step = span / 30
             continue
-        fwhm_nm = fit['lam_pole'] ** 2 / (2 * math.pi * C0) * 2 * fit['gamma'] * 1e-9 * 1e9
+        fwhm_nm = (fit['lam_pole'] * 1e-9) ** 2 * 2 * fit['gamma'] / (2 * math.pi * C0) * 1e9
         n_in = int(np.sum(np.abs(lam_a - fit['lam_pole']) < fwhm_nm / 2))
         print(f'  {tag} round {rnd}: pole {fit["lam_pole"]:.3f} nm '
               f'Q={fit["Q"]:.0f} fwhm={fwhm_nm:.3f} nm samples-in-fwhm={n_in} '
@@ -259,7 +259,7 @@ def adaptive_qrefine(rho, P, h, lam_seed, tag, max_rounds=5, order=ORDER_A):
         span = max(3 * fwhm_nm, 1.0)
         step = fwhm_nm / 12
     # stability: refit on 2 window widths
-    fwhm_nm = fit['lam_pole'] ** 2 / (2 * math.pi * C0) * 2 * fit['gamma'] * 1e-9 * 1e9 \
+    fwhm_nm = (fit['lam_pole'] * 1e-9) ** 2 * 2 * fit['gamma'] / (2 * math.pi * C0) * 1e9 \
         if fit.get('ok') else np.nan
     stab = np.nan
     if fit.get('ok'):
@@ -275,7 +275,15 @@ def adaptive_qrefine(rho, P, h, lam_seed, tag, max_rounds=5, order=ORDER_A):
                     qs.append(f2['Q'])
         if len(qs) == 2 and all(np.isfinite(qs)):
             stab = abs(qs[0] - qs[1]) / max(qs)
-    en_worst = max(p['en'] for p in pts.values())
+    # energy gate: worst |T+R-1| among points inside the fit-relevant
+    # window (2.5x FWHM, matching the widest stability refit); fall back
+    # to all sampled points when there is no resolved window.
+    if fit.get('ok') and np.isfinite(fwhm_nm):
+        in_keys = [k for k in pts if abs(k - fit['lam_pole']) <= 2.5 * fwhm_nm]
+        en_worst = max(pts[k]['en'] for k in in_keys) if in_keys \
+            else max(p['en'] for p in pts.values())
+    else:
+        en_worst = max(p['en'] for p in pts.values())
     keys = sorted(pts)
     n_in = int(np.sum(np.abs(np.array(keys) - fit.get('lam_pole', np.nan)) < fwhm_nm / 2)) \
         if fit.get('ok') else 0
@@ -374,21 +382,44 @@ def cmd_needle(args):
 
     try:
         g = rec.get('fwhm_nm', 0.1)
-        g_om = om0 * (g / lam_c) / 2 if np.isfinite(g) and g > 0 else om0 * 1e-5
+        g_om = om0 * (g / lam_c) / 2 if np.isfinite(g) and 0 < g < 10 \
+            else om0 * 1e-5
+
+        def inv_t(om_c):
+            # Newton root-finds 1/t -> 0 (pole of t). A Fano transmission
+            # ZERO nearby makes t = 0 exactly; floor |t| so the probe is
+            # repelled from the zero instead of crashing.
+            t = t_at(om_c)
+            if not (np.isfinite(t.real) and np.isfinite(t.imag)) \
+                    or abs(t) < 1e-14:
+                t = complex(1e-14, 0.0)
+            return 1.0 / t
+
         om = om0 - 1j * g_om
-        for it in range(6):
+        converged = False
+        for it in range(8):
             d = g_om * 0.3
-            f0, fp, fm = 1 / t_at(om), 1 / t_at(om + d), 1 / t_at(om - d)
+            f0, fp, fm = inv_t(om), inv_t(om + d), inv_t(om - d)
             der = (fp - fm) / (2 * d)
-            if abs(der) == 0:
+            if abs(der) == 0 or not np.isfinite(abs(der)):
                 break
-            om = om - f0 / der
+            step = f0 / der
+            if abs(step) > 0.01 * om0:
+                step *= 0.01 * om0 / abs(step)
+            om = om - step
+            if abs(step) < 1e-9 * om0:
+                converged = True
+                break
+        tfin = t_at(om)
         Qc = om.real / (-2 * om.imag) if om.imag < 0 else np.inf
         lamp = 2 * math.pi * C0 / om.real * 1e9
         print(f'needle complex-frequency pole: lam={lamp:.4f} nm '
-              f'Q_pole={Qc:.0f}', flush=True)
+              f'Q_pole={Qc:.0f} |t(om_p)|={abs(tfin):.3e} '
+              f'converged={converged}', flush=True)
         rec['complex_freq_Q'] = float(Qc)
         rec['complex_freq_lam'] = float(lamp)
+        rec['complex_freq_converged'] = bool(converged)
+        rec['complex_freq_abs_t'] = float(abs(tfin))
     except Exception as e:
         print(f'needle complex-frequency probe failed: {e}', flush=True)
     # tiny-perturbation response: single-pixel erosion
