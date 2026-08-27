@@ -149,3 +149,25 @@ these numbers (notably "ED-only control Q ≈ 905") must be phrased as
 "a sharp feature with apparent Q ~ 900, numerically uncertified at the
 tested orders". Certification would require substantially higher orders
 or an independent solver — out of scope for this audit.
+
+## 7. Champion order matrix (from results/audit/champion_matrices.json)
+
+| order | Q_pole | lam_pole (nm) | FWHM (nm) | in-window energy resid | Q_RESOLVED |
+|---|---|---|---|---|---|
+| [9,9] | 357.6 ± 1.2 | 1330.38 | 3.721 | 0.0026 | YES |
+| [11,11] | 346.6 ± 1.3 | 1329.26 | 3.835 | 0.0032 | YES |
+| [13,13] | 336.6 ± 1.3 | 1328.39 | 3.947 | 0.0052 | NO (gate 5e-3) |
+| [15,15] | 328.4 ± 1.5 | 1327.90 | 4.043 | 0.0105 | NO |
+
+The fitted Q converges smoothly (-3.1%, -2.9%, -2.4% per step; pole
+drift 1.1 -> 0.9 -> 0.4 nm, converging toward ~1327.5-1328 nm), but the
+energy closure at resonance DEGRADES with order for this geometry
+(0.0026 -> 0.0105), crossing the gate at [13,13]. The certified value is
+therefore **Q = 347 ± 1 (stat) at [11,11]**, with an order-trend
+systematic of order -3%/step still visible; naive extrapolation suggests
+a converged Q near ~310-320, which is NOT claimed (uncertified orders).
+Any future precision claim needs an energy-conserving higher-order
+solve. The same order-worsening of |T+R-1| was found on both
+energy-gate-failed candidates (§6) — it is a property of these sharp
+resonances in staircased TORCWA geometry at the tested orders, not of
+one candidate.

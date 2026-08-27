@@ -189,3 +189,20 @@ candidates in §5 are.
    hybrid, MD-majority).
 4. One candidate (P0650_H0350_seed029) is disqualified from any
    dipole/EQ narrative (MQ-codominant).
+
+## 9. Champion grid and origin matrices (results/audit/champion_matrices.json)
+
+Grid matrix (order [9,9], at 1328.39 nm): fractions across
+32x32x5 / 48x48x9 / 64x64x15 / 96x96x21 moment grids stay within 1.7 pp
+absolute (f_ED 0.088-0.105, f_MD 0.646-0.660, f_EQ 0.160-0.168,
+f_MQ 0.086-0.091) — the family partition is integration-grid-converged
+at the pilot settings.
+
+Origin matrix (same wavelength): y-shift by P/8 and z-shift by h/4 move
+fractions by <= 4 pp; an x-shift by P/8 mixes strongly
+(f_ED 0.105 -> 0.292, f_MQ 0.086 -> 0.192, f_MD 0.647 -> 0.427) —
+quantifying the expected in-plane origin dependence of finite-k
+multipoles along the polarization/propagation-coupled direction. The
+MD-majority m_y/Q_xz-hybrid classification of the champion survives
+EVERY origin choice (f_MD largest in all four); exact fraction values
+are stated at the canonical cell-center origin, as declared.

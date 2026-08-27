@@ -1,3 +1,20 @@
+> **AUDIT ADDENDUM (2026-08, forensic audit — read first).** This report
+> is the frozen Stage-A record. The post-hoc audit (MULTIPOLE_FAMILY_AUDIT.md,
+> Q_EXTRACTION_AUDIT.md, AUDIT_FINAL_ANSWERS.md) CORRECTS it as follows:
+> (1) the champion's resonance is a dark **m_y/Q_xz-hybrid odd mode,
+> MD-majority** (f_MD ≈ 0.64 at the pole under the complete 4-family
+> partition), not an "EQ dark mode", and its darkness is internal
+> m_y↔Q_xz anti-phase cancellation; (2) the champion's certified
+> Q = 357.6 ± 1.2 ([9,9]) / 346.6 ± 1.3 ([11,11]) — the qualify-ledger
+> 559.5 was a fit-method error; (3) the "ED-only control Q ≈ 905" and the
+> Q ≈ 597 value are UNCERTIFIED (in-window energy-conservation violations
+> growing with Fourier order); (4) the sub-nm "needle" Q ~ 1.4e7 is
+> VOIDED (ordinary Q ≈ 276 resonance); (5) all 3-family fractions here
+> are superseded by the 4-family ledger (candidate_ledger_v2.csv);
+> P0650_H0350_seed029 is MQ-codominant and excluded from dipole/EQ
+> claims. The causal conclusion (Q tracks darkness, not ED–EQ alignment)
+> SURVIVES and is mechanistically sharpened by the audit.
+
 # ED_EQ_CAMPAIGN_REPORT — Stage A (pilot + causal trajectory)
 
 Contract: SCIENTIFIC_CONTRACT.md (frozen before discovery). Methods and

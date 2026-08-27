@@ -69,14 +69,21 @@ rows above. The needle's 1.4e7 does NOT survive (→ 276). Trajectory Q's
 method error at ~3%) but are not precision values.
 
 **9. Which survive higher Fourier order?**
-Champion: 357.6 → 346.6 → 336.6 at [9,9]→[11,11]→[13,13] (−3% per step,
-shrinking; pole drift 1330.4→1329.3→1328.4 nm), Q_RESOLVED at every
-order; family fractions order-stable. Needle: 276→262 with pole
-1309.8→1303.9 nm, RESOLVED at both. The two energy-gate failures are
-fit-stable across orders (+2.5%, +0.5%) but their energy violation GROWS
-with order (0.041→0.236; 0.0075→0.0212) — they fail certification at all
-tested orders. ([15,15] champion row + grid/origin matrices:
-results/audit/champion_matrices.json.)
+Champion: 357.6 → 346.6 → 336.6 → 328.4 at [9,9]→[11,11]→[13,13]→[15,15]
+(≈−3% per step, shrinking; pole 1330.4→1327.9 nm, converging). Q_RESOLVED
+holds at [9,9] and [11,11]; at [13,13]/[15,15] the in-window energy
+residual itself grows past the gate (0.0052, 0.0105), so the certified
+value is Q = 347 ± 1 at [11,11] with a ~−3%/step order systematic
+(naive extrapolation ~310–320, NOT claimed). Family fractions are
+order-stable (f_MD 0.640→0.649, f_EQ 0.241→0.237, my|MD 0.95→0.90 across
+[11,11]→[15,15]), grid-converged within 1.7 pp (32×5→96×21), and the
+MD-majority classification survives every origin choice (x-shift by P/8
+mixes fractions strongly, as expected for finite-k multipoles, but f_MD
+stays largest). Needle: 276→262 with pole 1309.8→1303.9 nm, RESOLVED at
+both. The two energy-gate failures are fit-stable across orders (+2.5%,
++0.5%) but their energy violation GROWS with order (0.041→0.236;
+0.0075→0.0212) — they fail certification at all tested orders.
+(results/audit/champion_matrices.json.)
 
 **10. Is P0750_H0350_seed029 a real ultrahigh-Q pole or an artifact?**
 **Artifact — definitively.** Adaptive refinement to 5e-4-nm local steps
