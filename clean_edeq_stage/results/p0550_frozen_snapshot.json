@@ -1,0 +1,109 @@
+{
+ "name": "P0550_H0250_seed011",
+ "P_nm": 550.0,
+ "h_nm": 250.0,
+ "lam0_nm": 1332.5,
+ "order": [
+  9,
+  9
+ ],
+ "grid": [
+  48,
+  48,
+  9
+ ],
+ "origin": "cell-center (canonical)",
+ "material": {
+  "eps_si_at_lam0": [
+   13.335111239257166,
+   4.2434823994767005e-05
+  ],
+  "source": "Franta 2013 a-Si (refractiveindex.info)"
+ },
+ "substrate_eps": [
+  2.1315999999999997,
+  0.0
+ ],
+ "illumination": "x-pol planewave, normal incidence from substrate, exp(-j w t)",
+ "sha256": {
+  "rho_binary.npy": "fc6c34abf66c51ae056a923894d308a2193d233967931881cb49c2d6393a0f74",
+  "config.json": "16f07ee9f6cafa39993a3497bdf626278a8946bece7c2956cc56c1b30afc2ecf",
+  "ed_eq_core.py": "e4810a070eefb1cf72fc1f49ad2348380939bfe86999aa2e00290e89eb89f3a6",
+  "material_model.py": "a64584683c3b91023cb3c8ea0606f36314d9caea3a16b7d8b9a677259d1e51bf"
+ },
+ "rho_stats": {
+  "shape": [
+   110,
+   110
+  ],
+  "values": [
+   0.0,
+   1.0
+  ],
+  "fill": 0.6176859736442566
+ },
+ "revalidation": {
+  "worst_abs_diff": 0.0001271776496978294,
+  "exact_match": false,
+  "fields": {
+   "f_ED": {
+    "audited": 0.4909973008535742,
+    "revalidated": 0.49099977683811796,
+    "abs_diff": 2.4759845437816175e-06
+   },
+   "f_MD": {
+    "audited": 0.05164949931645405,
+    "revalidated": 0.05164768896367393,
+    "abs_diff": 1.8103527801224817e-06
+   },
+   "f_EQ": {
+    "audited": 0.4569394410942263,
+    "revalidated": 0.4569388950635863,
+    "abs_diff": 5.460306399807102e-07
+   },
+   "f_MQ": {
+    "audited": 0.0004137587357454272,
+    "revalidated": 0.0004136391346218441,
+    "abs_diff": 1.196011235831242e-07
+   },
+   "px_given_ED": {
+    "audited": 0.9996244156339067,
+    "revalidated": 0.9996252595430417,
+    "abs_diff": 8.439091350176398e-07
+   },
+   "my_given_MD": {
+    "audited": 0.7836795345474427,
+    "revalidated": 0.7835523568977448,
+    "abs_diff": 0.0001271776496978294
+   },
+   "Qxz_given_EQ": {
+    "audited": 0.8474680601055359,
+    "revalidated": 0.8475283020190235,
+    "abs_diff": 6.02419134876353e-05
+   },
+   "ED_EQ_balance": {
+    "audited": 0.9306353421899876,
+    "revalidated": 0.9306295371580964,
+    "abs_diff": 5.8050318911817556e-06
+   },
+   "Cpx_total_fraction": {
+    "audited": 0.4908128899435796,
+    "revalidated": 0.49081577935737924,
+    "abs_diff": 2.8894137996671176e-06
+   },
+   "CQxz_total_fraction": {
+    "audited": 0.3872415817298317,
+    "revalidated": 0.38726864585969006,
+    "abs_diff": 2.706412985836737e-05
+   },
+   "CT_diag_over_CED": {
+    "audited": 0.0006570029759024167,
+    "revalidated": 0.0006591059585731675,
+    "abs_diff": 2.102982670750789e-06
+   }
+  }
+ },
+ "class": "clean_balanced_ED_EQ",
+ "toroidal_policy": "diagnostic only, never a 5th family",
+ "bookkeeping": "C_total_exact = C_ED + C_MD + C_EQ + C_MQ (complete partition; deprecated 3-family never used)"
+}
