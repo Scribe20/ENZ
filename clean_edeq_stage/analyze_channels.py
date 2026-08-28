@@ -85,9 +85,20 @@ def analyze(cand='p0550'):
         'noEQ': (tbg + (ev + om + e2) / g_up, rbg + (ev - om + e2) / g_dn),
     }
     scale_t, scale_r = np.mean(np.abs(txx)), np.mean(np.abs(rxx))
+    # error_*: relative to that channel's own mean amplitude (harsh for the
+    # small-|r| band); error_*_abs: per unit incident amplitude (the
+    # physically comparable scale across channels).
     errs = {name: {'error_t': float(np.mean(np.abs(tm - txx)) / scale_t),
-                   'error_r': float(np.mean(np.abs(rm - rxx)) / scale_r)}
+                   'error_r': float(np.mean(np.abs(rm - rxx)) / scale_r),
+                   'error_t_abs': float(np.mean(np.abs(tm - txx))),
+                   'error_r_abs': float(np.mean(np.abs(rm - rxx)))}
             for name, (tm, rm) in models.items()}
+    mod_df = {'lam_nm': lam, 'T_full': np.abs(txx) ** 2,
+              'R_full': np.abs(rxx) ** 2}
+    for name, (tm, rm) in models.items():
+        mod_df[f'T_{name}'] = np.abs(tm) ** 2
+        mod_df[f'R_{name}'] = np.abs(rm) ** 2
+    pd.DataFrame(mod_df).to_csv(R / f'{cand}_models_tr.csv', index=False)
 
     # Phase 5 directionality (scattered power, port-impedance corrected;
     # air index 1 up, n_sub down; field amplitudes Eu, Ed):
