@@ -62,7 +62,10 @@ def main():
     axs[0].imshow(rho.T, origin='lower', cmap='gray_r',
                   extent=[0, 550, 0, 550])
     axs[0].set_title('binary topology (P = 550 nm)', fontsize=10)
-    J = np.abs(Ex[:, :, Ex.shape[2] // 2]) * (rho > 0.5)
+    n_rho, n_f = rho.shape[0], Ex.shape[0]
+    idx = (np.floor(np.arange(n_f) / n_f * n_rho)).astype(int) % n_rho
+    rho_f = rho[np.ix_(idx, idx)]
+    J = np.abs(Ex[:, :, Ex.shape[2] // 2]) * (rho_f > 0.5)
     im = axs[1].imshow(J.T, origin='lower', cmap='magma',
                        extent=[0, 550, 0, 550])
     axs[1].set_title('|J_x| proxy, mid-slab, 1332.5 nm', fontsize=10)
