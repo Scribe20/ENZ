@@ -1,0 +1,43 @@
+{
+ "abs_dEx_dz": {
+  "volume_mean": 10194659.0,
+  "volume_max": 56392300.0,
+  "top_interface_mean": 9037241.0,
+  "top_interface_max": 35529804.0,
+  "bottom_interface_mean": 13234283.0,
+  "bottom_interface_max": 56392300.0,
+  "p99": 31109696.0
+ },
+ "abs_dEz_dx": {
+  "volume_mean": 7186933.0,
+  "volume_max": 67983856.0,
+  "top_interface_mean": 5855921.0,
+  "top_interface_max": 44199404.0,
+  "bottom_interface_mean": 9192592.0,
+  "bottom_interface_max": 67983856.0,
+  "p99": 17583166.0
+ },
+ "abs_sym_grad": {
+  "volume_mean": 5429459.0,
+  "volume_max": 62181380.0,
+  "top_interface_mean": 6964284.0,
+  "top_interface_max": 39734476.0,
+  "bottom_interface_mean": 10429974.0,
+  "bottom_interface_max": 62181380.0,
+  "p99": 16230690.0
+ },
+ "abs_Ex": {
+  "volume_mean": 1.1243436336517334,
+  "volume_max": 3.1951711177825928,
+  "top_interface_mean": 1.241419792175293,
+  "top_interface_max": 2.784076452255249,
+  "bottom_interface_mean": 1.0703630447387695,
+  "bottom_interface_max": 2.7369654178619385,
+  "p99": 2.8008415699005127
+ },
+ "grad_enhancement_vs_planewave": {
+  "sym_top_max_over_kE0": 8.426648139953613,
+  "sym_volume_p99_over_kE0": 3.4421067237854004,
+  "note": "planewave |dEx/dz| = k E0; values >1 mean gradient exceeds the incident-planewave gradient scale"
+ }
+}
