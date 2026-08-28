@@ -179,6 +179,20 @@ by a measured 9°); any statement at 1267–1269 nm (energy-flagged
 points); and any high-Q framing of P0550 (contract: its virtue is the
 opposite).
 
+
+## Phase-18 note — metagrating extension (analysis only, no modification)
+
+At λ0 = 1332.5 nm with P = 550 nm, all nonzero diffraction orders are
+closed (first substrate order requires P > λ0/n_sub = 922.7 nm; first air
+order requires P > λ0 = 1332.5 nm), and they remain closed to θ = 10°.
+A 2×1 supercell (P_x = 1100 nm) would open the substrate ±1 orders only
+(air orders still closed): a natural future metagrating platform in
+which the p_x/Q_xz radiation-pattern asymmetry (their different angular
+lobes and parities) could bias +1 vs −1 substrate diffraction. A 3×1
+supercell (1650 nm) opens air ±1 as well. This is recorded as a future
+direction only — the current zero-order broadband-Kerker functionality
+already justifies the branch without structural modification.
+
 ## Integrity notes
 
 Never equated: ED≈EQ with Kerker (cancellation demonstrated + removal
