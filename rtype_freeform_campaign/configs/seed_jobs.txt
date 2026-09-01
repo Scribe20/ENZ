@@ -1,0 +1,4 @@
+A 271 200 23 70 96 9 refinement
+A 271 200 47 70 96 9 refinement
+B 271 215 23 90 96 9 refinement
+B 271 215 47 90 96 9 refinement
