@@ -47,9 +47,6 @@ def argand_path(row):
 
 def draw_argand(ax, row, title):
     rbg, pieces, cum, rfull = argand_path(row)
-    z = 0
-    z_pts = [c for _, c in cum[:-1]]
-    labels = [n for n, _ in cum[:-1]]
     prev = 0 + 0j
     colors = ['#666', 'tab:blue', 'tab:red', 'tab:green', 'tab:purple']
     for (name, z), c in zip(cum[:-1], colors):
@@ -65,14 +62,38 @@ def draw_argand(ax, row, title):
     ax.plot([rfull.real], [rfull.imag], 'k*', ms=11,
             label=f'full r, |r|={abs(rfull):.3f}')
     ax.plot([0], [0], 'ko', ms=5, mfc='none', label='r = 0')
-    lim = max(0.35, abs(rbg) * 1.6, abs(rfull) * 1.4)
+    pts = [c for _, c in cum] + [rfull, 0]
+    lim = 1.12 * max(max(abs(p.real), abs(p.imag)) for p in pts)
     ax.set_xlim(-lim, lim); ax.set_ylim(-lim, lim)
     ax.axhline(0, color='gray', lw=0.5); ax.axvline(0, color='gray', lw=0.5)
     ax.set_aspect('equal')
     ax.set_xlabel('Re r'); ax.set_ylabel('Im r')
     ax.set_title(title, fontsize=9)
-    ax.legend(fontsize=7, loc='lower right')
+    ax.legend(fontsize=7, loc='lower left')
     ax.grid(alpha=0.2)
+    ax.text(0.02, 0.97,
+            f"|ED|={abs(pieces['ED']):.2f} |EQ|={abs(pieces['EQ']):.2f}\n"
+            f"|MD|={abs(pieces['MD']):.2f} |bg|={abs(rbg):.2f}",
+            transform=ax.transAxes, fontsize=7, va='top')
+    # zoom inset around the origin / endpoint region
+    axi = ax.inset_axes([0.62, 0.62, 0.36, 0.36])
+    prev = 0 + 0j
+    for (name, z), c in zip(cum[:-1], colors):
+        axi.annotate('', xy=(z.real, z.imag), xytext=(prev.real, prev.imag),
+                     arrowprops=dict(arrowstyle='->', color=c, lw=1.4))
+        prev = z
+    axi.annotate('', xy=(rfull.real, rfull.imag),
+                 xytext=(prev.real, prev.imag),
+                 arrowprops=dict(arrowstyle='->', color='k', lw=1.0,
+                                 linestyle=':'))
+    axi.plot([rfull.real], [rfull.imag], 'k*', ms=9)
+    axi.plot([0], [0], 'ko', ms=4, mfc='none')
+    zl = 1.35 * max(abs(rbg), abs(rfull), 0.05)
+    axi.set_xlim(-zl, zl); axi.set_ylim(-zl, zl)
+    axi.set_aspect('equal')
+    axi.tick_params(labelsize=5)
+    axi.axhline(0, color='gray', lw=0.4); axi.axvline(0, color='gray', lw=0.4)
+    axi.set_title('zoom', fontsize=6)
 
 
 def main():

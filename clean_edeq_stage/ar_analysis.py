@@ -63,11 +63,12 @@ def main():
 
     for case in ('uniform', 'simple'):
         for h in HS:
-            p = d9[(d9.case == case) & (np.isclose(d9.h_nm, h))]
+            p = d9[(d9.case == case) & (np.isclose(d9.h_nm, h))] \
+                .sort_values('lam_nm').reset_index(drop=True)
             if len(p) < 100:
                 continue
-            i0 = (p.lam_nm - LAM0).abs().idxmin()
-            summ['baselines_at_lam0'][f'{case}_h{h:g}'] = float(p.loc[i0, 'f_R'])
+            i0 = int((p.lam_nm - LAM0).abs().idxmin())
+            summ['baselines_at_lam0'][f'{case}_h{h:g}'] = float(p.f_R.iloc[i0])
 
     comp_rows = []
     for h in HS:
