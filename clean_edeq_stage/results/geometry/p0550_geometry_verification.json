@@ -1,0 +1,21 @@
+{
+ "source": "/home/user/ENZ/ed_eq_causality_campaign/results/pilot/P0550_H0250_seed011/rho_binary.npy",
+ "sha256_source": "fc6c34abf66c51ae056a923894d308a2193d233967931881cb49c2d6393a0f74",
+ "sha256_export": "fc6c34abf66c51ae056a923894d308a2193d233967931881cb49c2d6393a0f74",
+ "shape": [
+  110,
+  110
+ ],
+ "min": 0.0,
+ "max": 1.0,
+ "unique_values": [
+  0.0,
+  1.0
+ ],
+ "binary_fraction": 1.0,
+ "threshold_used": "none needed - array is exactly {0,1}; 0.5 used only for contour tracing",
+ "fill_fraction": 0.6176859736442566,
+ "pixel_nm": 5.0,
+ "period_nm": 550.0,
+ "note": "this exact array produced every Stage-B and AR-audit spectrum; no filtered/projected intermediate is plotted"
+}
