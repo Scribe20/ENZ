@@ -9,8 +9,8 @@ T_min = 0.01077 at 1333.98 nm (0.2-nm core, parabolic; ~20 samples per
 FWHM ~ 4 nm). R = 0.9884, A = 0.00087 (real k = 6e-6 loss model) ->
 **resonant mirror, not absorptive** (Phase R). Per-order true minima
 (0.5-nm scans): 0.0108 [9,9] @1334.0, 0.0072 [11,11] @1333.0,
-0.0119 [13,13] @1332.0 - depth stable at ~0.01, pole blue-shifting
-~1 nm/order (known systematic).
+0.0119 [13,13] @1332.0, 0.0164 [15,15] @1332.0 - depth stable at
+~0.01, pole blue-shifting ~1 nm/order (known systematic).
 
 ## Polarization anatomy (discovered here)
 At T_min: co-pol |t_xx|^2 = 1.8e-4 (|t_xx| = 0.0136 - the complex

@@ -30,8 +30,8 @@ duality across two compositions.
   platform via the composition-changing route: P0750's my/Qxz resonant
   state is a certified **T_min = 0.011 / R = 0.988 / A = 9×10⁻⁴ resonant
   mirror** whose co-polarized amplitude truly approaches the origin
-  (|t_xx|² = 1.8×10⁻⁴), order-robust (T_min 0.007–0.012 at
-  [9,9]/[11,11]/[13,13] tracking the shifting pole).
+  (|t_xx|² = 1.8×10⁻⁴), order-robust (T_min 0.007–0.016 at
+  [9,9]/[11,11]/[13,13]/[15,15], tracking the ~1 nm/step pole shift).
 * Both port states are the SAME physics in complementary channels:
   transparent = background-assisted cancellation in the r-plane
   (P0550, r_bg + r_mult ≈ 0), reflective = background-assisted
@@ -105,7 +105,7 @@ removal tests).
    with ~1% polarization conversion.
 10. **Accurately resolved T_min?** 0.01077 at 1333.98 nm (0.2-nm core,
     parabolic; FWHM ≈ 4 nm ⇒ 20 samples across the line); per-order:
-    0.0072–0.0119 with the pole shifting ≈ −1 nm/order.
+    0.0072–0.0164 ([11,11]–[15,15]) with the pole shifting ≈ −1 nm/order.
 11. **At λ_Tmin:** R = 0.9884, T = 0.0108, A = 0.00087; f_ED = 0.068,
     f_MD = 0.564, f_EQ = 0.351, f_MQ = 0.017 (my|MD = 0.95,
     Qxz|EQ = 0.97).
@@ -150,9 +150,9 @@ removal tests).
     (with the ED term) cancels the transmitted background; A ≈ 10⁻³
     excludes absorption; ~1% goes to cross-pol.
 23. **Stable under Fourier-order refinement?** Yes: P0550 knob values
-    converged (AR audit); P0750 T_min 0.007–0.012 across [9,9]–[13,13]
-    ([15,15] running-final at commit time; pole shift ≈ 1 nm/step is the
-    known systematic).
+    converged (AR audit); P0750 T_min 0.0072–0.0164 across [9,9]–[15,15]
+    (pole shift ≈ 1 nm/step is the known systematic; mirror-grade R at
+    every order).
 24. **Stable in the complex plane?** complex_convergence.csv: at
     (h\*, λ0) Re/Im of r and t drift smoothly and by only a few 10⁻²
     across orders (consistent with the ±3% power statements); no hidden
