@@ -65,5 +65,8 @@
  "min_air_gap_nm": 2.825,
  "radial_extent_nm": 90.33376479755508,
  "edge_clearance_nm": 0.06623520244492909,
- "fill": 0.285625
+ "fill": 0.285625,
+ "min_air_gap_internal_nm": 2.825,
+ "n_internal_air_holes": 1,
+ "fab_ok2": false
 }

@@ -88,6 +88,11 @@ def run(method, P, H, seed, iters, n_grid, order_n, stage):
         it0 = int(z['it'])
         hist = list(np.atleast_2d(z['hist']))
         print(f'{tag}: resume at iter {it0}', flush=True)
+    elif (outdir / 'warm.npy').exists():
+        x = torch.tensor(np.load(outdir / 'warm.npy')).clone() \
+            .requires_grad_(True)
+        it0, hist = 0, []
+        print(f'{tag}: warm start', flush=True)
     else:
         blob = torch.rand(n_grid, n_grid, generator=g)
         blob = torch.nn.functional.conv2d(
