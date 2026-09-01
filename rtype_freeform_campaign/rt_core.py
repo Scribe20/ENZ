@@ -72,8 +72,18 @@ def conic_filter_kernel(n, P, radius_nm):
     return (w / w.sum())[None, None]
 
 
+def d2_symmetrize(rho):
+    """Enforce mirror symmetry in x and y (C2v): guarantees a diagonal
+    Jones matrix (principal axes along x/y - the PB element requirement)
+    while leaving the multipolar content unconstrained."""
+    return 0.25 * (rho + torch.flip(rho, [0]) + torch.flip(rho, [1])
+                   + torch.flip(rho, [0, 1]))
+
+
 def filt_project(rho, kern, beta, eta=0.5, mask=None):
-    """Conic density filter + tanh projection + hard envelope mask."""
+    """D2 symmetrization + conic density filter + tanh projection +
+    hard envelope mask."""
+    rho = d2_symmetrize(rho)
     if mask is not None:
         rho = rho * mask
     pad = kern.shape[-1] // 2
@@ -175,7 +185,8 @@ def objective(R, T, method='B', mode_pens=None):
     r_cross2 = torch.abs(Rc[0, 1]) ** 2 + torch.abs(Rc[1, 0]) ** 2
     r_co2 = torch.abs(Rc[0, 0]) ** 2 + torch.abs(Rc[1, 1]) ** 2
     t_tot = (torch.abs(T) ** 2).sum()
-    L = -0.5 * r_cross2 + 0.25 * t_tot + 0.25 * r_co2
+    absorb = 2.0 - (torch.abs(R) ** 2).sum() - t_tot
+    L = -0.5 * r_cross2 + 0.15 * t_tot + 0.15 * r_co2 + 0.3 * absorb
     if mode_pens is not None:
         L = L + mode_pens
     return L

@@ -93,7 +93,19 @@ def run(method, P, H, seed, iters, n_grid, order_n, stage):
         blob = torch.nn.functional.conv2d(
             blob[None, None], rc.conic_filter_kernel(n_grid, P, 30.0),
             padding='same')[0, 0]
-        x = ((blob - blob.mean()) * 8.0).clone().requires_grad_(True)
+        blob = (blob - blob.mean()) / (blob.std() + 1e-9)
+        # seeded anisotropic elliptical bias (D2-compatible): breaks the
+        # isotropic rx=ry saddle without prescribing a mechanism
+        rgen = np.random.default_rng(seed * 1000 + int(P) + int(H))
+        aspect = float(rgen.uniform(1.4, 2.4))
+        ax_, ay_ = (aspect, 1.0) if rgen.random() < 0.5 else (1.0, aspect)
+        r0 = rc.r_design(P) * float(rgen.uniform(0.55, 0.8))
+        axv = (torch.arange(n_grid) + 0.5) / n_grid * P - P / 2
+        X, Y = torch.meshgrid(axv, axv, indexing='ij')
+        ell = torch.exp(-((X / (r0 * ax_)) ** 2
+                          + (Y / (r0 * ay_)) ** 2) ** 2)
+        x = (1.2 * blob + 4.0 * (2 * ell - 0.7)).clone() \
+            .requires_grad_(True)
         it0, hist = 0, []
     opt = torch.optim.Adam([x], lr=0.05)
     betas = [(0.0, 2.0), (0.4, 4.0), (0.65, 8.0), (0.85, 16.0)]
