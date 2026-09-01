@@ -1,0 +1,112 @@
+{
+ "p0550_phase_knob": {
+  "monotonic": true,
+  "global_slope_deg_per_nm": -0.851870379043325,
+  "slope_215_240_deg_per_nm": -1.3364527076333554,
+  "linear_resid_rms_deg_215_240": 0.3818488613350288,
+  "slope_range_deg_per_nm": [
+   -1.4273215026452988,
+   -0.277705257966133
+  ],
+  "total_dphi_span_deg": 85.1870379043325
+ },
+ "mode_identity_interval": {
+  "criterion": "D_comp(vs h=227.5) <= 0.10 AND px|ED >= 0.95 AND Qxz|EQ >= 0.70 AND f_ED+f_EQ >= 0.85",
+  "h_range": [
+   215.0,
+   262.5
+  ],
+  "contiguous": true
+ },
+ "phase_coverage_over_identity_interval": {
+  "dphi_bot_deg": 50.827712457238306,
+  "arg_t_deg": 76.20158688812836,
+  "arg_r_deg": 219.12283321367684,
+  "R_range": [
+   0.0202173834303862,
+   0.2832095442038509
+  ],
+  "T_range": [
+   0.7168572386470399,
+   0.979808680078767
+  ]
+ },
+ "device_vs_multipole_phase": {
+  "corr_dphi_vs_arg_t": -0.9771848553274628,
+  "corr_dphi_vs_arg_r": -0.9948744360568378,
+  "d_arg_t_per_d_dphi_in_interval": -1.4502247797043226
+ },
+ "current_overlap": {
+  "h_pairs_step_nm": 5.0,
+  "min_neighbor_overlap": 0.9978072643280029,
+  "overlap_at_215_240": 0.9994546175003052
+ },
+ "smatrix": {
+  "p0550_vs_h": {
+   "max_reciprocity_resid": 3.9297647871347946e-05,
+   "max_unitarity_resid": 0.02038788345824294
+  },
+  "p0750_vs_lam": {
+   "max_reciprocity_resid": 0.00034127544927281094,
+   "max_unitarity_resid": 0.27082910648484193
+  }
+ },
+ "p0750_Tmin": {
+  "Tmin_sampled": 0.0107657925369858,
+  "lam_Tmin_sampled": 1334.0,
+  "lam_Tmin_parabolic": 1333.9845077214843,
+  "R_at_Tmin": 0.9883654531108188,
+  "A_at_Tmin": 0.0008687543521953556,
+  "en_res_at_Tmin": 0.0008687543521954,
+  "step_nm_core": 0.2,
+  "fractions_at_Tmin": {
+   "f_ED": 0.0676678394483223,
+   "f_MD": 0.5644010231975144,
+   "f_EQ": 0.3510985943267993,
+   "f_MQ": 0.0168325430273638
+  },
+  "purities_at_Tmin": {
+   "my_given_MD": 0.9548731527727276,
+   "Qxz_given_EQ": 0.9727886838505309,
+   "px_given_ED": 0.7147097291070572
+  }
+ },
+ "p0750_removal_at_Tmin": {
+  "bg_only": 0.9650340501416156,
+  "bg+ED": 0.23014486189023223,
+  "bg+MD": 11.316808748649015,
+  "bg+EQ": 6.121253001236521,
+  "bg+2nd": 1.007117291730665,
+  "bg+ED+EQ": 5.517387162136663,
+  "bg+MD+EQ": 0.9080705696607183,
+  "bg+ED+MD+EQ": 0.1631921098498515,
+  "ladder_all": 0.1657911810340385,
+  "remove_ED": 0.9504257661187382,
+  "remove_MD": 5.515133508353475,
+  "remove_EQ": 10.448086780969215,
+  "remove_2nd": 0.16319210984985164,
+  "full_TORCWA": 0.00018368325731829414
+ },
+ "p0750_internal_vs_external": {
+  "lam_internal_null": 1333.6,
+  "internal_residual_min": 0.0029178140290901204,
+  "lam_Tmin": 1334.0,
+  "offset_nm": 0.40000000000009095
+ },
+ "best_same_comp_pair": {
+  "h1": 235.0,
+  "h2": 260.0,
+  "D_comp": 0.06927055337735517,
+  "dR": 0.21869189930053518,
+  "dT": 0.21866128050946,
+  "R1": 0.0401748837282888,
+  "R2": 0.258866783028824,
+  "score": 2.449765247629905
+ },
+ "phase_vs_composition_predictors": {
+  "corr_R_vs_dphi_bot_wrapped": -0.9299968387567711,
+  "corr_R_vs_scatteredphase": -0.2859270849957222,
+  "corr_R_vs_f_ED": -0.8161760594295309,
+  "corr_R_vs_B": 0.16850470844207244
+ }
+}
