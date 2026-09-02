@@ -143,9 +143,18 @@ def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
         sim = fwd.build_solved_sim(rho_proj, lam, eps_ito, config.N_GLASS)
         Ez_full = fwd.ez_in_ito(sim, x_axis, y_axis, z_prop)
         Ez_scat = Ez_full - Ez_ref
-        F, diags = obj.enz_objective(
+        F_qnm, diags = obj.enz_objective(
             T_plus, Ez_scat, dV, p_inc, target_minus=T_minus,
             direction=config.TARGET_DIRECTION)
+        if getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_ez_volume":
+            # F_ENZ = <|Ez/E_inc|^2>_ITO: TOTAL driven field, all harmonics,
+            # midpoint quadrature strictly inside the ITO (differentiable);
+            # dV * Nz*Nx*Ny = V_ITO exactly, so this is the volume average.
+            v_ito = config.PX_NM * config.PY_NM * config.ITO_THICKNESS_NM
+            F = torch.sum(Ez_full.real ** 2 + Ez_full.imag ** 2) * dV / v_ito
+            diags["F_qnm_diag"] = float(F_qnm)
+        else:
+            F = F_qnm
         if want_diags:
             with torch.no_grad():
                 R, T = fwd.specular_RT(sim)

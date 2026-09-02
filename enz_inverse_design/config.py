@@ -72,6 +72,13 @@ POLARIZATION = "x"        # incident E along x (couples to x-propagating TM ENZ)
 # (the v1 run gave |a-|/|a+| = 0.9995), so optimizing |a+|^2 alone renames a
 # standing wave as directional. "bidir" makes the actual physics explicit.
 TARGET_DIRECTION = "bidir"   # "+x" | "-x" | "bidir"
+# Optical objective mode:
+#   "qnm_overlap"   - historical: F = (|a+|^2+|a-|^2)/P_inc vs the QNM target
+#   "ito_ez_volume" - direct ENZ excitation: F_ENZ = <|Ez/E_inc|^2>_ITO,
+#                     the volume-averaged TOTAL longitudinal intensity in the
+#                     ITO (all harmonics, no prescribed momentum channel);
+#                     |E_inc| = 1 in the TORCWA source convention.
+OBJECTIVE = "qnm_overlap"
 MOMENTUM_MISMATCH_MAX = 0.05   # allowed |ReK - |G|| / ReK before warning hard
 Z_SAMPLES_ITO = 7         # midpoint z-slices inside ITO for the overlap
 

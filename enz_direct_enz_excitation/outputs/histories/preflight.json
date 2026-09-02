@@ -1,0 +1,39 @@
+{
+ "authoritative_ENZ_wavelength_nm": 1433.488144390721,
+ "ITO_dispersion_source": "enz_target CSV (recommended-physical), eps(1433.49) = (-0.07424989012321415+0.7014284101165421j)",
+ "source": "TORCWA plane wave, forward, amplitude [1,0] (x-pol), normal incidence, |E_inc| = 1 (LH units)",
+ "grid": [
+  128,
+  128
+ ],
+ "rcwa_order": [
+  7,
+  7
+ ],
+ "seed": 333,
+ "filter_projection": "Gauss r=40.0nm, tanh beta ramp 1->1000.0, 150 iters, lr 0.02 cosine",
+ "mask_realization": {
+  "requested_padding_nm": 85.0,
+  "dx_nm": 6.640625,
+  "active_index_range": [
+   13,
+   114
+  ],
+  "active_pixels": 102,
+  "active_width_nm": 677.34375,
+  "realized_padding_nm_per_side": [
+   86.328125,
+   86.328125
+  ],
+  "pad_pixels_per_side": [
+   13,
+   13
+  ]
+ },
+ "y_mirror": true,
+ "x_symmetry": "free",
+ "objective": "ito_ez_volume",
+ "F_ENZ_definition": "sum_ITO |Ez|^2 dV / (V_ITO * |E_inc|^2), 7 midpoint z-slices (interior quadrature), all harmonics via real-space total field",
+ "field_region": "full ITO volume of one unit cell, interfaces excluded by midpoint rule",
+ "baseline_identity": "enz_padding_sideexperiment rho_hard_binary (padded-85nm QNM-target winner)"
+}
