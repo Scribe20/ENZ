@@ -122,10 +122,12 @@ def ladder(name):
                                  'model': nm, 't_re': v.real,
                                  't_im': v.imag, 'T_model': abs(v) ** 2})
             panels.append((th, pol, tb[pol], pieces, tfull[pol]))
-            print(f'{name} th={th:.0f} {pol}: |t|^2={abs(tfull[pol])**2:'
-                  f'.3f} ladder={abs(combos["ladder_all"])**2:.3f} '
-                  f'|ED|={abs(pieces["ED"]):.2f} |MD|={abs(pieces["MD"]):'
-                  f'.2f} |EQ|={abs(pieces["EQ"]):.2f}', flush=True)
+            t2 = abs(tfull[pol]) ** 2
+            l2 = abs(combos['ladder_all']) ** 2
+            print(f'{name} th={th:.0f} {pol}: |t|^2={t2:.3f} '
+                  f'ladder={l2:.3f} |ED|={abs(pieces["ED"]):.2f} '
+                  f'|MD|={abs(pieces["MD"]):.2f} '
+                  f'|EQ|={abs(pieces["EQ"]):.2f}', flush=True)
     # figure: rows = pol, cols = theta
     fig, axs = plt.subplots(2, len(THETAS), figsize=(4.2 * len(THETAS),
                                                      8.6))
