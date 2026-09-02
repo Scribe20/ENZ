@@ -121,3 +121,119 @@ recorded as a consistent, structure-independent observation.
 - R_TYPE_WIDEFOV_NUMERICAL_QUALIFICATION.md - conventions, ps-basis
   finding, diffraction, convergence, seeding provenance
 - The 30 required answers: section at the end of this file.
+
+## The 30 required answers (spec section 54)
+
+1. **Does angle-aware optimization from iteration 0 beat the previous
+   normal-incidence-first approach on angular robustness?** Decisively.
+   Same design space, same solver: theta_50 10 deg (old) -> 50-85 deg
+   (new); worst-angle R_cross 0.015 -> 0.156-0.204; Omega 0.244-0.256
+   -> 0.398-0.448. The old failure was a basin property, not an
+   architecture limit.
+2. **Does the robust optimum move to smaller P?** No - it moves the
+   other way: robust score rises monotonically to P = 239-258; P =
+   200-213 is strictly worse for both methods (all specular-only, so
+   not a diffraction artifact).
+3. **Toward H ~ 170?** No. Optimum H = 185-210 (score still rising at
+   H = 200; one-sided extension found H = 210 slightly softer than
+   H = 200). H = 170 is viable but sub-optimal.
+4. **Best P/H for Method A:** P = 233-258, H = 190-210 (champion
+   P239/H200; peak-Omega member P258/H200).
+5. **Best P/H for Method B:** P = 226-252, H = 185-200 (champion
+   P252/H185).
+6. **Paper rectangle's exact acceptance under OUR metrics:**
+   theta_50 = 55, theta_20 = 40, dominance range = NEVER (R_co >
+   R_cross at and near theta = 0), Omega = 0.301, worst 0.098 at
+   (60,90). PB slope -1.99 at 0 deg, collapsed by 60-75 deg.
+7. **theta_50 new A:** 85 deg (full evaluated hemisphere).
+8. **theta_50 new B:** 50 deg.
+9. **theta_20:** newA 85 deg; newB 50 deg (rectangle 40; old champions
+   15).
+10. **Dominance range:** newA 85 deg (cross beats co, T_cross, T_co at
+    every mapped point); newB 25 deg (T_cross exceeds it at mid
+    angles); rectangle never; oldA/oldB 15 deg.
+11. **Solid-angle hemispheric <R_cross> (0-85):** newA 0.401, newB
+    0.398, A-alt P258 0.448, rectangle 0.301, oldA 0.256, oldB 0.244,
+    bare 0.135, film 0.149.
+12. **Highest R_cross(0):** among wide-FOV finalists, newB 0.380
+    (A-alt 0.375, newA 0.314). The old theta0 champions' 0.51-0.53
+    remain the peak-only records - at theta_50 = 10 deg.
+13. **Best wide-angle average:** A_P258_H200 (Omega 0.448, mean
+    0.420).
+14. **Best worst-angle performance:** newA A_P239_H200: 0.204 minimum
+    over the whole 0-85 x 0-90 map (2.1x the rectangle's 0.098).
+15. **Clear peak/FOV Pareto trade-off?** Within the angle-aware family
+    yes (flat-floor vs peak-Omega members, mapped in wf_F12); but the
+    old champions are NOT on the front - theta0-first optimization is
+    strictly dominated.
+16. **Does Method A retain ED/MD over angle?** Yes: p ED-dominant
+    (0.66-0.94) from 20 deg up (MD-leaning right at 0), s MD-dominant
+    (0.65-0.93) throughout; no EQ takeover anywhere.
+17. **Does Method B remain EQ-led?** Method B never became EQ-led: the
+    angle-aware port-only optimizer chose a dipolar state outright.
+    (The OLD theta0 EQ bow-tie holds EQ only at theta = 0 and loses it
+    by 20 deg.)
+18. **Does wide-angle Method B return to a lower-order dipolar state?**
+    Yes - MD(p)/ED(s), the mirrored role assignment of the paper's
+    recipe, with f_EQ <= 0.30 at every tested angle.
+19. **Which multipolar basis gives the flattest angular response?**
+    The measured answer: low-order ED/MD mixtures (both new champions);
+    dipole-led cancellation survives obliquity, and the p-channel
+    naturally purifies toward ED (growing pz) without breaking the
+    response.
+20. **Is higher-order character correlated with poorer angular
+    robustness?** In this design space, yes - as measurement, not
+    dogma: the only EQ-dominant state (oldB) is also the most
+    angle-fragile (theta_50 = 10 deg), and its EQ fraction itself
+    decays within 20 deg. No angle-robust EQ state was found by
+    either method; absence of evidence for one is noted, not claimed
+    as impossibility.
+21. **PB slope ~ -2 at theta = 60?** No. -2.4 with 42 deg rms
+    (rectangle and newA alike); newB -0.34. The law is broken at 60.
+22. **At 75?** Gone: fitted slopes +0.05/+0.09/-0.05 - the cross phase
+    no longer responds to element rotation at all.
+23. **What fails first with angle?** For the theta0-optimized states:
+    retardance (the tuned Delta_phi = pi detunes within 20 deg; exact
+    budget, closure 1.000), compounded by absorption; imbalance
+    secondary; mixing negligible; diffraction zero. For the
+    angle-aware states nothing "fails" until the PB LAW itself goes
+    (45-60 deg) - their phase stays flat (retardance loss <= 0.10) and
+    the residual is T+A amplitude.
+24. **Is P271 itself a major cause of the previous collapse?** Not
+    primarily. The P-dependent robust sweep peaks at P239-258, so P271
+    is past the optimum but close to it; the dominant cause is the
+    theta0-first BASIN (retardance detuning), plus P271's glass-side
+    order opening at 61.5 deg which the new grid avoids entirely.
+    Stated per the sweep, not assumed.
+25. **Is H = 200-215 itself a major cause?** No - the opposite: the
+    angle-aware optimum sits AT H = 200 (newA) and H = 185 (newB).
+    Height was not the problem; the optimization target was.
+26. **How much collapse remains with absorption removed?** The angular
+    SHAPE is nearly unchanged at k = 0 (newA 0.45-0.60 across 0-60 vs
+    0.31-0.36 real): absorption sets the level (~35-40% relative),
+    dispersion sets almost none of the angular variation. The old
+    champions' collapse is NOT rescued by k = 0 in shape - their
+    failure is phase detuning.
+27. **Does any candidate beat the rectangle over a meaningful angular
+    interval?** newA beats it at EVERY mapped (theta, phi) point in
+    R_cross except nowhere - min ratio 1.04x, typical 1.3-1.6x - and
+    at every angle on co-pol purity.
+28. **Does any candidate dominate on BOTH angular-average R_cross and
+    co-pol leakage?** Yes - newA: Omega +33% (0.401 vs 0.301) with
+    hemispheric co-pol 0.057 vs 0.293 (5.1x lower); newB similarly
+    (0.398, 0.091).
+29. **Is there an H = 170 candidate that improves the paper while
+    preserving same-height compatibility?** Yes, qualified in full:
+    A_P239_H170 (Omega 0.362, theta_50 45, worst 0.138, co 0.113) and
+    B_P239_H170 (Omega 0.372, theta_50 35). Both beat the rectangle at
+    its own height; both are below the H = 185-210 optimum.
+30. **Is a single-layer wide-FOV freeform R-type actually feasible?**
+    For the SCATTERING state: yes - demonstrated, reproducible,
+    fabricable, order-converged (newA: hemisphere-wide dominance,
+    worst 0.204). For the full 360-metalens FUNCTION: only up to the
+    PB-law validity boundary (~45-55 deg incidence), which this
+    campaign measured to be structure-independent across three very
+    different geometries. Extending the LAW beyond that in a single
+    layer found no counterexample here and likely needs a different
+    architecture (multilayer / non-local engineering) - recorded as a
+    measured, consistent ceiling, not a proven impossibility.
