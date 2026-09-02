@@ -22,3 +22,8 @@ A_P226_H140_s11_wf it19 L=+0.1967 pool: mean=0.237 min=0.106 omega=0.246 worst=(
 A_P226_H170_s11_wf it19 L=+0.1747 pool: mean=0.263 min=0.023 omega=0.273 worst=(45,90) {'f_ED_x': 0.5408546054237607, 'f_EQ_x': 0.017014310230106473, 'f_MD_y': 0.5911577850956818}
 B_P226_H140_s11_wf it39 L=+0.2487 pool: mean=0.228 min=0.000 omega=0.265 worst=(0,0) {}
 B_P226_H170_s11_wf it39 L=+0.2405 pool: mean=0.284 min=0.000 omega=0.341 worst=(15,0) {}
+A_P226_H140_s11_wf it29 L=+0.1887 pool: mean=0.249 min=0.110 omega=0.256 worst=(60,0) {'f_ED_x': 0.5086921277117252, 'f_EQ_x': 0.0024994478885749048, 'f_MD_y': 0.5226817718745452}
+B_P226_H140_s11_wf it49 L=+0.1755 pool: mean=0.230 min=0.000 omega=0.267 worst=(0,0) {}
+A_P226_H170_s11_wf it29 L=+0.1091 pool: mean=0.267 min=0.035 omega=0.269 worst=(60,90) {'f_ED_x': 0.5400144072752551, 'f_EQ_x': 0.016938512597372425, 'f_MD_y': 0.601410150488281}
+B_P226_H170_s11_wf it49 L=+0.1644 pool: mean=0.279 min=0.003 omega=0.331 worst=(15,0) {}
+B_P226_H140_s11_wf it59 L=+0.2765 pool: mean=0.235 min=0.000 omega=0.274 worst=(0,0) {}
