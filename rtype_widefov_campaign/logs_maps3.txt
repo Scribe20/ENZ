@@ -16,3 +16,5 @@ A_P239_H170_s11_wf theta=70 done
 A_P239_H170_s11_wf theta=75 done
 A_P239_H170_s11_wf theta=80 done
 A_P239_H170_s11_wf theta=85 done
+A_P239_H170_s11_wf theta=88 done
+ANGLEMAP_DONE A_P239_H170_s11_wf
