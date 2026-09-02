@@ -1,0 +1,18 @@
+{
+ "requested_padding_nm": 85.0,
+ "dx_nm": 6.640625,
+ "active_index_range": [
+  13,
+  114
+ ],
+ "active_pixels": 102,
+ "active_width_nm": 677.34375,
+ "realized_padding_nm_per_side": [
+  86.328125,
+  86.328125
+ ],
+ "pad_pixels_per_side": [
+  13,
+  13
+ ]
+}

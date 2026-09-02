@@ -47,7 +47,14 @@ def binarization_metric(rho_proj):
     return float(torch.mean(4.0 * rho_proj * (1.0 - rho_proj)))
 
 
-def main(smoke=False, n_iter=None):
+def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
+    """design_mask: optional hard (Nx,Ny) 0/1 array - a lateral design-domain
+    constraint (e.g. an air padding ring).  Applied to the RAW variable
+    before the periodic Gaussian filter AND re-applied after projection, so
+    the periodic blur cannot leak material into the forbidden region and
+    the evaluated/saved geometry is exactly air there.  Differentiability
+    inside the active domain is untouched (mask is a constant factor).
+    out_root: optional alternative output directory (side experiments)."""
     if smoke:
         config.apply_smoke()
     if n_iter is not None:
@@ -58,7 +65,7 @@ def main(smoke=False, n_iter=None):
     import torcwa_forward as fwd
     import objective as obj
 
-    out = Path(config.OUT_DIR)
+    out = Path(out_root) if out_root is not None else Path(config.OUT_DIR)
     for sub in ("histories", "geometries", "fields", "figures"):
         (out / sub).mkdir(parents=True, exist_ok=True)
 
@@ -119,7 +126,14 @@ def main(smoke=False, n_iter=None):
     rho = torch.rand((nx, ny), dtype=config.GEO_DTYPE, device=config.DEVICE)
     if config.MIRROR_SYMMETRY_Y:
         rho = (rho + torch.fliplr(rho)) / 2
+    M = None
+    if design_mask is not None:
+        M = torch.as_tensor(design_mask, dtype=config.GEO_DTYPE,
+                            device=config.DEVICE)
+        rho = rho * M
     rho = filter_rho(rho, g_fft)
+    if M is not None:
+        rho = rho * M
     np.save(out / "geometries" / "rho_initial.npy", rho.cpu().numpy())
 
     momentum = torch.zeros_like(rho)
@@ -165,8 +179,11 @@ def main(smoke=False, n_iter=None):
     # ------------------------------------------------------------------
     for it in range(config.N_ITER):
         rho.requires_grad_(True)
-        rho_bar = filter_rho(rho, g_fft)
+        rho_in = rho * M if M is not None else rho
+        rho_bar = filter_rho(rho_in, g_fft)
         rho_proj = project_rho(rho_bar, beta_sched[it])
+        if M is not None:
+            rho_proj = rho_proj * M
 
         want = (it % config.SAVE_EVERY == 0) or (it == config.N_ITER - 1)
         F, diags = forward_F(rho_proj, want_diags=want)
@@ -214,6 +231,8 @@ def main(smoke=False, n_iter=None):
             rho[rho < 0] = 0
             if config.MIRROR_SYMMETRY_Y:
                 rho = (rho + torch.fliplr(rho)) / 2
+            if M is not None:
+                rho = rho * M
 
             if want:
                 np.save(out / "geometries" / f"rho_proj_it{it:04d}.npy",
@@ -227,8 +246,11 @@ def main(smoke=False, n_iter=None):
     # 5. Final evaluation and saving
     # ------------------------------------------------------------------
     with torch.no_grad():
-        rho_bar = filter_rho(rho, g_fft)
+        rho_in = rho * M if M is not None else rho
+        rho_bar = filter_rho(rho_in, g_fft)
         rho_proj = project_rho(rho_bar, beta_sched[-1])
+        if M is not None:
+            rho_proj = rho_proj * M
         F_fin, diags_fin = forward_F(rho_proj, want_diags=True)
         F_final = float(F_fin)
         np.save(out / "geometries" / "rho_raw_final.npy", rho.cpu().numpy())
