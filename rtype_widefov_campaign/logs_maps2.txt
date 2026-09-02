@@ -1,2 +1,11 @@
 film0.301_P226_H170 theta=0 done
 film0.301_P226_H170 theta=5 done
+film0.301_P226_H170 theta=10 done
+film0.301_P226_H170 theta=15 done
+film0.301_P226_H170 theta=20 done
+film0.301_P226_H170 theta=25 done
+film0.301_P226_H170 theta=30 done
+film0.301_P226_H170 theta=35 done
+film0.301_P226_H170 theta=40 done
+film0.301_P226_H170 theta=45 done
+film0.301_P226_H170 theta=50 done
