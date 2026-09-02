@@ -84,7 +84,9 @@ excluded from acceptance metrics).
 - Coarse topology optimization: order [7,7], 96x96 density grid,
   5-angle minibatches, 80 iters; mining pool sweeps at [5,5]
   (ranking only, never reported).
-- Refinement: order [9,9] end-to-end, warm-started, 60 iters.
+- Refinement: order [9,9] end-to-end, warm-started, 45 iters (trimmed
+  from the planned 60 when the run cost was re-measured under memory-
+  safe 3-way concurrency; pool metrics had plateaued by iter ~40).
 - Every reported pool/ledger metric: hard-binary geometry, full
   21-point pool, order [9,9].
 - Fine angle maps (18 theta x 7 phi): order [9,9].
