@@ -20,3 +20,4 @@ A_P239_H200_s11_wf th=60 phi=45: p->ED(0.74) s->ED(0.56)
 A_P239_H200_s11_wf th=75 phi=0: p->ED(0.92) s->MD(0.93)
 A_P239_H200_s11_wf th=75 phi=45: p->ED(0.78) s->ED(0.50)
 FORENSICS_DONE A_P239_H200_s11_wf
+B_P252_H185_s47_wf th=0 phi=0: p->MD(0.67) s->ED(0.61)
