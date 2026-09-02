@@ -54,3 +54,19 @@ A_P239_H210_s11_wf it19 L=+0.0223 pool: mean=0.327 min=0.221 omega=0.335 worst=(
 A_P258_H200_s11_wf it9 L=-0.0795 pool: mean=0.418 min=0.022 omega=0.416 worst=(45,90) {'f_ED_x': 0.5357269760115384, 'f_EQ_x': 0.07576570138729938, 'f_MD_y': 0.628878886713501}
 A_P246_H200_s11_wf it9 L=+0.0482 pool: mean=0.319 min=0.223 omega=0.318 worst=(60,0) {'f_ED_x': 0.5077924363839198, 'f_EQ_x': 0.027545688800248117, 'f_MD_y': 0.5403428845736362}
 A_P252_H200_s11_wf it19 L=-0.1089 pool: mean=0.408 min=0.007 omega=0.412 worst=(45,90) {'f_ED_x': 0.5075226419778782, 'f_EQ_x': 0.07175987050266919, 'f_MD_y': 0.6205663854068872}
+A_P239_H210_s11_wf it29 L=+0.0183 pool: mean=0.340 min=0.238 omega=0.348 worst=(0,0) {'f_ED_x': 0.4505050601069923, 'f_EQ_x': 0.03552598799700523, 'f_MD_y': 0.5788258961722951}
+A_P258_H200_s11_wf it19 L=-0.1417 pool: mean=0.425 min=0.008 omega=0.420 worst=(45,90) {'f_ED_x': 0.5412664689421322, 'f_EQ_x': 0.07322604936274647, 'f_MD_y': 0.6348661349353073}
+A_P252_H200_s11_wf it29 L=-0.0966 pool: mean=0.430 min=0.013 omega=0.424 worst=(45,90) {'f_ED_x': 0.5160736249821123, 'f_EQ_x': 0.06759871606809614, 'f_MD_y': 0.6633342548681092}
+A_P246_H200_s11_wf it19 L=+0.0119 pool: mean=0.326 min=0.225 omega=0.324 worst=(60,0) {'f_ED_x': 0.5122128213206358, 'f_EQ_x': 0.02985313793777608, 'f_MD_y': 0.5445051635815052}
+Killed
+A_P252_H190_s11_wf: warm start (A_P252_H200_s11_wf)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+A_P258_H200_s11_wf it29 L=-0.1126 pool: mean=0.439 min=0.017 omega=0.426 worst=(45,90) {'f_ED_x': 0.5518702679950986, 'f_EQ_x': 0.06714297136257961, 'f_MD_y': 0.6748444457969581}
+A_P252_H200_s11_wf it39 L=-0.1248 pool: mean=0.419 min=0.111 omega=0.406 worst=(45,90) {'f_ED_x': 0.5393385504107039, 'f_EQ_x': 0.0540515005839983, 'f_MD_y': 0.6993121446930356}
+A_P252_H190_s11_wf it9 L=-0.0038 pool: mean=0.382 min=0.033 omega=0.381 worst=(45,90) {'f_ED_x': 0.5747434542800295, 'f_EQ_x': 0.04268300220374264, 'f_MD_y': 0.6082053708665326}
+A_P246_H200_s11_wf it29 L=-0.0305 pool: mean=0.353 min=0.256 omega=0.348 worst=(45,0) {'f_ED_x': 0.5310739921370801, 'f_EQ_x': 0.035384742471483634, 'f_MD_y': 0.6009281059767576}
+A_P239_H200_s11_wf: resume at iter 40
+A_P233_H200_s11_wf: resume at iter 40
+A_P245_H200_s11_wf: resume at iter 30
