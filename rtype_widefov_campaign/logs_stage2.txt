@@ -343,3 +343,10 @@ B_P226_H210_s11_wf: resume at iter 40
 /home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:135: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
 Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
   Rcs = [float(s['Rc']) for s in scores]
+B_P226_H210_s11_wf: DONE Rc0=0.206 pool mean=0.323 min=0.206 omega=0.331 co=0.038 (252s)
+B_P239_H185_s11_wf: resume at iter 40
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:135: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+B_P239_H185_s11_wf: DONE Rc0=0.370 pool mean=0.384 min=0.055 omega=0.353 co=0.092 (219s)
+B_P252_H185_s47_wf: warm start (B_P252_H185_s47_wf)
