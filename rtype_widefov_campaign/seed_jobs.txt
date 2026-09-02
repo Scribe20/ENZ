@@ -1,0 +1,4 @@
+A 239 200 23 80 coarse
+A 239 200 47 80 coarse
+B 226 200 23 80 coarse
+B 226 200 47 80 coarse
