@@ -158,3 +158,179 @@ B_P200_H170_s11_wf: DONE Rc0=0.000 pool mean=0.259 min=0.000 omega=0.303 co=0.42
 /home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
 Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
   return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+A_P200_H170_s11_wf: DONE Rc0=0.185 pool mean=0.307 min=0.172 omega=0.321 co=0.189 (1087s)
+A_P200_H140_s11_wf it39 L=+0.2210 pool: mean=0.200 min=0.010 omega=0.212 worst=(75,0) {'f_ED_x': 0.47797153118921004, 'f_EQ_x': 0.0007592648602532383, 'f_MD_y': 0.5392901337303221}
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:131: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+B_P200_H140_s11_wf it59 L=+0.1660 pool: mean=0.220 min=0.045 omega=0.232 worst=(75,90) {}
+A_P200_H155_s11_wf it9 L=+0.2930 pool: mean=0.176 min=0.050 omega=0.185 worst=(60,0) {'f_ED_x': 0.46420913955201615, 'f_EQ_x': 0.0011871520363243024, 'f_MD_y': 0.4924400938590697}
+B_P200_H155_s11_wf it9 L=+0.3181 pool: mean=0.105 min=0.000 omega=0.111 worst=(15,0) {}
+B_P200_H140_s11_wf it69 L=+0.1874 pool: mean=0.235 min=0.050 omega=0.247 worst=(75,90) {}
+A_P200_H140_s11_wf it49 L=+0.1802 pool: mean=0.206 min=0.025 omega=0.217 worst=(75,0) {'f_ED_x': 0.4807099386482851, 'f_EQ_x': 0.0006448843726431294, 'f_MD_y': 0.5531694137271158}
+B_P200_H155_s11_wf it19 L=+0.3480 pool: mean=0.124 min=0.000 omega=0.134 worst=(15,0) {}
+B_P200_H140_s11_wf it79 L=+0.1718 pool: mean=0.238 min=0.036 omega=0.250 worst=(75,90) {}
+A_P200_H155_s11_wf it19 L=+0.2704 pool: mean=0.193 min=0.071 omega=0.203 worst=(60,0) {'f_ED_x': 0.46776309893057577, 'f_EQ_x': 0.0008301816801953256, 'f_MD_y': 0.5124550965626804}
+B_P200_H155_s11_wf it29 L=+0.2856 pool: mean=0.138 min=0.000 omega=0.151 worst=(15,0) {}
+A_P200_H140_s11_wf it59 L=+0.1989 pool: mean=0.224 min=0.046 omega=0.235 worst=(75,0) {'f_ED_x': 0.4844291795032815, 'f_EQ_x': 0.0005431553062317014, 'f_MD_y': 0.588333014236008}
+B_P200_H140_s11_wf: DONE Rc0=0.143 pool mean=0.249 min=0.018 omega=0.261 co=0.233 (660s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+B_P200_H155_s11_wf it39 L=+0.2735 pool: mean=0.168 min=0.000 omega=0.186 worst=(0,0) {}
+A_P200_H155_s11_wf it29 L=+0.2759 pool: mean=0.205 min=0.085 omega=0.216 worst=(0,0) {'f_ED_x': 0.47141281334311147, 'f_EQ_x': 0.0006849510277445338, 'f_MD_y': 0.5306931500208399}
+A_P200_H140_s11_wf it69 L=+0.1960 pool: mean=0.231 min=0.053 omega=0.242 worst=(75,0) {'f_ED_x': 0.4876569832825925, 'f_EQ_x': 0.0005533609778227082, 'f_MD_y': 0.6011407637489062}
+A_P200_H185_s11_wf it9 L=+0.2463 pool: mean=0.208 min=0.074 omega=0.224 worst=(0,0) {'f_ED_x': 0.4425308252853714, 'f_EQ_x': 0.0009902353916077507, 'f_MD_y': 0.5235487014533268}
+B_P200_H155_s11_wf it49 L=+0.2380 pool: mean=0.172 min=0.000 omega=0.191 worst=(0,0) {}
+A_P200_H155_s11_wf it39 L=+0.1774 pool: mean=0.239 min=0.111 omega=0.251 worst=(60,0) {'f_ED_x': 0.4759560553248091, 'f_EQ_x': 0.0006921121304284923, 'f_MD_y': 0.5702808264313834}
+B_P200_H155_s11_wf it59 L=+0.3065 pool: mean=0.186 min=0.000 omega=0.209 worst=(0,0) {}
+A_P200_H140_s11_wf it79 L=+0.1885 pool: mean=0.234 min=0.052 omega=0.245 worst=(75,0) {'f_ED_x': 0.48855193594341173, 'f_EQ_x': 0.000543064189721119, 'f_MD_y': 0.603100862236976}
+A_P200_H185_s11_wf it19 L=+0.2507 pool: mean=0.230 min=0.091 omega=0.247 worst=(0,0) {'f_ED_x': 0.44514365016408586, 'f_EQ_x': 0.001103619698171759, 'f_MD_y': 0.5235074415148705}
+B_P200_H155_s11_wf it69 L=+0.1916 pool: mean=0.192 min=0.000 omega=0.215 worst=(0,0) {}
+A_P200_H140_s11_wf: DONE Rc0=0.132 pool mean=0.242 min=0.035 omega=0.254 co=0.271 (1032s)
+A_P200_H155_s11_wf it49 L=+0.1199 pool: mean=0.247 min=0.113 omega=0.259 worst=(60,0) {'f_ED_x': 0.47730216524928193, 'f_EQ_x': 0.0007094365213990606, 'f_MD_y': 0.5694408346782004}
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:131: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+B_P200_H155_s11_wf it79 L=+0.2251 pool: mean=0.193 min=0.000 omega=0.217 worst=(0,0) {}
+A_P200_H185_s11_wf it29 L=+0.2068 pool: mean=0.244 min=0.104 omega=0.263 worst=(0,0) {'f_ED_x': 0.4470119640204628, 'f_EQ_x': 0.0013098430777738648, 'f_MD_y': 0.5295339178949741}
+B_P200_H185_s11_wf it9 L=+0.2140 pool: mean=0.263 min=0.000 omega=0.307 worst=(15,90) {}
+B_P200_H155_s11_wf: DONE Rc0=0.000 pool mean=0.185 min=0.000 omega=0.207 co=0.552 (685s)
+A_P200_H155_s11_wf it59 L=+0.1414 pool: mean=0.268 min=0.122 omega=0.281 worst=(60,0) {'f_ED_x': 0.48163163338548476, 'f_EQ_x': 0.0008300232296432051, 'f_MD_y': 0.5999839125105303}
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+B_P200_H185_s11_wf it19 L=+0.3022 pool: mean=0.274 min=0.000 omega=0.322 worst=(15,90) {}
+A_P200_H185_s11_wf it39 L=+0.1341 pool: mean=0.280 min=0.139 omega=0.299 worst=(0,0) {'f_ED_x': 0.45099317065385214, 'f_EQ_x': 0.002099560792069934, 'f_MD_y': 0.5646150997377323}
+B_P200_H185_s11_wf it29 L=+0.2397 pool: mean=0.279 min=0.000 omega=0.329 worst=(15,90) {}
+A_P200_H155_s11_wf it69 L=+0.1076 pool: mean=0.276 min=0.122 omega=0.289 worst=(60,0) {'f_ED_x': 0.48198651780420954, 'f_EQ_x': 0.0008143144641742637, 'f_MD_y': 0.6019558974335767}
+A_P200_H200_s11_wf it9 L=+0.2542 pool: mean=0.213 min=0.065 omega=0.236 worst=(0,0) {'f_ED_x': 0.4054361725299995, 'f_EQ_x': 0.0014527466032616995, 'f_MD_y': 0.5370920707966091}
+B_P200_H185_s11_wf it39 L=+0.2418 pool: mean=0.288 min=0.000 omega=0.342 worst=(15,90) {}
+A_P200_H185_s11_wf it49 L=+0.1079 pool: mean=0.285 min=0.144 omega=0.305 worst=(0,0) {'f_ED_x': 0.45177933994164376, 'f_EQ_x': 0.002302058674871786, 'f_MD_y': 0.5673877740576149}
+A_P200_H155_s11_wf it79 L=+0.1243 pool: mean=0.278 min=0.124 omega=0.290 worst=(60,0) {'f_ED_x': 0.48218374525908103, 'f_EQ_x': 0.0008103744385177121, 'f_MD_y': 0.6008897571761547}
+A_P200_H200_s11_wf it19 L=+0.2712 pool: mean=0.235 min=0.080 omega=0.259 worst=(0,0) {'f_ED_x': 0.4077055932649805, 'f_EQ_x': 0.0015750387557964703, 'f_MD_y': 0.5286823843056151}
+B_P200_H185_s11_wf it49 L=+0.1733 pool: mean=0.288 min=0.000 omega=0.342 worst=(15,90) {}
+A_P200_H185_s11_wf it59 L=+0.1207 pool: mean=0.305 min=0.167 omega=0.325 worst=(0,0) {'f_ED_x': 0.4554857645455979, 'f_EQ_x': 0.0030546417552033476, 'f_MD_y': 0.5900917096990965}
+A_P200_H155_s11_wf: DONE Rc0=0.168 pool mean=0.283 min=0.110 omega=0.295 co=0.228 (1063s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:131: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+B_P200_H185_s11_wf it59 L=+0.2919 pool: mean=0.287 min=0.001 omega=0.341 worst=(15,90) {}
+A_P200_H200_s11_wf it29 L=+0.2162 pool: mean=0.248 min=0.091 omega=0.272 worst=(0,0) {'f_ED_x': 0.40806340993990375, 'f_EQ_x': 0.0018557164654505777, 'f_MD_y': 0.5282978931855243}
+B_P200_H200_s11_wf it9 L=+0.2106 pool: mean=0.283 min=0.000 omega=0.336 worst=(0,0) {}
+B_P200_H185_s11_wf it69 L=+0.1597 pool: mean=0.287 min=0.001 omega=0.341 worst=(15,90) {}
+A_P200_H185_s11_wf it69 L=+0.0366 pool: mean=0.310 min=0.173 omega=0.329 worst=(0,0) {'f_ED_x': 0.45747827570191263, 'f_EQ_x': 0.0033913981193209757, 'f_MD_y': 0.5915306608536397}
+B_P200_H200_s11_wf it19 L=+0.3150 pool: mean=0.282 min=0.000 omega=0.334 worst=(15,0) {}
+B_P200_H185_s11_wf it79 L=+0.1550 pool: mean=0.288 min=0.004 omega=0.339 worst=(15,90) {}
+A_P200_H200_s11_wf it39 L=+0.1691 pool: mean=0.279 min=0.120 omega=0.304 worst=(0,0) {'f_ED_x': 0.4074819584812813, 'f_EQ_x': 0.0030550350818351587, 'f_MD_y': 0.5573351817271364}
+B_P200_H200_s11_wf it29 L=+0.2578 pool: mean=0.281 min=0.000 omega=0.333 worst=(15,0) {}
+A_P200_H185_s11_wf it79 L=+0.0604 pool: mean=0.311 min=0.174 omega=0.330 worst=(0,0) {'f_ED_x': 0.45799633302068293, 'f_EQ_x': 0.003289442243227562, 'f_MD_y': 0.5919858322563523}
+B_P200_H185_s11_wf: DONE Rc0=0.008 pool mean=0.284 min=0.004 omega=0.333 co=0.309 (706s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+A_P200_H200_s11_wf it49 L=+0.1449 pool: mean=0.283 min=0.124 omega=0.308 worst=(0,0) {'f_ED_x': 0.4072117283350174, 'f_EQ_x': 0.0033273349697287755, 'f_MD_y': 0.5577288231967373}
+B_P200_H200_s11_wf it39 L=+0.2572 pool: mean=0.282 min=0.000 omega=0.334 worst=(15,0) {}
+A_P200_H185_s11_wf: DONE Rc0=0.182 pool mean=0.317 min=0.182 omega=0.335 co=0.156 (1110s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:131: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+A_P213_H170_s11_wf it9 L=+0.2053 pool: mean=0.211 min=0.104 omega=0.224 worst=(0,0) {'f_ED_x': 0.48001025678902715, 'f_EQ_x': 0.0028659766008034956, 'f_MD_y': 0.5429371533716107}
+B_P200_H200_s11_wf it49 L=+0.1847 pool: mean=0.279 min=0.003 omega=0.328 worst=(30,0) {}
+B_P213_H170_s11_wf it9 L=+0.2037 pool: mean=0.255 min=0.000 omega=0.300 worst=(15,90) {}
+A_P200_H200_s11_wf it59 L=+0.1641 pool: mean=0.298 min=0.141 omega=0.323 worst=(0,0) {'f_ED_x': 0.4100023386503367, 'f_EQ_x': 0.0040758726210649646, 'f_MD_y': 0.5787370845159886}
+B_P200_H200_s11_wf it59 L=+0.2715 pool: mean=0.268 min=0.001 omega=0.303 worst=(45,0) {}
+B_P213_H170_s11_wf it19 L=+0.2810 pool: mean=0.263 min=0.000 omega=0.310 worst=(15,90) {}
+A_P213_H170_s11_wf it19 L=+0.1911 pool: mean=0.249 min=0.128 omega=0.263 worst=(0,0) {'f_ED_x': 0.48192507860989414, 'f_EQ_x': 0.002992073995678767, 'f_MD_y': 0.5348931064257824}
+B_P200_H200_s11_wf it69 L=+0.0124 pool: mean=0.286 min=0.134 omega=0.309 worst=(0,0) {}
+A_P200_H200_s11_wf it69 L=+0.0749 pool: mean=0.301 min=0.146 omega=0.325 worst=(0,0) {'f_ED_x': 0.41458123041103045, 'f_EQ_x': 0.0038400413862348937, 'f_MD_y': 0.581333367908469}
+B_P213_H170_s11_wf it29 L=+0.2367 pool: mean=0.267 min=0.000 omega=0.316 worst=(15,90) {}
+B_P200_H200_s11_wf it79 L=+0.0484 pool: mean=0.292 min=0.141 omega=0.314 worst=(0,0) {}
+A_P213_H170_s11_wf it29 L=+0.1554 pool: mean=0.268 min=0.146 omega=0.282 worst=(0,0) {'f_ED_x': 0.484938318005435, 'f_EQ_x': 0.003419326770583397, 'f_MD_y': 0.5363516871764593}
+B_P213_H170_s11_wf it39 L=+0.2351 pool: mean=0.276 min=0.000 omega=0.328 worst=(15,90) {}
+A_P200_H200_s11_wf it79 L=+0.0916 pool: mean=0.301 min=0.146 omega=0.325 worst=(0,0) {'f_ED_x': 0.4150140224767852, 'f_EQ_x': 0.0038347541320118642, 'f_MD_y': 0.5812590736758436}
+B_P213_H170_s11_wf it49 L=+0.1579 pool: mean=0.276 min=0.000 omega=0.327 worst=(15,90) {}
+B_P200_H200_s11_wf: DONE Rc0=0.151 pool mean=0.301 min=0.151 omega=0.323 co=0.103 (729s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+A_P213_H170_s11_wf it39 L=+0.0598 pool: mean=0.308 min=0.193 omega=0.320 worst=(0,0) {'f_ED_x': 0.494390632388927, 'f_EQ_x': 0.0048184665095441954, 'f_MD_y': 0.5764011159893725}
+B_P213_H170_s11_wf it59 L=+0.2616 pool: mean=0.278 min=0.002 omega=0.328 worst=(15,90) {}
+A_P200_H200_s11_wf: DONE Rc0=0.154 pool mean=0.308 min=0.154 omega=0.332 co=0.109 (1134s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:131: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+A_P213_H140_s11_wf it9 L=+0.2756 pool: mean=0.192 min=0.058 omega=0.201 worst=(60,0) {'f_ED_x': 0.47944752650255507, 'f_EQ_x': 0.0006193195690852674, 'f_MD_y': 0.49666462864559635}
+A_P213_H170_s11_wf it49 L=+0.0337 pool: mean=0.312 min=0.200 omega=0.324 worst=(0,0) {'f_ED_x': 0.4970101073058253, 'f_EQ_x': 0.005332283272765965, 'f_MD_y': 0.5833250517740918}
+B_P213_H170_s11_wf it69 L=+0.1720 pool: mean=0.271 min=0.000 omega=0.315 worst=(30,90) {}
+B_P213_H140_s11_wf it9 L=+0.2989 pool: mean=0.122 min=0.000 omega=0.132 worst=(30,90) {}
+B_P213_H170_s11_wf it79 L=+0.1349 pool: mean=0.259 min=0.010 omega=0.291 worst=(30,90) {}
+B_P213_H140_s11_wf it19 L=+0.3412 pool: mean=0.136 min=0.000 omega=0.149 worst=(15,90) {}
+A_P213_H140_s11_wf it19 L=+0.2492 pool: mean=0.207 min=0.072 omega=0.217 worst=(60,0) {'f_ED_x': 0.4844682997694492, 'f_EQ_x': 0.0006944261993584163, 'f_MD_y': 0.5154974281134808}
+A_P213_H170_s11_wf it59 L=+0.0581 pool: mean=0.333 min=0.193 omega=0.343 worst=(60,0) {'f_ED_x': 0.5057171417047854, 'f_EQ_x': 0.0063841144160316, 'f_MD_y': 0.6204119161576198}
+B_P213_H140_s11_wf it29 L=+0.2724 pool: mean=0.147 min=0.000 omega=0.161 worst=(15,90) {}
+B_P213_H170_s11_wf: DONE Rc0=0.052 pool mean=0.254 min=0.011 omega=0.284 co=0.413 (690s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+A_P213_H140_s11_wf it29 L=+0.2515 pool: mean=0.218 min=0.084 omega=0.228 worst=(60,0) {'f_ED_x': 0.4887828348271475, 'f_EQ_x': 0.0008401497516763502, 'f_MD_y': 0.5325551959984577}
+B_P213_H140_s11_wf it39 L=+0.2691 pool: mean=0.168 min=0.000 omega=0.187 worst=(15,90) {}
+A_P213_H170_s11_wf it69 L=-0.0106 pool: mean=0.338 min=0.194 omega=0.347 worst=(60,0) {'f_ED_x': 0.5116548866087313, 'f_EQ_x': 0.006759558361575773, 'f_MD_y': 0.6393973893920121}
+A_P213_H155_s11_wf it9 L=+0.2263 pool: mean=0.217 min=0.096 omega=0.229 worst=(0,0) {'f_ED_x': 0.4784772968449844, 'f_EQ_x': 0.0011252274622252315, 'f_MD_y': 0.5158440931469859}
+B_P213_H140_s11_wf it49 L=+0.2316 pool: mean=0.172 min=0.000 omega=0.192 worst=(0,0) {}
+A_P213_H140_s11_wf it39 L=+0.1500 pool: mean=0.250 min=0.092 omega=0.260 worst=(60,0) {'f_ED_x': 0.49433376114812083, 'f_EQ_x': 0.0012229885574229081, 'f_MD_y': 0.5785659556554684}
+B_P213_H140_s11_wf it59 L=+0.3019 pool: mean=0.183 min=0.000 omega=0.206 worst=(0,0) {}
+A_P213_H170_s11_wf it79 L=+0.0197 pool: mean=0.338 min=0.198 omega=0.348 worst=(60,0) {'f_ED_x': 0.5123021741453847, 'f_EQ_x': 0.006977332298164206, 'f_MD_y': 0.6420930448364147}
+A_P213_H155_s11_wf it19 L=+0.2101 pool: mean=0.240 min=0.118 omega=0.252 worst=(0,0) {'f_ED_x': 0.48296506744858125, 'f_EQ_x': 0.0013460004226473732, 'f_MD_y': 0.5161640139473189}
+B_P213_H140_s11_wf it69 L=+0.1939 pool: mean=0.187 min=0.000 omega=0.211 worst=(0,0) {}
+A_P213_H140_s11_wf it49 L=+0.1147 pool: mean=0.260 min=0.090 omega=0.270 worst=(60,0) {'f_ED_x': 0.4957162355902164, 'f_EQ_x': 0.001238812485051345, 'f_MD_y': 0.5756354635212598}
+A_P213_H170_s11_wf: DONE Rc0=0.242 pool mean=0.344 min=0.191 omega=0.353 co=0.165 (1070s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:131: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+B_P213_H140_s11_wf it79 L=+0.2218 pool: mean=0.189 min=0.000 omega=0.213 worst=(0,0) {}
+A_P213_H155_s11_wf it29 L=+0.1932 pool: mean=0.255 min=0.134 omega=0.267 worst=(0,0) {'f_ED_x': 0.4873736387887841, 'f_EQ_x': 0.0016508384171699084, 'f_MD_y': 0.526025053433498}
+B_P213_H155_s11_wf it9 L=+0.2493 pool: mean=0.196 min=0.000 omega=0.222 worst=(15,90) {}
+A_P213_H140_s11_wf it59 L=+0.1126 pool: mean=0.281 min=0.089 omega=0.291 worst=(60,0) {'f_ED_x': 0.49915464515955976, 'f_EQ_x': 0.001503602160889063, 'f_MD_y': 0.6014758613411786}
+B_P213_H140_s11_wf: DONE Rc0=0.000 pool mean=0.180 min=0.000 omega=0.202 co=0.539 (649s)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+B_P213_H155_s11_wf it19 L=+0.3102 pool: mean=0.207 min=0.000 omega=0.237 worst=(15,90) {}
+A_P213_H155_s11_wf it39 L=+0.0851 pool: mean=0.292 min=0.140 omega=0.303 worst=(60,0) {'f_ED_x': 0.49552527568669813, 'f_EQ_x': 0.0024596102068250164, 'f_MD_y': 0.5704284689862174}
+B_P213_H155_s11_wf it29 L=+0.2537 pool: mean=0.215 min=0.000 omega=0.247 worst=(15,90) {}
+A_P213_H140_s11_wf it69 L=+0.1082 pool: mean=0.289 min=0.086 omega=0.298 worst=(60,0) {'f_ED_x': 0.49931280936805017, 'f_EQ_x': 0.0016982982243420356, 'f_MD_y': 0.5968397494092755}
+A_P213_H185_s11_wf it9 L=+0.2081 pool: mean=0.213 min=0.093 omega=0.229 worst=(60,90) {'f_ED_x': 0.4659627903817328, 'f_EQ_x': 0.006479461222110457, 'f_MD_y': 0.5651127994346542}
+B_P213_H155_s11_wf it39 L=+0.2504 pool: mean=0.229 min=0.000 omega=0.266 worst=(0,0) {}
+A_P213_H155_s11_wf it49 L=+0.0663 pool: mean=0.297 min=0.144 omega=0.307 worst=(60,0) {'f_ED_x': 0.4985592391256048, 'f_EQ_x': 0.002726781590774708, 'f_MD_y': 0.5772544056511938}
+A_P213_H140_s11_wf it79 L=+0.1276 pool: mean=0.291 min=0.087 omega=0.300 worst=(60,0) {'f_ED_x': 0.49968727007631847, 'f_EQ_x': 0.0017324435782614643, 'f_MD_y': 0.595311440468175}
+B_P213_H155_s11_wf it49 L=+0.1785 pool: mean=0.231 min=0.000 omega=0.269 worst=(0,0) {}
+A_P213_H185_s11_wf it19 L=+0.1830 pool: mean=0.250 min=0.130 omega=0.268 worst=(0,0) {'f_ED_x': 0.46662706369128765, 'f_EQ_x': 0.006125135098106992, 'f_MD_y': 0.555432657066449}
+A_P213_H140_s11_wf: DONE Rc0=0.188 pool mean=0.296 min=0.078 omega=0.305 co=0.204 (1022s)
+A_P213_H155_s11_wf it59 L=+0.0709 pool: mean=0.316 min=0.146 omega=0.325 worst=(60,0) {'f_ED_x': 0.506551965559585, 'f_EQ_x': 0.003686849043795423, 'f_MD_y': 0.611985535280746}
+B_P213_H155_s11_wf it59 L=+0.2811 pool: mean=0.237 min=0.000 omega=0.277 worst=(0,0) {}
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:131: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+A_P213_H185_s11_wf it29 L=+0.1314 pool: mean=0.275 min=0.148 omega=0.293 worst=(0,0) {'f_ED_x': 0.46796427096986265, 'f_EQ_x': 0.0064582824065644116, 'f_MD_y': 0.5513309121267584}
+B_P213_H185_s11_wf it9 L=+0.1855 pool: mean=0.299 min=0.001 omega=0.361 worst=(0,0) {}
+B_P213_H155_s11_wf it69 L=+0.1703 pool: mean=0.239 min=0.000 omega=0.279 worst=(0,0) {}
+A_P213_H155_s11_wf it69 L=+0.0371 pool: mean=0.321 min=0.145 omega=0.330 worst=(60,0) {'f_ED_x': 0.5096362367794779, 'f_EQ_x': 0.004304402706798807, 'f_MD_y': 0.6189314426887618}
+B_P213_H155_s11_wf it79 L=+0.1955 pool: mean=0.240 min=0.000 omega=0.280 worst=(0,0) {}
+B_P213_H185_s11_wf it19 L=+0.2844 pool: mean=0.300 min=0.000 omega=0.361 worst=(15,0) {}
+A_P213_H185_s11_wf it39 L=+0.0567 pool: mean=0.317 min=0.194 omega=0.332 worst=(0,0) {'f_ED_x': 0.47564625893423845, 'f_EQ_x': 0.008600323892984605, 'f_MD_y': 0.5860296189693706}
+B_P213_H185_s11_wf it29 L=+0.2448 pool: mean=0.299 min=0.000 omega=0.359 worst=(15,0) {}
+B_P213_H155_s11_wf: DONE Rc0=0.000 pool mean=0.234 min=0.000 omega=0.273 co=0.463 (658s)
+A_P213_H155_s11_wf it79 L=+0.0653 pool: mean=0.322 min=0.144 omega=0.331 worst=(60,0) {'f_ED_x': 0.5097387754754585, 'f_EQ_x': 0.004225484757056151, 'f_MD_y': 0.6182844241693931}
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+B_P213_H185_s11_wf it39 L=+0.2411 pool: mean=0.305 min=0.001 omega=0.367 worst=(15,0) {}
+A_P213_H155_s11_wf: DONE Rc0=0.223 pool mean=0.326 min=0.140 omega=0.334 co=0.198 (1042s)
+A_P213_H185_s11_wf it49 L=+0.0415 pool: mean=0.322 min=0.201 omega=0.337 worst=(0,0) {'f_ED_x': 0.4764045686947442, 'f_EQ_x': 0.009302847417458612, 'f_MD_y': 0.5891797589407445}
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:131: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+A_P213_H200_s11_wf it9 L=+0.2194 pool: mean=0.300 min=0.002 omega=0.338 worst=(45,90) {'f_ED_x': 0.38444932346634114, 'f_EQ_x': 0.016917732657426448, 'f_MD_y': 0.5895592640049256}
+B_P213_H185_s11_wf it49 L=+0.1616 pool: mean=0.299 min=0.000 omega=0.352 worst=(30,0) {}
+B_P213_H200_s11_wf it9 L=+0.1881 pool: mean=0.305 min=0.000 omega=0.368 worst=(15,0) {}

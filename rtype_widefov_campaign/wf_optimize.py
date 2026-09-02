@@ -56,7 +56,11 @@ def seed_latent(method, P, H, seed, n_grid):
         bump = torch.exp(-((X ** 2 + Y ** 2) / (0.75 * rd) ** 2) ** 2)
         qsign = 1.0 if rgen.random() < 0.5 else -1.0
         quad = qsign * (X ** 2 - Y ** 2) / rd ** 2
-        x = 2.2 * blob + 1.2 * (2 * bump - 0.75) + 0.6 * quad
+        # rescue seeds (>=20) draw a stronger random anisotropy amplitude:
+        # the primary seed-11 grid showed rx=ry saddle trapping at small P
+        # with the fixed weak 0.6 amplitude (still no rectangle encoding)
+        qamp = 0.6 if seed < 20 else float(rgen.uniform(0.9, 2.2))
+        x = 2.2 * blob + 1.2 * (2 * bump - 0.75) + qamp * quad
     return x.clone().requires_grad_(True)
 
 
