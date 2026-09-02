@@ -215,9 +215,9 @@ recorded as a consistent, structure-independent observation.
     champions' collapse is NOT rescued by k = 0 in shape - their
     failure is phase detuning.
 27. **Does any candidate beat the rectangle over a meaningful angular
-    interval?** newA beats it at EVERY mapped (theta, phi) point in
-    R_cross except nowhere - min ratio 1.04x, typical 1.3-1.6x - and
-    at every angle on co-pol purity.
+    interval?** newA beats it at ALL 126 mapped (theta, phi) points in
+    R_cross (pointwise ratio: min 1.03x, median 1.39x) and at every
+    angle on co-pol purity. newB beats it at 120/126 points.
 28. **Does any candidate dominate on BOTH angular-average R_cross and
     co-pol leakage?** Yes - newA: Omega +33% (0.401 vs 0.301) with
     hemispheric co-pol 0.057 vs 0.293 (5.1x lower); newB similarly
