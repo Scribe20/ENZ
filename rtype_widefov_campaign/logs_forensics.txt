@@ -1,0 +1,2 @@
+rectangle th=0 phi=0: p->ED(0.56) s->MD(0.68)
+rectangle th=0 phi=45: p->MD(0.53) s->MD(0.54)
