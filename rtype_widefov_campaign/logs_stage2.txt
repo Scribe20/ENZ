@@ -79,3 +79,13 @@ Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pyto
 /home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
 Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
   return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+A_P239_H200_s11_wf: DONE Rc0=0.313 pool mean=0.375 min=0.263 omega=0.370 co=0.057 (250s)
+A_P239_H190_s11_wf: resume at iter 30
+A_P233_H200_s11_wf: DONE Rc0=0.290 pool mean=0.368 min=0.290 omega=0.372 co=0.060 (256s)
+A_P239_H210_s11_wf: resume at iter 30
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
