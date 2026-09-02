@@ -2,3 +2,15 @@ A_P245_H200_s11_wf: warm start (A_P239_H200_s11_wf)
 A_P233_H200_s11_wf: warm start (A_P239_H200_s11_wf)
 A_P239_H200_s11_wf: warm start (A_P239_H200_s11_wf)
 A_P239_H190_s11_wf: warm start (A_P239_H200_s11_wf)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
