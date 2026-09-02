@@ -30,3 +30,8 @@ B_P252_H185_s47_wf (60,45) o15: r_cross=-0.1493-0.2826j Rc=0.3241
 B_P252_H185_s47_wf (80,0) o9: r_cross=+0.7754+0.1692j Rc=0.6298
 B_P252_H185_s47_wf (80,0) o11: r_cross=+0.7799+0.1700j Rc=0.6373
 B_P252_H185_s47_wf (80,0) o13: r_cross=+0.7830+0.1703j Rc=0.6419
+B_P252_H185_s47_wf (80,0) o15: r_cross=+0.7846+0.1704j Rc=0.6454
+CONV_DONE B_P252_H185_s47_wf
+rectangle (0,0) o9: r_cross=-0.1311-0.4600j Rc=0.2288
+rectangle (0,0) o11: r_cross=-0.1358-0.4587j Rc=0.2286
+rectangle (0,0) o13: r_cross=-0.1408-0.4577j Rc=0.2289
