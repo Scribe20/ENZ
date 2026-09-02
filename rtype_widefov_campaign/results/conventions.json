@@ -1,0 +1,12 @@
+{
+ "lambda0_nm": 633.0,
+ "material": "a-Si Franta 2013, n+ik = 4.282733+0.068732j",
+ "glass_n": 1.457,
+ "incident_medium": "air (TORCWA backward; input layer = glass)",
+ "transmitted_medium": "glass substrate",
+ "angle_definition": "theta_air = physical air-side incidence; inc_ang(glass) = asin(sin(theta_air)/1.457); k_par = k0 sin(theta_air) exact; azi = phi",
+ "circular_convention": "C=(1/sqrt2)[[1,1],[i,-i]], sigma+=(x+iy)/sqrt2 at theta=0; R_circ = C^H R C applied to TORCWA transverse pol labels at all angles, identically for every structure",
+ "R_cross": "mean(|Rc01|^2, |Rc10|^2)",
+ "R_co": "mean(|Rc00|^2, |Rc11|^2)",
+ "padding_rule": "max(20 nm, 0.10 P), fixed per period, never swept"
+}
