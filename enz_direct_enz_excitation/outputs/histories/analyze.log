@@ -4,3 +4,43 @@
 [target] eps_ITO = -0.0742 + 0.7014i, normalization = integral_ITO_abs_Ez_squared_dz_equals_1_z_in_nm
 [target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 144.893 nm^3, direction +x)
 [target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 144.893 nm^3, direction -x)
+[old_qnm_target] F_ENZ = 2.2138, eta_z = 0.779, F_QNM(diag) = 85.94, eta_pm = 0.844, T/R/A = 0.660/0.139/0.201
+[old_qnm_target] locality: {'fill_fraction': 0.49468994140625, 'boundary_contact_fraction': 0.0, 'connected_components': 1, 'min_feature_nm': 132.8125, 'min_gap_nm': 132.8125, 'Ez2_participation_ratio': 0.4126724136184845, 'Ez2_fraction_central_680': 0.9373119770956886}
+[new_f_enz] F_ENZ = 2.2849, eta_z = 0.778, F_QNM(diag) = 81.39, eta_pm = 0.774, T/R/A = 0.640/0.152/0.208
+[new_f_enz] locality: {'fill_fraction': 0.4876708984375, 'boundary_contact_fraction': 0.0, 'connected_components': 1, 'min_feature_nm': 132.8125, 'min_gap_nm': 132.8125, 'Ez2_participation_ratio': 0.3640360603657575, 'Ez2_fraction_central_680': 0.9422447479197588}
+[convention] NEW winner: soft-final F_ENZ = 2.2849, hard-binary = 2.2849
+[conv] old [7, 7]: F_ENZ = 2.2138, T = 0.6600, A = 0.2009
+[conv] new [7, 7]: F_ENZ = 2.2849, T = 0.6397, A = 0.2079
+[conv] old [9, 9]: F_ENZ = 2.2326, T = 0.6625, A = 0.2027
+[conv] new [9, 9]: F_ENZ = 2.2838, T = 0.6440, A = 0.2082
+[conv] old [11, 11]: F_ENZ = 2.2437, T = 0.6651, A = 0.2040
+[conv] new [11, 11]: F_ENZ = 2.2941, T = 0.6460, A = 0.2092
+[saved] /home/user/ENZ/enz_direct_enz_excitation/outputs/headline_comparison.csv
+[spectra] new winner ...
+[spectra] old winner ...
+figure written: /home/user/ENZ/enz_direct_enz_excitation/outputs/figures/enz_spectra.png
+[spectra] new winner, no ITO ...
+  [new-noITO] lambda  1200.0: T = 0.8231, R = 0.1769
+  [new-noITO] lambda  1280.0: T = 0.9805, R = 0.0195
+  [new-noITO] lambda  1360.0: T = 0.6319, R = 0.3681
+  [new-noITO] lambda  1440.0: T = 0.7721, R = 0.2279
+  [new-noITO] lambda  1520.0: T = 0.8160, R = 0.1840
+  [new-noITO] lambda  1600.0: T = 0.8400, R = 0.1600
+  [new-noITO] lambda  1680.0: T = 0.8562, R = 0.1438
+[spectra] new winner, with ITO ...
+  [new-ITO] lambda  1200.0: T = 0.7883, R = 0.1117
+  [new-ITO] lambda  1280.0: T = 0.3338, R = 0.2757
+  [new-ITO] lambda  1360.0: T = 0.6055, R = 0.2067
+  [new-ITO] lambda  1440.0: T = 0.6393, R = 0.1513
+  [new-ITO] lambda  1520.0: T = 0.6609, R = 0.1472
+  [new-ITO] lambda  1600.0: T = 0.7298, R = 0.1274
+  [new-ITO] lambda  1680.0: T = 0.7834, R = 0.1008
+figure written: /home/user/ENZ/enz_direct_enz_excitation/outputs/figures/with_without_ITO.png
+[closure] max|A| no-ITO = 1.24e-12
+figure written: /home/user/ENZ/enz_direct_enz_excitation/outputs/figures/geometry_old_vs_new.png
+figure written: /home/user/ENZ/enz_direct_enz_excitation/outputs/figures/history.png
+figure written: /home/user/ENZ/enz_direct_enz_excitation/outputs/figures/ito_ez_maps.png
+figure written: /home/user/ENZ/enz_direct_enz_excitation/outputs/figures/maps_new_f_enz_winner.png
+[fourier] dominant |Ez| harmonics (rms over ITO z):
+  old: (1,0):0.967, (-1,0):0.967, (1,1):0.177, (1,-1):0.177, (-1,1):0.177, (-1,-1):0.177
+  new: (1,0):0.941, (-1,0):0.941, (-1,1):0.252, (-1,-1):0.252, (1,-1):0.252, (1,1):0.252
