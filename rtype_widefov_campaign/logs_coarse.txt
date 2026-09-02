@@ -27,3 +27,4 @@ B_P226_H140_s11_wf it49 L=+0.1755 pool: mean=0.230 min=0.000 omega=0.267 worst=(
 A_P226_H170_s11_wf it29 L=+0.1091 pool: mean=0.267 min=0.035 omega=0.269 worst=(60,90) {'f_ED_x': 0.5400144072752551, 'f_EQ_x': 0.016938512597372425, 'f_MD_y': 0.601410150488281}
 B_P226_H170_s11_wf it49 L=+0.1644 pool: mean=0.279 min=0.003 omega=0.331 worst=(15,0) {}
 B_P226_H140_s11_wf it59 L=+0.2765 pool: mean=0.235 min=0.000 omega=0.274 worst=(0,0) {}
+B_P226_H170_s11_wf it59 L=+0.2394 pool: mean=0.287 min=0.010 omega=0.323 worst=(30,0) {}
