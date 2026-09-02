@@ -38,3 +38,14 @@ rectangle (0,0) o13: r_cross=-0.1408-0.4577j Rc=0.2289
 rectangle (0,0) o15: r_cross=-0.1418-0.4616j Rc=0.2325
 rectangle (60,0) o9: r_cross=+0.4220-0.2954j Rc=0.2655
 rectangle (60,0) o11: r_cross=+0.4164-0.3010j Rc=0.2641
+rectangle (60,0) o13: r_cross=+0.4120-0.3038j Rc=0.2620
+rectangle (60,0) o15: r_cross=+0.4085-0.3064j Rc=0.2611
+rectangle (60,45) o9: r_cross=+0.6353-0.0783j Rc=0.2362
+rectangle (60,45) o11: r_cross=+0.6293-0.0786j Rc=0.2318
+rectangle (60,45) o13: r_cross=+0.6281-0.0792j Rc=0.2311
+rectangle (60,45) o15: r_cross=+0.6254-0.0797j Rc=0.2291
+rectangle (80,0) o9: r_cross=+0.7398-0.0893j Rc=0.5552
+rectangle (80,0) o11: r_cross=+0.7396-0.0920j Rc=0.5554
+rectangle (80,0) o13: r_cross=+0.7386-0.0936j Rc=0.5541
+rectangle (80,0) o15: r_cross=+0.7386-0.0954j Rc=0.5544
+CONV_DONE rectangle

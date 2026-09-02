@@ -139,3 +139,17 @@ all campaign geometries satisfy the envelope.
   rectangle). The primary seed-11 grid is untouched and homogeneous.
   Rescue runs are extra seeds at the affected P/H points and are
   labelled by their seed in the ledger.
+
+## 8. Final convergence numbers (orders 9 -> 15, four angle points
+## incl. (60,45) and (80,0))
+
+| tag | max complex r_cross drift | max R_cross drift |
+|---|---|---|
+| newA A_P239_H200 | 0.024 | 0.003 |
+| newB B_P252_H185 | 0.068 | 0.016 |
+| rectangle | 0.025 | 0.007 |
+
+All campaign conclusions are stable against these drifts (the smallest
+quoted margin, newA vs rectangle worst-angle 0.204 vs 0.098, is 30x
+the largest relevant drift). Complex amplitudes, not power alone, were
+checked per spec sec 48.
