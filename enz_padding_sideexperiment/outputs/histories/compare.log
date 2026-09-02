@@ -4,3 +4,39 @@
 [target] eps_ITO = -0.0742 + 0.7014i, normalization = integral_ITO_abs_Ez_squared_dz_equals_1_z_in_nm
 [target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 144.893 nm^3, direction +x)
 [target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 144.893 nm^3, direction -x)
+[unpadded] F_QNM = 9.7338e+01, eta_pm = 0.912, F_Ez = 1.068e+02, eta_z = 0.801, T/R/A = 0.672/0.123/0.205
+[unpadded] locality: {'fill_fraction': 0.59375, 'boundary_contact_fraction': 0.296875, 'connected_components': 1, 'min_feature_nm': 132.8125, 'min_gap_nm': 132.8125, 'Ez2_participation_ratio': 0.47921611130519387, 'Ez2_fraction_central_680': 0.582628105806201}
+[padded85] F_QNM = 8.5942e+01, eta_pm = 0.844, F_Ez = 1.018e+02, eta_z = 0.779, T/R/A = 0.660/0.139/0.201
+[padded85] locality: {'fill_fraction': 0.49468994140625, 'boundary_contact_fraction': 0.0, 'connected_components': 1, 'min_feature_nm': 132.8125, 'min_gap_nm': 132.8125, 'Ez2_participation_ratio': 0.4126724136184845, 'Ez2_fraction_central_680': 0.9373119770956886}
+[saved] /home/user/ENZ/enz_padding_sideexperiment/outputs/headline_comparison.csv
+[conv] unpadded order [7, 7]: F = 9.7338e+01, T = 0.6716, A = 0.2050
+[conv] padded85 order [7, 7]: F = 8.5942e+01, T = 0.6600, A = 0.2009
+[conv] unpadded order [9, 9]: F = 9.6960e+01, T = 0.6743, A = 0.2048
+[conv] padded85 order [9, 9]: F = 8.6192e+01, T = 0.6625, A = 0.2027
+[conv] unpadded order [11, 11]: F = 9.7074e+01, T = 0.6754, A = 0.2057
+[conv] padded85 order [11, 11]: F = 8.5961e+01, T = 0.6651, A = 0.2040
+[spectra] F_QNM(lambda), padded ...
+[spectra] F_QNM(lambda), unpadded ...
+figure written: /home/user/ENZ/enz_padding_sideexperiment/outputs/figures/fqnm_spectra.png
+[spectra] padded, no ITO ...
+  [pad-noITO] lambda  1200.0: T = 0.7935, R = 0.2065
+  [pad-noITO] lambda  1280.0: T = 0.9739, R = 0.0261
+  [pad-noITO] lambda  1360.0: T = 0.6859, R = 0.3141
+  [pad-noITO] lambda  1440.0: T = 0.7945, R = 0.2055
+  [pad-noITO] lambda  1520.0: T = 0.8285, R = 0.1715
+  [pad-noITO] lambda  1600.0: T = 0.8480, R = 0.1520
+  [pad-noITO] lambda  1680.0: T = 0.8616, R = 0.1384
+[spectra] padded, with ITO ...
+  [pad-ITO] lambda  1200.0: T = 0.7576, R = 0.1408
+  [pad-ITO] lambda  1280.0: T = 0.6347, R = 0.0600
+  [pad-ITO] lambda  1360.0: T = 0.6424, R = 0.1781
+  [pad-ITO] lambda  1440.0: T = 0.6589, R = 0.1385
+  [pad-ITO] lambda  1520.0: T = 0.6756, R = 0.1377
+  [pad-ITO] lambda  1600.0: T = 0.7392, R = 0.1205
+  [pad-ITO] lambda  1680.0: T = 0.7894, R = 0.0963
+figure written: /home/user/ENZ/enz_padding_sideexperiment/outputs/figures/padded_with_without_ITO.png
+[closure] max|A| padded no-ITO = 1.20e-12 (lossless -> ~0)
+figure written: /home/user/ENZ/enz_padding_sideexperiment/outputs/figures/maps_unpadded.png
+figure written: /home/user/ENZ/enz_padding_sideexperiment/outputs/figures/maps_padded85.png
+figure written: /home/user/ENZ/enz_padding_sideexperiment/outputs/figures/overlap_profiles.png
+figure written: /home/user/ENZ/enz_padding_sideexperiment/outputs/figures/geometry_comparison.png
