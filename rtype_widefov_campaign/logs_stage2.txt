@@ -240,3 +240,17 @@ A_P239_H200_s47_wf it29 L=+0.1263 pool: mean=0.383 min=0.005 omega=0.401 worst=(
 A_P239_H200_s23_wf it59 L=-0.0524 pool: mean=0.377 min=0.123 omega=0.372 worst=(60,90) {'f_ED_x': 0.5043679360617412, 'f_EQ_x': 0.03488476957784463, 'f_MD_y': 0.6758977375121324}
 B_P226_H200_s23_wf it19 L=+0.2550 pool: mean=0.322 min=0.008 omega=0.387 worst=(15,0) {}
 A_P239_H200_s47_wf it39 L=+0.0746 pool: mean=0.392 min=0.084 omega=0.395 worst=(45,90) {'f_ED_x': 0.4809188568449158, 'f_EQ_x': 0.04438665622716583, 'f_MD_y': 0.6562982058116007}
+B_P226_H200_s23_wf it29 L=+0.1161 pool: mean=0.323 min=0.001 omega=0.383 worst=(30,0) {}
+A_P239_H200_s23_wf it69 L=-0.0433 pool: mean=0.361 min=0.288 omega=0.363 worst=(60,0) {'f_ED_x': 0.517499402838241, 'f_EQ_x': 0.028163279815793554, 'f_MD_y': 0.6478216570403464}
+B_P226_H200_s23_wf it39 L=+0.2692 pool: mean=0.350 min=0.022 omega=0.400 worst=(45,0) {}
+A_P239_H200_s47_wf it49 L=-0.0518 pool: mean=0.383 min=0.043 omega=0.383 worst=(60,90) {'f_ED_x': 0.4881855193694955, 'f_EQ_x': 0.04163107659513962, 'f_MD_y': 0.6532082938980316}
+A_P239_H200_s23_wf it79 L=-0.0647 pool: mean=0.363 min=0.272 omega=0.365 worst=(60,0) {'f_ED_x': 0.5218403708359042, 'f_EQ_x': 0.028851151937761742, 'f_MD_y': 0.6414524104781032}
+B_P226_H200_s23_wf it49 L=+0.1088 pool: mean=0.337 min=0.008 omega=0.363 worst=(45,0) {}
+A_P239_H200_s23_wf: DONE Rc0=0.295 pool mean=0.368 min=0.268 omega=0.370 co=0.062 (1092s)
+B_P226_H200_s23_wf it59 L=+0.0310 pool: mean=0.328 min=0.138 omega=0.335 worst=(75,0) {}
+A_P239_H200_s47_wf it59 L=-0.0494 pool: mean=0.372 min=0.172 omega=0.368 worst=(60,90) {'f_ED_x': 0.5060689367667129, 'f_EQ_x': 0.03365648406214792, 'f_MD_y': 0.6674586921318384}
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:135: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+B_P226_H200_s47_wf it9 L=+0.2180 pool: mean=0.292 min=0.002 omega=0.354 worst=(15,0) {}
+B_P226_H200_s23_wf it69 L=-0.0762 pool: mean=0.331 min=0.179 omega=0.334 worst=(60,90) {}
