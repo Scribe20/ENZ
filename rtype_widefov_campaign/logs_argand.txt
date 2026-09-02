@@ -1,0 +1,4 @@
+  File "/home/user/ENZ/rtype_widefov_campaign/wf_argand.py", line 128
+    f'.2f} |EQ|={abs(pieces["EQ"]):.2f}', flush=True)
+                                        ^
+SyntaxError: f-string: expecting '}'
