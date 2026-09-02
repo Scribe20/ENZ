@@ -11,3 +11,12 @@ A_P239_H200_s11_wf th=60 s: |t|^2=0.458 ladder=0.470 |ED|=0.24 |MD|=1.03 |EQ|=0.
 A_P239_H200_s11_wf th=75 p: |t|^2=0.144 ladder=0.005 |ED|=0.79 |MD|=0.15 |EQ|=0.10
 A_P239_H200_s11_wf th=75 s: |t|^2=0.334 ladder=0.350 |ED|=0.15 |MD|=1.04 |EQ|=0.17
 WF_ARGAND_DONE
+B_P252_H185_s47_wf th=0 p: |t|^2=0.413 ladder=0.372 |ED|=0.35 |MD|=0.75 |EQ|=0.10
+B_P252_H185_s47_wf th=0 s: |t|^2=0.007 ladder=0.073 |ED|=0.60 |MD|=0.65 |EQ|=0.30
+B_P252_H185_s47_wf th=30 p: |t|^2=0.299 ladder=0.260 |ED|=0.31 |MD|=0.88 |EQ|=0.09
+B_P252_H185_s47_wf th=30 s: |t|^2=0.004 ladder=0.054 |ED|=0.68 |MD|=0.59 |EQ|=0.28
+B_P252_H185_s47_wf th=60 p: |t|^2=0.619 ladder=0.439 |ED|=2.31 |MD|=2.15 |EQ|=0.21
+B_P252_H185_s47_wf th=60 s: |t|^2=0.041 ladder=0.079 |ED|=0.83 |MD|=0.39 |EQ|=0.23
+B_P252_H185_s47_wf th=75 p: |t|^2=0.502 ladder=0.443 |ED|=1.38 |MD|=0.29 |EQ|=0.18
+B_P252_H185_s47_wf th=75 s: |t|^2=0.147 ladder=0.176 |ED|=0.60 |MD|=0.22 |EQ|=0.16
+WF_ARGAND_DONE
