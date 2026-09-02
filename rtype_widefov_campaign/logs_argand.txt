@@ -2,3 +2,12 @@
     f'.2f} |EQ|={abs(pieces["EQ"]):.2f}', flush=True)
                                         ^
 SyntaxError: f-string: expecting '}'
+A_P239_H200_s11_wf th=0 p: |t|^2=0.067 ladder=0.148 |ED|=0.45 |MD|=0.65 |EQ|=0.22
+A_P239_H200_s11_wf th=0 s: |t|^2=0.511 ladder=0.447 |ED|=0.34 |MD|=0.71 |EQ|=0.12
+A_P239_H200_s11_wf th=30 p: |t|^2=0.022 ladder=0.203 |ED|=0.56 |MD|=0.48 |EQ|=0.26
+A_P239_H200_s11_wf th=30 s: |t|^2=0.508 ladder=0.477 |ED|=0.33 |MD|=0.80 |EQ|=0.14
+A_P239_H200_s11_wf th=60 p: |t|^2=0.205 ladder=0.058 |ED|=0.89 |MD|=0.04 |EQ|=0.16
+A_P239_H200_s11_wf th=60 s: |t|^2=0.458 ladder=0.470 |ED|=0.24 |MD|=1.03 |EQ|=0.18
+A_P239_H200_s11_wf th=75 p: |t|^2=0.144 ladder=0.005 |ED|=0.79 |MD|=0.15 |EQ|=0.10
+A_P239_H200_s11_wf th=75 s: |t|^2=0.334 ladder=0.350 |ED|=0.15 |MD|=1.04 |EQ|=0.17
+WF_ARGAND_DONE
