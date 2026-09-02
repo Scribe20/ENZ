@@ -1,1 +1,18 @@
 A_P239_H170_s11_wf: warm start (A_P239_H170_s11_wf)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:73: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+A_P239_H170_s11_wf it9 L=+0.0601 pool: mean=0.310 min=0.144 omega=0.302 worst=(60,0) {'f_ED_x': 0.5629274610440165, 'f_EQ_x': 0.02023241880762902, 'f_MD_y': 0.5787754476311285}
+A_P239_H170_s11_wf it19 L=+0.0180 pool: mean=0.331 min=0.137 omega=0.320 worst=(60,0) {'f_ED_x': 0.5755065592435923, 'f_EQ_x': 0.02141752014919989, 'f_MD_y': 0.6169796464362561}
+A_P239_H170_s11_wf it29 L=-0.0506 pool: mean=0.326 min=0.148 omega=0.314 worst=(60,0) {'f_ED_x': 0.5787101274991965, 'f_EQ_x': 0.022267409683983608, 'f_MD_y': 0.6304762040809582}
+A_P239_H170_s11_wf it39 L=-0.0675 pool: mean=0.338 min=0.152 omega=0.325 worst=(60,0) {'f_ED_x': 0.5756914937651736, 'f_EQ_x': 0.022286365225204437, 'f_MD_y': 0.6590145719583905}
+A_P239_H170_s11_wf: DONE Rc0=0.332 pool mean=0.344 min=0.144 omega=0.331 co=0.110 (2800s)
+B_P239_H170_s11_wf: warm start (B_P239_H170_s11_wf)
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:135: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+B_P239_H170_s11_wf it9 L=+0.0988 pool: mean=0.264 min=0.135 omega=0.266 worst=(60,90) {}
+B_P239_H170_s11_wf it19 L=-0.0562 pool: mean=0.308 min=0.092 omega=0.304 worst=(60,90) {}
+B_P239_H170_s11_wf it29 L=+0.0959 pool: mean=0.314 min=0.094 omega=0.308 worst=(60,90) {}
+B_P239_H170_s11_wf it39 L=-0.0512 pool: mean=0.348 min=0.073 omega=0.336 worst=(60,90) {}
+B_P239_H170_s11_wf: DONE Rc0=0.326 pool mean=0.357 min=0.083 omega=0.344 co=0.075 (1424s)
