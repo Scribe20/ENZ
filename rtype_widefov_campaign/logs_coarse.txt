@@ -1,0 +1,24 @@
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:126: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:126: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  Rcs = [float(s['Rc']) for s in scores]
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+/home/user/ENZ/rtype_widefov_campaign/wf_optimize.py:69: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  return 0.6 * pen, {'f_ED_x': float(fx['f_ED']),
+B_P226_H140_s11_wf it9 L=+0.2424 pool: mean=0.201 min=0.000 omega=0.228 worst=(15,90) {}
+B_P226_H170_s11_wf it9 L=+0.1872 pool: mean=0.278 min=0.001 omega=0.333 worst=(0,0) {}
+A_P226_H140_s11_wf it9 L=+0.2254 pool: mean=0.204 min=0.106 omega=0.212 worst=(0,0) {'f_ED_x': 0.4994539868095678, 'f_EQ_x': 0.00191620257915329, 'f_MD_y': 0.514455837518381}
+A_P226_H170_s11_wf it9 L=+0.1755 pool: mean=0.253 min=0.010 omega=0.267 worst=(45,90) {'f_ED_x': 0.5371945806936347, 'f_EQ_x': 0.01527506147965638, 'f_MD_y': 0.5808310363368662}
+B_P226_H140_s11_wf it19 L=+0.3052 pool: mean=0.210 min=0.000 omega=0.241 worst=(15,90) {}
+B_P226_H170_s11_wf it19 L=+0.2665 pool: mean=0.279 min=0.000 omega=0.335 worst=(0,0) {}
+B_P226_H140_s11_wf it29 L=+0.2515 pool: mean=0.216 min=0.000 omega=0.249 worst=(0,0) {}
+B_P226_H170_s11_wf it29 L=+0.2423 pool: mean=0.279 min=0.001 omega=0.335 worst=(15,0) {}
+A_P226_H140_s11_wf it19 L=+0.1967 pool: mean=0.237 min=0.106 omega=0.246 worst=(60,0) {'f_ED_x': 0.5027191577961706, 'f_EQ_x': 0.002059682989091801, 'f_MD_y': 0.5091053865931742}
+A_P226_H170_s11_wf it19 L=+0.1747 pool: mean=0.263 min=0.023 omega=0.273 worst=(45,90) {'f_ED_x': 0.5408546054237607, 'f_EQ_x': 0.017014310230106473, 'f_MD_y': 0.5911577850956818}
+B_P226_H140_s11_wf it39 L=+0.2487 pool: mean=0.228 min=0.000 omega=0.265 worst=(0,0) {}
+B_P226_H170_s11_wf it39 L=+0.2405 pool: mean=0.284 min=0.000 omega=0.341 worst=(15,0) {}

@@ -71,7 +71,7 @@ def mode_penalty(rho_bar, P, H):
                        'f_MD_y': float(fy['f_MD'])}
 
 
-def run(method, P, H, seed, iters, stage):
+def run(method, P, H, seed, iters, stage, src_tag=None):
     tag = f'{method}_P{P:.0f}_H{H:.0f}_s{seed}_wf'
     outdir = wf.HERE / stage / tag
     outdir.mkdir(parents=True, exist_ok=True)
@@ -79,6 +79,8 @@ def run(method, P, H, seed, iters, stage):
     if final_p.exists():
         print(f'{tag}: already complete', flush=True)
         return
+    order_opt = (9, 9) if stage == 'refinement' else ORDER_OPT
+    order_pool = (7, 7) if stage == 'refinement' else ORDER_POOL
     n_grid = 96
     mask = rc.design_mask(n_grid, P)
     kern = rc.conic_filter_kernel(n_grid, P, 15.0)
@@ -93,11 +95,14 @@ def run(method, P, H, seed, iters, stage):
         worst = [tuple(w) for w in z['worst']] if len(z['worst']) else []
         pool_rows = list(z['pool']) if 'pool' in z else []
         print(f'{tag}: resume at iter {it0}', flush=True)
-    elif (outdir / 'warm.npy').exists():
+    elif (outdir / 'warm.npy').exists() or src_tag:
+        if not (outdir / 'warm.npy').exists():
+            src = wf.HERE / 'coarse' / src_tag / 'checkpoint.npz'
+            np.save(outdir / 'warm.npy', np.load(src)['x'])
         x = torch.tensor(np.load(outdir / 'warm.npy')).clone() \
             .requires_grad_(True)
         it0, hist = 0, []
-        print(f'{tag}: warm start', flush=True)
+        print(f'{tag}: warm start ({src_tag})', flush=True)
     else:
         x = seed_latent(method, P, H, seed, n_grid)
         it0, hist = 0, []
@@ -111,7 +116,7 @@ def run(method, P, H, seed, iters, stage):
         batch = wf.minibatch(it, iters, seed, worst)
         scores, R0 = [], None
         for th, ph in batch:
-            R, T = wf.jones_angle(rho_bar, P, H, th, ph, order=ORDER_OPT)
+            R, T = wf.jones_angle(rho_bar, P, H, th, ph, order=order_opt)
             scores.append(wf.angle_scores(R, T))
             if th == 0.0 and R0 is None:
                 R0 = R
@@ -132,7 +137,7 @@ def run(method, P, H, seed, iters, stage):
                 rho_e = rc.filt_project(torch.sigmoid(x), kern, beta,
                                         mask=mask)
                 rows, worst = wf.full_pool_eval(rho_e, P, H,
-                                                order=ORDER_POOL)
+                                                order=order_pool)
             ps = wf.pool_summary(rows)
             binar = float((2 * rho_e - 1).abs().mean())
             pool_rows.append([it, ps['Rc_mean'], ps['Rc_min'],
@@ -168,7 +173,7 @@ def run(method, P, H, seed, iters, stage):
     fm = fab_metrics(b, P)
     np.save(outdir / 'rho_binary.npy', rho_bin.numpy())
     rec = {'tag': tag, 'method': method, 'P': P, 'H': H, 'seed': seed,
-           'iters': iters, 'n_grid': n_grid, 'order_opt': ORDER_OPT[0],
+           'iters': iters, 'n_grid': n_grid, 'order_opt': order_opt[0],
            'order_final': ORDER_FINAL[0], 'stage': stage,
            'padding_nm': rc.padding(P), 'design_radius_nm': rc.r_design(P),
            'runtime_s': time.time() - t_start,
@@ -206,4 +211,5 @@ def run(method, P, H, seed, iters, stage):
 if __name__ == '__main__':
     torch.set_num_threads(1)
     run(sys.argv[1], float(sys.argv[2]), float(sys.argv[3]),
-        int(sys.argv[4]), int(sys.argv[5]), sys.argv[6])
+        int(sys.argv[4]), int(sys.argv[5]), sys.argv[6],
+        sys.argv[7] if len(sys.argv) > 7 else None)
