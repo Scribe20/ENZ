@@ -1,0 +1,10 @@
+rectangle th=0: slope=-1.991 rms=1.8 deg Rc range 0.224-0.231
+rectangle th=30: slope=-2.050 rms=7.5 deg Rc range 0.224-0.276
+rectangle th=60: slope=-2.427 rms=42.4 deg Rc range 0.098-0.309
+rectangle th=75: slope=+0.049 rms=8.1 deg Rc range 0.275-0.557
+PBROT_DONE rectangle
+A_P239_H200_s11_wf th=0: slope=-1.991 rms=1.9 deg Rc range 0.304-0.314
+A_P239_H200_s11_wf th=30: slope=-2.055 rms=11.9 deg Rc range 0.331-0.373
+A_P239_H200_s11_wf th=60: slope=-2.399 rms=41.7 deg Rc range 0.262-0.388
+A_P239_H200_s11_wf th=75: slope=+0.095 rms=12.6 deg Rc range 0.304-0.605
+PBROT_DONE A_P239_H200_s11_wf

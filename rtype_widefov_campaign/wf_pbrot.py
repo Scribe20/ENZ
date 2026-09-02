@@ -19,7 +19,7 @@ import rt_core as rc
 from wf_anglemap import load_geometry
 
 R = wf.HERE / 'results'
-THETAS = [0.0, 30.0, 60.0, 75.0]
+THETAS = [0.0, 30.0, 45.0, 60.0, 75.0]
 
 
 def analyze(name):
@@ -28,15 +28,15 @@ def analyze(name):
     done = set()
     if out.exists():
         with open(out) as f:
-            done = {r['tag'] for r in csv.DictReader(f)}
-    if name in done:
-        print(f'{name}: pb rotation already done', flush=True)
-        return
+            done = {(r['tag'], float(r['theta'])) for r in
+                    csv.DictReader(f)}
     rows = []
     n = rho.shape[0]
     ax = (np.arange(n) + 0.5) / n * P - P / 2
     X, Y = np.meshgrid(ax, ax, indexing='ij')
     for th in THETAS:
+        if (name, float(th)) in done:
+            continue
         recs = []
         for al in range(0, 181, 15):
             rr = ndi.rotate(rho.numpy(), al, reshape=False, order=0,

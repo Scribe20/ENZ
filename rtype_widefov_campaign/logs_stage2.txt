@@ -356,3 +356,4 @@ Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pyto
 B_P252_H185_s47_wf it9 L=+0.0165 pool: mean=0.357 min=0.005 omega=0.359 worst=(45,0) {}
 B_P252_H185_s47_wf it19 L=-0.0494 pool: mean=0.387 min=0.048 omega=0.366 worst=(45,0) {}
 B_P252_H185_s47_wf it29 L=-0.0033 pool: mean=0.370 min=0.109 omega=0.342 worst=(60,0) {}
+B_P252_H185_s47_wf it39 L=-0.0294 pool: mean=0.388 min=0.171 omega=0.357 worst=(60,0) {}
