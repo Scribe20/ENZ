@@ -1,0 +1,10 @@
+champ585 fab bias=-11.6 dH=+0: F=0.007 T=0.853 co=0.066
+champ585 fab bias=-5.8 dH=+0: F=0.278 T=0.340 co=0.155
+champ585 fab bias=+0.0 dH=-10: F=0.560 T=0.008 co=0.047
+champ585 fab bias=+0.0 dH=-5: F=0.579 T=0.007 co=0.018
+champ585 fab bias=+0.0 dH=+0: F=0.585 T=0.010 co=0.006
+champ585 fab bias=+0.0 dH=+5: F=0.581 T=0.016 co=0.008
+champ585 fab bias=+0.0 dH=+10: F=0.569 T=0.022 co=0.019
+champ585 fab bias=+5.8 dH=+0: F=0.417 T=0.183 co=0.036
+champ585 fab bias=+11.6 dH=+0: F=0.185 T=0.424 co=0.177
+QUALIFY_DONE champ585

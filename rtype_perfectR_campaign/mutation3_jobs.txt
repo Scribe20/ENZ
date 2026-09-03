@@ -1,0 +1,3 @@
+D2 278 230 mut21:/home/user/ENZ/rtype_perfectR_campaign/mutation/D2_P278_H230_mut16~-home-f5edc735/rho_binary.npy 110 mutation
+D2 278 230 mut22:/home/user/ENZ/rtype_perfectR_campaign/mutation/D2_P278_H230_mut16~-home-f5edc735/rho_binary.npy 110 mutation
+D2 278 230 mut23:/home/user/ENZ/rtype_perfectR_campaign/mutation/D2_P278_H230_mut16~-home-f5edc735/rho_binary.npy 110 mutation
