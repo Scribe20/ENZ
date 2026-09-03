@@ -290,3 +290,46 @@ NOT a high-Q needle; 633 nm sits on the rising flank of a broad
 resonance whose peak is slightly red of the design wavelength. Both
 labels of sec 32 therefore coincide: the practical broadband champion
 IS the peak-R physics champion of this basin.
+
+## 11. Stage III - device PB range 0-55 deg with physical-rotation states in the loss (secs 23-25)
+
+The Stage-II leader (mut1 lineage) was continued on the pool theta =
+{0,15,30,40,50,55} x phi = {0,45,90} with, in the second half, the
+motif physically rotated by alpha = {30,60,90} at theta = {0,30,45,50}
+and scored against the rotated ideal operator U_alpha; multi-failure
+mining oversampled the worst F, largest T, largest R_co and worst
+rotated state. Frozen hard-binary result (continuation/, cont55):
+
+| theta (deg) | F min / mean (static, over phi) | T max | co max |
+|---|---|---|---|
+| 0 | 0.518 / 0.518 | 0.100 | 0.013 |
+| 15 | 0.406 / 0.473 | 0.081 | 0.019 |
+| 30 | 0.193 / 0.318 | 0.171 | 0.110 |
+| 40 | 0.193 / 0.285 | 0.124 | 0.208 |
+| 50 | 0.115 / 0.235 | 0.118 | 0.300 |
+| 55 (challenge) | 0.011 / 0.174 | 0.114 | 0.404 |
+
+Rotated-operator fidelity F(U_alpha) of the same geometry:
+
+| theta | alpha = 30 | 60 | 90 |
+|---|---|---|---|
+| 0 | 0.513 | 0.512 | 0.518 |
+| 30 | 0.157 | 0.326 | 0.506 |
+| 45 | 0.142 | 0.211 | 0.426 |
+| 50 | 0.113 | 0.179 | 0.402 |
+
+Reading: at normal incidence the rotated fidelity is flat in alpha
+(0.51-0.52) - the PB law is exact, as it must be for a D2 motif. Off
+axis the fidelity becomes strongly ORIENTATION-DEPENDENT: a motif
+rotated 90 deg relative to the incidence plane keeps 0.40-0.51 up to
+50 deg, but rotated 30 deg it drops to 0.11-0.16 by 30-50 deg. In a
+metalens every orientation occurs, so the usable figure is the minimum
+over alpha: ~0.5 at 0 deg, ~0.16 at 30 deg, ~0.11 at 50 deg, ~0 at 55.
+Co-pol leakage grows to 0.30-0.40 at 50-55 deg while T stays <= 0.17.
+This is the SAME phenomenology the wide-FOV campaign measured for the
+paper rectangle and its dipolar champions (PB law clean to 30, marginal
+at 45, gone by 60-75): the ideal-operator states, being phase-critical
+resonant states, follow the same curve from a higher starting point.
+Angle-aware optimization with rotation states in the loss did not move
+that boundary; it only preserved F0 (0.565 vs 0.615 for the theta0
+version) while flattening the 0-15 deg region.

@@ -30,3 +30,4 @@ mut1_615 o13: F=0.6099 T=0.0210 co=0.0035 evR=(0.153+0.724j,-0.255-0.783j)
 mut1_615 o15: F=0.6061 T=0.0260 co=0.0030 evR=(0.184+0.710j,-0.269-0.779j)
 QUALIFY_DONE mut1_615
 mut22_651 eigen: |ev|=0.840,0.785 dphi_eig=193.3 (err 13.3) axes 0.0/90.0 ellip 0.00/0.00
+mut22_651 spectra: F(633)=0.651 peak=0.690@645.0 half-max band ~620-645 nm (within scan)
