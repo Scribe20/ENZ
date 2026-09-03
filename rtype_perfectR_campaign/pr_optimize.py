@@ -30,6 +30,8 @@ from scipy.ndimage import label, binary_erosion
 import pr_core as pr
 import rt_core as rc
 
+ROBUST = os.environ.get('PR_ROBUST', '0') == '1'
+
 
 def resize96(a):
     n = a.shape[0]
@@ -168,11 +170,28 @@ def run(branch, P, H, seedspec, iters, stage, lossless=False):
     for it in range(it0, iters):
         frac = it / iters
         beta = [b for f, b in betas if frac >= f][-1]
-        rho = pr.filt_project(torch.sigmoid(x), kern, beta, mask, branch)
-        Rj, Tj = pr.jones_theta0(rho, P, H, order_opt, eps)
-        m = pr.port_metrics(Rj, Tj)
         capT, capCo = caps_for(frac, stage)
-        L = pr.pr_loss(m, frac, lamT, lamCo, capT, capCo, branch)
+        if ROBUST:
+            # erosion/dilation-robust formulation (spec sec 13): the
+            # eroded (eta=0.65), nominal (0.5) and dilated (0.35)
+            # projections are optimized jointly; the worst one dominates
+            Ls, ms = [], []
+            for eta in (0.35, 0.5, 0.65):
+                rho_e = pr.filt_project(torch.sigmoid(x), kern, beta, mask,
+                                        branch, eta=eta)
+                Rj, Tj = pr.jones_theta0(rho_e, P, H, order_opt, eps)
+                m_e = pr.port_metrics(Rj, Tj)
+                Ls.append(pr.pr_loss(m_e, frac, lamT, lamCo, capT, capCo,
+                                     branch))
+                ms.append(m_e)
+            Lst = torch.stack(Ls)
+            L = Lst.mean() + 0.5 * torch.logsumexp(4.0 * Lst, 0) / 4.0
+            m = ms[1]
+        else:
+            rho = pr.filt_project(torch.sigmoid(x), kern, beta, mask, branch)
+            Rj, Tj = pr.jones_theta0(rho, P, H, order_opt, eps)
+            m = pr.port_metrics(Rj, Tj)
+            L = pr.pr_loss(m, frac, lamT, lamCo, capT, capCo, branch)
         opt.zero_grad()
         L.backward()
         opt.step()
@@ -196,6 +215,15 @@ def run(branch, P, H, seedspec, iters, stage, lossless=False):
         rho_bin = torch.tensor(b.astype(np.float32)) * mask
         b = rho_bin.numpy() > 0.5
     mfin = pr.eval_full(rho_bin, P, H, order=(9, 9), eps_override=eps)
+    if ROBUST:
+        with torch.no_grad():
+            for nm, eta in (('eroded', 0.65), ('dilated', 0.35)):
+                r_e = pr.filt_project(torch.sigmoid(x), kern, 16.0, mask,
+                                      branch, eta=eta)
+                b_e = torch.tensor((r_e.numpy() > 0.5).astype(np.float32)) * mask
+                me = pr.eval_full(b_e, P, H, order=(9, 9), eps_override=eps)
+                mfin[f'F_{nm}'] = me['F']
+                mfin[f'T_{nm}'] = me['T']
     fm = fab_metrics(b, P)
     np.save(outdir / 'rho_binary.npy', rho_bin.numpy())
     rec = {'tag': tag, 'branch': branch, 'P': P, 'H': H,
