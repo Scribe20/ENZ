@@ -4,3 +4,29 @@ Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pyto
 D2_P278_H230_mut1~-home-ub39c580f it0 F=0.298 T=0.116 co=0.205 A=0.382 lam=(2.0,2.0)
 D2_P278_H230_mut1~-home-ub39c580f it30 F=0.508 T=0.038 co=0.009 A=0.445 lam=(2.0,2.0)
 D2_P278_H230_mut1~-home-ub39c580f it60 F=0.581 T=0.002 co=0.002 A=0.414 lam=(2.0,2.0)
+D2_P278_H230_mut1~-home-ub39c580f it90 F=0.604 T=0.006 co=0.004 A=0.385 lam=(2.0,2.0)
+D2_P278_H230_mut1~-home-ub39c580f: DONE F=0.615 Rc=0.615 T=0.008 co=0.005 A=0.372 err=9 isl=1 (194s)
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:198: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),
+D2_P278_H230_mut2~-home-uf7a255ca it0 F=0.470 T=0.075 co=0.022 A=0.434 lam=(2.0,2.0)
+D2_P278_H230_mut2~-home-uf7a255ca it30 F=0.560 T=0.006 co=0.003 A=0.432 lam=(2.0,2.0)
+D2_P278_H230_mut2~-home-uf7a255ca it60 F=0.599 T=0.002 co=0.008 A=0.391 lam=(2.0,2.0)
+D2_P278_H230_mut2~-home-uf7a255ca it90 F=0.621 T=0.007 co=0.007 A=0.365 lam=(2.0,2.0)
+D2_P278_H230_mut2~-home-uf7a255ca: DONE F=0.631 Rc=0.631 T=0.012 co=0.016 A=0.341 err=18 isl=1 (194s)
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:198: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),
+D2_P278_H230_mut3~-home-ua70ae860 it0 F=0.446 T=0.034 co=0.042 A=0.477 lam=(2.0,2.0)
+D2_P278_H230_mut3~-home-ua70ae860 it30 F=0.545 T=0.011 co=0.003 A=0.442 lam=(2.0,2.0)
+D2_P278_H230_mut3~-home-ua70ae860 it60 F=0.587 T=0.001 co=0.007 A=0.405 lam=(2.0,2.0)
+D2_P278_H230_mut3~-home-ua70ae860 it90 F=0.604 T=0.005 co=0.006 A=0.384 lam=(2.0,2.0)
+D2_P278_H230_mut3~-home-ua70ae860: DONE F=0.610 Rc=0.610 T=0.012 co=0.008 A=0.370 err=12 isl=1 (193s)
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:198: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),
+D2_P272_H230_mut4~-home-u2538a30c it0 F=0.503 T=0.011 co=0.031 A=0.455 lam=(2.0,2.0)
+D2_P272_H230_mut4~-home-u2538a30c it30 F=0.578 T=0.001 co=0.002 A=0.419 lam=(2.0,2.0)
+D2_P272_H230_mut4~-home-u2538a30c it60 F=0.613 T=0.002 co=0.006 A=0.379 lam=(2.0,2.0)
+D2_P272_H230_mut4~-home-u2538a30c it90 F=0.634 T=0.004 co=0.006 A=0.356 lam=(2.0,2.0)
+D2_P272_H230_mut4~-home-u2538a30c: DONE F=0.639 Rc=0.639 T=0.010 co=0.016 A=0.335 err=18 isl=1 (193s)
