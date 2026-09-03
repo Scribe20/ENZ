@@ -378,15 +378,26 @@ yes to 50 deg; in amplitude/fidelity, only to ~15-20 deg at the
 
 ## 13. Footprint diagnostic update (sec 16)
 
-Large-P normal-incidence runs (ceiling_largeP/, [9,9] optimization,
-NOT device candidates): P300/H170 best 0.605 (A 0.375); P330/H170 best
-0.636 (5 islands, A 0.327). Relaxing the footprint from 278 to 330 nm
-buys ~+0.10 at fixed H but the absorbed fraction stays 0.33-0.38 - the
-large-P states hit the same wall as the device-grid states, at a level
-still far below the lossless 0.985. (P400 and H230 rows are appended
-to results/ceiling_largeP_ledger.csv as they complete; none can change
-the category because absorption, not footprint, is what the lossless
-comparison isolates.)
+Large-P normal-incidence runs (ceiling_largeP/, 11 runs, [9,9]
+optimization, NOT device candidates), best F per point:
+
+| P (nm) | H = 170 | H = 230 | best state |
+|---|---|---|---|
+| 278 (device grid) | 0.535 | 0.585 | single island, A 0.40 |
+| 300 | 0.605 | - | 3 islands, A 0.375 |
+| 330 | 0.636 | 0.624 | 5 / 3 islands (17-24-nm slivers), A 0.33-0.34 |
+| 400 | **0.677** | 0.518 | single island, 104-nm Si, 4-nm gap, A 0.316, err 0 deg |
+
+Relaxing the footprint from 278 to 400 nm buys +0.09 of F at fixed
+H = 170 (and the P400 state is the cleanest half-wave of the campaign:
+co = 0.000, phase error 0.03 deg, T = 0.007) - but its absorbed
+fraction is still 0.32, i.e. the large-P states hit the same wall as
+the device-grid states at a level far below the lossless 0.985.
+Footprint is a secondary lever (a larger cell stores the resonant
+energy in more silicon per unit incident power, which trims A from
+0.40 to 0.32); absorption remains the ceiling. These P >= 300 states
+open glass-side diffraction at 43-65 deg incidence and are not
+360-metalens candidates.
 
 ## 14. The 30 required answers (sec 38)
 
