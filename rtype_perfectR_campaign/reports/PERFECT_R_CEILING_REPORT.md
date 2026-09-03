@@ -340,3 +340,38 @@ binary): F = 0.588 nominal; 0.432 / 0.397 at -5.8 / +5.8 nm;
 the Stage-I champion (0.278 / 0.417 at +-5.8 nm) the robust objective
 did buy real erosion tolerance (+0.15 at -5.8 nm) at the same nominal
 F - the +-6 nm lateral criticality is softened, not removed.
+
+## 12. Raw-best qualification (mut22, F 0.651) and the physical-rotation law (secs 24, 32-34)
+
+mut22 (D2 P278/H230, 2.9-nm sliver, edge-riding): convergence orders
+9/11/13/15 -> F 0.651/0.640/0.636/0.631, T 0.012/0.026/0.031/0.039,
+closure 1.000; spectrum F(633) = 0.651, peak 0.690 at 645 nm, whole
+620-645 scan above half-maximum (broadband, like mut1); bias
+sensitivity F = 0.499 / 0.304 at -5.8 / +5.8 nm, 0.213 / 0.159 at
++-11.6 nm; height +-10 nm: 0.620-0.658. Same signature as every other
+leader: height-benign, laterally critical, order-stable to ~0.02.
+
+Physical-rotation PB law (alpha = 0..180 in 15-deg steps, phi = 0,
+[9,9]), Stage-III device leader:
+
+| theta | fitted slope (ideal -2) | rms (deg) | F(U_alpha) min / mean | R_cross range over alpha |
+|---|---|---|---|---|
+| 0 | -2.003 | 8.6 | 0.541 / 0.555 | 0.541-0.565 |
+| 30 | -2.035 | 15.2 | 0.172 / 0.283 | 0.207-0.546 |
+| 45 | -2.150 | 14.5 | 0.147 / 0.222 | 0.166-0.451 |
+| 50 | -2.144 | 15.3 | 0.097 / 0.177 | 0.100-0.425 |
+
+robust588 at theta = 0: slope -1.979, rms 8.1, F(U_alpha) 0.545-0.575
+(oblique rows appended in results/pb_matrix_fidelity.csv).
+
+Reading: the geometric-phase SLOPE stays within 7% of -2 up to 50 deg
+for this state (better than the dipolar wide-FOV champions, whose
+slope broke at 60 deg), so the phase law itself is not what fails first
+here. What fails is the OPERATOR FIDELITY under rotation: the
+cross-circular amplitude becomes strongly orientation-dependent off
+axis (R_cross 0.21-0.55 at 30 deg, 0.10-0.43 at 50 deg), so the
+worst-orientation fidelity falls to 0.17 (30 deg) and 0.10 (50 deg).
+For a 360-deg metalens the worst orientation is the binding figure.
+Answer to "does its physical rotation obey the PB law?": in phase,
+yes to 50 deg; in amplitude/fidelity, only to ~15-20 deg at the
+> 0.4 level.
