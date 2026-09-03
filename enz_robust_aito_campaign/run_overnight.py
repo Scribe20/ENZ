@@ -63,7 +63,8 @@ def step(name, cmd, cwd):
 
 def wait_for_jobs():
     while True:
-        out = sh("pgrep -f 'target_audit.py|stage_a_decompose.py' || true")
+        # bracketed first letters so the pgrep shell itself never matches
+        out = sh("pgrep -f '[t]arget_audit\\.py|[s]tage_a_decompose\\.py' || true")
         pids = [p for p in out.split() if p.strip()]
         if not pids:
             return
