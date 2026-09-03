@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/user/ENZ/rtype_perfectR_campaign/pr_figs.py", line 197, in <module>
+    main(sys.argv[1:])
+  File "/home/user/ENZ/rtype_perfectR_campaign/pr_figs.py", line 191, in main
+    fig7([(f[0], f[1], float(f[2]), float(f[3]))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ENZ/rtype_perfectR_campaign/pr_figs.py", line 191, in <listcomp>
+    fig7([(f[0], f[1], float(f[2]), float(f[3]))
+                 ~^^^
+IndexError: list index out of range
