@@ -142,13 +142,13 @@ def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
     # auxiliary wavelengths for the ito_absorption resonance surrogate
     aux_wavelengths = []
     if getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_absorption":
-        W = lam / config.Q_MIN
-        for lam_s in (lam - W / 2, lam + W / 2):
+        D = config.RES_DELTA_NM
+        for lam_s in (lam - D, lam + D):
             aux_wavelengths.append((lam_s, fwd.eps_ito_of_lambda(lam_s),
                                     fwd.eps_asi_of_lambda(lam_s)))
-        print(f"[objective] ito_absorption: A_ITO(lambda_E) with Q >= "
-              f"{config.Q_MIN} surrogate at lambda_E +/- {W/2:.1f} nm, "
-              f"penalty mu = {config.PENALTY_MU}")
+        print(f"[objective] ito_absorption: maximize A_ITO(lambda_E) s.t. "
+              f"contrast C(D={D:.0f} nm) >= {config.C_MIN} and peak within "
+              f"+/-{D:.0f} nm; penalty mu = {config.PENALTY_MU} (relu^2)")
 
     def forward_F(rho_proj, want_diags=False):
         sim = fwd.build_solved_sim(rho_proj, lam, eps_ito, config.N_GLASS)
@@ -164,15 +164,19 @@ def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
             # only lossy layer, so 1-R-T is exactly the ITO absorption.
             R_E, T_E = fwd.specular_RT(sim)
             A_E = 1.0 - R_E - T_E
-            pen = torch.zeros((), dtype=A_E.dtype, device=A_E.device)
+            A_side = []
             for lam_s, eps_i_s, eps_a_s in aux_wavelengths:
                 sim_s = fwd.build_solved_sim(rho_proj, lam_s, eps_i_s,
                                              config.N_GLASS, eps_asi=eps_a_s)
                 R_s, T_s = fwd.specular_RT(sim_s)
-                A_s = 1.0 - R_s - T_s
-                pen = pen + torch.clamp(A_s / A_E - 0.5, min=0.0) ** 2
+                A_side.append(1.0 - R_s - T_s)
+            C = (A_E - 0.5 * (A_side[0] + A_side[1])) / A_E
+            pen = torch.clamp(config.C_MIN - C, min=0.0) ** 2
+            for A_s in A_side:                      # peak within +/- D
+                pen = pen + torch.clamp((A_s - A_E) / A_E, min=0.0) ** 2
             F = A_E - config.PENALTY_MU * pen
             diags["A_E"] = float(A_E)
+            diags["contrast_C"] = float(C)
             diags["penalty"] = float(pen)
             diags["F_qnm_diag"] = float(F_qnm)
         elif getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_ez_volume":

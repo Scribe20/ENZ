@@ -1,0 +1,15 @@
+{
+ "objective": "maximize A_ITO(lambda_E) = 1-R-T (identity: ITO is the only lossy layer; cross-validated against the volume integral above)",
+ "lambda_E_nm": 1433.488144390721,
+ "eps_ito_at_lambda_E": [
+  -0.07424989012321415,
+  0.7014284101165421
+ ],
+ "Q_min": 5.0,
+ "W_nm": null,
+ "Delta_lambda_allowed_nm": 80.0,
+ "constraint_surrogate": "baseline-aware contrast C(D=80nm) = [A(lamE) - (A(lamE-80)+A(lamE+80))/2]/A(lamE) >= C_MIN=0.075 (calibrated on trusted ENZ-resonant references; bare ITO gives ~0) plus A(lamE) >= A(lamE +/- 80) (peak within +/-80 nm)",
+ "penalty_form": "loss = -A(lamE) + mu*[relu(C_MIN - C)^2 + sum_pm relu((A_pm - A_E)/A_E)^2], mu = 100; sensitivity {30,100,300} on the final candidate only",
+ "final_Q_verification": "AAA pole of driven response + fine A(lambda) FWHM (surrogate is in-loop only)",
+ "rejected_first_draft": "half-maximum test at lamE +/- lamE/(2*Q_min) = +/-143 nm: fails every ENZ-resonant reference (0.15 non-resonant baseline; blue point hits the off-target ~1300 nm Si resonance of the padded class)"
+}

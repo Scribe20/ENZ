@@ -1,0 +1,25 @@
+[target] loaded /home/user/ENZ/enz_target/target_enz_mode_periodic_850_g10.npz
+[target] keys: ['Ex', 'Ez', 'Hy', 'K_imag_per_nm', 'K_note', 'K_real_per_nm', 'drude_fit_eps_inf_wp_gamma', 'eps_air', 'eps_ito_imag', 'eps_ito_pole_imag', 'eps_ito_pole_real', 'eps_ito_real', 'field_units', 'glass_index', 'glass_index_is_paper_value', 'harmonic_order', 'ito_thickness_nm', 'ito_z_range_nm', 'k0_per_nm', 'kz_air_per_nm', 'kz_glass_per_nm', 'kz_ito_per_nm', 'normalization', 'omega_pole_rad_per_fs_imag', 'omega_pole_rad_per_fs_real', 'omega_rad_per_s', 'period_nm', 'pole_Q', 'pole_residual', 'time_convention', 'wavelength_nm', 'z_nm']
+[target] lambda = 1433.49 nm, K/k0 = 1.6865+0.0000j, d_ITO = 23.0 nm, n_glass = 1.4446
+[target] eps_ITO = -0.0742 + 0.7014i, normalization = integral_ITO_abs_Ez_squared_dz_equals_1_z_in_nm
+[bare ITO (no metasurface)] A_ITO(volume) = 0.0449, A_ITO(1-R-T) = 0.0449 (identity residual 1.7e-06); F_Ez = 0.000, eta_z = 0.000
+    A(lambda): peak 0.0575 at 1648 nm, FWHM = 168 nm, Q_spec = 9.81 [FWHM truncated by scan range]
+[EDR-like cuboid 560x500] A_ITO(volume) = 0.1987, A_ITO(1-R-T) = 0.1987 (identity residual 4.5e-05); F_Ez = 2.148, eta_z = 0.765
+    A(lambda): peak 0.2021 at 1460 nm, FWHM = 252 nm, Q_spec = 5.79 [FWHM truncated by scan range]
+[unpadded QNM winner] A_ITO(volume) = 0.2050, A_ITO(1-R-T) = 0.2050 (identity residual 4.5e-05); F_Ez = 2.321, eta_z = 0.801
+    A(lambda): peak 0.2146 at 1472 nm, FWHM = 180 nm, Q_spec = 8.18
+[padded QNM winner] A_ITO(volume) = 0.2009, A_ITO(1-R-T) = 0.2009 (identity residual 4.5e-05); F_Ez = 2.214, eta_z = 0.779
+    A(lambda): peak 0.3811 at 1300 nm, FWHM = 12 nm, Q_spec = 108.33 [FWHM truncated by scan range]
+[padded F_ENZ winner (Ez-objective)] A_ITO(volume) = 0.2078, A_ITO(1-R-T) = 0.2079 (identity residual 5.0e-05); F_Ez = 2.285, eta_z = 0.778
+    A(lambda): peak 0.3312 at 1300 nm, FWHM = 16 nm, Q_spec = 81.25 [FWHM truncated by scan range]
+[target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 144.893 nm^3, direction +x)
+[padded QNM winner] AAA pole: lambda = 1500.4 nm, Q_pole = 5.69
+[target] grid normalization: integral_ITO |Ez_t|^2 dV = 1, residual = 2.22e-16 (dV = 144.893 nm^3, direction +x)
+[padded F_ENZ winner (Ez-objective)] AAA pole: lambda = 1457.1 nm, Q_pole = 5.16
+[saved] /home/user/ENZ/enz_absorption_campaign/outputs/failure_test.json
+
+[Q_min derivation]
+  trusted resonant references: bare ENZ QNM at G10(850) Q = 5.8 (solve_periodic_target, |D|=1.6e-15); loaded hybrid ENZ pole Q = 5.04 (AAA, stability 1.5e-5); EDR-like cuboid Mie resonance Q = 39 (bare) / 52 (loaded).
+  Q_min = 5.0: an ENZ-coupled state cannot be sharper than the material-limited ENZ resonance by much (loaded ceiling ~5-6), so requiring Q >= 5 demands the full coherence of the ENZ resonance itself without forbidding ENZ loading (a Mie-only Q~39 criterion would exclude every ENZ-loaded state).
+  Delta_lambda_allowed = lambda_E/(2*Q_min) = 143 nm (= the resonance's own HWHM at Q_min: a resonance detuned beyond its half width delivers < half its peak at lambda_E; note the objective A_ITO(lambda_E) itself already penalizes detuning, so this constraint is a guard, not a driver).
+[saved] /home/user/ENZ/enz_absorption_campaign/outputs/target_definition.json

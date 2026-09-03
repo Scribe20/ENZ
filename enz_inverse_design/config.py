@@ -88,7 +88,20 @@ TARGET_DIRECTION = "bidir"   # "+x" | "-x" | "bidir"
 #                     as a normalized penalty (see PENALTY_MU).
 OBJECTIVE = "qnm_overlap"
 Q_MIN = 5.0        # from trusted refs: bare ENZ QNM Q=5.80, hybrid pole 5.04
-PENALTY_MU = 10.0  # normalized penalty weight; sensitivity {3,10,30} planned
+# In-loop resonance surrogate (calibrated on trusted references in
+# enz_absorption_campaign/target_audit.py - a raw half-maximum test fails
+# every ENZ-resonant reference because ENZ absorption sits on a ~0.15
+# non-resonant baseline):
+#   C = [A(lam_E) - (A(lam_E-D) + A(lam_E+D))/2] / A(lam_E)  >=  C_MIN
+#   A(lam_E) >= A(lam_E +/- D)   (peak within +/- D of lam_E)
+# D = 80 nm (widest window clear of the padded class's off-target ~1300 nm
+# Si resonance; ~half the ENZ HWHM); C_MIN = 0.075 = C of the validated
+# ENZ-coupled reference with the lowest pole Q (5.16 >= Q_MIN); bare ITO
+# (non-resonant) gives C ~ 0.  Final Q is verified by the AAA pole, not
+# by this surrogate.
+RES_DELTA_NM = 80.0
+C_MIN = 0.075
+PENALTY_MU = 100.0  # quadratic relu penalty; sensitivity {30,100,300} planned
 MOMENTUM_MISMATCH_MAX = 0.05   # allowed |ReK - |G|| / ReK before warning hard
 Z_SAMPLES_ITO = 7         # midpoint z-slices inside ITO for the overlap
 
