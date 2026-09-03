@@ -118,6 +118,10 @@ def fab_metrics(b, P):
             'fill': float(b.mean())}
 
 
+def ck_exists(outdir):
+    return (outdir / 'checkpoint.npz').exists()
+
+
 def caps_for(frac, stage):
     if stage.startswith('cont') or frac >= 0.8:
         return 0.10, 0.05
@@ -140,6 +144,9 @@ def run(branch, P, H, seedspec, iters, stage, lossless=False):
         return
     eps = complex(rc.EPS_ASI_633.real, 0.0) if lossless else None
     order_opt = (9, 9) if P >= 300 else (7, 7)
+    ovr = pr.HERE / 'iters_override.txt'          # budget control for
+    if ovr.exists() and not ck_exists(outdir):    # not-yet-started runs
+        iters = min(iters, int(ovr.read_text().strip()))
     n_grid = 96
     mask = pr.design_mask(n_grid, P)
     kern = rc.conic_filter_kernel(n_grid, P, 15.0)
