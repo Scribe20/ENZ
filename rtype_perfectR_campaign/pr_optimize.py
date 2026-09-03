@@ -16,6 +16,7 @@ Writes <stage>/<tag>/{checkpoint.npz,final.json,rho_binary.npy} and
 appends results/<stage>_ledger.csv.
 """
 import csv
+import os
 import hashlib
 import json
 import sys
@@ -149,7 +150,7 @@ def run(branch, P, H, seedspec, iters, stage, lossless=False):
         iters = min(iters, int(ovr.read_text().strip()))
     n_grid = 96
     mask = pr.design_mask(n_grid, P)
-    kern = rc.conic_filter_kernel(n_grid, P, 15.0)
+    kern = rc.conic_filter_kernel(n_grid, P, float(os.environ.get("PR_FILTER_NM", "15")))  # fab-robust reopt: PR_FILTER_NM=25
     ck = outdir / 'checkpoint.npz'
     lamT, lamCo = 2.0, 2.0
     if ck.exists():
