@@ -1,7 +1,2 @@
-Traceback (most recent call last):
-  File "/home/user/ENZ/rtype_perfectR_campaign/pr_leaderboard.py", line 112, in <module>
-    main()
-  File "/home/user/ENZ/rtype_perfectR_campaign/pr_leaderboard.py", line 65, in main
-    lines.append(f'- {r.tag} ({r.campaign}/{r.stage}, {r.source}): '
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: unsupported format string passed to Series.__format__
+A_P271_H185_s11_g96_o9: F0=0.527 minF(0-50)=0.002 maxT=0.501
+A_P271_H200_s11_g96_o9: F0=0.526 minF(0-50)=0.004 maxT=0.365

@@ -64,7 +64,7 @@ def main():
         for _, r in top.iterrows():
             lines.append(f'- {r.tag} ({r.campaign}/{r.stage}, {r.source}): '
                          f'{col}={r[col]:.3f} | F={r.F:.3f} Rc={r.Rcross:.3f} '
-                         f'T={r.T:.3f} co={r.co:.3f} A={r.A:.3f} '
+                         f'T={r["T"]:.3f} co={r.co:.3f} A={r.A:.3f} '
                          f'|rx|,|ry|={r.abs_rx:.2f},{r.abs_ry:.2f} '
                          f'err={r.phase_err_deg:.0f} isl={r.n_islands}')
             champs.append({'board': title, **r.to_dict()})
@@ -75,7 +75,7 @@ def main():
     ck = df[df.source != 'final'].sort_values('F', ascending=False).head(5)
     lines += ['## Checkpoint-only states (never recorded as finals)', '']
     for _, r in ck.iterrows():
-        lines.append(f'- {r.tag} [{r.source}]: F={r.F:.3f} T={r.T:.3f} '
+        lines.append(f'- {r.tag} [{r.source}]: F={r.F:.3f} T={r["T"]:.3f} '
                      f'co={r.co:.3f} A={r.A:.3f}')
     # small corrected angular set for the promising set
     prom = pd.concat([df.sort_values('F', ascending=False).head(6),
