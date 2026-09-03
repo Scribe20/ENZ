@@ -41,3 +41,4 @@ D2_P330_H170_multi7 it0 F=0.008 T=0.334 co=0.101 A=0.557 lam=(2.0,2.0)
 Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
   hist.append([it, float(L), float(m['F']), float(m['T']),
 D2_P330_H170_warm~-home-uad7868eb it0 F=0.283 T=0.334 co=0.063 A=0.320 lam=(2.0,2.0)
+D2_P300_H170_rand11: DONE F=0.541 Rc=0.541 T=0.072 co=0.015 A=0.372 err=11 isl=1 (776s)
