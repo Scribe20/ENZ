@@ -49,7 +49,10 @@ def rotated_density(x, kern, beta, mask, branch, alpha):
     """Differentiable rotation of the latent via grid_sample, then the
     usual filter/projection chain (rotation of a D2/C2 latent keeps
     the symmetric envelope; mask reapplied)."""
-    lat = torch.sigmoid(x)
+    # symmetrize BEFORE rotating (a rotated motif is no longer D2/C2-
+    # symmetric about the cell axes; symmetrizing after rotation would
+    # fold it back onto its mirror images and destroy the rotation)
+    lat = pr.symmetrize(torch.sigmoid(x), branch)
     if alpha != 0.0:
         a = math.radians(alpha)
         c, s = math.cos(a), math.sin(a)
@@ -61,7 +64,7 @@ def rotated_density(x, kern, beta, mask, branch, alpha):
                                               mode='bilinear',
                                               padding_mode='zeros',
                                               align_corners=False)[0, 0]
-    return pr.filt_project(lat, kern, beta, mask, branch)
+    return pr.filt_project(lat, kern, beta, mask, 'FULL')
 
 
 def theta0_offset(Rj):

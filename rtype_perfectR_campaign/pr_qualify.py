@@ -44,8 +44,9 @@ def eigen(rho, P, H, label, order=(9, 9)):
     for k in range(2):
         v = vec[:, k] / (np.linalg.norm(vec[:, k]) + 1e-12)
         ang = math.degrees(math.atan2(abs(v[1]), abs(v[0])))
-        ellip = abs(np.imag(v[0] * np.conj(v[1]))) / (abs(v[0]) * abs(v[1])
-                                                     + 1e-12)
+        # bounded ellipticity measure: 0 for linear, 0.5 for circular
+        ellip = abs(np.imag(np.conj(v[0]) * v[1])) / (abs(v[0]) ** 2
+                                                     + abs(v[1]) ** 2)
         rows.append({'label': label, 'k': k, 'eig_abs': abs(ev[k]),
                      'eig_phase_deg': math.degrees(np.angle(ev[k])),
                      'axis_angle_deg': ang, 'ellipticity': ellip})
