@@ -1,0 +1,4 @@
+D2 278 230 mut1:/home/user/ENZ/rtype_perfectR_campaign/ceiling_theta0/D2_P278_H230_warm~-home-ue54944fa/rho_binary.npy 110 mutation
+D2 278 230 mut2:/home/user/ENZ/rtype_perfectR_campaign/ceiling_theta0/D2_P278_H230_warm~-home-ue54944fa/rho_binary.npy 110 mutation
+D2 278 230 mut3:/home/user/ENZ/rtype_perfectR_campaign/ceiling_theta0/D2_P278_H230_warm~-home-ue54944fa/rho_binary.npy 110 mutation
+D2 272 230 mut4:/home/user/ENZ/rtype_perfectR_campaign/ceiling_theta0/D2_P272_H230_warm~-home-ue54944fa/rho_binary.npy 110 mutation
