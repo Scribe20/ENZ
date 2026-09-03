@@ -333,3 +333,10 @@ resonant states, follow the same curve from a higher starting point.
 Angle-aware optimization with rotation states in the loss did not move
 that boundary; it only preserved F0 (0.565 vs 0.615 for the theta0
 version) while flattening the 0-15 deg region.
+
+Direct bias test of the robust-optimized state (robust588, frozen
+binary): F = 0.588 nominal; 0.432 / 0.397 at -5.8 / +5.8 nm;
+0.158 / 0.236 at +-11.6 nm; 0.558-0.584 over H +-10 nm. Compared with
+the Stage-I champion (0.278 / 0.417 at +-5.8 nm) the robust objective
+did buy real erosion tolerance (+0.15 at -5.8 nm) at the same nominal
+F - the +-6 nm lateral criticality is softened, not removed.
