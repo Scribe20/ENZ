@@ -89,3 +89,55 @@ and the angular stages are reported in the sections that follow).
 diagnostic, fab-robust re-optimization, Stage II/III angular
 continuation with PB-rotation fidelity, forensics, qualification,
 30 answers, verdict)
+
+## 5. Basin hopping, multi-island and the fabrication gate (secs 11, 13, 21, 33)
+
+Controlled latent mutations (3 strengths, parent-child provenance in
+mutation/) of the two fab-valid Stage-I leaders showed the parents were
+NOT at their basin ceiling:
+
+| generation | best child | F | T | co | A | err | islands | min Si / gap / edge (nm) |
+|---|---|---|---|---|---|---|---|---|
+| parents | D2 P278/H230 | 0.585 | 0.010 | 0.006 | 0.399 | 3 | 1 | 61 / 78 / 9 |
+| gen 1 (4 runs, all beat parents) | mut4 P272/H230 | 0.639 | 0.010 | 0.016 | 0.335 | 18 | 1 | 71 / 2.8 / 1.9 |
+| gen 1, fully fab-valid | mut1 P278/H230 | **0.615** | 0.008 | 0.005 | 0.372 | 9 | 1 | 72 / 72 / 5.3 |
+| gen 2 (6 runs) | mut16 P278/H230 | **0.650** | 0.012 | 0.010 | 0.328 | 13 | 1 | 72 / 2.9 / 0.04 |
+
+Every gain came with absorption dropping (0.40 -> 0.33): the mutations
+find states that store less energy in the a-Si. The higher-F children
+carry a one-pixel (2.9 nm) air sliver and ride the rotation-safe
+envelope edge; the best FULLY fab-valid real-material state is mut1 at
+F = 0.615 (72/72 nm features, 5 nm edge clearance).
+
+Multi-island (Q10): 3-island states reach the highest raw discovery F
+(0.617-0.623) but every one carries 3-15 nm slivers, and under the
+erosion/dilation-robust objective (joint eta = 0.35/0.5/0.65) they
+collapse (0.623 -> 0.476 nominal, 0.09 dilated). Multi-island does not
+survive the fabrication gate; the fab-valid frontier is single-island.
+
+Direct fabrication-robustness test of the clean champion (spec sec 33,
+frozen binary geometry, [9,9]):
+
+| perturbation | F | T | co | phase err |
+|---|---|---|---|---|
+| nominal | 0.585 | 0.010 | 0.006 | 3 deg |
+| height -10 / -5 / +5 / +10 nm | 0.560 / 0.579 / 0.581 / 0.569 | <= 0.022 | <= 0.047 | 17-31 deg |
+| lateral bias -5.8 nm (erode) | 0.278 | 0.340 | 0.155 | 70 deg |
+| lateral bias +5.8 nm (dilate) | 0.417 | 0.183 | 0.036 | 0.4 deg |
+| lateral bias +-11.6 nm | 0.185 / 0.007 | 0.42 / 0.85 | - | - |
+
+Height tolerance is excellent (+-10 nm costs < 0.03), but the state is
+LATERALLY CRITICAL: a 2-pixel (5.8 nm) boundary bias costs 0.17-0.31
+of F and re-opens transmission (0.18-0.34). The erosion/dilation-robust
+re-optimization of the same champion converged to F ~ 0.48 - i.e. the
+ROBUSTNESS-CONSTRAINED real-material ceiling at theta = 0 is ~0.5, not
+0.6. This is the honest answer to "does it survive a 2-3 nm
+perturbation": the ideal-operator state needs its boundary held to
+~+-3 nm laterally.
+
+## 6. Footprint diagnostic (sec 16, theta = 0 only, NOT device candidates)
+
+P = 300/H170 (first completed trio): F = 0.590 / 0.605 / 0.541 with
+A = 0.37-0.38 - about +0.06 over the device-grid value at the same
+height (0.535 at P278/H170) and far below the lossless ceiling. The
+remaining P = 330/400 runs are appended below when complete.
