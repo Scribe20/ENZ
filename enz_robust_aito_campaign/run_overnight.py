@@ -49,6 +49,15 @@ def commit(paths, msg):
     if p.returncode:
         raise RuntimeError(p.stderr)
     log(f"[git] committed: {msg.splitlines()[0]}  ({sh('git rev-parse --short HEAD').strip()})")
+    for i, wait in enumerate((0, 2, 4, 8, 16)):
+        time.sleep(wait)
+        r = subprocess.run(["git", "push", "-u", "origin",
+                            "claude/enz-eigenmode-target-u95j8m"], cwd=ROOT,
+                           capture_output=True, text=True)
+        if r.returncode == 0:
+            log("[git] pushed")
+            return
+        log(f"[git] push attempt {i+1} failed: {r.stderr.strip()[-200:]}")
 
 
 def step(name, cmd, cwd):
