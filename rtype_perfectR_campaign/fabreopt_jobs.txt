@@ -1,0 +1,2 @@
+D2 278 260 warm:/home/user/ENZ/rtype_perfectR_campaign/ceiling_theta0/D2_P278_H260_warm~-home-u792a7aca/rho_binary.npy 100 fabreopt
+C2 272 200 warm:/home/user/ENZ/rtype_perfectR_campaign/device_C2/C2_P272_H200_multi9/rho_binary.npy 100 fabreopt
