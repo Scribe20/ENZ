@@ -38,3 +38,13 @@ mut4_639 fab bias=+0.0 dH=+10: F=0.649 T=0.004 co=0.008
 mut4_639 fab bias=+5.7 dH=+0: F=0.303 T=0.325 co=0.123
 mut4_639 fab bias=+11.3 dH=+0: F=0.188 T=0.421 co=0.162
 QUALIFY_DONE mut4_639
+robust588 fab bias=-11.6 dH=+0: F=0.158 T=0.410 co=0.233
+robust588 fab bias=-5.8 dH=+0: F=0.432 T=0.043 co=0.171
+robust588 fab bias=+0.0 dH=-10: F=0.558 T=0.017 co=0.020
+robust588 fab bias=+0.0 dH=-5: F=0.579 T=0.007 co=0.006
+robust588 fab bias=+0.0 dH=+0: F=0.588 T=0.004 co=0.001
+robust588 fab bias=+0.0 dH=+5: F=0.584 T=0.009 co=0.000
+robust588 fab bias=+0.0 dH=+10: F=0.571 T=0.023 co=0.002
+robust588 fab bias=+5.8 dH=+0: F=0.397 T=0.229 co=0.054
+robust588 fab bias=+11.6 dH=+0: F=0.236 T=0.402 co=0.145
+QUALIFY_DONE robust588
