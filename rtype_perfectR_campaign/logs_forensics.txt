@@ -14,3 +14,4 @@ mut22_651 ty: |full|^2=0.023 ladder^2=0.330 resid=0.457 |ED|=0.39 |MD|=0.41 |EQ|
 mut22_651 ry: |full|^2=0.616 ladder^2=0.231 resid=0.308 |ED|=0.68 |MD|=0.50 |EQ|=0.55 fMQ=0.06
 PR_ARGAND_DONE mut22_651
 mut1_615 eigen: |ev|=0.756,0.818 dphi_eig=189.4 (err 9.4) axes 0.0/90.0 ellip 0.00/0.00
+mut1_615 spectra: F(633)=0.615 peak=0.667@645.0 half-max band ~620-645 nm (within scan)
