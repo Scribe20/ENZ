@@ -72,13 +72,9 @@ def theta0_offset(Rj):
     return float(torch.angle(Rc[1, 0]) - torch.angle(Rc[0, 1])) / 4.0
 
 
-def state_loss(Rj, Tj, alpha, th0):
-    m = pr.port_metrics(Rj, Tj)
-    a = math.radians(alpha) + th0
-    Rc = rc.circular(Rj)
-    tr = (torch.exp(torch.tensor(2j * a)) * Rc[0, 1]
-          + torch.exp(torch.tensor(-2j * a)) * Rc[1, 0])
-    Fa = torch.abs(tr) ** 2 / 4.0
+def state_loss(Rj, Tj, alpha, th0, phi=0.0):
+    m = pr.port_metrics(Rj, Tj, phi)
+    Fa = pr.fidelity_state(Rj, alpha, phi, th0)
     return Fa, m
 
 
@@ -91,7 +87,7 @@ def full_pool(x, kern, mask, branch, P, H, thetas, order, eps, rot=False):
         for th in thetas:
             for ph in PHIS:
                 Rj, Tj = wf.jones_angle(rho, P, H, th, ph, order=order)
-                Fa, m = state_loss(Rj, Tj, 0.0, th0)
+                Fa, m = state_loss(Rj, Tj, 0.0, th0, ph)
                 rows.append({'theta': th, 'phi': ph, 'alpha': 0.0,
                              'F': float(Fa), 'T': float(m['T']),
                              'co': float(m['co']), 'A': float(m['A'])})
@@ -171,7 +167,7 @@ def run(branch, P, H, parent, iters, stage, lossless=False):
             rr = rho if al == 0.0 else rotated_density(x, kern, beta, mask,
                                                        branch, al)
             Rj, Tj = wf.jones_angle(rr, P, H, th, ph, order=order_opt)
-            Fa, m = state_loss(Rj, Tj, al, th0)
+            Fa, m = state_loss(Rj, Tj, al, th0, ph)
             Fs.append(Fa)
             Ts.append(m['T'])
             Cs.append(m['co'])

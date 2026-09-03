@@ -95,10 +95,24 @@ def fidelity(Rj, alpha_deg=0.0):
     return torch.abs(tr) ** 2 / 4.0
 
 
-def port_metrics(Rj, Tj):
-    """All perfect-R scalar metrics (differentiable pieces as tensors)."""
+def fidelity_state(Rj, alpha_deg=0.0, phi_deg=0.0, th0=0.0):
+    """Fidelity to the ideal operator for a motif physically rotated by
+    alpha, illuminated from incidence azimuth phi: the p/s frame rotates
+    with phi, so the effective orientation is alpha - phi (sign verified
+    numerically on newA: U_{-phi} at phi=30 recovers the phi=0 value,
+    U_{+phi} does not). th0 = principal-axis offset for non-D2 motifs."""
     Rc = rc.circular(Rj)
-    F = torch.abs(Rc[0, 1] + Rc[1, 0]) ** 2 / 4.0
+    a = math.radians(alpha_deg - phi_deg) + th0
+    tr = (torch.exp(torch.tensor(2j * a)) * Rc[0, 1]
+          + torch.exp(torch.tensor(-2j * a)) * Rc[1, 0])
+    return torch.abs(tr) ** 2 / 4.0
+
+
+def port_metrics(Rj, Tj, phi_deg=0.0):
+    """All perfect-R scalar metrics (differentiable pieces as tensors).
+    F uses the azimuth-corrected ideal operator U_{-phi}."""
+    Rc = rc.circular(Rj)
+    F = fidelity_state(Rj, 0.0, phi_deg)
     # axis-orientation-invariant fidelity = max_alpha F(U_alpha): equals
     # F for D2 (Rc01 = Rc10); for C2/FULL it credits a motif whose
     # principal axes are rotated from x/y, and still requires |Rc01| =
