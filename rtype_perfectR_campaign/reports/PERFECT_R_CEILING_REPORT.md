@@ -253,3 +253,38 @@ on the mut1 continuation, in progress at this writing: pool F mean
 0.34, min 0.01 at theta = 55 (phi = 0) - the challenge angle is not
 held by any single-layer state, consistent with the measured PB-law
 collapse between 45 and 60 deg.
+
+## 10. Numerical and spectral qualification of the fab-valid leader (secs 32, 34)
+
+mut1 (D2 P278/H230, 72/72 nm features), Fourier-order convergence on
+complex eigenvalues (closure = 1.000 at every order):
+
+| order | F | T | co | A | eig_R0 (re, im) | eig_R1 (re, im) | |eig_T| |
+|---|---|---|---|---|---|---|---|
+| 9 | 0.615 | 0.008 | 0.005 | 0.372 | 0.052 + 0.754i | -0.189 - 0.796i | 0.07 / 0.11 |
+| 11 | 0.611 | 0.018 | 0.004 | 0.367 | 0.130 + 0.734i | -0.238 - 0.787i | 0.13 / 0.14 |
+| 13 | 0.610 | 0.021 | 0.004 | 0.366 | 0.153 + 0.725i | -0.255 - 0.783i | 0.15 / 0.14 |
+| 15 | 0.606 | 0.026 | 0.003 | 0.365 | 0.184 + 0.710i | -0.269 - 0.779i | 0.17 / 0.15 |
+
+F is stable to 0.009 over orders 9-15; the complex reflection
+eigenvalues drift by ~0.13 in the real part (a slow phase rotation of
+both eigenvalues together, leaving their ratio - the half-wave relation
+- intact: |eig| 0.76/0.82 -> 0.73/0.82, phase difference 189 -> 193 deg)
+while transmission drifts 0.008 -> 0.026. All conclusions in this
+report use margins far larger than these drifts, but the transmission
+floor should be quoted as "< 0.03", not 0.008.
+
+Eigenchannels (sec 31): eigenpolarizations are exactly linear along x
+and y (axis angles 0.00/90.00 deg, ellipticity 0.000) for both mut1 and
+mut22 - the D2 constraint delivers clean principal axes; eigenvalue
+magnitudes 0.76/0.82 (mut1) and 0.84/0.78 (mut22) with retardance
+189 and 193 deg (errors 9 and 13 deg).
+
+Spectrum 620-645 nm (0.5-nm steps near 633): F rises monotonically
+0.543 (620) -> 0.615 (633) -> 0.667 (645, the scan edge), with
+T <= 0.010 and co <= 0.008 everywhere and A falling 0.44 -> 0.34. The
+state is broadband (the entire scan lies above half-maximum) - it is
+NOT a high-Q needle; 633 nm sits on the rising flank of a broad
+resonance whose peak is slightly red of the design wavelength. Both
+labels of sec 32 therefore coincide: the practical broadband champion
+IS the peak-R physics champion of this basin.
