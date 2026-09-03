@@ -489,12 +489,14 @@ comparison isolates.)
     transmission zero dissipate ~1/3 of the power; F caps at ~0.65 raw,
     ~0.6 fab-valid, ~0.59 robust, and falls to ~0.1-0.2 by 30-50 deg.
 29. **Minimal platform change to remove the dominant limit:** lower
-    Im(n) at 633 nm in the same geometry - e.g. a low-loss high-index
-    dielectric (TiO2, GaP, hydrogenated/annealed a-Si:H with k < 0.01),
-    keeping single-layer, D2, 15-nm padding, P ~ 270-280, H ~ 230; the
-    lossless twin shows the geometry class already supports F > 0.98.
-    (An explicit alternative-material campaign is a separate follow-up,
-    sec 28; it was not mixed into this apples-to-apples a-Si result.)
+    Im(n) at 633 nm AT SIMILAR INDEX (n ~ 3.9-4.3, k < 0.01 - e.g.
+    hydrogenated/annealed a-Si:H), keeping single-layer, D2, 15-nm
+    padding, P ~ 270-280, H ~ 230: the lossless twin shows this exact
+    geometry class supports F > 0.98. A lower-index low-loss dielectric
+    (GaP-like n = 3.31, exploratory sec 16) removes absorption
+    (A 0.02-0.04) but loses the half-wave state in the same P/H window
+    (F 0.25-0.46, retardance error ~90 deg) - it would need a taller,
+    re-optimized layer. Kept separate from the a-Si result (sec 28).
 30. **Strongest defensible verdict:** below.
 
 ## 15. VERDICT
