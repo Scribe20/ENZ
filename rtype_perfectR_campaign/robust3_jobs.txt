@@ -1,0 +1,1 @@
+D2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mutation/D2_P278_H230_mut22~-home-7e647ec1/rho_binary.npy 110 robust

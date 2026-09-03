@@ -1,0 +1,2 @@
+D2_P278_H230_cont55_D2_P278_H230_cont30_D2_P278_ it11 pool F mean=0.324 min=0.021 T=0.072 co=0.112 worst=(55.0, 0.0, 0.0)
+D2_P278_H230_cont55_D2_P278_H230_cont30_D2_P278_ it23 pool F mean=0.325 min=0.015 T=0.073 co=0.109 worst=(55.0, 0.0, 0.0)
