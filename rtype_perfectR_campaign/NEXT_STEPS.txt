@@ -1,0 +1,8 @@
+# Perfect-R pipeline after large-P + cont30 (operator notes for check-ins)
+# 1. cont30 (Stage II): xargs -P 4 -L 1 -a cont30_jobs.txt sh -c 'python3 pr_continue.py $0 $1 $2 $3 $4 $5 >> logs_cont30.txt 2>&1'
+#    + append fabreopt/mutation survivors (min_si>=30 & min_gap>=30, F>=0.55) as extra cont30 lines.
+# 2. Stage III (cont55, PB-rotation-aware): for each cont30 survivor (rank by worst-F over pool, T, co):
+#    python3 pr_continue.py <branch> <P> <H> continuation/<cont30_tag>/rho_binary.npy 60 cont55   (max 3 concurrent: 5-state batches + rotation solves)
+# 3. Qualification per finalist: python3 pr_qualify.py all <rho> <P> <H> <label>; python3 pr_argand.py <rho> <P> <H> <label>
+#    PB rotation law via wf_pbrot (rtype_widefov_campaign) on finalist rho at theta 0/30/45/50.
+# 4. pr_pareto.py; pr_figs.py <labels>; append report sections 5+; 30 answers; verdict (A-F).
