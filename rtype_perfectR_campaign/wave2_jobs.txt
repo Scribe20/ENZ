@@ -1,0 +1,152 @@
+D2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/rect.npy 150 ceiling_theta0
+D2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldA.npy 150 ceiling_theta0
+D2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/p258.npy 150 ceiling_theta0
+D2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/lowT.npy 150 ceiling_theta0
+D2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 278 230 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/newA.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 278 230 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 272 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/rect.npy 150 ceiling_theta0
+D2 272 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldA.npy 150 ceiling_theta0
+D2 272 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/p258.npy 150 ceiling_theta0
+D2 272 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/lowT.npy 150 ceiling_theta0
+D2 272 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 272 230 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/newA.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 272 230 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 278 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/rect.npy 150 ceiling_theta0
+D2 278 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldA.npy 150 ceiling_theta0
+D2 278 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/p258.npy 150 ceiling_theta0
+D2 278 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/lowT.npy 150 ceiling_theta0
+D2 278 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 278 200 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/newA.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 278 200 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 272 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/rect.npy 150 ceiling_theta0
+D2 272 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldA.npy 150 ceiling_theta0
+D2 272 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/p258.npy 150 ceiling_theta0
+D2 272 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/lowT.npy 150 ceiling_theta0
+D2 272 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 272 200 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/newA.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 272 200 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 264 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/rect.npy 150 ceiling_theta0
+D2 264 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldA.npy 150 ceiling_theta0
+D2 264 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/p258.npy 150 ceiling_theta0
+D2 264 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/lowT.npy 150 ceiling_theta0
+D2 264 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 264 230 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/newA.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 264 230 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 278 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/rect.npy 150 ceiling_theta0
+D2 278 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldA.npy 150 ceiling_theta0
+D2 278 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/p258.npy 150 ceiling_theta0
+D2 278 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/lowT.npy 150 ceiling_theta0
+D2 278 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 278 170 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/newA.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 278 170 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 264 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/rect.npy 150 ceiling_theta0
+D2 264 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldA.npy 150 ceiling_theta0
+D2 264 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/p258.npy 150 ceiling_theta0
+D2 264 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/lowT.npy 150 ceiling_theta0
+D2 264 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 264 200 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/newA.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 264 200 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 278 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/rect.npy 150 ceiling_theta0
+D2 278 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldA.npy 150 ceiling_theta0
+D2 278 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/p258.npy 150 ceiling_theta0
+D2 278 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/lowT.npy 150 ceiling_theta0
+D2 278 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 278 260 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/newA.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 278 260 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 239 140 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 239 140 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 239 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 239 170 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 239 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 239 200 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 239 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 239 230 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 239 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 239 260 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 239 290 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 239 290 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 252 140 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 252 140 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 252 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 252 170 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 252 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 252 200 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 252 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 252 230 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 252 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 252 260 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 252 290 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 252 290 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 272 140 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 272 140 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 272 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 272 170 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 272 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 272 260 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+D2 272 290 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy 150 ceiling_theta0
+D2 272 290 mix:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/mirror.npy+/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 ceiling_theta0
+C2 278 230 rand21 150 device_C2
+C2 278 230 multi9 150 device_C2
+C2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 device_C2
+FULL 278 230 rand31 150 device_full
+FULL 278 230 multi13 150 device_full
+C2 272 230 rand21 150 device_C2
+C2 272 230 multi9 150 device_C2
+C2 272 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 device_C2
+FULL 272 230 rand31 150 device_full
+FULL 272 230 multi13 150 device_full
+C2 278 200 rand21 150 device_C2
+C2 278 200 multi9 150 device_C2
+C2 278 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 device_C2
+FULL 278 200 rand31 150 device_full
+FULL 278 200 multi13 150 device_full
+C2 272 200 rand21 150 device_C2
+C2 272 200 multi9 150 device_C2
+C2 272 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 device_C2
+FULL 272 200 rand31 150 device_full
+FULL 272 200 multi13 150 device_full
+C2 264 230 rand21 150 device_C2
+C2 264 230 multi9 150 device_C2
+C2 264 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 device_C2
+FULL 264 230 rand31 150 device_full
+FULL 264 230 multi13 150 device_full
+C2 278 170 rand21 150 device_C2
+C2 278 170 multi9 150 device_C2
+C2 278 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 device_C2
+FULL 278 170 rand31 150 device_full
+FULL 278 170 multi13 150 device_full
+C2 264 200 rand21 150 device_C2
+C2 264 200 multi9 150 device_C2
+C2 264 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 device_C2
+FULL 264 200 rand31 150 device_full
+FULL 264 200 multi13 150 device_full
+C2 278 260 rand21 150 device_C2
+C2 278 260 multi9 150 device_C2
+C2 278 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 device_C2
+FULL 278 260 rand31 150 device_full
+FULL 278 260 multi13 150 device_full
+D2 278 230 rand11 150 lossless_ceiling L
+D2 278 230 multi7 150 lossless_ceiling L
+D2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 lossless_ceiling L
+D2 272 230 rand11 150 lossless_ceiling L
+D2 272 230 multi7 150 lossless_ceiling L
+D2 272 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 lossless_ceiling L
+D2 278 200 rand11 150 lossless_ceiling L
+D2 278 200 multi7 150 lossless_ceiling L
+D2 278 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 lossless_ceiling L
+D2 272 200 rand11 150 lossless_ceiling L
+D2 272 200 multi7 150 lossless_ceiling L
+D2 272 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 lossless_ceiling L
+D2 264 230 rand11 150 lossless_ceiling L
+D2 264 230 multi7 150 lossless_ceiling L
+D2 264 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 lossless_ceiling L
+D2 278 170 rand11 150 lossless_ceiling L
+D2 278 170 multi7 150 lossless_ceiling L
+D2 278 170 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 lossless_ceiling L
+D2 264 200 rand11 150 lossless_ceiling L
+D2 264 200 multi7 150 lossless_ceiling L
+D2 264 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 lossless_ceiling L
+D2 278 260 rand11 150 lossless_ceiling L
+D2 278 260 multi7 150 lossless_ceiling L
+D2 278 260 warm:/home/user/ENZ/rtype_perfectR_campaign/mining/seeds/oldB.npy 150 lossless_ceiling L
