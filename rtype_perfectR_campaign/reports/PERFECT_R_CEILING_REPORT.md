@@ -184,3 +184,40 @@ hierarchy of honest numbers is therefore:
     fab-valid (>=30nm) 0.615  (mut1, 72/72 nm)
     robust (+-6 nm)    0.54
     lossless-optimized 0.985  (same space, k = 0)
+
+## 8. Complex-port forensics at theta = 0 (secs 29-31; Q13-14, Q17-19)
+
+First-order ladders (t = t_bg + t_ED + t_MD + t_EQ + residual, and the
+reflection analogue; per-channel exact coupling calibration; MQ carried
+in the residual and reported by its exact power fraction) for the three
+real-material leaders, principal channels x (p-like) and y (s-like):
+
+| candidate | ch. | |t|^2 full | |r|^2 full | ladder pieces |ED| / |MD| / |EQ| (t or r) | f_MQ | residual |
+|---|---|---|---|---|---|---|
+| champ585 | x | 0.013 | 0.480 | r: 0.32 / 0.37 / **0.77** ; t: 0.24 / 0.40 / **0.84** | 0.06 | 0.23-0.50 |
+| champ585 | y | 0.008 | 0.702 | r: 0.60 / **0.93** / 0.18 ; t: 0.38 / **0.87** / 0.17 | 0.01 | 0.16-0.22 |
+| mut1 (0.615) | x | - | 0.571 | r: 0.11 / 0.18 / **0.75** | 0.07 | 0.20 |
+| mut1 (0.615) | y | 0.011 | 0.669 | r: 0.71 / 0.76 / 0.37 ; t: 0.41 / 0.64 / 0.31 | 0.03 | 0.26-0.37 |
+| mut22 (0.651) | x | 0.000 | 0.705 | r: 0.19 / 0.05 / **0.81** ; t: 0.14 / 0.05 / **0.89** | 0.07 | 0.20-0.49 |
+| mut22 (0.651) | y | 0.023 | 0.616 | r: 0.68 / 0.50 / 0.55 ; t: 0.39 / 0.41 / 0.45 | 0.06 | 0.31-0.46 |
+
+The ideal-operator optimizer did NOT return to the paper's ED/MD
+recipe. Every leader is a hybrid: the x (p-like) channel is
+ELECTRIC-QUADRUPOLE-LED in both its transmission cancellation
+(|t_x|^2 = 0.000-0.013, EQ piece 0.84-0.89 vs ED <= 0.24) and its
+reflection (EQ 0.75-0.81), while the y channel is dipole-led
+(MD 0.5-0.93 with ED 0.6-0.7). The pi reflection-phase difference is
+thus set BETWEEN a quadrupolar x-response and a dipolar y-response -
+a higher-order transmission-zero mechanism of exactly the causal type
+the P0750 audit established (external t -> 0 by background + multipole
+sum, not a dark internal mode), now realised for both principal
+channels simultaneously. The ladders are first-order: residuals of
+0.2-0.5 (MQ power fraction 0.01-0.07 plus higher orders / multiple
+scattering) are shown, not hidden; the qualitative EQ-led assignment
+is robust because the EQ piece exceeds the residual in every x row.
+Absorption (A 0.33-0.40) is the energy the resonant EQ/MD currents
+dissipate in k = 0.069 a-Si - the same currents that make the
+cancellation work. Topology (Q17-19): all leaders are single
+rounded, notched bars inside the envelope - simple in outline, but the
+simplicity is NOT evidence of an ED/MD optimum: the current pattern is
+quadrupolar on x.
