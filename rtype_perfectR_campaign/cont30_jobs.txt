@@ -1,0 +1,4 @@
+D2 278 230 /home/user/ENZ/rtype_perfectR_campaign/ceiling_theta0/D2_P278_H230_warm~-home-ue54944fa/rho_binary.npy 60 cont30
+D2 272 230 /home/user/ENZ/rtype_perfectR_campaign/ceiling_theta0/D2_P272_H230_warm~-home-ue54944fa/rho_binary.npy 60 cont30
+D2 278 200 /home/user/ENZ/rtype_perfectR_campaign/ceiling_theta0/D2_P278_H200_warm~-home-ue54944fa/rho_binary.npy 60 cont30
+C2 278 200 /home/user/ENZ/rtype_perfectR_campaign/device_C2/C2_P278_H200_warm~-home-uad7868eb/rho_binary.npy 60 cont30
