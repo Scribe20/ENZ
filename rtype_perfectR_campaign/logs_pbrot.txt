@@ -5,3 +5,4 @@ stage3_leader th=50: slope=-2.144 rms=15.3 F(U_alpha) min/mean=0.097/0.177 Rc ra
 PBROT_DONE stage3_leader
 robust588 th=0: slope=-1.979 rms=8.1 F(U_alpha) min/mean=0.545/0.575 Rc range 0.545-0.591
 robust588 th=30: slope=-2.147 rms=20.0 F(U_alpha) min/mean=0.150/0.200 Rc range 0.150-0.322
+robust588 th=45: slope=-2.300 rms=36.3 F(U_alpha) min/mean=0.093/0.136 Rc range 0.133-0.299

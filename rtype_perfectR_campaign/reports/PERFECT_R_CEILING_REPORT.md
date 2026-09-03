@@ -375,3 +375,148 @@ For a 360-deg metalens the worst orientation is the binding figure.
 Answer to "does its physical rotation obey the PB law?": in phase,
 yes to 50 deg; in amplitude/fidelity, only to ~15-20 deg at the
 > 0.4 level.
+
+## 13. Footprint diagnostic update (sec 16)
+
+Large-P normal-incidence runs (ceiling_largeP/, [9,9] optimization,
+NOT device candidates): P300/H170 best 0.605 (A 0.375); P330/H170 best
+0.636 (5 islands, A 0.327). Relaxing the footprint from 278 to 330 nm
+buys ~+0.10 at fixed H but the absorbed fraction stays 0.33-0.38 - the
+large-P states hit the same wall as the device-grid states, at a level
+still far below the lossless 0.985. (P400 and H230 rows are appended
+to results/ceiling_largeP_ledger.csv as they complete; none can change
+the category because absorption, not footprint, is what the lossless
+comparison isolates.)
+
+## 14. The 30 required answers (sec 38)
+
+1. **Highest F_ideal at theta=0 in real a-Si:** 0.651 raw (mut22, D2
+   P278/H230, 2.9-nm sliver, edge-riding); 0.615 fully fab-valid (mut1,
+   72/72 nm); 0.588 erosion/dilation-robust (robust588).
+2. **Highest R_cross(0) with T_tot < 0.10:** 0.651 (T = 0.012) - every
+   leader satisfies T < 0.10 by construction.
+3. **With T_tot < 0.05:** 0.651 (T = 0.012); T <= 0.03 holds to order
+   15 (0.039 at [15,15] for mut22, 0.026 for mut1).
+4. **Lowest T while R_cross > 0.5:** 0.001-0.003 (robust588: T 0.003 at
+   F 0.588; several Stage-I states at T 0.002-0.007, F 0.55-0.57).
+5. **> 0.6:** T = 0.008 (mut1, F 0.615) / 0.010 (mut16-22, F 0.65).
+6. **> 0.7:** none - no real-material state reached F or R_cross 0.7.
+7. **Does any real candidate approach R_cross > 0.8?** No. Raw maximum
+   0.651 after 250+ theta0 runs, 3 mutation generations (saturating at
+   0.648-0.651) and three symmetry branches; the footprint-relaxed
+   diagnostic reaches 0.636 at P330. The lossless twin reaches 0.985.
+8. **Limiting failure:** ABSORPTION. In every leader T <= 0.01,
+   R_co <= 0.02, phase error 3-18 deg, and 1 - F ~ A = 0.33-0.40.
+9. **Does the 15-nm padding open a better basin?** Yes: at every shared
+   (P,H) the 15-nm-envelope runs beat the old 10%-rule basins
+   (0.585 vs 0.527 best-vs-best; the leaders use 90-95% of the envelope
+   radius, which the old rule forbade).
+10. **Do multiple islands help?** At discovery, marginally (3-island
+    states 0.617-0.623 vs 0.585 single-island) - but every multi-island
+    leader carries 3-15-nm slivers and collapses under the
+    erosion/dilation-robust objective (0.623 -> 0.476). No fab-valid
+    multi-island state beat the fab-valid single-island frontier.
+11. **Does C2 outperform D2?** No: best C2 0.577 (sliver) / 0.561
+    fab-valid vs D2 0.651 / 0.615; and the C2 candidate fails the
+    physical-rotation test off-axis (rotation-fidelity min 0.006 over
+    0-30 deg) because its principal axes are not locked to the motif.
+12. **Does unrestricted freeform outperform C2?** No: best FULL 0.553
+    (sliver) / 0.498 fab-valid - the lowest of the three branches; it
+    reproduces the same A ~ 0.40 plateau.
+13. **Is the old ED/MD family still selected?** No. The x (p-like)
+    channel of every leader is EQ-led in both its transmission
+    cancellation (EQ piece 0.84-0.89) and its reflection (0.75-0.81);
+    only the y channel is dipole-led.
+14. **Or a higher-order transmission-zero mechanism?** Yes - an
+    EQ-led external transmission zero on x (|t_x|^2 = 0.000-0.013)
+    coexisting with a dipole-led zero on y, i.e. the P0750-type causal
+    mechanism (background + multipole sum -> 0 at the port) realised
+    for both principal channels with a pi retardance between them.
+15. **What did the workspace contain that was overlooked?** Separately
+    solved pieces: mirror-like states (R_tot 0.84, T 0.002, no
+    retardance), a phase-perfect low-co state (10 deg, co 0.005, A
+    0.43), low-T (0.016) and low-A (0.15) states; and 9 incomplete
+    checkpoints. Their warm/mix seeds (newA-warm, rect-warm,
+    mirror+oldB mixes) are what seeded the winning basin.
+16. **Promising incomplete checkpoints beating recorded finalists?**
+    No - the best recovered checkpoint reached 0.498 (< 0.527 recorded).
+17. **Does the ideal matrix require a topology unlike newA?** Not in
+    outline: the leaders are single notched/rounded bars descended from
+    a newA warm start - but at 15-nm padding, larger P (272-278) and
+    H = 230, with a quadrupolar x-current rather than newA's dipolar one.
+18. **Does the optimum remain a simple rounded bar?** Yes in silhouette
+    (single island, 60-78-nm features), with small notches/slivers
+    that the mutations add at the envelope edge.
+19. **Is the simplicity evidence of a true robust optimum?** No. The
+    simple outline hides a phase-critical resonant state: +-5.8 nm of
+    lateral bias costs 0.1-0.3 of F, and the multipolar content is
+    quadrupolar on x. Robustness had to be bought explicitly (0.588
+    robust vs 0.651 raw).
+20. **Best PB-compatible 0-50 deg device candidate:** the Stage-III
+    continuation of mut1 (continuation/cont55, D2 P278/H230): F0 0.565,
+    static F 0.52/0.41/0.19/0.19/0.12 at 0/15/30/40/50 deg (phi-min).
+21. **Its worst-angle F_ideal:** 0.115 at 50 deg (static, phi = 0-90);
+    0.097 worst-orientation at 50 deg under physical rotation; 0.011
+    at the 55-deg challenge point.
+22. **Its T_tot and R_co:** T <= 0.17 over 0-55 (0.10 at normal
+    incidence after continuation); R_co 0.013 at 0 deg rising to 0.30
+    at 50 and 0.40 at 55 deg - co-pol leakage, not transmission, is
+    the off-axis failure channel.
+23. **Does its physical rotation obey the PB law?** In phase, yes:
+    fitted slope -2.00 / -2.04 / -2.15 / -2.14 at 0/30/45/50 deg
+    (rms 9-15 deg). In operator fidelity, only near normal incidence:
+    F(U_alpha) is flat (0.54-0.56) at 0 deg but orientation-dependent
+    off axis (min 0.17 at 30, 0.10 at 50 deg).
+24. **Best lossless-optimized candidate:** D2 P278/H170 random seed,
+    F = 0.985, T 0.002, co 0.013 (fab-valid runner-up 0.983 at
+    P272/H200 with 105/94-nm features).
+25. **Does lossless optimization approach unity?** Yes: 0.985 - the
+    ideal reflective PB operator is realisable in this exact
+    single-layer, 15-nm-padded, D2 design space.
+26. **Is the real-material ceiling material-limited?** Yes, dominantly:
+    identical space, identical constraints, identical seeds: 0.985
+    (k = 0) vs 0.651 (k = 0.069); the 0.33 gap equals the absorbed
+    fraction of the real state.
+27. **Or architecture/footprint-limited?** Not primarily. The footprint
+    diagnostic adds only ~+0.10 (P330) while A stays 0.33-0.38, and
+    symmetry relaxation (C2/FULL) adds nothing. The architecture's own
+    ceiling is > 0.98; the angular/PB range IS an architecture property
+    (single-layer PB states lose operator fidelity beyond ~15-30 deg
+    and the law beyond ~50 deg) - that is the one architecture limit,
+    and it is not what caps F at normal incidence.
+28. **Is "perfect R" plausible in single-layer a-Si at 633 nm?** No.
+    With k = 0.069 the resonant currents that produce the double
+    transmission zero dissipate ~1/3 of the power; F caps at ~0.65 raw,
+    ~0.6 fab-valid, ~0.59 robust, and falls to ~0.1-0.2 by 30-50 deg.
+29. **Minimal platform change to remove the dominant limit:** lower
+    Im(n) at 633 nm in the same geometry - e.g. a low-loss high-index
+    dielectric (TiO2, GaP, hydrogenated/annealed a-Si:H with k < 0.01),
+    keeping single-layer, D2, 15-nm padding, P ~ 270-280, H ~ 230; the
+    lossless twin shows the geometry class already supports F > 0.98.
+    (An explicit alternative-material campaign is a separate follow-up,
+    sec 28; it was not mixed into this apples-to-apples a-Si result.)
+30. **Strongest defensible verdict:** below.
+
+## 15. VERDICT
+
+**C. MATERIAL-LOSS-LIMITED.**
+
+Evidence: (i) in the identical design space the lossless-optimized
+ceiling is 0.985 while real a-Si saturates at 0.65 raw / 0.615
+fab-valid / 0.59 robust after 250+ multi-start runs, three symmetry
+branches, multi-island search, footprint relaxation and three
+generations of basin hopping - and 1 - F equals the absorbed fraction;
+(ii) transmission (<= 0.01), co-pol (<= 0.02) and retardance (3-18 deg)
+are all solved at normal incidence, so no port channel other than
+absorption is left to fix; (iii) neither symmetry relaxation nor
+footprint relaxation moves the absorption plateau (0.33-0.40).
+
+Qualifiers that the verdict carries explicitly: the campaign is a
+STRONG IMPROVEMENT over every prior state (F 0.527 -> 0.651, with T and
+co-pol reduced 5-10x) but NOT near-ideal (category B at the device
+level); the states are height-tolerant but laterally critical
+(+-6 nm); and the PB-usable angular range of the ideal operator is
+~15-30 deg at the > 0.4 fidelity level, with the phase law surviving to
+50 deg - an architecture property of single-layer PB reflectors that
+this campaign did not move. "Perfect R" in this platform requires a
+lower-loss material, not a different geometry.
