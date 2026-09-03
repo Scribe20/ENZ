@@ -159,3 +159,28 @@ lateral boundary position is critical (a 5.8-nm bias costs 0.1-0.3, an
 more erosion-tolerant than the Stage-I champion (0.51-0.53 vs 0.28 at
 -5.8 nm). Any claim of F > 0.6 in real a-Si therefore carries the
 explicit requirement of ~+-3 nm lateral CD control.
+
+## 7. Robustness-constrained ceiling and basin saturation
+
+Erosion/dilation-robust re-optimization (joint eta = 0.35/0.5/0.65,
+35-nm filter, warm-started from each leader):
+
+| start | robust F (nominal) | eroded / dilated F | T | A | features (nm) |
+|---|---|---|---|---|---|
+| D2 P272/H230 (mut4, 0.639) | **0.539** | 0.337 / 0.342 | 0.018 | 0.425 | 71 / 60 |
+| C2 P272/H200 (0.577) | 0.524 | 0.509 / 0.449 | 0.019 | 0.448 | 8.5 / 2.8 (still slivers) |
+| D2 P278/H230 (champ, 0.585) | 0.482 | 0.391 / 0.234 | 0.093 | 0.424 | 78 / 72 |
+| D2 P278/H260 3-island (0.623) | 0.476 | 0.445 / 0.090 | 0.107 | 0.378 | 14 / 55 |
+
+Requiring the ideal operator to survive +-1 projection-threshold step
+(~ +-6 nm) costs 0.1-0.15 of F: the robustness-constrained
+real-material ceiling is F ~ 0.52-0.54 (T ~ 0.02, A ~ 0.43). Three
+generations of basin hopping saturate at F = 0.648-0.651 (raw,
+sliver-bearing) - the raw normal-incidence real-material ceiling in
+the P272-278 / H230 basin is ~0.65 with A = 0.33, and the full
+hierarchy of honest numbers is therefore:
+
+    raw discovery      0.65   (2.9-nm slivers, edge-riding)
+    fab-valid (>=30nm) 0.615  (mut1, 72/72 nm)
+    robust (+-6 nm)    0.54
+    lossless-optimized 0.985  (same space, k = 0)

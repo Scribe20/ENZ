@@ -55,3 +55,11 @@ D2_P330_H230_multi7 it60 F=0.401 T=0.167 co=0.026 A=0.407 lam=(8.2,8.2)
 D2_P330_H170_multi7 it90 F=0.501 T=0.026 co=0.022 A=0.451 lam=(3.2,2.0)
 D2_P300_H170_multi7: already complete
 D2_P300_H170_rand11: already complete
+D2_P300_H170_warm~-home-uad7868eb: already complete
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:198: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),
+D2_P330_H170_multi7 it90 F=0.525 T=0.036 co=0.006 A=0.434 lam=(3.2,2.0)
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:198: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),
