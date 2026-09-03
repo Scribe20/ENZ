@@ -53,3 +53,5 @@ D2_P330_H170_multi7 it60 F=0.476 T=0.056 co=0.003 A=0.464 lam=(3.2,2.0)
 D2_P330_H170_warm~-home-uad7868eb it60 F=0.589 T=0.048 co=0.002 A=0.361 lam=(3.2,2.0)
 D2_P330_H230_multi7 it60 F=0.401 T=0.167 co=0.026 A=0.407 lam=(8.2,8.2)
 D2_P330_H170_multi7 it90 F=0.501 T=0.026 co=0.022 A=0.451 lam=(3.2,2.0)
+D2_P300_H170_multi7: already complete
+D2_P300_H170_rand11: already complete
