@@ -39,6 +39,13 @@ def main(nb):
             c2f.append(f'FULL {P:.0f} {H:.0f} {s} 150 device_full')
         for s in ('rand11', 'multi7', f'warm:{S}/oldB.npy'):
             lossless.append(f'D2 {P:.0f} {H:.0f} {s} 150 lossless_ceiling L')
+    # mirror -> half-wave family: the 0.84-reflectance / T~0 mirror basin
+    # lives at low H; test adding retardance to it across the H grid
+    for P in (239.0, 252.0, 272.0):
+        for H in pr.HEIGHTS:
+            extra.append(f'D2 {P:.0f} {H:.0f} warm:{S}/mirror.npy 150 ceiling_theta0')
+            extra.append(f'D2 {P:.0f} {H:.0f} mix:{S}/mirror.npy+{S}/oldB.npy 150 ceiling_theta0')
+    extra = list(dict.fromkeys(extra))
     (pr.HERE / 'extra_jobs.txt').write_text('\n'.join(extra) + '\n')
     (pr.HERE / 'c2full_jobs.txt').write_text('\n'.join(c2f) + '\n')
     (pr.HERE / 'lossless_jobs.txt').write_text('\n'.join(lossless) + '\n')

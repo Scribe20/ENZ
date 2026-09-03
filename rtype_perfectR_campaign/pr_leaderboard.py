@@ -42,8 +42,8 @@ def load_rho(row):
     return recover_checkpoint(d, row.P)[0]
 
 
-def main():
-    torch.set_num_threads(4)
+def main(what='all'):
+    torch.set_num_threads(2)
     df = pd.read_csv(RES / 'perfect_r_workspace_candidates.csv')
     df['min_r'] = df[['abs_rx', 'abs_ry']].min(axis=1)
     # useful-R filters for the leaderboards that would otherwise be won
@@ -77,6 +77,10 @@ def main():
     for _, r in ck.iterrows():
         lines.append(f'- {r.tag} [{r.source}]: F={r.F:.3f} T={r["T"]:.3f} '
                      f'co={r.co:.3f} A={r.A:.3f}')
+    (REP / 'PERFECT_R_WORKSPACE_MINING.md').write_text('\n'.join(lines))
+    if what == 'boards':
+        print('LEADERBOARD_BOARDS_DONE', flush=True)
+        return
     # small corrected angular set for the promising set
     prom = pd.concat([df.sort_values('F', ascending=False).head(6),
                       useful.sort_values('T').head(3),
@@ -109,4 +113,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    main(sys.argv[1] if len(sys.argv) > 1 else 'all')
