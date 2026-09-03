@@ -18,3 +18,23 @@ mut1_615 fab bias=+0.0 dH=+10: F=0.615 T=0.006 co=0.011
 mut1_615 fab bias=+5.8 dH=+0: F=0.330 T=0.301 co=0.088
 mut1_615 fab bias=+11.6 dH=+0: F=0.182 T=0.434 co=0.175
 QUALIFY_DONE mut1_615
+mut14_644 fab bias=-11.6 dH=+0: F=0.211 T=0.457 co=0.142
+mut14_644 fab bias=-5.8 dH=+0: F=0.528 T=0.059 co=0.010
+mut14_644 fab bias=+0.0 dH=-10: F=0.614 T=0.041 co=0.023
+mut14_644 fab bias=+0.0 dH=-5: F=0.630 T=0.027 co=0.025
+mut14_644 fab bias=+0.0 dH=+0: F=0.644 T=0.014 co=0.022
+mut14_644 fab bias=+0.0 dH=+5: F=0.655 T=0.006 co=0.015
+mut14_644 fab bias=+0.0 dH=+10: F=0.657 T=0.006 co=0.008
+mut14_644 fab bias=+5.8 dH=+0: F=0.283 T=0.348 co=0.135
+mut14_644 fab bias=+11.6 dH=+0: F=0.167 T=0.406 co=0.119
+QUALIFY_DONE mut14_644
+mut4_639 fab bias=-11.3 dH=+0: F=0.178 T=0.480 co=0.172
+mut4_639 fab bias=-5.7 dH=+0: F=0.514 T=0.033 co=0.039
+mut4_639 fab bias=+0.0 dH=-10: F=0.614 T=0.031 co=0.011
+mut4_639 fab bias=+0.0 dH=-5: F=0.627 T=0.020 co=0.015
+mut4_639 fab bias=+0.0 dH=+0: F=0.639 T=0.010 co=0.016
+mut4_639 fab bias=+0.0 dH=+5: F=0.647 T=0.004 co=0.013
+mut4_639 fab bias=+0.0 dH=+10: F=0.649 T=0.004 co=0.008
+mut4_639 fab bias=+5.7 dH=+0: F=0.303 T=0.325 co=0.123
+mut4_639 fab bias=+11.3 dH=+0: F=0.188 T=0.421 co=0.162
+QUALIFY_DONE mut4_639

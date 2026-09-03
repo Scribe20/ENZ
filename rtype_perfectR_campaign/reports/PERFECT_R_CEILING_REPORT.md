@@ -141,3 +141,21 @@ P = 300/H170 (first completed trio): F = 0.590 / 0.605 / 0.541 with
 A = 0.37-0.38 - about +0.06 over the device-grid value at the same
 height (0.535 at P278/H170) and far below the lossless ceiling. The
 remaining P = 330/400 runs are appended below when complete.
+
+Cross-candidate fabrication sensitivity (frozen binaries, [9,9];
+lateral bias in 2-pixel steps of 5.8 nm; height +-5/10 nm):
+
+| candidate | F nominal | F at -5.8 / +5.8 nm | F at -11.6 / +11.6 nm | F at H -10 / +10 nm |
+|---|---|---|---|---|
+| champ585 (P278/H230) | 0.585 | 0.278 / 0.417 | 0.007 / 0.185 | 0.560 / 0.569 |
+| mut1 (fab-valid, P278/H230) | 0.615 | 0.439 / 0.330 | 0.089 / 0.182 | 0.591 / 0.615 |
+| mut4 (P272/H230) | 0.639 | 0.514 / 0.303 | 0.178 / 0.188 | 0.614 / 0.649 |
+| mut14 (P278/H230) | 0.644 | 0.528 / 0.283 | 0.211 / 0.167 | 0.614 / 0.657 |
+
+All four share one signature: height is a benign knob (<= 0.03 loss
+over +-10 nm, the mutation children even improve slightly at +10 nm),
+lateral boundary position is critical (a 5.8-nm bias costs 0.1-0.3, an
+11.6-nm bias destroys the state). The mutation children are somewhat
+more erosion-tolerant than the Stage-I champion (0.51-0.53 vs 0.28 at
+-5.8 nm). Any claim of F > 0.6 in real a-Si therefore carries the
+explicit requirement of ~+-3 nm lateral CD control.
