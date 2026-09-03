@@ -44,3 +44,4 @@ Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pyto
 D2_P278_H230_warm~-home-ubd46a7b9 it0 F=0.271 T=0.180 co=0.180 A=0.368 lam=(2.0,2.0)
 D2_P278_H230_warm~-home-ubd46a7b9 it30 F=0.426 T=0.090 co=0.038 A=0.446 lam=(2.0,3.2)
 D2_P278_H230_warm~-home-ubd46a7b9 it60 F=0.436 T=0.153 co=0.018 A=0.393 lam=(3.2,3.2)
+D2_P278_H230_warm~-home-ubd46a7b9 it90 F=0.568 T=0.023 co=0.001 A=0.408 lam=(3.2,3.2)
