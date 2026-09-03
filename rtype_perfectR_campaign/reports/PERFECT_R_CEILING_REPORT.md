@@ -520,3 +520,11 @@ level); the states are height-tolerant but laterally critical
 50 deg - an architecture property of single-layer PB reflectors that
 this campaign did not move. "Perfect R" in this platform requires a
 lower-loss material, not a different geometry.
+
+Robust-optimized state (robust588) under physical rotation: slope
+-1.98 (rms 8) at 0 deg, -2.15 (rms 20) at 30, -2.30 (rms 36) at 45,
++0.43 (rms 46) at 50 deg; F(U_alpha) min 0.545 / 0.150 / 0.093 / 0.066.
+The +-6-nm-robust state is therefore MORE angle-fragile than the
+Stage-III leader (whose slope held to 50 deg): robustness to boundary
+bias and robustness to k_par are not the same property, and the
+angle-aware continuation is what buys the latter.
