@@ -235,6 +235,9 @@ def main():
                       "Q_pole": c["Q_pole"] if c else np.nan,
                       "pole_stable": c["stable"] if c else False,
                       "rt_rel_diff": c["rt_rel_diff"] if c else np.nan,
+                      "all_certified_in_window": [
+                          f"{p['lambda_nm']:.0f}nm(Q={p['Q']:.1f})"
+                          for p in cert["certified_all"]],
                       "off_window_poles": [
                           f"{r['lambda_nm']:.0f}nm(Q={r['Q']:.1f})"
                           for r in cert["table"]
@@ -246,6 +249,7 @@ def main():
           + (f"{c['lambda_pole_nm']:.1f} nm, Q={c['Q_pole']:.2f}, "
              f"r/t diff {c['rt_rel_diff']:.1e}, stable={c['stable']}"
              if c else "none certified in window")
+          + f" | all certified in-window: {fail[name]['all_certified_in_window']}"
           + f" | off-window r/t poles: {fail[name]['off_window_poles']}")
     with open(OUT / "failure_test.json", "w") as f:
         json.dump(fail, f, indent=1, default=float)
@@ -259,7 +263,7 @@ def main():
         cert = pole_rt.certify(rt_, with_ito=False)
         c = cert["certified"]
         allp = [f"{r['lambda_nm']:.0f}nm(Q={r['Q']:.1f})" for r in cert["table"]
-                if r["rt_agree"]]
+                if r["rt_agree"] and r["significant"]]
         noito[name] = {"in_window": c, "all_rt_agreeing": allp}
         P(f"[{name}] no-ITO in-window certified pole: "
           + (f"{c['lambda_pole_nm']:.1f} nm, Q={c['Q_pole']:.2f}" if c

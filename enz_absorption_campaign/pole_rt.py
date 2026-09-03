@@ -35,6 +35,7 @@ HWHM_ENZ = LAMBDA_E / (2 * Q_ENZ_BARE)  # 123.6 nm
 WINDOW = (LAMBDA_E - HWHM_ENZ, LAMBDA_E + HWHM_ENZ)   # (1309.9, 1557.1) nm
 SCAN = np.arange(1250.0, 1701.0, 10.0)
 RT_TOL, RES_FRAC, STAB_TOL, DAMP_MIN = 0.02, 0.05, 0.02, 0.002
+PEAK_FRAC = 0.05   # |res|/|Im w| (Lorentzian peak contribution) >= 5% of max|f|
 
 
 def rt_scan(rho_t, with_ito, lams=SCAN, order=None):
@@ -68,29 +69,44 @@ def _in_window(q):
 
 
 def select_pole(lams, r, t):
-    """Returns dict with the certified pole (or None) plus the full table."""
+    """Returns dict with the certified pole (or None), the list of ALL
+    certified in-window poles, and the full table.
+
+    Significance: r and t of one structure share rational structure, so
+    r/t agreement alone admits Froissart doublets (bare ITO produced a
+    spurious agreeing pair).  A physical pole must also contribute
+    visibly: |res|/|Im w| >= PEAK_FRAC * max|f| for BOTH r and t."""
     oms = 2 * np.pi * C_NM_FS / lams
     pr, pt = _poles(oms, r), _poles(oms, t)
+    scale_r, scale_t = float(np.max(np.abs(r))), float(np.max(np.abs(t)))
     max_r = max([a for q, a in pr if _in_window(q)] + [1e-300])
     max_t = max([a for q, a in pt if _in_window(q)] + [1e-300])
-    table, best = [], None
+    table, certified_all, best = [], [], None
     for q_r, a_r in pr:
         match = min(pt, key=lambda p: abs(p[0] - q_r)) if pt else None
         agree = (match is not None
                  and abs(match[0] - q_r) / abs(q_r) < RT_TOL)
         lam = 2 * np.pi * C_NM_FS / q_r.real
+        peak_r = a_r / abs(q_r.imag) / scale_r
+        peak_t = (match[1] / abs(match[0].imag) / scale_t) if agree else np.nan
         row = dict(lambda_nm=lam, Q=abs(q_r.real / (2 * q_r.imag)),
                    res_r_norm=a_r / max_r if _in_window(q_r) else a_r,
                    rt_agree=agree, in_window=_in_window(q_r),
-                   res_t_norm=(match[1] / max_t) if agree else np.nan)
+                   res_t_norm=(match[1] / max_t) if agree else np.nan,
+                   peak_r=peak_r, peak_t=peak_t,
+                   significant=bool(agree and peak_r >= PEAK_FRAC
+                                    and peak_t >= PEAK_FRAC))
         table.append(row)
-        if (row["in_window"] and agree and row["res_r_norm"] >= RES_FRAC
+        if (row["in_window"] and agree and row["significant"]
+                and row["res_r_norm"] >= RES_FRAC
                 and row["res_t_norm"] >= RES_FRAC):
             score = row["res_r_norm"] + row["res_t_norm"]
+            certified_all.append(dict(lambda_nm=lam, Q=row["Q"],
+                                      peak_r=peak_r, peak_t=peak_t))
             if best is None or score > best[0]:
                 best = (score, q_r, match[0], row)
     if best is None:
-        return dict(certified=None, table=table)
+        return dict(certified=None, certified_all=certified_all, table=table)
     _, q_r, q_t, row = best
     # resampling stability (2x coarser), on r
     pr2 = _poles(oms[::2], r[::2])
@@ -102,8 +118,9 @@ def select_pole(lams, r, t):
         Q_pole=abs(q_avg.real / (2 * q_avg.imag)),
         rt_rel_diff=abs(q_r - q_t) / abs(q_r),
         stability_rel=stab, stable=stab < STAB_TOL,
-        res_r_norm=row["res_r_norm"], res_t_norm=row["res_t_norm"]),
-        table=table)
+        res_r_norm=row["res_r_norm"], res_t_norm=row["res_t_norm"],
+        peak_r=row["peak_r"], peak_t=row["peak_t"]),
+        certified_all=certified_all, table=table)
 
 
 def certify(rho_t, with_ito=True, order=None):
