@@ -86,3 +86,18 @@ D2_P400_H170_multi7 it0 F=0.301 T=0.075 co=0.046 A=0.578 lam=(2.0,2.0)
 D2_P330_H230_warm~-home-uad7868eb it60 F=0.543 T=0.018 co=0.012 A=0.427 lam=(3.2,2.0)
 D2_P400_H170_multi7 it30 F=0.530 T=0.049 co=0.018 A=0.402 lam=(2.0,2.0)
 D2_P330_H230_warm~-home-uad7868eb it90 F=0.618 T=0.020 co=0.004 A=0.358 lam=(3.2,2.0)
+D2_P330_H230_warm~-home-uad7868eb: DONE F=0.624 Rc=0.624 T=0.032 co=0.001 A=0.343 err=3 isl=3 (835s)
+D2_P400_H170_multi7 it60 F=0.632 T=0.023 co=0.005 A=0.340 lam=(2.0,2.0)
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:201: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),
+D2_P400_H170_warm~-home-uad7868eb it0 F=0.134 T=0.386 co=0.177 A=0.303 lam=(2.0,2.0)
+D2_P400_H170_multi7 it90 F=0.631 T=0.011 co=0.001 A=0.357 lam=(2.0,2.0)
+D2_P400_H170_warm~-home-uad7868eb it30 F=0.409 T=0.212 co=0.002 A=0.378 lam=(5.1,3.2)
+D2_P400_H170_multi7: DONE F=0.677 Rc=0.677 T=0.007 co=0.000 A=0.316 err=0 isl=1 (681s)
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:201: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),
+D2_P400_H230_multi7 it0 F=0.016 T=0.092 co=0.258 A=0.634 lam=(2.0,2.0)
+D2_P400_H170_warm~-home-uad7868eb it60 F=0.463 T=0.027 co=0.006 A=0.503 lam=(5.1,3.2)
+D2_P400_H230_multi7 it30 F=0.084 T=0.112 co=0.068 A=0.736 lam=(2.0,3.2)

@@ -528,3 +528,28 @@ The +-6-nm-robust state is therefore MORE angle-fragile than the
 Stage-III leader (whose slope held to 50 deg): robustness to boundary
 bias and robustness to k_par are not the same property, and the
 angle-aware continuation is what buys the latter.
+
+Stage III on the +-6-nm-robust state (robust588 lineage): F0 0.453,
+pool F mean 0.269, min 0.122 (at 40 deg), 0.207 at the 55-deg
+challenge point; rotation-fidelity min 0.039. It is flatter but lower
+than the mut1 lineage everywhere below 50 deg, and its rotated-operator
+fidelity is worse; the device finalist therefore remains the mut1
+Stage-III continuation. (Both rows: results/cont55_ledger.csv; per-angle
+tables: results/angular_perfectR_finalists.csv.)
+
+## 16. Exploratory (sec 28, kept separate): a low-loss high-index material in the SAME geometry class
+
+To test the material-limited verdict directly rather than only by the
+k = 0 counterfactual, four runs used a GaP-like index
+n = 3.31 + 0.003i (eps = 10.96 + 0.02i) at 633 nm with the identical
+envelope, constraints, seeds and H = 200/230 (lowloss_GaP/). Result:
+F = 0.25-0.46 with T = 0.14-0.33, R_co = 0.36-0.40, A = 0.02-0.04 and
+retardance errors of 82-104 deg. Absorption is indeed gone, but at the
+lower index the same P/H window no longer supports the double
+transmission zero plus pi retardance - the index-thickness budget of
+the H <= 230 nm layer is insufficient. This sharpens the answer to
+Q29: the minimal platform change is LOWER LOSS AT SIMILAR INDEX
+(e.g. a-Si:H / annealed a-Si with k < 0.01, n ~ 3.9-4.3), not simply a
+lower-index low-loss dielectric; a GaP/TiO2 platform would require a
+taller re-optimized layer. This section is exploratory and is not part
+of the apples-to-apples a-Si ceiling result.
