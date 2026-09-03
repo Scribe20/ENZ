@@ -8,3 +8,13 @@ champ585 fab bias=+0.0 dH=+10: F=0.569 T=0.022 co=0.019
 champ585 fab bias=+5.8 dH=+0: F=0.417 T=0.183 co=0.036
 champ585 fab bias=+11.6 dH=+0: F=0.185 T=0.424 co=0.177
 QUALIFY_DONE champ585
+mut1_615 fab bias=-11.6 dH=+0: F=0.089 T=0.553 co=0.195
+mut1_615 fab bias=-5.8 dH=+0: F=0.439 T=0.070 co=0.146
+mut1_615 fab bias=+0.0 dH=-10: F=0.591 T=0.022 co=0.007
+mut1_615 fab bias=+0.0 dH=-5: F=0.607 T=0.014 co=0.003
+mut1_615 fab bias=+0.0 dH=+0: F=0.615 T=0.008 co=0.005
+mut1_615 fab bias=+0.0 dH=+5: F=0.617 T=0.005 co=0.009
+mut1_615 fab bias=+0.0 dH=+10: F=0.615 T=0.006 co=0.011
+mut1_615 fab bias=+5.8 dH=+0: F=0.330 T=0.301 co=0.088
+mut1_615 fab bias=+11.6 dH=+0: F=0.182 T=0.434 co=0.175
+QUALIFY_DONE mut1_615
