@@ -87,7 +87,7 @@ def full_pool(x, kern, mask, branch, P, H, thetas, order, eps, rot=False):
         for th in thetas:
             for ph in PHIS:
                 Rj, Tj = wf.jones_angle(rho, P, H, th, ph, order=order)
-                Fa, m = state_loss(Rj, Tj, 0.0, th0, ph)
+                Fa, m = state_loss(Rj, Tj, 0.0, th0, pr.phi_eff(th, ph))
                 rows.append({'theta': th, 'phi': ph, 'alpha': 0.0,
                              'F': float(Fa), 'T': float(m['T']),
                              'co': float(m['co']), 'A': float(m['A'])})
@@ -167,7 +167,7 @@ def run(branch, P, H, parent, iters, stage, lossless=False):
             rr = rho if al == 0.0 else rotated_density(x, kern, beta, mask,
                                                        branch, al)
             Rj, Tj = wf.jones_angle(rr, P, H, th, ph, order=order_opt)
-            Fa, m = state_loss(Rj, Tj, al, th0, ph)
+            Fa, m = state_loss(Rj, Tj, al, th0, pr.phi_eff(th, ph))
             Fs.append(Fa)
             Ts.append(m['T'])
             Cs.append(m['co'])

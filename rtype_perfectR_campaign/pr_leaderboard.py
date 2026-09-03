@@ -89,7 +89,7 @@ def main():
                 with torch.no_grad():
                     Rj, Tj = wf.jones_angle(rho, r.P, r.H, th, ph,
                                             order=(9, 9))
-                m = pr.scalars(pr.port_metrics(Rj, Tj, ph))
+                m = pr.scalars(pr.port_metrics(Rj, Tj, pr.phi_eff(th, ph)))
                 rows.append({'tag': r.tag, 'theta': th, 'phi': ph, **m})
         sub = pd.DataFrame([x for x in rows if x['tag'] == r.tag])
         print(f'{r.tag}: F0={sub.F.iloc[0]:.3f} minF(0-50)={sub.F.min():.3f}'

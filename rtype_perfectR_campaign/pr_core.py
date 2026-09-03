@@ -108,6 +108,12 @@ def fidelity_state(Rj, alpha_deg=0.0, phi_deg=0.0, th0=0.0):
     return torch.abs(tr) ** 2 / 4.0
 
 
+def phi_eff(theta_deg, phi_deg):
+    """At exactly normal incidence TORCWA's p/s frame is pinned to x/y
+    (zero transverse k), so no azimuth correction applies there."""
+    return 0.0 if theta_deg == 0.0 else phi_deg
+
+
 def port_metrics(Rj, Tj, phi_deg=0.0):
     """All perfect-R scalar metrics (differentiable pieces as tensors).
     F uses the azimuth-corrected ideal operator U_{-phi}."""
