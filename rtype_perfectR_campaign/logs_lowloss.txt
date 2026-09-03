@@ -28,3 +28,5 @@ Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pyto
 D2_P278_H200_rand11 it0 F=0.008 T=0.151 co=0.822 A=0.019 lam=(2.0,2.0)
 D2_P278_H200_rand11 it30 F=0.079 T=0.239 co=0.666 A=0.017 lam=(5.1,5.1)
 D2_P278_H200_rand11 it60 F=0.194 T=0.341 co=0.449 A=0.016 lam=(13.1,13.1)
+D2_P278_H200_rand11 it90 F=0.248 T=0.329 co=0.407 A=0.016 lam=(33.6,33.6)
+D2_P278_H200_rand11: DONE F=0.249 Rc=0.249 T=0.311 co=0.415 A=0.025 err=105 isl=1 (190s)
