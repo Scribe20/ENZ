@@ -146,6 +146,9 @@ def run(branch, P, H, seedspec, iters, stage, lossless=False):
         print(f'{tag}: already complete', flush=True)
         return
     eps = complex(rc.EPS_ASI_633.real, 0.0) if lossless else None
+    if os.environ.get('PR_EPS'):          # exploratory alternative material
+        re_, im_ = (float(v) for v in os.environ['PR_EPS'].split(','))
+        eps = complex(re_, im_)            # (sec 28: kept separate, labelled)
     order_opt = (9, 9) if P >= 300 else (7, 7)
     ovr = pr.HERE / 'iters_override.txt'          # budget control for
     if ovr.exists() and not ck_exists(outdir):    # not-yet-started runs

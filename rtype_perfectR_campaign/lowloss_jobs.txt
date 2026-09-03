@@ -1,0 +1,4 @@
+D2 278 230 warm:/home/user/ENZ/rtype_perfectR_campaign/mutation/D2_P278_H230_mut1~-home-ub39c580f/rho_binary.npy 110 lowloss_GaP
+D2 278 230 rand11 110 lowloss_GaP
+D2 278 200 warm:/home/user/ENZ/rtype_perfectR_campaign/mutation/D2_P278_H230_mut1~-home-ub39c580f/rho_binary.npy 110 lowloss_GaP
+D2 278 200 rand11 110 lowloss_GaP

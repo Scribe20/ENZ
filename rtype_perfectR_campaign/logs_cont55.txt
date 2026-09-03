@@ -5,3 +5,4 @@ D2_P278_H230_cont55_D2_P278_H230_cont30_D2_P278_ it47 pool F mean=0.338 min=0.01
 D2_P278_H230_cont55_D2_P278_H230_cont30_D2_P278_ it59 pool F mean=0.345 min=0.008 T=0.072 co=0.102 worst=(55.0, 0.0, 0.0)
 D2_P278_H230_cont55_D2_P278_H230_cont30_D2_P278_: DONE F0=0.565 Fmean=0.334 Fmin=0.011 Tmean=0.078 co=0.100 Frot_min=0.113 (1184s)
 D2_P278_H230_cont55_D2_P278_H230_warm~-home-ub90 it11 pool F mean=0.269 min=0.083 T=0.096 co=0.130 worst=(55.0, 0.0, 0.0)
+D2_P278_H230_cont55_D2_P278_H230_warm~-home-ub90 it23 pool F mean=0.269 min=0.100 T=0.094 co=0.127 worst=(55.0, 0.0, 0.0)
