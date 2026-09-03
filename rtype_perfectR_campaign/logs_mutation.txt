@@ -2,3 +2,5 @@
 Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
   hist.append([it, float(L), float(m['F']), float(m['T']),
 D2_P278_H230_mut1~-home-ub39c580f it0 F=0.298 T=0.116 co=0.205 A=0.382 lam=(2.0,2.0)
+D2_P278_H230_mut1~-home-ub39c580f it30 F=0.508 T=0.038 co=0.009 A=0.445 lam=(2.0,2.0)
+D2_P278_H230_mut1~-home-ub39c580f it60 F=0.581 T=0.002 co=0.002 A=0.414 lam=(2.0,2.0)
