@@ -35,3 +35,4 @@ Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pyto
   hist.append([it, float(L), float(m['F']), float(m['T']),
 D2_P278_H230_warm~-home-ub9081a40 it0 F=0.330 T=0.171 co=0.085 A=0.413 lam=(2.0,2.0)
 D2_P278_H230_warm~-home-ub9081a40 it30 F=0.438 T=0.090 co=0.017 A=0.455 lam=(2.0,2.0)
+D2_P278_H230_warm~-home-ub9081a40 it60 F=0.491 T=0.079 co=0.003 A=0.426 lam=(2.0,2.0)

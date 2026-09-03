@@ -1,0 +1,5 @@
+mut1_615 tx: |full|^2=0.005 ladder^2=0.375 resid=0.539 |ED|=0.09 |MD|=0.22 |EQ|=0.93 fMQ=0.07
+mut1_615 rx: |full|^2=0.571 ladder^2=0.459 resid=0.204 |ED|=0.11 |MD|=0.18 |EQ|=0.75 fMQ=0.07
+mut1_615 ty: |full|^2=0.011 ladder^2=0.206 resid=0.374 |ED|=0.41 |MD|=0.64 |EQ|=0.31 fMQ=0.03
+mut1_615 ry: |full|^2=0.669 ladder^2=0.352 resid=0.264 |ED|=0.71 |MD|=0.76 |EQ|=0.37 fMQ=0.03
+PR_ARGAND_DONE mut1_615
