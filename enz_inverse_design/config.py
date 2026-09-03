@@ -78,7 +78,17 @@ TARGET_DIRECTION = "bidir"   # "+x" | "-x" | "bidir"
 #                     the volume-averaged TOTAL longitudinal intensity in the
 #                     ITO (all harmonics, no prescribed momentum channel);
 #                     |E_inc| = 1 in the TORCWA source convention.
+#   "ito_absorption" - resonant power-transfer campaign: maximize
+#                     A_ITO(lambda_E) = 1-R-T (identity: ITO is the only
+#                     lossy layer; cross-validated vs the volume integral in
+#                     enz_absorption_campaign/target_audit.py) subject to the
+#                     differentiable resonance surrogate
+#                     A(lambda_E +/- W/2) <= A(lambda_E)/2 with
+#                     W = lambda_E/Q_MIN (i.e. spectral Q >= Q_MIN), enforced
+#                     as a normalized penalty (see PENALTY_MU).
 OBJECTIVE = "qnm_overlap"
+Q_MIN = 5.0        # from trusted refs: bare ENZ QNM Q=5.80, hybrid pole 5.04
+PENALTY_MU = 10.0  # normalized penalty weight; sensitivity {3,10,30} planned
 MOMENTUM_MISMATCH_MAX = 0.05   # allowed |ReK - |G|| / ReK before warning hard
 Z_SAMPLES_ITO = 7         # midpoint z-slices inside ITO for the overlap
 

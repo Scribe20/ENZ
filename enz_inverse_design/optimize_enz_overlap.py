@@ -139,6 +139,17 @@ def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
     momentum = torch.zeros_like(rho)
     velocity = torch.zeros_like(rho)
 
+    # auxiliary wavelengths for the ito_absorption resonance surrogate
+    aux_wavelengths = []
+    if getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_absorption":
+        W = lam / config.Q_MIN
+        for lam_s in (lam - W / 2, lam + W / 2):
+            aux_wavelengths.append((lam_s, fwd.eps_ito_of_lambda(lam_s),
+                                    fwd.eps_asi_of_lambda(lam_s)))
+        print(f"[objective] ito_absorption: A_ITO(lambda_E) with Q >= "
+              f"{config.Q_MIN} surrogate at lambda_E +/- {W/2:.1f} nm, "
+              f"penalty mu = {config.PENALTY_MU}")
+
     def forward_F(rho_proj, want_diags=False):
         sim = fwd.build_solved_sim(rho_proj, lam, eps_ito, config.N_GLASS)
         Ez_full = fwd.ez_in_ito(sim, x_axis, y_axis, z_prop)
@@ -146,7 +157,25 @@ def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
         F_qnm, diags = obj.enz_objective(
             T_plus, Ez_scat, dV, p_inc, target_minus=T_minus,
             direction=config.TARGET_DIRECTION)
-        if getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_ez_volume":
+        if getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_absorption":
+            # A_ITO(lambda_E) with the differentiable Q>=Q_MIN surrogate:
+            # A at lambda_E +/- W/2 must stay below half of A(lambda_E)
+            # (single-peak FWHM <= W  <=>  Q_spec >= Q_MIN).  ITO is the
+            # only lossy layer, so 1-R-T is exactly the ITO absorption.
+            R_E, T_E = fwd.specular_RT(sim)
+            A_E = 1.0 - R_E - T_E
+            pen = torch.zeros((), dtype=A_E.dtype, device=A_E.device)
+            for lam_s, eps_i_s, eps_a_s in aux_wavelengths:
+                sim_s = fwd.build_solved_sim(rho_proj, lam_s, eps_i_s,
+                                             config.N_GLASS, eps_asi=eps_a_s)
+                R_s, T_s = fwd.specular_RT(sim_s)
+                A_s = 1.0 - R_s - T_s
+                pen = pen + torch.clamp(A_s / A_E - 0.5, min=0.0) ** 2
+            F = A_E - config.PENALTY_MU * pen
+            diags["A_E"] = float(A_E)
+            diags["penalty"] = float(pen)
+            diags["F_qnm_diag"] = float(F_qnm)
+        elif getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_ez_volume":
             # F_ENZ = <|Ez/E_inc|^2>_ITO: TOTAL driven field, all harmonics,
             # midpoint quadrature strictly inside the ITO (differentiable);
             # dV * Nz*Nx*Ny = V_ITO exactly, so this is the volume average.
