@@ -142,13 +142,14 @@ def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
     # auxiliary wavelengths for the ito_absorption resonance surrogate
     aux_wavelengths = []
     if getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_absorption":
-        D = config.RES_DELTA_NM
+        D = config.RES_PROBE_OFFSET_NM
         for lam_s in (lam - D, lam + D):
             aux_wavelengths.append((lam_s, fwd.eps_ito_of_lambda(lam_s),
                                     fwd.eps_asi_of_lambda(lam_s)))
-        print(f"[objective] ito_absorption: maximize A_ITO(lambda_E) s.t. "
-              f"contrast C(D={D:.0f} nm) >= {config.C_MIN} and peak within "
-              f"+/-{D:.0f} nm; penalty mu = {config.PENALTY_MU} (relu^2)")
+        print(f"[objective] ito_absorption: maximize A_ITO(lambda_E) with "
+              f"resonance-contrast gate C(d={D:.0f} nm) >= {config.C_MIN} and "
+              f"center-dominance A(lam_E) >= A(lam_E +/- d); penalty mu = "
+              f"{config.PENALTY_MU} (relu^2)")
 
     def forward_F(rho_proj, want_diags=False):
         sim = fwd.build_solved_sim(rho_proj, lam, eps_ito, config.N_GLASS)
@@ -158,10 +159,10 @@ def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
             T_plus, Ez_scat, dV, p_inc, target_minus=T_minus,
             direction=config.TARGET_DIRECTION)
         if getattr(config, "OBJECTIVE", "qnm_overlap") == "ito_absorption":
-            # A_ITO(lambda_E) with the differentiable Q>=Q_MIN surrogate:
-            # A at lambda_E +/- W/2 must stay below half of A(lambda_E)
-            # (single-peak FWHM <= W  <=>  Q_spec >= Q_MIN).  ITO is the
-            # only lossy layer, so 1-R-T is exactly the ITO absorption.
+            # A_ITO(lambda_E) with the resonance-contrast gate (empirical
+            # ENZ-band spectral-selectivity surrogate; not a Q constraint)
+            # and the three-point center-dominance test.  ITO is the only
+            # lossy layer, so 1-R-T is exactly the ITO absorption.
             R_E, T_E = fwd.specular_RT(sim)
             A_E = 1.0 - R_E - T_E
             A_side = []
@@ -172,7 +173,7 @@ def main(smoke=False, n_iter=None, design_mask=None, out_root=None):
                 A_side.append(1.0 - R_s - T_s)
             C = (A_E - 0.5 * (A_side[0] + A_side[1])) / A_E
             pen = torch.clamp(config.C_MIN - C, min=0.0) ** 2
-            for A_s in A_side:                      # peak within +/- D
+            for A_s in A_side:                      # center-dominance test
                 pen = pen + torch.clamp((A_s - A_E) / A_E, min=0.0) ** 2
             F = A_E - config.PENALTY_MU * pen
             diags["A_E"] = float(A_E)

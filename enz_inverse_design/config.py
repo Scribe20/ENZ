@@ -81,27 +81,26 @@ TARGET_DIRECTION = "bidir"   # "+x" | "-x" | "bidir"
 #   "ito_absorption" - resonant power-transfer campaign: maximize
 #                     A_ITO(lambda_E) = 1-R-T (identity: ITO is the only
 #                     lossy layer; cross-validated vs the volume integral in
-#                     enz_absorption_campaign/target_audit.py) subject to the
-#                     differentiable resonance surrogate
-#                     A(lambda_E +/- W/2) <= A(lambda_E)/2 with
-#                     W = lambda_E/Q_MIN (i.e. spectral Q >= Q_MIN), enforced
-#                     as a normalized penalty (see PENALTY_MU).
+#                     enz_absorption_campaign/target_audit.py) with an
+#                     in-loop RESONANCE-CONTRAST GATE (empirical ENZ-band
+#                     spectral-selectivity surrogate, NOT a Q constraint):
+#                       C = [A(lam_E) - (A(lam_E-d)+A(lam_E+d))/2]/A(lam_E)
+#                           >= C_MIN,  d = RES_PROBE_OFFSET_NM
+#                     plus the three-point center-dominance test
+#                       A(lam_E) >= A(lam_E +/- d)
+#                     (not a proof of peak location).  Resonance wavelength
+#                     and Q are certified POST HOC by the channel-agnostic
+#                     r/t pole analysis (enz_absorption_campaign/pole_rt.py).
 OBJECTIVE = "qnm_overlap"
-Q_MIN = 5.0        # from trusted refs: bare ENZ QNM Q=5.80, hybrid pole 5.04
-# In-loop resonance surrogate (calibrated on trusted references in
-# enz_absorption_campaign/target_audit.py - a raw half-maximum test fails
-# every ENZ-resonant reference because ENZ absorption sits on a ~0.15
-# non-resonant baseline):
-#   C = [A(lam_E) - (A(lam_E-D) + A(lam_E+D))/2] / A(lam_E)  >=  C_MIN
-#   A(lam_E) >= A(lam_E +/- D)   (peak within +/- D of lam_E)
-# D = 80 nm (widest window clear of the padded class's off-target ~1300 nm
-# Si resonance; ~half the ENZ HWHM); C_MIN = 0.075 = C of the validated
-# ENZ-coupled reference with the lowest pole Q (5.16 >= Q_MIN); bare ITO
-# (non-resonant) gives C ~ 0.  Final Q is verified by the AAA pole, not
-# by this surrogate.
-RES_DELTA_NM = 80.0
-C_MIN = 0.075
-PENALTY_MU = 100.0  # quadratic relu penalty; sensitivity {30,100,300} planned
+# Resonance-contrast gate parameters.  Values are set by the calibration in
+# enz_absorption_campaign/target_audit.py (see TARGET_AUDIT.md) - do not
+# edit by hand without re-running the audit.
+RES_PROBE_OFFSET_NM = 80.0   # side-probe offset (NOT an allowed detuning)
+C_MIN = 0.075                # provisional; superseded by target_audit.py
+PENALTY_MU = 100.0           # provisional; justified by gradient_audit.json
+Q_REF_LOADED = 5.0           # post-hoc empirical loaded-resonance reference
+                             # scale (bare ENZ QNM 5.80, loaded poles 5.0-5.7);
+                             # not a ceiling, not used in the loss
 MOMENTUM_MISMATCH_MAX = 0.05   # allowed |ReK - |G|| / ReK before warning hard
 Z_SAMPLES_ITO = 7         # midpoint z-slices inside ITO for the overlap
 
