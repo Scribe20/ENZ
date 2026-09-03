@@ -18,3 +18,7 @@ D2_P272_H230_cont30_D2_P272_H230_warm~-home-ue54 it59 pool F mean=0.342 min=0.24
 D2_P272_H230_cont30_D2_P272_H230_warm~-home-ue54: DONE F0=0.495 Fmean=0.321 Fmin=0.229 Tmean=0.114 co=0.038 Frot_min=0.068 (752s)
 C2_P278_H200_cont30_C2_P278_H200_warm~-home-uad7 it11 pool F mean=0.439 min=0.150 T=0.067 co=0.048 worst=(30.0, 0.0, 0.0)
 C2_P278_H200_cont30_C2_P278_H200_warm~-home-uad7 it23 pool F mean=0.442 min=0.162 T=0.064 co=0.041 worst=(30.0, 0.0, 0.0)
+C2_P278_H200_cont30_C2_P278_H200_warm~-home-uad7 it35 pool F mean=0.442 min=0.175 T=0.058 co=0.036 worst=(30.0, 0.0, 0.0)
+C2_P278_H200_cont30_C2_P278_H200_warm~-home-uad7 it47 pool F mean=0.442 min=0.190 T=0.050 co=0.033 worst=(30.0, 0.0, 0.0)
+C2_P278_H200_cont30_C2_P278_H200_warm~-home-uad7 it59 pool F mean=0.437 min=0.211 T=0.041 co=0.033 worst=(30.0, 0.0, 0.0)
+C2_P278_H200_cont30_C2_P278_H200_warm~-home-uad7: DONE F0=0.517 Fmean=0.438 Fmin=0.208 Tmean=0.046 co=0.031 Frot_min=0.006 (802s)

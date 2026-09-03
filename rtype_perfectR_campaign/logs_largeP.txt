@@ -65,3 +65,8 @@ Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pyto
   hist.append([it, float(L), float(m['F']), float(m['T']),
 D2_P330_H170_warm~-home-uad7868eb it90 F=0.574 T=0.054 co=0.048 A=0.324 lam=(3.2,2.0)
 D2_P330_H170_multi7 it120 F=0.565 T=0.021 co=0.007 A=0.407 lam=(3.2,2.0)
+D2_P330_H170_warm~-home-uad7868eb it120 F=0.599 T=0.033 co=0.040 A=0.328 lam=(3.2,2.0)
+D2_P330_H170_multi7: DONE F=0.563 Rc=0.563 T=0.037 co=0.021 A=0.380 err=21 isl=1 (886s)
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:198: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),

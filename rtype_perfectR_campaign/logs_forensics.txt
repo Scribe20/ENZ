@@ -15,3 +15,17 @@ mut22_651 ry: |full|^2=0.616 ladder^2=0.231 resid=0.308 |ED|=0.68 |MD|=0.50 |EQ|
 PR_ARGAND_DONE mut22_651
 mut1_615 eigen: |ev|=0.756,0.818 dphi_eig=189.4 (err 9.4) axes 0.0/90.0 ellip 0.00/0.00
 mut1_615 spectra: F(633)=0.615 peak=0.667@645.0 half-max band ~620-645 nm (within scan)
+mut1_615 fab bias=-11.6 dH=+0: F=0.089 T=0.553 co=0.195
+mut1_615 fab bias=-5.8 dH=+0: F=0.439 T=0.070 co=0.146
+mut1_615 fab bias=+0.0 dH=-10: F=0.591 T=0.022 co=0.007
+mut1_615 fab bias=+0.0 dH=-5: F=0.607 T=0.014 co=0.003
+mut1_615 fab bias=+0.0 dH=+0: F=0.615 T=0.008 co=0.005
+mut1_615 fab bias=+0.0 dH=+5: F=0.617 T=0.005 co=0.009
+mut1_615 fab bias=+0.0 dH=+10: F=0.615 T=0.006 co=0.011
+mut1_615 fab bias=+5.8 dH=+0: F=0.330 T=0.301 co=0.088
+mut1_615 fab bias=+11.6 dH=+0: F=0.182 T=0.434 co=0.175
+mut1_615 o9: F=0.6149 T=0.0084 co=0.0051 evR=(0.052+0.754j,-0.189-0.796j)
+mut1_615 o11: F=0.6114 T=0.0181 co=0.0036 evR=(0.130+0.733j,-0.238-0.787j)
+mut1_615 o13: F=0.6099 T=0.0210 co=0.0035 evR=(0.153+0.724j,-0.255-0.783j)
+mut1_615 o15: F=0.6061 T=0.0260 co=0.0030 evR=(0.184+0.710j,-0.269-0.779j)
+QUALIFY_DONE mut1_615

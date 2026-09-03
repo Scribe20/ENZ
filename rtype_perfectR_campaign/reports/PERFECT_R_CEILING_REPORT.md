@@ -221,3 +221,35 @@ cancellation work. Topology (Q17-19): all leaders are single
 rounded, notched bars inside the envelope - simple in outline, but the
 simplicity is NOT evidence of an ED/MD optimum: the current pattern is
 quadrupolar on x.
+
+## 9. Stage II - small-angle continuation (theta 0-30, phi 0/45/90; sec 22)
+
+Four theta=0 leaders were continued with 4-state angular minibatches,
+multi-failure hard mining (worst F, largest T, largest R_co) and the
+same constraint continuation (continuation/, cont30_ledger.csv):
+
+| parent | F0 after | pool F mean / min (0-30) | T max | co max | A mean | rotation fidelity mean / min | features |
+|---|---|---|---|---|---|---|---|
+| mut1 (fab-valid 0.615) | 0.598 | **0.444 / 0.211** | 0.161 | 0.108 | 0.462 | **0.329 / 0.135** | 78 / 2.9 |
+| Stage-I champ (0.585) | 0.502 | 0.331 / 0.209 | 0.140 | 0.116 | 0.518 | 0.226 / 0.052 | 78 / 72 |
+| P272/H230 (0.580) | 0.495 | 0.321 / 0.229 | 0.159 | 0.100 | 0.530 | 0.211 / 0.068 | 77 / 77 |
+| C2 P278/H200 (0.561) | 0.517 | 0.438 / 0.208 | 0.184 | 0.133 | 0.461 | 0.186 / **0.006** | 107 / 96 |
+
+Findings: (i) every near-ideal theta=0 state loses ~half its fidelity by
+30 deg (pool means 0.32-0.44, minima 0.21-0.23 at (30, 90)) even after
+angle-aware continuation - the ideal operator is phase-critical in
+k_par exactly as the previous campaign's PB-law analysis implied;
+(ii) absorption RISES off-axis (A mean 0.46-0.53), so the angular loss
+is again dissipative; (iii) the C2 candidate matches the D2 leader on
+static pool fidelity but its PHYSICAL-ROTATION fidelity collapses
+(min 0.006): without the two mirrors the principal axes do not stay
+locked to the motif orientation under oblique incidence, so C2 states
+are not PB-addressable off-axis (Q11 answered on the device level:
+C2 does not outperform D2, and fails the rotation test); (iv) the
+mutation child remains the best device candidate on every axis.
+
+Stage III (0-55 with physical-rotation states in the loss, sec 23-24)
+on the mut1 continuation, in progress at this writing: pool F mean
+0.34, min 0.01 at theta = 55 (phi = 0) - the challenge angle is not
+held by any single-layer state, consistent with the measured PB-law
+collapse between 45 and 60 deg.
