@@ -1,0 +1,4 @@
+/home/user/ENZ/rtype_perfectR_campaign/pr_optimize.py:201: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  hist.append([it, float(L), float(m['F']), float(m['T']),
+D2_P278_H230_warm~-home-u43507cfd it0 F=0.053 T=0.655 co=0.282 A=0.011 lam=(2.0,2.0)
