@@ -79,3 +79,7 @@ error: failed to push some refs to 'https://github.com/Scribe20/ENZ'
 2026-09-04 06:18:29 [driver] stage stage2 failed; stopping chain
 2026-09-04 06:22:05 [stage2] start: python3 stage2_screen.py
 2026-09-04 13:59:15 [stage2] rc=0 in 457.2 min
+2026-09-04 13:59:15 [git] committed: Robust A_ITO campaign: Stage 2 outer (P,h,pad) screen + landscape plots  (a796dce)
+2026-09-04 13:59:19 [git] pushed
+2026-09-04 13:59:19 [stage3] start: python3 stage3_refine.py
+2026-09-04 15:49:14 [stage3] rc=0 in 109.9 min
