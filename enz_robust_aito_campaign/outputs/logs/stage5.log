@@ -1,0 +1,46 @@
+== 5a: high-accuracy refinement ==
+  finalist0_P800_h200_pad0.040_warm order [7, 7]: J=0.35252 A=[0.4507, 0.5132, 0.4098, 0.4381, 0.3419, 0.2669]
+  finalist0_P800_h200_pad0.040_warm order [9, 9]: J=0.35236 A=[0.4607, 0.515, 0.3974, 0.4989, 0.3028, 0.2835]
+  finalist0_P800_h200_pad0.040_warm order [11, 11]: J=0.35012 A=[0.4664, 0.517, 0.3927, 0.524, 0.2858, 0.2938]
+  finalist1_P925_h240_pad0.040_warm order [7, 7]: J=0.34792 A=[0.4574, 0.3823, 0.4757, 0.3553, 0.3947, 0.2643]
+  finalist1_P925_h240_pad0.040_warm order [9, 9]: J=0.34780 A=[0.4661, 0.3877, 0.477, 0.3571, 0.391, 0.263]
+  finalist1_P925_h240_pad0.040_warm order [11, 11]: J=0.34806 A=[0.4725, 0.3935, 0.4778, 0.3596, 0.3886, 0.2621]
+== 5b: spectra and controls (winner) ==
+  gate (post hoc): {'A_E': 0.45067185883989147, 'C80': 0.6005090317189491, 'center_dominant': True, 'note': 'reported only; not used in any loss'}
+== 5c: channel-agnostic r/t poles and loss-scaling decomposition ==
+  with ITO: {'lambda_pole_nm': 1487.6027946988957, 'Q_pole': 5.225632603658486, 'rt_rel_diff': 0.005691890788147137, 'stability_rel': 0.0037435085759617405, 'stable': True, 'res_r_norm': np.float64(1.0), 'res_t_norm': np.float64(1.0), 'peak_r': np.float64(0.2075226778511007), 'peak_t': np.float64(0.0942456079105699)}
+  all in-window: [{'lambda_nm': 1491.674850665006, 'Q': 5.166884292625343, 'peak_r': np.float64(0.2075226778511007), 'peak_t': np.float64(0.0942456079105699)}, {'lambda_nm': 1437.5568175384733, 'Q': 73.81231074306238, 'peak_r': np.float64(0.6938176754544055), 'peak_t': np.float64(0.3489040335519766)}]
+  no ITO: None
+
+=== robust winner ===
+  s=1.00: pole  1499.80 nm, gamma=|Im w|=0.11400 rad/fs, Q=    5.51, |res_r|=7.896e-03 |res_t|=1.145e-02
+  s=0.50: pole  1489.44 nm, gamma=|Im w|=0.07152 rad/fs, Q=    8.84, |res_r|=5.765e-03 |res_t|=6.543e-03
+  s=0.25: pole  1495.44 nm, gamma=|Im w|=0.04142 rad/fs, Q=   15.21, |res_r|=7.056e-03 |res_t|=6.304e-03
+  s=0.10: pole  1501.82 nm, gamma=|Im w|=0.02551 rad/fs, Q=   24.58, |res_r|=2.630e-03 |res_t|=3.790e-03
+  s=0.03: pole  1505.78 nm, gamma=|Im w|=0.01280 rad/fs, Q=   48.88, |res_r|=2.205e-03 |res_t|=1.516e-03
+  s=0.00: pole  1508.12 nm, gamma=|Im w|=0.00808 rad/fs, Q=   77.29, |res_r|=6.465e-03 |res_t|=1.367e-03
+  linear fit gamma(s): gamma_rad = 0.01252, gamma_nr(s=1) = 0.10542 rad/fs, max linearity residual = 5.52e-02
+  Q_loaded = 5.51, Q_rad = 50.1, Q_nr = 5.96, gamma_rad/gamma_nr = 0.119; lossless-ITO pole Q = 77.3 at 1508.1 nm; pole shift s=1 -> s=0: -8.3 nm
+  gamma_rad split (residue-based, approx): glass fraction = 0.75, air fraction = 0.25
+  participation (loaded, driven at its pole 1499.8 nm): eta_ENZ,z = 9.4951e-02 nm^-3... (dimension 1/energy-density units; use ratios), eta_z = 0.749, ITO E-energy fraction = 0.405
+  participation (lossless_aux, driven at its pole 1508.1 nm): eta_ENZ,z = 4.4498e-01 nm^-3... (dimension 1/energy-density units; use ratios), eta_z = 0.953, ITO E-energy fraction = 0.941
+== 5d: F_Ez, eta_z, Fourier content, multipoles, locality, fabrication ==
+  th=0 ph=0: A=0.4507 (vol 0.4506) F_Ez=2.153 eta_z=0.338 propagating orders: [(0, 0)]
+  th=15 ph=0: A=0.5132 (vol 0.5132) F_Ez=2.491 eta_z=0.355 propagating orders: [(0, 0)]
+  th=30 ph=0: A=0.4098 (vol 0.4098) F_Ez=1.805 eta_z=0.360 propagating orders: [(-1, 0), (0, 0)]
+  th=15 ph=90: A=0.4381 (vol 0.4380) F_Ez=4.006 eta_z=0.669 propagating orders: [(0, 0)]
+  th=30 ph=90: A=0.3419 (vol 0.3418) F_Ez=2.742 eta_z=0.655 propagating orders: [(0, -1), (0, 0)]
+  th=20 ph=45: A=0.2669 (vol 0.2669) F_Ez=2.681 eta_z=0.756 propagating orders: [(0, 0)]
+  fourier: {"(-2,-1)": 0.028, "(-2,1)": 0.019, "(-1,-1)": 0.089, "(-1,0)": 0.219, "(-1,1)": 0.062, "(1,-1)": 0.07, "(1,0)": 0.219, "(1,1)": 0.079, "(2,-1)": 0.022, "(2,1)": 0.022}
+  multipoles: {"frac_ED": 0.336, "frac_MD": 0.048, "frac_EQ": 0.006, "frac_MQ": 0.611}
+  locality: {"n_components": 1, "largest_component_frac": 1.0, "min_feature_nm": 143.75, "min_gap_nm": 31.25, "fill": 0.63970947265625, "S_flip_lr": 0.3230779365960491, "S_flip_ud": 0.3183177804194587}
+  fabrication: {"-2px (-12.5 nm)": 0.2399, "-1px (-6.2 nm)": 0.277, "+1px (+6.2 nm)": 0.2539, "+2px (+12.5 nm)": 0.2097}
+== 5e: final comparison ==
+  bare ITO                    : J=0.0554 A0=0.0449 min=0.0449 dense<=30 min/mean=0.0449/0.0539 F_Ez=0.000
+  EDR cuboid                  : J=0.1789 A0=0.1987 min=0.1270 dense<=30 min/mean=0.1270/0.1972 F_Ez=2.148
+  unpadded QNM winner         : J=0.2101 A0=0.2050 min=0.1664 dense<=30 min/mean=0.1664/0.2340 F_Ez=2.321
+  padded QNM winner           : J=0.1892 A0=0.2009 min=0.1484 dense<=30 min/mean=0.1484/0.1985 F_Ez=2.214
+  padded F_ENZ winner         : J=0.1938 A0=0.2079 min=0.1500 dense<=30 min/mean=0.1500/0.2037 F_Ez=2.285
+  robust finalist0_P800_h200_pad0.040_warm: J=0.3525 A0=0.4507 min=0.2669 dense<=30 min/mean=0.2417/0.4125 F_Ez=2.152
+  robust finalist1_P925_h240_pad0.040_warm: J=0.3479 A0=0.4574 min=0.2643 dense<=30 min/mean=0.1959/0.3879 F_Ez=4.031
+[done] stage 5

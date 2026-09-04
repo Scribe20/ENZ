@@ -87,3 +87,7 @@ error: failed to push some refs to 'https://github.com/Scribe20/ENZ'
 2026-09-04 15:49:19 [git] pushed
 2026-09-04 15:49:19 [stage4] start: python3 stage4_full.py
 2026-09-04 18:21:13 [stage4] rc=0 in 151.9 min
+2026-09-04 18:21:13 [git] committed: Robust A_ITO campaign: Stage 4 full topology optimization (warm + from-scratch)  (28afd5c)
+2026-09-04 18:21:16 [git] pushed
+2026-09-04 18:21:16 [stage5] start: python3 stage5_posthoc.py
+2026-09-04 18:50:07 [stage5] rc=0 in 28.9 min
