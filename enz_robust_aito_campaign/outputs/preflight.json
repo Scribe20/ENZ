@@ -2112,7 +2112,7 @@
  },
  "angular_domain": {
   "authority": "NONE found in repo (grep for NA / numerical aperture / acceptance angle / high-NA over *.md,*.py,*.txt,*.csv,*.json)",
-  "assumption": "modest +-30 deg cone (NA~0.5 in air), lab-frame x polarization projected on the transverse plane; uniform weights; screen set 3 angles, full set 5 angles; final check on the phi=0, 90, 45 deg planes 0-40 deg",
+  "assumption": "modest +-30 deg cone (NA~0.5 in air), lab-frame x polarization projected on the transverse plane; uniform weights; screen set 3 angles, full set 6 angles; final check on the phi=0, 90, 45 deg planes 0-40 deg",
   "screen": [
    [
     0.0,

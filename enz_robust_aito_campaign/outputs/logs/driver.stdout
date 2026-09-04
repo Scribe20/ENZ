@@ -90,3 +90,10 @@ error: failed to push some refs to 'https://github.com/Scribe20/ENZ'
 18:21:16  [git] pushed
 18:21:16  [stage5] start: python3 stage5_posthoc.py
 18:50:07  [stage5] rc=0 in 28.9 min
+18:50:07  [git] committed: Robust A_ITO campaign: Stage 5 refinement, post-hoc physics, comparison, REPORT  (3c14174)
+18:50:07  [git] push attempt 1 failed: fatal: unable to access 'https://github.com/Scribe20/ENZ/': Failed to connect to 127.0.0.1 port 44627 after 0 ms: Couldn't connect to server
+18:50:09  [git] push attempt 2 failed: fatal: unable to access 'https://github.com/Scribe20/ENZ/': Failed to connect to 127.0.0.1 port 44627 after 0 ms: Couldn't connect to server
+18:50:13  [git] push attempt 3 failed: fatal: unable to access 'https://github.com/Scribe20/ENZ/': Failed to connect to 127.0.0.1 port 44627 after 0 ms: Couldn't connect to server
+18:50:21  [git] push attempt 4 failed: fatal: unable to access 'https://github.com/Scribe20/ENZ/': Failed to connect to 127.0.0.1 port 44627 after 0 ms: Couldn't connect to server
+18:50:37  [git] push attempt 5 failed: fatal: unable to access 'https://github.com/Scribe20/ENZ/': Failed to connect to 127.0.0.1 port 44627 after 0 ms: Couldn't connect to server
+18:50:37  [driver] all stages complete

@@ -362,6 +362,44 @@ def main():
     log("[done] stage 5")
 
 
+def interpretation(rep):
+    comp = {c["structure"]: c for c in rep["final_comparison"]}
+    win = next(c for c in comp.values() if c["structure"].startswith("robust finalist0"))
+    refs = [comp[k] for k in ("EDR cuboid", "unpadded QNM winner", "padded QNM winner", "padded F_ENZ winner")]
+    eta_ref = np.mean([c["eta_z_normal"] for c in refs]); fez_ref = np.mean([c["F_Ez_normal"] for c in refs])
+    fo = rep["field_and_orders"]
+    fab = rep["fabrication"]; loc = rep["locality"]
+    d = rep["decomposition"]
+    extra = [p for p in rep["poles"]["with_ITO_all"] if p["Q"] > 20]
+    lines = [
+        f"- **Where the absorption comes from.** At normal incidence the winner's ITO field is only {win['eta_z_normal']:.0%} longitudinal "
+        f"(eta_z; the four resonant references average {eta_ref:.0%}) while its Ez enhancement F_Ez = {win['F_Ez_normal']:.2f} is comparable to theirs ({fez_ref:.2f}). "
+        f"The ~2.2x higher A_ITO ({win['A_normal']:.3f} vs ~0.20) therefore comes mostly from IN-PLANE fields in the ITO under a high-fill "
+        f"({loc['fill']:.0%} of the cell) 200-nm a-Si slab perforated by narrow air slots, i.e. the ITO acts as a lossy layer loaded by a slab/slot resonance, "
+        f"not primarily through the longitudinal ENZ (Berreman-type) channel. eta_z rises to "
+        + ", ".join(f"{v['eta_z']:.2f} at ({k.replace('_', ' deg, ')} deg)" for k, v in fo.items() if k in ("15_90", "30_90", "20_45"))
+        + " where the TE-plane and diagonal incidences drive Ez at the slot edges.",
+        f"- **Resonances.** The loaded r/t pole nearest the ENZ band is at {d['rows'][0]['lambda_pole']:.1f} nm with Q_loaded = {d['Q_loaded']:.2f} "
+        f"(Q_rad = {d['Q_rad']:.0f}, Q_nr = {d['Q_nr']:.1f}); "
+        + (f"a second certified in-window pole at {extra[0]['lambda_nm']:.1f} nm with Q = {extra[0]['Q']:.0f} sits within a few nm of lambda_E and carries the largest "
+           f"Lorentzian peak fraction (r {extra[0]['peak_r']:.2f}, t {extra[0]['peak_t']:.2f}): a narrow lattice/guided-mode resonance of the P = 800 nm slab "
+           f"(G10/k0 = {rep['fourier_ito_Ez']['G10_over_k0']:.2f} vs K_ENZ/k0 = 1.69) hybridised with the ENZ film. " if extra else "")
+        + "The no-ITO control certified no in-window r/t pole under the significance criteria, so the ITO participates in setting the resonance rather than merely loading a photonic mode.",
+        f"- **Fabrication sensitivity.** A uniform +-1 px ({800/128:.1f} nm) edge shift lowers J from {rep['order_refinement']['finalist0_P800_h200_pad0.040_warm']['[7, 7]']['J']:.3f} to "
+        + " / ".join(f"{v['J']:.3f} ({k.split(' ')[0]})" for k, v in fab.items() if '1px' in k)
+        + f"; +-2 px gives " + " / ".join(f"{v['J']:.3f}" for k, v in fab.items() if '2px' in k)
+        + f". The minimum air gap is {loc['min_gap_nm']:.0f} nm (the realized padding ring itself), the minimum a-Si feature {loc['min_feature_nm']:.0f} nm. "
+        "The design is therefore edge-critical at the 6-nm pixel level; a robustness-aware (eroded/dilated) objective would be the natural next step if fabrication tolerance matters.",
+        f"- **Order convergence.** J changes by < 1% from [7,7] to [11,11], but individual TE-plane angles move by up to 0.06 (e.g. (15 deg, 90 deg): "
+        f"{rep['order_refinement']['finalist0_P800_h200_pad0.040_warm']['[7, 7]']['A'][3]:.3f} -> {rep['order_refinement']['finalist0_P800_h200_pad0.040_warm']['[11, 11]']['A'][3]:.3f}); "
+        "the narrow slots need higher orders for per-angle accuracy.",
+        f"- **Angular behaviour.** The winner stays above 0.40 across 0-30 deg in the TM plane and above 0.34 in the TE plane (dense mean {win['dense_mean_le30']:.3f}), "
+        f"but falls to {win['dense_min_le30']:.3f} on the 45-deg diagonal at 30 deg; the runner-up (P = 925, h = 240) is flatter at large angles but weaker in the TE plane. "
+        "Both from-scratch Stage-4 runs at the same cell reached only J ~ 0.21-0.22, so the outer (P, h, pad) screen and warm start, not the seed, produced the result.",
+    ]
+    return "\n".join(lines)
+
+
 def write_report(rep, winner, runs, df4):
     pre = json.load(open(rc.OUT / "preflight.json"))
     s2 = json.load(open(rc.OUT / "stage2" / "stage2_summary.json"))
@@ -382,7 +420,7 @@ def write_report(rep, winner, runs, df4):
          f"(ALL propagating orders, coherent p/s combination of the lab-x polarization) at lambda_E = {rc.LAMBDA_E} nm; "
          f"beta = {b['beta']:.2f} calibrated from the reference angular spreads (median {b['median_spread']:.4f}); uniform weights.",
          "- No Q, Ez, harmonic, QNM-overlap, multipole, Kerker, BIC, polariton or critical-coupling term in the loss.",
-         f"- Angular domain: {pre['angular_domain']['assumption']} (ASSUMPTION - {pre['angular_domain']['authority']}).",
+         f"- Angular domain (ASSUMPTION - {pre['angular_domain']['authority']}): +-30 deg cone (NA ~ 0.5 in air), lab-frame x polarization projected on the transverse plane, uniform weights; screen set {rc.ANGLES_SCREEN}; full set {rc.ANGLES_FULL}; final check on the phi = 0, 90, 45 deg planes 0-40 deg.",
          f"- Design variables: rho(x,y) on {rc.NX}x{rc.NX}, P in {rc.P_SCREEN} (refined +-{50} nm), h in {rc.H_SCREEN} (+-20), "
          f"p_pad in {rc.PAD_SCREEN} (+-0.03, always > 0); ITO stack and lambda_E fixed.",
          f"- Stage 2: {len(rc.P_SCREEN)*len(rc.H_SCREEN)*len(rc.PAD_SCREEN)*len(rc.SEEDS_SCREEN)} shortened runs "
@@ -391,10 +429,11 @@ def write_report(rep, winner, runs, df4):
          f"- Stage 3: adaptive neighbourhood refinement ({s3['n_iter']} it, warm-started); finalists: "
          + "; ".join(f"P={f['P']:.0f} h={f['h']:.0f} pad={f['pad']:.3f} J={f['J_hard']:.4f}" for f in s3["finalists"]),
          f"- Stage 4: full runs (order {rc.ORDER_FULL}, angles {rc.ANGLES_FULL}, {json.load(open(rc.OUT/'stage4'/'stage4_summary.json'))['n_iter']} it): "
-         "warm-started finalists + one from-scratch run (seed 2024):", "",
+         f"warm-started finalists + {len(rc.SCRATCH_SEEDS)} from-scratch runs (seeds {rc.SCRATCH_SEEDS}) at the best cell:", "",
          "| run | P | h | pad | J_hard | A(FULL set) | dense<=30 min / mean | S_flip | warm |", "|---|---|---|---|---|---|---|---|---|"]
     for r in df4.itertuples():
-        L.append(f"| {r.tag} | {r.P:.0f} | {r.h:.0f} | {r.pad:.3f} | {r.J_hard:.4f} | {r.A_hard} | {r.dense_labx_min_le30:.4f} / {r.dense_labx_mean_le30:.4f} | {r.s_flip:.3f} | {r.warm} |")
+        A_list = [round(float(a), 4) for a in json.loads(r.A_hard)]
+        L.append(f"| {r.tag} | {r.P:.0f} | {r.h:.0f} | {r.pad:.3f} | {r.J_hard:.4f} | {A_list} | {r.dense_labx_min_le30:.4f} / {r.dense_labx_mean_le30:.4f} | {r.s_flip:.3f} | {r.warm} |")
     L += ["", f"**Winner: {winner}** - P = {P:.0f} nm, h = {h:.0f} nm, p_pad = {pad:.3f} P "
           f"(realized {res_w['mask']['realized_pad_nm']:.1f} nm), fill (active) = {res_w['fill_fraction_active']:.3f}.", "",
           "![geometry](outputs/figures/stage5_winner_geometry_Ez.png)", "",
@@ -408,12 +447,23 @@ def write_report(rep, winner, runs, df4):
     for c in rep["final_comparison"]:
         L.append(f"| {c['structure']} | {c['P']:.0f} | {c['h']:.0f} | {c['J_robust']:.4f} | {c['A_normal']:.4f} | {c['A_min_full']:.4f} | "
                  f"{c['A_mean_full']:.4f} | {c['dense_min_le30']:.4f} | {c['dense_mean_le30']:.4f} | {c['F_Ez_normal']:.3f} | {c['eta_z_normal']:.3f} |")
+    def _clean(o):
+        return json.loads(json.dumps(o, default=lambda x: float(x) if isinstance(x, (np.floating, np.integer)) else str(x)))
+
+    def _r(o, nd=4):
+        if isinstance(o, dict):
+            return {k: _r(v, nd) for k, v in o.items()}
+        if isinstance(o, list):
+            return [_r(v, nd) for v in o]
+        return round(o, nd) if isinstance(o, float) else o
+    poles_w = _r(_clean(rep["poles"]["with_ITO"])); poles_all = _r(_clean(rep["poles"]["with_ITO_all"]))
+    poles_no = _r(_clean(rep["poles"]["no_ITO"])); poles_no_all = _r(_clean(rep["poles"]["no_ITO_all"]))
     L += ["", "![angular comparison](outputs/figures/stage5_final_comparison_angular.png)", "",
           "## 4. Post-hoc physics of the winner (diagnostic only)", "",
           f"- Spectra (with ITO 0/20 deg, no ITO, lossless ITO, bare ITO): `outputs/figures/stage5_spectra.png`. "
           f"Weak resonance gate (reported only): {json.dumps(rep['resonance_gate_posthoc'])}.",
-          f"- r/t poles with ITO (channel-agnostic AAA, window {pole_rt.WINDOW}): {rep['poles']['with_ITO']}; all certified in-window: {rep['poles']['with_ITO_all']}; "
-          f"no-ITO photonic poles: {rep['poles']['no_ITO']} / {rep['poles']['no_ITO_all']}."]
+          f"- r/t poles with ITO (channel-agnostic AAA, window ({pole_rt.WINDOW[0]:.1f}, {pole_rt.WINDOW[1]:.1f}) nm): best-residue pole {poles_w}; all certified in-window: {poles_all}; "
+          f"no-ITO photonic poles: {poles_no} / {poles_no_all}."]
     d = rep["decomposition"]
     if "Q_rad" in d:
         L.append(f"- Loss-scaling decomposition: Q_loaded = {d['Q_loaded']:.2f}, Q_rad = {d['Q_rad']:.1f}, Q_nr = {d['Q_nr']:.2f}, "
@@ -431,10 +481,12 @@ def write_report(rep, winner, runs, df4):
           f"- Locality: {json.dumps(rep['locality'])}.",
           f"- Fabrication robustness (uniform dilate/erode, J at FULL set): " + json.dumps({k: round(v['J'], 4) for k, v in rep['fabrication'].items()}),
           f"- Pulse-aware validation: {rep['pulse_validation']}.", "",
+          "", "## 4b. Interpretation and caveats (post hoc)", "",
+          interpretation(rep), "",
           "## 5. Honesty ledger", "",
           "- lambda_E is inherited from the 850-nm bare-film QNM anchor and held fixed for every period; the loaded resonance of each design is certified post hoc.",
           "- The angular set and the uniform weights are assumptions (no authoritative NA in the repo).",
-          "- Stage 2/3 use order [5,5] and 3 angles (screen); Stage 4/5 use [7,7]/[9,9]/[11,11] and 5 angles; dense checks on 3 planes.",
+          f"- Stage 2/3 use order {rc.ORDER_SCREEN} and {len(rc.ANGLES_SCREEN)} angles (screen); Stage 4/5 use [7,7]/[9,9]/[11,11] and {len(rc.ANGLES_FULL)} angles; dense checks on 3 planes.",
           "- The multipole fractions use free-space formulas; the periodic glass/ITO environment makes them indicative only.",
           "- Historical padded references have S_flip ~ 0.14-0.15 (not exactly 0) because the Example6 projection symmetrized the raw variable while the half-pixel-offset blur kernel and hard threshold broke exact symmetry; the new path enforces nothing."]
     (HERE / "REPORT.md").write_text("\n".join(L))

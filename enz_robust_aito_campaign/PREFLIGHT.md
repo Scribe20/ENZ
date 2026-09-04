@@ -68,7 +68,7 @@ P_inc = 0.5 cos(theta) P^2 |E_inc|^2 with |E_inc| = 1 (p/s-notation source). Pol
 ## Stage 1g - angular domain and beta calibration
 
 - Authority: NONE found in repo (grep for NA / numerical aperture / acceptance angle / high-NA over *.md,*.py,*.txt,*.csv,*.json).
-- ASSUMPTION: modest +-30 deg cone (NA~0.5 in air), lab-frame x polarization projected on the transverse plane; uniform weights; screen set 3 angles, full set 5 angles; final check on the phi=0, 90, 45 deg planes 0-40 deg.
+- ASSUMPTION: modest +-30 deg cone (NA~0.5 in air), lab-frame x polarization projected on the transverse plane; uniform weights; screen set 3 angles, full set 6 angles; final check on the phi=0, 90, 45 deg planes 0-40 deg.
 - screen set [(0.0, 0.0), (20.0, 0.0), (20.0, 90.0)]; full set [(0.0, 0.0), (15.0, 0.0), (30.0, 0.0), (15.0, 90.0), (30.0, 90.0), (20.0, 45.0)].
 - beta rule: ln(10)/median_reference_angular_spread; reference spreads {"EDR cuboid": 0.149, "unpadded QNM winner": 0.1421, "padded QNM winner": 0.1478, "padded F_ENZ winner": 0.144}; median 0.1459 -> **beta = 15.79** (clip (5.0, 200.0)).
 
