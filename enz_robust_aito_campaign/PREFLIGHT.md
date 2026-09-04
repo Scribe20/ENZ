@@ -62,22 +62,22 @@ P_inc = 0.5 cos(theta) P^2 |E_inc|^2 with |E_inc| = 1 (p/s-notation source). Pol
 
 ## Stage 1f/1h - timing and run sizing
 
-- {"[5, 5]": 0.4229447841644287, "[7, 7]": 1.4251682758331299} s per angle (fwd+bwd, 128x128, 4 threads)
-- {"s_per_iter_screen": 1.2688343524932861, "n_runs_stage2": 32, "n_iter_stage2": 60, "est_stage2_h": 0.6767116546630859, "s_per_iter_full": 7.125841379165649, "n_iter_stage4": 150, "est_stage4_h": 0.8907301723957062}
+- {"[5, 5]": 0.299727201461792, "[7, 7]": 1.3960838317871094} s per angle (fwd+bwd, 128x128, 4 threads)
+- {"s_per_iter_screen": 0.899181604385376, "n_runs_stage2": 216, "n_iter_stage2": 100, "est_stage2_h": 5.395089626312256, "s_per_iter_full": 8.376502990722656, "n_iter_stage4": 150, "est_stage4_h": 1.3960838317871094}
 
 ## Stage 1g - angular domain and beta calibration
 
 - Authority: NONE found in repo (grep for NA / numerical aperture / acceptance angle / high-NA over *.md,*.py,*.txt,*.csv,*.json).
 - ASSUMPTION: modest +-30 deg cone (NA~0.5 in air), lab-frame x polarization projected on the transverse plane; uniform weights; screen set 3 angles, full set 5 angles; final check on the phi=0, 90, 45 deg planes 0-40 deg.
-- screen set [(0.0, 0.0), (20.0, 0.0), (20.0, 90.0)]; full set [(0.0, 0.0), (15.0, 0.0), (30.0, 0.0), (15.0, 90.0), (30.0, 90.0)].
-- beta rule: ln(10)/median_reference_angular_spread; reference spreads {"EDR cuboid": 0.0971, "unpadded QNM winner": 0.1421, "padded QNM winner": 0.0749, "padded F_ENZ winner": 0.0789}; median 0.0880 -> **beta = 26.17** (clip (5.0, 200.0)).
+- screen set [(0.0, 0.0), (20.0, 0.0), (20.0, 90.0)]; full set [(0.0, 0.0), (15.0, 0.0), (30.0, 0.0), (15.0, 90.0), (30.0, 90.0), (20.0, 45.0)].
+- beta rule: ln(10)/median_reference_angular_spread; reference spreads {"EDR cuboid": 0.149, "unpadded QNM winner": 0.1421, "padded QNM winner": 0.1478, "padded F_ENZ winner": 0.144}; median 0.1459 -> **beta = 15.79** (clip (5.0, 200.0)).
 
 | reference | A(FULL set) | J_robust | min A | mean A |
 |---|---|---|---|---|
-| bare ITO | [0.0449, 0.0577, 0.0938, 0.0454, 0.0468] | 0.0541 | 0.0449 | 0.0577 |
-| EDR cuboid | [0.1987, 0.224, 0.1786, 0.1629, 0.127] | 0.1643 | 0.1270 | 0.1783 |
-| unpadded QNM winner | [0.205, 0.2229, 0.1664, 0.3085, 0.1848] | 0.1972 | 0.1664 | 0.2175 |
-| padded QNM winner | [0.2009, 0.2233, 0.1705, 0.1803, 0.1484] | 0.1766 | 0.1484 | 0.1847 |
-| padded F_ENZ winner | [0.2079, 0.2289, 0.1783, 0.185, 0.15] | 0.1810 | 0.1500 | 0.1900 |
+| bare ITO | [0.0449, 0.0577, 0.0938, 0.0454, 0.0468, 0.0559] | 0.0554 | 0.0449 | 0.0574 |
+| EDR cuboid | [0.1987, 0.224, 0.1786, 0.1629, 0.127, 0.276] | 0.1789 | 0.1270 | 0.1945 |
+| unpadded QNM winner | [0.205, 0.2229, 0.1664, 0.3085, 0.1848, 0.2674] | 0.2101 | 0.1664 | 0.2258 |
+| padded QNM winner | [0.2009, 0.2233, 0.1705, 0.1803, 0.1484, 0.2961] | 0.1892 | 0.1484 | 0.2032 |
+| padded F_ENZ winner | [0.2079, 0.2289, 0.1783, 0.185, 0.15, 0.294] | 0.1938 | 0.1500 | 0.2073 |
 
 ![reference angular curves](outputs/figures/preflight_reference_angular.png)

@@ -54,18 +54,18 @@
   th=20 ph=0: [5, 5]: 0.1832, [7, 7]: 0.1828, [9, 9]: 0.1841
   th=20 ph=90: [5, 5]: 0.1696, [7, 7]: 0.1696, [9, 9]: 0.1718
 == Stage 1f: timing (fwd+bwd, one angle, 128x128) ==
-  order [5, 5]: 0.4 s per angle (fwd+bwd)
+  order [5, 5]: 0.3 s per angle (fwd+bwd)
   order [7, 7]: 1.4 s per angle (fwd+bwd)
 == Stage 1g: reference angular curves (ORDER_FULL) + beta ==
-  bare ITO              : A(FULL set) = [0.0449, 0.0577, 0.0938, 0.0454, 0.0468] spread=0.0489 min=0.0449
-  EDR cuboid            : A(FULL set) = [0.1987, 0.224, 0.1786, 0.1629, 0.127] spread=0.0971 min=0.1270
-  unpadded QNM winner   : A(FULL set) = [0.205, 0.2229, 0.1664, 0.3085, 0.1848] spread=0.1421 min=0.1664
-  padded QNM winner     : A(FULL set) = [0.2009, 0.2233, 0.1705, 0.1803, 0.1484] spread=0.0749 min=0.1484
-  padded F_ENZ winner   : A(FULL set) = [0.2079, 0.2289, 0.1783, 0.185, 0.15] spread=0.0789 min=0.1500
-  median reference spread = 0.0880 -> beta = 26.17
-  bare ITO              : J_robust=0.0541 vs min=0.0449 mean=0.0577
-  EDR cuboid            : J_robust=0.1643 vs min=0.1270 mean=0.1783
-  unpadded QNM winner   : J_robust=0.1972 vs min=0.1664 mean=0.2175
-  padded QNM winner     : J_robust=0.1766 vs min=0.1484 mean=0.1847
-  padded F_ENZ winner   : J_robust=0.1810 vs min=0.1500 mean=0.1900
-  sizing: {"s_per_iter_screen": 1.2688343524932861, "n_runs_stage2": 32, "n_iter_stage2": 60, "est_stage2_h": 0.6767116546630859, "s_per_iter_full": 7.125841379165649, "n_iter_stage4": 150, "est_stage4_h": 0.8907301723957062}
+  bare ITO              : A(FULL set) = [0.0449, 0.0577, 0.0938, 0.0454, 0.0468, 0.0559] spread=0.0489 min=0.0449
+  EDR cuboid            : A(FULL set) = [0.1987, 0.224, 0.1786, 0.1629, 0.127, 0.276] spread=0.1490 min=0.1270
+  unpadded QNM winner   : A(FULL set) = [0.205, 0.2229, 0.1664, 0.3085, 0.1848, 0.2674] spread=0.1421 min=0.1664
+  padded QNM winner     : A(FULL set) = [0.2009, 0.2233, 0.1705, 0.1803, 0.1484, 0.2961] spread=0.1478 min=0.1484
+  padded F_ENZ winner   : A(FULL set) = [0.2079, 0.2289, 0.1783, 0.185, 0.15, 0.294] spread=0.1440 min=0.1500
+  median reference spread = 0.1459 -> beta = 15.79
+  bare ITO              : J_robust=0.0554 vs min=0.0449 mean=0.0574
+  EDR cuboid            : J_robust=0.1789 vs min=0.1270 mean=0.1945
+  unpadded QNM winner   : J_robust=0.2101 vs min=0.1664 mean=0.2258
+  padded QNM winner     : J_robust=0.1892 vs min=0.1484 mean=0.2032
+  padded F_ENZ winner   : J_robust=0.1938 vs min=0.1500 mean=0.2073
+  sizing: {"s_per_iter_screen": 0.899181604385376, "n_runs_stage2": 216, "n_iter_stage2": 100, "est_stage2_h": 5.395089626312256, "s_per_iter_full": 8.376502990722656, "n_iter_stage4": 150, "est_stage4_h": 1.3960838317871094}

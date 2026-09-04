@@ -52,10 +52,12 @@
  "fill_fraction_active": 0.4378698224852071,
  "s_flip_init": 0.22747944604379533,
  "s_flip_final": 0.6974858324629157,
+ "s_flip_centered_init": 0.3744235629392637,
+ "s_flip_centered_final": 0.827217434710297,
  "s_flipud_final": 0.7884298457197201,
  "warm_start": false,
  "beta_proj_start": 1.0,
- "wall_s": 0.1324479579925537,
+ "wall_s": 0.15842890739440918,
  "history": {
   "J": [
    0.0942511493879737,
