@@ -1,0 +1,29 @@
+{
+ "ref: EDR cuboid": {
+  "in_window": null,
+  "all_rt_agreeing": [
+   "1213nm(Q=93.8)",
+   "1221nm(Q=23.6)"
+  ]
+ },
+ "ref: padded QNM winner": {
+  "in_window": null,
+  "all_rt_agreeing": [
+   "1306nm(Q=72.1)"
+  ]
+ },
+ "ref: padded F_ENZ winner": {
+  "in_window": null,
+  "all_rt_agreeing": [
+   "1217nm(Q=378.9)",
+   "1300nm(Q=47.0)"
+  ]
+ },
+ "ref: unpadded QNM winner": {
+  "in_window": null,
+  "all_rt_agreeing": [
+   "1194nm(Q=103.4)",
+   "1222nm(Q=214.6)"
+  ]
+ }
+}
