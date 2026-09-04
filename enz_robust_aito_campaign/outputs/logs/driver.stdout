@@ -82,3 +82,7 @@ error: failed to push some refs to 'https://github.com/Scribe20/ENZ'
 13:59:19  [git] pushed
 13:59:19  [stage3] start: python3 stage3_refine.py
 15:49:14  [stage3] rc=0 in 109.9 min
+15:49:14  [git] committed: Robust A_ITO campaign: Stage 3 adaptive refinement, finalists  (3c4fb48)
+15:49:19  [git] pushed
+15:49:19  [stage4] start: python3 stage4_full.py
+18:21:13  [stage4] rc=0 in 151.9 min

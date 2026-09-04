@@ -1,0 +1,12 @@
+{
+ "beta": 15.785426720448559,
+ "n_iter": 150,
+ "winner": "finalist0_P800_h200_pad0.040_warm",
+ "ranking": [
+  "finalist0_P800_h200_pad0.040_warm",
+  "finalist1_P925_h240_pad0.040_warm",
+  "finalist2_P925_h220_pad0.040_warm",
+  "scratch_P800_h200_pad0.040_seed2024",
+  "scratch_P800_h200_pad0.040_seed4096"
+ ]
+}
