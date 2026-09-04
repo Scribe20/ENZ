@@ -72,3 +72,10 @@
 2026-09-04 02:27:49 [stage2] start: python3 stage2_screen.py
 2026-09-04 05:47:54 [stage2] start: python3 stage2_screen.py
 2026-09-04 06:18:20 [stage2] rc=137 in 30.4 min
+2026-09-04 06:18:20 [git] committed: Robust A_ITO campaign: Stage 2 outer (P,h,pad) screen + landscape plots (FAILED - partial outputs)  (21cc854)
+2026-09-04 06:18:26 [git] push attempt 1 failed: enz-eigenmode-target-u95j8m': is at f7fc25493a10c277eb6ef7553932b124c8143f86 but expected 57cd72b0102a36304d138c5be77ece7e162875a0)
+error: failed to push some refs to 'https://github.com/Scribe20/ENZ'
+2026-09-04 06:18:29 [git] pushed
+2026-09-04 06:18:29 [driver] stage stage2 failed; stopping chain
+2026-09-04 06:22:05 [stage2] start: python3 stage2_screen.py
+2026-09-04 13:59:15 [stage2] rc=0 in 457.2 min
