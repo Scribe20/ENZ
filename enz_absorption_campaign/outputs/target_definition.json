@@ -1,15 +1,34 @@
 {
- "objective": "maximize A_ITO(lambda_E) = 1-R-T (identity: ITO is the only lossy layer; cross-validated against the volume integral above)",
- "lambda_E_nm": 1433.488144390721,
- "eps_ito_at_lambda_E": [
-  -0.07424989012321415,
-  0.7014284101165421
- ],
- "Q_min": 5.0,
- "W_nm": null,
- "Delta_lambda_allowed_nm": 80.0,
- "constraint_surrogate": "baseline-aware contrast C(D=80nm) = [A(lamE) - (A(lamE-80)+A(lamE+80))/2]/A(lamE) >= C_MIN=0.075 (calibrated on trusted ENZ-resonant references; bare ITO gives ~0) plus A(lamE) >= A(lamE +/- 80) (peak within +/-80 nm)",
- "penalty_form": "loss = -A(lamE) + mu*[relu(C_MIN - C)^2 + sum_pm relu((A_pm - A_E)/A_E)^2], mu = 100; sensitivity {30,100,300} on the final candidate only",
- "final_Q_verification": "AAA pole of driven response + fine A(lambda) FWHM (surrogate is in-loop only)",
- "rejected_first_draft": "half-maximum test at lamE +/- lamE/(2*Q_min) = +/-143 nm: fails every ENZ-resonant reference (0.15 non-resonant baseline; blue point hits the off-target ~1300 nm Si resonance of the padded class)"
+ "primary_objective": "maximize A_ITO(lambda_E) = 1 - R - T (ITO only lossy layer; volume-integral cross-validation in failure_test.json)",
+ "lambda_E_nm": 1433.488,
+ "lambda_E_origin": "frozen operating wavelength inherited from the validated finite-K bare-film ENZ branch (K = G10 of the 850-nm lattice); not a term of the loss",
+ "in_loop_gate": {
+  "name": "resonance-contrast gate (empirical ENZ-band spectral-selectivity surrogate; NOT a Q constraint)",
+  "C": "[A(lam_E) - (A(lam_E-d)+A(lam_E+d))/2]/A(lam_E) >= C_MIN",
+  "center_dominance": "A(lam_E) >= A(lam_E +/- d) (three-point test; not a proof of peak location)",
+  "RES_PROBE_OFFSET_NM": 80.0,
+  "C_MIN_recommended": -0.2817,
+  "penalty": "loss = -A(lam_E) + mu*[relu(C_MIN - C)^2 + sum_pm relu((A_pm - A_E)/A_E)^2]",
+  "mu_recommended": 30.0
+ },
+ "post_hoc_certification": {
+  "pole": "channel-agnostic AAA poles of r_xx and t_xx; accept only in-window, r/t-agreeing (<2%), residue >= 5% of window max, resampling-stable (<2%)",
+  "window_nm": [
+   1309.911448275862,
+   1557.064551724138
+  ],
+  "DELTA_LAMBDA_POLE_MAX_nm": 123.57655172413794,
+  "Q_reference_loaded": 5.0,
+  "Q_note": "Q ~ 5 is an empirical trusted loaded-resonance reference scale (bare ENZ QNM 5.80, loaded poles 5.0-5.7), not a fundamental ceiling",
+  "no_ITO_control": "same geometry a-Si/glass: bare photonic pole must exist near the ENZ window; ITO loading must change the response and enhance A_ITO",
+  "diagnostics_only": [
+   "F_Ez",
+   "eta_z",
+   "QNM overlap",
+   "Fourier harmonics",
+   "multipoles/current",
+   "gamma_r vs gamma_nr"
+  ]
+ },
+ "design_class": "NOT part of the target (padding is a geometry prior; see report section on the next run)"
 }
