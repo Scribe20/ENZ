@@ -36,6 +36,42 @@ import torcwa_forward as fwd        # noqa: E402  (material splines only)
 sys.path.insert(0, str(config.TORCWA_DIR))
 import torcwa                       # noqa: E402
 
+# ---------------------------------------------------------------------------
+# Memory-leak fix for long single-process campaigns (applied HERE only; the
+# vendored torcwa package is untouched).  torcwa.torch_eig.Eig.forward stores
+# its own OUTPUT tensors on ctx (ctx.eigval/ctx.eigvec = eigval.cpu() is the
+# same tensor object on CPU), which creates a reference cycle
+# output.grad_fn -> ctx -> output that Python's gc cannot see through, so
+# every solve leaked ~5 MB (Stage 2 was OOM-killed at 13.9 GB after 23 runs).
+# Storing detached copies is numerically identical.
+# ---------------------------------------------------------------------------
+from torcwa.torch_eig import Eig as _Eig   # noqa: E402
+
+
+def _eig_forward_noleak(ctx, x):
+    ctx.input_is_complex = torch.is_complex(x)
+    eigval, eigvec = torch.linalg.eig(x)
+    ctx.eigval = eigval.detach().cpu()
+    ctx.eigvec = eigvec.detach().cpu()
+    return eigval, eigvec
+
+
+_eig_backward_orig = _Eig.backward.__func__ if hasattr(_Eig.backward, "__func__") else _Eig.backward
+
+
+def _eig_backward_noleak(ctx, grad_eigval, grad_eigvec):
+    class _Ctx:            # shim: original backward reads ctx.input for dtype
+        pass
+    c = _Ctx()
+    c.eigval, c.eigvec = ctx.eigval, ctx.eigvec
+    c.input = torch.zeros((), dtype=torch.complex128 if ctx.input_is_complex
+                          else torch.float64)
+    return _eig_backward_orig(c, grad_eigval, grad_eigvec)
+
+
+_Eig.forward = staticmethod(_eig_forward_noleak)
+_Eig.backward = staticmethod(_eig_backward_noleak)
+
 DEVICE = config.DEVICE
 SIM_DTYPE = config.SIM_DTYPE
 GEO_DTYPE = config.GEO_DTYPE
