@@ -67,3 +67,7 @@
 2026-09-04 02:22:55 [stage2] start: python3 stage2_screen.py
 2026-09-04 02:26:07 [preflight] start: python3 preflight.py
 2026-09-04 02:27:47 [preflight] rc=0 in 1.7 min
+2026-09-04 02:27:47 [git] committed: Robust A_ITO campaign: code + Stage 0/1 preflight (no fliplr symmetry; energy/A-identity/gradient checks; beta calibration)  (57cd72b)
+2026-09-04 02:27:49 [git] pushed
+2026-09-04 02:27:49 [stage2] start: python3 stage2_screen.py
+2026-09-04 05:47:54 [stage2] start: python3 stage2_screen.py
