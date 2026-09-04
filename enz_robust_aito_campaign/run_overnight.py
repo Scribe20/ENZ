@@ -86,6 +86,9 @@ def audit_reproducibility():
     if snap.exists():
         shutil.rmtree(snap)
     snap.mkdir(parents=True)
+    # run 1 was killed by the container reclaim on 2026-09-03 12:07 UTC:
+    # always regenerate it fresh before the reproducibility run 2
+    ok1 = step("audit_run1", "python3 target_audit.py > run1.stdout 2>&1", AUD)
     tracked = ["TARGET_AUDIT.md", "target_audit.log",
                "outputs/failure_test.json", "outputs/no_ito_poles.json",
                "outputs/calibration.csv", "outputs/gradient_audit.json",
@@ -113,7 +116,7 @@ def audit_reproducibility():
             lines.append("```\n" + "\n".join(d.splitlines()[:40]) + "\n```")
         else:
             lines.append(f"- {t}: byte-identical")
-    lines += ["", f"run2 exit ok: {ok}",
+    lines += ["", f"run1 exit ok: {ok1}; run2 exit ok: {ok}",
               f"**Verdict: {'byte-for-byte reproducible' if same_all else 'see differences above'}**"]
     (AUD / "REPRODUCIBILITY.md").write_text("\n".join(lines) + "\n")
     log("[audit] " + lines[-1])
