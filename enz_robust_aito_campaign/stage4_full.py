@@ -57,7 +57,10 @@ def main():
     pre = json.load(open(rc.OUT / "preflight.json"))
     s3 = json.load(open(rc.OUT / "stage3" / "stage3_summary.json"))
     beta = s3["beta"]
-    n_iter = pre["sizing"]["n_iter_stage4"]
+    n_runs = len(s3["finalists"]) + len(rc.SCRATCH_SEEDS)
+    t_full = pre["timing_s_per_angle"][str(rc.ORDER_FULL)] * len(rc.ANGLES_FULL)
+    n_iter = int(np.clip(rc.BUDGET_H["stage4"] * 3600 / (n_runs * t_full),
+                         60, rc.N_ITER_FULL))
     log(f"[stage4] beta={beta:.2f} n_iter={n_iter} order={rc.ORDER_FULL} "
         f"angles={rc.ANGLES_FULL}")
     cands = []
@@ -75,15 +78,16 @@ def main():
                                tag=tag)
         cands.append((tag, res))
     f0 = s3["finalists"][0]
-    tag = f"scratch_{f0['tag']}_seed{SCRATCH_SEED}"
-    d = OUT / "runs" / tag
-    if (d / "result.json").exists():
-        res = json.load(open(d / "result.json"))
-    else:
-        res = opt.optimize(f0["P"], f0["h"], f0["pad"], SCRATCH_SEED, n_iter,
-                           rc.ORDER_FULL, rc.ANGLES_FULL, beta, d, log=log,
-                           tag=tag)
-    cands.append((tag, res))
+    for sd in rc.SCRATCH_SEEDS:
+        tag = f"scratch_{f0['tag']}_seed{sd}"
+        d = OUT / "runs" / tag
+        if (d / "result.json").exists():
+            res = json.load(open(d / "result.json"))
+        else:
+            res = opt.optimize(f0["P"], f0["h"], f0["pad"], sd, n_iter,
+                               rc.ORDER_FULL, rc.ANGLES_FULL, beta, d, log=log,
+                               tag=tag)
+        cands.append((tag, res))
 
     rows, dense = [], {}
     for tag, res in cands:

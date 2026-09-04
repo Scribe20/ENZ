@@ -46,7 +46,7 @@ def main():
     s2 = json.load(open(rc.OUT / "stage2" / "stage2_summary.json"))
     beta = s2["beta"]
     t_iter = pre["sizing"]["s_per_iter_screen"]
-    tops = s2["top"][:3]
+    tops = s2["top"][:rc.N_TOP_STAGE2]
     n_runs = len(tops) * 7
     n_iter = int(np.clip(rc.BUDGET_H["stage3"] * 3600 / (n_runs * t_iter),
                          *rc.N_ITER_REFINE_RANGE))

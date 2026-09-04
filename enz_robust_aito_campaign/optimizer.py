@@ -64,6 +64,16 @@ def s_flip(rho):
     return float(torch.linalg.norm(r - torch.fliplr(r))) / n if n > 0 else 0.0
 
 
+def s_flip_centered(rho):
+    """Same measure on rho - mean(rho): removes the symmetric DC part that
+    dominates ||rho|| for gray-scale fields (a filtered random init has
+    S_flip ~ 0.05 but S_flip_centered ~ 1)."""
+    r = torch.as_tensor(rho, dtype=GEO)
+    r = r - r.mean()
+    n = float(torch.linalg.norm(r))
+    return float(torch.linalg.norm(r - torch.fliplr(r))) / n if n > 0 else 0.0
+
+
 def s_flip_ud(rho):
     r = torch.as_tensor(rho, dtype=GEO)
     n = float(torch.linalg.norm(r))
@@ -209,6 +219,9 @@ def optimize(P, h, pad_frac, seed, n_iter, order, angles, beta, out_dir,
                fill_fraction=float(rho_hard.mean()),
                fill_fraction_active=float(rho_hard.sum() / M.sum()),
                s_flip_init=s_init, s_flip_final=s_flip(rho_hard),
+               s_flip_centered_init=s_flip_centered(
+                   np.load(out / "rho_initial.npy")),
+               s_flip_centered_final=s_flip_centered(rho_hard),
                s_flipud_final=s_flip_ud(rho_hard),
                warm_start=rho_init is not None,
                beta_proj_start=beta_proj_start, wall_s=time.time() - t0,

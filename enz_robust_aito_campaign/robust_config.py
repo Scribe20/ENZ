@@ -31,7 +31,7 @@ LAMBDA_E = 1433.488
 # ---------------------------------------------------------------------------
 ANGLES_SCREEN = [(0.0, 0.0), (20.0, 0.0), (20.0, 90.0)]           # Stages 2-3
 ANGLES_FULL = [(0.0, 0.0), (15.0, 0.0), (30.0, 0.0),
-               (15.0, 90.0), (30.0, 90.0)]                        # Stage 4
+               (15.0, 90.0), (30.0, 90.0), (20.0, 45.0)]          # Stage 4
 ANGLES_EVAL_PLANES = {"phi0": [(t, 0.0) for t in range(0, 41, 5)],
                       "phi90": [(t, 90.0) for t in range(0, 41, 5)],
                       "phi45": [(t, 45.0) for t in range(0, 41, 5)]}
@@ -48,12 +48,14 @@ BETA_RANGE = (5.0, 200.0)
 # Geometry search space
 # ---------------------------------------------------------------------------
 NX = 128                     # normalized design grid (dx = P/128)
-P_SCREEN = [750.0, 850.0, 950.0, 1050.0]   # 1050 > lambda_E/n_glass: (+-1,0)
+# (widened after the preflight timing benchmark showed ~1.3 s per screen
+#  iteration: the first sizing would have finished the chain in ~3 h)
+P_SCREEN = [700.0, 775.0, 850.0, 925.0, 1000.0, 1075.0]   # P > 992 nm: (+-1,0)
                                             # propagate in glass at normal inc.
-H_SCREEN = [120.0, 160.0]    # brackets the 140-nm benchmark; Stage 3 steps +-20
-PAD_SCREEN = [0.05, 0.10]    # fraction of P per side (>0 always)
+H_SCREEN = [120.0, 140.0, 160.0, 200.0]     # includes the 140-nm benchmark
+PAD_SCREEN = [0.04, 0.08, 0.12]  # fraction of P per side (>0 always)
 PAD_MIN = 0.03               # never below (positive padding required)
-SEEDS_SCREEN = [333, 1001]   # Example6 seed convention + one more
+SEEDS_SCREEN = [333, 1001, 7777]   # Example6 seed convention + two more
 P_BOUNDS, H_BOUNDS, PAD_BOUNDS = (650.0, 1150.0), (90.0, 240.0), (0.03, 0.15)
 
 # ---------------------------------------------------------------------------
@@ -69,11 +71,12 @@ N_ITER_FULL = 150
 
 # wall-clock budgets (hours) used to size the shortened runs automatically
 # from the preflight timing benchmark
-BUDGET_H = dict(stage2=3.0, stage3=1.5, stage4=5.0)
-N_ITER_SCREEN_RANGE = (25, 60)
-N_ITER_REFINE_RANGE = (30, 80)
-N_TOP_STAGE2 = 4
-N_FINALISTS = 2
+BUDGET_H = dict(stage2=6.0, stage3=1.5, stage4=3.0)
+N_ITER_SCREEN_RANGE = (40, 100)
+N_ITER_REFINE_RANGE = (40, 120)
+N_TOP_STAGE2 = 5
+N_FINALISTS = 3
+SCRATCH_SEEDS = [2024, 4096]   # from-scratch Stage-4 runs at the best finalist
 
 # post-hoc resonance gate (weak, only reported; NOT in the loss)
 RES_PROBE_OFFSET_NM = 80.0

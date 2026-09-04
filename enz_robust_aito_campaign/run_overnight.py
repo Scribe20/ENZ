@@ -124,6 +124,8 @@ def audit_reproducibility():
 
 
 def main():
+    start_from = sys.argv[sys.argv.index("--from") + 1] if "--from" in sys.argv \
+        else "audit"
     LOGS.mkdir(parents=True, exist_ok=True)
     gi = ROOT / ".gitignore"
     if not gi.exists() or "__pycache__" not in gi.read_text():
@@ -131,10 +133,11 @@ def main():
             f.write("__pycache__/\n*.pyc\n")
     wait_for_jobs()
     # ---- 1. audit reproducibility + commit -------------------------------
-    audit_reproducibility()
-    commit([AUD, ROOT / "enz_highq_enz_campaign", gi],
-           "Target audit: corrected reproducible outputs (2-run byte check) "
-           "+ Stage-A radiative/non-radiative decomposition results")
+    if start_from == "audit":
+        audit_reproducibility()
+        commit([AUD, ROOT / "enz_highq_enz_campaign", gi],
+               "Target audit: corrected reproducible outputs (2-run byte check) "
+               "+ Stage-A radiative/non-radiative decomposition results")
     # ---- 2. campaign ------------------------------------------------------
     stages = [("preflight", "python3 preflight.py",
                "Robust A_ITO campaign: code + Stage 0/1 preflight (no fliplr symmetry; "
@@ -147,6 +150,9 @@ def main():
                "Robust A_ITO campaign: Stage 4 full topology optimization (warm + from-scratch)"),
               ("stage5", "python3 stage5_posthoc.py",
                "Robust A_ITO campaign: Stage 5 refinement, post-hoc physics, comparison, REPORT")]
+    names = [s[0] for s in stages]
+    if start_from in names:
+        stages = stages[names.index(start_from):]
     for name, cmd, msg in stages:
         ok = step(name, cmd, HERE)
         commit([HERE, gi], msg + ("" if ok else " (FAILED - partial outputs)"))

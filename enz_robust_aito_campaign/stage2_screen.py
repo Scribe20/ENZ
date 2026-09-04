@@ -38,7 +38,11 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     pre = json.load(open(rc.OUT / "preflight.json"))
     beta = pre["beta_calibration"]["beta"]
-    n_iter = pre["sizing"]["n_iter_stage2"]
+    n_runs = len(rc.P_SCREEN) * len(rc.H_SCREEN) * len(rc.PAD_SCREEN) \
+        * len(rc.SEEDS_SCREEN)
+    t_scr = pre["timing_s_per_angle"][str(rc.ORDER_SCREEN)] * len(rc.ANGLES_SCREEN)
+    n_iter = int(np.clip(rc.BUDGET_H["stage2"] * 3600 / (n_runs * t_scr),
+                         *rc.N_ITER_SCREEN_RANGE))
     log(f"[stage2] beta={beta:.2f} n_iter={n_iter} order={rc.ORDER_SCREEN} "
         f"angles={rc.ANGLES_SCREEN}")
     rows = []
