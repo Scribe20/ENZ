@@ -1,0 +1,26 @@
+
+=== padded QNM winner ===
+  s=1.00: pole  1485.86 nm, gamma=|Im w|=0.12929 rad/fs, Q=    4.90, |res_r|=1.626e-02 |res_t|=1.210e-02
+  s=0.50: pole  1466.04 nm, gamma=|Im w|=0.06356 rad/fs, Q=   10.11, |res_r|=3.347e-03 |res_t|=2.640e-03
+  s=0.25: pole  1466.47 nm, gamma=|Im w|=0.03152 rad/fs, Q=   20.38, |res_r|=1.130e-03 |res_t|=1.384e-03
+  s=0.10: pole  1468.08 nm, gamma=|Im w|=0.01292 rad/fs, Q=   49.67, |res_r|=1.181e-03 |res_t|=1.051e-03
+  s=0.03: pole  1468.30 nm, gamma=|Im w|=0.00471 rad/fs, Q=  136.33, |res_r|=1.195e-03 |res_t|=1.052e-03
+  s=0.00: pole  1468.34 nm, gamma=|Im w|=0.00118 rad/fs, Q=  543.66, |res_r|=1.191e-03 |res_t|=1.055e-03
+  linear fit gamma(s): gamma_rad = 0.00034, gamma_nr(s=1) = 0.12826 rad/fs, max linearity residual = 7.06e-03
+  Q_loaded = 4.90, Q_rad = 1872.2, Q_nr = 4.94, gamma_rad/gamma_nr = 0.003; lossless-ITO pole Q = 543.7 at 1468.3 nm; pole shift s=1 -> s=0: +17.5 nm
+  gamma_rad split (residue-based, approx): glass fraction = 0.44, air fraction = 0.56
+  participation (loaded, driven at its pole 1485.9 nm): eta_ENZ,z = 1.5083e-01 nm^-3... (dimension 1/energy-density units; use ratios), eta_z = 0.766, ITO E-energy fraction = 0.547
+  participation (lossless_aux, driven at its pole 1468.3 nm): eta_ENZ,z = 4.8022e-01 nm^-3... (dimension 1/energy-density units; use ratios), eta_z = 0.987, ITO E-energy fraction = 0.958
+
+=== padded F_ENZ winner ===
+  s=1.00: pole  1488.56 nm, gamma=|Im w|=0.12921 rad/fs, Q=    4.90, |res_r|=1.537e-02 |res_t|=1.298e-02
+  s=0.50: pole  1509.03 nm, gamma=|Im w|=0.06655 rad/fs, Q=    9.38, |res_r|=6.496e-03 |res_t|=1.317e-02
+  s=0.25: pole  1510.84 nm, gamma=|Im w|=0.03891 rad/fs, Q=   16.02, |res_r|=5.561e-03 |res_t|=7.590e-03
+  s=0.10: pole  1520.90 nm, gamma=|Im w|=0.01763 rad/fs, Q=   35.12, |res_r|=7.570e-03 |res_t|=5.888e-03
+  s=0.03: pole  1517.61 nm, gamma=|Im w|=0.00948 rad/fs, Q=   65.48, |res_r|=9.619e-03 |res_t|=8.624e-03
+  s=0.00: pole  1518.15 nm, gamma=|Im w|=0.00562 rad/fs, Q=  110.33, |res_r|=9.830e-03 |res_t|=8.777e-03
+  linear fit gamma(s): gamma_rad = 0.00596, gamma_nr(s=1) = 0.12321 rad/fs, max linearity residual = 1.66e-02
+  Q_loaded = 4.90, Q_rad = 106.1, Q_nr = 5.14, gamma_rad/gamma_nr = 0.048; lossless-ITO pole Q = 110.3 at 1518.1 nm; pole shift s=1 -> s=0: -29.6 nm
+  gamma_rad split (residue-based, approx): glass fraction = 0.51, air fraction = 0.49
+  participation (loaded, driven at its pole 1488.6 nm): eta_ENZ,z = 1.4722e-01 nm^-3... (dimension 1/energy-density units; use ratios), eta_z = 0.764, ITO E-energy fraction = 0.540
+  participation (lossless_aux, driven at its pole 1518.1 nm): eta_ENZ,z = 4.3409e-01 nm^-3... (dimension 1/energy-density units; use ratios), eta_z = 0.930, ITO E-energy fraction = 0.940
