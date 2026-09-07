@@ -21,6 +21,8 @@
    "P925 robust|1447nm"
   ],
   "logQrad_vs_etaENZ_modal": [
+   "padded QNM|1459nm",
+   "padded QNM|1503nm",
    "padded F_ENZ|1466nm",
    "padded F_ENZ|1499nm",
    "P800 robust|1438nm",
