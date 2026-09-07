@@ -1,0 +1,38 @@
+{
+ "highest_Q_Ez_rich_parent": "P800 robust|1438nm",
+ "strongest_driven_Ez": "P925 robust|1447nm",
+ "best_accessible_highQ": "P800 robust|1438nm",
+ "knee": "P925 robust|1447nm",
+ "Q_rad_75pct": 138.61678015416868,
+ "historical_FEz": 2.2,
+ "upper_right_candidates": [],
+ "fronts": {
+  "logQrad_vs_FEz_lambdaE": [
+   "padded QNM|1459nm",
+   "padded QNM|1503nm",
+   "padded F_ENZ|1466nm",
+   "padded F_ENZ|1499nm",
+   "P800 robust|1438nm",
+   "P925 robust|1447nm"
+  ],
+  "logQrad_vs_FEz_pole": [
+   "P800 robust|1438nm",
+   "P925 robust|1337nm",
+   "P925 robust|1447nm"
+  ],
+  "logQrad_vs_etaENZ_modal": [
+   "padded F_ENZ|1466nm",
+   "padded F_ENZ|1499nm",
+   "P800 robust|1438nm",
+   "P800 robust|1478nm",
+   "P800 robust|1515nm"
+  ],
+  "FEz_vs_A_lambdaE": [
+   "P925 robust|1337nm",
+   "P925 robust|1357nm",
+   "P925 robust|1365nm",
+   "P925 robust|1447nm",
+   "P925 robust|1542nm"
+  ]
+ }
+}

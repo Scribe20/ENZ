@@ -12,3 +12,7 @@
 06:39:36  [git] pushed
 06:39:36  [stage 3] start stage3_driven_vs_modal.py
 06:40:50  [stage 3] rc=0 in 1.2 min
+06:40:50  [git] commit rc=0 
+06:40:52  [git] pushed
+06:40:52  [stage 4] start stage4_pareto.py
+06:40:55  [stage 4] rc=0 in 0.1 min
