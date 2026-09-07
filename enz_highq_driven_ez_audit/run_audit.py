@@ -24,6 +24,7 @@ STAGES = {
     "9": ("stage9_p925_controls.py", "HighQ/driven-Ez audit: Stage 9 P925 controls (with/lossless/no ITO)"),
     "10": ("stage10_p800_narrow.py", "HighQ/driven-Ez audit: Stage 10 P800 narrow-pole physics"),
     "11": ("stage11_survivors.py", "HighQ/driven-Ez audit: Stages 11-14 proxies, normalization, fabrication, convergence"),
+    "16": ("stage16_pareto_design.py", "HighQ/driven-Ez audit: Stage 16 epsilon-constraint Pareto designs (F_Ez s.t. Q_rad >= Q_target) + certification"),
     "15": ("stage15_report.py", "HighQ/driven-Ez audit: Stage 15 decision, final table, report"),
 }
 

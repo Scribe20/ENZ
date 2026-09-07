@@ -226,6 +226,19 @@ for name, sv in surv.items():
 L += ["", "## 11. Canonical table", "", "| " + " | ".join(tab.columns) + " |", "|" + "---|" * len(tab.columns)]
 for _, r in tab.iterrows():
     L.append("| " + " | ".join(str(r[c]) for c in tab.columns) + " |")
+s16 = J("stage16/stage16_results.json")
+L += ["", "## 11b. Stage 16 - epsilon-constraint Pareto designs (only because no coexistence was found)", ""]
+if s16:
+    L += ["maximize F_Ez(lambda_E, real loss) s.t. the lossless-ITO Ez resonance at lambda_E has half-width <= lambda_E/(2 Q_target) "
+          "(differentiable Q_rad proxy), positive padding, no mirror symmetry; every result re-certified with the field-overlap tracker at [7,7]:", "",
+          "| design | seed | Q_target | F_Ez(lamE) | A | near pole (Q_l) | Q_rad | Q_nr | g_rad/g_nr | eta_ENZ,z modal | S_flip |", "|---|---|---|---|---|---|---|---|---|---|---|"]
+    for r_ in s16:
+        npole = r_.get("near_pole") or {}
+        L.append(f"| {r_['tag']} | {r_['seed']} | {r_['Q_target']:.0f} | {r_['F_Ez']:.3f} | {r_['A']:.3f} | {fmt(npole.get('lambda_nm'), 1)} ({fmt(npole.get('Q'), 1)}) | "
+                 f"{fmt(r_.get('Q_rad'), 1)} | {fmt(r_.get('Q_nr'), 1)} | {fmt(r_.get('gamma_ratio'), 3)} | {fmt(r_.get('eta_ENZ_z_modal'), 4)} | {r_['s_flip']:.2f} |")
+    L += ["", "![stage16](outputs/figures/stage16_pareto_frontier.png)"]
+else:
+    L.append("not run")
 L += ["", "## 12. Decision (Stage 15)", "",
       f"Decision-tree case: **{case}**.",
       f"- P925 target-near branch: {B925}", f"- P800 narrow branch: {B800}", f"- padded QNM branch: {BQNM}", f"- padded F_ENZ branch: {BFENZ}",
