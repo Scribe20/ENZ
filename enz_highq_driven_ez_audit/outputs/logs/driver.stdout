@@ -50,3 +50,7 @@
 11:32:35  [driver] requested stages complete
 11:52:17  [stage 16] start stage16_pareto_design.py
 13:02:58  [stage 16] rc=0 in 70.7 min
+13:02:58  [git] commit rc=0 
+13:03:01  [git] pushed
+13:03:01  [stage 15] start stage15_report.py
+13:03:03  [stage 15] rc=0 in 0.0 min
