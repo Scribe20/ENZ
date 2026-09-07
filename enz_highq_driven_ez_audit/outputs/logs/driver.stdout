@@ -16,3 +16,8 @@
 06:40:52  [git] pushed
 06:40:52  [stage 4] start stage4_pareto.py
 06:40:55  [stage 4] rc=0 in 0.1 min
+06:40:56  [git] commit rc=0 
+06:40:57  [git] pushed
+06:40:57  [driver] requested stages complete
+06:41:11  [stage 5] start stage5_angular.py
+07:01:54  [stage 5] rc=0 in 20.7 min
