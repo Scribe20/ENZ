@@ -29,3 +29,7 @@
 2026-09-07 07:38:40 [git] pushed
 2026-09-07 07:38:40 [stage 7] start stage7_loss_sweep.py
 2026-09-07 07:40:40 [stage 7] rc=0 in 2.0 min
+2026-09-07 07:40:40 [git] commit rc=0 
+2026-09-07 07:40:42 [git] pushed
+2026-09-07 07:40:42 [stage 8] start stage8_leakage.py
+2026-09-07 09:43:45 [stage 8] rc=0 in 123.1 min

@@ -1,0 +1,126 @@
+  [parent a=0] s=1.00: pole  1485.86 nm Q=    4.90 gamma=0.12929 ovl=1.000
+  [parent a=0] s=0.25: pole  1478.67 nm Q=   20.37 gamma=0.03127 ovl=0.921
+  [parent a=0] s=0.03: pole  1477.13 nm Q=  179.27 gamma=0.00356 ovl=0.691 JUMP? refine:True
+  [parent a=0] s=0.00: pole  1478.21 nm Q=  339.75 gamma=0.00188 ovl=0.744 refine:True
+  parent a=0     F_Ez=2.214 A=0.201 pole=1485.8648147505137 Q_l=4.90266662637445 Q_rad=856.7612255449543 ratio=0.005772254961133557 etaENZ=0.47491447651619734 ovl=0.9999999999999994 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [shear a=0.5] s=1.00: pole  1485.86 nm Q=    4.90 gamma=0.12929 ovl=1.000
+  [shear a=0.5] s=0.25: pole  1478.67 nm Q=   20.37 gamma=0.03127 ovl=0.921
+  [shear a=0.5] s=0.03: pole  1477.13 nm Q=  179.27 gamma=0.00356 ovl=0.691 JUMP? refine:True
+  [shear a=0.5] s=0.00: pole  1478.21 nm Q=  339.75 gamma=0.00188 ovl=0.744 refine:True
+  shear a=0.5    F_Ez=2.214 A=0.201 pole=1485.8648147505137 Q_l=4.90266662637445 Q_rad=856.7612255449543 ratio=0.005772254961133557 etaENZ=0.47491447651619734 ovl=0.9999999999999994 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [shear a=1] s=1.00: pole  1485.88 nm Q=    4.90 gamma=0.12931 ovl=1.000
+  [shear a=1] s=0.25: pole  1478.70 nm Q=   20.35 gamma=0.03130 ovl=0.921
+  [shear a=1] s=0.03: pole  1478.17 nm Q=  242.63 gamma=0.00263 ovl=0.691 JUMP? refine:True
+  [shear a=1] s=0.00: pole  1478.31 nm Q=  286.09 gamma=0.00223 ovl=0.718 refine:True
+  shear a=1      F_Ez=2.212 A=0.201 pole=1485.881940239459 Q_l=4.90196760788042 Q_rad=644.28546078552 ratio=0.0076915467579541106 etaENZ=0.4749462263242792 ovl=0.9993653158346402 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [shear a=2] s=1.00: pole  1486.00 nm Q=    4.90 gamma=0.12935 ovl=1.000
+  [shear a=2] s=0.25: pole  1513.57 nm Q=   18.39 gamma=0.03384 ovl=0.937
+  [shear a=2] s=0.03: pole  1513.85 nm Q=   64.45 gamma=0.00965 ovl=0.861 refine:True
+  [shear a=2] s=0.00: pole  1513.14 nm Q=  101.80 gamma=0.00611 ovl=0.896 refine:True
+  shear a=2      F_Ez=2.211 A=0.201 pole=1485.9971908184914 Q_l=4.899767783580265 Q_rad=122.47931693837425 ratio=0.04185350068464997 etaENZ=0.42971366549850687 ovl=0.9983546274755835 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [shear a=4] s=1.00: pole  1486.60 nm Q=    4.89 gamma=0.12956 ovl=1.000
+  [shear a=4] s=0.25: pole  1513.34 nm Q=   18.29 gamma=0.03402 ovl=0.937
+  [shear a=4] s=0.03: pole  1514.03 nm Q=   64.44 gamma=0.00965 ovl=0.857 refine:True
+  [shear a=4] s=0.00: pole  1512.58 nm Q=  107.51 gamma=0.00579 ovl=0.863 refine:True
+  shear a=4      F_Ez=2.205 A=0.200 pole=1486.6000388711595 Q_l=4.8899668069956155 Q_rad=124.75657350764014 ratio=0.04095593535890381 etaENZ=0.43156411438126424 ovl=0.9929625637894205 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [local a=1] s=1.00: pole  1485.88 nm Q=    4.91 gamma=0.12909 ovl=1.000
+  [local a=1] s=0.25: pole  1513.63 nm Q=   18.31 gamma=0.03398 ovl=0.938
+  [local a=1] s=0.03: pole  1513.87 nm Q=   63.97 gamma=0.00972 ovl=0.862 refine:True
+  [local a=1] s=0.00: pole  1514.16 nm Q=   97.69 gamma=0.00637 ovl=0.804 refine:True
+  local a=1      F_Ez=2.218 A=0.201 pole=1485.8780427126505 Q_l=4.910242723552995 Q_rad=118.0997354816201 ratio=0.04356649418429965 etaENZ=0.43060568278431677 ovl=0.9995672571245438 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49639892578125}
+  [local a=2] s=1.00: pole  1485.91 nm Q=    4.92 gamma=0.12890 ovl=1.000
+  [local a=2] s=0.25: pole  1513.59 nm Q=   18.25 gamma=0.03410 ovl=0.939
+  [local a=2] s=0.03: pole  1514.16 nm Q=   63.22 gamma=0.00984 ovl=0.862 refine:True
+  [local a=2] s=0.00: pole  1514.96 nm Q=  100.44 gamma=0.00619 ovl=0.526 JUMP? refine:True
+  local a=2      F_Ez=2.221 A=0.201 pole=1485.9070481375177 Q_l=4.917200608711439 Q_rad=130.88685047632092 ratio=0.03915378211239237 etaENZ=None ovl=0.9984548477131078 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49822998046875}
+  [local a=4] s=1.00: pole  1485.96 nm Q=    4.93 gamma=0.12862 ovl=1.000
+  [local a=4] s=0.25: pole  1518.55 nm Q=   17.19 gamma=0.03608 ovl=0.943
+  [local a=4] s=0.03: pole  1514.75 nm Q=   62.91 gamma=0.00988 ovl=0.862 refine:True
+  [local a=4] s=0.00: pole  1515.33 nm Q=   91.89 gamma=0.00676 ovl=0.397 JUMP? refine:True
+  local a=4      F_Ez=2.228 A=0.202 pole=1485.9614744750584 Q_l=4.927788853667654 Q_rad=108.13546778620818 ratio=0.04778536933336437 etaENZ=None ovl=0.994085831331567 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.50189208984375}
+  [local a=6] s=1.00: pole  1485.85 nm Q=    4.94 gamma=0.12834 ovl=1.000
+  [local a=6] s=0.25: pole  1481.00 nm Q=   18.59 gamma=0.03422 ovl=0.925
+  [local a=6] s=0.03: pole  1480.59 nm Q=  102.44 gamma=0.00621 ovl=0.709 refine:True
+  [local a=6] s=0.00: pole  1480.77 nm Q=  227.74 gamma=0.00279 ovl=0.774 refine:True
+  local a=6      F_Ez=2.233 A=0.202 pole=1485.852268609001 Q_l=4.938874763254418 Q_rad=237.7674096123254 ratio=0.02120838413639359 etaENZ=0.46971112937737947 ovl=0.9874246562408433 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.50555419921875}
+  [notch a=1] s=1.00: pole  1485.86 nm Q=    4.90 gamma=0.12929 ovl=1.000
+  [notch a=1] s=0.25: pole  1478.67 nm Q=   20.37 gamma=0.03127 ovl=0.921
+  [notch a=1] s=0.03: pole  1477.13 nm Q=  179.27 gamma=0.00356 ovl=0.691 JUMP? refine:True
+  [notch a=1] s=0.00: pole  1478.21 nm Q=  339.75 gamma=0.00188 ovl=0.744 refine:True
+  notch a=1      F_Ez=2.214 A=0.201 pole=1485.8648147505137 Q_l=4.90266662637445 Q_rad=856.7612255449543 ratio=0.005772254961133557 etaENZ=0.47491447651619734 ovl=0.9999999999999994 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [notch a=2] s=1.00: pole  1485.86 nm Q=    4.90 gamma=0.12929 ovl=1.000
+  [notch a=2] s=0.25: pole  1478.67 nm Q=   20.37 gamma=0.03127 ovl=0.921
+  [notch a=2] s=0.03: pole  1477.13 nm Q=  179.27 gamma=0.00356 ovl=0.691 JUMP? refine:True
+  [notch a=2] s=0.00: pole  1478.21 nm Q=  339.75 gamma=0.00188 ovl=0.744 refine:True
+  notch a=2      F_Ez=2.214 A=0.201 pole=1485.8648147505137 Q_l=4.90266662637445 Q_rad=856.7612255449543 ratio=0.005772254961133557 etaENZ=0.47491447651619734 ovl=0.9999999999999994 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [notch a=3] s=1.00: pole  1485.86 nm Q=    4.90 gamma=0.12929 ovl=1.000
+  [notch a=3] s=0.25: pole  1478.67 nm Q=   20.37 gamma=0.03127 ovl=0.921
+  [notch a=3] s=0.03: pole  1477.13 nm Q=  179.27 gamma=0.00356 ovl=0.691 JUMP? refine:True
+  [notch a=3] s=0.00: pole  1478.21 nm Q=  339.75 gamma=0.00188 ovl=0.744 refine:True
+  notch a=3      F_Ez=2.214 A=0.201 pole=1485.8648147505137 Q_l=4.90266662637445 Q_rad=856.7612255449543 ratio=0.005772254961133557 etaENZ=0.47491447651619734 ovl=0.9999999999999994 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [notch a=4] s=1.00: pole  1485.85 nm Q=    4.90 gamma=0.12934 ovl=1.000
+  [notch a=4] s=0.25: pole  1478.67 nm Q=   20.34 gamma=0.03132 ovl=0.920
+  [notch a=4] s=0.03: pole  1477.67 nm Q=  207.68 gamma=0.00307 ovl=0.690 JUMP? refine:True
+  [notch a=4] s=0.00: pole  1478.07 nm Q=  333.42 gamma=0.00191 ovl=0.763 refine:True
+  notch a=4      F_Ez=2.212 A=0.201 pole=1485.8474652562525 Q_l=4.900608427751697 Q_rad=813.7225961004012 ratio=0.006076782796092778 etaENZ=0.4747796668363769 ovl=0.9999037559454984 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49407958984375}
+  [scale a=-0.04] s=1.00: pole  1265.52 nm Q=   43.23 gamma=0.01722 ovl=1.000 refine:True
+  [scale a=-0.04] s=0.25: pole  1266.29 nm Q=   61.44 gamma=0.01211 ovl=0.989 refine:True
+  [scale a=-0.04] s=0.03: pole  1266.56 nm Q=   70.53 gamma=0.01054 ovl=0.999 refine:True
+  [scale a=-0.04] s=0.00: pole  1266.59 nm Q=   71.98 gamma=0.01033 ovl=1.000 refine:True
+  scale a=-0.04  F_Ez=2.204 A=0.201 pole=1265.5202863865989 Q_l=43.22994399486546 Q_rad=71.91790819486019 ratio=1.504867431016477 etaENZ=0.009379345118935022 ovl=0.8320265391124103 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.45745849609375}
+  [scale a=-0.02] s=1.00: pole  1488.77 nm Q=    4.91 gamma=0.12893 ovl=1.000
+  [scale a=-0.02] s=0.25: pole  1512.58 nm Q=   18.68 gamma=0.03333 ovl=0.936
+  [scale a=-0.02] s=0.03: pole  1512.57 nm Q=   64.78 gamma=0.00961 ovl=0.849 refine:True
+  [scale a=-0.02] s=0.00: pole  1512.45 nm Q=  102.19 gamma=0.00609 ovl=0.892 refine:True
+  scale a=-0.02  F_Ez=2.209 A=0.201 pole=1488.772787666669 Q_l=4.906775670054785 Q_rad=125.48774464999484 ratio=0.040893011373999255 etaENZ=0.4312388481956007 ovl=0.9974764270752593 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.473876953125}
+  [scale a=0.02] s=1.00: pole  1484.95 nm Q=    4.97 gamma=0.12771 ovl=1.000
+  [scale a=0.02] s=0.25: pole  1478.80 nm Q=   20.49 gamma=0.03108 ovl=0.922
+  [scale a=0.02] s=0.03: pole  1479.07 nm Q=  116.21 gamma=0.00548 ovl=0.693 refine:True
+  [scale a=0.02] s=0.00: pole  1479.21 nm Q=  330.54 gamma=0.00193 ovl=0.762 refine:True
+  scale a=0.02   F_Ez=2.211 A=0.200 pole=1484.9514425660805 Q_l=4.966111235684893 Q_rad=534.4935308930028 ratio=0.009407817854716224 etaENZ=0.47344956409586175 ovl=0.9982034790587083 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.506591796875}
+  [scale a=0.04] s=1.00: pole  1485.10 nm Q=    5.02 gamma=0.12628 ovl=1.000
+  [scale a=0.04] s=0.25: pole  1479.66 nm Q=   20.18 gamma=0.03154 ovl=0.926
+  [scale a=0.04] s=0.03: pole  1480.67 nm Q=  109.69 gamma=0.00580 ovl=0.705 refine:True
+  [scale a=0.04] s=0.00: pole  1470.08 nm Q=  472.89 gamma=0.00135 ovl=0.265 JUMP? refine:True
+  scale a=0.04   F_Ez=2.207 A=0.200 pole=1485.0976201787005 Q_l=5.021875559085682 Q_rad=482.40549893738284 ratio=0.010537926949726311 etaENZ=None ovl=0.9925701125334285 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.51904296875}
+  [height a=-0.06] s=1.00: pole  1485.49 nm Q=    4.87 gamma=0.13024 ovl=1.000
+  [height a=-0.06] s=0.25: pole  1512.58 nm Q=   18.52 gamma=0.03361 ovl=0.937
+  [height a=-0.06] s=0.03: pole  1512.35 nm Q=   67.70 gamma=0.00920 ovl=0.862 refine:True
+  [height a=-0.06] s=0.00: pole  1519.49 nm Q=  140.91 gamma=0.00440 ovl=0.911 JUMP? refine:True
+  height a=-0.06 F_Ez=2.098 A=0.192 pole=1485.4913540060536 Q_l=4.867905482010041 Q_rad=158.52517246591063 ratio=0.03178552407320787 etaENZ=None ovl=0.9999566794419331 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [height a=-0.03] s=1.00: pole  1485.40 nm Q=    4.87 gamma=0.13009 ovl=1.000
+  [height a=-0.03] s=0.25: pole  1513.11 nm Q=   18.46 gamma=0.03371 ovl=0.937
+  [height a=-0.03] s=0.03: pole  1512.97 nm Q=   66.62 gamma=0.00934 ovl=0.862 refine:True
+  [height a=-0.03] s=0.00: pole  1520.14 nm Q=  120.27 gamma=0.00515 ovl=0.908 JUMP? refine:True
+  height a=-0.03 F_Ez=2.156 A=0.197 pole=1485.3987940669608 Q_l=4.8739296121759486 Q_rad=152.26685276473899 ratio=0.03317696946090381 etaENZ=None ovl=0.9999898263673523 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [height a=0.03] s=1.00: pole  1486.91 nm Q=    4.94 gamma=0.12823 ovl=1.000
+  [height a=0.03] s=0.25: pole  1478.80 nm Q=   20.24 gamma=0.03146 ovl=0.920
+  [height a=0.03] s=0.03: pole  1477.04 nm Q=  173.02 gamma=0.00369 ovl=0.690 JUMP? refine:True
+  [height a=0.03] s=0.00: pole  1478.35 nm Q=  343.54 gamma=0.00185 ovl=0.720 refine:True
+  height a=0.03  F_Ez=2.271 A=0.205 pole=1486.9100996787506 Q_l=4.939617299985169 Q_rad=674.8766841107446 ratio=0.00739098273555731 etaENZ=0.47501990260504695 ovl=0.9999902646586638 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [height a=0.06] s=1.00: pole  1488.40 nm Q=    4.98 gamma=0.12705 ovl=1.000
+  [height a=0.06] s=0.25: pole  1514.64 nm Q=   18.31 gamma=0.03395 ovl=0.936
+  [height a=0.06] s=0.03: pole  1514.76 nm Q=   64.40 gamma=0.00965 ovl=0.858 refine:True
+  [height a=0.06] s=0.00: pole  1511.75 nm Q=  117.71 gamma=0.00529 ovl=0.813 JUMP? refine:True
+  height a=0.06  F_Ez=2.327 A=0.209 pole=1488.398013017937 Q_l=4.9804898867223155 Q_rad=128.90392227979765 ratio=0.04029565176294845 etaENZ=None ovl=0.9999606998718513 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [period a=-0.04] s=1.00: pole  1250.07 nm Q=   49.23 gamma=0.01531 ovl=1.000 refine:True
+  [period a=-0.04] s=0.25: pole  1250.49 nm Q=   71.76 gamma=0.01050 ovl=0.983 refine:True
+  [period a=-0.04] s=0.03: pole  1250.65 nm Q=   83.03 gamma=0.00907 ovl=0.999 refine:True
+  [period a=-0.04] s=0.00: pole  1250.20 nm Q=   83.06 gamma=0.00907 ovl=1.000 refine:True
+  period a=-0.04 F_Ez=1.994 A=0.185 pole=1250.0701434416017 Q_l=49.22669090049322 Q_rad=84.09759782358435 ratio=1.4148215364347403 etaENZ=0.006328882611382381 ovl=0.7918979059789973 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [period a=-0.02] s=1.00: pole  1269.50 nm Q=   49.31 gamma=0.01505 ovl=1.000 refine:True
+  [period a=-0.02] s=0.25: pole  1269.99 nm Q=   73.56 gamma=0.01008 ovl=0.980 refine:True
+  [period a=-0.02] s=0.03: pole  1270.16 nm Q=   85.78 gamma=0.00864 ovl=0.998 refine:True
+  [period a=-0.02] s=0.00: pole  1270.15 nm Q=   87.37 gamma=0.00849 ovl=1.000 refine:True
+  period a=-0.02 F_Ez=2.095 A=0.192 pole=1269.4958050418124 Q_l=49.30584885405832 Q_rad=87.7106903948517 ratio=1.2849993158790811 etaENZ=0.007424996160396104 ovl=0.7862561860820464 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [period a=0.02] s=1.00: pole  1489.55 nm Q=    5.09 gamma=0.12434 ovl=1.000
+  [period a=0.02] s=0.25: pole  1513.82 nm Q=   18.05 gamma=0.03446 ovl=0.937
+  [period a=0.02] s=0.03: pole  1513.67 nm Q=   63.49 gamma=0.00980 ovl=0.856 refine:True
+  [period a=0.02] s=0.00: pole  1491.96 nm Q=   78.49 gamma=0.00804 ovl=0.497 JUMP? refine:True
+  period a=0.02  F_Ez=2.356 A=0.211 pole=1489.5482964030798 Q_l=5.085250349026269 Q_rad=112.33932612590635 ratio=0.04748539239339955 etaENZ=None ovl=0.9998870087496535 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+  [period a=0.04] s=1.00: pole  1500.08 nm Q=    5.36 gamma=0.11708 ovl=1.000
+  [period a=0.04] s=0.25: pole  1513.44 nm Q=   17.89 gamma=0.03478 ovl=0.936
+  [period a=0.04] s=0.03: pole  1513.68 nm Q=   60.89 gamma=0.01022 ovl=0.846 refine:True
+  [period a=0.04] s=0.00: pole  1513.34 nm Q=  100.53 gamma=0.00619 ovl=0.820 refine:True
+  period a=0.04  F_Ez=2.530 A=0.225 pole=1500.0812901237375 Q_l=5.362485094307626 Q_rad=93.53195242090682 ratio=0.06075537282387795 etaENZ=0.42930608132033415 ovl=0.999434323805587 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49468994140625}
+[stage8] done
