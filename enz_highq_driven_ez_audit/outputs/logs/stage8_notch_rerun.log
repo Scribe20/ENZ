@@ -1,0 +1,21 @@
+  [notch a=1] s=1.00: pole  1485.86 nm Q=    4.90 gamma=0.12930 ovl=1.000
+  [notch a=1] s=0.25: pole  1478.68 nm Q=   20.36 gamma=0.03128 ovl=0.921
+  [notch a=1] s=0.03: pole  1477.56 nm Q=  187.58 gamma=0.00340 ovl=0.691 JUMP? refine:True
+  [notch a=1] s=0.00: pole  1478.34 nm Q=  334.80 gamma=0.00190 ovl=0.716 refine:True
+  notch a=1      F_Ez=2.213 A=0.201 pole=1485.8552199155142 Q_l=4.902285176675924 Q_rad=833.3219775703194 ratio=0.005935215456524668 etaENZ=0.47505102027657853 ovl=0.9999922602051523 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49444580078125}
+  [notch a=2] s=1.00: pole  1485.80 nm Q=    4.90 gamma=0.12932 ovl=1.000
+  [notch a=2] s=0.25: pole  1478.73 nm Q=   20.35 gamma=0.03130 ovl=0.921
+  [notch a=2] s=0.03: pole  1477.86 nm Q=  201.12 gamma=0.00317 ovl=0.690 JUMP? refine:True
+  [notch a=2] s=0.00: pole  1478.09 nm Q=  334.29 gamma=0.00191 ovl=0.758 refine:True
+  notch a=2      F_Ez=2.209 A=0.201 pole=1485.8012270716788 Q_l=4.901546725421441 Q_rad=822.4283842794805 ratio=0.006013282168955041 etaENZ=0.47481374273753 ovl=0.9998751857329249 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.493408203125}
+  [notch a=3] s=1.00: pole  1485.77 nm Q=    4.90 gamma=0.12933 ovl=1.000
+  [notch a=3] s=0.25: pole  1478.77 nm Q=   20.35 gamma=0.03130 ovl=0.921
+  [notch a=3] s=0.03: pole  1478.08 nm Q=  196.99 gamma=0.00323 ovl=0.690 JUMP? refine:True
+  [notch a=3] s=0.00: pole  1478.08 nm Q=  334.22 gamma=0.00191 ovl=0.754 refine:True
+  notch a=3      F_Ez=2.206 A=0.200 pole=1485.7669221050805 Q_l=4.901564393106475 Q_rad=820.5795517929071 ratio=0.006026912108070165 etaENZ=0.47481258722161923 ovl=0.9998507347105764 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49285888671875}
+  [notch a=4] s=1.00: pole  1485.63 nm Q=    4.90 gamma=0.12940 ovl=1.000
+  [notch a=4] s=0.25: pole  1478.99 nm Q=   20.30 gamma=0.03136 ovl=0.921
+  [notch a=4] s=0.03: pole  1478.16 nm Q=  113.11 gamma=0.00563 ovl=0.688 refine:True
+  [notch a=4] s=0.00: pole  1477.93 nm Q=  329.40 gamma=0.00193 ovl=0.772 refine:True
+  notch a=4      F_Ez=2.194 A=0.199 pole=1485.6275703620522 Q_l=4.899101980564161 Q_rad=531.772098267471 ratio=0.009329425051220216 etaENZ=0.4747360973874375 ovl=0.9994230279523778 {'n_components': 1, 'padding_ok': True, 'min_feature_nm': 152.734375, 'fill': 0.49072265625}
+[stage8] done
