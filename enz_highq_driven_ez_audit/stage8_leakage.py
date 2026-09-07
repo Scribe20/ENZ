@@ -60,9 +60,10 @@ def fam_local(a):
 
 def fam_notch(a):
     b = B0.copy()
-    cols = np.where(B0.any(0))[0]; xr = cols.max()
+    rows_x = np.where(B0.any(1))[0]; xr = rows_x.max()        # +x edge (axis 0)
+    ymid = int(round(np.mean(np.where(B0[xr - 2])[0])))       # y-centre of that edge
     d = int(round(3 * a)); wd = max(int(round(a)), 1)
-    b[xr - d:xr + 1, int(yc) - wd // 2: int(yc) + wd // 2 + 1] = False
+    b[xr - d:xr + 1, ymid - wd // 2: ymid + wd // 2 + 1] = False
     return b & M, P0, h0
 
 
@@ -127,8 +128,15 @@ def evaluate(b, P, h, tag):
     return rec
 
 
-res = {"parent": evaluate(B0, P0, h0, "parent a=0")}
+import sys
+ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
+if ONLY and (cm.OUT / "stage8_leakage.json").exists():
+    res = cm.jload(cm.OUT / "stage8_leakage.json")
+else:
+    res = {"parent": evaluate(B0, P0, h0, "parent a=0")}
 for fam, (fn, alphas) in FAMILIES.items():
+    if ONLY and fam not in ONLY:
+        continue
     res[fam] = []
     for a in alphas:
         b, P, h = fn(a)
