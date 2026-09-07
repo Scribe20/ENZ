@@ -1,0 +1,146 @@
+
+=== padded QNM (P=850, h=140) reconnaissance s=1, 86 pts ===
+  pole  1206.21 nm  Q=   56.76  peak(r,t)=(0.574,0.224) rt_diff=8.1e-03 in_window=False refine_conv=False
+  pole  1289.04 nm  Q=   48.60  peak(r,t)=(0.836,0.605) rt_diff=4.1e-08 in_window=False refine_conv=True
+  pole  1458.74 nm  Q=    5.03  peak(r,t)=(0.092,0.076) rt_diff=6.4e-03 in_window=True
+  pole  1502.97 nm  Q=    5.80  peak(r,t)=(0.057,0.051) rt_diff=2.7e-03 in_window=True
+--- tracking branch padded QNM|1289nm (Q_loaded=48.60) ---
+  [padded QNM|1289nm] s=1.00: pole  1289.04 nm Q=   48.62 gamma=0.01503 ovl=1.000 refine:True
+  [padded QNM|1289nm] s=0.50: pole  1289.39 nm Q=   63.49 gamma=0.01151 ovl=0.990 refine:True
+  [padded QNM|1289nm] s=0.25: pole  1289.62 nm Q=   74.72 gamma=0.00977 ovl=0.997 refine:True
+  [padded QNM|1289nm] s=0.10: pole  1289.78 nm Q=   83.47 gamma=0.00875 ovl=0.999 refine:True
+  [padded QNM|1289nm] s=0.03: pole  1289.86 nm Q=   88.17 gamma=0.00828 ovl=1.000 refine:True
+  [padded QNM|1289nm] s=0.00: pole  1289.89 nm Q=   90.35 gamma=0.00808 ovl=1.000 refine:True
+  fit: {'gamma_rad': 0.00806, 'gamma_nr': 0.00695, 'Q_rad': 90.6582, 'Q_nr': 105.16551, 'Q_loaded': 48.62375, 'gamma_ratio': 1.16002, 'linearity_resid': 0.00185, 'n_levels': 6, 'lossless_pole': {'lambda_nm': 1289.8910016376115, 'Q': 90.34691046001196}, 'Q_rad_from_lossless': 90.34691, 'pole_shift_nm': -0.8522}
+--- tracking branch padded QNM|1459nm (Q_loaded=5.03) ---
+  [padded QNM|1459nm] s=1.00: pole  1485.86 nm Q=    4.90 gamma=0.12929 ovl=1.000
+  [padded QNM|1459nm] s=0.50: pole  1513.93 nm Q=    9.93 gamma=0.06265 ovl=0.988 JUMP?
+  [padded QNM|1459nm] s=0.25: pole  1513.63 nm Q=   18.41 gamma=0.03380 ovl=0.977
+  [padded QNM|1459nm] s=0.10: pole  1513.58 nm Q=   35.99 gamma=0.01729 ovl=0.957 refine:True
+  [padded QNM|1459nm] s=0.03: pole  1513.58 nm Q=   65.72 gamma=0.00947 ovl=0.958 refine:True
+  [padded QNM|1459nm] s=0.00: pole  1513.07 nm Q=  144.41 gamma=0.00431 ovl=0.899 JUMP? refine:True
+  fit: {'gamma_rad': 0.00457, 'gamma_nr': 0.12432, 'Q_rad': 138.61678, 'Q_nr': 5.09875, 'Q_loaded': 4.90267, 'gamma_ratio': 0.03678, 'linearity_resid': 0.01432, 'n_levels': 4, 'lossless_pole': None, 'Q_rad_from_lossless': None, 'pole_shift_nm': None}
+--- tracking branch padded QNM|1503nm (Q_loaded=5.80) ---
+  [padded QNM|1503nm] s=1.00: pole  1485.86 nm Q=    4.90 gamma=0.12929 ovl=1.000
+  [padded QNM|1503nm] s=0.50: pole  1513.93 nm Q=    9.93 gamma=0.06265 ovl=0.988 JUMP?
+  [padded QNM|1503nm] s=0.25: pole  1513.63 nm Q=   18.41 gamma=0.03380 ovl=0.977
+  [padded QNM|1503nm] s=0.10: pole  1513.58 nm Q=   35.99 gamma=0.01729 ovl=0.957 refine:True
+  [padded QNM|1503nm] s=0.03: pole  1513.58 nm Q=   65.72 gamma=0.00947 ovl=0.958 refine:True
+  [padded QNM|1503nm] s=0.00: pole  1513.07 nm Q=  144.41 gamma=0.00431 ovl=0.899 JUMP? refine:True
+  fit: {'gamma_rad': 0.00457, 'gamma_nr': 0.12432, 'Q_rad': 138.61678, 'Q_nr': 5.09875, 'Q_loaded': 4.90267, 'gamma_ratio': 0.03678, 'linearity_resid': 0.01432, 'n_levels': 4, 'lossless_pole': None, 'Q_rad_from_lossless': None, 'pole_shift_nm': None}
+  historical Stage-A: Q_loaded=4.90 Q_rad=1872.2 Q_nr=4.94 ratio=0.0026 (rows: s=1.0:1485.9nm/Q4.9, s=0.5:1466.0nm/Q10.1, s=0.25:1466.5nm/Q20.4, s=0.1:1468.1nm/Q49.7, s=0.03:1468.3nm/Q136.3, s=0.0:1468.3nm/Q543.7)
+
+=== padded F_ENZ (P=850, h=140) reconnaissance s=1, 86 pts ===
+  pole  1205.78 nm  Q=   59.31  peak(r,t)=(0.453,0.229) rt_diff=5.3e-03 in_window=False refine_conv=False
+  pole  1283.30 nm  Q=   37.37  peak(r,t)=(0.908,0.744) rt_diff=1.1e-07 in_window=False refine_conv=True
+  pole  1465.69 nm  Q=    5.20  peak(r,t)=(0.085,0.082) rt_diff=7.8e-03 in_window=True
+  pole  1498.90 nm  Q=    5.78  peak(r,t)=(0.071,0.054) rt_diff=5.4e-03 in_window=True
+--- tracking branch padded F_ENZ|1283nm (Q_loaded=37.37) ---
+  [padded F_ENZ|1283nm] s=1.00: pole  1283.30 nm Q=   37.41 gamma=0.01962 ovl=1.000 refine:True
+  [padded F_ENZ|1283nm] s=0.50: pole  1283.87 nm Q=   45.41 gamma=0.01615 ovl=0.994 refine:True
+  [padded F_ENZ|1283nm] s=0.25: pole  1284.20 nm Q=   50.65 gamma=0.01448 ovl=0.998 refine:True
+  [padded F_ENZ|1283nm] s=0.10: pole  1284.41 nm Q=   54.32 gamma=0.01350 ovl=0.999 refine:True
+  [padded F_ENZ|1283nm] s=0.03: pole  1284.50 nm Q=   56.18 gamma=0.01305 ovl=1.000 refine:True
+  [padded F_ENZ|1283nm] s=0.00: pole  1284.55 nm Q=   56.98 gamma=0.01287 ovl=1.000 refine:True
+  fit: {'gamma_rad': 0.01283, 'gamma_nr': 0.00676, 'Q_rad': 57.2112, 'Q_nr': 108.63683, 'Q_loaded': 37.4071, 'gamma_ratio': 1.89887, 'linearity_resid': 0.00268, 'n_levels': 6, 'lossless_pole': {'lambda_nm': 1284.5497467101977, 'Q': 56.97914612093152}, 'Q_rad_from_lossless': 56.97915, 'pole_shift_nm': -1.25071}
+--- tracking branch padded F_ENZ|1466nm (Q_loaded=5.20) ---
+  [padded F_ENZ|1466nm] s=1.00: pole  1488.56 nm Q=    4.90 gamma=0.12921 ovl=1.000
+  [padded F_ENZ|1466nm] s=0.50: pole  1509.03 nm Q=    9.38 gamma=0.06655 ovl=0.990
+  [padded F_ENZ|1466nm] s=0.25: pole  1529.30 nm Q=   20.15 gamma=0.03057 ovl=0.977 JUMP?
+  [padded F_ENZ|1466nm] s=0.10: pole  1520.90 nm Q=   35.12 gamma=0.01763 ovl=0.945 refine:True
+  [padded F_ENZ|1466nm] s=0.03: pole  1517.61 nm Q=   65.48 gamma=0.00948 ovl=0.855 refine:True
+  [padded F_ENZ|1466nm] s=0.00: pole  1518.15 nm Q=  110.33 gamma=0.00562 ovl=0.683 refine:True
+  fit: {'gamma_rad': 0.00546, 'gamma_nr': 0.12343, 'Q_rad': 115.86329, 'Q_nr': 5.12595, 'Q_loaded': 4.89656, 'gamma_ratio': 0.04424, 'linearity_resid': 0.00486, 'n_levels': 5, 'lossless_pole': {'lambda_nm': 1518.1493746095005, 'Q': 110.32672280383878}, 'Q_rad_from_lossless': 110.32672, 'pole_shift_nm': -29.58947}
+--- tracking branch padded F_ENZ|1499nm (Q_loaded=5.78) ---
+  [padded F_ENZ|1499nm] s=1.00: pole  1488.56 nm Q=    4.90 gamma=0.12921 ovl=1.000
+  [padded F_ENZ|1499nm] s=0.50: pole  1509.03 nm Q=    9.38 gamma=0.06655 ovl=0.990
+  [padded F_ENZ|1499nm] s=0.25: pole  1529.30 nm Q=   20.15 gamma=0.03057 ovl=0.977 JUMP?
+  [padded F_ENZ|1499nm] s=0.10: pole  1520.90 nm Q=   35.12 gamma=0.01763 ovl=0.945 refine:True
+  [padded F_ENZ|1499nm] s=0.03: pole  1517.61 nm Q=   65.48 gamma=0.00948 ovl=0.855 refine:True
+  [padded F_ENZ|1499nm] s=0.00: pole  1518.15 nm Q=  110.33 gamma=0.00562 ovl=0.683 refine:True
+  fit: {'gamma_rad': 0.00546, 'gamma_nr': 0.12343, 'Q_rad': 115.86329, 'Q_nr': 5.12595, 'Q_loaded': 4.89656, 'gamma_ratio': 0.04424, 'linearity_resid': 0.00486, 'n_levels': 5, 'lossless_pole': {'lambda_nm': 1518.1493746095005, 'Q': 110.32672280383878}, 'Q_rad_from_lossless': 110.32672, 'pole_shift_nm': -29.58947}
+  historical Stage-A: Q_loaded=4.90 Q_rad=106.1 Q_nr=5.14 ratio=0.0484 (rows: s=1.0:1488.6nm/Q4.9, s=0.5:1509.0nm/Q9.4, s=0.25:1510.8nm/Q16.0, s=0.1:1520.9nm/Q35.1, s=0.03:1517.6nm/Q65.5, s=0.0:1518.1nm/Q110.3)
+
+=== P800 robust (P=800, h=200) reconnaissance s=1, 86 pts ===
+  pole  1207.62 nm  Q=   17.54  peak(r,t)=(0.711,0.622) rt_diff=4.2e-04 in_window=False
+  pole  1437.56 nm  Q=   73.81  peak(r,t)=(0.693,0.349) rt_diff=4.6e-08 in_window=True refine_conv=True
+  pole  1477.52 nm  Q=    5.24  peak(r,t)=(0.187,0.051) rt_diff=1.4e-02 in_window=True
+  pole  1515.39 nm  Q=    5.77  peak(r,t)=(0.074,0.064) rt_diff=1.1e-02 in_window=True
+--- tracking branch P800 robust|1438nm (Q_loaded=73.81) ---
+  [P800 robust|1438nm] s=1.00: pole  1437.56 nm Q=   73.81 gamma=0.00888 ovl=1.000 refine:True
+  [P800 robust|1438nm] s=0.50: pole  1436.67 nm Q=   99.94 gamma=0.00656 ovl=0.976 refine:True
+  [P800 robust|1438nm] s=0.25: pole  1436.14 nm Q=  132.39 gamma=0.00495 ovl=0.983 refine:True
+  [P800 robust|1438nm] s=0.10: pole  1435.98 nm Q=  173.87 gamma=0.00377 ovl=0.987 refine:True
+  [P800 robust|1438nm] s=0.03: pole  1436.00 nm Q=  206.03 gamma=0.00318 ovl=0.996 refine:True
+  [P800 robust|1438nm] s=0.00: pole  1436.03 nm Q=  223.82 gamma=0.00293 ovl=0.999 refine:True
+  fit: {'gamma_rad': 0.00318, 'gamma_nr': 0.00597, 'Q_rad': 206.24202, 'Q_nr': 109.82218, 'Q_loaded': 73.81163, 'gamma_ratio': 0.53249, 'linearity_resid': 0.04507, 'n_levels': 6, 'lossless_pole': {'lambda_nm': 1436.0331450938752, 'Q': 223.82193720825427}, 'Q_rad_from_lossless': 223.82194, 'pole_shift_nm': 1.52386}
+--- tracking branch P800 robust|1478nm (Q_loaded=5.24) ---
+  [P800 robust|1478nm] s=1.00: pole  1499.80 nm Q=    5.51 gamma=0.11400 ovl=1.000
+  [P800 robust|1478nm] s=0.50: pole  1530.33 nm Q=   10.57 gamma=0.05823 ovl=0.990 JUMP?
+  [P800 robust|1478nm] s=0.25: pole  1535.11 nm Q=   20.47 gamma=0.02998 ovl=0.979
+  [P800 robust|1478nm] s=0.10: pole  1536.10 nm Q=   42.89 gamma=0.01429 ovl=0.944 refine:True
+  [P800 robust|1478nm] s=0.03: pole  1535.20 nm Q=   90.52 gamma=0.00678 ovl=0.918 refine:True
+  [P800 robust|1478nm] s=0.00: pole  1533.44 nm Q=  138.63 gamma=0.00443 ovl=0.838 refine:True
+  fit: {'gamma_rad': 0.00347, 'gamma_nr': 0.11026, 'Q_rad': 181.14581, 'Q_nr': 5.69557, 'Q_loaded': 5.50827, 'gamma_ratio': 0.03144, 'linearity_resid': 0.00922, 'n_levels': 5, 'lossless_pole': {'lambda_nm': 1533.442822073556, 'Q': 138.63192625574152}, 'Q_rad_from_lossless': 138.63193, 'pole_shift_nm': -33.63858}
+--- tracking branch P800 robust|1515nm (Q_loaded=5.77) ---
+  [P800 robust|1515nm] s=1.00: pole  1499.80 nm Q=    5.51 gamma=0.11400 ovl=1.000
+  [P800 robust|1515nm] s=0.50: pole  1530.33 nm Q=   10.57 gamma=0.05823 ovl=0.990 JUMP?
+  [P800 robust|1515nm] s=0.25: pole  1535.11 nm Q=   20.47 gamma=0.02998 ovl=0.979
+  [P800 robust|1515nm] s=0.10: pole  1536.10 nm Q=   42.89 gamma=0.01429 ovl=0.944 refine:True
+  [P800 robust|1515nm] s=0.03: pole  1535.20 nm Q=   90.52 gamma=0.00678 ovl=0.918 refine:True
+  [P800 robust|1515nm] s=0.00: pole  1533.44 nm Q=  138.63 gamma=0.00443 ovl=0.838 refine:True
+  fit: {'gamma_rad': 0.00347, 'gamma_nr': 0.11026, 'Q_rad': 181.14581, 'Q_nr': 5.69557, 'Q_loaded': 5.50827, 'gamma_ratio': 0.03144, 'linearity_resid': 0.00922, 'n_levels': 5, 'lossless_pole': {'lambda_nm': 1533.442822073556, 'Q': 138.63192625574152}, 'Q_rad_from_lossless': 138.63193, 'pole_shift_nm': -33.63858}
+
+=== P925 robust (P=925, h=240) reconnaissance s=1, 86 pts ===
+  pole  1336.99 nm  Q=   27.26  peak(r,t)=(0.076,0.033) rt_diff=2.6e-03 in_window=True refine_conv=True
+  pole  1357.28 nm  Q=   13.75  peak(r,t)=(0.523,0.461) rt_diff=1.7e-02 in_window=True
+  pole  1364.75 nm  Q=   16.64  peak(r,t)=(1.181,0.461) rt_diff=4.2e-04 in_window=True
+  pole  1446.92 nm  Q=   23.03  peak(r,t)=(0.806,0.401) rt_diff=3.8e-06 in_window=True
+  pole  1542.04 nm  Q=    6.59  peak(r,t)=(0.319,0.236) rt_diff=8.1e-03 in_window=True
+--- tracking branch P925 robust|1337nm (Q_loaded=27.26) ---
+  [P925 robust|1337nm] s=1.00: pole  1338.39 nm Q=   25.38 gamma=0.02773 ovl=1.000 refine:True
+  [P925 robust|1337nm] s=0.50: pole  1340.75 nm Q=   17.18 gamma=0.04088 ovl=0.969
+  [P925 robust|1337nm] s=0.25: pole  1338.73 nm Q=   23.79 gamma=0.02957 ovl=0.987
+  [P925 robust|1337nm] s=0.10: pole  1334.39 nm Q=   30.78 gamma=0.02293 ovl=0.983 refine:True
+  [P925 robust|1337nm] s=0.03: pole  1333.17 nm Q=   35.65 gamma=0.01982 ovl=0.999 refine:True
+  [P925 robust|1337nm] s=0.00: pole  1333.03 nm Q=   37.63 gamma=0.01877 ovl=1.000 refine:True
+  fit: {'gamma_rad': 0.02303, 'gamma_nr': 0.01145, 'Q_rad': 30.55866, 'Q_nr': 61.43739, 'Q_loaded': 25.37693, 'gamma_ratio': 2.01047, 'linearity_resid': 0.29662, 'n_levels': 6, 'lossless_pole': {'lambda_nm': 1333.033348355515, 'Q': 37.63399212181637}, 'Q_rad_from_lossless': 37.63399, 'pole_shift_nm': 5.3567}
+--- tracking branch P925 robust|1357nm (Q_loaded=13.75) ---
+  [P925 robust|1357nm] s=1.00: pole  1365.12 nm Q=   16.75 gamma=0.04119 ovl=1.000
+  [P925 robust|1357nm] s=0.50: pole  1363.21 nm Q=   17.44 gamma=0.03962 ovl=0.973
+  [P925 robust|1357nm] s=0.25: pole  1364.28 nm Q=   18.65 gamma=0.03701 ovl=0.989
+  [P925 robust|1357nm] s=0.10: pole  1364.90 nm Q=   19.64 gamma=0.03513 ovl=0.995
+  [P925 robust|1357nm] s=0.03: pole  1365.34 nm Q=   20.11 gamma=0.03430 ovl=0.999
+  [P925 robust|1357nm] s=0.00: pole  1365.55 nm Q=   20.33 gamma=0.03393 ovl=1.000
+  fit: {'gamma_rad': 0.03452, 'gamma_nr': 0.00748, 'Q_rad': 19.98797, 'Q_nr': 92.25596, 'Q_loaded': 16.75098, 'gamma_ratio': 4.61557, 'linearity_resid': 0.03304, 'n_levels': 6, 'lossless_pole': {'lambda_nm': 1365.5469233665156, 'Q': 20.32928725010592}, 'Q_rad_from_lossless': 20.32929, 'pole_shift_nm': -0.42591}
+--- tracking branch P925 robust|1365nm (Q_loaded=16.64) ---
+  [P925 robust|1365nm] s=1.00: pole  1365.12 nm Q=   16.75 gamma=0.04119 ovl=1.000
+  [P925 robust|1365nm] s=0.50: pole  1363.21 nm Q=   17.44 gamma=0.03962 ovl=0.973
+  [P925 robust|1365nm] s=0.25: pole  1364.28 nm Q=   18.65 gamma=0.03701 ovl=0.989
+  [P925 robust|1365nm] s=0.10: pole  1364.90 nm Q=   19.64 gamma=0.03513 ovl=0.995
+  [P925 robust|1365nm] s=0.03: pole  1365.34 nm Q=   20.11 gamma=0.03430 ovl=0.999
+  [P925 robust|1365nm] s=0.00: pole  1365.55 nm Q=   20.33 gamma=0.03393 ovl=1.000
+  fit: {'gamma_rad': 0.03452, 'gamma_nr': 0.00748, 'Q_rad': 19.98797, 'Q_nr': 92.25596, 'Q_loaded': 16.75098, 'gamma_ratio': 4.61557, 'linearity_resid': 0.03304, 'n_levels': 6, 'lossless_pole': {'lambda_nm': 1365.5469233665156, 'Q': 20.32928725010592}, 'Q_rad_from_lossless': 20.32929, 'pole_shift_nm': -0.42591}
+--- tracking branch P925 robust|1447nm (Q_loaded=23.03) ---
+  [P925 robust|1447nm] s=1.00: pole  1446.92 nm Q=   23.03 gamma=0.02826 ovl=1.000
+  [P925 robust|1447nm] s=0.50: pole  1440.19 nm Q=   32.58 gamma=0.02007 ovl=0.970 refine:True
+  [P925 robust|1447nm] s=0.25: pole  1438.04 nm Q=   46.40 gamma=0.01411 ovl=0.974 refine:True
+  [P925 robust|1447nm] s=0.10: pole  1437.69 nm Q=   66.34 gamma=0.00987 ovl=0.976 refine:True
+  [P925 robust|1447nm] s=0.03: pole  1437.93 nm Q=   83.75 gamma=0.00782 ovl=0.992 refine:True
+  [P925 robust|1447nm] s=0.00: pole  1438.12 nm Q=   94.19 gamma=0.00695 ovl=0.998 refine:True
+  fit: {'gamma_rad': 0.00779, 'gamma_nr': 0.02146, 'Q_rad': 83.53679, 'Q_nr': 30.33017, 'Q_loaded': 23.03086, 'gamma_ratio': 0.36308, 'linearity_resid': 0.0549, 'n_levels': 6, 'lossless_pole': {'lambda_nm': 1438.1235906074066, 'Q': 94.19467528379997}, 'Q_rad_from_lossless': 94.19468, 'pole_shift_nm': 8.7948}
+--- tracking branch P925 robust|1542nm (Q_loaded=6.59) ---
+  [P925 robust|1542nm] s=1.00: pole  1544.65 nm Q=    6.64 gamma=0.09180 ovl=1.000
+  [P925 robust|1542nm] s=0.50: pole  1561.23 nm Q=   10.39 gamma=0.05809 ovl=0.990
+  [P925 robust|1542nm] s=0.25: pole  1565.25 nm Q=   20.02 gamma=0.03005 ovl=0.985 JUMP?
+  [P925 robust|1542nm] s=0.10: pole  1558.57 nm Q=   22.06 gamma=0.02740 ovl=0.947
+  [P925 robust|1542nm] s=0.03: pole  1549.87 nm Q=   25.51 gamma=0.02382 ovl=0.815 refine:True
+  [P925 robust|1542nm] s=0.00: pole  1553.28 nm Q=   37.55 gamma=0.01615 ovl=0.423 JUMP? refine:True
+  fit: {'gamma_rad': 0.02136, 'gamma_nr': 0.07097, 'Q_rad': 28.55162, 'Q_nr': 8.59135, 'Q_loaded': 6.64211, 'gamma_ratio': 0.30091, 'linearity_resid': 0.01358, 'n_levels': 4, 'lossless_pole': None, 'Q_rad_from_lossless': None, 'pole_shift_nm': None}
+
+=== P925/h220 robust (P=925, h=220) reconnaissance s=1, 86 pts ===
+  pole  1390.06 nm  Q=   13.54  peak(r,t)=(1.166,0.680) rt_diff=1.7e-04 in_window=True
+  pole  1441.54 nm  Q=   31.65  peak(r,t)=(0.585,0.328) rt_diff=2.1e-06 in_window=True refine_conv=True
+  pole  1536.07 nm  Q=   31.17  peak(r,t)=(0.078,0.048) rt_diff=1.1e-05 in_window=True refine_conv=True
+  pole  1536.35 nm  Q=    6.44  peak(r,t)=(0.299,0.200) rt_diff=5.7e-03 in_window=True
+[stage2] done
