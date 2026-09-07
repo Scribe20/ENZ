@@ -1,0 +1,37 @@
+{
+ "LAMBDA_E": 1433.488,
+ "D_ITO": 23.0,
+ "ORDER": [
+  7,
+  7
+ ],
+ "S_LEVELS": [
+  1.0,
+  0.5,
+  0.25,
+  0.1,
+  0.03,
+  0.0
+ ],
+ "harness_grid": "96x96x7 in ITO",
+ "energy_grid": "48x48; a-Si 8 z, ITO 5 z, claddings 12x40 nm with (0,0) removed",
+ "pole_scan_dense": [
+  1280,
+  1620,
+  4
+ ],
+ "pole_scan_track": [
+  1300,
+  1600,
+  6
+ ],
+ "pole_acceptance": {
+  "RT_TOL": 0.02,
+  "DAMP_MIN": 0.0005,
+  "PEAK_FRAC": 0.03,
+  "STAB_TOL": 0.02,
+  "OVL_MIN": 0.6
+ },
+ "symmetry": "no fliplr projection anywhere in this audit; historical geometries are read-only",
+ "nonlinear_model": "NONE in repository (grep TTM/hot-electron/T_e/fluence/nonlinear over *.py,*.md,*.txt,*.csv,*.json): linear proxies only"
+}

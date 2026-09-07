@@ -1,0 +1,8 @@
+bare ITO           n/a                                                                    sha=n/a P=850 h=140 pad=0.0 fill=0.000
+EDR cuboid         <edr>                                                                  sha=generated in P=850 h=140 pad=0.0 fill=0.390
+unpadded QNM       enz_inverse_design/outputs/geometries/rho_hard_binary.npy              sha=976f27b3c66c P=850 h=140 pad=0.0 fill=0.594
+padded QNM         enz_padding_sideexperiment/outputs/geometries/rho_hard_binary.npy      sha=222911801656 P=850 h=140 pad=86.33 fill=0.495
+padded F_ENZ       enz_direct_enz_excitation/outputs/geometries/rho_hard_binary.npy       sha=d14e84cf5fe2 P=850 h=140 pad=86.33 fill=0.488
+P800 robust        enz_robust_aito_campaign/outputs/stage4/runs/finalist0_P800_h200_pad0. sha=6aeb0da8a901 P=800 h=200 pad=31.25 fill=0.640
+P925 robust        enz_robust_aito_campaign/outputs/stage4/runs/finalist1_P925_h240_pad0. sha=9795ecb39345 P=925 h=240 pad=36.1 fill=0.430
+P925/h220 robust   enz_robust_aito_campaign/outputs/stage4/runs/finalist2_P925_h220_pad0. sha=284c96785406 P=925 h=220 pad=36.1 fill=0.452
