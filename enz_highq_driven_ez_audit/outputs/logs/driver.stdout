@@ -41,3 +41,7 @@
 09:59:49  [git] pushed
 09:59:49  [stage 10] start stage10_p800_narrow.py
 10:02:10  [stage 10] rc=0 in 2.3 min
+10:02:10  [git] commit rc=0 
+10:02:12  [git] pushed
+10:02:12  [stage 11] start stage11_survivors.py
+11:32:32  [stage 11] rc=0 in 90.3 min
