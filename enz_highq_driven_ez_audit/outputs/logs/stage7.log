@@ -1,0 +1,25 @@
+  P925 robust|1447nm           s=1.00 ratio=   0.363 F_Ez(pole)=4.304 A(pole)=0.506 U=2.316e+09 F_Ez(E)=4.031 A(E)=0.457
+  P925 robust|1447nm           s=0.50 ratio=   0.726 F_Ez(pole)=10.148 A(pole)=0.490 U=3.248e+09 F_Ez(E)=9.229 A(E)=0.446
+  P925 robust|1447nm           s=0.25 ratio=   1.452 F_Ez(pole)=21.927 A(pole)=0.486 U=5.184e+09 F_Ez(E)=19.381 A(E)=0.433
+  P925 robust|1447nm           s=0.10 ratio=   3.631 F_Ez(pole)=48.618 A(pole)=0.412 U=9.468e+09 F_Ez(E)=39.533 A(E)=0.340
+  P925 robust|1447nm           s=0.03 ratio=  12.103 F_Ez(pole)=83.239 A(pole)=0.209 U=1.505e+10 F_Ez(E)=60.292 A(E)=0.154
+  P925 robust|1447nm           s=0.00 ratio=     inf F_Ez(pole)=109.480 A(pole)=-0.000 U=1.935e+10 F_Ez(E)=72.805 A(E)=-0.000
+  P800 robust|1438nm           s=1.00 ratio=   0.532 F_Ez(pole)=2.415 A(pole)=0.514 U=3.800e+09 F_Ez(E)=2.152 A(E)=0.451
+  P800 robust|1438nm           s=0.50 ratio=   1.065 F_Ez(pole)=6.578 A(pole)=0.500 U=6.123e+09 F_Ez(E)=5.431 A(E)=0.420
+  P800 robust|1438nm           s=0.25 ratio=   2.130 F_Ez(pole)=14.125 A(pole)=0.463 U=1.003e+10 F_Ez(E)=10.952 A(E)=0.369
+  P800 robust|1438nm           s=0.10 ratio=   5.325 F_Ez(pole)=27.359 A(pole)=0.340 U=1.743e+10 F_Ez(E)=19.025 A(E)=0.244
+  P800 robust|1438nm           s=0.03 ratio=  17.750 F_Ez(pole)=40.368 A(pole)=0.149 U=2.514e+10 F_Ez(E)=25.019 A(E)=0.095
+  P800 robust|1438nm           s=0.00 ratio=     inf F_Ez(pole)=48.578 A(pole)=0.000 U=3.014e+10 F_Ez(E)=27.986 A(E)=0.000
+  padded QNM|1459nm            s=1.00 ratio=   0.037 F_Ez(pole)=2.038 A(pole)=0.202 U=2.244e+08 F_Ez(E)=2.214 A(E)=0.201
+  padded QNM|1459nm            s=0.50 ratio=   0.074 F_Ez(pole)=5.716 A(pole)=0.249 U=3.614e+08 F_Ez(E)=4.846 A(E)=0.194
+  padded QNM|1459nm            s=0.25 ratio=   0.147 F_Ez(pole)=15.890 A(pole)=0.327 U=7.454e+08 F_Ez(E)=8.124 A(E)=0.156
+  padded QNM|1459nm            s=0.10 ratio=   0.368 F_Ez(pole)=52.200 A(pole)=0.425 U=2.130e+09 F_Ez(E)=11.319 A(E)=0.085
+  padded QNM|1459nm            s=0.03 ratio=   1.226 F_Ez(pole)=180.149 A(pole)=0.442 U=7.055e+09 F_Ez(E)=12.772 A(E)=0.029
+  padded QNM|1459nm            s=0.00 ratio=     inf F_Ez(pole)=614.458 A(pole)=-0.000 U=2.374e+10 F_Ez(E)=13.247 A(E)=-0.000
+  padded F_ENZ|1466nm          s=1.00 ratio=   0.044 F_Ez(pole)=2.081 A(pole)=0.207 U=2.347e+08 F_Ez(E)=2.285 A(E)=0.208
+  padded F_ENZ|1466nm          s=0.50 ratio=   0.088 F_Ez(pole)=6.107 A(pole)=0.264 U=3.791e+08 F_Ez(E)=4.992 A(E)=0.200
+  padded F_ENZ|1466nm          s=0.25 ratio=   0.177 F_Ez(pole)=14.287 A(pole)=0.302 U=7.226e+08 F_Ez(E)=8.235 A(E)=0.158
+  padded F_ENZ|1466nm          s=0.10 ratio=   0.442 F_Ez(pole)=49.786 A(pole)=0.409 U=2.097e+09 F_Ez(E)=11.325 A(E)=0.086
+  padded F_ENZ|1466nm          s=0.03 ratio=   1.475 F_Ez(pole)=177.539 A(pole)=0.444 U=6.959e+09 F_Ez(E)=12.751 A(E)=0.029
+  padded F_ENZ|1466nm          s=0.00 ratio=     inf F_Ez(pole)=1136.147 A(pole)=0.000 U=4.344e+10 F_Ez(E)=13.223 A(E)=-0.000
+[stage7] done
