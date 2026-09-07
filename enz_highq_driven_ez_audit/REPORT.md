@@ -182,7 +182,7 @@ Decision-tree case: **E**.
 - P925 (strongest driven Ez, F_Ez 4.03): Q_rad 84, eta_ENZ,z modal 0.111 - lacks radiative Q.
 - P800 narrow branch (1437.6 nm): Q_rad 206, F_Ez(lambda_E) 2.15, eta_ENZ,z modal 0.024 - lacks driven Ez at lambda_E.
 - padded QNM parent: Q_rad 139, eta_ENZ,z modal 0.424, F_Ez 2.21, ratio 0.0368 - lacks radiative accessibility (dark).
-- Minimum targeted change: see Stage 6 (alignment) and Stage 8 (leakage) results above; the Stage-8 family with the best F_Ez at Q_rad > 30 is the recommended refinement direction, otherwise an epsilon-constraint Pareto inverse design (maximize F_Ez s.t. Q_rad >= Q_target) from the P925 and padded-QNM seeds (Stage 16, not run unless needed).
+- Minimum targeted change: Stage 8 leakage tuning of the padded QNM parent produced no Pareto gain (F_Ez 1.99-2.53), and the Stage 16 epsilon-constraint designs moved the P925 family only from (Q_rad 84, F_Ez 4.03) to (Q_rad 86-106, F_Ez 4.0-4.2); see section 15 for why the gap is a material (ITO loss) limit rather than a topology limit.
 
 ## 14. Unresolved uncertainty
 
@@ -190,3 +190,49 @@ Decision-tree case: **E**.
 - Modal participation uses the driven field at the lossless-auxiliary pole as an eigenmode proxy (exact only for Q -> infinity).
 - Multipole channel amplitudes use free-space single-cell expressions (no substrate/ITO Green's function); only the direct S-matrix amplitudes are authoritative.
 - The angular set is an assumption (no NA requirement in the repository); nonlinear relevance uses linear proxies only (no validated ITO nonlinear model in the repository).
+---
+
+## 15. Synthesis (written after all stages; numbers from the stage outputs)
+
+### 15.1 Measured facts
+
+1. Certified loss-scaling decomposition (field-overlap tracked, [7,7], dense local rescans): P925 target-near branch 1447 nm Q_loaded 23.0, Q_rad 84, Q_nr 30, gamma_rad/gamma_nr 0.36; P800 narrow 1437.6 nm Q_loaded 73.8, Q_rad 206, Q_nr 110, ratio 0.53 (order-converged: 1437.6/1436.9/1436.6 nm, Q 73.8/75.3/75.8 at [7,7]/[9,9]/[11,11]); P800 broad Q_rad 181, Q_nr 5.7; padded QNM ENZ-band branch Q_rad 139 (see caveat), Q_nr 5.1, ratio 0.037; padded F_ENZ Q_rad 116, Q_nr 5.1, ratio 0.044 (historical 106 / 0.048 reproduced).
+2. Modal ENZ participation at the lossless-auxiliary pole (eta_ENZ,z; ITO E-energy fraction): padded QNM 0.42 (0.91), padded F_ENZ 0.43 (0.94), P800 broad 0.41 (0.91), P925 1447 nm 0.11 (0.40), P800 narrow 0.024 (0.15).
+3. Driven at lambda_E (real ITO loss): F_Ez padded QNM 2.21, padded F_ENZ 2.28, P800 2.15, P925 4.03; A_ITO 0.20 / 0.21 / 0.45 / 0.46; eta_z driven 0.78 / 0.78 / 0.34 / 0.62.
+4. Loss sweep (Stage 7): reducing the ITO loss raises F_Ez at the pole monotonically for every ENZ-rich branch (padded QNM: 2 -> 6 -> 16 -> 52 -> 180 -> 614 for s = 1 -> 0; P925 1447 nm: 4 -> 10 -> 22 -> 49 -> 83 -> 109) while A_ITO at the pole peaks (0.44 for padded QNM) where gamma_rad/(s gamma_nr) ~ 1.
+5. Leakage tuning of the padded QNM parent (Stage 8, 28 geometries incl. the corrected notch family): F_Ez(lambda_E) stays in 1.99-2.53 (best period a=0.04: 2.53) although the fitted Q_rad varies from ~90 to ~860; no Pareto-superior state.
+6. Stage 16 epsilon-constraint designs: P925 seed -> certified Q_rad 86-106 with F_Ez 4.0-4.2 for all three Q_target values (best P925_Qt100: F_Ez 4.23, Q_rad 86, ratio 0.40, eta_ENZ,z modal 0.087); padded-QNM seed -> F_Ez 1.9-2.2, Q_rad 92-111 (one run uncertifiable: negative fitted gamma_rad). Both fliplr projections absent (S_flip 0.14-0.94).
+7. Locality: 2x2 supercell with one neighbour eroded by 2 px changes A/F_Ez by +9%/+11% (P800), +3%/-1% (P925), -0%/-0% (padded QNM); identical-cell supercells reproduce the single cell exactly.
+
+### 15.2 Derived quantities
+
+- For every branch that actually lives in the ITO (eta_ENZ,z modal ~ 0.4, ITO E-energy fraction ~ 0.9), Q_nr = 5.1-5.7: the ENZ film's own absorption sets the loaded linewidth, so Q_rad = 10^2-10^3 means gamma_rad/gamma_nr = 0.03-0.006 (dark). The only branches with gamma_rad/gamma_nr >= 0.3 are those with low ITO participation (P800 narrow: 10-15 % ITO E-energy; P925 1447 nm: ~0.3 ITO/Si ratio) - their Q_nr of 30-110 is what makes them accessible.
+- Driven F_Ez at fixed material loss is maximal near gamma_rad ~ gamma_nr (Stage 7); for ENZ-rich modes that optimum sits at Q_rad ~ Q_nr ~ 5, i.e. exactly the low-Q regime of the historical designs. Their F_Ez ~ 2.2 at lambda_E is a non-resonant near-field background: opening the radiative channel 7x (Stage 8) or constraining Q_rad (Stage 16, padded-QNM seed) leaves it unchanged.
+- The Pareto frontier of certified states in (Q_rad, F_Ez) is therefore: {P925-family: Q_rad ~ 85-106, F_Ez 4.0-4.2, eta_ENZ,z ~ 0.09-0.11} -- {P800 narrow: Q_rad 206, F_Ez 2.2, eta 0.024} -- {ENZ-rich dark parents: Q_rad 110-180 (or 500-1800 on the second sub-branch), F_Ez 2.2, eta ~ 0.4}. No point has Q_rad >= 139 together with F_Ez >= 3.3.
+
+### 15.3 Physical interpretation
+
+- P925's large driven Ez is an ITO-loaded silicon photonic resonance (no-ITO pole 1479 nm, Q 56, field overlap 0.78-0.88 with the with-ITO 1447-nm branch) whose ~30 % ITO participation gives Q_nr ~ 30 and a coupling ratio ~0.35; it is the best available compromise, not an ENZ mode made bright.
+- The P800 narrow pole is a Q ~ 75 silicon slab mode of mixed ED + MQ character that barely touches the ITO; its coherent forward/backward multipole sums are constructive and the S-matrix shows an absorption resonance (A 0.16 -> 0.51, R nearly constant), so no Kerker/BIC mechanism is claimed.
+- The padded QNM and F_ENZ parents are genuinely ENZ-rich high-Q_rad modes, but with the measured ITO (Im eps ~ 0.70 at lambda_E) they are intrinsically overdamped by absorption; making them bright would require gamma_rad ~ 0.12 rad/fs, i.e. destroying the high Q_rad. This is a material limit of the ENZ film, not a topology limit.
+- Consequently the desired regime (Q_rad >= O(10^2), F_Ez >> 2.2, eta_ENZ,z high, accessible) does not exist in the air-padded a-Si/ITO/glass class with this ITO; the reachable trade-off is quantified by the frontier above.
+
+### 15.4 The four questions kept separate
+
+1. Does a high-Q ENZ-rich MODE exist? YES - padded QNM / padded F_ENZ / P800 broad branches (Q_rad 116-181 certified, second sub-branch of the padded QNM up to ~10^3 on some tracks), eta_ENZ,z modal ~ 0.41-0.43, ITO E-energy fraction ~ 0.9.
+2. Can free-space light strongly EXCITE it? NO - gamma_rad/gamma_nr = 0.03-0.04 (0.006 on the higher-Q sub-branch); the loaded Q is 4.9-5.5, set by the ITO loss.
+3. Does excitation produce large longitudinal Ez in ITO? Only at the non-resonant background level (F_Ez ~ 2.2). Large driven Ez (4.0-4.2, peak |Ez|^2 up to 48) is obtained only by the moderately ENZ-loaded P925 family with Q_rad ~ 100.
+4. Does it drive the nonlinear material strongly? Unanswerable with validated inputs: no nonlinear ITO model or pulse spectrum exists in the repository; the linear proxies (A_ITO, A/d absorbed-energy density at fixed intensity, F_Ez, p95/p99 Ez^2, eta_ENZ,z) all rank P925 first, P800 second (by A) and the ENZ-rich parents last.
+
+### 15.5 Unresolved uncertainty
+
+- The padded QNM parent's ENZ-band loaded pole is a merged doublet (dense scan: 1459 and 1503 nm at s = 1); the two sub-branches separate under loss scaling to Q_rad ~ 139 (1513-nm line) and ~500-1870 (1466-nm line, the historical value). Which sub-branch is followed depends on the loss-level set; both are dark. The historical Q_rad = 1872 therefore describes one sub-branch of a doublet, not 'the' parent mode.
+- P925's 1338-nm branch has a non-monotonic gamma(s) (fit residual 0.30) and is reported only as radiatively dominated.
+- The Stage 16 differentiable Q_rad proxy (lossless ITO-field linewidth at lambda_E) saturated near Q_rad ~ 100 for the P925 family regardless of Q_target; a stricter proxy (e.g. explicit pole tracking inside the loop) would be needed to test whether Q_rad >= 300 is reachable at F_Ez ~ 4.
+- The (40 deg, 45 deg) padded-QNM poles with Q ~ 950 / 170 found in Stage 5 are uncertified (no dense rescan at oblique incidence).
+- Angular robustness of the P925 branch: it persists in the phi = 0 plane to 40 deg (Q ~ 20) but degrades in the phi = 90 plane (Q 7-8, field overlap ~0.5); the P800 narrow pole persists only in the phi = 0 plane.
+
+### 15.6 Recommendation
+
+- Stop broad topology searches in this material class for the high-Q + high-Ez goal: the limiting factor is the ENZ film's Im(eps), and the certified frontier is F_Ez ~ 4.2 at Q_rad ~ 100 (P925 family, best Stage-16 design) versus F_Ez ~ 2.2 at Q_rad ~ 10^2-10^3 (dark ENZ-rich parents).
+- If higher Q with real ENZ character is required, the physically meaningful levers are material ones (lower-loss ENZ film, thinner ITO / different doping) or a deliberately overcoupled hybrid (Q_rad ~ Q_nr ~ 5-30) accepted as low-Q; the P925 family with h ~ 260-270 nm and P ~ 960-980 nm (Stage 6: F_Ez 4.7-5.3 at Q_rad 22-69) is the pragmatic direction for maximal driven Ez.
