@@ -1,0 +1,100 @@
+/home/user/ENZ/enz_highq_driven_ez_audit/stage16_pareto_design.py:95: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  sides.append(float(I0s / I0c))
+[P925_Qt30] it   0 F_Ez(s=1)=3.757 I0(s=0)=42.0 sides=[0.22, 1.826] pen=1.6779 t=2s
+[P925_Qt30] it  10 F_Ez(s=1)=4.145 I0(s=0)=62.4 sides=[0.259, 0.857] pen=0.2897 t=16s
+[P925_Qt30] it  20 F_Ez(s=1)=3.974 I0(s=0)=89.4 sides=[0.145, 0.572] pen=0.0179 t=31s
+[P925_Qt30] it  30 F_Ez(s=1)=3.872 I0(s=0)=107.3 sides=[0.151, 0.427] pen=0.0000 t=46s
+[P925_Qt30] it  40 F_Ez(s=1)=3.823 I0(s=0)=121.9 sides=[0.149, 0.36] pen=0.0000 t=61s
+[P925_Qt30] it  50 F_Ez(s=1)=3.830 I0(s=0)=122.5 sides=[0.15, 0.357] pen=0.0000 t=76s
+[P925_Qt30] it  60 F_Ez(s=1)=3.840 I0(s=0)=121.4 sides=[0.151, 0.36] pen=0.0000 t=91s
+[P925_Qt30] it  70 F_Ez(s=1)=3.846 I0(s=0)=120.0 sides=[0.152, 0.365] pen=0.0000 t=105s
+[P925_Qt30] it  79 F_Ez(s=1)=3.847 I0(s=0)=119.9 sides=[0.152, 0.365] pen=0.0000 t=118s
+  [P925_Qt30] s=1.00: pole  1438.86 nm Q=   26.25 gamma=0.02494 ovl=1.000 refine:True
+  [P925_Qt30] s=0.50: pole  1432.76 nm Q=   37.22 gamma=0.01766 ovl=0.970 refine:True
+  [P925_Qt30] s=0.25: pole  1430.43 nm Q=   53.90 gamma=0.01222 ovl=0.972 refine:True
+  [P925_Qt30] s=0.10: pole  1429.80 nm Q=   78.78 gamma=0.00836 ovl=0.976 refine:True
+  [P925_Qt30] s=0.03: pole  1429.80 nm Q=  101.40 gamma=0.00650 ovl=0.992 refine:True
+  [P925_Qt30] s=0.00: pole  1429.86 nm Q=  115.58 gamma=0.00570 ovl=0.998 refine:True
+[P925_Qt30] DONE F_Ez=3.995 A=0.472 near pole {'lambda_nm': 1438.8649635438544, 'Q': 26.24650708023876} Q_rad=100.90381246662015 Q_nr=33.75885443255892 ratio=0.3345647067966499 etaENZ=0.10024745459018486 S_flip=0.94
+[P925_Qt100] it   0 F_Ez(s=1)=3.757 I0(s=0)=42.0 sides=[0.465, 2.489] pen=2.5757 t=1s
+[P925_Qt100] it  10 F_Ez(s=1)=4.145 I0(s=0)=70.9 sides=[0.89, 0.675] pen=0.4222 t=16s
+[P925_Qt100] it  20 F_Ez(s=1)=4.118 I0(s=0)=82.0 sides=[0.648, 0.705] pen=0.1846 t=31s
+[P925_Qt100] it  30 F_Ez(s=1)=4.082 I0(s=0)=86.4 sides=[0.534, 0.763] pen=0.1831 t=46s
+[P925_Qt100] it  40 F_Ez(s=1)=4.086 I0(s=0)=84.9 sides=[0.622, 0.687] pen=0.1488 t=60s
+[P925_Qt100] it  50 F_Ez(s=1)=4.063 I0(s=0)=87.3 sides=[0.577, 0.695] pen=0.1295 t=74s
+[P925_Qt100] it  60 F_Ez(s=1)=4.053 I0(s=0)=87.8 sides=[0.581, 0.685] pen=0.1217 t=89s
+[P925_Qt100] it  70 F_Ez(s=1)=4.047 I0(s=0)=88.3 sides=[0.582, 0.678] pen=0.1163 t=104s
+[P925_Qt100] it  79 F_Ez(s=1)=4.043 I0(s=0)=88.9 sides=[0.578, 0.676] pen=0.1124 t=117s
+  [P925_Qt100] s=1.00: pole  1433.99 nm Q=   25.00 gamma=0.02627 ovl=1.000 refine:True
+  [P925_Qt100] s=0.50: pole  1429.13 nm Q=   36.01 gamma=0.01830 ovl=0.969 refine:True
+  [P925_Qt100] s=0.25: pole  1427.75 nm Q=   50.57 gamma=0.01304 ovl=0.976 refine:True
+  [P925_Qt100] s=0.10: pole  1427.63 nm Q=   69.38 gamma=0.00951 ovl=0.982 refine:True
+  [P925_Qt100] s=0.03: pole  1427.83 nm Q=   84.23 gamma=0.00783 ovl=0.995 refine:True
+  [P925_Qt100] s=0.00: pole  1427.97 nm Q=   92.66 gamma=0.00712 ovl=0.999 refine:True
+[P925_Qt100] DONE F_Ez=4.228 A=0.501 near pole {'lambda_nm': 1433.9854397702263, 'Q': 25.00123249187894} Q_rad=85.95993298583032 Q_nr=34.08051195603625 ratio=0.3964697362159891 etaENZ=0.0874459815174909 S_flip=0.92
+[P925_Qt300] it   0 F_Ez(s=1)=3.757 I0(s=0)=42.0 sides=[0.743, 1.39] pen=1.2017 t=1s
+[P925_Qt300] it  10 F_Ez(s=1)=4.107 I0(s=0)=81.0 sides=[0.964, 0.932] pen=0.8187 t=16s
+[P925_Qt300] it  20 F_Ez(s=1)=4.106 I0(s=0)=83.1 sides=[0.955, 0.934] pen=0.8088 t=31s
+[P925_Qt300] it  30 F_Ez(s=1)=4.064 I0(s=0)=86.7 sides=[0.928, 0.944] pen=0.7857 t=46s
+[P925_Qt300] it  40 F_Ez(s=1)=4.001 I0(s=0)=92.2 sides=[0.889, 0.961] pen=0.7577 t=60s
+[P925_Qt300] it  50 F_Ez(s=1)=3.949 I0(s=0)=98.5 sides=[0.885, 0.946] pen=0.7320 t=75s
+[P925_Qt300] it  60 F_Ez(s=1)=3.883 I0(s=0)=107.0 sides=[0.873, 0.928] pen=0.6941 t=90s
+[P925_Qt300] it  70 F_Ez(s=1)=3.836 I0(s=0)=112.8 sides=[0.868, 0.915] pen=0.6689 t=105s
+[P925_Qt300] it  79 F_Ez(s=1)=3.834 I0(s=0)=113.1 sides=[0.867, 0.915] pen=0.6679 t=118s
+  [P925_Qt300] s=1.00: pole  1435.86 nm Q=   27.44 gamma=0.02390 ovl=1.000 refine:True
+  [P925_Qt300] s=0.50: pole  1430.98 nm Q=   39.69 gamma=0.01658 ovl=0.969 refine:True
+  [P925_Qt300] s=0.25: pole  1429.24 nm Q=   57.21 gamma=0.01152 ovl=0.974 refine:True
+  [P925_Qt300] s=0.10: pole  1428.86 nm Q=   82.45 gamma=0.00799 ovl=0.979 refine:True
+  [P925_Qt300] s=0.03: pole  1428.94 nm Q=  104.74 gamma=0.00629 ovl=0.993 refine:True
+  [P925_Qt300] s=0.00: pole  1429.03 nm Q=  118.41 gamma=0.00557 ovl=0.999 refine:True
+[P925_Qt300] DONE F_Ez=4.008 A=0.481 near pole {'lambda_nm': 1435.863929504902, 'Q': 27.442074317120756} Q_rad=105.86408561972135 Q_nr=35.5557228464047 ratio=0.3358619935955036 etaENZ=0.08945490041041379 S_flip=0.93
+[padQNM_Qt30] it   0 F_Ez(s=1)=2.229 I0(s=0)=13.2 sides=[0.519, 4.815] pen=5.1314 t=2s
+[padQNM_Qt30] it  10 F_Ez(s=1)=2.211 I0(s=0)=13.2 sides=[0.521, 4.506] pen=4.8355 t=17s
+[padQNM_Qt30] it  20 F_Ez(s=1)=2.139 I0(s=0)=12.8 sides=[0.525, 4.068] pen=4.3965 t=35s
+[padQNM_Qt30] it  30 F_Ez(s=1)=2.017 I0(s=0)=11.6 sides=[0.543, 3.481] pen=3.7720 t=53s
+[padQNM_Qt30] it  40 F_Ez(s=1)=1.960 I0(s=0)=10.8 sides=[0.556, 3.206] pen=3.4642 t=71s
+[padQNM_Qt30] it  50 F_Ez(s=1)=1.921 I0(s=0)=10.2 sides=[0.565, 3.056] pen=3.2922 t=88s
+[padQNM_Qt30] it  60 F_Ez(s=1)=1.915 I0(s=0)=10.1 sides=[0.566, 3.025] pen=3.2549 t=104s
+[padQNM_Qt30] it  70 F_Ez(s=1)=1.910 I0(s=0)=10.0 sides=[0.566, 3.012] pen=3.2403 t=120s
+[padQNM_Qt30] it  79 F_Ez(s=1)=1.909 I0(s=0)=10.0 sides=[0.566, 3.01] pen=3.2382 t=134s
+  [padQNM_Qt30] s=1.00: pole  1484.37 nm Q=    5.38 gamma=0.11791 ovl=1.000
+  [padQNM_Qt30] s=0.50: pole  1491.75 nm Q=    9.10 gamma=0.06934 ovl=0.991
+  [padQNM_Qt30] s=0.25: pole  1494.96 nm Q=   18.34 gamma=0.03435 ovl=0.982
+  [padQNM_Qt30] s=0.10: pole  1495.81 nm Q=   36.46 gamma=0.01727 ovl=0.966 refine:True
+  [padQNM_Qt30] s=0.03: pole  1496.00 nm Q=   69.75 gamma=0.00903 ovl=0.973 refine:True
+  [padQNM_Qt30] s=0.00: pole  1496.04 nm Q=  112.47 gamma=0.00560 ovl=0.480 JUMP? refine:True
+[padQNM_Qt30] DONE F_Ez=1.904 A=0.179 near pole {'lambda_nm': 1484.3667530435534, 'Q': 5.3810820788383555} Q_rad=91.77086406069 Q_nr=5.591578534840825 ratio=0.060929779751697624 etaENZ=None S_flip=0.14
+[padQNM_Qt100] it   0 F_Ez(s=1)=2.229 I0(s=0)=13.2 sides=[0.787, 1.349] pen=1.1911 t=2s
+[padQNM_Qt100] it  10 F_Ez(s=1)=2.221 I0(s=0)=13.2 sides=[0.789, 1.344] pen=1.1856 t=20s
+[padQNM_Qt100] it  20 F_Ez(s=1)=2.215 I0(s=0)=13.2 sides=[0.789, 1.342] pen=1.1830 t=38s
+[padQNM_Qt100] it  30 F_Ez(s=1)=2.212 I0(s=0)=13.2 sides=[0.789, 1.341] pen=1.1821 t=54s
+[padQNM_Qt100] it  40 F_Ez(s=1)=2.210 I0(s=0)=13.1 sides=[0.789, 1.341] pen=1.1819 t=70s
+[padQNM_Qt100] it  50 F_Ez(s=1)=2.209 I0(s=0)=13.1 sides=[0.789, 1.341] pen=1.1818 t=88s
+[padQNM_Qt100] it  60 F_Ez(s=1)=2.209 I0(s=0)=13.1 sides=[0.789, 1.341] pen=1.1818 t=105s
+[padQNM_Qt100] it  70 F_Ez(s=1)=2.209 I0(s=0)=13.1 sides=[0.789, 1.341] pen=1.1818 t=121s
+[padQNM_Qt100] it  79 F_Ez(s=1)=2.209 I0(s=0)=13.1 sides=[0.789, 1.341] pen=1.1818 t=135s
+  [padQNM_Qt100] s=1.00: pole  1485.69 nm Q=    4.95 gamma=0.12813 ovl=1.000
+  [padQNM_Qt100] s=0.50: pole  1515.46 nm Q=   10.16 gamma=0.06117 ovl=0.990 JUMP?
+  [padQNM_Qt100] s=0.25: pole  1514.77 nm Q=   17.84 gamma=0.03485 ovl=0.980
+  [padQNM_Qt100] s=0.10: pole  1515.35 nm Q=   34.51 gamma=0.01801 ovl=0.962 refine:True
+  [padQNM_Qt100] s=0.03: pole  1515.24 nm Q=   60.02 gamma=0.01036 ovl=0.962 refine:True
+  [padQNM_Qt100] s=0.00: pole  1513.40 nm Q=  134.31 gamma=0.00463 ovl=0.911 JUMP? refine:True
+[padQNM_Qt100] DONE F_Ez=2.221 A=0.201 near pole {'lambda_nm': 1485.6876342320297, 'Q': 4.947455925677388} Q_rad=111.08366645895876 Q_nr=5.191130261054689 ratio=0.046731715170498234 etaENZ=None S_flip=0.17
+[padQNM_Qt300] it   0 F_Ez(s=1)=2.229 I0(s=0)=13.2 sides=[0.918, 1.096] pen=0.9856 t=2s
+[padQNM_Qt300] it  10 F_Ez(s=1)=2.228 I0(s=0)=13.2 sides=[0.919, 1.096] pen=0.9855 t=18s
+[padQNM_Qt300] it  20 F_Ez(s=1)=2.226 I0(s=0)=13.2 sides=[0.919, 1.096] pen=0.9853 t=33s
+[padQNM_Qt300] it  30 F_Ez(s=1)=2.225 I0(s=0)=13.2 sides=[0.919, 1.095] pen=0.9853 t=50s
+[padQNM_Qt300] it  40 F_Ez(s=1)=2.225 I0(s=0)=13.2 sides=[0.919, 1.095] pen=0.9853 t=69s
+[padQNM_Qt300] it  50 F_Ez(s=1)=2.226 I0(s=0)=13.2 sides=[0.919, 1.095] pen=0.9853 t=88s
+[padQNM_Qt300] it  60 F_Ez(s=1)=2.226 I0(s=0)=13.2 sides=[0.919, 1.095] pen=0.9853 t=105s
+[padQNM_Qt300] it  70 F_Ez(s=1)=2.226 I0(s=0)=13.2 sides=[0.919, 1.095] pen=0.9853 t=123s
+[padQNM_Qt300] it  79 F_Ez(s=1)=2.226 I0(s=0)=13.2 sides=[0.919, 1.095] pen=0.9853 t=140s
+  [padQNM_Qt300] s=1.00: pole  1471.64 nm Q=    4.43 gamma=0.14441 ovl=1.000
+  [padQNM_Qt300] s=0.50: pole  1466.34 nm Q=    9.97 gamma=0.06442 ovl=0.988
+  [padQNM_Qt300] s=0.25: pole  1466.34 nm Q=   20.54 gamma=0.03128 ovl=0.977
+  [padQNM_Qt300] s=0.10: pole  1467.44 nm Q=   50.16 gamma=0.01279 ovl=0.942 refine:True
+  [padQNM_Qt300] s=0.03: pole  1467.65 nm Q=  140.63 gamma=0.00456 ovl=0.872 refine:True
+  [padQNM_Qt300] s=0.00: pole  1467.68 nm Q=  617.23 gamma=0.00104 ovl=0.876 refine:True
+[padQNM_Qt300] DONE F_Ez=2.219 A=0.201 near pole {'lambda_nm': 1471.6385527316456, 'Q': 4.431643101972879} Q_rad=inf Q_nr=4.481834889585001 ratio=-0.011611073818933981 etaENZ=0.48116209702921603 S_flip=0.17
+[stage16] done
