@@ -1,0 +1,15 @@
+padded QNM|1289nm              Qrad=     90.7 Qnr=105.17 ratio=1.1600 etaENZ(modal)=8.649e-03 F_Ez(E)=2.21 F_Ez(pole)=1.48 A(E)=0.201 A(pole)=0.467
+padded QNM|1459nm              Qrad=    138.6 Qnr=  5.10 ratio=0.0368 etaENZ(modal)=nan F_Ez(E)=2.21 F_Ez(pole)=2.04 A(E)=0.201 A(pole)=0.202
+padded QNM|1503nm              Qrad=    138.6 Qnr=  5.10 ratio=0.0368 etaENZ(modal)=nan F_Ez(E)=2.21 F_Ez(pole)=2.04 A(E)=0.201 A(pole)=0.202
+padded F_ENZ|1283nm            Qrad=     57.2 Qnr=108.64 ratio=1.8989 etaENZ(modal)=7.985e-03 F_Ez(E)=2.28 F_Ez(pole)=1.20 A(E)=0.208 A(pole)=0.421
+padded F_ENZ|1466nm            Qrad=    115.9 Qnr=  5.13 ratio=0.0442 etaENZ(modal)=4.341e-01 F_Ez(E)=2.28 F_Ez(pole)=2.08 A(E)=0.208 A(pole)=0.207
+padded F_ENZ|1499nm            Qrad=    115.9 Qnr=  5.13 ratio=0.0442 etaENZ(modal)=4.341e-01 F_Ez(E)=2.28 F_Ez(pole)=2.08 A(E)=0.208 A(pole)=0.207
+P800 robust|1438nm             Qrad=    206.2 Qnr=109.82 ratio=0.5325 etaENZ(modal)=2.372e-02 F_Ez(E)=2.15 F_Ez(pole)=2.41 A(E)=0.451 A(pole)=0.514
+P800 robust|1478nm             Qrad=    181.1 Qnr=  5.70 ratio=0.0314 etaENZ(modal)=4.147e-01 F_Ez(E)=2.15 F_Ez(pole)=2.07 A(E)=0.451 A(pole)=0.214
+P800 robust|1515nm             Qrad=    181.1 Qnr=  5.70 ratio=0.0314 etaENZ(modal)=4.147e-01 F_Ez(E)=2.15 F_Ez(pole)=2.07 A(E)=0.451 A(pole)=0.214
+P925 robust|1337nm             Qrad=     30.6 Qnr= 61.44 ratio=2.0105 etaENZ(modal)=2.089e-01 F_Ez(E)=4.03 F_Ez(pole)=5.73 A(E)=0.457 A(pole)=0.455
+P925 robust|1357nm             Qrad=     20.0 Qnr= 92.26 ratio=4.6156 etaENZ(modal)=5.698e-02 F_Ez(E)=4.03 F_Ez(pole)=4.44 A(E)=0.457 A(pole)=0.431
+P925 robust|1365nm             Qrad=     20.0 Qnr= 92.26 ratio=4.6156 etaENZ(modal)=5.698e-02 F_Ez(E)=4.03 F_Ez(pole)=4.44 A(E)=0.457 A(pole)=0.431
+P925 robust|1447nm             Qrad=     83.5 Qnr= 30.33 ratio=0.3631 etaENZ(modal)=1.113e-01 F_Ez(E)=4.03 F_Ez(pole)=4.30 A(E)=0.457 A(pole)=0.506
+P925 robust|1542nm             Qrad=     28.6 Qnr=  8.59 ratio=0.3009 etaENZ(modal)=nan F_Ez(E)=4.03 F_Ez(pole)=3.00 A(E)=0.457 A(pole)=0.323
+[stage3] done
