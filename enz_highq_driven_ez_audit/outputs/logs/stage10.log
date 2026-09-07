@@ -1,0 +1,6 @@
+[narrow] pole 1437.6 nm Q=73.8: F_Ez=2.415 A=0.514 eta_z=0.334 etaENZ(loaded)=9.351e-03 itoE=0.103 | lossless: etaENZ=2.372e-02 itoE=0.146 F_Ez=48.58
+   multipole power fractions {'ED': np.float64(0.441), 'MD': np.float64(0.037), 'EQ': np.float64(0.004), 'MQ': np.float64(0.518)}; forward cancellation ratio 1.511, backward 1.465
+[broad] pole 1499.8 nm Q=5.5: F_Ez=2.073 A=0.214 eta_z=0.749 etaENZ(loaded)=9.502e-02 itoE=0.405 | lossless: etaENZ=4.147e-01 itoE=0.907 F_Ez=938.99
+   multipole power fractions {'ED': np.float64(0.983), 'MD': np.float64(0.01), 'EQ': np.float64(0.007), 'MQ': np.float64(0.001)}; forward cancellation ratio 1.061, backward 1.013
+   at pole: R=0.137 T=0.348 A=0.514; off (blue edge): R=0.103 T=0.741 A=0.157
+[stage10] done
