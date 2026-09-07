@@ -1,0 +1,45 @@
+  [P925 robust] P=888.0 h=220.0: F_Ez=3.494 A=0.336 near-pole=1456.1 nm Q=3.5
+  [P925 robust] P=888.0 h=240.0: F_Ez=3.831 A=0.397 near-pole=1401.9 nm Q=28.4
+  [P925 robust] P=888.0 h=260.0: F_Ez=4.635 A=0.518 near-pole=1418.7 nm Q=27.7
+  [P925 robust] P=925.0 h=220.0: F_Ez=4.158 A=0.490 near-pole=1428.0 nm Q=24.2
+  [P925 robust] P=925.0 h=240.0: F_Ez=4.031 A=0.457 near-pole=1446.9 nm Q=23.0
+  [P925 robust] P=925.0 h=260.0: F_Ez=4.392 A=0.443 near-pole=1464.8 nm Q=21.9
+  [P925 robust] P=962.0 h=220.0: F_Ez=3.316 A=0.364 near-pole=1408.8 nm Q=14.1
+  [P925 robust] P=962.0 h=240.0: F_Ez=3.638 A=0.388 near-pole=1418.8 nm Q=14.8
+  [P925 robust] P=962.0 h=260.0: F_Ez=4.681 A=0.463 near-pole=1433.1 nm Q=13.2
+  [P925 robust refine] P=942.8 h=250.0: F_Ez=3.877 A=0.399 near-pole=1394.9 nm Q=15.2
+  [P925 robust refine] P=942.8 h=270.0: F_Ez=5.064 A=0.480 near-pole=1412.2 nm Q=13.4
+  [P925 robust refine] P=981.2 h=250.0: F_Ez=4.204 A=0.424 near-pole=1443.5 nm Q=14.6
+  [P925 robust refine] P=981.2 h=270.0: F_Ez=5.290 A=0.486 near-pole=1421.1 nm Q=27.8
+  [P925 robust P981 h270] s=1.00: pole  1421.10 nm Q=   27.78 gamma=0.02386 ovl=1.000
+  [P925 robust P981 h270] s=0.25: pole  1416.83 nm Q=   48.70 gamma=0.01365 ovl=0.887
+  [P925 robust P981 h270] s=0.00: pole  1418.94 nm Q=   71.32 gamma=0.00931 ovl=0.944
+  [P925 robust P943 h270] s=1.00: pole  1412.20 nm Q=   13.36 gamma=0.04991 ovl=1.000
+  [P925 robust P943 h270] s=0.25: pole  1401.11 nm Q=   17.98 gamma=0.03739 ovl=0.902
+  [P925 robust P943 h270] s=0.00: pole  1401.70 nm Q=   19.97 gamma=0.03365 ovl=0.974
+  [P925 robust P962 h260] s=1.00: pole  1433.10 nm Q=   13.22 gamma=0.04971 ovl=1.000
+  [P925 robust P962 h260] s=0.25: pole  1416.11 nm Q=   18.46 gamma=0.03602 ovl=0.854
+  [P925 robust P962 h260] s=0.00: pole  1418.50 nm Q=   22.33 gamma=0.02973 ovl=0.967
+  [P800 robust] P=768.0 h=180.0: F_Ez=1.925 A=0.183 near-pole=1486.8 nm Q=5.2
+  [P800 robust] P=768.0 h=200.0: F_Ez=2.068 A=0.205 near-pole=1394.8 nm Q=82.0
+  [P800 robust] P=768.0 h=220.0: F_Ez=2.443 A=0.339 near-pole=1422.2 nm Q=83.9
+  [P800 robust] P=800.0 h=180.0: F_Ez=2.210 A=0.230 near-pole=1405.7 nm Q=72.6
+  [P800 robust] P=800.0 h=200.0: F_Ez=2.152 A=0.451 near-pole=1437.6 nm Q=73.8
+  [P800 robust] P=800.0 h=220.0: F_Ez=2.264 A=0.227 near-pole=1466.5 nm Q=75.6
+  [P800 robust] P=832.0 h=180.0: F_Ez=1.844 A=0.282 near-pole=1446.7 nm Q=65.4
+  [P800 robust] P=832.0 h=200.0: F_Ez=2.160 A=0.208 near-pole=1480.1 nm Q=66.9
+  [P800 robust] P=832.0 h=220.0: F_Ez=2.575 A=0.230 near-pole=1510.4 nm Q=69.7
+  [P800 robust refine] P=815.4 h=210.0: F_Ez=2.189 A=0.215 near-pole=1473.1 nm Q=71.2
+  [P800 robust refine] P=815.4 h=230.0: F_Ez=2.714 A=0.242 near-pole=1501.4 nm Q=74.0
+  [P800 robust refine] P=848.6 h=210.0: F_Ez=2.487 A=0.223 near-pole=1513.3 nm Q=6.0
+  [P800 robust refine] P=848.6 h=230.0: F_Ez=3.159 A=0.270 near-pole=1520.8 nm Q=6.4
+  [P800 robust P849 h230] s=1.00: pole  1520.80 nm Q=    6.37 gamma=0.09725 ovl=1.000
+  [P800 robust P849 h230] s=0.25: pole  1494.33 nm Q=   16.34 gamma=0.03858 ovl=0.884
+  [P800 robust P849 h230] s=0.00: pole  1491.86 nm Q=  825.09 gamma=0.00077 ovl=0.230 JUMP?
+  [P800 robust P815 h230] s=1.00: pole  1501.39 nm Q=   73.96 gamma=0.00848 ovl=1.000
+  [P800 robust P815 h230] s=0.25: pole  1498.37 nm Q=   80.26 gamma=0.00783 ovl=0.918
+  [P800 robust P815 h230] s=0.00: pole  1476.61 nm Q=  659.98 gamma=0.00097 ovl=0.388 JUMP?
+  [P800 robust P800 h200] s=1.00: pole  1437.56 nm Q=   73.81 gamma=0.00888 ovl=1.000
+  [P800 robust P800 h200] s=0.25: pole  1436.14 nm Q=  132.39 gamma=0.00495 ovl=0.920
+  [P800 robust P800 h200] s=0.00: pole  1436.03 nm Q=  223.82 gamma=0.00293 ovl=0.961
+[stage6] done
