@@ -1,0 +1,11 @@
+/home/user/ENZ/enz_highq_driven_ez_audit/common.py:133: RuntimeWarning: invalid value encountered in divide
+  cum = np.cumsum(srt) / srt.sum()
+bare ITO           A=0.0449 (vol 0.0449) F_Ez=0.000 F_Etot=0.634 eta_z=0.000 peak=0.00 p95=0.00 p99=0.00 conc50=0.000 etaENZ=0.000e+00 itoE=0.493 U=7.868e+07
+EDR cuboid         A=0.1987 (vol 0.1987) F_Ez=2.148 F_Etot=2.810 eta_z=0.765 peak=12.92 p95=9.00 p99=11.23 conc50=0.122 etaENZ=1.485e-01 itoE=0.533 U=2.403e+08
+unpadded QNM       A=0.2050 (vol 0.2050) F_Ez=2.321 F_Etot=2.898 eta_z=0.801 peak=7.97 p95=7.22 p99=7.67 conc50=0.175 etaENZ=1.883e-01 itoE=0.615 U=2.048e+08
+padded QNM         A=0.2009 (vol 0.2009) F_Ez=2.214 F_Etot=2.841 eta_z=0.779 peak=11.35 p95=8.17 p99=10.17 conc50=0.148 etaENZ=1.589e-01 itoE=0.556 U=2.314e+08
+padded F_ENZ       A=0.2079 (vol 0.2078) F_Ez=2.285 F_Etot=2.939 eta_z=0.778 peak=13.95 p95=9.36 p99=12.15 conc50=0.128 etaENZ=1.538e-01 itoE=0.544 U=2.469e+08
+P800 robust        A=0.4507 (vol 0.4506) F_Ez=2.152 F_Etot=6.372 eta_z=0.338 peak=21.05 p95=8.40 p99=13.32 conc50=0.126 etaENZ=9.699e-03 itoE=0.105 U=3.266e+09
+P925 robust        A=0.4574 (vol 0.4573) F_Ez=4.031 F_Etot=6.467 eta_z=0.623 peak=47.80 p95=15.48 p99=28.07 conc50=0.121 etaENZ=3.895e-02 itoE=0.215 U=2.037e+09
+P925/h220 robust   A=0.4387 (vol 0.4386) F_Ez=3.378 F_Etot=6.202 eta_z=0.545 peak=36.37 p95=14.30 p99=23.14 conc50=0.113 etaENZ=3.039e-02 itoE=0.195 U=2.187e+09
+[stage1] done
