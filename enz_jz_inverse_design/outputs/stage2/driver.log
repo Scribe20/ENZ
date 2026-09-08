@@ -1,0 +1,53 @@
+[stage2] 31 jobs, 4 workers
+[1/31 118s] F0_P825_h600_pad0.12_s1001_h575: Fz_hard=0.9513 (115s)
+[2/31 121s] F0_P825_h600_pad0.12_s1001_centre: Fz_hard=0.9509 (118s)
+[3/31 122s] F0_P825_h600_pad0.12_s1001_P850: Fz_hard=0.9437 (119s)
+[4/31 123s] F0_P825_h600_pad0.12_s1001_P800: Fz_hard=0.9451 (121s)
+[5/31 226s] F0_P825_h600_pad0.12_s1001_pad0.08: Fz_hard=0.9509 (108s)
+[6/31 232s] F0_P825_h600_pad0.12_s1001_pad0.16: Fz_hard=0.9501 (111s)
+[7/31 236s] F1_P825_h500_pad0.12_s333_centre: Fz_hard=0.9453 (114s)
+[8/31 240s] F1_P825_h500_pad0.12_s333_P800: Fz_hard=0.9433 (116s)
+[9/31 336s] F1_P825_h500_pad0.12_s333_P850: Fz_hard=0.9466 (111s)
+[10/31 345s] F1_P825_h500_pad0.12_s333_h475: Fz_hard=0.9422 (113s)
+[11/31 350s] F1_P825_h500_pad0.12_s333_h525: Fz_hard=0.9505 (113s)
+[12/31 354s] F1_P825_h500_pad0.12_s333_pad0.08: Fz_hard=0.9453 (114s)
+[13/31 449s] F1_P825_h500_pad0.12_s333_pad0.16: Fz_hard=0.9450 (113s)
+[14/31 457s] F2_P850_h600_pad0.12_s333_centre: Fz_hard=0.9443 (112s)
+[15/31 462s] F2_P850_h600_pad0.12_s333_P825: Fz_hard=0.9521 (113s)
+[16/31 463s] F2_P850_h600_pad0.12_s333_P875: Fz_hard=0.9419 (109s)
+[17/31 564s] F2_P850_h600_pad0.12_s333_h575: Fz_hard=0.9423 (114s)
+[18/31 567s] F2_P850_h600_pad0.12_s333_pad0.08: Fz_hard=0.9445 (110s)
+[19/31 573s] F3_P750_h500_pad0.08_s1001_centre: Fz_hard=0.9293 (110s)
+[20/31 577s] F2_P850_h600_pad0.12_s333_pad0.16: Fz_hard=0.9436 (115s)
+[21/31 677s] F3_P750_h500_pad0.08_s1001_P725: Fz_hard=0.9219 (113s)
+[22/31 679s] F3_P750_h500_pad0.08_s1001_P775: Fz_hard=0.9390 (112s)
+[23/31 684s] F3_P750_h500_pad0.08_s1001_h525: Fz_hard=0.9345 (107s)
+[24/31 688s] F3_P750_h500_pad0.08_s1001_h475: Fz_hard=0.9207 (115s)
+[25/31 787s] F3_P750_h500_pad0.08_s1001_pad0.04: Fz_hard=0.9293 (110s)
+[26/31 794s] F3_P750_h500_pad0.08_s1001_pad0.12: Fz_hard=0.9285 (115s)
+[27/31 797s] CTRL_directEz_at_P825_h600_pad0.12: Fz_hard=0.5100 (113s)
+[28/31 799s] CTRL_robustP800_at_P825_h600_pad0.12: Fz_hard=0.3523 (111s)
+[29/31 898s] CTRL_robustP925_at_P825_h600_pad0.12: Fz_hard=0.8782 (111s)
+[30/31 952s] SCRATCH_s2024_P825_h600_pad0.12: Fz_hard=0.9395 (159s)
+[31/31 956s] SCRATCH_s4096_P825_h600_pad0.12: Fz_hard=0.9295 (159s)
+[stage2] done in 957s; 31 results
+  F2_P850_h600_pad0.12_s333_P825           Fz_hard=0.9521 Fz_soft=0.9519 A=0.993 eta_z=0.959 fill=0.271 warm=True
+  F0_P825_h600_pad0.12_s1001_h575          Fz_hard=0.9513 Fz_soft=0.9513 A=0.990 eta_z=0.961 fill=0.284 warm=True
+  F0_P825_h600_pad0.12_s1001_pad0.08       Fz_hard=0.9509 Fz_soft=0.9510 A=0.992 eta_z=0.959 fill=0.279 warm=True
+  F0_P825_h600_pad0.12_s1001_centre        Fz_hard=0.9509 Fz_soft=0.9510 A=0.992 eta_z=0.959 fill=0.279 warm=True
+  F1_P825_h500_pad0.12_s333_h525           Fz_hard=0.9505 Fz_soft=0.9504 A=0.985 eta_z=0.965 fill=0.317 warm=True
+  F0_P825_h600_pad0.12_s1001_pad0.16       Fz_hard=0.9501 Fz_soft=0.9502 A=0.990 eta_z=0.960 fill=0.277 warm=True
+  F1_P825_h500_pad0.12_s333_P850           Fz_hard=0.9466 Fz_soft=0.9466 A=0.977 eta_z=0.969 fill=0.311 warm=True
+  F1_P825_h500_pad0.12_s333_centre         Fz_hard=0.9453 Fz_soft=0.9453 A=0.981 eta_z=0.964 fill=0.335 warm=True
+  F1_P825_h500_pad0.12_s333_pad0.08        Fz_hard=0.9453 Fz_soft=0.9453 A=0.981 eta_z=0.964 fill=0.335 warm=True
+  F0_P825_h600_pad0.12_s1001_P800          Fz_hard=0.9451 Fz_soft=0.9450 A=0.990 eta_z=0.955 fill=0.308 warm=True
+  F1_P825_h500_pad0.12_s333_pad0.16        Fz_hard=0.9450 Fz_soft=0.9450 A=0.982 eta_z=0.963 fill=0.335 warm=True
+  F2_P850_h600_pad0.12_s333_pad0.08        Fz_hard=0.9445 Fz_soft=0.9445 A=0.985 eta_z=0.959 fill=0.249 warm=True
+  F2_P850_h600_pad0.12_s333_centre         Fz_hard=0.9443 Fz_soft=0.9443 A=0.985 eta_z=0.959 fill=0.248 warm=True
+  F0_P825_h600_pad0.12_s1001_P850          Fz_hard=0.9437 Fz_soft=0.9438 A=0.984 eta_z=0.959 fill=0.248 warm=True
+  F2_P850_h600_pad0.12_s333_pad0.16        Fz_hard=0.9436 Fz_soft=0.9436 A=0.985 eta_z=0.958 fill=0.222 warm=True
+  F1_P825_h500_pad0.12_s333_P800           Fz_hard=0.9433 Fz_soft=0.9434 A=0.981 eta_z=0.962 fill=0.364 warm=True
+  F2_P850_h600_pad0.12_s333_h575           Fz_hard=0.9423 Fz_soft=0.9423 A=0.982 eta_z=0.960 fill=0.256 warm=True
+  F1_P825_h500_pad0.12_s333_h475           Fz_hard=0.9422 Fz_soft=0.9422 A=0.979 eta_z=0.963 fill=0.344 warm=True
+  F2_P850_h600_pad0.12_s333_P875           Fz_hard=0.9419 Fz_soft=0.9418 A=0.983 eta_z=0.959 fill=0.249 warm=True
+  SCRATCH_s2024_P825_h600_pad0.12          Fz_hard=0.9395 Fz_soft=0.9401 A=0.979 eta_z=0.960 fill=0.279 warm=False

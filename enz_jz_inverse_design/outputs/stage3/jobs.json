@@ -1,0 +1,122 @@
+[
+ {
+  "tag": "final0_F2_P850_h600_pad0.12_s333_P825",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 150,
+  "order": [
+   7,
+   7
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage2/runs/F2_P850_h600_pad0.12_s333_P825/rho_raw_final.npy",
+  "beta_start": 4.0,
+  "eval_order": [
+   9,
+   9
+  ],
+  "n_threads": 1,
+  "save_every": 10
+ },
+ {
+  "tag": "final1_F0_P825_h600_pad0.12_s1001_h575",
+  "P": 825.0,
+  "h": 575.0,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 150,
+  "order": [
+   7,
+   7
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage2/runs/F0_P825_h600_pad0.12_s1001_h575/rho_raw_final.npy",
+  "beta_start": 4.0,
+  "eval_order": [
+   9,
+   9
+  ],
+  "n_threads": 1,
+  "save_every": 10
+ },
+ {
+  "tag": "final2_F0_P825_h600_pad0.12_s1001_pad0.08",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.07999999999999999,
+  "seed": 1001,
+  "n_iter": 150,
+  "order": [
+   7,
+   7
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage2/runs/F0_P825_h600_pad0.12_s1001_pad0.08/rho_raw_final.npy",
+  "beta_start": 4.0,
+  "eval_order": [
+   9,
+   9
+  ],
+  "n_threads": 1,
+  "save_every": 10
+ },
+ {
+  "tag": "scratch_s8080_P825_h600_pad0.12",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 8080,
+  "n_iter": 150,
+  "order": [
+   7,
+   7
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   9,
+   9
+  ],
+  "n_threads": 1,
+  "save_every": 10
+ },
+ {
+  "tag": "final3_div_F1_P825_h500_pad0.12_s333_h525",
+  "P": 825.0,
+  "h": 525.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 150,
+  "order": [
+   7,
+   7
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage2/runs/F1_P825_h500_pad0.12_s333_h525/rho_raw_final.npy",
+  "beta_start": 4.0,
+  "eval_order": [
+   9,
+   9
+  ],
+  "n_threads": 1,
+  "save_every": 10
+ },
+ {
+  "tag": "final4_div_F3_P750_h500_pad0.08_s1001_centre",
+  "P": 750.0,
+  "h": 500.0,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 150,
+  "order": [
+   7,
+   7
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage2/runs/F3_P750_h500_pad0.08_s1001_centre/rho_raw_final.npy",
+  "beta_start": 4.0,
+  "eval_order": [
+   9,
+   9
+  ],
+  "n_threads": 1,
+  "save_every": 10
+ }
+]
