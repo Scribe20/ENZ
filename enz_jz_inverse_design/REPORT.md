@@ -129,10 +129,63 @@ y-mirror ON, old materials, F_ENZ 2.285 ≙ F_z ≈ 0.16); validated tolerances 
 bug (`direction='backward'`) not present here; one sign error in this package's bare-film reference solver found
 and fixed; the Rayleigh branch points (1289 nm for P = 850) handled explicitly in the pole extraction.
 
-## 7. Certification of the finalists (Stage 4) — *to be filled*
+## 7. Certification of the finalists (Stage 4, `outputs/stage4/CERTIFICATION.md`, `certification.csv|json`)
+
+Certified value = F_z of the hard-binary design at Fourier order [11,11] with 31 midpoint z-slices; every entry
+carries its own identity residual F_tot − (1−R−T).
+
+| design (run tag) | P | h | pad | **F_z certified** | F_x | F_y | A = 1−R−T | resid | η_z,abs | R | T | ⟨\|E_z/E_inc\|²⟩ | max \|E_z/E_inc\|² | F_z at [5]/[7]/[9]/[11] | Δ(9→11) | Δ(n_z 7→31) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| final3 (P825/h525, from-scratch lineage F1) | 825 | 525 | 12 % | **0.9543** | 0.0282 | 0.0081 | 0.9907 | −1.1e-5 | 0.963 | 0.007 | 0.003 | 19.9 | 103.5 | 0.9529/0.9559/0.9553/0.9543 | −0.11 % | +0.011 % |
+| final1 (P825/h575, lineage F0) | 825 | 575 | 12 % | **0.9540** | 0.0280 | 0.0094 | 0.9915 | −1.2e-5 | 0.962 | 0.006 | 0.002 | 19.9 | 106.5 | 0.9559/0.9568/0.9554/0.9540 | −0.15 % | +0.011 % |
+| final0 (P825/h600, lineage F2) | 825 | 600 | 12 % | **0.9539** | 0.0278 | 0.0101 | 0.9919 | −1.2e-5 | 0.962 | 0.005 | 0.003 | 19.9 | 111.7 | 0.9564/0.9572/0.9555/0.9539 | −0.18 % | +0.012 % |
+| final2 (P825/h600, pad 8 %) | 825 | 600 | 8 % | **0.9536** | 0.0292 | 0.0092 | 0.9921 | −1.2e-5 | 0.961 | 0.005 | 0.003 | 19.9 | 111.0 | 0.9555/0.9569/0.9551/0.9536 | −0.16 % | +0.012 % |
+| scratch_s8080 (pure from-scratch [7,7]) | 825 | 600 | 12 % | **0.9418** | 0.0246 | 0.0166 | 0.9830 | −1.2e-5 | 0.958 | 0.009 | 0.008 | 19.7 | 109.3 | 0.9452/0.9522/0.9486/0.9418 | −0.73 % | +0.012 % |
+| final4 (P750/h500, family F3) | 750 | 500 | 8 % | **0.9361** | 0.0303 | 0.0118 | 0.9784 | −1.3e-5 | 0.957 | 0.011 | 0.011 | 19.5 | 84.8 | 0.9300/0.9444/0.9406/0.9361 | −0.48 % | +0.013 % |
+| FABR (deck thickness h = 970.5, constrained) | 825 | 970.5 | 8 % | **0.9160** | 0.0290 | 0.0050 | 0.9501 | −1.0e-5 | 0.964 | 0.019 | 0.030 | 19.1 | 79.6 | 0.9482/0.9460/0.9326/0.9160 | −1.82 % | +0.010 % |
+
+* The four P825 designs from three different lineages (F0, F1, F2; h 525–600 nm; pad 8–12 %) are certified within
+  0.0007 of each other (0.9536–0.9543): the F_z ceiling on this plateau is set by A → 0.99, not by the detailed shape.
+* Order convergence: the P825 finalists change by −0.11…−0.18 % from [9,9] to [11,11] (and by < 0.4 % over
+  [5,5]…[11,11]); the pure from-scratch and the P750 designs by −0.5…−0.7 %; the 970-nm design by −1.8 % (less
+  converged; note the Laurent-rule factorization of the vendored solver converges slowly for tall patterned layers).
+  z-quadrature converges to 1×10⁻⁴ (7 → 31 slices); identity residuals are −1×10⁻⁵ (negative, ∝ 1/n_z², as expected
+  for the midpoint rule).
+* Hotspot watch: max \|E_z/E_inc\|² in the ITO is 98.6 → 103.5 (final3), 107.9 → 111.7 (final0) from [5,5] to [11,11]
+  — it grows by a few percent and saturates, and the loss density (`outputs/stage4/<tag>/loss_maps.png`) is two
+  broad lobes under the a-Si "legs", not a corner/slot hotspot.  ⟨\|E_z/E_inc\|²⟩_ITO = 19.9 (Karimi EDR cuboid: 5.5).
+* Spacer: a 3-nm Al2O3 layer (n = 1.65) between a-Si and ITO (present in the SNU fabricated stack) changes the
+  Stage-2 leader from F_z 0.9549 to 0.9565 (A 0.9965 → 0.9980): immaterial.
 
 ## 8. Physics (Stage 5) — *to be filled*
 
-## 9. Fabrication / locality — *to be filled*
+## 9. Fabrication / locality (Stage 4)
+
+| design | fill (cell / active) | components | ring contact | min feature (est.) | min air gap (est.) | −2 px | −1 px | +1 px | +2 px | h −10 % | h −10 nm | h +10 nm | h +10 % | P ×0.98 | P ×1.02 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| final3 (P825/h525) | 0.318 / 0.542 | 1 | none | 45 nm | 97 nm | 0.839 | 0.907 | 0.767 | 0.543 | 0.930 | 0.954 | 0.956 | 0.921 | 0.928 | 0.902 |
+| final0 (P825/h600) | 0.280 / 0.477 | 1 | none | 45 nm | 97 nm | 0.837 | 0.879 | 0.808 | 0.643 | 0.930 | 0.956 | 0.955 | 0.906 | 0.926 | 0.886 |
+| final1 (P825/h575) | 0.282 / 0.480 | 2 | none | 45 nm | 110 nm | 0.843 | 0.894 | 0.820 | 0.581 | 0.928 | 0.956 | 0.956 | 0.906 | 0.929 | 0.893 |
+| final2 (P825/h600, pad 8 %) | 0.275 / 0.386 | 2 | none | 45 nm | 110 nm | 0.834 | 0.906 | 0.796 | 0.521 | 0.927 | 0.956 | 0.955 | 0.899 | 0.928 | 0.887 |
+| scratch_s8080 | 0.286 / 0.488 | 2 | none | 58 nm | 97 nm | 0.848 | 0.912 | 0.825 | 0.620 | 0.913 | 0.951 | 0.949 | 0.877 | 0.918 | 0.882 |
+| final4 (P750/h500) | 0.442 / 0.621 | 1 | none | 88 nm | 76 nm | 0.836 | 0.893 | 0.782 | 0.699 | 0.878 | 0.940 | 0.944 | 0.910 | 0.890 | 0.816 |
+| FABR (h = 970.5) | 0.414 / 0.582 | 1 | 6 px | 122 nm | 71 nm | 0.350 | 0.455 | 0.894 | 0.735 | 0.747 | 0.944 | 0.943 | 0.653 | 0.539 | 0.914 |
+
+(F_z at [7,7]; base values 0.952–0.957.  "±k px" = uniform dilation/erosion of the binary pattern by a k-pixel disk,
+1 px = 6.4 nm at P = 825 nm; "min feature/gap" = width at which a morphological opening removes > 2 % of the material/air.)
+
+* Height tolerance is excellent (±10 nm: < 0.2 %; ±10 %: −3 … −5 %); period tolerance is moderate (±2 %: −3 … −7 %;
+  at P = 825 nm the (±1,0) glass order stays evanescent up to 858.7 nm, so ×1.02 = 841.5 nm is still non-diffractive).
+* Edge tolerance is the weak point: a uniform 6.4-nm erosion/dilation costs 5–20 % and 12.9 nm costs 15–48 %, and
+  the plateau designs contain necks of only ≈ 45–60 nm (estimate) in 500–600-nm-tall a-Si (aspect ratio > 8).  The
+  deck's fabricated process realized a 182-nm gap at aspect ratio 5.3 with a 40-nm-radius filter (`SOURCE_AUDIT.md`
+  §8), so the plateau designs are NOT fabrication-ready as they stand.  This is the pathology the task anticipated:
+  the pure-F_z baseline is preserved as such, and a minimum-feature / edge-robust constrained campaign (opening-
+  based min-feature ≥ 100–150 nm, erosion/dilation-averaged objective) is the recommended SECOND controlled campaign
+  rather than a change of this loss.
+* The 970-nm constrained design is the most edge-fragile (−1 px → 0.455) and the least order-converged; its
+  lower fill of thin, tall features is not a practical direction.
+* All designs are single-component or two-component islands with no contact with the air ring (boundary-isolated
+  meta-atom class preserved; the 970-nm design touches the ring on 6 pixels).
 
 ## 10. The eight required statements — *to be filled*
