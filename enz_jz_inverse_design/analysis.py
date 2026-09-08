@@ -121,6 +121,8 @@ def significant_poles(lams, r, t, window=None, exclude=None, exclude_halfwidth=N
     cluster_nm) are merged keeping the most significant one."""
     pr, pt = _aaa_poles(lams, r), _aaa_poles(lams, t)
     sr, st = float(np.max(np.abs(r))), float(np.max(np.abs(t)))
+    if window is None:                      # poles outside the sampled range are extrapolations
+        window = (float(np.min(lams)), float(np.max(lams)))
     out = []
     for q, a in pr:
         if not pt:
