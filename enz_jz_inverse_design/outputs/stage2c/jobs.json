@@ -1,0 +1,82 @@
+[
+ {
+  "tag": "FABR_h970_P825_pad0.08_warm",
+  "P": 825.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1c/runs/FAB_h970_P825_pad0.08_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FABR_h970_P800_pad0.08_warm",
+  "P": 800.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1c/runs/FAB_h970_P825_pad0.08_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FABR_h970_P825_pad0.08_warmFREE",
+  "P": 825.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage2/runs/F2_P850_h600_pad0.12_s333_P825/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FABR_h970_P588_pad0.08_warmFREE",
+  "P": 588.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage2/runs/F2_P850_h600_pad0.12_s333_P825/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ }
+]
