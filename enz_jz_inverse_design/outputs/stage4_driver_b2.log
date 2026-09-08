@@ -1,0 +1,22 @@
+== final3_div_F1_P825_h500_pad0.12_s333_h525: P=825 h=525 pad=0.12 (fill 0.318) ==
+   order  5: A=0.99356 Fz nz7/15/31 = 0.95281/0.95288/0.95289 resid nz31 -8.9e-06 max|Ez|^2=98.6
+   order  7: A=0.99321 Fz nz7/15/31 = 0.95581/0.95589/0.95591 resid nz31 -1.0e-05 max|Ez|^2=100.2
+   order  9: A=0.99206 Fz nz7/15/31 = 0.95517/0.95525/0.95527 resid nz31 -1.1e-05 max|Ez|^2=103.2
+   order 11: A=0.99075 Fz nz7/15/31 = 0.95415/0.95423/0.95425 resid nz31 -1.1e-05 max|Ez|^2=103.5
+   fab: {"fill_cell": 0.31756591796875, "fill_active": 0.5417534360683048, "n_components": 1, "component_sizes_px": [5203], "largest_component_frac": 1.0, "boundary_contact_px": 0, "material_in_ring_px": 0, "min_feature_nm_est": 45.1171875, "min_air_gap_nm_est": 96.6796875, "dx_nm": 6.4453125, "n_enclosed_air_regions": 2}
+   sensitivity (Fz at [7,7]): base 0.9558 | -2px (-12.9 nm): 0.8390 -1px (-6.4 nm): 0.9071 +1px (+6.4 nm): 0.7665 +2px (+12.9 nm): 0.5429 | h-52.5: 0.9297 h-10.0: 0.9538 h+10.0: 0.9556 h+52.5: 0.9214 | P x0.98: 0.9276 P x1.02: 0.9020
+== final4_div_F3_P750_h500_pad0.08_s1001_centre: P=750 h=500 pad=0.08 (fill 0.442) ==
+   order  5: A=0.98873 Fz nz7/15/31 = 0.92988/0.92996/0.92998 resid nz31 -1.1e-05 max|Ez|^2=79.9
+   order  7: A=0.99233 Fz nz7/15/31 = 0.94430/0.94439/0.94440 resid nz31 -1.2e-05 max|Ez|^2=84.4
+   order  9: A=0.98505 Fz nz7/15/31 = 0.94047/0.94056/0.94058 resid nz31 -1.2e-05 max|Ez|^2=85.5
+   order 11: A=0.97837 Fz nz7/15/31 = 0.93600/0.93609/0.93612 resid nz31 -1.3e-05 max|Ez|^2=84.8
+   fab: {"fill_cell": 0.44219970703125, "fill_active": 0.621141975308642, "n_components": 1, "component_sizes_px": [7245], "largest_component_frac": 1.0, "boundary_contact_px": 0, "material_in_ring_px": 0, "min_feature_nm_est": 87.890625, "min_air_gap_nm_est": 76.171875, "dx_nm": 5.859375, "n_enclosed_air_regions": 1}
+   sensitivity (Fz at [7,7]): base 0.9443 | -2px (-11.7 nm): 0.8358 -1px (-5.9 nm): 0.8927 +1px (+5.9 nm): 0.7824 +2px (+11.7 nm): 0.6992 | h-50.0: 0.8781 h-10.0: 0.9395 h+10.0: 0.9443 h+50.0: 0.9096 | P x0.98: 0.8895 P x1.02: 0.8164
+== FABR_h970_P825_pad0.08_warm: P=825 h=970 pad=0.08 (fill 0.414) ==
+   order  5: A=0.98059 Fz nz7/15/31 = 0.94810/0.94816/0.94817 resid nz31 -8.0e-06 max|Ez|^2=74.9
+   order  7: A=0.97794 Fz nz7/15/31 = 0.94592/0.94599/0.94600 resid nz31 -8.9e-06 max|Ez|^2=77.9
+   order  9: A=0.96598 Fz nz7/15/31 = 0.93251/0.93258/0.93260 resid nz31 -9.3e-06 max|Ez|^2=79.1
+   order 11: A=0.95013 Fz nz7/15/31 = 0.91587/0.91594/0.91596 resid nz31 -9.8e-06 max|Ez|^2=79.6
+   fab: {"fill_cell": 0.41436767578125, "fill_active": 0.5820473251028807, "n_components": 1, "component_sizes_px": [6789], "largest_component_frac": 1.0, "boundary_contact_px": 6, "material_in_ring_px": 0, "min_feature_nm_est": 122.4609375, "min_air_gap_nm_est": 70.8984375, "dx_nm": 6.4453125, "n_enclosed_air_regions": 1}
+   sensitivity (Fz at [7,7]): base 0.9459 | -2px (-12.9 nm): 0.3501 -1px (-6.4 nm): 0.4554 +1px (+6.4 nm): 0.8938 +2px (+12.9 nm): 0.7349 | h-97.1: 0.7473 h-10.0: 0.9435 h+10.0: 0.9429 h+97.1: 0.6530 | P x0.98: 0.5385 P x1.02: 0.9136
+[stage4] done: final3_div_F1_P825_h500_pad0.12_s333_h525 Fz=0.9543, final1_F0_P825_h600_pad0.12_s1001_h575 Fz=0.9540, final0_F2_P850_h600_pad0.12_s333_P825 Fz=0.9539, final2_F0_P825_h600_pad0.12_s1001_pad0.08 Fz=0.9536, scratch_s8080_P825_h600_pad0.12 Fz=0.9418, final4_div_F3_P750_h500_pad0.08_s1001_centre Fz=0.9361, FABR_h970_P825_pad0.08_warm Fz=0.9160
