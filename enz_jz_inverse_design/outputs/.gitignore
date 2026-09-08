@@ -1,0 +1,4 @@
+# per-iteration snapshots are reproducible from rho_raw_final / result.json and are not committed
+**/rho_proj_it*.npy
+**/rho_filtered_final.npy
+**/progress.log
