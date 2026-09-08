@@ -1,0 +1,29 @@
+== final0_F2_P850_h600_pad0.12_s333_P825: P=825 h=600 pad=0.12 (fill 0.280) ==
+   order  5: A=0.99856 Fz nz7/15/31 = 0.95627/0.95634/0.95636 resid nz31 -9.6e-06 max|Ez|^2=107.9
+   order  7: A=0.99708 Fz nz7/15/31 = 0.95706/0.95715/0.95716 resid nz31 -1.1e-05 max|Ez|^2=112.3
+   order  9: A=0.99426 Fz nz7/15/31 = 0.95543/0.95552/0.95553 resid nz31 -1.1e-05 max|Ez|^2=112.0
+   order 11: A=0.99187 Fz nz7/15/31 = 0.95375/0.95384/0.95386 resid nz31 -1.2e-05 max|Ez|^2=111.7
+   fab: {"fill_cell": 0.279541015625, "fill_active": 0.47688463140358184, "n_components": 1, "component_sizes_px": [4580], "largest_component_frac": 1.0, "boundary_contact_px": 0, "material_in_ring_px": 0, "min_feature_nm_est": 45.1171875, "min_air_gap_nm_est": 96.6796875, "dx_nm": 6.4453125, "n_enclosed_air_regions": 1}
+   sensitivity (Fz at [7,7]): base 0.9571 | -2px (-12.9 nm): 0.8370 -1px (-6.4 nm): 0.8792 +1px (+6.4 nm): 0.8083 +2px (+12.9 nm): 0.6430 | h-60.0: 0.9297 h-10.0: 0.9564 h+10.0: 0.9554 h+60.0: 0.9059 | P x0.98: 0.9255 P x1.02: 0.8863
+== final1_F0_P825_h600_pad0.12_s1001_h575: P=825 h=575 pad=0.12 (fill 0.282) ==
+   order  5: A=0.99693 Fz nz7/15/31 = 0.95582/0.95590/0.95591 resid nz31 -9.5e-06 max|Ez|^2=102.9
+   order  7: A=0.99623 Fz nz7/15/31 = 0.95674/0.95682/0.95683 resid nz31 -1.1e-05 max|Ez|^2=106.7
+   order  9: A=0.99341 Fz nz7/15/31 = 0.95529/0.95538/0.95540 resid nz31 -1.1e-05 max|Ez|^2=107.4
+   order 11: A=0.99153 Fz nz7/15/31 = 0.95387/0.95396/0.95398 resid nz31 -1.2e-05 max|Ez|^2=106.5
+   fab: {"fill_cell": 0.2816162109375, "fill_active": 0.48042482299042066, "n_components": 2, "component_sizes_px": [3732, 882], "largest_component_frac": 0.8088426527958388, "boundary_contact_px": 0, "material_in_ring_px": 0, "min_feature_nm_est": 45.1171875, "min_air_gap_nm_est": 109.5703125, "dx_nm": 6.4453125, "n_enclosed_air_regions": 1}
+   sensitivity (Fz at [7,7]): base 0.9567 | -2px (-12.9 nm): 0.8432 -1px (-6.4 nm): 0.8936 +1px (+6.4 nm): 0.8196 +2px (+12.9 nm): 0.5811 | h-57.5: 0.9284 h-10.0: 0.9555 h+10.0: 0.9555 h+57.5: 0.9063 | P x0.98: 0.9292 P x1.02: 0.8927
+== final2_F0_P825_h600_pad0.12_s1001_pad0.08: P=825 h=600 pad=0.08 (fill 0.275) ==
+   order  5: A=0.99848 Fz nz7/15/31 = 0.95537/0.95544/0.95545 resid nz31 -9.5e-06 max|Ez|^2=104.8
+   order  7: A=0.99731 Fz nz7/15/31 = 0.95676/0.95684/0.95686 resid nz31 -1.1e-05 max|Ez|^2=109.3
+   order  9: A=0.99424 Fz nz7/15/31 = 0.95499/0.95508/0.95510 resid nz31 -1.1e-05 max|Ez|^2=110.1
+   order 11: A=0.99215 Fz nz7/15/31 = 0.95349/0.95358/0.95360 resid nz31 -1.2e-05 max|Ez|^2=111.0
+   fab: {"fill_cell": 0.275146484375, "fill_active": 0.3864883401920439, "n_components": 2, "component_sizes_px": [3577, 931], "largest_component_frac": 0.7934782608695652, "boundary_contact_px": 0, "material_in_ring_px": 0, "min_feature_nm_est": 45.1171875, "min_air_gap_nm_est": 109.5703125, "dx_nm": 6.4453125, "n_enclosed_air_regions": 1}
+   sensitivity (Fz at [7,7]): base 0.9568 | -2px (-12.9 nm): 0.8337 -1px (-6.4 nm): 0.9064 +1px (+6.4 nm): 0.7962 +2px (+12.9 nm): 0.5207 | h-60.0: 0.9265 h-10.0: 0.9560 h+10.0: 0.9549 h+60.0: 0.8993 | P x0.98: 0.9278 P x1.02: 0.8872
+== scratch_s8080_P825_h600_pad0.12: P=825 h=600 pad=0.12 (fill 0.286) ==
+   order  5: A=0.99552 Fz nz7/15/31 = 0.94507/0.94515/0.94516 resid nz31 -1.0e-05 max|Ez|^2=117.4
+   order  7: A=0.99575 Fz nz7/15/31 = 0.95206/0.95215/0.95216 resid nz31 -1.1e-05 max|Ez|^2=115.2
+   order  9: A=0.99019 Fz nz7/15/31 = 0.94854/0.94862/0.94864 resid nz31 -1.2e-05 max|Ez|^2=111.3
+   order 11: A=0.98302 Fz nz7/15/31 = 0.94166/0.94175/0.94177 resid nz31 -1.2e-05 max|Ez|^2=109.3
+   fab: {"fill_cell": 0.2860107421875, "fill_active": 0.48792169929196166, "n_components": 2, "component_sizes_px": [4300, 386], "largest_component_frac": 0.9176269739650021, "boundary_contact_px": 0, "material_in_ring_px": 0, "min_feature_nm_est": 58.0078125, "min_air_gap_nm_est": 96.6796875, "dx_nm": 6.4453125, "n_enclosed_air_regions": 1}
+   sensitivity (Fz at [7,7]): base 0.9521 | -2px (-12.9 nm): 0.8481 -1px (-6.4 nm): 0.9116 +1px (+6.4 nm): 0.8252 +2px (+12.9 nm): 0.6197 | h-60.0: 0.9132 h-10.0: 0.9511 h+10.0: 0.9494 h+60.0: 0.8770 | P x0.98: 0.9184 P x1.02: 0.8823
+[stage4] done: final1_F0_P825_h600_pad0.12_s1001_h575 Fz=0.9540, final0_F2_P850_h600_pad0.12_s333_P825 Fz=0.9539, final2_F0_P825_h600_pad0.12_s1001_pad0.08 Fz=0.9536, scratch_s8080_P825_h600_pad0.12 Fz=0.9418
