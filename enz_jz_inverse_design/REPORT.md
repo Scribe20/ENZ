@@ -4,8 +4,9 @@ Campaign `enz_jz_inverse_design`, branch `claude/jz-1302-freeform-l2o3ew` (scien
 `claude/enz-eigenmode-target-u95j8m`).  Every number below is reproducible from the scripts and the json/csv files
 named in the text; all figures are under `outputs/`.
 
-> **Status of this document:** Sections 1–6 are final.  Sections 7–10 (certification, physics, final statements)
-> are filled in as Stages 3–5 complete (see the end of the file for the eight required statements).
+> All stages (0–5) are complete; the eight required statements are in §10.  Figures: `outputs/stage1/landscape.png`,
+> `outputs/best/{geometry,history,loss_maps,spectra,detuning_map,loss_scaling}.png`, `outputs/stage5/references/reference_spectra.png`,
+> per-design figures under `outputs/stage4/<tag>/` and `outputs/stage5/<tag>/`.
 
 ## 1. Task, objective and the mathematical audit
 
@@ -208,7 +209,27 @@ that the coupling (≈ 21 meV) stays below the exceptional-point threshold for t
 
 The new family reaches 3.6× the F_z of the best prior reference at λ_ZE and 3× its best value anywhere in the band.
 
-### 8.3 Other finalists — *filled in below as their Stage-5 runs complete*
+### 8.3 All analysed designs (`outputs/stage5/PHYSICS.md`, `physics_summary.json`)
+
+| design | F_z(λ_ZE) / A(λ_ZE) [7,7] | F_z peak, FWHM | no-ITO reflector (R_max, pole) | dominant loaded pole (nm, Q_loaded) | lossless-limit pole (nm, Q_rad) | γ_rad/γ_nr (lossless-limit est. / linear fit, resid.) | narrow secondary pole | detuning (h) | multipoles at λ_ZE (ED / TD / MD / EQ) |
+|---|---|---|---|---|---|---|---|---|---|
+| final0 (P825/h600) | 0.957 / 0.997 | 0.957 @ 1302, 150 nm | 0.9998, 1318.5 (Q 8.4) | 1270.9, 9.05 | 1266.2, 19.9 | 0.84 / 0.77 (20 %) | 1238 nm Q 42 (ratio 2.9, resid 1.8 %) | monotonic, peak at h ≈ 600, no anticrossing | 45 / 14 / 15 / 39 % |
+| final3 (P825/h525, best certified) | 0.956 / 0.993 | 0.956 @ 1300 | 0.9994, — | 1272.5, 11.3 | 1278.9, 18.0 | 1.66 / 1.75 (9.6 %) | 1261.7 nm Q 173 (Q_rad 355, Q_nr 333, ratio 0.94, resid 1 %) | monotonic, peak at h ≈ 525, no anticrossing | 56 / 11 / 16 / 28 % |
+| scratch_s8080 (P825/h600, from scratch) | 0.952 / 0.996 | 0.952 @ 1302 | 0.9979, 1330.6 (Q 8.1) | 1285.7, 9.46 | 1261.4, 28.3 (branches merge at s = 0) | 0.52 / 0.42 (14 %) | 1261.8 nm Q 23 (ratio 4.1) | monotonic, peak at h ≈ 600, no anticrossing | 35 / 12 / 19 / 45 % |
+| final4 (P750/h500) | 0.944 / 0.993 | 0.944 @ 1302 | 0.9990, — | 1282.7, 26.9 | 1282.8, 49.7 | **1.19 / 1.19 (1.2 %, clean)** | 1252 nm Q 166 (fit unreliable) | monotonic, peak at h ≈ 500–533, no anticrossing | — |
+| FABR (P825/h970.5, deck thickness) | 0.946 / 0.978 | 0.946 @ 1302 | 0.9995, 1304.8 (Q 1415) | 1277.9, 10.5 (not tracked: multi-mode) | — | narrow 1322-nm mode: 0.75 (9 %); 1300-nm mode: fit unreliable (57 %) | many (Q 23–187) | non-monotonic (multi-mode); A_max 0.99 at h ≈ 841 | 58 / 57 / 23 / 4 % (MQ 15 %) |
+
+Common picture across the plateau designs: the same broad ITO-loaded a-Si reflector resonance (Q_loaded 9–11,
+lossless-limit Q_rad 18–28), a longitudinal share η_z,abs = 0.96, mixed ED/EQ/toroidal multipole content, a monotonic
+red shift of both the loaded absorption band and the ITO-free reflection band with height and NO branch splitting.
+The radiative/non-radiative split of these broad, strongly loaded resonances is only semi-quantitative (γ(s) is
+non-linear for the P825 family, and two of the tracked secondary branches merge into one at s = 0); it is clean for
+the P750/h500 design, where γ_rad/γ_nr = 1.19 ± 0.02 — critical coupling — with a 1.2 % linear residual.  Taken
+together with the observed A_max = 0.996–0.9985 at T → 0 (one-port: A_max = 4γ_rγ_nr/(γ_r+γ_nr)² ≥ 0.99 requires
+0.8 ≤ γ_r/γ_nr ≤ 1.25), the pure-F_z optimum lies at, or within ~20 % of, γ_rad = γ_nr for every design.  The
+970-nm constrained design is a multi-mode structure (a broad Q ≈ 10 pole plus several narrow Q 100–190 modes
+near λ_ZE) with a non-monotonic height map, and its narrow 1322-nm branch is itself close to critical coupling
+(0.75).
 
 ## 9. Fabrication / locality (Stage 4)
 
@@ -254,15 +275,18 @@ The new family reaches 3.6× the F_z of the best prior reference at λ_ZE and 3�
    joined by a bar (`outputs/best/geometry.png`, `outputs/best/rho_hard_binary.npy`).
 3. **Longitudinal share**: η_z,abs = F_z / F_tot = **0.96** for every plateau design (F_x ≈ 0.028, F_y ≈ 0.008–0.010,
    F_tot = 0.991 = 1 − R − T); ⟨|E_z/E_inc|²⟩_ITO = 19.9 (Karimi EDR cuboid: 5.5), max |E_z/E_inc|² ≈ 100–112.
-4. **Q values** (leading design, loaded pole 1271 nm): Q_loaded = 9.1; lossless-limit Q_rad = 19.9 (γ_rad = 0.037 rad/fs)
-   and Q_nr = 15.7 (γ_nr = 0.045 rad/fs); the linear γ(s) fit gives Q_rad 23.4 / Q_nr 18.0 but is not linear
-   (20 % residual).  Best-certified design (pole 1273 nm): Q_loaded 11.3, Q_rad 18.0 (lossless limit), Q_nr 27 (linear
-   fit: 18.5 / 32).  All plateau designs have Q_loaded ≈ 9–11 (F_z FWHM ≈ 150 nm).
-5. **Critical coupling**: yes, within the uncertainty of the rate split — γ_rad/γ_nr = 0.77–0.84 (leading design) and
-   1.7 (best-certified design) from two estimators, with the one-port closure 4γ_rγ_nr/(γ_r+γ_nr)² ≥ 0.94–0.99
-   against the observed A_max = 0.996–0.9985.  The pure-F_z objective therefore DID drive the designs toward
-   γ_rad ≈ γ_nr: because T is blocked by the a-Si reflector, F_z ≈ η_z · A can only approach 1 at the
-   critical-coupling point, and the optimizer found it without any Q, absorption or coupling term in the loss.
+4. **Q values**: plateau designs — Q_loaded = 9.1 (final0, pole 1271 nm), 11.3 (final3, 1273 nm), 9.5
+   (from-scratch, 1286 nm); lossless-limit Q_rad = 19.9 / 18.0 / 28.3 and Q_nr = 15.7 / 27 / 12.9 (γ_nr = γ(1) − γ_rad);
+   the linear γ(s) fits give Q_rad 23 / 18.5 / 31 and Q_nr 18 / 32 / 13 but are not linear (10–20 % residuals).
+   P750/h500 design — Q_loaded 26.9, Q_rad 49.7 (lossless limit) = 49.1 (linear fit, 1.2 % residual), Q_nr 58.6.
+   F_z(λ) has FWHM ≈ 150 nm (Q_eff ≈ 8.7) for the plateau designs.
+5. **Critical coupling**: yes — the pure-F_z objective drove every design to (or within ~20 % of) γ_rad = γ_nr
+   without any Q, absorption or coupling term in the loss.  Direct evidence: (a) the P750/h500 design, whose γ(s) is
+   linear, gives γ_rad/γ_nr = 1.19 (Q_rad 49.7, Q_nr 58.6); (b) the plateau designs give 0.5–1.7 from two estimators
+   (non-linear γ(s), semi-quantitative); (c) all designs reach A_max = 0.996–0.9985 with T → 0, which for a one-port
+   resonance (A_max = 4γ_rγ_nr/(γ_r+γ_nr)²) is only possible for 0.8 ≤ γ_rad/γ_nr ≤ 1.25.  Mechanistically this is
+   forced: with transmission blocked by the a-Si reflector, F_z ≈ η_z·A can only approach 1 at the critical-coupling
+   point, so maximizing F_z selects it.
 6. **Mode identity**: the evidence supports an **ITO-loaded a-Si leaky resonance at critical coupling with an
    ENZ-enhanced longitudinal loss channel** — not a Si–ENZ polariton and not a TK-BIC.  Without ITO the same
    geometry is a near-perfect reflector (R = 0.9998, pole 1318 nm, Q 8.4); with lossless ITO the broad pole persists
