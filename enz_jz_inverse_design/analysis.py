@@ -326,3 +326,57 @@ def jdump(obj, path):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w") as f:
         json.dump(obj, f, indent=1, default=d)
+
+
+# ---------------------------------------------------------------------------
+# Cartesian multipole decomposition of the induced a-Si polarization current
+# (diagnostic only; long-wavelength Cartesian moments, exp(-j w t), LH units:
+#  J = -i w P_pol, P_pol = (eps_Si - 1) E inside the a-Si; origin = material
+#  centroid of the meta-atom; radiated powers of an isolated scatterer with
+#  the same moments: ED (incl. toroidal p + ik T), MD, EQ, MQ)
+# ---------------------------------------------------------------------------
+def multipoles(rho_hard, P, h, lam, order=config.ORDER_FULL, n=64, n_z=9):
+    rho_hard = np.asarray(rho_hard)
+    with torch.no_grad():
+        r = torch.as_tensor(rho_hard, dtype=GEO)
+        sim = fwd.build_sim(r, P, h, lam, order)
+        x, y = fwd.cell_axes(P, n)
+        zs = (np.arange(n_z) + 0.5) * h / n_z
+        E = np.stack([np.stack([c.numpy() for c in sim.field_xy(0, x, y, float(z))[0]]) for z in zs])   # (n_z,3,n,n)
+    rho_n = ndimage.zoom(rho_hard, n / rho_hard.shape[0], order=0) > 0.5
+    eps_si = mat.eps_asi(lam)
+    w = 2 * np.pi / lam
+    X, Y = np.meshgrid(x.numpy(), y.numpy(), indexing="ij")
+    if rho_n.sum() == 0:
+        return dict(error="empty design")
+    xc, yc = (rho_n * X).sum() / rho_n.sum(), (rho_n * Y).sum() / rho_n.sum()
+    Pp = (eps_si - 1.0) * rho_n[None, None] * E                                   # (n_z,3,n,n)
+    rx = np.broadcast_to((X - xc)[None], (n_z, n, n)); ry = np.broadcast_to((Y - yc)[None], (n_z, n, n))
+    rz = np.broadcast_to((zs - h / 2)[:, None, None], (n_z, n, n))
+    R = np.stack([rx, ry, rz])                                                  # (3,n_z,n,n)
+    Pv = np.moveaxis(Pp, 1, 0)                                                  # (3,n_z,n,n)
+    dV = (P / n) ** 2 * (h / n_z)
+    rxP = np.cross(R, Pv, axis=0)
+    rdotP = (R * Pv).sum(0); r2 = (R * R).sum(0)
+    p = Pv.sum((1, 2, 3)) * dV
+    m = -1j * w / 2 * rxP.sum((1, 2, 3)) * dV
+    T = -1j * w / 10 * ((rdotP[None] * R) - 2 * r2[None] * Pv).sum((1, 2, 3)) * dV
+    Qe = np.zeros((3, 3), complex); Qm = np.zeros((3, 3), complex)
+    for a_ in range(3):
+        for b_ in range(3):
+            Qe[a_, b_] = 3 * ((R[a_] * Pv[b_] + R[b_] * Pv[a_]) - (2 / 3) * rdotP * (a_ == b_)).sum() * dV
+            Qm[a_, b_] = -1j * w / 3 * (rxP[a_] * R[b_] + rxP[b_] * R[a_]).sum() * dV
+    k = w
+    pw = dict(ED=k ** 4 / (12 * np.pi) * np.sum(np.abs(p + 1j * k * T) ** 2),
+              ED_p_only=k ** 4 / (12 * np.pi) * np.sum(np.abs(p) ** 2),
+              TD=k ** 4 / (12 * np.pi) * np.sum(np.abs(k * T) ** 2),
+              MD=k ** 4 / (12 * np.pi) * np.sum(np.abs(m) ** 2),
+              EQ=k ** 6 / (1440 * np.pi) * np.sum(np.abs(Qe) ** 2),
+              MQ=k ** 6 / (1440 * np.pi) * np.sum(np.abs(Qm) ** 2))
+    tot = pw["ED"] + pw["MD"] + pw["EQ"] + pw["MQ"]
+    frac = {k_: float(v / tot) for k_, v in pw.items()}
+    return dict(origin=[float(xc), float(yc), float(h / 2)], fractions=frac, powers={k_: float(v) for k_, v in pw.items()},
+                p_abs=[float(abs(v)) for v in p], m_abs=[float(abs(v)) for v in m], T_abs=[float(abs(v)) for v in T],
+                Qe_abs=np.abs(Qe).tolist(), Qm_abs=np.abs(Qm).tolist(),
+                dominant=max(("ED", "MD", "EQ", "MQ"), key=lambda k_: pw[k_]),
+                note="Cartesian long-wavelength moments of the induced a-Si current; isolated-scatterer radiated-power weights (diagnostic)")

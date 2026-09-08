@@ -148,9 +148,14 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
         ax.set_xlabel("wavelength (nm)"); ax.set_ylabel("a-Si height h (nm)"); ax.set_title(f"{lab} (red: poles with ITO, white: poles without ITO)", fontsize=9)
         fig.colorbar(im, ax=ax, shrink=0.8)
     fig.suptitle(f"{tag}: height detuning, order {detune_order}"); fig.tight_layout(); fig.savefig(o / "detuning_map.png", dpi=140); plt.close(fig)
+    # ---- multipole diagnostic of the induced a-Si current (with ITO, at lambda_ZE and at the Fz peak; and without ITO)
+    mp = dict(with_ito_at_ZE=an.multipoles(rho.numpy(), P, h, lam_ze, order),
+              with_ito_at_Fz_max=an.multipoles(rho.numpy(), P, h, peaks["lam_Fz_max"], order))
+    log(f"  multipoles (with ITO @ZE): {json.dumps(mp['with_ito_at_ZE']['fractions'])} dominant {mp['with_ito_at_ZE']['dominant']}")
+    an.jdump(mp, o / "multipoles.json")
     summary = dict(tag=tag, P=P, h=h, peaks=peaks, poles_with_ito=poles_with, poles_no_ito=poles_no,
                    poles_lossless_ito=poles_lossless, loss_scaling=[dict(start_lambda=t["start_pole"]["lambda_nm"], **t["fit"]) for t in tracks],
-                   wall_s=time.time() - t0)
+                   multipoles=mp, wall_s=time.time() - t0)
     an.jdump(summary, o / "physics.json")
     return summary
 
@@ -166,7 +171,8 @@ def reference_spectra(out, lam_ze, log, order, lam_step):
         sp = an.spec_arrays(an.spectrum(rho, P, h, lams, order, s=1.0))
         specs[name] = sp
         pl = an.significant_poles(lams, sp["r"], sp["t"])
-        rows.append(dict(name=name, P=P, h=h, Fz_at_ZE=float(sp["Fz"][np.argmin(np.abs(lams - lam_ze))]),
+        mp = an.multipoles(rho.numpy(), P, h, lam_ze, order)
+        rows.append(dict(name=name, P=P, h=h, multipoles=mp["fractions"], Fz_at_ZE=float(sp["Fz"][np.argmin(np.abs(lams - lam_ze))]),
                          Fz_max=float(sp["Fz"].max()), lam_Fz_max=float(lams[int(sp["Fz"].argmax())]),
                          A_max=float(sp["A"].max()), lam_A_max=float(lams[int(sp["A"].argmax())]),
                          poles=[(p["lambda_nm"], p["Q"]) for p in pl]))
@@ -203,6 +209,12 @@ def write_md(summaries, refs, out, lam_ze):
             lp_s = (f"{lp['lambda_nm']:.1f} nm, Q {lp['Q']:.1f}" if lp else "n/a")
             L.append(f"| {s['tag']} | {t['start_lambda']:.1f} | {t['Q_loaded']:.2f} | {t['Q_rad']:.2f} | {t['Q_nr']:.2f} | {t['gamma_rad']:.5f} | {t['gamma_nr']:.5f} | "
                      f"**{t['gamma_ratio']:.3f}** | {t['linearity_resid']:.3f} | {lp_s} | {t['n_levels']} |")
+    L += ["", "## Multipole character of the induced a-Si current (Cartesian, isolated-scatterer power weights; diagnostic)", "",
+          "| design | at | ED (p+ikT) | p only | toroidal | MD | EQ | MQ | dominant |", "|---|---|---|---|---|---|---|---|---|"]
+    for s in summaries:
+        for key, lab in (("with_ito_at_ZE", "lambda_ZE"), ("with_ito_at_Fz_max", "Fz peak")):
+            f = s["multipoles"][key]["fractions"]
+            L.append(f"| {s['tag']} | {lab} | {f['ED']:.3f} | {f['ED_p_only']:.3f} | {f['TD']:.3f} | {f['MD']:.3f} | {f['EQ']:.3f} | {f['MQ']:.3f} | {s['multipoles'][key]['dominant']} |")
     L += ["", "## Reference designs under the new materials", "", "| design | P | h | Fz(lam_ZE) | Fz_max @ lam | A_max @ lam | poles (nm, Q) |", "|---|---|---|---|---|---|---|"]
     for r in refs:
         L.append(f"| {r['name']} | {r['P']:.0f} | {r['h']:.0f} | {r['Fz_at_ZE']:.4f} | {r['Fz_max']:.4f} @ {r['lam_Fz_max']:.0f} | {r['A_max']:.4f} @ {r['lam_A_max']:.0f} | "
