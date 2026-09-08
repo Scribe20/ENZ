@@ -1,38 +1,3 @@
-== final0_F2_P850_h600_pad0.12_s333_P825: P=825 h=600 | 151 wavelengths 1100-1400 nm, order [7, 7] ==
-  spectrum with ITO (s=1)
-    lam 1100: A=0.0963 Fz=0.0758 R=0.310 T=0.594
-    lam 1140: A=0.1263 Fz=0.1028 R=0.326 T=0.548
-    lam 1180: A=0.2243 Fz=0.1954 R=0.271 T=0.504
-    lam 1220: A=0.3601 Fz=0.3030 R=0.106 T=0.534
-    lam 1260: A=0.7576 Fz=0.6215 R=0.034 T=0.208
-    lam 1300: A=0.9983 Fz=0.9567 R=0.001 T=0.001
-    lam 1340: A=0.9231 Fz=0.8915 R=0.040 T=0.037
-    lam 1380: A=0.8510 Fz=0.8156 R=0.072 T=0.077
-  spectrum without ITO
-    lam 1100: A=0.0000 Fz=nan R=0.222 T=0.778
-    lam 1140: A=0.0000 Fz=nan R=0.294 T=0.706
-    lam 1180: A=-0.0000 Fz=nan R=0.206 T=0.794
-    lam 1220: A=-0.0000 Fz=nan R=0.086 T=0.914
-    lam 1260: A=-0.0000 Fz=nan R=0.119 T=0.881
-    lam 1300: A=-0.0000 Fz=nan R=0.945 T=0.055
-    lam 1340: A=0.0000 Fz=nan R=0.868 T=0.132
-    lam 1380: A=-0.0000 Fz=nan R=0.574 T=0.426
-  spectrum lossless ITO (s=0)
-    lam 1100: A=0.0000 Fz=0.0000 R=0.342 T=0.658
-    lam 1140: A=0.0000 Fz=0.0000 R=0.372 T=0.628
-    lam 1180: A=-0.0000 Fz=0.0000 R=0.387 T=0.613
-    lam 1220: A=0.0000 Fz=0.0000 R=0.281 T=0.719
-    lam 1260: A=0.0000 Fz=0.0000 R=0.064 T=0.936
-    lam 1300: A=0.0000 Fz=0.0000 R=0.988 T=0.012
-    lam 1340: A=-0.0000 Fz=0.0000 R=0.999 T=0.001
-    lam 1380: A=0.0000 Fz=0.0000 R=0.753 T=0.247
-  bare ITO film
-  peaks: {"lam_ZE": 1302.2819858898874, "Fz_at_ZE": 0.9570821940388333, "A_at_ZE": 0.9972768540111538, "Fz_max": 0.9570821940388333, "lam_Fz_max": 1302.0, "A_max": 0.9984854492205992, "lam_A_max": 1298.0, "T_min_noITO": 0.00015064848386615257, "lam_T_min_noITO": 1314.0, "R_max_noITO": 0.9998493515160579, "bare_A_at_ZE": 0.029283514309501157, "Fz_fwhm_nm": 150.0, "Q_eff_Fz": 8.68}
-  Rayleigh anomalies in window: [{'m': 0, 'n': 1, 'medium': 'glass', 'lam': 1251.1361864969072}, {'m': 1, 'n': 0, 'medium': 'glass', 'lam': 1251.1361864969072}] (poles within a few grid steps of these are branch-point artifacts and are dropped)
-  poles with ITO: 1138.8 nm Q=43.0 (peak r/t 0.03/0.07); 1152.6 nm Q=15.0 (peak r/t 0.26/0.92); 1238.2 nm Q=42.0 (peak r/t 0.13/0.24); 1270.9 nm Q=9.1 (peak r/t 2.76/3.05)
-  poles no ITO: 1159.1 nm Q=19.7 (peak r/t 0.08/0.05); 1257.7 nm Q=31.6 (peak r/t 0.66/0.87); 1264.8 nm Q=19.9 (peak r/t 1.80/1.56); 1318.5 nm Q=8.4 (peak r/t 2.72/1.18)
-  poles lossless ITO: 1148.4 nm Q=15.0 (peak r/t 0.32/0.64); 1237.0 nm Q=56.3 (peak r/t 0.12/0.21); 1266.2 nm Q=19.9 (peak r/t 6.18/2.71); 1274.9 nm Q=12.3 (peak r/t 7.10/2.47); 1321.4 nm Q=243.9 (peak r/t 0.11/0.07); 1358.5 nm Q=423.1 (peak r/t 0.18/0.43); 1366.0 nm Q=859.6 (peak r/t 2.20/1.05); 1374.6 nm Q=1347.3 (peak r/t 1.08/0.90); 1396.2 nm Q=249.2 (peak r/t 0.76/0.21)
-  [final0_F2_P850_h600_pad0.12_s333_P825|1271nm] s=1.00: pole  1270.88 nm Q=    9.05 gamma=0.08186 ovl=1.000
 == final3_div_F1_P825_h500_pad0.12_s333_h525: P=825 h=525 | 151 wavelengths 1100-1400 nm, order [7, 7] ==
   spectrum with ITO (s=1)
     lam 1100: A=0.0740 Fz=0.0565 R=0.224 T=0.702
@@ -42,7 +7,6 @@
     lam 1260: A=0.7622 Fz=0.5253 R=0.215 T=0.022
     lam 1300: A=0.9951 Fz=0.9563 R=0.002 T=0.003
     lam 1340: A=0.9115 Fz=0.8827 R=0.061 T=0.027
-  [final0_F2_P850_h600_pad0.12_s333_P825|1271nm] s=0.50: pole  1262.70 nm Q=   21.03 gamma=0.03547 ovl=0.993
     lam 1380: A=0.8576 Fz=0.8253 R=0.085 T=0.057
   spectrum without ITO
     lam 1100: A=-0.0000 Fz=nan R=0.165 T=0.835
@@ -57,7 +21,6 @@
     lam 1100: A=-0.0000 Fz=0.0000 R=0.227 T=0.773
     lam 1140: A=-0.0000 Fz=0.0000 R=0.283 T=0.717
     lam 1180: A=0.0000 Fz=0.0000 R=0.230 T=0.770
-  [final0_F2_P850_h600_pad0.12_s333_P825|1271nm] s=0.25: pole  1262.26 nm Q=   19.53 gamma=0.03820 ovl=0.999
     lam 1220: A=0.0000 Fz=0.0000 R=0.032 T=0.968
     lam 1260: A=0.0000 Fz=0.0000 R=0.697 T=0.303
     lam 1300: A=-0.0000 Fz=0.0000 R=0.980 T=0.020
@@ -70,48 +33,20 @@
   poles no ITO: 1197.0 nm Q=21.8 (peak r/t 0.19/0.33); 1272.8 nm Q=181.7 (peak r/t 1.00/1.25); 1337.6 nm Q=7.9 (peak r/t 2.07/2.36)
   poles lossless ITO: 1183.0 nm Q=14.9 (peak r/t 0.13/0.21); 1229.2 nm Q=20.7 (peak r/t 1.97/0.46); 1232.0 nm Q=26.1 (peak r/t 1.07/0.46); 1261.4 nm Q=359.1 (peak r/t 0.39/0.90); 1278.9 nm Q=18.0 (peak r/t 2.85/2.08); 1352.5 nm Q=1209.6 (peak r/t 1.93/0.49); 1367.8 nm Q=479.8 (peak r/t 2.08/0.76); 1384.9 nm Q=694.2 (peak r/t 0.44/0.28); 1398.8 nm Q=163.6 (peak r/t 0.19/0.12)
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1273nm] s=1.00: pole  1272.52 nm Q=   11.27 gamma=0.06568 ovl=1.000
-  [final0_F2_P850_h600_pad0.12_s333_P825|1271nm] s=0.10: pole  1264.47 nm Q=   20.01 gamma=0.03723 ovl=0.998
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1273nm] s=0.50: pole  1279.08 nm Q=   16.31 gamma=0.04515 ovl=0.995
-  [final0_F2_P850_h600_pad0.12_s333_P825|1271nm] s=0.03: pole  1265.59 nm Q=   20.10 gamma=0.03702 ovl=0.999
-  [final0_F2_P850_h600_pad0.12_s333_P825|1271nm] s=0.00: pole  1266.20 nm Q=   19.91 gamma=0.03736 ovl=1.000
-  fit: {"gamma_rad": 0.031607492115327235, "gamma_nr": 0.0412284374179832, "Q_rad": 23.446355685928324, "Q_nr": 17.9749839889127, "Q_loaded": 9.052562948978322, "lambda_loaded": 1270.8818819379926, "gamma_ratio": 0.7666429798171429, "linearity_resid": 0.2045976932521132, "n_levels": 6, "pole_shift_nm": 4.679814665478716, "critical_coupling_metric": 0.2657340621009767}
-  [final0_F2_P850_h600_pad0.12_s333_P825|1238nm] s=1.00: pole  1238.17 nm Q=   41.97 gamma=0.01812 ovl=1.000 refine:False
-  [final0_F2_P850_h600_pad0.12_s333_P825|1238nm] s=0.50: pole  1238.11 nm Q=   46.69 gamma=0.01629 ovl=0.998 refine:False
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1273nm] s=0.25: pole  1278.20 nm Q=   15.69 gamma=0.04698 ovl=0.999
-  [final0_F2_P850_h600_pad0.12_s333_P825|1238nm] s=0.25: pole  1237.50 nm Q=   51.21 gamma=0.01486 ovl=0.999 refine:False
-  [final0_F2_P850_h600_pad0.12_s333_P825|1238nm] s=0.10: pole  1237.19 nm Q=   53.99 gamma=0.01410 ovl=1.000 refine:False
-  [final0_F2_P850_h600_pad0.12_s333_P825|1238nm] s=0.03: pole  1237.04 nm Q=   55.57 gamma=0.01370 ovl=1.000 refine:False
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1273nm] s=0.10: pole  1277.69 nm Q=   17.08 gamma=0.04315 ovl=1.000
-  [final0_F2_P850_h600_pad0.12_s333_P825|1238nm] s=0.00: pole  1236.96 nm Q=   56.34 gamma=0.01351 ovl=1.000 refine:False
-  fit: {"gamma_rad": 0.013639401206836876, "gamma_nr": 0.00465673450478492, "Q_rad": 55.769105151861204, "Q_nr": 163.34562327547613, "Q_loaded": 41.971881457914655, "lambda_loaded": 1238.1737575285185, "gamma_ratio": 2.9289626009002716, "linearity_resid": 0.017828280106282502, "n_levels": 6, "pole_shift_nm": 1.213191860670122, "critical_coupling_metric": 1.0746482992083493}
-  detuning map: 13 heights x 76 wavelengths, order [5, 5]
-    h= 360.0: A_max 0.957 @ 1268 nm; Fz_max 0.883 @ 1272; poles with ITO [1293]; no ITO [1266, 1286, 1354]
-    h= 400.0: A_max 0.962 @ 1276 nm; Fz_max 0.911 @ 1280; poles with ITO []; no ITO [1296, 1311, 1391]
-    h= 440.0: A_max 0.959 @ 1280 nm; Fz_max 0.913 @ 1284; poles with ITO [1265, 1396]; no ITO [1304, 1335]
-    h= 480.0: A_max 0.966 @ 1284 nm; Fz_max 0.922 @ 1288; poles with ITO [1170, 1185, 1269]; no ITO [1198, 1311, 1358]
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1273nm] s=0.03: pole  1278.06 nm Q=   17.86 gamma=0.04126 ovl=1.000
-    h= 520.0: A_max 0.979 @ 1292 nm; Fz_max 0.935 @ 1292; poles with ITO [1141, 1180, 1208, 1269]; no ITO [1155, 1221, 1315, 1378]
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1273nm] s=0.00: pole  1278.88 nm Q=   17.97 gamma=0.04099 ovl=1.000
   fit: {"gamma_rad": 0.0400267409897909, "gamma_nr": 0.02289684897323585, "Q_rad": 18.490859830247683, "Q_nr": 32.32448525860437, "Q_loaded": 11.268443830973535, "lambda_loaded": 1272.5159607204346, "gamma_ratio": 1.748133161754187, "linearity_resid": 0.0963631037626558, "n_levels": 6, "pole_shift_nm": -6.368789023758836, "critical_coupling_metric": 0.5585484538250756}
-    h= 560.0: A_max 0.992 @ 1296 nm; Fz_max 0.949 @ 1300; poles with ITO [1130, 1172, 1229, 1270]; no ITO [1317, 1397]
-    h= 600.0: A_max 0.998 @ 1300 nm; Fz_max 0.957 @ 1304; poles with ITO [1135, 1138, 1267]; no ITO [1146, 1160, 1269, 1318]
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1262nm] s=1.00: pole  1261.68 nm Q=  172.80 gamma=0.00432 ovl=1.000 refine:True
-    h= 640.0: A_max 0.984 @ 1308 nm; Fz_max 0.944 @ 1316; poles with ITO [1144, 1166, 1266, 1301]; no ITO [1152, 1170, 1285]
-    h= 680.0: A_max 0.949 @ 1288 nm; Fz_max 0.905 @ 1336; poles with ITO [1106, 1109, 1150, 1181, 1263, 1276, 1327]; no ITO [1111, 1157, 1185, 1273, 1297, 1394]
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1262nm] s=0.50: pole  1261.57 nm Q=  228.24 gamma=0.00327 ovl=0.996 refine:True
-    h= 720.0: A_max 0.889 @ 1364 nm; Fz_max 0.852 @ 1364; poles with ITO [1123, 1152, 1155, 1192, 1213, 1273, 1285, 1348]; no ITO [1119, 1129, 1161, 1194, 1307]
-    h= 760.0: A_max 0.825 @ 1388 nm; Fz_max 0.786 @ 1384; poles with ITO [1142, 1145, 1151, 1160, 1199, 1217, 1292]; no ITO [1150, 1165, 1203, 1315]
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1262nm] s=0.25: pole  1261.51 nm Q=  277.74 gamma=0.00269 ovl=0.999 refine:True
-    h= 800.0: A_max 0.747 @ 1400 nm; Fz_max 0.708 @ 1396; poles with ITO [1158, 1164, 1205, 1226, 1266, 1298]; no ITO [1165, 1169, 1211, 1269, 1321]
-    h= 840.0: A_max 0.675 @ 1384 nm; Fz_max 0.640 @ 1368; poles with ITO [1119, 1168, 1210, 1235, 1300, 1304]; no ITO [1173, 1221, 1295, 1326]
-  multipoles (with ITO @ZE): {"ED": 0.4521731829796831, "ED_p_only": 0.09264090237990144, "TD": 0.1408275845074719, "MD": 0.15455103265809406, "EQ": 0.3889185645023272, "MQ": 0.004357219859895585} dominant ED
-  reference spectrum: Karimi EDR cuboid (560x500x140, P850)
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1262nm] s=0.10: pole  1261.47 nm Q=  320.67 gamma=0.00233 ovl=0.999 refine:True
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1262nm] s=0.03: pole  1261.45 nm Q=  346.60 gamma=0.00215 ovl=1.000 refine:True
   [final3_div_F1_P825_h500_pad0.12_s333_h525|1262nm] s=0.00: pole  1261.45 nm Q=  357.90 gamma=0.00209 ovl=1.000 refine:True
   fit: {"gamma_rad": 0.002105538976964859, "gamma_nr": 0.0022415912327858, "Q_rad": 354.53592784155893, "Q_nr": 333.01754748437463, "Q_loaded": 172.79740457362968, "lambda_loaded": 1261.6752816614455, "gamma_ratio": 0.9393055014531537, "linearity_resid": 0.010318880177688615, "n_levels": 6, "pole_shift_nm": 0.228795178778455, "critical_coupling_metric": 0.06261450502750696}
   detuning map: 13 heights x 76 wavelengths, order [5, 5]
-  reference spectrum: direct-Ez winner (P850,h140,pad86)
     h= 315.0: A_max 0.950 @ 1268 nm; Fz_max 0.864 @ 1268; poles with ITO [1280, 1374]; no ITO [1269, 1281, 1348, 1395]
     h= 350.0: A_max 0.971 @ 1276 nm; Fz_max 0.920 @ 1280; poles with ITO [1317, 1395]; no ITO [1266, 1292, 1302, 1390]
     h= 385.0: A_max 0.969 @ 1280 nm; Fz_max 0.923 @ 1284; poles with ITO [1265]; no ITO [1301]
@@ -119,7 +54,6 @@
     h= 455.0: A_max 0.982 @ 1288 nm; Fz_max 0.939 @ 1292; poles with ITO [1129, 1210, 1267, 1273]; no ITO [1142, 1263, 1318]
     h= 490.0: A_max 0.990 @ 1296 nm; Fz_max 0.948 @ 1300; poles with ITO [1156, 1230, 1271]; no ITO [1169, 1179, 1268, 1325]
     h= 525.0: A_max 0.993 @ 1300 nm; Fz_max 0.954 @ 1304; poles with ITO [1178, 1225, 1263, 1274]; no ITO [1201, 1208, 1276, 1337]
-  reference spectrum: robust A finalist0 (P800,h200,pad4%)
     h= 560.0: A_max 0.986 @ 1308 nm; Fz_max 0.948 @ 1312; poles with ITO [1199, 1277, 1288]; no ITO [1218, 1271, 1288, 1361]
     h= 595.0: A_max 0.956 @ 1324 nm; Fz_max 0.921 @ 1328; poles with ITO [1213, 1267, 1292, 1310]; no ITO [1233, 1264, 1285, 1302, 1393]
     h= 630.0: A_max 0.927 @ 1288 nm; Fz_max 0.872 @ 1356; poles with ITO [1226, 1234, 1279, 1306, 1338]; no ITO [1269, 1297, 1315]
@@ -130,120 +64,64 @@
 == scratch_s8080_P825_h600_pad0.12: P=825 h=600 | 151 wavelengths 1100-1400 nm, order [7, 7] ==
   spectrum with ITO (s=1)
     lam 1100: A=0.1144 Fz=0.0976 R=0.488 T=0.398
-[stage5] done
     lam 1140: A=0.1305 Fz=0.1106 R=0.451 T=0.419
     lam 1180: A=0.1676 Fz=0.1354 R=0.333 T=0.500
-== final4_div_F3_P750_h500_pad0.08_s1001_centre: P=750 h=500 | 151 wavelengths 1100-1400 nm, order [7, 7] ==
-  spectrum with ITO (s=1)
-    lam 1100: A=0.0991 Fz=0.0767 R=0.262 T=0.639
     lam 1220: A=0.3442 Fz=0.2947 R=0.214 T=0.442
-    lam 1140: A=0.2286 Fz=0.2093 R=0.435 T=0.337
     lam 1260: A=0.7845 Fz=0.6458 R=0.057 T=0.158
     lam 1300: A=0.9970 Fz=0.9518 R=0.002 T=0.001
-    lam 1180: A=0.3867 Fz=0.3163 R=0.328 T=0.285
     lam 1340: A=0.9203 Fz=0.8869 R=0.045 T=0.035
-    lam 1220: A=0.6320 Fz=0.5894 R=0.159 T=0.209
     lam 1380: A=0.8594 Fz=0.8236 R=0.074 T=0.067
-    lam 1260: A=0.6845 Fz=0.5876 R=0.027 T=0.288
   spectrum without ITO
     lam 1100: A=0.0000 Fz=nan R=0.445 T=0.555
-    lam 1300: A=0.9955 Fz=0.9441 R=0.002 T=0.002
     lam 1140: A=0.0000 Fz=nan R=0.427 T=0.573
     lam 1180: A=0.0000 Fz=nan R=0.328 T=0.672
-    lam 1340: A=0.8714 Fz=0.8428 R=0.072 T=0.057
     lam 1220: A=0.0000 Fz=nan R=0.123 T=0.877
     lam 1260: A=0.0000 Fz=nan R=0.124 T=0.876
-    lam 1380: A=0.8132 Fz=0.7825 R=0.100 T=0.087
     lam 1300: A=-0.0000 Fz=nan R=0.908 T=0.092
-  spectrum without ITO
-    lam 1100: A=-0.0000 Fz=nan R=0.250 T=0.750
     lam 1340: A=-0.0000 Fz=nan R=0.890 T=0.110
-    lam 1140: A=-0.0000 Fz=nan R=0.273 T=0.727
     lam 1380: A=0.0000 Fz=nan R=0.620 T=0.380
-    lam 1180: A=0.0000 Fz=nan R=0.477 T=0.523
   spectrum lossless ITO (s=0)
     lam 1100: A=0.0000 Fz=0.0000 R=0.554 T=0.446
-    lam 1220: A=-0.0000 Fz=nan R=0.614 T=0.386
-    lam 1260: A=0.0000 Fz=nan R=0.166 T=0.834
     lam 1140: A=0.0000 Fz=0.0000 R=0.525 T=0.475
-    lam 1300: A=-0.0000 Fz=nan R=0.408 T=0.592
     lam 1180: A=0.0000 Fz=0.0000 R=0.404 T=0.596
-    lam 1340: A=-0.0000 Fz=nan R=0.789 T=0.211
-    lam 1380: A=0.0000 Fz=nan R=0.608 T=0.392
-  spectrum lossless ITO (s=0)
-    lam 1100: A=0.0000 Fz=0.0000 R=0.245 T=0.755
     lam 1220: A=0.0000 Fz=0.0000 R=0.431 T=0.569
-    lam 1140: A=0.0000 Fz=0.0000 R=0.594 T=0.406
     lam 1260: A=0.0000 Fz=0.0000 R=0.066 T=0.934
-    lam 1180: A=0.0000 Fz=0.0000 R=0.603 T=0.397
     lam 1300: A=-0.0000 Fz=0.0000 R=0.984 T=0.016
-    lam 1220: A=-0.0000 Fz=0.0000 R=0.647 T=0.353
     lam 1340: A=-0.0000 Fz=0.0000 R=0.997 T=0.003
-    lam 1260: A=0.0000 Fz=0.0000 R=0.217 T=0.783
     lam 1380: A=-0.0000 Fz=0.0000 R=0.129 T=0.871
   bare ITO film
   peaks: {"lam_ZE": 1302.2819858898874, "Fz_at_ZE": 0.9520880178989336, "A_at_ZE": 0.9959470536884497, "Fz_max": 0.9520880178989336, "lam_Fz_max": 1302.0, "A_max": 0.997304221656943, "lam_A_max": 1298.0, "T_min_noITO": 0.002070776742183245, "lam_T_min_noITO": 1316.0, "R_max_noITO": 0.997929223261537, "bare_A_at_ZE": 0.029283514309501157, "Fz_fwhm_nm": 150.0, "Q_eff_Fz": 8.68}
   Rayleigh anomalies in window: [{'m': 0, 'n': 1, 'medium': 'glass', 'lam': 1251.1361864969072}, {'m': 1, 'n': 0, 'medium': 'glass', 'lam': 1251.1361864969072}] (poles within a few grid steps of these are branch-point artifacts and are dropped)
-    lam 1300: A=-0.0000 Fz=0.0000 R=0.899 T=0.101
-    lam 1340: A=0.0000 Fz=0.0000 R=0.925 T=0.075
-    lam 1380: A=0.0000 Fz=0.0000 R=0.742 T=0.258
   poles with ITO: 1120.6 nm Q=37.2 (peak r/t 0.04/0.10); 1195.3 nm Q=22.5 (peak r/t 0.08/0.68); 1261.8 nm Q=22.7 (peak r/t 0.94/1.47); 1285.7 nm Q=9.5 (peak r/t 1.76/1.10)
   poles no ITO: 1210.6 nm Q=19.1 (peak r/t 0.21/0.54); 1267.5 nm Q=21.8 (peak r/t 4.03/1.93); 1270.2 nm Q=22.7 (peak r/t 5.68/1.93); 1330.6 nm Q=8.1 (peak r/t 2.07/1.79)
   poles lossless ITO: 1121.6 nm Q=41.2 (peak r/t 0.03/0.05); 1162.9 nm Q=21.3 (peak r/t 0.03/0.13); 1200.1 nm Q=26.4 (peak r/t 0.22/0.62); 1261.4 nm Q=28.3 (peak r/t 2.20/1.74); 1278.4 nm Q=13.8 (peak r/t 2.74/1.19); 1335.7 nm Q=441.3 (peak r/t 0.03/0.05); 1362.9 nm Q=375.7 (peak r/t 1.65/1.05); 1370.5 nm Q=446.8 (peak r/t 0.55/0.11); 1379.0 nm Q=549.4 (peak r/t 0.52/0.69); 1380.9 nm Q=85.3 (peak r/t 0.50/0.69)
-  bare ITO film
-  peaks: {"lam_ZE": 1302.2819858898874, "Fz_at_ZE": 0.9444131548530531, "A_at_ZE": 0.9928328001521912, "Fz_max": 0.9444131548530531, "lam_Fz_max": 1302.0, "A_max": 0.9962199310397226, "lam_A_max": 1298.0, "T_min_noITO": 0.001000498987108019, "lam_T_min_noITO": 1318.0, "R_max_noITO": 0.9989995010095742, "bare_A_at_ZE": 0.029283514309501157, "Fz_fwhm_nm": 164.0, "Q_eff_Fz": 7.939024390243903}
-  Rayleigh anomalies in window: [{'m': 0, 'n': 1, 'medium': 'glass', 'lam': 1137.3965331790066}, {'m': 1, 'n': 0, 'medium': 'glass', 'lam': 1137.3965331790066}] (poles within a few grid steps of these are branch-point artifacts and are dropped)
   [scratch_s8080_P825_h600_pad0.12|1286nm] s=1.00: pole  1285.74 nm Q=    9.46 gamma=0.07741 ovl=1.000
-  poles with ITO: 1187.5 nm Q=128.1 (peak r/t 0.60/0.50); 1234.0 nm Q=218.6 (peak r/t 0.49/0.26); 1241.8 nm Q=102.2 (peak r/t 0.18/0.11); 1252.0 nm Q=166.3 (peak r/t 0.16/0.10); 1282.7 nm Q=26.9 (peak r/t 0.77/1.20)
-  poles no ITO: 1200.7 nm Q=216.6 (peak r/t 1.43/0.94); 1241.2 nm Q=1027.0 (peak r/t 0.59/0.90); 1253.0 nm Q=672.7 (peak r/t 0.26/0.17); 1304.2 nm Q=32.4 (peak r/t 1.44/1.50)
-  poles lossless ITO: 1127.0 nm Q=22.9 (peak r/t 0.05/0.23); 1187.5 nm Q=391.8 (peak r/t 1.42/0.89); 1233.1 nm Q=807.9 (peak r/t 1.17/0.79); 1240.4 nm Q=331.3 (peak r/t 0.65/0.39); 1251.6 nm Q=845.6 (peak r/t 0.91/0.58); 1262.0 nm Q=10.0 (peak r/t 3.44/1.60); 1278.9 nm Q=40.3 (peak r/t 0.04/1.29); 1282.7 nm Q=49.6 (peak r/t 1.43/1.29); 1340.3 nm Q=1161.7 (peak r/t 0.05/0.08); 1360.3 nm Q=755.8 (peak r/t 1.42/0.49); 1384.3 nm Q=784.1 (peak r/t 1.05/0.66); 1389.0 nm Q=527.5 (peak r/t 1.41/0.54); 1397.0 nm Q=828.9 (peak r/t 0.90/0.87)
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1283nm] s=1.00: pole  1282.73 nm Q=   26.93 gamma=0.02726 ovl=1.000 refine:True
   [scratch_s8080_P825_h600_pad0.12|1286nm] s=0.50: pole  1285.86 nm Q=   11.63 gamma=0.06296 ovl=0.995
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1283nm] s=0.50: pole  1281.87 nm Q=   34.11 gamma=0.02154 ovl=0.996 refine:True
   [scratch_s8080_P825_h600_pad0.12|1286nm] s=0.25: pole  1261.74 nm Q=   27.57 gamma=0.02708 ovl=0.934 refine:False
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1283nm] s=0.25: pole  1282.10 nm Q=   40.31 gamma=0.01823 ovl=0.997 refine:True
   [scratch_s8080_P825_h600_pad0.12|1286nm] s=0.10: pole  1262.30 nm Q=   27.59 gamma=0.02705 ovl=0.999 refine:False
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1283nm] s=0.10: pole  1282.44 nm Q=   45.33 gamma=0.01620 ovl=0.998 refine:True
   [scratch_s8080_P825_h600_pad0.12|1286nm] s=0.03: pole  1261.52 nm Q=   27.74 gamma=0.02691 ovl=1.000 refine:False
   [scratch_s8080_P825_h600_pad0.12|1286nm] s=0.00: pole  1261.42 nm Q=   28.29 gamma=0.02639 ovl=1.000 refine:False
   fit: {"gamma_rad": 0.023578582134568826, "gamma_nr": 0.05655300584126295, "Q_rad": 31.067135660124304, "Q_nr": 12.952786486789403, "Q_loaded": 9.462802838055286, "lambda_loaded": 1285.7356204992088, "gamma_ratio": 0.4169288932360357, "linearity_resid": 0.1433978281239464, "n_levels": 6, "pole_shift_nm": 24.316686744312165, "critical_coupling_metric": 0.8748395915411529}
   [scratch_s8080_P825_h600_pad0.12|1262nm] s=1.00: pole  1261.78 nm Q=   22.67 gamma=0.03292 ovl=1.000
   [scratch_s8080_P825_h600_pad0.12|1262nm] s=0.50: pole  1261.38 nm Q=   25.28 gamma=0.02953 ovl=0.995 refine:False
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1283nm] s=0.03: pole  1282.67 nm Q=   48.35 gamma=0.01519 ovl=1.000 refine:True
   [scratch_s8080_P825_h600_pad0.12|1262nm] s=0.25: pole  1261.74 nm Q=   27.57 gamma=0.02708 ovl=0.998 refine:False
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1283nm] s=0.00: pole  1282.76 nm Q=   49.65 gamma=0.01479 ovl=1.000 refine:True
-  fit: {"gamma_rad": 0.014944380205929968, "gamma_nr": 0.012519867527965398, "Q_rad": 49.132183479802826, "Q_nr": 58.646789083798524, "Q_loaded": 26.932032756585954, "lambda_loaded": 1282.730656883787, "gamma_ratio": 1.1936532213738669, "linearity_resid": 0.012268192271292524, "n_levels": 6, "pole_shift_nm": -0.02856639322180854, "critical_coupling_metric": 0.177018538425938}
   [scratch_s8080_P825_h600_pad0.12|1262nm] s=0.10: pole  1262.30 nm Q=   27.59 gamma=0.02705 ovl=0.999 refine:False
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1252nm] s=1.00: pole  1252.05 nm Q=  166.25 gamma=0.00452 ovl=1.000 refine:True
   [scratch_s8080_P825_h600_pad0.12|1262nm] s=0.03: pole  1261.52 nm Q=   27.74 gamma=0.02691 ovl=1.000 refine:False
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1252nm] s=0.50: pole  1281.85 nm Q=   34.12 gamma=0.02154 ovl=0.846 JUMP? refine:True
   [scratch_s8080_P825_h600_pad0.12|1262nm] s=0.00: pole  1261.42 nm Q=   28.29 gamma=0.02639 ovl=1.000 refine:False
   fit: {"gamma_rad": 0.026290692262091114, "gamma_nr": 0.006454663946135981, "Q_rad": 28.39136245562257, "Q_nr": 115.64174052300622, "Q_loaded": 22.674133101824822, "lambda_loaded": 1261.7761664571003, "gamma_ratio": 4.073131069484999, "linearity_resid": 0.025057348464216245, "n_levels": 6, "pole_shift_nm": 0.3572327022036461, "critical_coupling_metric": 1.4044120082332117}
   detuning map: 13 heights x 76 wavelengths, order [5, 5]
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1252nm] s=0.25: pole  1282.08 nm Q=   40.19 gamma=0.01828 ovl=0.997 refine:True
     h= 360.0: A_max 0.937 @ 1272 nm; Fz_max 0.857 @ 1276; poles with ITO [1293]; no ITO [1291, 1305, 1357]
     h= 400.0: A_max 0.932 @ 1280 nm; Fz_max 0.870 @ 1280; poles with ITO [1102, 1274, 1342]; no ITO [1105, 1111, 1155, 1302, 1304, 1394]
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1252nm] s=0.10: pole  1282.44 nm Q=   45.33 gamma=0.01620 ovl=0.973 refine:True
     h= 440.0: A_max 0.930 @ 1284 nm; Fz_max 0.875 @ 1284; poles with ITO [1128, 1272, 1390]; no ITO [1139, 1145, 1311, 1313, 1354]
     h= 480.0: A_max 0.936 @ 1292 nm; Fz_max 0.887 @ 1292; poles with ITO [1107, 1149, 1155, 1273]; no ITO [1114, 1164, 1317, 1321, 1377]
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1252nm] s=0.03: pole  1282.67 nm Q=   48.35 gamma=0.01519 ovl=1.000 refine:True
     h= 520.0: A_max 0.953 @ 1296 nm; Fz_max 0.906 @ 1296; poles with ITO [1111, 1164, 1167, 1274, 1310]; no ITO [1156, 1186, 1320, 1328, 1398]
     h= 560.0: A_max 0.978 @ 1300 nm; Fz_max 0.931 @ 1304; poles with ITO [1114, 1184, 1274, 1317]; no ITO [1195, 1321, 1334]
-  [final4_div_F3_P750_h500_pad0.08_s1001_centre|1252nm] s=0.00: pole  1282.76 nm Q=   49.65 gamma=0.01479 ovl=1.000 refine:True
-  fit: {"gamma_rad": 0.016931270175283966, "gamma_nr": -0.011361563233643932, "Q_rad": 44.428388736526664, "Q_nr": Infinity, "Q_loaded": 166.2475944343079, "lambda_loaded": 1252.0458233944178, "gamma_ratio": Infinity, "linearity_resid": 0.2290041510564878, "n_levels": 5, "pole_shift_nm": -30.713399882591148, "critical_coupling_metric": null}
-  detuning map: 13 heights x 76 wavelengths, order [5, 5]
     h= 600.0: A_max 0.996 @ 1304 nm; Fz_max 0.950 @ 1308; poles with ITO [1190, 1199, 1268, 1278]; no ITO [1213, 1280, 1324, 1340]
-    h= 300.0: A_max 0.875 @ 1244 nm; Fz_max 0.784 @ 1248; poles with ITO [1165, 1237, 1264]; no ITO [1102, 1157, 1186, 1252, 1267, 1315]
     h= 640.0: A_max 0.983 @ 1308 nm; Fz_max 0.937 @ 1316; poles with ITO [1208, 1274, 1299]; no ITO [1105, 1151, 1228, 1294, 1296, 1345, 1368]
-    h= 333.3: A_max 0.895 @ 1260 nm; Fz_max 0.825 @ 1260; poles with ITO [1174, 1246, 1250, 1305]; no ITO [1195, 1280, 1287, 1359]
     h= 680.0: A_max 0.935 @ 1344 nm; Fz_max 0.896 @ 1348; poles with ITO [1220, 1283, 1317]; no ITO [1118, 1139, 1168, 1307, 1350]
-    h= 366.7: A_max 0.914 @ 1272 nm; Fz_max 0.852 @ 1272; poles with ITO [1152, 1183, 1261]; no ITO [1163, 1203, 1292, 1395]
     h= 720.0: A_max 0.880 @ 1372 nm; Fz_max 0.840 @ 1372; poles with ITO [1139, 1229, 1291]; no ITO [1128, 1144, 1186, 1316, 1355]
     h= 760.0: A_max 0.808 @ 1396 nm; Fz_max 0.766 @ 1392; poles with ITO [1133, 1144, 1221, 1230, 1298, 1347]; no ITO [1106, 1109, 1151, 1201, 1323, 1359]
-    h= 400.0: A_max 0.937 @ 1280 nm; Fz_max 0.879 @ 1284; poles with ITO [1166, 1176, 1190, 1271]; no ITO [1187, 1208, 1301]
     h= 800.0: A_max 0.759 @ 1356 nm; Fz_max 0.715 @ 1356; poles with ITO [1109, 1304, 1352]; no ITO [1122, 1216, 1329, 1363]
-    h= 433.3: A_max 0.958 @ 1292 nm; Fz_max 0.905 @ 1292; poles with ITO [1191, 1196, 1203, 1276, 1280]; no ITO [1210, 1292, 1308]
     h= 840.0: A_max 0.730 @ 1360 nm; Fz_max 0.687 @ 1360; poles with ITO [1120, 1139, 1143, 1208, 1234, 1287, 1310, 1356]; no ITO [1132, 1234, 1276, 1333, 1367]
   multipoles (with ITO @ZE): {"ED": 0.34912562637904465, "ED_p_only": 0.06578652007906145, "TD": 0.11901146436597135, "MD": 0.19052976073703531, "EQ": 0.4547170049467221, "MQ": 0.005627607937197903} dominant EQ
 [stage5] done
-    h= 466.7: A_max 0.978 @ 1300 nm; Fz_max 0.927 @ 1300; poles with ITO [1196, 1220, 1223, 1287]; no ITO [1208, 1227, 1233, 1312]
