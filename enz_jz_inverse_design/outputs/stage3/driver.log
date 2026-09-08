@@ -1,0 +1,10 @@
+[stage3] 4 jobs, 4 workers
+[1/4 1296s] scratch_s8080_P825_h600_pad0.12: Fz_hard=0.9485 (1294s)
+[2/4 1297s] final1_F0_P825_h600_pad0.12_s1001_h575: Fz_hard=0.9553 (1295s)
+[3/4 1298s] final2_F0_P825_h600_pad0.12_s1001_pad0.08: Fz_hard=0.9550 (1296s)
+[4/4 1299s] final0_F2_P850_h600_pad0.12_s333_P825: Fz_hard=0.9554 (1297s)
+[stage3] done in 1301s; 4 results
+  final0_F2_P850_h600_pad0.12_s333_P825    Fz_hard=0.9554 Fz_soft=0.9556 A=0.994 eta_z=0.961 fill=0.280 warm=True
+  final1_F0_P825_h600_pad0.12_s1001_h575   Fz_hard=0.9553 Fz_soft=0.9553 A=0.993 eta_z=0.962 fill=0.282 warm=True
+  final2_F0_P825_h600_pad0.12_s1001_pad0.08 Fz_hard=0.9550 Fz_soft=0.9550 A=0.994 eta_z=0.961 fill=0.275 warm=True
+  scratch_s8080_P825_h600_pad0.12          Fz_hard=0.9485 Fz_soft=0.9485 A=0.990 eta_z=0.958 fill=0.286 warm=False
