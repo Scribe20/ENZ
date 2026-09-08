@@ -1,0 +1,61 @@
+== G1/G2: materials ==
+  [PASS] G1 ITO zero crossing (interpolated): lambda_ZE = 1302.2820 nm (eps1 column: 1302.2820); n = k = 0.46473; eps = -4.72e-16 + 0.43195i
+  [PASS] G2 (n+ik)^2 vs eps1/eps2 columns: max |(n+ik)^2 - (eps1+i eps2)| = 3.07e-06 over 1366 rows
+  a-Si:H at lambda_ZE: n = 2.97540, k = 0.0e+00 (row provenance: 246-999 (ellipsometry); 1000-1400 workbook extrapolation); glass n = 1.51653, k = 0
+  diffraction thresholds at lambda_ZE: P = lambda/n_glass = 858.7 nm, P = lambda = 1302.3 nm
+    P = 550.0: propagating in glass [(0, 0)], in air [(0, 0)]
+    P = 650.0: propagating in glass [(0, 0)], in air [(0, 0)]
+    P = 750.0: propagating in glass [(0, 0)], in air [(0, 0)]
+    P = 825.0: propagating in glass [(0, 0)], in air [(0, 0)]
+    P = 850.0: propagating in glass [(0, 0)], in air [(0, 0)]
+    P = 900.0: propagating in glass [(-1, 0), (0, -1), (0, 0), (0, 1), (1, 0)], in air [(0, 0)]
+    P = 1000.0: propagating in glass [(-1, 0), (0, -1), (0, 0), (0, 1), (1, 0)], in air [(0, 0)]
+== G3: bare planar stack -> Ez = 0 ==
+  [PASS] G3 bare air/ITO/glass Ez: max|Ez| = 0.0e+00; R = 0.05247, T = 0.91823, A = 0.02930, Ftot(vol) = 0.02930 (resid -2.8e-06)
+== G4: lossless energy conservation (all orders) ==
+    P=  550 no ITO       lam=1302.3: R+T-1 = -8.8e-15; propagating orders torcwa 1 / analytic 1
+    P=  550 lossless ITO lam=1304.3: R+T-1 = +2.9e-14; propagating orders torcwa 1 / analytic 1
+    P=  750 no ITO       lam=1302.3: R+T-1 = -2.0e-14; propagating orders torcwa 1 / analytic 1
+    P=  750 lossless ITO lam=1304.3: R+T-1 = -3.9e-15; propagating orders torcwa 1 / analytic 1
+    P=  850 no ITO       lam=1302.3: R+T-1 = +2.4e-14; propagating orders torcwa 1 / analytic 1
+    P=  850 lossless ITO lam=1304.3: R+T-1 = +2.3e-14; propagating orders torcwa 1 / analytic 1
+    P= 1000 no ITO       lam=1302.3: R+T-1 = -7.0e-15; propagating orders torcwa 5 / analytic 5
+    P= 1000 lossless ITO lam=1304.3: R+T-1 = +5.8e-14; propagating orders torcwa 5 / analytic 5
+  [PASS] G4 R+T=1 lossless: worst |R+T-1| = 5.8e-14 over 8 cases; order-count mismatches 0
+== G5/G6: ITO volume-loss identity, component sum, z-convergence ==
+    EDR cuboid             P=850 h=140: A=1-R-T=0.30238 | Ftot(nz=7)=0.30232 (-6.0e-05) nz=15 (-1.3e-05) nz=31 (-3.0e-06) | Fz=0.26193 Fx=0.03758 Fy=0.00281 eta_z=0.866 | sum-vs-|E|^2 -1.7e-10; Fz fourier-vs-real -1.6e-10
+    direct-Ez winner       P=850 h=140: A=1-R-T=0.46861 | Ftot(nz=7)=0.46851 (-1.0e-04) nz=15 (-2.3e-05) nz=31 (-5.3e-06) | Fz=0.23770 Fx=0.20897 Fy=0.02184 eta_z=0.507 | sum-vs-|E|^2 -1.8e-10; Fz fourier-vs-real -1.5e-10
+    robust f0 P800         P=800 h=200: A=1-R-T=0.20598 | Ftot(nz=7)=0.20594 (-3.9e-05) nz=15 (-8.5e-06) nz=31 (-2.0e-06) | Fz=0.17717 Fx=0.02779 Fy=0.00097 eta_z=0.860 | sum-vs-|E|^2 -7.9e-11; Fz fourier-vs-real -8.0e-11
+    random blob P750/h200  P=750 h=200: A=1-R-T=0.11633 | Ftot(nz=7)=0.11630 (-2.5e-05) nz=15 (-5.4e-06) nz=31 (-1.3e-06) | Fz=0.08629 Fx=0.02954 Fy=0.00047 eta_z=0.742 | sum-vs-|E|^2 -5.2e-11; Fz fourier-vs-real -5.1e-11
+  [PASS] G5 Fx+Fy+Fz = 1-R-T (n_z = 7): worst abs 1.0e-04 (tol 0.001), worst rel 2.2e-04 (tol 0.005)
+  [PASS] G6 component sum = independent |E|^2 volume loss: worst |diff| = 1.8e-10 (Fourier-Parseval vs real-space field_xy)
+== G7: autograd vs central finite differences ==
+    32-grid [3,3]                pixel (10, 3): autograd +2.533784e-04 FD +2.533783e-04 rel 1.0e-07
+    32-grid [3,3]                pixel (16, 10): autograd +3.837760e-03 FD +3.837760e-03 rel 1.5e-08
+    32-grid [3,3]                pixel (25, 3): autograd +1.196178e-06 FD +1.196162e-06 rel 1.3e-05
+    32-grid [3,3]                pixel (19, 16): autograd +3.765097e-03 FD +3.765097e-03 rel 7.3e-09
+    128-grid [5,5] (production)  pixel (99, 90): autograd +9.149952e-05 FD +9.149952e-05 rel 2.8e-08
+    128-grid [5,5] (production)  pixel (77, 111): autograd +3.652439e-05 FD +3.652447e-05 rel 2.4e-06
+  [PASS] G7 autograd vs FD: worst rel err 1.3e-05 (tol 0.0001)
+== G8/G9: padding emptiness + no hidden symmetry (asymmetric seed through the full pipeline) ==
+  [PASS] G8 air ring exactly empty: max density in ring after filter+projection 0.0e+00, soft 0.0e+00, hard 0.0e+00
+  [PASS] G9 no hidden mirror symmetry: S_flip(lr,ud) raw asym 0.624,0.720 -> pipeline 0.429,1.348 -> after 3 Adam steps (hard) 0.513,1.414; historical projection would give 0.0e+00; static check offenders: []
+== G10: z-sampling and order convergence (screen level) ==
+    direct-Ez winner      : Fz_5_nz7=0.2214, Fz_5_nz15=0.2214, A_5=0.4634, Fz_7_nz7=0.2377, Fz_7_nz15=0.2377, A_7=0.4686, Fz_9_nz7=0.2397, Fz_9_nz15=0.2397, A_9=0.4684
+    robust f0 P800        : Fz_5_nz7=0.1715, Fz_5_nz15=0.1715, A_5=0.1998, Fz_7_nz7=0.1772, Fz_7_nz15=0.1772, A_7=0.2060, Fz_9_nz7=0.1819, Fz_9_nz15=0.1819, A_9=0.2110
+    random blob P750/h200 : Fz_5_nz7=0.0849, Fz_5_nz15=0.0849, A_5=0.1147, Fz_7_nz7=0.0863, Fz_7_nz15=0.0863, A_7=0.1163, Fz_9_nz7=0.0868, Fz_9_nz15=0.0868, A_9=0.1169
+  [PASS] G10 z / order convergence (informational at screen level): worst rel change nz 7->15 at [7,7]: 1.46e-04; worst rel change [7,7]->[9,9]: 2.60e-02 (finalists re-certified in Stage 4 with [9,9]/[11,11] and nz 7/15/31)
+== timing (fwd+bwd, 128 grid, Fourier objective) ==
+    1 thread(s), order [5, 5]: 0.80 s per iteration
+    1 thread(s), order [7, 7]: 5.31 s per iteration
+    4 thread(s), order [5, 5]: 0.45 s per iteration
+    4 thread(s), order [7, 7]: 1.71 s per iteration
+  Stage-1 sizing: 270 runs x 80 it at [5,5] on 4 single-thread processes ~ 1.2 h
+== reference designs under the NEW material model (lambda_ZE, order [7,7], n_z 7) ==
+    bare ITO (P850,h140)                     Fz=0.0000 Fx=0.0293 Fy=0.0000 A=0.0293 R=0.052 T=0.918 eta_z=0.000 <|Ez|^2>=0.000 max|Ez|^2=0.0
+    Karimi EDR cuboid (560x500x140, P850)    Fz=0.2619 Fx=0.0376 Fy=0.0028 A=0.3024 R=0.192 T=0.506 eta_z=0.866 <|Ez|^2>=5.464 max|Ez|^2=32.3
+    Karimi MDR cuboid (650x650x210, P810)    Fz=0.1343 Fx=0.0323 Fy=0.0008 A=0.1674 R=0.065 T=0.767 eta_z=0.802 <|Ez|^2>=2.801 max|Ez|^2=9.5
+    direct-Ez winner (P850,h140,pad86)       Fz=0.2377 Fx=0.2090 Fy=0.0218 A=0.4686 R=0.331 T=0.201 eta_z=0.507 <|Ez|^2>=4.959 max|Ez|^2=61.3
+    padded QNM winner (P850,h140,pad86)      Fz=0.1866 Fx=0.2377 Fy=0.0254 A=0.4499 R=0.185 T=0.365 eta_z=0.415 <|Ez|^2>=3.893 max|Ez|^2=51.0
+    robust A finalist0 (P800,h200,pad4%)     Fz=0.1772 Fx=0.0278 Fy=0.0010 A=0.2060 R=0.070 T=0.724 eta_z=0.860 <|Ez|^2>=3.696 max|Ez|^2=13.1
+    robust A finalist1 (P925,h240,pad4%)     Fz=0.1638 Fx=0.0348 Fy=0.0084 A=0.2071 R=0.025 T=0.768 eta_z=0.791 <|Ez|^2>=3.418 max|Ez|^2=20.7

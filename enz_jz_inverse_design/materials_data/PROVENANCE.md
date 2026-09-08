@@ -1,0 +1,12 @@
+# Provenance of supplied data (sha256, copied verbatim from Materials_data.zip attached to the task)
+
+b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c  materials_data/ITO_nk.csv
+0135f4add3d5b15ca141d652803c1ed425ea9c457915b5a8a5d683c0ae7db554  materials_data/PROVENANCE.md
+6b4f1d5dec1b518a7de46bbd572a72a558cd976898d709620f87d8a6b8cdd4f9  materials_data/SiO2_substrate_measured.txt
+854b592c162c10a73ff8693a6561d5884dc68aaac6dfc23e17944ff3e89709d3  materials_data/aSi_H_measured_Postech.txt
+05568ea866e51cf84cf91ca1cfcebdf80f076565b9f7c0b254788cf1a9dd33ad  materials_data/soda_lime_float_glass_airside_nk_nm_comsol.txt
+1eaaf5ab158e4d74a46e945f162bd9806455c4429635d335b840ae869279660f  upstream/Example6.ipynb
+a478cb9ab36e66545f713b7179e48d4c806ea06ea941cef80c60e75ad8ac6a06  upstream/Materials_supplied.py
+
+Original zip: f8125255-Materials_data.zip, sha256 e070b9945db9d9ca75863c6bd2736a1715aab5ab0a5d5bedeee36d00f94adac1
+Not copied (available in the zip): ITO_activation_08_19.pdf, ENZ_notebook1_TKBIC.ipynb, ENZ_notebook2_FiniteQ.ipynb, Gold.csv, Olmon-ev.csv, WS2_eps.txt
