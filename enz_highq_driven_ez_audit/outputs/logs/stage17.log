@@ -1,0 +1,91 @@
+[geometry] enz_highq_driven_ez_audit/outputs/stage16/P925_Qt100/rho_hard_binary.npy sha256=9e5c91d4c17cf84cb5a3ae0cfb1d67ccf02bd1a6aa8bd3ad2c05b67e22ac31d7 fill=0.4203 P=925.0 h=240.0 pad=37.00 nm
+  [with_ITO] 1200.00 nm  R=0.0305 T=0.8636 A=0.1059 T00=0.4975 (5s)
+  [with_ITO] 1300.00 nm  R=0.0325 T=0.7304 A=0.2372 T00=0.4462 (104s)
+  [with_ITO] 1362.50 nm  R=0.2423 T=0.3293 A=0.4284 T00=0.3293 (202s)
+  [with_ITO] 1387.50 nm  R=0.2307 T=0.3979 A=0.3715 T00=0.3979 (299s)
+  [with_ITO] 1412.50 nm  R=0.1298 T=0.4564 A=0.4139 T00=0.4564 (395s)
+  [with_ITO] 1430.29 nm  R=0.1572 T=0.3495 A=0.4933 T00=0.3495 (493s)
+  [with_ITO] 1437.49 nm  R=0.2060 T=0.2889 A=0.5051 T00=0.2889 (590s)
+  [with_ITO] 1457.25 nm  R=0.2967 T=0.2488 A=0.4544 T00=0.2488 (686s)
+  [with_ITO] 1482.25 nm  R=0.2968 T=0.3091 A=0.3941 T00=0.3091 (783s)
+  [with_ITO] 1507.25 nm  R=0.2841 T=0.3531 A=0.3628 T00=0.3531 (879s)
+  [with_ITO] 1569.00 nm  R=0.2682 T=0.4444 A=0.2873 T00=0.4444 (980s)
+  [with_ITO] 1669.00 nm  R=0.2094 T=0.6358 A=0.1548 T00=0.6358 (1077s)
+[with_ITO] 1132 wavelengths; max|R+T+A-1| = 1.1e-16; A range 0.1059..0.5051
+  [without_ITO] 1200.00 nm  R=0.0229 T=0.9771 A=-0.0000 T00=0.5834 (1s)
+  [without_ITO] 1300.00 nm  R=0.0478 T=0.9522 A=0.0000 T00=0.5985 (62s)
+  [without_ITO] 1362.50 nm  R=0.3573 T=0.6427 A=-0.0000 T00=0.6427 (122s)
+  [without_ITO] 1387.50 nm  R=0.4796 T=0.5204 A=0.0000 T00=0.5204 (183s)
+  [without_ITO] 1412.50 nm  R=0.5231 T=0.4769 A=-0.0000 T00=0.4769 (243s)
+  [without_ITO] 1430.29 nm  R=0.3550 T=0.6450 A=0.0000 T00=0.6450 (304s)
+  [without_ITO] 1437.49 nm  R=0.2719 T=0.7281 A=0.0000 T00=0.7281 (365s)
+  [without_ITO] 1457.25 nm  R=0.2326 T=0.7674 A=-0.0000 T00=0.7674 (425s)
+  [without_ITO] 1482.25 nm  R=0.8871 T=0.1129 A=-0.0000 T00=0.1129 (485s)
+  [without_ITO] 1507.25 nm  R=0.5468 T=0.4532 A=-0.0000 T00=0.4532 (544s)
+  [without_ITO] 1569.00 nm  R=0.2999 T=0.7001 A=0.0000 T00=0.7001 (603s)
+  [without_ITO] 1669.00 nm  R=0.2030 T=0.7970 A=-0.0000 T00=0.7970 (664s)
+[without_ITO] 1132 wavelengths; max|R+T+A-1| = 1.1e-16; max|R+T-1| = 3.2e-10 (lossless control)
+  [lossless_ITO] 1200.00 nm  R=0.0346 T=0.9654 A=-0.0000 T00=0.5601 (1s)
+  [lossless_ITO] 1300.00 nm  R=0.0587 T=0.9413 A=0.0000 T00=0.4295 (98s)
+  [lossless_ITO] 1362.50 nm  R=0.5818 T=0.4182 A=0.0000 T00=0.4182 (195s)
+  [lossless_ITO] 1387.50 nm  R=0.3269 T=0.6731 A=0.0000 T00=0.6731 (292s)
+  [lossless_ITO] 1412.50 nm  R=0.0817 T=0.9183 A=-0.0000 T00=0.9183 (389s)
+  [lossless_ITO] 1430.29 nm  R=0.9548 T=0.0452 A=0.0000 T00=0.0452 (485s)
+  [lossless_ITO] 1437.49 nm  R=0.7113 T=0.2887 A=-0.0000 T00=0.2887 (583s)
+  [lossless_ITO] 1457.25 nm  R=0.2227 T=0.7773 A=-0.0000 T00=0.7773 (681s)
+  [lossless_ITO] 1482.25 nm  R=0.6070 T=0.3930 A=0.0000 T00=0.3930 (779s)
+  [lossless_ITO] 1507.25 nm  R=0.1754 T=0.8246 A=-0.0000 T00=0.8246 (877s)
+  [lossless_ITO] 1569.00 nm  R=0.8495 T=0.1505 A=-0.0000 T00=0.1505 (975s)
+  [lossless_ITO] 1669.00 nm  R=0.3027 T=0.6973 A=-0.0000 T00=0.6973 (1072s)
+[lossless_ITO] 1132 wavelengths; max|R+T+A-1| = 1.1e-16; max|R+T-1| = 1.8e-09 (lossless control)
+[A cross-check] max |A_rt - A_vol| = 1.5e-04
+/usr/local/lib/python3.11/dist-packages/scipy/interpolate/_bary_rational.py:66: RuntimeWarning: AAA failed to converge within 100 iterations.
+  self._compute_weights(z, f, **kwargs)
+[with_ITO] T dips: 1364.8 nm (T=0.328, FWHM 37.8, Q~36.1), 1451.0 nm (T=0.243, FWHM 138.4, Q~10.5)
+[with_ITO] r/t poles (1-nm scan, AAA): 1336.5 nm Q=36.1 peak(r,t)=(0.10,0.04) rt=6.3e-03 refine=True, 1355.6 nm Q=13.4 peak(r,t)=(0.73,0.47) rt=1.5e-02, 1358.9 nm Q=16.9 peak(r,t)=(1.23,0.47) rt=2.0e-03, 1434.0 nm Q=25.0 peak(r,t)=(0.80,0.38) rt=1.1e-05, 1541.1 nm Q=6.4 peak(r,t)=(0.33,0.24) rt=7.1e-03, 1552.9 nm Q=7.1 peak(r,t)=(0.04,0.24) rt=1.7e-02
+[without_ITO] T dips: 1336.0 nm (T=0.800, FWHM 1.3, Q~992.8), 1345.0 nm (T=0.708, FWHM 7.2, Q~187.7), 1363.8 nm (T=0.607, FWHM 18.0, Q~75.7), 1395.8 nm (T=0.404, FWHM 45.3, Q~30.8), 1474.0 nm (T=0.001, FWHM 36.6, Q~40.3), 1588.0 nm (T=0.584, FWHM 2.3, Q~685.5)
+[without_ITO] r/t poles (1-nm scan, AAA): 1337.1 nm Q=981.8 peak(r,t)=(0.21,0.09) rt=3.6e-04, 1337.3 nm Q=288.0 peak(r,t)=(0.04,0.07) rt=6.9e-04, 1338.2 nm Q=131.4 peak(r,t)=(0.04,0.11) rt=1.3e-03, 1340.4 nm Q=74.0 peak(r,t)=(0.11,0.15) rt=1.4e-03, 1340.7 nm Q=56.4 peak(r,t)=(0.11,0.15) rt=3.4e-03, 1341.0 nm Q=27.6 peak(r,t)=(0.07,0.07) rt=1.1e-02, 1365.0 nm Q=359.3 peak(r,t)=(0.14,0.20) rt=9.1e-08, 1383.5 nm Q=94.1 peak(r,t)=(0.38,0.64) rt=2.8e-07, 1402.8 nm Q=13.3 peak(r,t)=(0.74,0.94) rt=8.7e-05, 1465.8 nm Q=58.1 peak(r,t)=(1.14,1.11) rt=1.1e-08, 1587.4 nm Q=1003.8 peak(r,t)=(0.17,0.20) rt=3.4e-08
+[lossless_ITO] T dips: 1337.0 nm (T=0.312, FWHM 145.9, Q~9.2), 1431.0 nm (T=0.039, FWHM 17.1, Q~83.9), 1459.0 nm (T=0.756, FWHM 0.3, Q~5123.4), 1460.5 nm (T=0.566, FWHM 0.3, Q~4767.1), 1463.8 nm (T=0.442, FWHM 0.3, Q~5439.2), 1467.0 nm (T=0.480, FWHM 0.3, Q~5777.5), 1469.5 nm (T=0.869, FWHM 0.4, Q~3370.0), 1470.5 nm (T=0.720, FWHM 0.2, Q~5981.4), 1472.2 nm (T=0.653, FWHM 0.4, Q~3676.6), 1478.5 nm (T=0.292, FWHM 0.5, Q~3258.9), 1480.0 nm (T=0.078, FWHM 1.1, Q~1331.0), 1482.2 nm (T=0.393, FWHM 0.3, Q~5032.0), 1483.8 nm (T=0.896, FWHM 0.2, Q~6245.5), 1484.8 nm (T=0.651, FWHM 0.2, Q~6612.4), 1487.2 nm (T=0.020, FWHM 1.9, Q~771.4), 1490.0 nm (T=0.141, FWHM 0.5, Q~3276.3), 1490.5 nm (T=0.027, FWHM 2.2, Q~686.3), 1493.2 nm (T=0.298, FWHM 0.3, Q~5021.1), 1494.0 nm (T=0.121, FWHM 1.0, Q~1563.4), 1495.2 nm (T=0.440, FWHM 0.3, Q~4768.0), 1497.8 nm (T=0.580, FWHM 0.5, Q~3024.0), 1498.8 nm (T=0.117, FWHM 0.3, Q~4802.1), 1500.2 nm (T=0.652, FWHM 0.2, Q~6065.2), 1500.8 nm (T=0.692, FWHM 0.5, Q~3151.0), 1501.8 nm (T=0.672, FWHM 0.3, Q~4785.8), 1502.5 nm (T=0.621, FWHM 0.4, Q~4129.0), 1504.5 nm (T=0.281, FWHM 0.6, Q~2486.4), 1505.8 nm (T=0.719, FWHM 0.2, Q~7397.0), 1506.2 nm (T=0.631, FWHM 0.5, Q~3228.8), 1508.5 nm (T=0.765, FWHM 0.5, Q~3245.9), 1509.0 nm (T=0.661, FWHM 0.6, Q~2719.3), 1510.8 nm (T=0.641, FWHM 0.3, Q~5751.7), 1511.5 nm (T=0.674, FWHM 0.5, Q~3222.6), 1513.8 nm (T=0.878, FWHM 0.5, Q~3089.1), 1516.5 nm (T=0.876, FWHM 0.3, Q~6064.2), 1517.2 nm (T=0.224, FWHM 0.3, Q~5709.6), 1522.0 nm (T=0.352, FWHM 1.5, Q~1013.2), 1526.0 nm (T=0.931, FWHM 1.7, Q~907.7), 1530.0 nm (T=0.786, FWHM 1.9, Q~810.0), 1535.0 nm (T=0.741, FWHM 1.7, Q~913.6), 1540.0 nm (T=0.455, FWHM 1.7, Q~927.8), 1543.0 nm (T=0.413, FWHM 1.2, Q~1247.7), 1545.0 nm (T=0.580, FWHM 1.0, Q~1570.7), 1548.0 nm (T=0.153, FWHM 2.5, Q~611.3), 1557.0 nm (T=0.045, FWHM 1.8, Q~847.5), 1559.0 nm (T=0.023, FWHM 21.7, Q~71.9), 1561.0 nm (T=0.065, FWHM 0.9, Q~1810.9), 1564.0 nm (T=0.139, FWHM 2.0, Q~801.2), 1567.0 nm (T=0.029, FWHM 7.4, Q~212.1), 1571.0 nm (T=0.078, FWHM 1.0, Q~1624.1), 1576.0 nm (T=0.099, FWHM 0.9, Q~1741.6), 1578.0 nm (T=0.184, FWHM 1.1, Q~1396.5), 1581.0 nm (T=0.198, FWHM 1.3, Q~1182.0), 1584.0 nm (T=0.070, FWHM 11.8, Q~134.7), 1591.0 nm (T=0.320, FWHM 0.7, Q~2332.4), 1593.0 nm (T=0.396, FWHM 1.8, Q~902.6), 1596.0 nm (T=0.316, FWHM 1.4, Q~1163.0), 1599.0 nm (T=0.308, FWHM 1.9, Q~851.9), 1603.0 nm (T=0.431, FWHM 5.1, Q~313.3), 1607.0 nm (T=0.478, FWHM 0.8, Q~2113.2), 1610.0 nm (T=0.477, FWHM 2.7, Q~595.5), 1617.0 nm (T=0.525, FWHM 2.2, Q~743.4), 1620.0 nm (T=0.555, FWHM 9.1, Q~178.5), 1625.0 nm (T=0.563, FWHM 1.1, Q~1541.1), 1630.0 nm (T=0.587, FWHM 3.5, Q~468.0), 1636.0 nm (T=0.572, FWHM 0.7, Q~2181.4), 1638.0 nm (T=0.555, FWHM 1.4, Q~1130.1), 1645.0 nm (T=0.617, FWHM 1.8, Q~931.5)
+[lossless_ITO] r/t poles (1-nm scan, AAA): 1335.6 nm Q=63.4 peak(r,t)=(0.53,0.23) rt=3.0e-03 refine=True, 1335.9 nm Q=116.5 peak(r,t)=(0.23,0.23) rt=4.4e-03 refine=True, 1361.3 nm Q=19.6 peak(r,t)=(0.85,0.68) rt=9.2e-05, 1428.0 nm Q=92.6 peak(r,t)=(1.18,1.03) rt=3.3e-07 refine=True, 1484.3 nm Q=474.9 peak(r,t)=(0.15,0.11) rt=7.6e-04 refine=True, 1487.4 nm Q=614.3 peak(r,t)=(1.28,1.35) rt=2.7e-05 refine=True, 1489.8 nm Q=711.2 peak(r,t)=(1.41,1.28) rt=1.4e-04 refine=True, 1522.7 nm Q=1151.3 peak(r,t)=(0.36,0.34) rt=3.4e-05 refine=False, 1526.6 nm Q=1170.4 peak(r,t)=(0.26,0.34) rt=5.1e-03 refine=True, 1548.8 nm Q=444.7 peak(r,t)=(0.64,0.88) rt=4.2e-04 refine=True, 1558.2 nm Q=57.2 peak(r,t)=(1.40,1.53) rt=5.7e-03 refine=True, 1566.4 nm Q=616.3 peak(r,t)=(0.22,0.30) rt=1.1e-03 refine=True, 1568.8 nm Q=185.0 peak(r,t)=(0.25,0.30) rt=4.1e-03 refine=True, 1600.0 nm Q=556.2 peak(r,t)=(0.08,0.13) rt=3.7e-03 refine=True
+[Si resonance without ITO] {'omega': (1.2850365731228717-0.011050704561493837j), 'lambda_nm': 1465.8349861056786, 'Q': 58.14274402016771, 'gamma': 0.011050704561493837, 'res_r': np.float64(0.01263233906651151), 'res_t': np.float64(0.009044581677551412), 'peak_r': np.float64(1.1439802829439656), 'peak_t': np.float64(1.1112415905659412), 'rt_rel_diff': 1.1229995843268086e-08, 'in_window': True, 'local_refine': None}
+[with-ITO ENZ-region poles] [(1355.6, 13.4), (1358.9, 16.9), (1434.0, 25.0)]  split: {'lambda_lower': 1355.5766191172013, 'lambda_upper': 1433.9889870626862, 'delta_lambda_nm': 78.4123679454849, 'delta_f_THz': 12.093037136041062, 'si_linewidth_nm': 25.210970187393134, 'si_linewidth_THz': 3.517548511219799, 'lower_Q': 13.412155339458417, 'upper_Q': 24.998167345538704}
+  [with_ITO [9, 9]] 1400.00 nm  R=0.1696 T=0.4502 A=0.3802 T00=0.4502 (4s)
+[conv with_ITO [9, 9]] max|dT| vs [7,7] = 0.0130; poles [(1372.2, 12.8), (1432.7, 25.4)]
+  [with_ITO [11, 11]] 1400.00 nm  R=0.1606 T=0.4549 A=0.3845 T00=0.4549 (11s)
+[conv with_ITO [11, 11]] max|dT| vs [7,7] = 0.0258; poles [(1430.9, 25.6)]
+  [without_ITO [9, 9]] 1400.00 nm  R=0.5822 T=0.4178 A=0.0000 T00=0.4178 (2s)
+[conv without_ITO [9, 9]] max|dT| vs [7,7] = 0.1063; poles [(1381.7, 93.4), (1401.8, 13.3), (1464.3, 58.9)]
+  [without_ITO [11, 11]] 1400.00 nm  R=0.5774 T=0.4226 A=-0.0000 T00=0.4226 (6s)
+[conv without_ITO [11, 11]] max|dT| vs [7,7] = 0.2139; poles [(1380.3, 90.6), (1401.0, 13.3), (1462.8, 59.5)]
+  [with_ITO h=220] 1350.00 nm  R=0.2433 T=0.3973 A=0.3594 T00=0.3973 (1s)
+  [with_ITO h=220] 1450.00 nm  R=0.3195 T=0.2687 A=0.4118 T00=0.2687 (93s)
+[sweep h=220 with_ITO] poles [(1343.6, 16.7), (1416.0, 26.0), (1556.9, 6.2)] dips [1433.0]
+  [without_ITO h=220] 1350.00 nm  R=0.1179 T=0.8821 A=-0.0000 T00=0.8821 (1s)
+  [without_ITO h=220] 1450.00 nm  R=0.7991 T=0.2009 A=-0.0000 T00=0.2009 (59s)
+[sweep h=220 without_ITO] poles [(1327.6, 55.6), (1361.4, 221.5), (1389.1, 14.0), (1447.9, 55.7), (1620.8, 19.7)] dips [1354.0, 1364.0, 1457.0]
+  [with_ITO h=230] 1350.00 nm  R=0.2096 T=0.3841 A=0.4063 T00=0.3841 (1s)
+  [with_ITO h=230] 1450.00 nm  R=0.3094 T=0.2479 A=0.4427 T00=0.2479 (94s)
+[sweep h=230 with_ITO] poles [(1330.5, 295.9), (1349.7, 16.8), (1425.1, 25.5), (1549.2, 7.1)] dips [1442.0]
+  [without_ITO h=230] 1350.00 nm  R=0.1882 T=0.8118 A=-0.0000 T00=0.8118 (1s)
+  [without_ITO h=230] 1450.00 nm  R=0.2662 T=0.7338 A=-0.0000 T00=0.7338 (59s)
+[sweep h=230 without_ITO] poles [(1333.3, 84.4), (1358.7, 317.5), (1371.6, 144.2), (1395.8, 13.5), (1457.0, 56.8)] dips [1357.0, 1378.0, 1466.0]
+[sweep h=240 with_ITO] poles [(1330.4, 135.1), (1358.6, 16.6), (1434.0, 25.0), (1546.7, 7.0)] dips [1365.0, 1451.0]
+[sweep h=240 without_ITO] poles [(1337.3, 62.7), (1338.9, 92.0), (1365.0, 359.3), (1383.5, 94.1), (1402.9, 13.2), (1465.8, 58.1)] dips [1364.0, 1396.0, 1474.0]
+  [with_ITO h=250] 1350.00 nm  R=0.1327 T=0.3469 A=0.5204 T00=0.3469 (1s)
+  [with_ITO h=250] 1450.00 nm  R=0.2224 T=0.2619 A=0.5157 T00=0.2619 (94s)
+[sweep h=250 with_ITO] poles [(1329.5, 118.0), (1368.2, 16.1), (1442.6, 24.5), (1551.0, 6.9)] dips [1368.0, 1459.0]
+  [without_ITO h=250] 1350.00 nm  R=0.3129 T=0.6871 A=-0.0000 T00=0.6871 (1s)
+  [without_ITO h=250] 1450.00 nm  R=0.2185 T=0.7815 A=-0.0000 T00=0.7815 (59s)
+[sweep h=250 without_ITO] poles [(1338.1, 284.1), (1348.1, 42.3), (1371.9, 396.9), (1396.5, 62.5), (1410.1, 13.3), (1474.3, 59.6)] dips [1371.0, 1411.0, 1482.0]
+  [with_ITO h=260] 1350.00 nm  R=0.1142 T=0.3189 A=0.5669 T00=0.3189 (1s)
+  [with_ITO h=260] 1450.00 nm  R=0.1598 T=0.2990 A=0.5412 T00=0.2990 (92s)
+[sweep h=260 with_ITO] poles [(1328.1, 130.7), (1377.4, 15.2), (1450.9, 24.1), (1560.9, 6.9)] dips [1372.0, 1466.0]
+  [without_ITO h=260] 1350.00 nm  R=0.1847 T=0.8153 A=0.0000 T00=0.8153 (1s)
+  [without_ITO h=260] 1450.00 nm  R=0.2969 T=0.7031 A=-0.0000 T00=0.7031 (57s)
+[sweep h=260 without_ITO] poles [(1359.5, 32.9), (1379.7, 397.1), (1410.2, 41.5), (1417.0, 13.8), (1482.6, 61.4)] dips [1379.0, 1420.0, 1489.0]
+[fields] no-ITO Si resonance: {'case': 'without_ITO', 'lam': 1465.835, 'F_Ez': 3.9802, 'F_Etot': 20.1377, 'eta_z': 0.1976, 'note': 'glass slab at the ITO position (no ITO present)'}
+[fields] with-ITO branch 1 (1355.6 nm): {'case': 'with_ITO', 'lam': 1355.5766, 'F_Ez': 4.6629, 'F_Etot': 7.108, 'eta_z': 0.656, 'A': 0.4508, 'T': 0.3441, 'peak_Ez2': 31.2552, 'ito_E_energy_fraction': np.float64(0.2464), 'eta_ENZ_z': np.float64(0.05)}
+[fields] with-ITO branch 2 (1358.9 nm): {'case': 'with_ITO', 'lam': 1358.9253, 'F_Ez': 4.4312, 'F_Etot': 6.9101, 'eta_z': 0.6413, 'A': 0.4403, 'T': 0.3347, 'peak_Ez2': 29.2136, 'ito_E_energy_fraction': np.float64(0.2398), 'eta_ENZ_z': np.float64(0.0472)}
+[fields] with-ITO branch 3 (1434.0 nm): {'case': 'with_ITO', 'lam': 1433.989, 'F_Ez': 4.2343, 'F_Etot': 7.0955, 'eta_z': 0.5968, 'A': 0.5022, 'T': 0.3166, 'peak_Ez2': 55.0334, 'ito_E_energy_fraction': np.float64(0.2018), 'eta_ENZ_z': np.float64(0.0345)}
+[fields] with-ITO at lambda_E: {'case': 'with_ITO', 'lam': 1433.488, 'F_Ez': 4.228, 'F_Etot': 7.0881, 'eta_z': 0.5965, 'A': 0.5014, 'T': 0.3209, 'peak_Ez2': 54.9461, 'ito_E_energy_fraction': np.float64(0.2017), 'eta_ENZ_z': np.float64(0.0345)}
+[stage17] done
