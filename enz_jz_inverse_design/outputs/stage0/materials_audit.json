@@ -1,0 +1,134 @@
+{
+ "files": {
+  "ITO": {
+   "path": "/home/user/ENZ/enz_jz_inverse_design/materials_data/ITO_nk.csv",
+   "sha256": "b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c"
+  },
+  "aSi": {
+   "path": "/home/user/ENZ/enz_jz_inverse_design/materials_data/aSi_H_measured_Postech.txt",
+   "sha256": "854b592c162c10a73ff8693a6561d5884dc68aaac6dfc23e17944ff3e89709d3"
+  },
+  "glass": {
+   "path": "/home/user/ENZ/enz_jz_inverse_design/materials_data/SiO2_substrate_measured.txt",
+   "sha256": "6b4f1d5dec1b518a7de46bbd572a72a558cd976898d709620f87d8a6b8cdd4f9"
+  }
+ },
+ "ito": {
+  "range_nm": [
+   310.0,
+   1675.0
+  ],
+  "n_rows": 1366,
+  "header": [
+   "wavelength_nm",
+   "energy_eV",
+   "n",
+   "k",
+   "eps1",
+   "eps2"
+  ],
+  "comments": [
+   "# ITO  (Drude-Lorentz, SE fit .mxm)  validated vs measured Psi full-range incl. ENZ, RMSE 0.73 deg",
+   "# ENZ (Re eps=0) ~1302 nm ; @1260nm n=0.570 k=0.332 ; range 310-1675 nm (in measured/fit range)"
+  ],
+  "max_abs_err_eps_vs_nk2": 3.073273333260727e-06,
+  "max_rel_err_eps_vs_nk2": 2.7375311573256985e-06,
+  "lambda_ZE_nm": 1302.2819858898874,
+  "lambda_ZE_from_eps1_column_nm": 1302.2820191189803,
+  "n": 0.4647329397558944,
+  "k": 0.4647329397558949,
+  "eps1": -4.718447854656915e-16,
+  "eps2": 0.43195341058831205,
+  "eps_at": [
+   {
+    "lam": 1250.0,
+    "eps": [
+     0.26516014202499993,
+     0.36587884744800003
+    ]
+   },
+   {
+    "lam": 1280.0,
+    "eps": [
+     0.11409025807499998,
+     0.40334378361199996
+    ]
+   },
+   {
+    "lam": 1300.0,
+    "eps": [
+     0.011758300173000003,
+     0.42899179503600005
+    ]
+   },
+   {
+    "lam": 1302.0,
+    "eps": [
+     0.0014539992449999761,
+     0.431587095052
+    ]
+   },
+   {
+    "lam": 1305.0,
+    "eps": [
+     -0.014027843165000026,
+     0.435490843692
+    ]
+   },
+   {
+    "lam": 1310.0,
+    "eps": [
+     -0.039895331271999984,
+     0.442024701546
+    ]
+   },
+   {
+    "lam": 1350.0,
+    "eps": [
+     -0.24977591406000005,
+     0.495593442288
+    ]
+   },
+   {
+    "lam": 1400.0,
+    "eps": [
+     -0.51950068512,
+     0.565942083122
+    ]
+   }
+  ]
+ },
+ "asi": {
+  "range_nm": [
+   246.0,
+   1400.0
+  ],
+  "n_rows": 1155,
+  "n": 2.975402148660679,
+  "k": 0.0,
+  "eps": [
+   8.853017946254587,
+   0.0
+  ],
+  "provenance": "rows >= 1000 nm are a Sellmeier extrapolation of the source workbook (k = 0), NOT ellipsometry | # wavelength(nm)\tn\t\tk\t\t(a-Si:H, POSTECH ellipsometry + Sellmeier extrapolation from aSi_nk_1000-1400nm_extra_postech.xlsx); # rows 246-999 nm = ellipsometry measurement; rows 1000-1400 nm = workbook extrapolation; k kept as provided by source workbook",
+  "k_last_nonzero_nm": 699.0,
+  "measured_rows_nm": "246-999 (ellipsometry); 1000-1400 workbook extrapolation"
+ },
+ "glass": {
+  "range_nm": [
+   191.46,
+   1688.69
+  ],
+  "n_rows": 706,
+  "n": 1.516528710905342,
+  "k": -5.769956425149589e-289,
+  "n_used": 1.516528710905342,
+  "k_last_nonzero_nm": 351.37,
+  "identical_to_comsol_file": true
+ },
+ "diffraction": {
+  "P_first_order_glass_nm": 858.7255727670643,
+  "P_first_order_air_nm": 1302.2819858898874,
+  "note": "normal incidence: (+-1,0) propagates in glass for P > lambda/n_glass"
+ }
+}
