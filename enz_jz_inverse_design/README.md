@@ -57,5 +57,16 @@ normalization, component-resolved absorption, and post-hoc Q / critical-coupling
 Environment used here: CPU-only (4 cores), torch 2.14 (CPU), scipy 1.17 (AAA), complex128 solves,
 float64 geometry, 128×128 topology grid.
 
+## Headline result
+
+Best certified **F_z = 0.954** (A = 0.991, η_z,abs = 0.96) for a tall (h = 525–600 nm), low-fill (≈ 0.3), asymmetric
+freeform a-Si:H meta-atom on an 825-nm cell with a 12 % air ring — an ITO-loaded a-Si leaky resonance brought to
+critical coupling (γ_rad/γ_nr ≈ 0.8–1.7, Q_loaded ≈ 9–11) whose longitudinal field is concentrated in the ENZ film
+by D_z continuity; 3.6× the Karimi EDR cuboid (0.262) and the prior direct-E_z design (0.234) under the same
+materials.  Numerically converged ([9,9]→[11,11] −0.2 %), height-robust, period-sensitive, edge-fragile
+(≈ 45–60-nm necks): see `REPORT.md` §7–10.  Best design: `outputs/best/` (`rho_hard_binary.npy`, `geometry.png`,
+`loss_maps.png`, `history.png`, `certify.json`, Stage-5 files).
+
 See `REPORT.md` for the results and the eight required final statements, `PREFLIGHT.md` for the gates,
-`outputs/stage4/CERTIFICATION.md` and `outputs/stage5/PHYSICS.md` for the certification tables.
+`SOURCE_AUDIT.md` for the audit of the historical sources, `outputs/stage4/CERTIFICATION.md` and
+`outputs/stage5/PHYSICS.md` for the certification tables, `outputs/results.csv|json` for every run.

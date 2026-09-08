@@ -239,4 +239,53 @@ The new family reaches 3.6× the F_z of the best prior reference at λ_ZE and 3�
 * All designs are single-component or two-component islands with no contact with the air ring (boundary-isolated
   meta-atom class preserved; the 970-nm design touches the ring on 6 pixels).
 
-## 10. The eight required statements — *to be filled*
+## 10. The eight required statements
+
+1. **Best certified F_z = 0.954** (hard-binary design, Fourier order [11,11], 31 z-slices, identity residual
+   −1×10⁻⁵): 0.9543 for `final3` (P = 825 nm, h = 525 nm, pad 12 %), with 0.9540 / 0.9539 / 0.9536 for the three
+   other P825 finalists (h = 575–600 nm, pad 8–12 %) from independent lineages — i.e. a plateau at F_z = 0.954 ± 0.001,
+   A = 0.991–0.992.  The pure from-scratch [7,7] control reaches 0.9418, the P750/h500 family 0.9361, and the
+   fabrication-thickness-constrained design (h = 970.5 nm) 0.9160.  Reference designs under the same materials:
+   Karimi EDR cuboid 0.262, prior direct-E_z winner 0.234, robust-A finalists 0.16–0.18.
+2. **Geometry and materials**: air / freeform a-Si:H (n = 2.9754, k = 0 — extrapolated row of the supplied file) of
+   height 525–600 nm and fill 28–32 % on a square 825-nm cell with a hard 12 % (99-nm) air ring / 23-nm ITO
+   (ε = 0 + 0.432 i at λ_ZE = 1302.28 nm, `ITO_nk.csv`) / soda-lime glass (n = 1.5165); normal incidence from air,
+   x polarization.  The meta-atom is a single asymmetric island (S_flip 0.8–0.9) with two tall "legs" parallel to x
+   joined by a bar (`outputs/best/geometry.png`, `outputs/best/rho_hard_binary.npy`).
+3. **Longitudinal share**: η_z,abs = F_z / F_tot = **0.96** for every plateau design (F_x ≈ 0.028, F_y ≈ 0.008–0.010,
+   F_tot = 0.991 = 1 − R − T); ⟨|E_z/E_inc|²⟩_ITO = 19.9 (Karimi EDR cuboid: 5.5), max |E_z/E_inc|² ≈ 100–112.
+4. **Q values** (leading design, loaded pole 1271 nm): Q_loaded = 9.1; lossless-limit Q_rad = 19.9 (γ_rad = 0.037 rad/fs)
+   and Q_nr = 15.7 (γ_nr = 0.045 rad/fs); the linear γ(s) fit gives Q_rad 23.4 / Q_nr 18.0 but is not linear
+   (20 % residual).  Best-certified design (pole 1273 nm): Q_loaded 11.3, Q_rad 18.0 (lossless limit), Q_nr 27 (linear
+   fit: 18.5 / 32).  All plateau designs have Q_loaded ≈ 9–11 (F_z FWHM ≈ 150 nm).
+5. **Critical coupling**: yes, within the uncertainty of the rate split — γ_rad/γ_nr = 0.77–0.84 (leading design) and
+   1.7 (best-certified design) from two estimators, with the one-port closure 4γ_rγ_nr/(γ_r+γ_nr)² ≥ 0.94–0.99
+   against the observed A_max = 0.996–0.9985.  The pure-F_z objective therefore DID drive the designs toward
+   γ_rad ≈ γ_nr: because T is blocked by the a-Si reflector, F_z ≈ η_z · A can only approach 1 at the
+   critical-coupling point, and the optimizer found it without any Q, absorption or coupling term in the loss.
+6. **Mode identity**: the evidence supports an **ITO-loaded a-Si leaky resonance at critical coupling with an
+   ENZ-enhanced longitudinal loss channel** — not a Si–ENZ polariton and not a TK-BIC.  Without ITO the same
+   geometry is a near-perfect reflector (R = 0.9998, pole 1318 nm, Q 8.4); with lossless ITO the broad pole persists
+   (1266 nm, Q 20); the loaded pole (1271 nm, Q 9) tracks the Si resonance continuously through the ENZ wavelength in
+   the height-detuning map with no avoided crossing; the multipole content is mixed ED/EQ/toroidal (45/39/14 %).  The
+   field IS genuinely ENZ-concentrated (96 % of the absorption is longitudinal, in a 23-nm film, by D_z continuity),
+   but there is no hybrid-mode splitting, consistent with the deck's estimate that the coupling stays below the
+   exceptional-point threshold for this ITO (Γ_ENZ ≈ 122 meV).
+7. **Robustness**: numerically robust — F_z changes by −0.1…−0.2 % from [9,9] to [11,11] and by < 0.4 % over
+   [5,5]…[11,11], 1×10⁻⁴ from 7 to 31 z-slices, soft-to-hard binarization changes < 1×10⁻⁴, max |E_z|² saturates with
+   order (no corner/slot hotspot), a 3-nm Al2O3 spacer changes F_z by +0.2 %; height-robust (±10 nm: < 0.2 %,
+   ±10 %: −3…−5 %); period-sensitive (±2 %: −3…−7 %); **edge-fragile** (±6.4 nm uniform erosion/dilation −5…−20 %,
+   ±12.9 nm −15…−48 %) with ≈ 45–60-nm necks in 500–600-nm-tall a-Si.  The pure-F_z baseline is thus preserved as
+   such and a minimum-feature / edge-robust constrained campaign is the recommended second controlled campaign.
+8. **New geometry family**: yes.  The F_z optimum is a tall (h ≥ 400 nm, plateau 500–600 nm), low-fill (≈ 0.3),
+   strongly asymmetric a-Si island on the largest non-diffracting period (825–850 nm) that acts as a critically
+   coupled ENZ-terminated reflector — qualitatively different from the 140–240-nm-thick, 0.4–0.6-fill Mie/QNM designs
+   of every historical campaign (which, warm-started into the new cell, end at 0.35–0.88).  The family emerged
+   independently from three lineages and from pure from-scratch [7,7] runs (0.942–0.954); the deck-thickness
+   (970.5-nm) constrained search reaches 0.916 at P = 825 nm but fails at the deck's own 588-nm period (0.054), where
+   the high-Q TK-BIC route of the deck lies outside the reach of this gradient search from random starts.
+
+Caveats: (i) the a-Si:H index at 1302 nm comes from the workbook's Sellmeier extrapolation (k = 0); (ii) P = 825 nm
+diffracts into the glass for θ > 3.6° (the deck's NA is 0.14, i.e. 8°), so the angular follow-up campaign must
+either accept partial substrate diffraction or move below ≈ 790 nm; (iii) the loss-scaling decomposition is
+semi-quantitative for these strongly loaded low-Q resonances (non-linear γ(s)).

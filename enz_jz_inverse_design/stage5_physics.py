@@ -229,7 +229,7 @@ def write_md(summaries, refs, out, lam_ze):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--runs", nargs="+", required=True)
+    ap.add_argument("--runs", nargs="*", default=[])
     ap.add_argument("--out", default=str(config.OUT / "stage5"))
     ap.add_argument("--order", type=int, nargs=2, default=config.ORDER_FULL)
     ap.add_argument("--detune-order", type=int, nargs=2, default=config.ORDER_SCREEN)
@@ -238,6 +238,7 @@ def main():
     ap.add_argument("--n-h", type=int, default=13)
     ap.add_argument("--threads", type=int, default=4)
     ap.add_argument("--no-refs", action="store_true")
+    ap.add_argument("--merge-only", action="store_true", help="rebuild PHYSICS.md / physics_summary.json from every <out>/*/physics.json (no computation)")
     ap.add_argument("--lam-max", type=float, default=1400.0)
     ap.add_argument("--asi-extended", action="store_true", help="allow the flagged repo a-Si extension beyond 1400 nm")
     a = ap.parse_args()
@@ -250,8 +251,20 @@ def main():
 
     def log(*x):
         s = " ".join(str(v) for v in x); print(s, flush=True); print(s, file=logf, flush=True)
-    summaries = [run_candidate(r, out, lam_ze, log, list(a.order), a.lam_step, a.h_frac, a.n_h, list(a.detune_order), a.lam_max, a.asi_extended) for r in a.runs]
-    refs = [] if a.no_refs else reference_spectra(out, lam_ze, log, list(a.order), a.lam_step)
+    if a.merge_only:
+        summaries = []
+    else:
+        summaries = [run_candidate(r, out, lam_ze, log, list(a.order), a.lam_step, a.h_frac, a.n_h, list(a.detune_order), a.lam_max, a.asi_extended) for r in a.runs]
+    done = {s_["tag"] for s_ in summaries}
+    for f in sorted(out.glob("*/physics.json")):            # merge with previously analysed designs
+        d = json.load(open(f))
+        if d["tag"] not in done:
+            summaries.append(d); done.add(d["tag"])
+    if a.no_refs or a.merge_only:
+        rf = out / "references" / "reference_summary.json"
+        refs = json.load(open(rf)) if rf.exists() else []
+    else:
+        refs = reference_spectra(out, lam_ze, log, list(a.order), a.lam_step)
     an.jdump(dict(candidates=summaries, references=refs), out / "physics_summary.json")
     write_md(summaries, refs, out, lam_ze)
     log("[stage5] done")
