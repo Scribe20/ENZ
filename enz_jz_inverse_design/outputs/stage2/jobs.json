@@ -1,0 +1,591 @@
+[
+ {
+  "tag": "F0_P825_h600_pad0.12_s1001_centre",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h600_pad0.12_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F0_P825_h600_pad0.12_s1001_P800",
+  "P": 800.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h600_pad0.12_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F0_P825_h600_pad0.12_s1001_P850",
+  "P": 850.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h600_pad0.12_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F0_P825_h600_pad0.12_s1001_h575",
+  "P": 825.0,
+  "h": 575.0,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h600_pad0.12_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F0_P825_h600_pad0.12_s1001_pad0.08",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.07999999999999999,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h600_pad0.12_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F0_P825_h600_pad0.12_s1001_pad0.16",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.16,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h600_pad0.12_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F1_P825_h500_pad0.12_s333_centre",
+  "P": 825.0,
+  "h": 500.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h500_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F1_P825_h500_pad0.12_s333_P800",
+  "P": 800.0,
+  "h": 500.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h500_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F1_P825_h500_pad0.12_s333_P850",
+  "P": 850.0,
+  "h": 500.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h500_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F1_P825_h500_pad0.12_s333_h475",
+  "P": 825.0,
+  "h": 475.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h500_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F1_P825_h500_pad0.12_s333_h525",
+  "P": 825.0,
+  "h": 525.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h500_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F1_P825_h500_pad0.12_s333_pad0.08",
+  "P": 825.0,
+  "h": 500.0,
+  "pad": 0.07999999999999999,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h500_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F1_P825_h500_pad0.12_s333_pad0.16",
+  "P": 825.0,
+  "h": 500.0,
+  "pad": 0.16,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P825_h500_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F2_P850_h600_pad0.12_s333_centre",
+  "P": 850.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P850_h600_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F2_P850_h600_pad0.12_s333_P825",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P850_h600_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F2_P850_h600_pad0.12_s333_P875",
+  "P": 853.7255727670643,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P850_h600_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F2_P850_h600_pad0.12_s333_h575",
+  "P": 850.0,
+  "h": 575.0,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P850_h600_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F2_P850_h600_pad0.12_s333_pad0.08",
+  "P": 850.0,
+  "h": 600.0,
+  "pad": 0.07999999999999999,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P850_h600_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F2_P850_h600_pad0.12_s333_pad0.16",
+  "P": 850.0,
+  "h": 600.0,
+  "pad": 0.16,
+  "seed": 333,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P850_h600_pad0.12_s333/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F3_P750_h500_pad0.08_s1001_centre",
+  "P": 750.0,
+  "h": 500.0,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P750_h500_pad0.08_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F3_P750_h500_pad0.08_s1001_P725",
+  "P": 725.0,
+  "h": 500.0,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P750_h500_pad0.08_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F3_P750_h500_pad0.08_s1001_P775",
+  "P": 775.0,
+  "h": 500.0,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P750_h500_pad0.08_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F3_P750_h500_pad0.08_s1001_h475",
+  "P": 750.0,
+  "h": 475.0,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P750_h500_pad0.08_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F3_P750_h500_pad0.08_s1001_h525",
+  "P": 750.0,
+  "h": 525.0,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P750_h500_pad0.08_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F3_P750_h500_pad0.08_s1001_pad0.04",
+  "P": 750.0,
+  "h": 500.0,
+  "pad": 0.04,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P750_h500_pad0.08_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "F3_P750_h500_pad0.08_s1001_pad0.12",
+  "P": 750.0,
+  "h": 500.0,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage1/runs/P750_h500_pad0.08_s1001/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "CTRL_directEz_at_P825_h600_pad0.12",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 0,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_direct_enz_excitation/outputs/geometries/rho_hard_binary.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "CTRL_robustP800_at_P825_h600_pad0.12",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 0,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_robust_aito_campaign/outputs/stage4/runs/finalist0_P800_h200_pad0.040_warm/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "CTRL_robustP925_at_P825_h600_pad0.12",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 0,
+  "n_iter": 100,
+  "order": [
+   5,
+   5
+  ],
+  "warm": "/home/user/ENZ/enz_robust_aito_campaign/outputs/stage4/runs/finalist1_P925_h240_pad0.040_warm/rho_raw_final.npy",
+  "beta_start": 8.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "SCRATCH_s2024_P825_h600_pad0.12",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 2024,
+  "n_iter": 150,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ },
+ {
+  "tag": "SCRATCH_s4096_P825_h600_pad0.12",
+  "P": 825.0,
+  "h": 600.0,
+  "pad": 0.12,
+  "seed": 4096,
+  "n_iter": 150,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1
+ }
+]

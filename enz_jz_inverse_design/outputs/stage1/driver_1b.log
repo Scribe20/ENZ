@@ -1,1 +1,41 @@
 [stage1] 24 jobs, 80 iters, order [5, 5], 4 workers
+[1/24 104s] P825_h500_pad0.12_s333: Fz_hard=0.9457 (86s)
+[2/24 104s] P750_h500_pad0.12_s333: Fz_hard=0.8449 (86s)
+[3/24 105s] P825_h500_pad0.08_s333: Fz_hard=0.9452 (87s)
+[4/24 106s] P750_h500_pad0.08_s333: Fz_hard=0.9405 (88s)
+[5/24 194s] P850_h500_pad0.12_s333: Fz_hard=0.9399 (89s)
+[6/24 198s] P750_h600_pad0.08_s333: Fz_hard=0.9204 (93s)
+[7/24 199s] P750_h600_pad0.12_s333: Fz_hard=0.9250 (93s)
+[8/24 204s] P850_h500_pad0.08_s333: Fz_hard=0.9288 (100s)
+[9/24 333s] P825_h600_pad0.08_s333: Fz_hard=0.8063 (139s)
+[10/24 339s] P825_h600_pad0.12_s333: Fz_hard=0.9225 (141s)
+[11/24 343s] P850_h600_pad0.08_s333: Fz_hard=0.8374 (144s)
+[12/24 347s] P850_h600_pad0.12_s333: Fz_hard=0.9412 (143s)
+[13/24 445s] P750_h500_pad0.08_s1001: Fz_hard=0.9409 (112s)
+[14/24 449s] P750_h500_pad0.12_s1001: Fz_hard=0.8448 (110s)
+[15/24 451s] P825_h500_pad0.12_s1001: Fz_hard=0.9304 (104s)
+[16/24 452s] P825_h500_pad0.08_s1001: Fz_hard=0.9443 (109s)
+[17/24 527s] P850_h500_pad0.08_s1001: Fz_hard=0.9313 (82s)
+[18/24 531s] P850_h500_pad0.12_s1001: Fz_hard=0.9270 (82s)
+[19/24 534s] P750_h600_pad0.08_s1001: Fz_hard=0.9161 (84s)
+[20/24 536s] P750_h600_pad0.12_s1001: Fz_hard=0.8194 (83s)
+[21/24 608s] P825_h600_pad0.08_s1001: Fz_hard=0.5251 (80s)
+[22/24 612s] P825_h600_pad0.12_s1001: Fz_hard=0.9503 (81s)
+[23/24 615s] P850_h600_pad0.08_s1001: Fz_hard=0.8321 (80s)
+[24/24 617s] P850_h600_pad0.12_s1001: Fz_hard=0.9391 (81s)
+[stage1] done in 618s; 294 results
+  P825_h600_pad0.12_s1001      Fz_hard=0.9503 Fz_soft=0.9503 A=0.995 eta_z=0.955 fill=0.283
+  P825_h500_pad0.12_s333       Fz_hard=0.9457 Fz_soft=0.9456 A=0.985 eta_z=0.960 fill=0.334
+  P825_h500_pad0.08_s333       Fz_hard=0.9452 Fz_soft=0.9452 A=0.984 eta_z=0.960 fill=0.335
+  P825_h500_pad0.08_s1001      Fz_hard=0.9443 Fz_soft=0.9443 A=0.984 eta_z=0.960 fill=0.334
+  P850_h600_pad0.12_s333       Fz_hard=0.9412 Fz_soft=0.9412 A=0.985 eta_z=0.955 fill=0.241
+  P750_h500_pad0.08_s1001      Fz_hard=0.9409 Fz_soft=0.9409 A=0.991 eta_z=0.949 fill=0.422
+  P750_h500_pad0.08_s333       Fz_hard=0.9405 Fz_soft=0.9405 A=0.992 eta_z=0.948 fill=0.426
+  P850_h500_pad0.12_s333       Fz_hard=0.9399 Fz_soft=0.9399 A=0.971 eta_z=0.968 fill=0.300
+  P850_h600_pad0.12_s1001      Fz_hard=0.9391 Fz_soft=0.9391 A=0.982 eta_z=0.957 fill=0.234
+  P850_h400_pad0.12_s7777      Fz_hard=0.9385 Fz_soft=0.9385 A=0.976 eta_z=0.961 fill=0.330
+  P850_h400_pad0.12_s333       Fz_hard=0.9383 Fz_soft=0.9383 A=0.976 eta_z=0.961 fill=0.328
+  P850_h400_pad0.12_s1001      Fz_hard=0.9383 Fz_soft=0.9383 A=0.976 eta_z=0.962 fill=0.327
+  P850_h400_pad0.08_s7777      Fz_hard=0.9360 Fz_soft=0.9360 A=0.974 eta_z=0.961 fill=0.321
+  P850_h400_pad0.08_s1001      Fz_hard=0.9349 Fz_soft=0.9349 A=0.975 eta_z=0.959 fill=0.321
+  P850_h400_pad0.08_s333       Fz_hard=0.9347 Fz_soft=0.9347 A=0.974 eta_z=0.960 fill=0.320
