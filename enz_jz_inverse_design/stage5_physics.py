@@ -39,7 +39,7 @@ import plots
 GEO = config.GEO_DTYPE
 
 
-def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detune_order):
+def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detune_order, lam_max=1400.0, asi_ext=False):
     run_dir = Path(run_dir)
     res = json.load(open(run_dir / "result.json"))
     P, h, tag = res["P"], res["h"], res["tag"]
@@ -47,17 +47,19 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
     o = out / tag
     o.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    lams = an.lam_grid(1100.0, 1400.0, lam_step, avoid=lam_ze)
-    log(f"== {tag}: P={P:.0f} h={h:.0f} | {len(lams)} wavelengths, order {order} ==")
+    lams = an.lam_grid(1100.0, lam_max, lam_step, avoid=lam_ze)
+    log(f"== {tag}: P={P:.0f} h={h:.0f} | {len(lams)} wavelengths 1100-{lam_max:.0f} nm, order {order}"
+        + (" | a-Si EXTRAPOLATED beyond 1400 nm (repo Cauchy extension)" if asi_ext else "") + " ==")
     cache = {}
+    sp_kw = dict(asi_extended=asi_ext)
     log("  spectrum with ITO (s=1)")
-    cache[1.0] = an.spec_arrays(an.spectrum(rho, P, h, lams, order, s=1.0, log=log))
+    cache[1.0] = an.spec_arrays(an.spectrum(rho, P, h, lams, order, s=1.0, log=log, **sp_kw))
     log("  spectrum without ITO")
-    sp_no = an.spec_arrays(an.spectrum(rho, P, h, lams, order, with_ito=False, log=log))
+    sp_no = an.spec_arrays(an.spectrum(rho, P, h, lams, order, with_ito=False, log=log, **sp_kw))
     log("  spectrum lossless ITO (s=0)")
-    cache[0.0] = an.spec_arrays(an.spectrum(rho, P, h, lams, order, s=0.0, log=log))
+    cache[0.0] = an.spec_arrays(an.spectrum(rho, P, h, lams, order, s=0.0, log=log, **sp_kw))
     log("  bare ITO film")
-    sp_bare = an.spec_arrays(an.spectrum(None, P, h, lams, [1, 1], s=1.0))
+    sp_bare = an.spec_arrays(an.spectrum(None, P, h, lams, [1, 1], s=1.0, **sp_kw))
     np.savez_compressed(o / "spectra.npz", lam=lams,
                         **{f"with_{k}": v for k, v in cache[1.0].items() if k != "lam"},
                         **{f"noito_{k}": v for k, v in sp_no.items() if k != "lam"},
@@ -95,7 +97,7 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
     tracks = []
     for p in near:
         rows = an.track_branch(rho, P, h, complex(p["omega_re"], p["omega_im"]), lams, order=order,
-                               log=log, tag=f"{tag}|{p['lambda_nm']:.0f}nm", spectra_cache=cache, exclude=ray_l)
+                               log=log, tag=f"{tag}|{p['lambda_nm']:.0f}nm", spectra_cache=cache, exclude=ray_l, asi_extended=asi_ext)
         fit = an.fit_gamma(rows)
         tracks.append(dict(start_pole=p, rows=rows, fit=fit))
         log(f"  fit: {json.dumps({k: v for k, v in fit.items() if k not in ('lossless_pole',)})}")
@@ -122,13 +124,13 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
 
     # ---- height detuning map ----------------------------------------------
     hs = np.linspace((1 - h_frac) * h, (1 + h_frac) * h, n_h)
-    lams_d = an.lam_grid(1100.0, 1400.0, 4.0, avoid=lam_ze)
+    lams_d = an.lam_grid(1100.0, lam_max, 4.0, avoid=lam_ze)
     A_map, Fz_map, T_no_map = [], [], []
     branches = []
     log(f"  detuning map: {n_h} heights x {len(lams_d)} wavelengths, order {detune_order}")
     for hh in hs:
-        sp = an.spec_arrays(an.spectrum(rho, P, float(hh), lams_d, detune_order, s=1.0))
-        spn = an.spec_arrays(an.spectrum(rho, P, float(hh), lams_d, detune_order, with_ito=False))
+        sp = an.spec_arrays(an.spectrum(rho, P, float(hh), lams_d, detune_order, s=1.0, **sp_kw))
+        spn = an.spec_arrays(an.spectrum(rho, P, float(hh), lams_d, detune_order, with_ito=False, **sp_kw))
         A_map.append(sp["A"]); Fz_map.append(sp["Fz"]); T_no_map.append(spn["T"])
         pw = an.significant_poles(lams_d, sp["r"], sp["t"], exclude=ray_l); pn = an.significant_poles(lams_d, spn["r"], spn["t"], exclude=ray_l)
         branches.append(dict(h=float(hh), with_ito=[(p["lambda_nm"], p["Q"]) for p in pw], no_ito=[(p["lambda_nm"], p["Q"]) for p in pn],
@@ -150,7 +152,7 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
         ax.axvline(lam_ze, color="k", ls="--", lw=0.6); ax.axhline(h, color="c", ls=":", lw=0.6)
         ax.set_xlabel("wavelength (nm)"); ax.set_ylabel("a-Si height h (nm)"); ax.set_title(f"{lab} (red: poles with ITO, white: poles without ITO)", fontsize=9)
         fig.colorbar(im, ax=ax, shrink=0.8)
-    fig.suptitle(f"{tag}: height detuning, order {detune_order}"); fig.tight_layout(); fig.savefig(o / "detuning_map.png", dpi=140); plt.close(fig)
+    fig.suptitle(f"{tag}: height detuning, order {detune_order}" + (" (a-Si extrapolated > 1400 nm)" if asi_ext else "")); fig.tight_layout(); fig.savefig(o / "detuning_map.png", dpi=140); plt.close(fig)
     # ---- multipole diagnostic of the induced a-Si current (with ITO, at lambda_ZE and at the Fz peak; and without ITO)
     mp = dict(with_ito_at_ZE=an.multipoles(rho.numpy(), P, h, lam_ze, order),
               with_ito_at_Fz_max=an.multipoles(rho.numpy(), P, h, peaks["lam_Fz_max"], order))
@@ -158,7 +160,7 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
     an.jdump(mp, o / "multipoles.json")
     summary = dict(tag=tag, P=P, h=h, peaks=peaks, rayleigh=ray, poles_with_ito=poles_with, poles_no_ito=poles_no,
                    poles_lossless_ito=poles_lossless, loss_scaling=[dict(start_lambda=t["start_pole"]["lambda_nm"], **t["fit"]) for t in tracks],
-                   multipoles=mp, wall_s=time.time() - t0)
+                   multipoles=mp, lam_max=lam_max, asi_extrapolated_beyond_1400=asi_ext, wall_s=time.time() - t0)
     an.jdump(summary, o / "physics.json")
     return summary
 
@@ -236,7 +238,11 @@ def main():
     ap.add_argument("--n-h", type=int, default=13)
     ap.add_argument("--threads", type=int, default=4)
     ap.add_argument("--no-refs", action="store_true")
+    ap.add_argument("--lam-max", type=float, default=1400.0)
+    ap.add_argument("--asi-extended", action="store_true", help="allow the flagged repo a-Si extension beyond 1400 nm")
     a = ap.parse_args()
+    if a.lam_max > 1400.0 and not a.asi_extended:
+        raise SystemExit("lam-max > 1400 nm requires --asi-extended (supplied a-Si:H data end at 1400 nm)")
     fwd.set_threads(a.threads)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     lam_ze, _ = mat.ito_zero_crossing()
@@ -244,7 +250,7 @@ def main():
 
     def log(*x):
         s = " ".join(str(v) for v in x); print(s, flush=True); print(s, file=logf, flush=True)
-    summaries = [run_candidate(r, out, lam_ze, log, list(a.order), a.lam_step, a.h_frac, a.n_h, list(a.detune_order)) for r in a.runs]
+    summaries = [run_candidate(r, out, lam_ze, log, list(a.order), a.lam_step, a.h_frac, a.n_h, list(a.detune_order), a.lam_max, a.asi_extended) for r in a.runs]
     refs = [] if a.no_refs else reference_spectra(out, lam_ze, log, list(a.order), a.lam_step)
     an.jdump(dict(candidates=summaries, references=refs), out / "physics_summary.json")
     write_md(summaries, refs, out, lam_ze)

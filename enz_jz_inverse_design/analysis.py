@@ -49,13 +49,20 @@ def lam_grid(lo=1100.0, hi=LAM_MAX, step=2.0, avoid=None):
 # spectra
 # ---------------------------------------------------------------------------
 def spectrum(rho, P, h, lams, order=config.ORDER_FULL, *, with_ito=True, s=1.0,
-             n_z=config.Z_SAMPLES_ITO, log=None, want_r_t=True):
+             n_z=config.Z_SAMPLES_ITO, log=None, want_r_t=True, asi_extended=False):
+    """asi_extended: beyond the 1400-nm end of the supplied a-Si:H file use the
+    repo's Cauchy extension (rows flagged asi_extrapolated=True)."""
     rows = []
+    a_hi = mat.asi().hi
     for i, lam in enumerate(lams):
+        ext = bool(lam > a_hi)
+        if ext and not asi_extended:
+            raise ValueError(f"lambda {lam} beyond the supplied a-Si:H range; pass asi_extended=True to use the flagged extension")
         with torch.no_grad():
-            sim = fwd.build_sim(rho, P, h, float(lam), order, with_ito=with_ito, ito_loss_scale=s)
+            sim = fwd.build_sim(rho, P, h, float(lam), order, with_ito=with_ito, ito_loss_scale=s,
+                                eps_asi=(mat.eps_asi_extended(float(lam)) if ext else None))
             R, T = fwd.rt_all_orders(sim)
-            row = dict(lam=float(lam), R=float(R), T=float(T), A=float(1 - R - T))
+            row = dict(lam=float(lam), R=float(R), T=float(T), A=float(1 - R - T), asi_extrapolated=ext)
             if with_ito:
                 d = fwd.loss_components(sim, n_z=n_z)
                 row.update(Fz=float(d["Fz"]), Fx=float(d["Fx"]), Fy=float(d["Fy"]), Ftot=float(d["Ftot"]),
@@ -171,7 +178,7 @@ OVL_MIN = 0.6
 
 
 def track_branch(rho, P, h, omega0, lams, s_levels=S_LEVELS, order=config.ORDER_FULL, log=print, tag="",
-                 spectra_cache=None, exclude=None):
+                 spectra_cache=None, exclude=None, refine_high_q=True, asi_extended=False):
     """Follow one pole branch through the ITO loss levels with field-overlap
     continuity (enz_highq_driven_ez_audit/poles.track_branch)."""
     rows, prev, prev_map = [], None, None
@@ -179,7 +186,7 @@ def track_branch(rho, P, h, omega0, lams, s_levels=S_LEVELS, order=config.ORDER_
         if spectra_cache is not None and s in spectra_cache:
             sp = spectra_cache[s]
         else:
-            sp = spec_arrays(spectrum(rho, P, h, lams, order, s=s))
+            sp = spec_arrays(spectrum(rho, P, h, lams, order, s=s, asi_extended=asi_extended))
             if spectra_cache is not None:
                 spectra_cache[s] = sp
         cands = significant_poles(sp["lam"], sp["r"], sp["t"], exclude=exclude)
@@ -200,22 +207,45 @@ def track_branch(rho, P, h, omega0, lams, s_levels=S_LEVELS, order=config.ORDER_
         jump = bool(ovl < OVL_MIN or (len(near) > 1 and near[0] is not chosen))
         row = {k: v for k, v in chosen.items() if not k.startswith("_")}
         row.update(s=s, overlap_prev=ovl, alternatives=alts, jump_flag=jump, n_candidates_near=len(near))
+        if refine_high_q and chosen["Q"] > 25:
+            row["local_refine"] = local_refine(rho, P, h, s, chosen, order, exclude=exclude, asi_extended=asi_extended)
+            if row["local_refine"].get("converged"):
+                # use the dense-rescan values (sampling-converged) for the fit
+                row["gamma"], row["Q"], row["lambda_nm"] = row["local_refine"]["gamma_local"], row["local_refine"]["Q_local"], row["local_refine"]["lambda_local"]
         rows.append(row)
-        log(f"  [{tag}] s={s:.2f}: pole {chosen['lambda_nm']:8.2f} nm Q={chosen['Q']:8.2f} gamma={chosen['gamma']:.5f} "
-            f"ovl={ovl:.3f}{' JUMP?' if jump else ''}")
+        log(f"  [{tag}] s={s:.2f}: pole {row['lambda_nm']:8.2f} nm Q={row['Q']:8.2f} gamma={row['gamma']:.5f} "
+            f"ovl={ovl:.3f}{' JUMP?' if jump else ''}" + (f" refine:{row['local_refine'].get('converged')}" if "local_refine" in row else ""))
         prev, prev_map = chosen, cmap
     return rows
 
 
+def local_refine(rho, P, h, s, pole, order=config.ORDER_FULL, n=41, half_fwhm=6.0, exclude=None, asi_extended=False):
+    """Dense local rescan (+-6 FWHM, n points) around a pole: sampling-convergence
+    certificate (enz_highq_driven_ez_audit/poles.local_refine)."""
+    lam0 = pole["lambda_nm"]; fwhm = lam0 / max(pole["Q"], 1e-6)
+    half = max(half_fwhm * fwhm, 6.0)
+    hi = LAM_MAX if not asi_extended else 1600.0
+    lams = np.linspace(max(lam0 - half, LAM_MIN), min(lam0 + half, hi), n)
+    sp = spec_arrays(spectrum(rho, P, h, lams, order, s=s, asi_extended=asi_extended))
+    cands = significant_poles(lams, sp["r"], sp["t"], exclude=exclude)
+    if not cands:
+        return dict(converged=False, note="no significant pole in local rescan", span_nm=2 * half, n_points=n)
+    q = min(cands, key=lambda p: abs(complex(p["omega_re"], p["omega_im"]) - complex(pole["omega_re"], pole["omega_im"])))
+    rel = abs(complex(q["omega_re"], q["omega_im"]) - complex(pole["omega_re"], pole["omega_im"])) / abs(complex(pole["omega_re"], pole["omega_im"]))
+    return dict(converged=bool(rel < 0.02), rel_diff=float(rel), lambda_local=q["lambda_nm"], Q_local=q["Q"],
+                gamma_local=q["gamma"], span_nm=float(2 * half), n_points=n)
+
+
 def fit_gamma(rows):
-    """gamma(s) = gamma_rad + s gamma_nr on the non-jumping rows -> Q_rad, Q_nr."""
+    """gamma(s) = gamma_rad + s gamma_nr on the non-jumping rows -> Q_rad, Q_nr.
+    omega0 is the s = 1 (loaded) pole frequency."""
     use = [r for r in rows if not r.get("jump_flag")] or rows
     if len(use) < 3:
         return dict(error="insufficient tracked levels", n=len(use))
     S = np.array([r["s"] for r in use]); G = np.array([r["gamma"] for r in use])
     slope, icpt = np.polyfit(S, G, 1)
     resid = float(np.max(np.abs(G - (slope * S + icpt))) / G.max())
-    w0 = use[0]["omega_re"]
+    w0 = rows[0]["omega_re"]
     g_rad, g_nr = float(icpt), float(slope)
     lossless = next((r for r in rows if r["s"] == 0.0 and not r.get("jump_flag")), None)
     return dict(gamma_rad=g_rad, gamma_nr=g_nr,

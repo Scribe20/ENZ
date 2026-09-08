@@ -1,38 +1,43 @@
-"""Reference: the TM ENZ (long-range / Berreman-type) mode of the BARE
-air / ITO(23 nm) / glass film under the NEW materials, as a complex-frequency
-pole at fixed real in-plane momentum K = G10(P) = 2 pi / P.
+"""Reference: TM ENZ (long-range / Berreman-type) mode of the BARE
+air / ITO(23 nm) / glass film under the NEW materials.
 
-Analytic continuation of eps_ITO to complex omega requires a model: a Drude
-form  eps = eps_inf - wp^2 / (w^2 + i gamma w)  is least-squares fitted to the
-supplied ITO_nk.csv over 1000-1675 nm (fit residual reported); it is used ONLY
-here, never in the RCWA campaign (which uses the tabulated data directly).
-Glass: real n_glass(lambda_ZE); a-Si absent.  For P < lambda/n_glass the mode
-at K = G10 lies outside the glass light cone -> bound, non-radiative: the
-pole's Im(omega) is the ITO material damping of the ENZ mode.
+Three complementary views (no a-Si):
+  (1) complex-frequency pole at fixed real in-plane momentum K = G10(P):
+      needs eps_ITO at complex omega -> a Drude form fitted to the supplied
+      ITO_nk.csv over 1000-1675 nm (fit residual reported; used ONLY here)
+  (2) complex in-plane momentum K(lambda) at REAL lambda with the TABULATED
+      eps_ITO (no analytic continuation)
+  (3) driven p-polarized absorption of the bare film vs lambda at oblique
+      incidence (torcwa, order [1,1]) -> Berreman absorption peak.
 
-TM dispersion (exp(-j w t); kz_i = sqrt(eps_i k0^2 - K^2), decaying branches
-in the claddings):
-  (kz1/e1 + kz2/e2)(kz2/e2 + kz3/e3) - (kz1/e1 - kz2/e2)(kz2/e2 - kz3/e3) exp(2 i kz2 d) = 0
+TM pole condition of a slab (exp(-j w t); kz_i = sqrt(eps_i k0^2 - K^2),
+decaying/outgoing branches in the claddings), normalized Fresnel form:
+    D = 1 + r12 r23 exp(2 i kz2 d) = 0,
+    r_ij = (kz_i/eps_i - kz_j/eps_j) / (kz_i/eps_i + kz_j/eps_j).
+(A first version of this file used '(a+b)(b+c) - (a-b)(b-c) e^{2 i kz2 d}';
+the sign was wrong - caught by the source audit against enz_target/
+tm_slab_mode.py - and its outputs were discarded.)
 """
 
 import json
 import sys
 
 import numpy as np
-from scipy.optimize import least_squares
+import torch
+from scipy.optimize import least_squares, root
 
 import config
 import materials as mat
 
 C = 299.792458          # nm/fs
-D = config.D_ITO_NM
+D_ITO = config.D_ITO_NM
 
 
 def drude_fit(lo=1000.0, hi=1675.0):
     t = mat.ito()
     sel = (t.wl >= lo) & (t.wl <= hi)
     wl = t.wl[sel]; eps = (t.n[sel] + 1j * t.k[sel]) ** 2
-    w = 2 * np.pi * C / wl                                 # rad/fs
+    w = 2 * np.pi * C / wl
 
     def model(p, w):
         einf, wp, g = p
@@ -41,107 +46,117 @@ def drude_fit(lo=1000.0, hi=1675.0):
     def resid(p):
         e = model(p, w)
         return np.concatenate([(e.real - eps.real), (e.imag - eps.imag)])
-    p0 = [3.9, 2 * np.pi * C / 1302.28 * np.sqrt(3.9), 0.2]
-    fit = least_squares(resid, p0, bounds=([1.0, 0.1, 0.0], [10.0, 10.0, 2.0]))
+    fit = least_squares(resid, [3.9, 2 * np.pi * C / 1302.28 * np.sqrt(3.9), 0.2],
+                        bounds=([1.0, 0.1, 0.0], [10.0, 10.0, 2.0]))
     e = model(fit.x, w)
     return dict(eps_inf=float(fit.x[0]), wp_rad_fs=float(fit.x[1]), gamma_rad_fs=float(fit.x[2]),
                 rms_resid=float(np.sqrt(np.mean(np.abs(e - eps) ** 2))), max_abs_resid=float(np.max(np.abs(e - eps))),
                 range_nm=[lo, hi], model=model)
 
 
-def tm_dispersion(w, K, eps_ito_fn, n_glass):
-    e1, e2, e3 = 1.0, eps_ito_fn(w), n_glass ** 2
+def _kz(e, k0, K):
+    v = np.sqrt(e * k0 ** 2 - K ** 2 + 0j)
+    return v if (v.imag > 0 or (v.imag == 0 and v.real > 0)) else -v     # decaying / outgoing
+
+
+def D_fresnel(w, K, eps2, n_glass):
+    e1, e3 = 1.0, n_glass ** 2
     k0 = w / C
-    def kz(e):
-        v = np.sqrt(e * k0 ** 2 - K ** 2 + 0j)
-        return v if v.imag >= 0 else -v          # decaying into the claddings
-    kz1, kz3 = kz(e1), kz(e3)
-    kz2 = np.sqrt(e2 * k0 ** 2 - K ** 2 + 0j)
-    a, b, c = kz1 / e1, kz2 / e2, kz3 / e3
-    return (a + b) * (b + c) - (a - b) * (b - c) * np.exp(2j * kz2 * D)
+    kz1, kz3 = _kz(e1, k0, K), _kz(e3, k0, K)
+    kz2 = np.sqrt(eps2 * k0 ** 2 - K ** 2 + 0j)
+    a, b, c = kz1 / e1, kz2 / eps2, kz3 / e3
+    r12, r23 = (a - b) / (a + b), (b - c) / (b + c)
+    return 1 + r12 * r23 * np.exp(2j * kz2 * D_ITO)
 
 
-def solve_pole(K, eps_fn, n_glass, w0, iters=60):
-    w = complex(w0)
-    for _ in range(iters):
-        f = tm_dispersion(w, K, eps_fn, n_glass)
-        dw = 1e-6 * abs(w)
-        df = (tm_dispersion(w + dw, K, eps_fn, n_glass) - tm_dispersion(w - dw, K, eps_fn, n_glass)) / (2 * dw)
-        step = f / df
-        w = w - step
-        if abs(step) < 1e-12 * abs(w):
-            break
-    return w, abs(tm_dispersion(w, K, eps_fn, n_glass))
+def solve_pole_omega(K, eps_fn, n_glass, w0):
+    f = lambda v: (lambda d: [d.real, d.imag])(D_fresnel(v[0] + 1j * v[1], K, eps_fn(v[0] + 1j * v[1]), n_glass))
+    sol = root(f, [w0.real, w0.imag], method="hybr", tol=1e-13)
+    w = sol.x[0] + 1j * sol.x[1]
+    return w, abs(D_fresnel(w, K, eps_fn(w), n_glass)), bool(sol.success)
 
 
-def solve_K(lam, K0, n_glass, iters=80):
-    """Complex in-plane momentum K of the TM mode at REAL wavelength lam with the
-    TABULATED eps_ITO(lam) (no analytic continuation needed)."""
+def solve_K(lam, K0, n_glass):
     w = 2 * np.pi * C / lam
-    eps_fn = lambda _w: mat.eps_ito(lam)
-    K = complex(K0)
-    for _ in range(iters):
-        f = tm_dispersion(w, K, eps_fn, n_glass)
-        dK = 1e-7 * max(abs(K), 1e-3)
-        df = (tm_dispersion(w, K + dK, eps_fn, n_glass) - tm_dispersion(w, K - dK, eps_fn, n_glass)) / (2 * dK)
-        step = f / df
-        K = K - step
-        if abs(step) < 1e-13 * max(abs(K), 1e-9):
-            break
-    return K, abs(tm_dispersion(w, K, eps_fn, n_glass))
+    e2 = mat.eps_ito(lam)
+    f = lambda v: (lambda d: [d.real, d.imag])(D_fresnel(w, v[0] + 1j * v[1], e2, n_glass))
+    sol = root(f, [K0.real, K0.imag], method="hybr", tol=1e-13)
+    K = sol.x[0] + 1j * sol.x[1]
+    return K, abs(D_fresnel(w, K, e2, n_glass)), bool(sol.success)
 
 
 def real_axis_dispersion(n_glass, lams=np.arange(1150.0, 1400.1, 2.0), K0_over_k0=1.75):
-    """Track the ENZ-branch TM mode K(lambda) at real lambda (tabulated eps):
-    returns Re K/k0, Im K/k0, and the (real) wavelength where Re K = G10(P)."""
-    rows = []
-    K = None
+    rows, K = [], None
     for lam in lams:
         k0 = 2 * np.pi / lam
         K0 = K if K is not None else K0_over_k0 * k0 * (1 + 0.05j)
-        K, res = solve_K(lam, K0, n_glass)
+        K, res, ok = solve_K(lam, K0, n_glass)
         rows.append(dict(lam=float(lam), ReK_over_k0=float(K.real / k0), ImK_over_k0=float(K.imag / k0),
-                         residual=float(res), eps_ito=[mat.eps_ito(lam).real, mat.eps_ito(lam).imag]))
+                         residual=float(res), converged=ok, eps_ito=[mat.eps_ito(lam).real, mat.eps_ito(lam).imag]))
     return rows
+
+
+def bare_film_absorption(lams, thetas=(45.0, 60.0, 70.0)):
+    """Driven p-polarized absorption of air/ITO/glass (torcwa, order [1,1])."""
+    import forward as fwd
+    out = {}
+    for th in thetas:
+        A = []
+        for lam in lams:
+            with torch.no_grad():
+                sim = fwd.build_sim(None, 500.0, 10.0, float(lam), [1, 1], theta_deg=th, pol="p")
+                R, T = fwd.rt_all_orders(sim)
+            A.append(float(1 - R - T))
+        A = np.array(A)
+        out[f"theta{th:.0f}"] = dict(A=A.tolist(), lam_peak=float(lams[int(A.argmax())]), A_peak=float(A.max()))
+    return out
 
 
 def main(out=config.OUT / "stage0" / "enz_film_mode.json"):
     lam_ze, _ = mat.ito_zero_crossing()
     ng = mat.n_glass(lam_ze)
-    fit = drude_fit()
-    model = fit.pop("model")
-    eps_fn = lambda w: model([fit["eps_inf"], fit["wp_rad_fs"], fit["gamma_rad_fs"]], w)
+    fit = drude_fit(); model = fit.pop("model")
+    p = [fit["eps_inf"], fit["wp_rad_fs"], fit["gamma_rad_fs"]]
+    eps_fn = lambda w: model(p, w)
     w_ze = 2 * np.pi * C / lam_ze
-    rows = []
-    for P in [550.0, 650.0, 750.0, 825.0, 850.0, 1000.0, 1300.0]:
+    # sanity: the validated historical pole convention is reproduced by the '+' form
+    poles = []
+    for P in [550.0, 650.0, 750.0, 825.0, 850.0, 1000.0]:
         K = 2 * np.pi / P
-        w, res = solve_pole(K, eps_fn, ng, w_ze * (1 - 0.05j))
-        lam = 2 * np.pi * C / w.real
-        rows.append(dict(P=P, K_over_k0=float(K / (w_ze / C)), lambda_pole_nm=float(lam), Q=float(w.real / (2 * abs(w.imag))),
-                         gamma_rad_fs=float(abs(w.imag)), residual=float(res),
-                         bound=bool(K > ng * w.real / C)))
-    ez_check = dict(eps_drude_at_ZE=[eps_fn(w_ze).real, eps_fn(w_ze).imag], eps_table_at_ZE=[mat.eps_ito(lam_ze).real, mat.eps_ito(lam_ze).imag])
+        best = None
+        for lam0 in (1302.0, 1330.0, 1360.0, 1400.0):
+            for q in (8.0, 12.0, 20.0):
+                w0 = 2 * np.pi * C / lam0 * (1 - 1j / (2 * q))
+                w, res, ok = solve_pole_omega(K, eps_fn, ng, w0)
+                if ok and res < 1e-9 and w.imag < 0 and 1200 < 2 * np.pi * C / w.real < 1500:
+                    cand = dict(lambda_pole_nm=float(2 * np.pi * C / w.real), Q=float(w.real / (2 * abs(w.imag))),
+                                gamma_rad_fs=float(abs(w.imag)), residual=float(res))
+                    if best is None or abs(cand["lambda_pole_nm"] - lam_ze) < abs(best["lambda_pole_nm"] - lam_ze):
+                        best = cand
+        poles.append(dict(P=P, K_over_k0=float(K / (w_ze / C)), bound=bool(K > ng * w_ze / C),
+                          **(best or dict(lambda_pole_nm=None, Q=None, gamma_rad_fs=None, residual=None))))
     disp = real_axis_dispersion(ng)
-    # wavelength where the real part of the tracked mode momentum equals G10(P)
-    match = []
-    L = np.array([d["lam"] for d in disp]); RK = np.array([d["ReK_over_k0"] for d in disp]) * 2 * np.pi / L
-    for P in [550.0, 650.0, 750.0, 825.0, 850.0]:
-        G = 2 * np.pi / P
-        idx = np.where(np.sign(RK[:-1] - G) != np.sign(RK[1:] - G))[0]
-        match.append(dict(P=P, lambda_match_nm=[float(np.interp(G, [RK[i], RK[i + 1]], [L[i], L[i + 1]])) for i in idx]))
+    n_conv = sum(d["converged"] for d in disp)
+    lams_b = np.arange(1150.0, 1400.1, 2.0)
+    berreman = bare_film_absorption(lams_b)
     rep = dict(lambda_ZE=lam_ze, n_glass=ng,
-               complex_omega_drude=dict(drude_fit=fit, check=ez_check, poles=rows,
-                                        caveat="Drude continuation of a Drude-Lorentz table (rms resid 0.056): low confidence; kept for transparency"),
-               real_axis_tabulated=dict(dispersion=disp, G10_matches=match,
-                                        note="complex K(lambda) of the bare-film TM ENZ branch with the tabulated eps (no continuation)"),
-               note="bare air/ITO(23)/glass TM mode reference (no a-Si)")
+               complex_omega_drude=dict(drude_fit=fit,
+                                        check=dict(eps_drude_at_ZE=[eps_fn(w_ze).real, eps_fn(w_ze).imag],
+                                                   eps_table_at_ZE=[mat.eps_ito(lam_ze).real, mat.eps_ito(lam_ze).imag]),
+                                        poles=poles,
+                                        caveat="Drude continuation of a Drude-Lorentz table (rms resid 0.056): moderate confidence"),
+               real_axis_tabulated=dict(dispersion=disp, n_converged=int(n_conv), n_total=len(disp),
+                                        status=("USED" if n_conv == len(disp) else "NOT CONVERGED - not used in any report"),
+                                        note="complex K(lambda) of the bare-film TM branch, tabulated eps, hybr on the normalized D"),
+               berreman_driven=dict(lam=lams_b.tolist(), **berreman,
+                                    note="bare air/ITO/glass p-pol absorption vs lambda at oblique incidence (torcwa [1,1])"),
+               note="bare air/ITO(23)/glass TM mode reference (no a-Si); D = 1 + r12 r23 exp(2 i kz2 d)")
     with open(out, "w") as f:
         json.dump(rep, f, indent=1)
-    print("Drude fit:", {k: v for k, v in fit.items()}, "check:", ez_check)
-    print("complex-omega poles (Drude, low confidence):", [(r["P"], round(r["lambda_pole_nm"], 1), round(r["Q"], 2)) for r in rows])
-    for d in disp[::10]:
-        print(f"  lam {d['lam']:.0f}: ReK/k0 {d['ReK_over_k0']:.3f} ImK/k0 {d['ImK_over_k0']:.3f} resid {d['residual']:.1e} eps {d['eps_ito'][0]:+.3f}+{d['eps_ito'][1]:.3f}i")
-    print("G10 matches:", match)
+    print("Drude fit:", fit)
+    print("complex-omega poles at K=G10(P):", [(r["P"], r["lambda_pole_nm"] and round(r["lambda_pole_nm"], 1), r["Q"] and round(r["Q"], 2)) for r in poles])
+    print(f"real-axis K tracker: {n_conv}/{len(disp)} converged -> {rep['real_axis_tabulated']['status']}")
+    print("Berreman driven peaks:", {k: (v["lam_peak"], round(v["A_peak"], 3)) for k, v in berreman.items()})
     return rep
 
 

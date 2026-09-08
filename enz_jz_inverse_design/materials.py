@@ -112,6 +112,24 @@ def asi():
     return _CACHE["asi"]
 
 
+def asi_extended():
+    """Repo-derived Cauchy EXTENSION of the same POSTECH a-Si:H data to 2000 nm
+    (enz_inverse_design/data_aSi_H_measured_Postech_extended_to_2000nm.txt).
+    NOT part of the supplied materials; used only, explicitly flagged, for
+    spectral views beyond the 1400-nm end of the supplied file."""
+    if "asi_ext" not in _CACHE:
+        _CACHE["asi_ext"] = load_two_col_nk(
+            config.ROOT / "enz_inverse_design" / "data_aSi_H_measured_Postech_extended_to_2000nm.txt",
+            "a-Si:H (repo Cauchy extension)", "EXTRAPOLATION beyond 1400 nm - not supplied data")
+    return _CACHE["asi_ext"]
+
+
+def eps_asi_extended(lam):
+    """Supplied data where available, repo extension beyond it (flagged by the caller)."""
+    a = asi()
+    return a.eps(lam) if a.lo <= lam <= a.hi else asi_extended().eps(lam)
+
+
 def glass():
     if "glass" not in _CACHE:
         _CACHE["glass"] = load_two_col_nk(config.GLASS_FILE, "soda-lime glass")
