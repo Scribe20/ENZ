@@ -1,0 +1,10 @@
+[stage2c] 4 jobs, 2 workers
+[1/4 120s] FABR_h970_P800_pad0.08_warm: Fz_hard=0.8406 (117s)
+[2/4 120s] FABR_h970_P825_pad0.08_warm: Fz_hard=0.9459 (117s)
+[3/4 283s] FABR_h970_P588_pad0.08_warmFREE: Fz_hard=0.0539 (163s)
+[4/4 286s] FABR_h970_P825_pad0.08_warmFREE: Fz_hard=0.5481 (166s)
+[stage2c] done in 287s; 4 results
+  FABR_h970_P825_pad0.08_warm              Fz_hard=0.9459 Fz_soft=0.9461 A=0.978 eta_z=0.967 fill=0.414 warm=True
+  FABR_h970_P800_pad0.08_warm              Fz_hard=0.8406 Fz_soft=0.8405 A=0.888 eta_z=0.947 fill=0.460 warm=True
+  FABR_h970_P825_pad0.08_warmFREE          Fz_hard=0.5481 Fz_soft=0.5466 A=0.633 eta_z=0.866 fill=0.300 warm=True
+  FABR_h970_P588_pad0.08_warmFREE          Fz_hard=0.0539 Fz_soft=0.0538 A=0.086 eta_z=0.630 fill=0.232 warm=True
