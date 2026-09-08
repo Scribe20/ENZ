@@ -330,6 +330,9 @@ def sensitivity(rho_hard, P, h, lam, M, order=config.ORDER_FULL):
         out["height"][f"h{dh:+.1f}"] = evaluate_hard(rho_hard, P, h + dh, lam, order)
     for fP in (0.98, 1.02):
         out["period"][f"P x{fP}"] = evaluate_hard(rho_hard, P * fP, h, lam, order)
+    # 3-nm ALD Al2O3 spacer between a-Si and ITO (present in the SNU fabricated stack, absent from the task model)
+    r = torch.as_tensor(np.asarray(rho_hard), dtype=GEO)
+    out["spacer_Al2O3_3nm"] = fwd.to_floats(fwd.evaluate(r, P, h, lam, order, spacer_nm=3.0, spacer_eps=1.65 ** 2))
     return out
 
 

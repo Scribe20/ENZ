@@ -90,12 +90,21 @@ feature/gap, components, ring contact, ±1/±2 px, ±10 nm / ±10 % h, ±2 % P),
 
 ## 8. Authoritative fixed a-Si:H thickness?
 
-None found.  Karimi et al. used 140 nm (EDR) and 210 nm (MDR) for cuboids; `enz_inverse_design/config.py`
-froze 140 nm as "Karimi EDR thickness"; the robust campaign screened 120–240 nm; the never-executed notebooks
-seeded TK-BIC cylinders at H ≈ 600 nm (rigid scaling of the TKE paper) and H = 510 nm (finite-Q pipeline) with
-H swept 380–720 nm; the SNU deck (`ITO_activation_08_19.pdf`, 2026-08-07) states the goal "TK-BIC coupling with
-Ez at 1302 nm, high NA (~0.6, 40°) with high Q" without any thickness or minimum-feature number.  Height was
-therefore treated as a discrete outer variable (100–600 nm).
+Text sources give none (Karimi: 140/210-nm cuboids; `enz_inverse_design/config.py` froze 140 nm as "Karimi EDR
+thickness"; the robust campaign screened 120–240 nm; the never-executed notebooks seeded H ≈ 510–600 nm).  The
+SNU deck `ITO_activation_08_19.pdf` (2026-08-07), whose numbers live only in embedded slide images, DOES fix a
+fabricated design: a-Si:H cylinder **h = 970.5 nm**, d = 405.7 nm, P = 588 nm on 23-nm ITO / glass (pp. 13, 19),
+with a 3-nm ALD Al2O3 layer between ITO and a-Si:H in the fabricated stack (p. 19; absent from the deck's own
+simulation schematic and from the task's stack), EBL with 300-nm ZEP + 30-nm Cr hard mask, SF6/C4F8 etch
+(realized gap 182 nm, aspect ratio 5.3), operating point 1291.6 nm at critical coupling (γ_r = γ_nr = 8.54 meV,
+A_pk = 0.47, T_min ≈ 0.25), realized NA 0.14 (8°; resonance survives to NA 0.21), and "freeform nonlinear
+metasurface" listed as future work (p. 23).  Consequences for this campaign: (i) the free-height search
+(100–600 nm, §5 of REPORT.md) stands as the primary discovery; (ii) h = 970.5 nm is respected by an explicit
+fabrication-thickness-constrained sub-campaign (`outputs/stage1c`, P ∈ {588, 650, 750, 825} nm) reported
+alongside it; (iii) the 3-nm Al2O3 spacer is evaluated as a sensitivity (`analysis.sensitivity`,
+`spacer_Al2O3_3nm`): for the Stage-2 leader F_z changes from 0.9549 to 0.9565 (A 0.9965 → 0.9980), i.e. it is
+immaterial at this level; (iv) the deck's NA 0.14 and its diffraction-free period 588 nm are the concrete
+references for the robustness follow-up.
 
 ## 9. What the historical work concluded about critical coupling and mode identity
 
@@ -109,3 +118,25 @@ The high-NA goal of the deck implies P < 615 nm (NA 0.6) or < 517.5 nm (all angl
 substrate; the normal-incidence F_z optimum found here lies at P = 750–850 nm, where the (±1,0) glass orders
 open for θ > 0.9° (P = 850) … 12.7° (P = 750).  This is the subject of the separate robustness follow-up, as
 the task prescribes.
+
+## 11. Independent verification of this package (third reader batch)
+
+* torcwa/Fourier route: `forward.ito_fourier_coeffs` is algebraically identical to the internal-layer branch of
+  `rcwa.field_xy` (numerically 3.6×10⁻¹⁶); on a random 64×64 test at order [3,3] the Fourier and real-space F_x,
+  F_y, F_z, F_tot agree to 7×10⁻¹³, F_tot − (1−R−T) = −1.2×10⁻⁶ (n_z 7) → −1.5×10⁻⁸ (n_z 63), |E_x| = |1+r| at the
+  input boundary exactly, E_z ≡ 0 in the ITO of a uniform stack, r/t agree with an independent transfer-matrix
+  solution to 10⁻¹⁶; `field_xy` z_prop is measured from the input-side (a-Si) boundary (tangential-E continuity
+  pinned to 10⁻¹⁵).  Upstream `rcwa.py` line 5 defines pi = 3.141592652589793 (9th decimal wrong, 3.2×10⁻¹⁰
+  relative) — physically irrelevant, but it is the origin of the ~2×10⁻¹⁰ floors quoted in gate G6.  The Laurent
+  rule (no inverse rule) makes fields in the patterned layer converge slowly with order (hence the [11,11]
+  certification); the p/s power normalization used here is exact and the 'xx'/'yy' route is not for diagonal
+  orders (never used).  Gradient caveats (Eig broadening 10⁻¹⁰, missing gauge term) are harmless for RCWA
+  losses of asymmetric designs (min eigengap 2.8×10⁻³; autograd vs FD 2×10⁻⁸).
+* materials: every number of `materials_audit.json` reproduced exactly by an independent implementation;
+  λ_ZE = 1302.282 ± 0.0003 nm (interpolant/rounding spread), ε'' = 0.43195 ± 3×10⁻⁶, glass n = 1.51653 ± 10⁻⁵,
+  P_thr = 858.73 ± 0.01 nm; the old-repo ITO is a lossy dielectric at 1302 nm (ε = +0.60 + 0.53 i); fragilities
+  outside the campaign window only (glass K_ZERO_TOL 353–367 nm, a-Si k ringing 700–710 nm); supplied
+  `Materials.py` additionally has a 2× wavelength-gradient bug (line 52).
+* paper: EDR 560×500×140 @ 850, MDR 650×650×210 @ 810, ITO 23 nm, crossing 1410 nm, ENZ mode ≈ 1460 nm,
+  Δf 21/26 THz vs 12-THz linewidths, detuning by antenna length (EDR) or lattice (MDR); the SI (fabrication,
+  analytic ENZ-mode equation) is not part of the supplied text.

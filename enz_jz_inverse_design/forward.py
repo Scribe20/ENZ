@@ -114,7 +114,7 @@ def lab_x_amplitude_ps(theta_deg, phi_deg):
 # ---------------------------------------------------------------------------
 def build_sim(rho, P, h, lam, order, *, with_ito=True, ito_loss_scale=1.0,
               eps_asi=None, eps_ito=None, n_glass=None, theta_deg=0.0,
-              phi_deg=0.0, pol="labx", d_ito=D_ITO):
+              phi_deg=0.0, pol="labx", d_ito=D_ITO, spacer_nm=0.0, spacer_eps=1.65 ** 2):
     """Solve air / a-Si(h, rho) / [ITO d_ito] / glass for one design.
 
     rho: (nx, ny) tensor in [0, 1] on the normalized cell, or None for an
@@ -135,9 +135,15 @@ def build_sim(rho, P, h, lam, order, *, with_ito=True, ito_loss_scale=1.0,
     else:
         eps_layer = rho * (complex(eps_asi) - 1.0) + 1.0
         sim.add_layer(thickness=float(h), eps=eps_layer.to(SIM_DTYPE))
+    ito_layer = 1
+    if spacer_nm > 0:                       # optional thin dielectric between a-Si and ITO (sensitivity only)
+        sim.add_layer(thickness=float(spacer_nm), eps=complex(spacer_eps))
+        ito_layer = 2
     if with_ito:
         sim.add_layer(thickness=float(d_ito), eps=complex(eps_ito))
     sim.solve_global_smatrix()
+    sim._ito_layer = ito_layer if with_ito else None
+    sim._spacer = (float(spacer_nm), complex(spacer_eps))
     if pol == "labx":
         amp = lab_x_amplitude_ps(theta_deg, phi_deg)
     elif pol == "p":
@@ -211,13 +217,14 @@ def ito_fields(sim, nx=None, n_z=None, x=None, y=None):
     if x is None:
         x, y = cell_axes(sim._P, nx)
     E = []
+    lay = getattr(sim, "_ito_layer", ITO_LAYER)
     for zp in ito_z_slices(n_z, sim._d_ito):
-        Ev, _ = sim.field_xy(ITO_LAYER, x, y, float(zp))
+        Ev, _ = sim.field_xy(lay, x, y, float(zp))
         E.append(torch.stack(list(Ev), 0))
     return torch.stack(E, 0)
 
 
-def ito_fourier_coeffs(sim, zp, layer=ITO_LAYER):
+def ito_fourier_coeffs(sim, zp, layer=None):
     """Fourier coefficients (Ex_mn, Ey_mn, Ez_mn), each of length order_N, of
     the TOTAL field in internal layer `layer` at distance zp from its
     input-side boundary.  Same linear algebra as the internal-layer branch of
@@ -225,6 +232,7 @@ def ito_fourier_coeffs(sim, zp, layer=ITO_LAYER):
     real-space synthesis:  Ez_mn = eps_conv^-1 (Ky Hx_mn - Kx Hy_mn).
     Differentiable."""
     N = sim.order_N
+    layer = getattr(sim, "_ito_layer", ITO_LAYER) if layer is None else layer
     C = torch.matmul(sim.C[0][layer] if sim.source_direction == "forward" else sim.C[1][layer], sim.E_i)
     kz = sim.kz_norm[layer]
     Ev, Hv = sim.E_eigvec[layer], sim.H_eigvec[layer]

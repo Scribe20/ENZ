@@ -1,0 +1,322 @@
+[
+ {
+  "tag": "FAB_h970_P588_pad0.08_s333",
+  "P": 588.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 333,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P588_pad0.12_s333",
+  "P": 588.0,
+  "h": 970.5,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P650_pad0.08_s333",
+  "P": 650.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 333,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P650_pad0.12_s333",
+  "P": 650.0,
+  "h": 970.5,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P750_pad0.08_s333",
+  "P": 750.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 333,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P750_pad0.12_s333",
+  "P": 750.0,
+  "h": 970.5,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P825_pad0.08_s333",
+  "P": 825.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 333,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P825_pad0.12_s333",
+  "P": 825.0,
+  "h": 970.5,
+  "pad": 0.12,
+  "seed": 333,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P588_pad0.08_s1001",
+  "P": 588.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P588_pad0.12_s1001",
+  "P": 588.0,
+  "h": 970.5,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P650_pad0.08_s1001",
+  "P": 650.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P650_pad0.12_s1001",
+  "P": 650.0,
+  "h": 970.5,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P750_pad0.08_s1001",
+  "P": 750.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P750_pad0.12_s1001",
+  "P": 750.0,
+  "h": 970.5,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P825_pad0.08_s1001",
+  "P": 825.0,
+  "h": 970.5,
+  "pad": 0.08,
+  "seed": 1001,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ },
+ {
+  "tag": "FAB_h970_P825_pad0.12_s1001",
+  "P": 825.0,
+  "h": 970.5,
+  "pad": 0.12,
+  "seed": 1001,
+  "n_iter": 80,
+  "order": [
+   5,
+   5
+  ],
+  "warm": null,
+  "beta_start": 1.0,
+  "eval_order": [
+   7,
+   7
+  ],
+  "n_threads": 1,
+  "save_every": 20
+ }
+]
