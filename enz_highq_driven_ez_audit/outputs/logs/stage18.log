@@ -1,0 +1,23 @@
+delta=0.0000 ENZ crossing=1419.6 nm: T(1433.5)=0.321 A=0.501
+delta=0.0125 ENZ crossing=1428.8 nm: T(1433.5)=0.323 A=0.503
+delta=0.0250 ENZ crossing=1438.2 nm: T(1433.5)=0.326 A=0.503
+delta=0.0375 ENZ crossing=1447.8 nm: T(1433.5)=0.330 A=0.503
+delta=0.0500 ENZ crossing=1457.6 nm: T(1433.5)=0.336 A=0.503
+delta=0.0625 ENZ crossing=1467.6 nm: T(1433.5)=0.343 A=0.501
+delta=0.0750 ENZ crossing=1477.8 nm: T(1433.5)=0.351 A=0.498
+delta=0.0875 ENZ crossing=1488.3 nm: T(1433.5)=0.361 A=0.494
+delta=0.1000 ENZ crossing=1498.9 nm: T(1433.5)=0.372 A=0.488
+delta=0.1125 ENZ crossing=1509.8 nm: T(1433.5)=0.384 A=0.482
+delta=0.1250 ENZ crossing=1520.9 nm: T(1433.5)=0.397 A=0.474
+delta=0.1375 ENZ crossing=1532.3 nm: T(1433.5)=0.410 A=0.466
+delta=0.1500 ENZ crossing=1543.9 nm: T(1433.5)=0.424 A=0.456
+delta=0.1625 ENZ crossing=1555.8 nm: T(1433.5)=0.438 A=0.446
+delta=0.1750 ENZ crossing=1568.0 nm: T(1433.5)=0.452 A=0.435
+delta=0.1875 ENZ crossing=1580.5 nm: T(1433.5)=0.466 A=0.424
+delta=0.2000 ENZ crossing=1593.2 nm: T(1433.5)=0.479 A=0.412
+delta=0.2125 ENZ crossing=1606.3 nm: T(1433.5)=0.491 A=0.400
+delta=0.2250 ENZ crossing=1619.7 nm: T(1433.5)=0.503 A=0.388
+delta=0.2375 ENZ crossing=1633.5 nm: T(1433.5)=0.515 A=0.376
+delta=0.2500 ENZ crossing=1647.6 nm: T(1433.5)=0.525 A=0.364
+[check] max|dT| Drude vs CSV = 0.0000
+[stage18] done
