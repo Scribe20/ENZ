@@ -108,9 +108,10 @@ def write_md(summaries, out):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--runs", nargs="+", required=True)
+    ap.add_argument("--runs", nargs="*", default=[])
     ap.add_argument("--out", default=str(config.OUT / "stage4"))
     ap.add_argument("--threads", type=int, default=4)
+    ap.add_argument("--merge-only", action="store_true", help="rebuild the tables from every <out>/*/certify.json (no computation)")
     a = ap.parse_args()
     fwd.set_threads(a.threads)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
@@ -119,7 +120,13 @@ def main():
 
     def log(*x):
         s = " ".join(str(v) for v in x); print(s, flush=True); print(s, file=logf, flush=True)
-    summaries = [certify(r, out, lam, log) for r in a.runs]
+    if a.merge_only:
+        summaries = [json.load(open(f)) for f in sorted(out.glob("*/certify.json"))]
+    else:
+        summaries = [certify(r, out, lam, log) for r in a.runs]
+        # merge with previously certified designs so the tables always cover everything
+        done = {s["tag"] for s in summaries}
+        summaries += [json.load(open(f)) for f in sorted(out.glob("*/certify.json")) if json.load(open(f))["tag"] not in done]
     summaries.sort(key=lambda s: -s["Fz_certified"])
     an.jdump(summaries, out / "certification.json")
     import csv
