@@ -97,8 +97,28 @@ def _aaa_poles(lams, vals):
     return [(complex(q), abs(res)) for q, res in zip(fit.poles(), fit.residues()) if q.imag < -DAMP_MIN]
 
 
-def significant_poles(lams, r, t, window=None):
-    """r/t-agreeing, damped, significant poles (lambda, Q, gamma, residues)."""
+def rayleigh_wavelengths(P, n_glass, lo=LAM_MIN, hi=LAM_MAX, theta_deg=0.0):
+    """Wavelengths where a diffraction order becomes propagating in glass or
+    air at normal incidence (branch points of r(omega), t(omega)): AAA
+    represents them with clusters of spurious poles."""
+    out = []
+    for m in range(0, 4):
+        for n in range(0, 4):
+            if m == 0 and n == 0:
+                continue
+            g = np.hypot(m, n)
+            for medium, nm in (("glass", n_glass), ("air", 1.0)):
+                lam = nm * P / g
+                if lo <= lam <= hi:
+                    out.append(dict(m=m, n=n, medium=medium, lam=float(lam)))
+    return out
+
+
+def significant_poles(lams, r, t, window=None, exclude=None, exclude_halfwidth=None, cluster_nm=1.5):
+    """r/t-agreeing, damped, significant poles (lambda, Q, gamma, residues).
+    exclude: wavelengths (Rayleigh anomalies) around which poles are flagged
+    as branch-point artifacts and removed; near-duplicate poles (within
+    cluster_nm) are merged keeping the most significant one."""
     pr, pt = _aaa_poles(lams, r), _aaa_poles(lams, t)
     sr, st = float(np.max(np.abs(r))), float(np.max(np.abs(t)))
     out = []
@@ -120,7 +140,16 @@ def significant_poles(lams, r, t, window=None):
                         fwhm_nm=float(lam / abs(qa.real / (2 * qa.imag))),
                         res_r=float(a), res_t=float(m[1]), peak_r=float(peak_r), peak_t=float(peak_t),
                         rt_rel_diff=float(abs(m[0] - q) / abs(q))))
-    return sorted(out, key=lambda p: p["lambda_nm"])
+    if exclude:
+        step = float(np.median(np.diff(np.asarray(lams)))) if len(lams) > 1 else 2.0
+        hw = exclude_halfwidth if exclude_halfwidth is not None else max(3 * step, 6.0)
+        out = [p for p in out if all(abs(p["lambda_nm"] - x) > hw for x in exclude)]
+    out.sort(key=lambda p: -(p["peak_r"] + p["peak_t"]))
+    kept = []
+    for p in out:                                   # merge near-duplicates
+        if all(abs(p["lambda_nm"] - k["lambda_nm"]) > cluster_nm for k in kept):
+            kept.append(p)
+    return sorted(kept, key=lambda p: p["lambda_nm"])
 
 
 def ez_map(rho, P, h, lam, s=1.0, order=config.ORDER_FULL, n=48):
@@ -140,7 +169,7 @@ OVL_MIN = 0.6
 
 
 def track_branch(rho, P, h, omega0, lams, s_levels=S_LEVELS, order=config.ORDER_FULL, log=print, tag="",
-                 spectra_cache=None):
+                 spectra_cache=None, exclude=None):
     """Follow one pole branch through the ITO loss levels with field-overlap
     continuity (enz_highq_driven_ez_audit/poles.track_branch)."""
     rows, prev, prev_map = [], None, None
@@ -151,7 +180,7 @@ def track_branch(rho, P, h, omega0, lams, s_levels=S_LEVELS, order=config.ORDER_
             sp = spec_arrays(spectrum(rho, P, h, lams, order, s=s))
             if spectra_cache is not None:
                 spectra_cache[s] = sp
-        cands = significant_poles(sp["lam"], sp["r"], sp["t"])
+        cands = significant_poles(sp["lam"], sp["r"], sp["t"], exclude=exclude)
         ref = complex(prev["omega_re"], prev["omega_im"]) if prev is not None else omega0
         if not cands:
             log(f"  [{tag}] s={s:.2f}: no significant pole"); continue

@@ -82,9 +82,12 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
     log(f"  peaks: {json.dumps(peaks)}")
 
     # ---- poles ------------------------------------------------------------
-    poles_with = an.significant_poles(lams, sw["r"], sw["t"])
-    poles_no = an.significant_poles(lams, sp_no["r"], sp_no["t"])
-    poles_lossless = an.significant_poles(lams, cache[0.0]["r"], cache[0.0]["t"])
+    ray = an.rayleigh_wavelengths(P, mat.n_glass(lam_ze))
+    ray_l = [x["lam"] for x in ray]
+    log(f"  Rayleigh anomalies in window: {ray} (poles within a few grid steps of these are branch-point artifacts and are dropped)")
+    poles_with = an.significant_poles(lams, sw["r"], sw["t"], exclude=ray_l)
+    poles_no = an.significant_poles(lams, sp_no["r"], sp_no["t"], exclude=ray_l)
+    poles_lossless = an.significant_poles(lams, cache[0.0]["r"], cache[0.0]["t"], exclude=ray_l)
     for lab, pl in (("with ITO", poles_with), ("no ITO", poles_no), ("lossless ITO", poles_lossless)):
         log(f"  poles {lab}: " + "; ".join(f"{p['lambda_nm']:.1f} nm Q={p['Q']:.1f} (peak r/t {p['peak_r']:.2f}/{p['peak_t']:.2f})" for p in pl) if pl else f"  poles {lab}: none")
     # loss scaling of the (up to 2) with-ITO poles nearest lambda_ZE
@@ -92,11 +95,11 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
     tracks = []
     for p in near:
         rows = an.track_branch(rho, P, h, complex(p["omega_re"], p["omega_im"]), lams, order=order,
-                               log=log, tag=f"{tag}|{p['lambda_nm']:.0f}nm", spectra_cache=cache)
+                               log=log, tag=f"{tag}|{p['lambda_nm']:.0f}nm", spectra_cache=cache, exclude=ray_l)
         fit = an.fit_gamma(rows)
         tracks.append(dict(start_pole=p, rows=rows, fit=fit))
         log(f"  fit: {json.dumps({k: v for k, v in fit.items() if k not in ('lossless_pole',)})}")
-    an.jdump(dict(tag=tag, P=P, h=h, peaks=peaks, poles_with_ito=poles_with, poles_no_ito=poles_no,
+    an.jdump(dict(tag=tag, P=P, h=h, peaks=peaks, rayleigh=ray, poles_with_ito=poles_with, poles_no_ito=poles_no,
                   poles_lossless_ito=poles_lossless, loss_scaling=tracks), o / "poles.json")
     # spectra at intermediate s for the figure
     np.savez_compressed(o / "spectra_loss_levels.npz", lam=lams, **{f"s{s}_A": cache[s]["A"] for s in cache},
@@ -127,7 +130,7 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
         sp = an.spec_arrays(an.spectrum(rho, P, float(hh), lams_d, detune_order, s=1.0))
         spn = an.spec_arrays(an.spectrum(rho, P, float(hh), lams_d, detune_order, with_ito=False))
         A_map.append(sp["A"]); Fz_map.append(sp["Fz"]); T_no_map.append(spn["T"])
-        pw = an.significant_poles(lams_d, sp["r"], sp["t"]); pn = an.significant_poles(lams_d, spn["r"], spn["t"])
+        pw = an.significant_poles(lams_d, sp["r"], sp["t"], exclude=ray_l); pn = an.significant_poles(lams_d, spn["r"], spn["t"], exclude=ray_l)
         branches.append(dict(h=float(hh), with_ito=[(p["lambda_nm"], p["Q"]) for p in pw], no_ito=[(p["lambda_nm"], p["Q"]) for p in pn],
                              lam_A_max=float(lams_d[int(sp["A"].argmax())]), A_max=float(sp["A"].max()),
                              lam_Fz_max=float(lams_d[int(sp["Fz"].argmax())]), Fz_max=float(sp["Fz"].max())))
@@ -153,7 +156,7 @@ def run_candidate(run_dir, out, lam_ze, log, order, lam_step, h_frac, n_h, detun
               with_ito_at_Fz_max=an.multipoles(rho.numpy(), P, h, peaks["lam_Fz_max"], order))
     log(f"  multipoles (with ITO @ZE): {json.dumps(mp['with_ito_at_ZE']['fractions'])} dominant {mp['with_ito_at_ZE']['dominant']}")
     an.jdump(mp, o / "multipoles.json")
-    summary = dict(tag=tag, P=P, h=h, peaks=peaks, poles_with_ito=poles_with, poles_no_ito=poles_no,
+    summary = dict(tag=tag, P=P, h=h, peaks=peaks, rayleigh=ray, poles_with_ito=poles_with, poles_no_ito=poles_no,
                    poles_lossless_ito=poles_lossless, loss_scaling=[dict(start_lambda=t["start_pole"]["lambda_nm"], **t["fit"]) for t in tracks],
                    multipoles=mp, wall_s=time.time() - t0)
     an.jdump(summary, o / "physics.json")
