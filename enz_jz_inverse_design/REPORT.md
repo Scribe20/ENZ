@@ -157,7 +157,58 @@ carries its own identity residual F_tot − (1−R−T).
 * Spacer: a 3-nm Al2O3 layer (n = 1.65) between a-Si and ITO (present in the SNU fabricated stack) changes the
   Stage-2 leader from F_z 0.9549 to 0.9565 (A 0.9965 → 0.9980): immaterial.
 
-## 8. Physics (Stage 5) — *to be filled*
+## 8. Physics (Stage 5, `outputs/stage5/<tag>/`, `outputs/stage5/PHYSICS.md`)
+
+Spectra 1100–1400 nm (the supplied a-Si:H data end at 1400 nm; nothing is extrapolated), order [7,7], every material
+at its own tabulated dispersion; scattering poles from AAA fits of r_xx(ω) and t_xx(ω) accepted only when present in
+both (relative distance < 2 %), damped, with a Lorentzian peak contribution ≥ 3 %, outside ±3 grid steps of the
+Rayleigh branch point (1251.1 nm for P = 825) and inside the sampled window; loss scaling on the field-overlap-
+tracked branch with s ∈ {1, ½, ¼, 0.1, 0.03, 0} multiplying Im ε_ITO.
+
+### 8.1 The leading design (final0, P = 825 nm, h = 600 nm) — `outputs/stage5/final0_…/`
+
+| quantity | value |
+|---|---|
+| F_z(λ_ZE) / A(λ_ZE) | 0.957 / 0.997 (order [7,7]) |
+| F_z peak | 0.957 at 1302 nm, FWHM 150 nm (Q_eff ≈ 8.7); A_max = 0.9985 at 1298 nm |
+| same geometry, ITO removed | R = 0.9998, T = 1.5×10⁻⁴ at 1314 nm: the a-Si array alone is a broadband near-perfect REFLECTOR (leaky-mode / guided-mode resonance, pole 1318.5 nm, Q 8.4) |
+| same geometry, lossless ITO | R ≈ 1 over 1300–1400 nm with narrow features; broad poles at 1266/1275 nm (Q 20/12) plus a comb of high-Q poles (Q 240–1350 at 1321–1396 nm) that are invisible with the real loss |
+| bare air/ITO/glass film | A = 0.029 at λ_ZE |
+| loaded poles (s = 1) | **1270.9 nm, Q_loaded = 9.05** (γ = 0.0819 rad/fs, dominant, peak fraction 5.8); 1238.2 nm Q 42 (weak); 1152.6 nm Q 15; 1138.8 nm Q 43 |
+| loss scaling of the 1271-nm branch | γ(s) = 0.0819 (s=1), 0.0355 (½), 0.0382 (¼), 0.0372 (0.1), 0.0370 (0.03), 0.0374 (0); pole 1271 → 1266 nm; branch overlap ≥ 0.993 at every step (no jump) |
+| γ_rad, γ_nr | linear fit: γ_rad 0.0316, γ_nr 0.0412 rad/fs (Q_rad 23.4, Q_nr 18.0, ratio 0.77) but the fit is NOT linear (max residual 20 %); the lossless-limit pole gives **Q_rad = 19.9 (γ_rad 0.0374)** and hence γ_nr(s = 1) = 0.0445 rad/fs, **Q_nr = 15.7**, **γ_rad/γ_nr = 0.84** |
+| one-port closure | 4 γ_rad γ_nr / (γ_rad+γ_nr)² = 0.99 (ratio 0.84) … 1.00 (ratio 1): consistent with the observed A_max 0.9985 — the design sits at critical coupling within the uncertainty of the split (ratio 0.77–0.84 from the two estimates) |
+| second branch (1238 nm) | γ_rad 0.0136, γ_nr 0.0047 (Q_rad 56, Q_nr 163, ratio 2.9, linear to 1.8 %): an over-coupled, weakly absorbing Si mode |
+| multipoles of the induced a-Si current at λ_ZE | ED (p+ikT) 45 % (p alone 9 %, toroidal 14 %), MD 15 %, EQ 39 %, MQ 0.4 %: a mixed ED/EQ/toroidal character, not a pure Mie dipole and not the MD+EQ TK-BIC combination |
+| height detuning (h = 360–840 nm, [5,5]) | the absorption band moves red monotonically with h (A_max at 1268 nm for h = 360, 1300 nm for h = 600, 1364 nm for h = 720, 1400 nm for h = 800) and its strength peaks when it coincides with λ_ZE (A_max 0.957 → 0.998 → 0.75); the ITO-free reflection band moves the same way (T_min 1300 → 1330 → …); NO branch splitting / avoided crossing is seen anywhere in the map |
+
+Interpretation.  The tall (≈ 600 nm) low-fill a-Si meta-atom supports a broad (Q ≈ 8) leaky resonance that, on
+glass alone, reflects the plane wave almost completely.  Terminating its base with the 23-nm ENZ film converts the
+reflector into an absorber: the longitudinal field at the a-Si/ITO interface is amplified by D_z continuity
+(|ε_Si/ε_ITO| ≈ 20 in amplitude at λ_ZE), the ITO loss adds a non-radiative rate γ_nr that the optimizer tunes to
+the mode's radiative rate (γ_rad/γ_nr ≈ 0.8–1), and T is already blocked by the Si reflector, so the one-port
+critical-coupling condition gives A → 1 with η_z,abs = 0.96 of it longitudinal.  The loss-scaling curve is flat for
+s ≤ ½ and doubles between s = ½ and 1: the ENZ film is not a weak perturbation of the mode at full loss (its
+|ε| ≈ 0.43 is comparable to the field-jump scale), which is why the linear γ(s) decomposition must be replaced by the
+lossless-limit estimate.  The bare-film ENZ pole (1331–1335 nm, Q ≈ 7.5) and the driven Berreman peak (1290 nm)
+bracket the working point, but the detuning map shows the loaded resonance following the Si resonance continuously
+through the ENZ wavelength without an anticrossing, and the loaded and ITO-free Q values are of the same order
+(9 vs 8): this is an **ITO-loaded a-Si resonance at critical coupling with an ENZ-enhanced longitudinal loss
+channel**, not a hybridized Si–ENZ polariton and not a TK-BIC.  The Karimi-type strong-coupling signature (splitting
+larger than the bare linewidth under a length/lattice sweep) is absent, in line with the SNU deck's own estimate
+that the coupling (≈ 21 meV) stays below the exceptional-point threshold for this ITO (Γ_ENZ ≈ 122 meV).
+
+### 8.2 Reference designs under the new materials (`outputs/stage5/references/`)
+
+| design | F_z(λ_ZE) | F_z max | A max | loaded poles (nm, Q) | multipoles at λ_ZE |
+|---|---|---|---|---|---|
+| Karimi EDR cuboid 560×500×140 @ 850 | 0.262 | 0.309 @ 1386 nm | 0.343 @ 1388 nm | 1298 (16.5) | ED 99 % |
+| direct-Ez winner (old ⟨\|E_z\|²⟩ campaign, 850/140) | 0.234 | 0.324 @ 1390 nm | 0.468 @ 1302 nm | 1285 (9.9), 1290 (100), 1294 (26), 1297 (60) | ED 98 % |
+| robust-A finalist0 (800/200) | 0.177 | 0.357 @ 1214 nm | 0.375 @ 1214 nm | 1201 (9.3), 1217 (24) | ED 85 %, TD 28 %, MD 12 % |
+
+The new family reaches 3.6× the F_z of the best prior reference at λ_ZE and 3× its best value anywhere in the band.
+
+### 8.3 Other finalists — *filled in below as their Stage-5 runs complete*
 
 ## 9. Fabrication / locality (Stage 4)
 
