@@ -38,7 +38,9 @@ normalization, component-resolved absorption, and post-hoc Q / critical-coupling
 | `run_stage1.py` | Stage-1 screening driver (P × h × pad × seeds, order [5,5], 4 single-thread processes, restartable) |
 | `make_stage2_jobs.py`, `run_jobs.py` | Stage-2 adaptive refinement (predeclared family selection, warm starts, controls) and the generic job runner used for Stages 2–3 |
 | `stage4_certify.py` | hard-binary certification: order/z convergence, identity, hotspot watch, fabrication metrics, sensitivities, field/loss maps |
-| `stage5_physics.py`, `analysis.py` | spectra, AAA scattering poles, loss-scaling Q_rad/Q_nr, with/without/lossless-ITO controls, height-detuning map, reference comparison |
+| `stage5_physics.py`, `analysis.py` | spectra, AAA scattering poles (Rayleigh-anomaly exclusion), loss-scaling Q_rad/Q_nr, with/without/lossless-ITO controls, height-detuning map, Cartesian multipoles, reference comparison (`--merge-only` rebuilds the tables) |
+| `enz_film_mode.py` | bare air/ITO/glass ENZ-mode reference (complex-ω TM pole with a Drude continuation; driven Berreman absorption) |
+| `report_tables.py`, `compact_outputs.py` | machine-readable `outputs/results.csv|json`, `outputs/REPORT_TABLES.md`, `outputs/best/`; uint8 storage of hard binaries |
 | `plots.py` | figures |
 | `materials_data/` | verbatim copies of the supplied files + `PROVENANCE.md` (sha256) |
 | `upstream/` | verbatim copy of the supplied `Example6.ipynb` and `Materials.py` (audited, not used) |
@@ -49,10 +51,14 @@ normalization, component-resolved absorption, and post-hoc Q / critical-coupling
     cd enz_jz_inverse_design
     python stage0_preflight.py                     # gates; must print "failed gates: none"
     python run_stage1.py --iters 80                # 270 screening runs (restartable)
+    python run_stage1.py --iters 80 --h 500 600 --P 750 825 850 --pad 0.08 0.12 --seeds 333 1001   # Stage 1b height extension
     python make_stage2_jobs.py && python run_jobs.py --jobs outputs/stage2/jobs.json --out outputs/stage2
-    python run_jobs.py --jobs outputs/stage3/jobs.json --out outputs/stage3      # finalists (job list written by make_stage3_jobs.py)
-    python stage4_certify.py --runs <finalist run dirs> --out outputs/stage4
-    python stage5_physics.py --runs <finalist run dirs> --out outputs/stage5
+    python make_stage3_jobs.py && python run_jobs.py --jobs outputs/stage3/jobs.json --out outputs/stage3
+    python run_jobs.py --jobs outputs/stage1c/jobs.json --out outputs/stage1c    # deck-thickness (970.5 nm) screening
+    python run_jobs.py --jobs outputs/stage2c/jobs.json --out outputs/stage2c    # its warm refinement
+    python stage4_certify.py --runs <run dirs> --out outputs/stage4
+    python stage5_physics.py --runs <run dirs> --out outputs/stage5              # add --no-refs after the first call
+    python report_tables.py                                                     # results.csv/json, REPORT_TABLES.md, outputs/best
 
 Environment used here: CPU-only (4 cores), torch 2.14 (CPU), scipy 1.17 (AAA), complex128 solves,
 float64 geometry, 128×128 topology grid.

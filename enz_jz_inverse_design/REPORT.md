@@ -271,8 +271,8 @@ near λ_ZE) with a non-monotonic height map, and its narrow 1322-nm branch is it
 2. **Geometry and materials**: air / freeform a-Si:H (n = 2.9754, k = 0 — extrapolated row of the supplied file) of
    height 525–600 nm and fill 28–32 % on a square 825-nm cell with a hard 12 % (99-nm) air ring / 23-nm ITO
    (ε = 0 + 0.432 i at λ_ZE = 1302.28 nm, `ITO_nk.csv`) / soda-lime glass (n = 1.5165); normal incidence from air,
-   x polarization.  The meta-atom is a single asymmetric island (S_flip 0.8–0.9) with two tall "legs" parallel to x
-   joined by a bar (`outputs/best/geometry.png`, `outputs/best/rho_hard_binary.npy`).
+   x polarization.  The meta-atom is a one- or two-piece asymmetric island (S_flip(lr) 0.5–0.9, S_flip(ud) 0.3–0.7) with two tall
+   "legs" parallel to x joined by a bar (`outputs/best/geometry.png`, `outputs/best/rho_hard_binary.npy`).
 3. **Longitudinal share**: η_z,abs = F_z / F_tot = **0.96** for every plateau design (F_x ≈ 0.028, F_y ≈ 0.008–0.010,
    F_tot = 0.991 = 1 − R − T); ⟨|E_z/E_inc|²⟩_ITO = 19.9 (Karimi EDR cuboid: 5.5), max |E_z/E_inc|² ≈ 100–112.
 4. **Q values**: plateau designs — Q_loaded = 9.1 (final0, pole 1271 nm), 11.3 (final3, 1273 nm), 9.5
