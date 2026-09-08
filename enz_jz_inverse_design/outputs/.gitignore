@@ -1,4 +1,8 @@
-# per-iteration snapshots are reproducible from rho_raw_final / result.json and are not committed
+# per-iteration snapshots and reproducible arrays are not committed
+# (rho_initial: from the seed; design_mask: from P and pad; rho_proj_final: from rho_raw_final)
 **/rho_proj_it*.npy
 **/rho_filtered_final.npy
+**/rho_initial.npy
+**/rho_proj_final.npy
+**/design_mask.npy
 **/progress.log
