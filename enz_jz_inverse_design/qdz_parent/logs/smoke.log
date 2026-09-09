@@ -1,0 +1,9 @@
+[smoke] it   0 eta=0.05331 Q=8372197354645951.0 lam_r=    0.00 | L_obj=+2.932 L_Q=1027.749 L_lam=10000.000 L=+11030.681 | U_mid=32.66 R=0.880 fitres=5.86e-02 |g|=3.58e+01 bin=0.242 t=2s
+[smoke] it   1 eta=0.13408 Q=-17498232225795.7 lam_r=   -0.00 | L_obj=+2.009 L_Q=339.321 L_lam=10000.013 L=+10341.343 | U_mid=15.24 R=0.971 fitres=1.07e-04 |g|=1.63e-01 bin=0.012 t=4s
+[smoke] it   2 eta=0.13102 Q=-8712041071433.3 lam_r=   -0.00 | L_obj=+2.032 L_Q=339.321 L_lam=10000.022 L=+10341.376 | U_mid=15.63 R=0.979 fitres=1.34e-04 |g|=1.10e-01 bin=0.000 t=6s
+[smoke] done: eta_soft=0.13103 eta_hard=0.13067 Q_hard=-6208704982529.3 lam_hard=-0.00 U_mid=13.09 fill=0.313 wall=9s
+[smoke] it   0 eta=0.05331 Q=     nan lam_r=     nan u=-0.040 | L_obj=+2.932 L_Q=3.421 L_lam=0.005 L=+6.358 | U_mid=32.66 R=0.880 fitres=5.86e-02 |g|=5.90e-01 bin=0.242 t=2s
+[smoke] it   1 eta=0.13188 Q=     nan lam_r=     nan u=-0.013 | L_obj=+2.026 L_Q=2.952 L_lam=0.000 L=+4.978 | U_mid=15.21 R=0.972 fitres=1.22e-04 |g|=3.70e-01 bin=0.038 t=4s
+[smoke] it   2 eta=0.13719 Q=     nan lam_r=     nan u=-0.011 | L_obj=+1.986 L_Q=2.906 L_lam=0.000 L=+4.892 | U_mid=14.71 R=0.958 fitres=1.01e-04 |g|=3.02e-01 bin=0.004 t=5s
+[smoke] it   3 eta=0.13944 Q=     nan lam_r=     nan u=-0.009 | L_obj=+1.970 L_Q=2.877 L_lam=0.000 L=+4.847 | U_mid=14.49 R=0.948 fitres=8.60e-05 |g|=5.76e-01 bin=0.000 t=7s
+[smoke] done: eta_soft=0.14053 eta_hard=0.14076 Q_hard=None lam_hard=None u=-0.008 U_mid=11.53 fill=0.313 wall=10s

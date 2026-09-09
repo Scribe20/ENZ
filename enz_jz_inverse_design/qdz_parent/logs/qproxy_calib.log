@@ -10,3 +10,33 @@
   square_w400 h=600: 1 poles ['1353 nm/Q7'] (205 s)
   square_w500 h=525: 2 poles ['1262 nm/Q11', '1310 nm/Q56'] (426 s)
   square_w500 h=600: 1 poles ['1341 nm/Q549'] (506 s)
+  square_w600 h=525: 2 poles ['1232 nm/Q198', '1273 nm/Q25'] (545 s)
+  square_w600 h=600: 1 poles ['1314 nm/Q22'] (564 s)
+  ring_620_300 h=525: 0 poles [] (583 s)
+  ring_620_300 h=600: 0 poles [] (602 s)
+  ring_700_420 h=525: 0 poles [] (621 s)
+  ring_700_420 h=600: 1 poles [] (641 s)
+  rand_s11 h=525: 3 poles ['1275 nm/Q26', '1286 nm/Q10', '1347 nm/Q39'] (660 s)
+  rand_s11 h=600: 2 poles ['1295 nm/Q20', '1380 nm/Q34'] (678 s)
+  rand_s202 h=525: 2 poles ['1264 nm/Q10', '1306 nm/Q27'] (696 s)
+  rand_s202 h=600: 1 poles ['1331 nm/Q24'] (714 s)
+  rand_s3003 h=525: 1 poles ['1262 nm/Q223'] (752 s)
+  rand_s3003 h=600: 2 poles ['1284 nm/Q164'] (786 s)
+  jzfz_final3 h=525: 4 poles ['1200 nm/Q23', '1238 nm/Q10', '1276 nm/Q122', '1339 nm/Q8'] (805 s)
+  jzfz_final3 h=600: 5 poles ['1235 nm/Q44', '1265 nm/Q1007', '1287 nm/Q63', '1302 nm/Q10', '1304 nm/Q361'] (834 s)
+  jzfz_final0 h=525: 2 poles ['1316 nm/Q14', '1380 nm/Q227'] (852 s)
+  jzfz_final0 h=600: 4 poles ['1207 nm/Q15', '1266 nm/Q17', '1324 nm/Q8'] (871 s)
+
+====================================================================================================
+  all                                           n= 105  median|dQ|/Q=0.216  p90=0.773  median|dlam|=0.237 nm
+  matched span, centred (ideal)                 n=  11  median|dQ|/Q=0.210  p90=0.874  median|dlam|=0.431 nm
+  span within 2x, offset <= kappa/4 (working regime) n=  51  median|dQ|/Q=0.206  p90=0.572  median|dlam|=0.250 nm
+  probe span 4x too narrow                      n=  18  median|dQ|/Q=0.763  p90=0.894  median|dlam|=1.983 nm
+  probe span 4x too wide                        n=  18  median|dQ|/Q=0.028  p90=0.209  median|dlam|=0.095 nm
+  centre offset kappa/2                         n=  30  median|dQ|/Q=0.230  p90=0.763  median|dlam|=0.220 nm
+  Q_exact in [30,80)                            n=   6  median|dQ|/Q=0.707  p90=20975061374075592.000  median|dlam|=6.840 nm
+  Q_exact in [80,150)                           n=  18  median|dQ|/Q=0.357  p90=0.815  median|dlam|=1.766 nm
+  Q_exact in [150,400)                          n=  48  median|dQ|/Q=0.288  p90=0.769  median|dlam|=0.345 nm
+  Q_exact in [400,3000)                         n=  33  median|dQ|/Q=0.074  p90=0.551  median|dlam|=0.034 nm
+  log-log correlation Q_proxy vs Q_exact: all 0.2943, working regime 0.2166
+[qproxy] 105 points in 871 s -> /home/user/ENZ/enz_jz_inverse_design/qdz_parent/outputs/phaseA/qproxy_calibration.json

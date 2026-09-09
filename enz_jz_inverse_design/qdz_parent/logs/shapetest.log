@@ -1,0 +1,21 @@
+[shapetest] it   0 eta=0.05331 Q=     nan lam_r=     nan u=-0.041 | L_obj=+2.932 L_Q=3.453 L_lam=0.006 L_sh=2.1780 L=+71.731 | U_mid=32.66 R=0.880 fitres=7.52e-02 |g|=5.90e+01 bin=0.242 t=4s
+[shapetest] it   1 eta=0.06844 Q=     nan lam_r=     nan u=-0.050 | L_obj=+2.682 L_Q=3.616 L_lam=0.002 L_sh=0.6414 L=+25.542 | U_mid=25.46 R=0.952 fitres=5.77e-03 |g|=1.41e+01 bin=0.221 t=7s
+[shapetest] it   2 eta=0.08955 Q=     nan lam_r=     nan u=-0.030 | L_obj=+2.413 L_Q=3.241 L_lam=0.000 L_sh=0.3162 L=+15.139 | U_mid=20.85 R=0.992 fitres=5.76e-03 |g|=2.12e+00 bin=0.182 t=10s
+[shapetest] it   3 eta=0.10737 Q=     nan lam_r=     nan u=-0.016 | L_obj=+2.231 L_Q=3.000 L_lam=0.000 L_sh=0.2365 L=+12.327 | U_mid=18.74 R=0.997 fitres=2.64e-03 |g|=7.04e-01 bin=0.136 t=14s
+[shapetest] it   4 eta=0.11829 Q=     nan lam_r=     nan u=-0.010 | L_obj=+2.135 L_Q=2.902 L_lam=0.000 L_sh=0.1931 L=+10.828 | U_mid=17.93 R=0.995 fitres=1.37e-03 |g|=4.35e-01 bin=0.096 t=17s
+[shapetest] it   5 eta=0.12368 Q=     nan lam_r=     nan u=-0.008 | L_obj=+2.090 L_Q=2.860 L_lam=0.000 L_sh=0.1589 L=+9.716 | U_mid=17.69 R=0.992 fitres=8.32e-04 |g|=3.62e-01 bin=0.067 t=20s
+[shapetest] it   6 eta=0.12631 Q=     nan lam_r=     nan u=-0.007 | L_obj=+2.069 L_Q=2.839 L_lam=0.000 L_sh=0.1295 L=+8.792 | U_mid=17.66 R=0.991 fitres=5.50e-04 |g|=3.40e-01 bin=0.047 t=24s
+[shapetest] it   7 eta=0.12774 Q=     nan lam_r=     nan u=-0.006 | L_obj=+2.058 L_Q=2.826 L_lam=0.000 L_sh=0.1041 L=+8.006 | U_mid=17.69 R=0.990 fitres=3.79e-04 |g|=3.33e-01 bin=0.033 t=27s
+[shapetest] it   8 eta=0.12856 Q=     nan lam_r=     nan u=-0.006 | L_obj=+2.051 L_Q=2.819 L_lam=0.000 L_sh=0.1039 L=+7.988 | U_mid=17.75 R=0.989 fitres=3.62e-04 |g|=3.41e-01 bin=0.023 t=30s
+[shapetest] it   9 eta=0.12902 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.048 L_Q=2.813 L_lam=0.000 L_sh=0.1039 L=+7.977 | U_mid=17.81 R=0.989 fitres=3.51e-04 |g|=3.45e-01 bin=0.016 t=33s
+[shapetest] it  10 eta=0.12922 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.046 L_Q=2.810 L_lam=0.000 L_sh=0.1038 L=+7.970 | U_mid=17.88 R=0.989 fitres=3.44e-04 |g|=3.46e-01 bin=0.011 t=37s
+[shapetest] it  11 eta=0.12923 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.046 L_Q=2.808 L_lam=0.000 L_sh=0.1038 L=+7.967 | U_mid=17.94 R=0.989 fitres=3.40e-04 |g|=3.48e-01 bin=0.007 t=40s
+[shapetest] it  12 eta=0.12915 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.047 L_Q=2.807 L_lam=0.000 L_sh=0.1037 L=+7.966 | U_mid=17.99 R=0.989 fitres=3.37e-04 |g|=3.51e-01 bin=0.005 t=43s
+[shapetest] it  13 eta=0.12905 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.048 L_Q=2.806 L_lam=0.000 L_sh=0.1037 L=+7.965 | U_mid=18.03 R=0.989 fitres=3.34e-04 |g|=3.51e-01 bin=0.003 t=46s
+[shapetest] it  14 eta=0.12896 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.048 L_Q=2.805 L_lam=0.000 L_sh=0.1037 L=+7.964 | U_mid=18.07 R=0.989 fitres=3.32e-04 |g|=3.48e-01 bin=0.002 t=50s
+[shapetest] it  15 eta=0.12888 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.049 L_Q=2.804 L_lam=0.000 L_sh=0.1037 L=+7.964 | U_mid=18.09 R=0.989 fitres=3.30e-04 |g|=3.49e-01 bin=0.002 t=53s
+[shapetest] it  16 eta=0.12880 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.050 L_Q=2.804 L_lam=0.000 L_sh=0.1037 L=+7.964 | U_mid=18.11 R=0.989 fitres=3.29e-04 |g|=3.55e-01 bin=0.001 t=56s
+[shapetest] it  17 eta=0.12873 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.050 L_Q=2.803 L_lam=0.000 L_sh=0.1037 L=+7.964 | U_mid=18.13 R=0.990 fitres=3.29e-04 |g|=3.63e-01 bin=0.001 t=60s
+[shapetest] it  18 eta=0.12871 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.050 L_Q=2.803 L_lam=0.000 L_sh=0.1037 L=+7.964 | U_mid=18.14 R=0.990 fitres=3.28e-04 |g|=3.69e-01 bin=0.000 t=63s
+[shapetest] it  19 eta=0.12874 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.050 L_Q=2.803 L_lam=0.000 L_sh=0.1037 L=+7.964 | U_mid=18.14 R=0.990 fitres=3.28e-04 |g|=3.64e-01 bin=0.000 t=67s
+[shapetest] done: eta_soft=0.12926 eta_hard=0.12944 Q_hard=None lam_hard=None u=-0.005 U_mid=15.85 fill=0.300 wall=71s
