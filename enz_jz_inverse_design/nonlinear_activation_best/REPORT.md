@@ -39,7 +39,12 @@ a-Si:H / 23-nm ITO / soda-lime glass, normal incidence, x-polarization, 150-fs p
    T-minimum of 0.03 instead of 0.0026, so every activation curve is computed from the RCWA lookup; TCMT is used only as a descriptor of
    γ_r(T_e), γ_nr(T_e).  For the deck's cylinder the same fitting code reproduces the deck's parameters (γ_r = 10.6, γ_nr = 10.4 meV,
    λ₀ = 1292.1 nm versus the deck's 8.54 / 8.54 meV / 1291.6 nm).
-7. **Comparison with the deck's cylinder (B, same model, same normalization)** — see section 7.
+7. **Comparison with the deck's cylinder (B, same model, same normalization).**  The supplied materials reproduce the deck's linear design
+   (T-min 0.224 at 1294 nm, A_pk 0.466, TCMT γ_r = 10.5 / γ_nr = 7.0 meV vs the deck's 1291.6 nm, 0.25, 0.47, 8.54 / 8.54 meV) and the Lane-B
+   model reproduces slide 17(a) at equal T_e essentially quantitatively (dip 0.224 → 0.051 at 1300 nm at 8000 K versus the deck's
+   0.22 → ≈ 0.04 at ≈ 1298 nm) and the three activation families of slide 17(c) at the same wavelengths and cold values, with ≈ 2× weaker
+   modulation at equal *intensity* — the difference sits in the unrecoverable intensity → T_e mapping (C_e, G), not in ε(T_e).  Per unit area the best
+   design heats 2.0–2.2× more efficiently (unity absorption), its 50 %-swing threshold is 1.6–2.4× lower in intensity — but only in reflection.
 8. **Lane C.**  Without a pump–probe or heated-ellipsometry measurement of this ITO (G, Δε(T_e), γ(T_e), damage threshold) the
    intensity axis is provisional; no experimentally predictive fJ/pJ threshold is claimed.
 
@@ -154,7 +159,53 @@ still rising).  All threshold intensities scale with the (unsourced) G: ×½ / �
 
 ## 7. Comparison with the deck's TK-BIC cylinder (Lane B, identical model, materials, order, TTM parameters and intensity grid)
 
-CYLINDER_SECTION_PLACEHOLDER
+Geometry: a-Si:H cylinder d = 405.7 nm, h = 970.5 nm, P = 588 nm on the same 23-nm ITO / glass, rasterized on the same grid, solved
+at [7,7] over 1240–1360 nm for the same 18 T_e (`lookup_cyl_order7.npz`), coupled with the same TTM (same G, C_l, pulse, intensity grid)
+and quantified with the same scripts (`*_cyl.*`, `fig*_cyl.png`, `fig7_tcmt_vs_rcwa_cyl_order7.png`).
+
+**Cold check against the deck (A):** T-minimum 0.224 at 1294 nm, absorption maximum 0.466 at 1292 nm, absorption FWHM 24 nm; constrained
+TCMT: λ₀ = 1291.8 nm, γ_r = 10.5 meV (γ₁ 6.3 air + γ₂ 4.2 glass), γ_nr = 7.0 meV, Q_loaded = 55, transparent background (T_bg = 0.96).
+Deck slides 13–14: λ_dip = 1291.6 nm, T_min ≈ 0.25, A_pk = 0.47, γ_r = γ_nr = 8.54 meV.  The supplied materials reproduce the deck's
+linear design to within 2 nm and 0.03 in T/A.
+
+**Temperature dependence (B) versus deck slide 17(a):** T-minimum 1294 → 1296 (3000 K) → 1298 nm (5000–7000 K), depth
+0.224 → 0.176 (2000 K) → 0.111 (4000 K) → 0.071 (7000 K); absorption maximum 0.466 → 0.333 (7000 K); TCMT descriptor γ_nr 7.0 → 1.6 meV
+with γ_r 10.5 → 7.1 meV (ρ = γ_r/γ_nr 1.5 → 4.4); beyond the trusted range, 0.067 at 1298 nm (6000 K) and 0.051 at 1300 nm (8000 K).
+The deck's slide 17(a) shows the same curves — a red-shift of the dip to ≈ 1298 nm and a deepening from 0.22 to ≈ 0.04 at 8000 K, with
+the same off-resonance levels (0.87–0.93).  At *equal T_e* the Lane-B ε(λ, T_e) therefore reproduces the deck's T(λ; T_e) family
+essentially quantitatively (`fig1_T_lambda_Te_cyl.png` versus deck p17_Image151); the ≈ 2× discrepancy found below lies in the
+intensity → T_e mapping (C_e, G, pulse coupling), not in the permittivity model.
+
+**Activation curves (B; the cylinder's trusted limit at 1294 nm is 1.0×10¹⁰ W/cm² = 5.5 pJ per 588-nm cell = 1.6 nJ per 10-µm pixel,
+twice the best design's, because it absorbs half as much per unit area):**
+
+| λ_op | T_cold → T_high (trusted; model limit) | I at 10 / 50 / 90 % swing [W/cm²] | E_cell at 50 % | shape |
+|---|---|---|---|---|
+| 1288 | 0.311 → 0.575 (0.678) | 1.9×10⁹ / 6.6×10⁹ / 1.3×10¹⁰ | 3.7 pJ (1.06 nJ/pixel) | increasing, non-saturating, softplus 0.0006 |
+| 1292 (deck λ_p) | 0.224 → 0.333 (0.462) | 4.5×10⁹ / 7.0×10⁹ / 9.3×10⁹ | 3.8 pJ | dips to 0.216 near 10⁹ W/cm², then rises (deck's "ReLU-like" shape) |
+| 1294 | 0.224 → 0.230 (0.309) | — | — | non-monotonic (dip to 0.175 at 3×10⁹, recovery) |
+| 1298 | 0.333 → 0.142 (0.117) | 1.2×10⁹ / 4.4×10⁹ / 8.4×10⁹ | 2.4 pJ (0.70 nJ/pixel) | decreasing, sigmoid-in-linear-input RMSE 0.003 (deck's "saturable" shape) |
+| 1300 | 0.423 → 0.266 (0.189) | 1.5×10⁹ / 5.3×10⁹ / 9.0×10⁹ | 2.9 pJ | decreasing |
+| reflection 1298 / 1302 | 0.296 → 0.486 / 0.226 → 0.382 | 1.3×10⁹ / 4.7×10⁹ / 8.7×10⁹ | 2.6 pJ | increasing, softplus 0.0005 |
+
+Comparison with deck slide 17(c) at 10¹⁰ W/cm² (the deck's curves: "ReLU-like" ≈ 1290 nm 0.23 → 0.72, "sigmoid-like" ≈ 1288 nm
+0.28 → 0.78, "saturable" 1299.6 nm 0.47 → 0.07): this work gives 1290 nm 0.257 → 0.425, 1288 nm 0.311 → 0.502, 1300 nm 0.423 → 0.266
+(0.546 / 0.611 / 0.154 at 2×10¹⁰ W/cm², beyond the trusted range).  Same cold values (within 0.05), same signs and the same three
+families, but the deck's modulation at equal intensity is ≈ 2× larger.  Since the T(λ; T_e) curves agree at equal T_e (above), the
+deck's (unrecoverable) TTM reaches a given T_e at roughly half the intensity of ours — a smaller C_e, a weaker or absent electron
+cooling (our G × ½ raises the swings by 25–30 %), or a different absorbed-power bookkeeping.  This cannot be resolved without the SNU
+parameters [C]; all intensity-axis numbers in this report carry that ≈ 2× scale uncertainty.
+
+**Same-normalization heating comparison (B):** intensity needed to reach a given peak T_e at the resonant λ_op —
+
+| T_e,peak | best design (1302 nm) | cylinder (1294 nm) | ratio |
+|---|---|---|---|
+| 2000 K | 8.3×10⁸ W/cm² = 0.13 nJ/pixel = 0.90 pJ per 825-nm cell | 1.8×10⁹ W/cm² = 0.29 nJ/pixel = 1.00 pJ per 588-nm cell | 2.2 (intensity), 0.9 (per cell) |
+| 4000 K | 2.5×10⁹ = 0.39 nJ/pixel = 2.7 pJ | 5.2×10⁹ = 0.83 nJ/pixel = 2.9 pJ | 2.1, 0.93 |
+| 6000 K | 5.3×10⁹ = 0.85 nJ/pixel = 5.8 pJ | 1.07×10¹⁰ = 1.7 nJ/pixel = 5.9 pJ | 2.0, 0.98 |
+
+The per-area (pixel-invariant) heating efficiency of the best design is 2.0–2.2× that of the cylinder — exactly its absorption advantage
+(A = 0.99 vs 0.47 per unit area); per *cell* the energies coincide because its cell is 1.97× larger.
 
 ## 8. Answers to the six questions (from the calculations; lane labels in brackets)
 
@@ -176,8 +227,23 @@ CYLINDER_SECTION_PLACEHOLDER
    increasing at 1290–1296 nm, both at the 10⁻³ level); (ii) far red side (≥ 1340 nm) — transmission rises modestly (0.03 → 0.05–0.09) and
    reflection rises slightly.  No wavelength gives a sigmoid-like saturating curve within the trusted range; the deck's "saturable" (transmission
    decreasing) family does exist at 1300–1310 nm but with ΔT ≈ −0.002.
-5. **Threshold vs the previous TK-BIC/cylinder design (same normalization, same model)?**  CYLINDER_Q5_PLACEHOLDER
-6. **Does Q_loaded ≈ 9–11 with unity absorption improve or worsen the threshold vs the higher-Q design?**  CYLINDER_Q6_PLACEHOLDER
+5. **Threshold vs the previous TK-BIC/cylinder design (same normalization, same model)?**  Same model, same pulse, same intensity grid [B]: (i) heating — the best design reaches any given peak T_e at
+   2.0–2.2× lower intensity (per unit area; the pixel-invariant quantity) than the cylinder, e.g. 6000 K at 5.3×10⁹ vs 1.07×10¹⁰ W/cm²
+   (0.85 vs 1.7 nJ per 10-µm pixel); per unit cell the energies are equal (5.8 vs 5.9 pJ) because the 825-nm cell is 1.97× larger.
+   (ii) response threshold (intensity at 50 % of the trusted-range swing): best design, reflection at 1294 nm, 2.8×10⁹ W/cm²
+   (0.45 nJ/pixel, 3.0 pJ/cell, ΔR = +0.26); cylinder, transmission at 1288 nm, 6.6×10⁹ (1.06 nJ/pixel, 3.7 pJ/cell, ΔT = +0.26) and at
+   1298 nm, 4.4×10⁹ (0.70 nJ/pixel, 2.4 pJ/cell, ΔT = −0.19).  So the best design's threshold is 1.6–2.4× lower in intensity, 0.8–1.2× in
+   per-cell energy — but in a different output channel: in *transmission* the best design has no usable threshold (|ΔT| ≤ 0.01), the
+   cylinder does.  Both statements are model-conditional; the absolute scale is Lane B/C.
+6. **Does Q_loaded ≈ 9–11 with unity absorption improve or worsen the threshold vs the higher-Q design?**  Mixed, and channel-dependent [B]: the low-Q (Q_loaded ≈ 11 from the RCWA linewidth, 4–7 in the TCMT descriptor)
+   unity-absorption resonance *improves* the heating threshold by ≈ 2× per unit area (it absorbs everything, the high-Q cylinder absorbs
+   47 %) and yields a very high-contrast reflection switch (2×10⁻⁵ → 0.26, 41 dB, at 1294 nm), but it *worsens* the transmission activation
+   to the point of uselessness: the broad line's transmission minimum moves only 2–4 nm for a 180-nm ENZ shift and the mirror-like a-Si
+   background keeps T < 0.01, whereas the high-Q cylinder converts the same T_e into ΔT ≈ +0.26 / −0.19 because its 24-nm-wide line shifts
+   by 4 nm and deepens (γ_nr 7 → 1.6 meV).  A second cost of unity absorption is a narrower usable input range: the best design leaves the
+   model's trusted range at 0.8 nJ/pixel, the cylinder at 1.6 nJ/pixel.  Net: for a reflection-mode (or absorption-mode) nonlinearity the
+   critically coupled low-Q absorber is the better and lower-threshold device; for the deck's transmission-mode activation it is not, and
+   a transmission activation from this design family would require re-opening the transmission channel (a design change, not attempted here).
 
 ## 9. What cannot be determined (Lane C) — and what would resolve it
 

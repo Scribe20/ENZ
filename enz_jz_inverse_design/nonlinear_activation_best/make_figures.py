@@ -99,13 +99,20 @@ def fig1_spectra(lk, lam_ze, lam_ops, cold_ref):
             for lo in lam_ops:
                 ax.axvline(lo, color="tab:green", ls="--", lw=0.9, alpha=0.8)
             ax.text(lam_ops[0], 0.9, "  selected λ_op", color="tab:green", fontsize=8)
-            ax.set_yscale("log"); ax.set_ylim(1e-3, 1.0)
-        ax.axvline(mat.n_glass(1250.0) * P_CELL[0], color="0.5", ls="-.", lw=0.8)
+            if lk.tab["T"][0].min() < 0.05:
+                ax.set_yscale("log"); ax.set_ylim(1e-3, 1.0)
+            else:
+                ax.set_ylim(0, 1.0)
+        lam_ray = mat.n_glass(1250.0) * P_CELL[0]
+        if lk.lam[0] - 5 < lam_ray < lk.lam[-1] + 5:
+            ax.axvline(lam_ray, color="0.5", ls="-.", lw=0.8)
+        ax.set_xlim(lk.lam[0] - 2, lk.lam[-1] + 2)
         ax.set_ylabel({"T": "T (all orders)", "A": "A = 1 − R − T", "R": "R (all orders)", "Fz": "F_z (longitudinal ITO absorption)"}[k])
         ax.grid(alpha=0.3)
     axs[0, 0].legend(fontsize=7, ncol=2, loc="upper center")
     axs[1, 0].set_xlabel("wavelength [nm]"); axs[1, 1].set_xlabel("wavelength [nm]")
-    axs[0, 1].text(mat.n_glass(1250.0) * P_CELL[0] + 1, 0.05, "Rayleigh (glass) ←", fontsize=7, color="0.4")
+    if lk.lam[0] - 5 < mat.n_glass(1250.0) * P_CELL[0] < lk.lam[-1] + 5:
+        axs[0, 1].text(mat.n_glass(1250.0) * P_CELL[0] + 1, 0.05, "Rayleigh (glass) ←", fontsize=7, color="0.4")
     fig.suptitle(f"fig1 — {'frozen best design' if not SFX[0] else 'deck cylinder (comparison lane)'}, RCWA [{lk.order},{lk.order}], Lane-B ε_ITO(λ, T_e): T, A, R, F_z vs wavelength for the electron-temperature set", fontsize=11)
     fig.tight_layout()
     fig.savefig(_p(FIG / "fig1_T_lambda_Te.png"), dpi=170); plt.close(fig)
