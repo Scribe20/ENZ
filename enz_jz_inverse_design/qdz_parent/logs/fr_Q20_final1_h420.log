@@ -1,0 +1,16 @@
+[fr_Q20_final1_h420] it   0 eta=0.08103 Q=    16.5 lam_r= 1314.34 u= 0.637 | L_obj=+2.513 L_Q=0.051 L_lam=0.224 L_sh=0.0414 L=+2.912 | U_mid=44.52 R=0.974 fitres=1.13e-02 |g|=3.52e-01 bin=0.240 t=8s
+[fr_Q20_final1_h420] it   1 eta=0.08760 Q=    16.8 lam_r= 1310.27 u= 0.683 | L_obj=+2.435 L_Q=0.036 L_lam=0.114 L_sh=0.0303 L=+2.676 | U_mid=45.00 R=0.999 fitres=2.79e-02 |g|=1.90e-01 bin=0.240 t=13s
+[fr_Q20_final1_h420] it   2 eta=0.09405 Q=    16.2 lam_r= 1307.53 u= 0.646 | L_obj=+2.364 L_Q=0.048 L_lam=0.044 L_sh=0.0277 L=+2.539 | U_mid=43.85 R=0.994 fitres=4.38e-02 |g|=1.30e-01 bin=0.238 t=17s
+[fr_Q20_final1_h420] it   3 eta=0.10030 Q=    14.4 lam_r= 1304.60 u= 0.516 | L_obj=+2.300 L_Q=0.110 L_lam=0.006 L_sh=0.0202 L=+2.475 | U_mid=42.19 R=0.975 fitres=2.17e-02 |g|=5.06e-02 bin=0.234 t=20s
+[fr_Q20_final1_h420] it   4 eta=0.10626 Q=    12.9 lam_r= 1301.82 u= 0.414 | L_obj=+2.242 L_Q=0.195 L_lam=0.000 L_sh=0.0230 L=+2.506 | U_mid=40.57 R=0.952 fitres=2.25e-02 |g|=1.57e-01 bin=0.227 t=24s
+[fr_Q20_final1_h420] it   5 eta=0.11116 Q=    12.3 lam_r= 1300.27 u= 0.374 | L_obj=+2.197 L_Q=0.242 L_lam=0.002 L_sh=0.0261 L=+2.519 | U_mid=39.44 R=0.939 fitres=1.99e-02 |g|=2.02e-01 bin=0.219 t=27s
+[fr_Q20_final1_h420] it   6 eta=0.11504 Q=    12.4 lam_r= 1300.12 u= 0.381 | L_obj=+2.162 L_Q=0.232 L_lam=0.003 L_sh=0.0266 L=+2.477 | U_mid=38.81 R=0.935 fitres=1.42e-02 |g|=2.09e-01 bin=0.208 t=31s
+[fr_Q20_final1_h420] it   7 eta=0.11788 Q=    13.4 lam_r= 1301.45 u= 0.450 | L_obj=+2.138 L_Q=0.159 L_lam=0.001 L_sh=0.0301 L=+2.388 | U_mid=38.63 R=0.940 fitres=4.35e-02 |g|=1.39e-01 bin=0.196 t=34s
+[fr_Q20_final1_h420] it   8 eta=0.12014 Q=    15.6 lam_r= 1303.60 u= 0.608 | L_obj=+2.119 L_Q=0.062 L_lam=0.002 L_sh=0.0721 L=+2.400 | U_mid=38.65 R=0.946 fitres=1.47e-01 |g|=5.02e-01 bin=0.184 t=37s
+[fr_Q20_final1_h420] it   9 eta=0.12415 Q=    15.0 lam_r= 1302.33 u= 0.560 | L_obj=+2.086 L_Q=0.084 L_lam=0.000 L_sh=0.0452 L=+2.306 | U_mid=38.61 R=0.936 fitres=1.07e-01 |g|=2.25e-01 bin=0.172 t=41s
+[fr_Q20_final1_h420] it  10 eta=0.12786 Q=    14.2 lam_r= 1300.19 u= 0.501 | L_obj=+2.057 L_Q=0.119 L_lam=0.004 L_sh=0.0192 L=+2.238 | U_mid=39.44 R=0.921 fitres=4.60e-02 |g|=1.23e-01 bin=0.161 t=45s
+[fr_Q20_final1_h420] it  11 eta=0.12946 Q=    14.8 lam_r= 1299.19 u= 0.541 | L_obj=+2.044 L_Q=0.094 L_lam=0.011 L_sh=0.0062 L=+2.168 | U_mid=42.82 R=0.907 fitres=3.10e-02 |g|=1.38e-01 bin=0.149 t=48s
+[fr_Q20_final1_h420] it  12 eta=0.12731 Q=    16.1 lam_r= 1300.29 u= 0.644 | L_obj=+2.061 L_Q=0.048 L_lam=0.006 L_sh=0.0141 L=+2.158 | U_mid=53.80 R=0.893 fitres=1.10e-01 |g|=3.97e-01 bin=0.138 t=52s
+[fr_Q20_final1_h420] it  13 eta=0.12703 Q=    17.2 lam_r= 1300.89 u= 0.739 | L_obj=+2.063 L_Q=0.023 L_lam=0.004 L_sh=0.0266 L=+2.170 | U_mid=59.19 R=0.892 fitres=1.43e-01 |g|=6.26e-01 bin=0.127 t=55s
+[fr_Q20_final1_h420] it  14 eta=0.13155 Q=    18.0 lam_r= 1300.07 u= 0.804 | L_obj=+2.028 L_Q=0.012 L_lam=0.012 L_sh=0.0045 L=+2.066 | U_mid=48.91 R=0.906 fitres=6.32e-02 |g|=1.67e-01 bin=0.117 t=59s
+[fr_Q20_final1_h420] it  15 eta=0.13437 Q=    18.1 lam_r= 1301.45 u= 0.814 | L_obj=+2.007 L_Q=0.011 L_lam=0.002 L_sh=0.0117 L=+2.055 | U_mid=43.51 R=0.921 fitres=9.57e-02 |g|=2.38e-01 bin=0.107 t=62s

@@ -1,0 +1,2 @@
+[worker 1] 6 of 12 jobs
+[worker 1] --threads 1 --h 420.0 --q-target 20.0 --warm final1 --tag fr_Q20_final1_h420 --out frontier/fr_Q20_final1_h420 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
