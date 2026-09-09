@@ -28,12 +28,26 @@ COMP = HERE / "comparison"; COMP.mkdir(exist_ok=True)
 
 
 # ----------------------------------------------------------------------------- loading
+class _ScaledPhasors:
+    """FDTDX pulse-mode phasors are stride-weighted SUMS over time steps (~ (1/dt) ∫ F e^{iωt} dt).  Runs with a
+    different time step (e.g. the 10-cell ITO mesh) therefore need the factor dt to become comparable time integrals;
+    every '<detector>/phasor' array is multiplied by dt on access (time-domain probe traces are left unscaled)."""
+    def __init__(self, z, dt):
+        self.z, self.dt = z, dt
+    def __getitem__(self, k):
+        a = self.z[k]
+        return a.astype(np.complex128) * self.dt if k.endswith("/phasor") else a     # complex128: fluxes ~ dt² would underflow in float32
+    @property
+    def files(self):
+        return self.z.files
+
+
 def load_run(design, tag):
     d = HERE / ("reference" if design == "reference" else design) / tag
     if not (d / "phasors.npz").exists():
         return None
     z = np.load(d / "phasors.npz"); meta = json.load(open(d / "run_meta.json"))
-    return dict(z=z, meta=meta, dir=d)
+    return dict(z=_ScaledPhasors(z, meta["dt_s"]), meta=meta, dir=d)
 
 
 def plane_flux(ph, dxy):
