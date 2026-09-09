@@ -1,2 +1,8 @@
 [worker 0] 3 of 3 jobs
 [worker 0] --threads 1 --h 600.0 --q-target 500.0 --warm final3 --tag fr_Q500_final3_h600 --out frontier/fr_Q500_final3_h600 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 323s :: [fr_Q500_final3_h600] done: eta_soft=0.14597 eta_hard=0.14594 Q_hard=None lam_hard=None u=-0.000 U_mid=9.76 fill=0.273 wall=320s
+[worker 0] --threads 1 --h 700.0 --q-target 500.0 --warm frontier/seeds/fresh4242.npy --tag fr_Q500_fresh4242_h700 --out frontier/fr_Q500_fresh4242_h700 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 313s :: [fr_Q500_fresh4242_h700] done: eta_soft=0.07722 eta_hard=0.07726 Q_hard=392.83289796073916 lam_hard=1302.328794992493 u=0.617 U_mid=453.54 fill=0.093 wall=310s
+[worker 0] --threads 1 --h 380.0 --q-target 500.0 --warm final0 --tag fr_Q500_final0_h380 --out frontier/fr_Q500_final0_h380 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 329s :: [fr_Q500_final0_h380] done: eta_soft=0.20836 eta_hard=0.20836 Q_hard=None lam_hard=None u=-0.001 U_mid=26.83 fill=0.233 wall=326s
+[worker 0] done
