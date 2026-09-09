@@ -2,3 +2,5 @@
 [pilot_h675_Q100_warm_final1] it   1 eta=0.00631 Q=    79.4 lam_r= 1305.90 u= 0.531 | L_obj=+5.066 L_Q=0.100 L_lam=0.347 L_sh=0.0967 L=+5.804 | U_mid=131.88 R=0.786 fitres=1.69e-02 |g|=3.10e+00 bin=0.241 t=83s
 [pilot_h675_Q100_warm_final1] it   2 eta=0.01688 Q=    84.1 lam_r= 1297.02 u= 0.480 | L_obj=+4.082 L_Q=0.135 L_lam=0.609 L_sh=0.2305 L=+5.517 | U_mid=114.96 R=0.972 fitres=9.38e-03 |g|=2.53e+00 bin=0.234 t=101s
 [pilot_h675_Q100_warm_final1] it   3 eta=0.02062 Q=    80.6 lam_r= 1294.84 u= 0.348 | L_obj=+3.881 L_Q=0.279 L_lam=0.641 L_sh=0.3896 L=+5.970 | U_mid=94.36 R=0.942 fitres=1.07e-02 |g|=2.45e+00 bin=0.226 t=138s
+[pilot_h675_Q100_warm_final1] it   4 eta=0.01818 Q=    81.5 lam_r= 1296.65 u= 0.440 | L_obj=+4.007 L_Q=0.169 L_lam=0.587 L_sh=0.2371 L=+5.474 | U_mid=109.84 R=0.970 fitres=8.01e-03 |g|=2.29e+00 bin=0.218 t=164s
+[pilot_h675_Q100_warm_final1] it   5 eta=0.01420 Q=    84.1 lam_r= 1299.21 u= 0.608 | L_obj=+4.254 L_Q=0.062 L_lam=0.334 L_sh=0.0685 L=+4.856 | U_mid=138.25 R=0.997 fitres=3.14e-03 |g|=1.51e+00 bin=0.209 t=191s
