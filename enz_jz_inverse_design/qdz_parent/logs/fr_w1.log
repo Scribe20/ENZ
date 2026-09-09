@@ -1,2 +1,14 @@
 [worker 1] 6 of 12 jobs
 [worker 1] --threads 1 --h 420.0 --q-target 20.0 --warm final1 --tag fr_Q20_final1_h420 --out frontier/fr_Q20_final1_h420 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 302s :: [fr_Q20_final1_h420] done: eta_soft=0.15831 eta_hard=0.15832 Q_hard=19.275418672604978 lam_hard=1300.8385167919018 u=0.925 U_mid=37.18 fill=0.260 wall=297s
+[worker 1] --threads 1 --h 480.0 --q-target 50.0 --warm frontier/seeds/fresh8080.npy --tag fr_Q50_fresh8080_h480 --out frontier/fr_Q50_fresh8080_h480 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 313s :: [fr_Q50_fresh8080_h480] done: eta_soft=0.11120 eta_hard=0.11120 Q_hard=43.839471832522996 lam_hard=1302.6852751379301 u=0.769 U_mid=131.15 fill=0.144 wall=310s
+[worker 1] --threads 1 --h 680.0 --q-target 50.0 --warm final2 --tag fr_Q50_final2_h680 --out frontier/fr_Q50_final2_h680 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 308s :: [fr_Q50_final2_h680] done: eta_soft=0.04569 eta_hard=0.04565 Q_hard=46.08064674072087 lam_hard=1301.4803310593097 u=0.846 U_mid=74.16 fill=0.257 wall=305s
+[worker 1] --threads 1 --h 680.0 --q-target 100.0 --warm final1 --tag fr_Q100_final1_h680 --out frontier/fr_Q100_final1_h680 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 298s :: [fr_Q100_final1_h680] done: eta_soft=0.01789 eta_hard=0.01794 Q_hard=82.46580879322744 lam_hard=1301.3488564097613 u=0.670 U_mid=140.43 fill=0.280 wall=295s
+[worker 1] --threads 1 --h 700.0 --q-target 200.0 --warm frontier/seeds/fresh4242.npy --tag fr_Q200_fresh4242_h700 --out frontier/fr_Q200_fresh4242_h700 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 305s :: [fr_Q200_fresh4242_h700] done: eta_soft=0.07213 eta_hard=0.07218 Q_hard=185.2889246005374 lam_hard=1302.4927742344798 u=0.855 U_mid=258.80 fill=0.095 wall=301s
+[worker 1] --threads 1 --h 700.0 --q-target 200.0 --warm final1 --tag fr_Q200_final1_h700 --out frontier/fr_Q200_final1_h700 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 298s :: [fr_Q200_final1_h700] done: eta_soft=0.01817 eta_hard=0.01819 Q_hard=122.97441973286473 lam_hard=1301.5334112129958 u=0.370 U_mid=180.26 fill=0.282 wall=295s
+[worker 1] done

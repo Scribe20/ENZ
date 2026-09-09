@@ -1,2 +1,14 @@
 [worker 0] 6 of 12 jobs
 [worker 0] --threads 2 --h 380.0 --q-target 20.0 --warm final3 --tag fr_Q20_final3_h380 --out frontier/fr_Q20_final3_h380 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 308s :: [fr_Q20_final3_h380] done: eta_soft=0.11424 eta_hard=0.11419 Q_hard=16.454083560099424 lam_hard=1298.2284346812767 u=0.666 U_mid=51.84 fill=0.295 wall=304s
+[worker 0] --threads 2 --h 440.0 --q-target 20.0 --warm final2 --tag fr_Q20_final2_h440 --out frontier/fr_Q20_final2_h440 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 379s :: [fr_Q20_final2_h440] done: eta_soft=0.13182 eta_hard=0.13212 Q_hard=14.406048814133083 lam_hard=1302.0942773435715 u=0.519 U_mid=40.16 fill=0.266 wall=375s
+[worker 0] --threads 2 --h 680.0 --q-target 50.0 --warm final0 --tag fr_Q50_final0_h680 --out frontier/fr_Q50_final0_h680 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 373s :: [fr_Q50_final0_h680] done: eta_soft=0.04414 eta_hard=0.04389 Q_hard=50.9696866246461 lam_hard=1301.4229164409676 u=1.033 U_mid=83.58 fill=0.268 wall=370s
+[worker 0] --threads 2 --h 640.0 --q-target 100.0 --warm final3 --tag fr_Q100_final3_h640 --out frontier/fr_Q100_final3_h640 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 383s :: [fr_Q100_final3_h640] done: eta_soft=0.03350 eta_hard=0.03350 Q_hard=109.068526830734 lam_hard=1302.4993125568815 u=1.188 U_mid=235.61 fill=0.333 wall=380s
+[worker 0] --threads 2 --h 700.0 --q-target 100.0 --warm final0 --tag fr_Q100_final0_h700 --out frontier/fr_Q100_final0_h700 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 378s :: [fr_Q100_final0_h700] done: eta_soft=0.02222 eta_hard=0.02217 Q_hard=87.86878137997869 lam_hard=1301.826226038347 u=0.769 U_mid=149.71 fill=0.282 wall=375s
+[worker 0] --threads 2 --h 600.0 --q-target 200.0 --warm final3 --tag fr_Q200_final3_h600 --out frontier/fr_Q200_final3_h600 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 266s :: [fr_Q200_final3_h600] done: eta_soft=0.13915 eta_hard=0.13919 Q_hard=None lam_hard=None u=-0.002 U_mid=9.57 fill=0.286 wall=263s
+[worker 0] done

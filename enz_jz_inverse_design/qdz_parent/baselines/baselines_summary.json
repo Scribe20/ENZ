@@ -1,0 +1,19 @@
+{
+ "final3": {
+  "P": 825.0,
+  "h": 525.0,
+  "lambda_r": 1271.1169257725505,
+  "Q_r": 219.61097193271746,
+  "detuning_nm": -31.165060117336907,
+  "detuning_in_linewidths": -5.384389904611029,
+  "eta_Dz_at_lambda_E": 0.11140471805054879,
+  "eta_Dz_P_at_lambda_E": 0.07093482533495613,
+  "U_mid_at_lambda_E": 17.088083058480457,
+  "R_at_lambda_E": 0.9832884554080933,
+  "eta_Dz_at_lambda_r": 0.005993792294566569,
+  "U_mid_at_lambda_r": 241.9990460548638,
+  "n_parent_poles": 4,
+  "sha256": "b6db683ab862df0323c6e6177c6d1127f02126a0cd119c42c6203a86173887e1",
+  "provenance": "/home/user/ENZ/enz_jz_inverse_design/outputs/stage3/runs/final3_div_F1_P825_h500_pad0.12_s333_h525/rho_hard_binary.npy"
+ }
+}

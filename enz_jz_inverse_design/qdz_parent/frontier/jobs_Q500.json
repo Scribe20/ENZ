@@ -1,0 +1,41 @@
+[
+ {
+  "h": 600.0,
+  "q_target": 500.0,
+  "warm": "final3",
+  "tag": "fr_Q500_final3_h600",
+  "out": "frontier/fr_Q500_final3_h600",
+  "iters": 80,
+  "span": 0.25,
+  "span_acquire": 0.5,
+  "lam_shape": 3.0,
+  "tol_factor": 0.25,
+  "n_z": 5
+ },
+ {
+  "h": 700.0,
+  "q_target": 500.0,
+  "warm": "frontier/seeds/fresh4242.npy",
+  "tag": "fr_Q500_fresh4242_h700",
+  "out": "frontier/fr_Q500_fresh4242_h700",
+  "iters": 80,
+  "span": 0.25,
+  "span_acquire": 0.5,
+  "lam_shape": 3.0,
+  "tol_factor": 0.25,
+  "n_z": 5
+ },
+ {
+  "h": 380.0,
+  "q_target": 500.0,
+  "warm": "final0",
+  "tag": "fr_Q500_final0_h380",
+  "out": "frontier/fr_Q500_final0_h380",
+  "iters": 80,
+  "span": 0.25,
+  "span_acquire": 0.5,
+  "lam_shape": 3.0,
+  "tol_factor": 0.25,
+  "n_z": 5
+ }
+]

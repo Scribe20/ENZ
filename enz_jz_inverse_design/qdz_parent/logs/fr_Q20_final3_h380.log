@@ -57,3 +57,25 @@
 [fr_Q20_final3_h380] it  56 eta=0.11278 Q=    16.5 lam_r= 1298.25 u= 0.670 | L_obj=+2.182 L_Q=0.040 L_lam=0.028 L_sh=0.0048 L=+2.265 | U_mid=49.91 R=0.999 fitres=8.25e-03 |g|=7.19e-02 bin=0.003 t=188s
 [fr_Q20_final3_h380] it  57 eta=0.11302 Q=    16.5 lam_r= 1298.22 u= 0.668 | L_obj=+2.180 L_Q=0.041 L_lam=0.029 L_sh=0.0048 L=+2.264 | U_mid=49.80 R=0.999 fitres=8.59e-03 |g|=7.19e-02 bin=0.003 t=194s
 [fr_Q20_final3_h380] it  58 eta=0.11323 Q=    16.5 lam_r= 1298.21 u= 0.666 | L_obj=+2.178 L_Q=0.041 L_lam=0.029 L_sh=0.0049 L=+2.263 | U_mid=49.71 R=0.999 fitres=8.91e-03 |g|=7.12e-02 bin=0.003 t=199s
+[fr_Q20_final3_h380] it  59 eta=0.11340 Q=    16.4 lam_r= 1298.19 u= 0.665 | L_obj=+2.177 L_Q=0.042 L_lam=0.029 L_sh=0.0049 L=+2.262 | U_mid=49.64 R=0.999 fitres=9.19e-03 |g|=7.05e-02 bin=0.002 t=204s
+[fr_Q20_final3_h380] it  60 eta=0.11354 Q=    16.4 lam_r= 1298.18 u= 0.664 | L_obj=+2.176 L_Q=0.042 L_lam=0.029 L_sh=0.0050 L=+2.261 | U_mid=49.59 R=0.999 fitres=9.43e-03 |g|=7.05e-02 bin=0.002 t=210s
+[fr_Q20_final3_h380] it  61 eta=0.11366 Q=    16.4 lam_r= 1298.18 u= 0.663 | L_obj=+2.175 L_Q=0.042 L_lam=0.029 L_sh=0.0050 L=+2.261 | U_mid=49.54 R=0.999 fitres=9.63e-03 |g|=7.14e-02 bin=0.002 t=214s
+[fr_Q20_final3_h380] it  62 eta=0.11375 Q=    16.4 lam_r= 1298.17 u= 0.663 | L_obj=+2.174 L_Q=0.042 L_lam=0.029 L_sh=0.0050 L=+2.260 | U_mid=49.51 R=0.999 fitres=9.81e-03 |g|=7.35e-02 bin=0.002 t=219s
+[fr_Q20_final3_h380] it  63 eta=0.11383 Q=    16.4 lam_r= 1298.17 u= 0.663 | L_obj=+2.173 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.259 | U_mid=49.48 R=0.999 fitres=9.96e-03 |g|=7.66e-02 bin=0.001 t=223s
+[fr_Q20_final3_h380] it  64 eta=0.11390 Q=    16.4 lam_r= 1298.16 u= 0.663 | L_obj=+2.172 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.259 | U_mid=49.46 R=0.998 fitres=1.01e-02 |g|=8.08e-02 bin=0.001 t=228s
+[fr_Q20_final3_h380] it  65 eta=0.11395 Q=    16.4 lam_r= 1298.16 u= 0.662 | L_obj=+2.172 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.259 | U_mid=49.45 R=0.998 fitres=1.02e-02 |g|=8.59e-02 bin=0.001 t=233s
+[fr_Q20_final3_h380] it  66 eta=0.11400 Q=    16.4 lam_r= 1298.16 u= 0.663 | L_obj=+2.172 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.258 | U_mid=49.43 R=0.998 fitres=1.04e-02 |g|=9.14e-02 bin=0.001 t=239s
+[fr_Q20_final3_h380] it  67 eta=0.11404 Q=    16.4 lam_r= 1298.16 u= 0.663 | L_obj=+2.171 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.258 | U_mid=49.43 R=0.998 fitres=1.05e-02 |g|=9.67e-02 bin=0.001 t=243s
+[fr_Q20_final3_h380] it  68 eta=0.11407 Q=    16.4 lam_r= 1298.16 u= 0.663 | L_obj=+2.171 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.258 | U_mid=49.43 R=0.998 fitres=1.06e-02 |g|=1.01e-01 bin=0.001 t=248s
+[fr_Q20_final3_h380] it  69 eta=0.11410 Q=    16.4 lam_r= 1298.16 u= 0.663 | L_obj=+2.171 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.257 | U_mid=49.42 R=0.998 fitres=1.07e-02 |g|=1.04e-01 bin=0.001 t=252s
+[fr_Q20_final3_h380] it  70 eta=0.11413 Q=    16.4 lam_r= 1298.16 u= 0.664 | L_obj=+2.170 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.257 | U_mid=49.43 R=0.998 fitres=1.08e-02 |g|=1.05e-01 bin=0.001 t=257s
+[fr_Q20_final3_h380] it  71 eta=0.11415 Q=    16.4 lam_r= 1298.16 u= 0.664 | L_obj=+2.170 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.257 | U_mid=49.43 R=0.998 fitres=1.08e-02 |g|=1.03e-01 bin=0.001 t=261s
+[fr_Q20_final3_h380] it  72 eta=0.11416 Q=    16.4 lam_r= 1298.16 u= 0.665 | L_obj=+2.170 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.256 | U_mid=49.43 R=0.998 fitres=1.09e-02 |g|=1.00e-01 bin=0.001 t=266s
+[fr_Q20_final3_h380] it  73 eta=0.11417 Q=    16.5 lam_r= 1298.17 u= 0.665 | L_obj=+2.170 L_Q=0.042 L_lam=0.029 L_sh=0.0051 L=+2.256 | U_mid=49.44 R=0.998 fitres=1.10e-02 |g|=9.70e-02 bin=0.001 t=271s
+[fr_Q20_final3_h380] it  74 eta=0.11418 Q=    16.5 lam_r= 1298.17 u= 0.665 | L_obj=+2.170 L_Q=0.041 L_lam=0.029 L_sh=0.0051 L=+2.256 | U_mid=49.44 R=0.998 fitres=1.10e-02 |g|=9.39e-02 bin=0.000 t=275s
+[fr_Q20_final3_h380] it  75 eta=0.11419 Q=    16.5 lam_r= 1298.17 u= 0.666 | L_obj=+2.170 L_Q=0.041 L_lam=0.029 L_sh=0.0051 L=+2.256 | U_mid=49.44 R=0.998 fitres=1.11e-02 |g|=9.16e-02 bin=0.000 t=279s
+[fr_Q20_final3_h380] it  76 eta=0.11419 Q=    16.5 lam_r= 1298.17 u= 0.666 | L_obj=+2.170 L_Q=0.041 L_lam=0.029 L_sh=0.0051 L=+2.256 | U_mid=49.44 R=0.998 fitres=1.11e-02 |g|=9.05e-02 bin=0.000 t=283s
+[fr_Q20_final3_h380] it  77 eta=0.11419 Q=    16.5 lam_r= 1298.17 u= 0.666 | L_obj=+2.170 L_Q=0.041 L_lam=0.029 L_sh=0.0051 L=+2.256 | U_mid=49.45 R=0.998 fitres=1.11e-02 |g|=9.07e-02 bin=0.000 t=288s
+[fr_Q20_final3_h380] it  78 eta=0.11419 Q=    16.5 lam_r= 1298.17 u= 0.666 | L_obj=+2.170 L_Q=0.041 L_lam=0.029 L_sh=0.0051 L=+2.256 | U_mid=49.45 R=0.998 fitres=1.11e-02 |g|=9.19e-02 bin=0.000 t=293s
+[fr_Q20_final3_h380] it  79 eta=0.11418 Q=    16.5 lam_r= 1298.17 u= 0.666 | L_obj=+2.170 L_Q=0.041 L_lam=0.029 L_sh=0.0051 L=+2.256 | U_mid=49.45 R=0.998 fitres=1.11e-02 |g|=9.41e-02 bin=0.000 t=297s
+[fr_Q20_final3_h380] done: eta_soft=0.11424 eta_hard=0.11419 Q_hard=16.454083560099424 lam_hard=1298.2284346812767 u=0.666 U_mid=51.84 fill=0.295 wall=304s
