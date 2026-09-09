@@ -2,3 +2,7 @@
 [worker 1] --threads 2 --h 600 --q-target 100 --warm final1 --tag pilot_h600_Q100_warm_final1 --out pilot/pilot_h600_Q100_warm_final1 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
 [worker 1] rc=0 787s :: [pilot_h600_Q100_warm_final1] done: eta_soft=0.15455 eta_hard=0.15454 Q_hard=4.231885553431275 lam_hard=1405.910981686669 u=0.001 U_mid=16.34 fill=0.225 wall=777s
 [worker 1] --threads 2 --h 425 --q-target 50 --warm final2 --tag pilot_h425_Q50_warm_final2 --out pilot/pilot_h425_Q50_warm_final2 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 1691s :: [pilot_h425_Q50_warm_final2] done: eta_soft=0.08159 eta_hard=0.08155 Q_hard=43.42793616569195 lam_hard=1301.6210698269588 u=0.752 U_mid=82.42 fill=0.300 wall=1688s
+[worker 1] --threads 2 --h 525 --q-target 100 --seed 4242 --tag pilot_h525_Q100_fresh4242 --out pilot/pilot_h525_Q100_fresh4242 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 206s :: [pilot_h525_Q100_fresh4242] done: eta_soft=0.02319 eta_hard=0.02321 Q_hard=None lam_hard=None u=-0.001 U_mid=5.26 fill=0.141 wall=203s
+[worker 1] done

@@ -49,3 +49,130 @@
     final0 h=  320: 1263/Q17, 1266/Q6, 1274/Q44, 1316/Q24
     final0 h=  340: 1274/Q8, 1281/Q34, 1335/Q23
     final0 h=  360: 1264/Q22, 1286/Q29, 1354/Q22
+    final0 h=  380: 1291/Q26, 1298/Q290, 1373/Q20
+    final0 h=  400: 1296/Q24, 1311/Q287, 1392/Q18
+    final0 h=  420: 1301/Q23, 1323/Q277
+    final0 h=  440: 1304/Q21, 1335/Q264
+    final0 h=  460: 1186/Q32, 1308/Q19, 1347/Q250
+    final0 h=  480: 1199/Q34, 1311/Q18, 1358/Q235
+    final0 h=  500: 1210/Q36, 1313/Q16, 1368/Q222
+    final0 h=  520: 1221/Q38, 1315/Q15, 1378/Q220
+    final0 h=  540: 1232/Q44, 1319/Q13, 1386/Q507, 1389/Q286
+    final0 h=  560: 1317/Q12
+    final0 h=  580: 1267/Q18, 1321/Q10
+    final0 h=  600: 1203/Q17, 1272/Q21, 1324/Q9
+    final0 h=  620: 1207/Q15, 1278/Q27, 1330/Q7
+    final0 h=  640: 1215/Q14, 1285/Q37
+    final0 h=  660: 1268/Q840, 1291/Q47
+    final0 h=  680: 1182/Q20, 1273/Q1066, 1297/Q59
+    final0 h=  700: 1188/Q21, 1199/Q19, 1278/Q1341, 1302/Q70
+    final0 h=  720: 1194/Q23, 1307/Q80
+    final0 h=  740: 1198/Q26, 1311/Q88
+    final0 h=  760: 1202/Q29, 1315/Q93
+  [final0] 62 poles (1094 s)
+    final2 h=  320: 1274/Q42, 1318/Q24
+    final2 h=  340: 1273/Q9, 1282/Q33, 1337/Q23
+    final2 h=  360: 1265/Q9, 1287/Q29, 1357/Q21
+    final2 h=  380: 1292/Q26, 1377/Q19
+    final2 h=  400: 1297/Q24, 1395/Q18
+    final2 h=  420: 1301/Q22
+    final2 h=  440: 1305/Q21, 1333/Q522
+    final2 h=  460: 1309/Q19, 1349/Q209
+    final2 h=  480: 1195/Q35, 1312/Q17, 1360/Q199
+    final2 h=  500: 1207/Q37, 1314/Q16, 1370/Q195
+    final2 h=  520: 1218/Q41, 1316/Q14, 1380/Q191
+    final2 h=  540: 1228/Q47, 1317/Q13, 1390/Q187
+    final2 h=  560: 1236/Q54, 1319/Q10
+    final2 h=  580: 1325/Q10
+    final2 h=  600: 1269/Q23, 1328/Q8
+    final2 h=  620: 1194/Q10, 1276/Q29, 1342/Q7
+    final2 h=  640: 1284/Q37
+    final2 h=  660: 1196/Q9, 1291/Q48
+    final2 h=  680: 1211/Q9, 1264/Q18, 1267/Q684, 1297/Q59
+    final2 h=  700: 1272/Q667, 1302/Q70
+    final2 h=  720: 1276/Q645, 1307/Q78
+    final2 h=  740: 1280/Q621, 1311/Q84
+    final2 h=  760: 1284/Q597, 1314/Q88
+  [final2] 52 poles (1442 s)
+    fresh8080 h=  320: 
+    fresh8080 h=  340: 
+    fresh8080 h=  360: 
+    fresh8080 h=  380: 
+    fresh8080 h=  400: 1263/Q63
+    fresh8080 h=  420: 1216/Q11, 1273/Q56
+    fresh8080 h=  440: 1234/Q14, 1282/Q51
+    fresh8080 h=  460: 1292/Q46
+    fresh8080 h=  480: 1301/Q43
+    fresh8080 h=  500: 1311/Q40
+    fresh8080 h=  520: 1319/Q38
+    fresh8080 h=  540: 1328/Q36
+    fresh8080 h=  560: 1336/Q35
+    fresh8080 h=  580: 1343/Q33
+    fresh8080 h=  600: 1265/Q8, 1350/Q32
+    fresh8080 h=  620: 1268/Q8, 1357/Q31
+    fresh8080 h=  640: 1271/Q8, 1363/Q30
+    fresh8080 h=  660: 1274/Q8, 1369/Q30
+    fresh8080 h=  680: 1265/Q114, 1278/Q8, 1374/Q29
+    fresh8080 h=  700: 1268/Q109, 1285/Q10, 1379/Q29
+    fresh8080 h=  720: 1271/Q106, 1384/Q29
+    fresh8080 h=  740: 1274/Q105, 1389/Q29
+    fresh8080 h=  760: 1277/Q104, 1393/Q29
+  [fresh8080] 32 poles (1813 s)
+    fresh4242 h=  320: 
+    fresh4242 h=  340: 
+    fresh4242 h=  360: 
+    fresh4242 h=  380: 1216/Q9
+    fresh4242 h=  400: 1222/Q11
+    fresh4242 h=  420: 
+    fresh4242 h=  440: 
+    fresh4242 h=  460: 
+    fresh4242 h=  480: 
+    fresh4242 h=  500: 
+    fresh4242 h=  520: 
+    fresh4242 h=  540: 
+    fresh4242 h=  560: 1265/Q329
+    fresh4242 h=  580: 1271/Q303
+    fresh4242 h=  600: 1276/Q285
+    fresh4242 h=  620: 1282/Q270
+    fresh4242 h=  640: 1287/Q258
+    fresh4242 h=  660: 1293/Q247
+    fresh4242 h=  680: 1298/Q238
+    fresh4242 h=  700: 1303/Q230
+    fresh4242 h=  720: 1308/Q223
+    fresh4242 h=  740: 1313/Q217
+    fresh4242 h=  760: 1317/Q212
+  [fresh4242] 13 poles (2167 s)
+
+  Q_target = 20: best seeds
+    final3     h=  380  lam_r= 1300.0 (  -2.3 nm = -0.03 linewidths)  Q=   19.6  score=0.002
+    final1     h=  420  lam_r= 1304.4 (  +2.1 nm = +0.03 linewidths)  Q=   19.5  score=0.002
+    final2     h=  440  lam_r= 1305.1 (  +2.8 nm = +0.04 linewidths)  Q=   20.7  score=0.003
+    final1     h=  400  lam_r= 1300.1 (  -2.2 nm = -0.03 linewidths)  Q=   21.0  score=0.003
+    final0     h=  440  lam_r= 1304.3 (  +2.1 nm = +0.03 linewidths)  Q=   21.0  score=0.004
+    final0     h=  460  lam_r= 1307.9 (  +5.6 nm = +0.08 linewidths)  Q=   19.4  score=0.008
+
+  Q_target = 50: best seeds
+    fresh8080  h=  480  lam_r= 1301.5 (  -0.8 nm = -0.03 linewidths)  Q=   43.2  score=0.022
+    final0     h=  680  lam_r= 1297.2 (  -5.1 nm = -0.23 linewidths)  Q=   58.5  score=0.078
+    final2     h=  680  lam_r= 1296.7 (  -5.6 nm = -0.25 linewidths)  Q=   59.1  score=0.093
+    final2     h=  700  lam_r= 1301.9 (  -0.3 nm = -0.02 linewidths)  Q=   69.6  score=0.110
+    fresh8080  h=  500  lam_r= 1310.6 (  +8.3 nm = +0.26 linewidths)  Q=   40.5  score=0.110
+    final0     h=  700  lam_r= 1302.4 (  +0.1 nm = +0.01 linewidths)  Q=   70.1  score=0.114
+
+  Q_target = 100: best seeds
+    final3     h=  640  lam_r= 1299.9 (  -2.4 nm = -0.16 linewidths)  Q=   88.4  score=0.041
+    final1     h=  680  lam_r= 1300.6 (  -1.7 nm = -0.10 linewidths)  Q=   80.4  score=0.058
+    final1     h=  700  lam_r= 1305.6 (  +3.4 nm = +0.23 linewidths)  Q=   90.2  score=0.065
+    final3     h=  660  lam_r= 1305.7 (  +3.4 nm = +0.25 linewidths)  Q=   97.1  score=0.065
+    final0     h=  700  lam_r= 1302.4 (  +0.1 nm = +0.01 linewidths)  Q=   70.1  score=0.126
+    final2     h=  720  lam_r= 1306.6 (  +4.3 nm = +0.26 linewidths)  Q=   78.3  score=0.126
+
+  Q_target = 200: best seeds
+    fresh4242  h=  700  lam_r= 1303.0 (  +0.7 nm = +0.13 linewidths)  Q=  230.4  score=0.037
+    final3     h=  600  lam_r= 1304.0 (  +1.7 nm = +0.47 linewidths)  Q=  361.3  score=0.575
+    final3     h=  660  lam_r= 1305.7 (  +3.4 nm = +0.25 linewidths)  Q=   97.1  score=0.587
+    fresh4242  h=  680  lam_r= 1297.9 (  -4.3 nm = -0.80 linewidths)  Q=  238.3  score=0.666
+    final1     h=  700  lam_r= 1305.6 (  +3.4 nm = +0.23 linewidths)  Q=   90.2  score=0.688
+    final3     h=  640  lam_r= 1299.9 (  -2.4 nm = -0.16 linewidths)  Q=   88.4  score=0.693
+
+[seeds] -> /home/user/ENZ/enz_jz_inverse_design/qdz_parent/outputs/phaseA/seeds.json (2167 s)
