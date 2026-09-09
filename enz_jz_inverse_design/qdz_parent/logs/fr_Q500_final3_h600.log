@@ -4,3 +4,9 @@
 [fr_Q500_final3_h600] it   3 eta=0.05092 Q=     nan lam_r=     nan u=-0.005 | L_obj=+2.977 L_Q=2.809 L_lam=0.018 L_sh=0.1163 L=+6.153 | U_mid=35.32 R=0.993 fitres=4.40e-05 |g|=5.81e-01 bin=0.238 t=16s
 [fr_Q500_final3_h600] it   4 eta=0.06367 Q=     nan lam_r=     nan u=-0.004 | L_obj=+2.754 L_Q=2.796 L_lam=0.007 L_sh=0.1018 L=+5.862 | U_mid=26.71 R=0.968 fitres=5.48e-06 |g|=4.06e-01 bin=0.233 t=19s
 [fr_Q500_final3_h600] it   5 eta=0.07519 Q=     nan lam_r=     nan u=-0.003 | L_obj=+2.588 L_Q=2.777 L_lam=0.003 L_sh=0.0932 L=+5.648 | U_mid=21.92 R=0.934 fitres=9.22e-06 |g|=2.88e-01 bin=0.225 t=23s
+[fr_Q500_final3_h600] it   6 eta=0.08527 Q=     nan lam_r=     nan u=-0.002 | L_obj=+2.462 L_Q=2.763 L_lam=0.001 L_sh=0.0870 L=+5.487 | U_mid=19.01 R=0.902 fitres=7.13e-06 |g|=2.08e-01 bin=0.217 t=27s
+[fr_Q500_final3_h600] it   7 eta=0.09391 Q=     nan lam_r=     nan u=-0.002 | L_obj=+2.365 L_Q=2.753 L_lam=0.001 L_sh=0.0817 L=+5.364 | U_mid=17.14 R=0.873 fitres=4.79e-06 |g|=1.53e-01 bin=0.207 t=31s
+[fr_Q500_final3_h600] it   8 eta=0.10122 Q=     nan lam_r=     nan u=-0.001 | L_obj=+2.290 L_Q=2.746 L_lam=0.000 L_sh=0.0771 L=+5.268 | U_mid=15.88 R=0.849 fitres=3.15e-06 |g|=1.14e-01 bin=0.196 t=35s
+[fr_Q500_final3_h600] it   9 eta=0.10737 Q=     nan lam_r=     nan u=-0.001 | L_obj=+2.232 L_Q=2.741 L_lam=0.000 L_sh=0.0727 L=+5.191 | U_mid=15.01 R=0.829 fitres=2.12e-06 |g|=8.73e-02 bin=0.184 t=39s
+[fr_Q500_final3_h600] it  10 eta=0.11253 Q=     nan lam_r=     nan u=-0.001 | L_obj=+2.185 L_Q=2.738 L_lam=0.000 L_sh=0.0686 L=+5.128 | U_mid=14.40 R=0.814 fitres=1.50e-06 |g|=6.94e-02 bin=0.173 t=42s
+[fr_Q500_final3_h600] it  11 eta=0.11685 Q=     nan lam_r=     nan u=-0.001 | L_obj=+2.147 L_Q=2.736 L_lam=0.000 L_sh=0.0647 L=+5.077 | U_mid=13.96 R=0.801 fitres=1.13e-06 |g|=5.83e-02 bin=0.161 t=46s
