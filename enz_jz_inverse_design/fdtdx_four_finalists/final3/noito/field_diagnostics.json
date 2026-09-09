@@ -1109,7 +1109,8 @@
    "origin": "x=y=P/2, z = a-Si:H mid-height; E normalized to E_inc = 1 V/m; J = \u2212i\u03c9 \u03b50 (\u03b5_aSiH \u2212 1) E on the a-Si:H cells (partial interface cells weighted by their exact fill fraction)"
   }
  },
- "_lam_Amax_spectrum": 1258.0,
+ "_main_feature": "R max (lossless: A is a residual)",
+ "_lam_Amax_spectrum": 1254.0,
  "_lam_field_nearest_to_Amax": 1280.0,
- "_mismatch_nm": 22.0
+ "_mismatch_nm": 26.0
 }

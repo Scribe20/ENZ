@@ -56,7 +56,7 @@ def main():
         L.append(f"* Unit cell 825 × 825 nm, periodic (Bloch k = 0) in x and y; PML ({meta['pml_cells']} cells) at both z ends; normal incidence from air, E ∥ x, `UniformPlaneSource` (TFSF, one-directional −z), Gaussian pulse centred at 1300 nm with σ_f = 13 THz (σ_t = 12.2 fs, peak at t = 73 fs; amplitude ≥ 0.3 over 1200–1400 nm). Identical source, grid and DFT settings for all structures and for the empty reference run.")
         L.append(f"* Grid: rectilinear. In-plane {meta['nxy']} × {meta['nxy']} cells of {meta['dxy_m']*1e9:.3f} nm (2 × 2 design pixels; the a-Si:H pattern enters through the exact area fill fraction of every cell with FDTDX sub-pixel smoothing = {meta['subpixel_smoothing']}; {100*float(np.mean((np.load(HERE/'final3/rho_hard_binary.npy').reshape(64,2,64,2).mean(axis=(1,3))%1)>0)):.1f} % of the cells are interface cells for final3).")
         L.append(f"  z: {idx['n_z']} cells — glass {ze[idx['z_ito0']]:.0f} nm (PML {w[:meta['pml_cells']].sum():.0f} nm + bulk, 25.8-nm cells, graded to the ITO), ITO **{meta['n_ito']} cells of {meta['dz_ito_m']*1e9:.2f} nm**, a-Si:H graded 4.6 → 12.9 nm then 12.9-nm cells (h exact), air graded to 12.9 nm; source {ze[idx['z_src']]-ze[idx['z_asi1']]:.0f} nm above the a-Si:H top, R plane {ze[idx['z_R']]-ze[idx['z_src']]:.0f} nm above the source (scattered-field region), T plane {ze[idx['z_ito0']]-ze[idx['z_T']]:.0f} nm below the ITO in the glass, air PML {ze[idx['z_pml_top0']]-ze[idx['z_R']]:.0f} nm above the R plane.")
-        L.append(f"* Time step {meta['dt_s']*1e18:.2f} as = {meta['courant_factor']} × the exact 3D CFL limit of the rectilinear grid; {meta['n_steps_run']} steps = {meta['time_s']*1e15:.0f} fs (with ITO); no-ITO runs 450 fs. DFT phasors recorded every {meta['dft_stride']} steps ({meta['dft_stride']*meta['dt_s']*1e15:.3f} fs sampling, ≥ 8× the Nyquist rate of the pulse), pulse scaling (no window). Spectra on 1200–1400 nm every 2 nm (101 wavelengths); volume/plane field phasors at λ = {', '.join(f'{l*1e9:.2f}' for l in meta['lam_field_m'])} nm.")
+        L.append(f"* Time step {meta['dt_s']*1e18:.2f} as = {meta['courant_factor']} × the exact 3D CFL limit of the rectilinear grid; {meta['n_steps_run']} steps = {meta['time_s']*1e15:.0f} fs (with ITO); no-ITO runs 69159 steps = 900 fs (a first 450-fs final3 no-ITO record is archived as `final3/noito450`). DFT phasors recorded every {meta['dft_stride']} steps ({meta['dft_stride']*meta['dt_s']*1e15:.3f} fs sampling, ≥ 8× the Nyquist rate of the pulse), pulse scaling (no window). Spectra on 1200–1400 nm every 2 nm (101 wavelengths); volume/plane field phasors at λ = {', '.join(f'{l*1e9:.2f}' for l in meta['lam_field_m'])} nm.")
         L.append("* Detectors: `R_plane`, `T_plane` (Ex, Ey, Hx, Hy phasors → ½Re(E×H*)·dA integrated over the cell), `vol_fields` (Ex, Ey, Ez phasors over 4 glass cells + ITO + a-Si:H + 4 air cells), `xz_plane`/`yz_plane` (full height through the cell centre), `probe_asi`/`probe_ito` (time-domain field probes for the decay check). Reference run: same domain filled with air, `T_plane` → incident spectrum P_inc(λ), `R_plane` → TFSF backward leakage (≤ 3×10⁻⁷ of P_inc), `inc_field_plane` → incident Ex phasor for field normalization.")
         L.append("* Quantities: T = −S_z(T plane)/P_inc, R = (S_z(R plane) − leakage)/P_inc, A = 1 − R − T; E/E_inc = phasor / incident Ex phasor (same complex normalization for all structures); F_c = (ω/c) Im ε_ITO(λ) ∫_ITO |E_c/E_inc|² dV / P² (FDTD analogue of the TORCWA ITO loss components); U_c(z) = ∫∫|E_c/E_inc|² dx dy.\n")
     # ---- superseded run
@@ -77,6 +77,10 @@ def main():
     dec = jl("comparison/decay_check.json")
     if dec:
         L.append("Field decay at the end of each run (time-domain probes, |E| relative to the peak): " + "; ".join(f"{k}: a-Si {v['probe_asi_end_over_peak']:.1e}, ITO {v['probe_ito_end_over_peak']:.1e}" for k, v in dec.items()) + ".\n")
+    ncw = jl("comparison/noito_closure_windows.json")
+    if ncw:
+        L.append("No-ITO lossless-closure residual A = 1 − R − T (truncation / near-cut-off error indicator): " + "; ".join(
+            f"{d}: max |A| = {v['max_abs_A']:.3f} at {v['lam_max_abs_A']:.0f} nm, |A(λ_ZE)| = {v['abs_A_at_ZE']:.3f}, windows with |A| > 0.05: {[[round(a), round(b)] for a, b in v['windows_abs_A_gt_0p05_nm']] or 'none'}, rms |A| elsewhere {v['rms_abs_A_outside_windows']:.3f}" for d, v in ncw.items()) + ".\n")
     # ---- spectra table
     L.append("## 6. Numerical tables\n")
     st = jl("comparison/spectra_table.json")
@@ -102,6 +106,7 @@ def main():
     L.append("\nF_c(FDTDX) is the volume-loss integral over the ITO cells with the fitted ε_ITO(λ); TORCWA values are the Phase-1 certification numbers (F from the Fourier–Parseval route). FDTDX A comes from the flux planes; F_tot − A is a consistency residual (all other media are lossless).\n")
     # ---- multipoles
     L.append("### 6.3 Multipole diagnostics of the a-Si:H polarization current (FDTDX, vacuum long-wavelength Cartesian forms; p_eff = p + ikT)\n")
+    L.append("Rows: λ_ZE and the recorded wavelength closest to the main spectral feature (A maximum with ITO; R maximum without ITO).\n")
     L.append("| run | λ [nm] | ED_eff | MD | EQ | MQ | TD diag / sum | ED(p only) / sum | P_sum [W per (V/m)²] |")
     L.append("|---|---|---|---|---|---|---|---|---|")
     for d in DESIGNS:
@@ -123,7 +128,9 @@ def main():
         L.append(f"* Mesh A: {cv['mesh_A']['n_ito']} ITO cells ({cv['mesh_A']['dz_ito_nm']:.2f} nm), dt {cv['mesh_A']['dt_as']:.2f} as, {cv['mesh_A']['steps']} steps. Mesh B: {cv['mesh_B']['n_ito']} ITO cells ({cv['mesh_B']['dz_ito_nm']:.2f} nm), dt {cv['mesh_B']['dt_as']:.2f} as, {cv['mesh_B']['steps']} steps.")
         L.append(f"* max |ΔR| = {cv['max_abs_dR']:.4f}, max |ΔT| = {cv['max_abs_dT']:.4f}, max |ΔA| = {cv['max_abs_dA']:.4f} over 1200–1400 nm; at λ_ZE: R {cv['R_ZE'][0]:.4f} → {cv['R_ZE'][1]:.4f}, T {cv['T_ZE'][0]:.4f} → {cv['T_ZE'][1]:.4f}, A {cv['A_ZE'][0]:.4f} → {cv['A_ZE'][1]:.4f}; λ(A max) {cv['lam_Amax'][0]:.0f} → {cv['lam_Amax'][1]:.0f} nm.")
         if "Fz" in cv:
-            L.append(f"* F_z {cv['Fz'][0]:.4f} → {cv['Fz'][1]:.4f}; F_tot {cv['Ftot'][0]:.4f} → {cv['Ftot'][1]:.4f}; ⟨|E_z/E_inc|²⟩ ITO mid-plane {cv['mean_Ez2_ito_mid'][0]:.2f} → {cv['mean_Ez2_ito_mid'][1]:.2f}; max {cv['max_Ez2_ito_mid'][0]:.1f} → {cv['max_Ez2_ito_mid'][1]:.1f}; multipole fractions A {cv['multipole_fracs_A']} / B {cv['multipole_fracs_B']}.")
+            fa, fb = cv["multipole_fracs_A"], cv["multipole_fracs_B"]
+            L.append(f"* F_z {cv['Fz'][0]:.4f} → {cv['Fz'][1]:.4f}; F_tot {cv['Ftot'][0]:.4f} → {cv['Ftot'][1]:.4f}; ⟨|E_z/E_inc|²⟩ ITO mid-plane {cv['mean_Ez2_ito_mid'][0]:.2f} → {cv['mean_Ez2_ito_mid'][1]:.2f}; max {cv['max_Ez2_ito_mid'][0]:.1f} → {cv['max_Ez2_ito_mid'][1]:.1f}; "
+                     f"multipole fractions (ED_eff / MD / EQ / MQ / TD-diag) {fa['frac_ED_eff']:.3f} / {fa['frac_MD']:.3f} / {fa['frac_EQ']:.3f} / {fa['frac_MQ']:.3f} / {fa['TD_diag_over_sum']:.3f} → {fb['frac_ED_eff']:.3f} / {fb['frac_MD']:.3f} / {fb['frac_EQ']:.3f} / {fb['frac_MQ']:.3f} / {fb['TD_diag_over_sum']:.3f}.")
         L.append("* The production grid (mesh A) was used for final1, final0 and final2.\n")
     # ---- files
     L.append("## 7. File locations\n")
@@ -139,8 +146,10 @@ def main():
 * `final3/prod_ito10/`: the finer-ITO mesh run (10 cells of 2.3 nm).  `final3/prod_glass350nm_superseded/`, `reference/ref64_glass350nm_superseded/`: the superseded thin-glass configuration.
 * `reference/ref64/`: empty-domain reference (incident spectrum, leakage, incident field phasor).
 * `comparison/`: `spectra_table.csv/.json`, `overlay_A_withITO.png`, `overlay_RT_withITO.png`, `overlay_R_noITO.png`, `overlay_RT_noITO.png`,
-  `overlay_Uz_Utot_vs_z_over_h.png`, `overlay_ITO_plane_Ez2_common_scale.png`, `mesh_convergence_final3.json/.png`, `decay_check.json`, `deliverable_check.json`.
-* `logs/`: per-run logs; `queue_A.sh`, `queue_B.sh`: the exact command lines.
+  `overlay_Uz_Utot_vs_z_over_h.png`, `overlay_ITO_plane_Ez2_common_scale.png`, `mesh_convergence_final3.json/.png`, `decay_check.json`,
+  `noito_closure_windows.json`, `torcwa_vs_fdtdx_final3.png`, `torcwa_vs_fdtdx_final0.png`, `torcwa_vs_fdtdx_spectra.json` (TORCWA stage-5 spectra exist for final3 and final0 only),
+  `warnings.json`, `deliverable_check.json`.
+* `logs/`: per-run logs; `queue_A.sh`, `queue_B.sh` (first launch), `queue_C.sh`, `queue_D.sh` (900-fs no-ITO chains and final2): the exact command lines. `fx_sim.py`, `fx_post.py`, `materials_fit.py`, `geometry_provenance.py`, `torcwa_overlay.py`, `make_summary.py`, `deliverable_check.py`: the code.
 """)
     # ---- warnings
     L.append("## 8. Warnings, limitations, failed items\n")

@@ -1,0 +1,46 @@
+{
+ "final3": {
+  "1 R/T/A with ITO": true,
+  "2 R/T without ITO": true,
+  "3 R/T/A at lambda_ZE": true,
+  "4 complex Ex/Ey/Ez at lambda_ZE": true,
+  "5 central xz Ez map": true,
+  "6 ITO-plane xy Ez map": true,
+  "7 Ux/Uy/Uz/Utot(z)": true,
+  "8 multipole raw moments + diagnostics": true,
+  "9 exact FDTD settings": true
+ },
+ "final1": {
+  "1 R/T/A with ITO": true,
+  "2 R/T without ITO": true,
+  "3 R/T/A at lambda_ZE": true,
+  "4 complex Ex/Ey/Ez at lambda_ZE": true,
+  "5 central xz Ez map": true,
+  "6 ITO-plane xy Ez map": true,
+  "7 Ux/Uy/Uz/Utot(z)": true,
+  "8 multipole raw moments + diagnostics": true,
+  "9 exact FDTD settings": true
+ },
+ "final0": {
+  "1 R/T/A with ITO": true,
+  "2 R/T without ITO": true,
+  "3 R/T/A at lambda_ZE": true,
+  "4 complex Ex/Ey/Ez at lambda_ZE": true,
+  "5 central xz Ez map": true,
+  "6 ITO-plane xy Ez map": true,
+  "7 Ux/Uy/Uz/Utot(z)": true,
+  "8 multipole raw moments + diagnostics": true,
+  "9 exact FDTD settings": true
+ },
+ "final2": {
+  "1 R/T/A with ITO": true,
+  "2 R/T without ITO": true,
+  "3 R/T/A at lambda_ZE": true,
+  "4 complex Ex/Ey/Ez at lambda_ZE": true,
+  "5 central xz Ez map": true,
+  "6 ITO-plane xy Ez map": true,
+  "7 Ux/Uy/Uz/Utot(z)": true,
+  "8 multipole raw moments + diagnostics": true,
+  "9 exact FDTD settings": true
+ }
+}

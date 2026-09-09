@@ -260,7 +260,10 @@ def do_fields(design, tag="prod", lam_targets=None):
     sp = json.load(open(COMP / "spectra_table.json")).get(f"{design}/{tag}", {})
     targets = [LAM_ZE]
     if sp:
-        lA = sp["lam_Amax"]; jn = int(np.argmin(abs(lam - lA))); targets.append(float(lam[jn]))
+        # main spectral feature: A maximum with ITO; without ITO (lossless) the R maximum / T minimum region
+        lA = sp["lam_Amax"] if not g["no_ito"] else sp["lam_Rmax"]
+        jn = int(np.argmin(abs(lam - lA))); targets.append(float(lam[jn]))
+        res["_main_feature"] = "A max" if not g["no_ito"] else "R max (lossless: A is a residual)"
         res["_lam_Amax_spectrum"] = lA; res["_lam_field_nearest_to_Amax"] = float(lam[jn]); res["_mismatch_nm"] = float(abs(lam[jn] - lA))
     if lam_targets:
         targets += list(lam_targets)

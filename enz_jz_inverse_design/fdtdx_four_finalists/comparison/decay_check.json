@@ -23,16 +23,34 @@
   "probe_ito_end_over_peak": 0.023249516263604164,
   "probe_ito_peak_time_fs": 78.60144841052147
  },
+ "final1/noito": {
+  "probe_asi_end_over_peak": 0.05024813115596771,
+  "probe_asi_peak_time_fs": 77.00078977567144,
+  "probe_ito_end_over_peak": 0.03783709183335304,
+  "probe_ito_peak_time_fs": 78.58843492568528
+ },
  "final0/prod": {
   "probe_asi_end_over_peak": 0.007129383739084005,
   "probe_asi_peak_time_fs": 79.00486644044301,
   "probe_ito_end_over_peak": 0.04743329435586929,
   "probe_ito_peak_time_fs": 82.83083098227965
  },
+ "final0/noito": {
+  "probe_asi_end_over_peak": 0.014285209588706493,
+  "probe_asi_peak_time_fs": 77.0268167453438,
+  "probe_ito_end_over_peak": 0.035323549062013626,
+  "probe_ito_peak_time_fs": 78.62747538019381
+ },
  "final2/prod": {
   "probe_asi_end_over_peak": 0.02026188187301159,
   "probe_asi_peak_time_fs": 79.03089341011537,
   "probe_ito_end_over_peak": 0.02615564502775669,
   "probe_ito_peak_time_fs": 78.69254280437472
+ },
+ "final2/noito": {
+  "probe_asi_end_over_peak": 0.050702061504125595,
+  "probe_asi_peak_time_fs": 77.03983023017997,
+  "probe_ito_end_over_peak": 0.0408291295170784,
+  "probe_ito_peak_time_fs": 78.67952931953853
  }
 }
