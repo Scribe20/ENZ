@@ -1,0 +1,4 @@
+cold lambda_ZE order [7, 7]: Fz=0.955906 Fx=0.029195 Fy=0.008099 Ftot=0.993200 A=0.993210 R=0.004203 T=0.002587 eta_z=0.962450 meanEz2=19.9423 maxEz2=101.021
+cold lambda_ZE order [9, 9]: Fz=0.955271 Fx=0.028715 Fy=0.008067 Ftot=0.992053 A=0.992064 R=0.005434 T=0.002502 eta_z=0.962923 meanEz2=19.9291 maxEz2=104.515
+cold lambda_ZE order [11, 11]: Fz=0.954252 Fx=0.028315 Fy=0.008169 Ftot=0.990737 A=0.990748 R=0.006561 T=0.002690 eta_z=0.963174 meanEz2=19.9078 maxEz2=104.887
+cold spectrum [7,7] 1200-1380 nm: T_min=0.00255 @ 1301 nm; A_max=0.99593 @ 1297; Fz_max=0.95629 @ 1300; max|Ftot-A|=3.0e-04; wall 222s
