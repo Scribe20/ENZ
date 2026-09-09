@@ -1,0 +1,6 @@
+[
+ "No-ITO structures support long-lived modes (TORCWA shows 2-4-nm-wide features near 1252-1275 nm, decay times of a few hundred fs). A first 450-fs no-ITO record (final3/noito450, kept) gave R up to 1.07 and A = -0.02 from DFT truncation; the production no-ITO runs use 900 fs (spectral resolution ~ 1/T = 1.1 THz ~ 6 nm), so features narrower than ~6 nm remain broadened/under-resolved and the lossless closure residual A_noITO is reported as the truncation error indicator.",
+ "With-ITO runs (300 fs): the time-domain probes end at 0.7-4 % of their peak amplitude (comparison/decay_check.json); the corresponding truncation error on the broad (~100-nm) ITO-loaded features is at the sub-percent level (T_min values of -0.0003 to -0.005 give its scale).",
+ "In-plane discretisation (64 cells per period, 12.9 nm, sub-pixel smoothed) is coarser than the 6.4-nm design pixel; only the ITO z-resolution was varied (5 vs 10 cells). Differences to TORCWA of ~0.03-0.05 in A at lambda_ZE and a ~10-15-nm blue-shift of the absorption maximum are within what this in-plane resolution can produce; no in-plane refinement run was affordable on CPU.",
+ "FDTDX pulse-mode phasors are stride-weighted time-step sums; runs with different dt (the 10-cell ITO mesh) are made comparable by multiplying every phasor by dt in fx_post.py (documented in the code)."
+]
