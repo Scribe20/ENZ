@@ -33,9 +33,9 @@ def pulse_shape(t):
     return np.exp(-4 * np.log(2) * t ** 2 / TAU ** 2)
 
 
-def e_cell_from_I(I_peak_Wcm2):
+def e_cell_from_I(I_peak_Wcm2, P_nm=P_NM):
     """Incident pulse energy per unit cell [J] for uniform illumination of one P x P cell."""
-    return I_peak_Wcm2 * 1e4 * (P_NM * 1e-9) ** 2 * TAU * np.sqrt(np.pi / (4 * np.log(2)))
+    return I_peak_Wcm2 * 1e4 * (P_nm * 1e-9) ** 2 * TAU * np.sqrt(np.pi / (4 * np.log(2)))
 
 
 class Lookup:
@@ -161,7 +161,8 @@ def main():
     th = Thermo(model)
     G = (a.G if a.G else calibrate_G(th)) * a.G_scale
     I_peaks = np.logspace(np.log10(a.Imin), np.log10(a.Imax), a.nI)
-    E_cell = e_cell_from_I(I_peaks)
+    P_nm = float(np.load(a.lookup)["P"])
+    E_cell = e_cell_from_I(I_peaks, P_nm)
     lams = lk.lam
     res = {k: np.zeros((len(lams), len(I_peaks))) for k in ("T", "R", "A", "Fz", "Fx", "Fy", "Ftot", "Te_peak", "Te_end", "Tl_end", "energy_resid", "absorbed_J_m2")}
     log = open(OUT / f"ttm_{a.tag}.log", "w")
@@ -182,9 +183,9 @@ def main():
         e_im = lk.eps_spl_im(np.clip(res["Te_peak"][j], 300, TE_MAX_MODEL))[:, j]
         d_eps_re[j] = e_re - lk.eps[0, j].real; d_eps_im[j] = e_im - lk.eps[0, j].imag
     meta = dict(tag=a.tag, G_W_m3_K=G, tau_ep_2000K_fs=float(th.Ce(2000) / G * 1e15), Cl_J_m3_K=a.Cl, dt_fs=a.dt * 1e15,
-                tau_fwhm_fs=TAU * 1e15, P_nm=P_NM, d_ITO_nm=D_ITO * 1e9, lookup=str(a.lookup), order=int(np.load(a.lookup)["order"][0]),
+                tau_fwhm_fs=TAU * 1e15, P_nm=P_nm, d_ITO_nm=D_ITO * 1e9, lookup=str(a.lookup), order=int(np.load(a.lookup)["order"][0]),
                 Te_max_model=TE_MAX_MODEL, Te_trust=TE_TRUST, wall_s=time.time() - t0,
-                E_cell_check="E_cell = I_peak P^2 tau sqrt(pi/(4 ln2)); e.g. 1e9 W/cm2 -> %.3e J" % e_cell_from_I(1e9))
+                E_cell_check="E_cell = I_peak P^2 tau sqrt(pi/(4 ln2)); e.g. 1e9 W/cm2 -> %.3e J" % e_cell_from_I(1e9, P_nm))
     for k, v in res.items():
         np.savez_compressed(OUT / f"heatmap_{k}_{a.tag}.npz", lam=lams, I_peak_Wcm2=I_peaks, E_cell_J=E_cell, value=v,
                             valid_model=valid_model, valid_trust=valid_trust, **{kk: vv for kk, vv in meta.items() if isinstance(vv, (int, float, str))})
@@ -193,7 +194,7 @@ def main():
     if a.tag == "base":
         for k in ("T", "R", "A", "Fz"):
             np.savez_compressed(OUT / f"heatmap_{k}.npz", lam=lams, I_peak_Wcm2=I_peaks, E_cell_J=E_cell, value=res[k], Te_peak=res["Te_peak"],
-                                valid_model=valid_model, valid_trust=valid_trust, G_W_m3_K=G)
+                                valid_model=valid_model, valid_trust=valid_trust, G_W_m3_K=G, P_nm=P_nm)
     with open(OUT / f"ttm_meta_{a.tag}.json", "w") as f:
         json.dump(meta, f, indent=1)
     print(f"[ttm {a.tag}] done in {time.time()-t0:.0f} s; max |energy resid| = {np.abs(res['energy_resid']).max():.2e}; "

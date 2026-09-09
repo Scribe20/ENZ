@@ -26,6 +26,15 @@ FIG = OUT / "figures"
 TE_SHOW = [300, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 8000]
 DECK_I_PER_NJ = 1e-9 / 1e-6 / (ttm.TAU * np.sqrt(np.pi / (4 * np.log(2))))   # W/cm2 per nJ on a 10 um x 10 um pixel
 DECK_E_RANGE_NJ = (0.15, 1.55)                                              # deck input-energy axis (per >=10-um pixel)
+SFX = [""]
+
+
+def _p(path):
+    """insert the run suffix before the extension"""
+    path = Path(path)
+    return path.with_name(path.stem + SFX[0] + path.suffix)
+
+
 HM_KEYS = ("T", "R", "A", "Fz", "Fx", "Fy", "Ftot", "Te_peak", "energy_resid", "absorbed_J_m2")
 
 
@@ -39,20 +48,24 @@ def load_heat(tag):
         d[k] = z["value"]
         d["lam"], d["I"], d["E"] = z["lam"], z["I_peak_Wcm2"], z["E_cell_J"]
         d["valid_model"], d["valid_trust"] = z["valid_model"], z["valid_trust"]
-        d["G"] = float(z["G_W_m3_K"])
+        d["G"] = float(z["G_W_m3_K"]); d["P"] = float(z["P_nm"])
     z = np.load(OUT / f"heatmap_deps_{tag}.npz")
     d["d_eps_re"], d["d_eps_im"] = z["d_eps_re"], z["d_eps_im"]
     return d
 
 
+P_CELL = [825.0]          # set from the heatmap meta in main()
+
+
 def add_energy_axis(ax, lam_axis=False):
-    """Top axis: incident energy per 825-nm cell (E_cell = I_peak P^2 tau sqrt(pi/(4 ln2)))."""
+    """Top axis: incident energy per unit cell (E_cell = I_peak P^2 tau sqrt(pi/(4 ln2)))."""
+    P = P_CELL[0]
     ax2 = ax.twiny() if not lam_axis else ax.twinx()
     lo, hi = ax.get_xlim() if not lam_axis else ax.get_ylim()
     if lam_axis:
-        ax2.set_yscale("log"); ax2.set_ylim(ttm.e_cell_from_I(lo), ttm.e_cell_from_I(hi)); ax2.set_ylabel("E_cell per 825-nm cell [J]")
+        ax2.set_yscale("log"); ax2.set_ylim(ttm.e_cell_from_I(lo, P), ttm.e_cell_from_I(hi, P)); ax2.set_ylabel(f"E_cell per {P:.0f}-nm cell [J]")
     else:
-        ax2.set_xscale("log"); ax2.set_xlim(ttm.e_cell_from_I(lo), ttm.e_cell_from_I(hi)); ax2.set_xlabel("incident energy per 825-nm cell, E_cell [J]")
+        ax2.set_xscale("log"); ax2.set_xlim(ttm.e_cell_from_I(lo, P), ttm.e_cell_from_I(hi, P)); ax2.set_xlabel(f"incident energy per {P:.0f}-nm cell, E_cell [J]")
     return ax2
 
 
@@ -81,29 +94,30 @@ def fig1_spectra(lk, lam_ze, lam_ops, cold_ref):
         if k == "T":
             jmin = int(np.argmin(lk.tab["T"][0]))
             ax.plot(lk.lam[jmin], lk.tab["T"][0][jmin], "kv", ms=8, label=f"cold T-min: {lk.lam[jmin]:.0f} nm, T = {lk.tab['T'][0][jmin]:.4f}")
-            ax.plot(cold_ref["lam"], cold_ref["T"], "ko", ms=5, mfc="none", label="cold reference ([11,11], Phase 1)")
+            if cold_ref is not None:
+                ax.plot(cold_ref["lam"], cold_ref["T"], "ko", ms=5, mfc="none", label="cold reference ([11,11], Phase 1)")
             for lo in lam_ops:
                 ax.axvline(lo, color="tab:green", ls="--", lw=0.9, alpha=0.8)
             ax.text(lam_ops[0], 0.9, "  selected λ_op", color="tab:green", fontsize=8)
             ax.set_yscale("log"); ax.set_ylim(1e-3, 1.0)
-        ax.axvline(mat.n_glass(1250.0) * 825.0, color="0.5", ls="-.", lw=0.8)
+        ax.axvline(mat.n_glass(1250.0) * P_CELL[0], color="0.5", ls="-.", lw=0.8)
         ax.set_ylabel({"T": "T (all orders)", "A": "A = 1 − R − T", "R": "R (all orders)", "Fz": "F_z (longitudinal ITO absorption)"}[k])
         ax.grid(alpha=0.3)
     axs[0, 0].legend(fontsize=7, ncol=2, loc="lower left")
     axs[1, 0].set_xlabel("wavelength [nm]"); axs[1, 1].set_xlabel("wavelength [nm]")
-    axs[0, 1].text(mat.n_glass(1250.0) * 825.0 + 1, 0.05, "Rayleigh (glass) ←", fontsize=7, color="0.4")
-    fig.suptitle("fig1 — frozen best design, RCWA [7,7], Lane-B ε_ITO(λ, T_e): T, A, R, F_z vs wavelength for the electron-temperature set", fontsize=11)
+    axs[0, 1].text(mat.n_glass(1250.0) * P_CELL[0] + 1, 0.05, "Rayleigh (glass) ←", fontsize=7, color="0.4")
+    fig.suptitle(f"fig1 — {'frozen best design' if not SFX[0] else 'deck cylinder (comparison lane)'}, RCWA [{lk.order},{lk.order}], Lane-B ε_ITO(λ, T_e): T, A, R, F_z vs wavelength for the electron-temperature set", fontsize=11)
     fig.tight_layout()
-    fig.savefig(FIG / "fig1_T_lambda_Te.png", dpi=170); plt.close(fig)
+    fig.savefig(_p(FIG / "fig1_T_lambda_Te.png"), dpi=170); plt.close(fig)
     # long-format CSV + NPZ
-    with open(OUT / "spectra_vs_Te.csv", "w", newline="") as f:
+    with open(_p(OUT / "spectra_vs_Te.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["Te_K", "lambda_nm", "eps_re", "eps_im", "T", "R", "A", "Fx", "Fy", "Fz", "Ftot", "mean_Ez2_over_Einc2", "within_trusted_Te(<=6000K)"])
         for i, Te in enumerate(Te_all):
             for j, lam in enumerate(lk.lam):
                 w.writerow([f"{Te:.0f}", f"{lam:.1f}", f"{lk.eps[i, j].real:.6f}", f"{lk.eps[i, j].imag:.6f}"] +
                            [f"{lk.tab[k][i, j]:.6f}" for k in ("T", "R", "A", "Fx", "Fy", "Fz", "Ftot", "mean_Ez2")] + [int(Te <= ttm.TE_TRUST)])
-    np.savez_compressed(OUT / "spectra_vs_Te.npz", Te=Te_all, lam=lk.lam, eps=lk.eps, **lk.tab, order=lk.order)
+    np.savez_compressed(_p(OUT / "spectra_vs_Te.npz"), Te=Te_all, lam=lk.lam, eps=lk.eps, **lk.tab, order=lk.order)
 
 
 # ----------------------------------------------------------------------------- fig 2
@@ -116,6 +130,10 @@ def fig2_heatmaps(H, lam_ze, lam_ops):
         ax.contour(I, lam, H["Te_peak"], levels=[ttm.TE_TRUST], colors="w", linewidths=1.2, linestyles="--")
         ax.contour(I, lam, H["Te_peak"], levels=[ttm.TE_MAX_MODEL], colors="r", linewidths=1.2)
         ax.set_xscale("log"); ax.axhline(lam_ze, color="w", ls=":", lw=0.8)
+        lam_ray = mat.n_glass(1250.0) * P_CELL[0]
+        if lam_ray > lam[0]:
+            ax.axhspan(lam[0] - 1, lam_ray, facecolor="none", edgecolor="0.6", hatch="//", lw=0)
+            ax.text(I[1], lam_ray - 2, " (±1,0) orders propagate in glass: all-order T ≠ collected T", color="0.9", fontsize=6, va="top")
         for lo in lam_ops:
             ax.axhline(lo, color="tab:green", ls="--", lw=0.7)
         ax.set_xlabel("I_peak [W/cm²]"); ax.set_ylabel("λ_op [nm]"); ax.set_title(label, fontsize=9)
@@ -127,7 +145,7 @@ def fig2_heatmaps(H, lam_ze, lam_ops):
     deck_band(ax)
     add_energy_axis(ax)
     ax.text(DECK_E_RANGE_NJ[0] * DECK_I_PER_NJ, lam[1], " deck E_in range\n (0.15–1.55 nJ / 10-µm pixel)", color="0.3", fontsize=7, va="bottom")
-    fig.tight_layout(); fig.savefig(FIG / "fig2_T_heatmap.png", dpi=170); plt.close(fig)
+    fig.tight_layout(); fig.savefig(_p(FIG / "fig2_T_heatmap.png"), dpi=170); plt.close(fig)
     # panel figure
     fig, axs = plt.subplots(2, 4, figsize=(20, 9))
     one(axs[0, 0], H["T"], "⟨T⟩", log=True, cmap="magma", vmin=1e-3, vmax=1)
@@ -143,22 +161,28 @@ def fig2_heatmaps(H, lam_ze, lam_ops):
     for ax in axs.flat:
         deck_band(ax)
     fig.suptitle(f"fig2 — pulse-averaged response of the frozen best design vs (λ_op, I_peak); 150-fs pulse, TTM with G = {H['G']:.2e} W m⁻³ K⁻¹ (Lane B)", fontsize=11)
-    fig.tight_layout(); fig.savefig(FIG / "fig2_heatmaps_all.png", dpi=150); plt.close(fig)
+    fig.tight_layout(); fig.savefig(_p(FIG / "fig2_heatmaps_all.png"), dpi=150); plt.close(fig)
 
 
 # ----------------------------------------------------------------------------- selection + quantification
-def select_lam_ops(H, lam_ze, extra=()):
+def select_lam_ops(H, lam_ze, extra=(), lam_min=None):
+    """lambda_op candidates restricted to the single-order window lambda > n_glass P (below it the (+-1,0)
+    orders propagate in the glass, are totally internally reflected at the exit face and never reach a
+    detector in air, so the all-order T of the table is not the collected transmission there)."""
     lam, T = H["lam"], H["T"]
+    lam_min = mat.n_glass(1250.0) * P_CELL[0] + 1.0 if lam_min is None else lam_min
+    single = lam >= lam_min
     jz = int(np.argmin(abs(lam - lam_ze)))
-    jmin = int(np.argmin(T[:, 0]))
+    jmin = int(np.argmin(np.where(single, T[:, 0], np.inf)))
     swing = np.zeros(len(lam))
     for j in range(len(lam)):
         ok = np.where(H["valid_trust"][j])[0]
         swing[j] = T[j, ok[-1]] - T[j, 0] if len(ok) else 0.0
+    sw = np.where(single, swing, 0.0)
     picks = [jz]
     if jmin != jz:
         picks.append(jmin)
-    picks += [int(np.argmax(swing)), int(np.argmin(swing))]
+    picks += [int(np.argmax(sw)), int(np.argmin(sw))]
     for e in extra:
         picks.append(int(np.argmin(abs(lam - e))))
     seen, out = set(), []
@@ -211,7 +235,7 @@ def quantify(lam_op, I, E, T, R, A, Fz, Te_peak, valid_trust, valid_model, Tsens
             k = idx[0]
             x = np.interp(target, [dT[k - 1], dT[k]] if dT[k] >= dT[k - 1] else [dT[k], dT[k - 1]],
                           [logI[k - 1], logI[k]] if dT[k] >= dT[k - 1] else [logI[k], logI[k - 1]])
-            q[f"I_{int(frac*100)}_Wcm2"] = float(10 ** x); q[f"E_cell_{int(frac*100)}_J"] = float(ttm.e_cell_from_I(10 ** x))
+            q[f"I_{int(frac*100)}_Wcm2"] = float(10 ** x); q[f"E_cell_{int(frac*100)}_J"] = float(ttm.e_cell_from_I(10 ** x, P_CELL[0]))
         else:
             q[f"I_{int(frac*100)}_Wcm2"] = np.nan; q[f"E_cell_{int(frac*100)}_J"] = np.nan
     q["dynamic_range_decades_10_90"] = float(np.log10(q["I_90_Wcm2"] / q["I_10_Wcm2"])) if np.isfinite(q["I_10_Wcm2"]) and np.isfinite(q["I_90_Wcm2"]) else np.nan
@@ -234,13 +258,13 @@ def quantify(lam_op, I, E, T, R, A, Fz, Te_peak, valid_trust, valid_model, Tsens
     p, e = _fit(f_lin, [[1.0]], x, yn); q["fit_linear_rmse"] = e
     p, e = _fit(f_lrelu, [[T[0] / ymax * I[it] / 1, 1.0, 0.3], [0.5, 1.5, 0.5], [0.0, 1.0, 0.2]], x, yn, bounds=([-10, -10, 0], [10, 10, 1])); q["fit_leakyrelu_rmse"] = e
     q["fit_leakyrelu_params(a,b,x0)"] = [float(v) for v in p] if p is not None else None
-    p, e = _fit(f_softplus, [[0, 1, 0.5, 0.1], [0, 2, 0.3, 0.2], [0, 1, 0.7, 0.05]], x, yn, bounds=([-2, 0, -1, 1e-3], [2, 50, 2, 5])); q["fit_softplus_rmse"] = e
+    p, e = _fit(f_softplus, [[0, 1, 0.5, 0.1], [0, 2, 0.3, 0.2], [0, 1, 0.7, 0.05]], x, yn, bounds=([-2, -50, -1, 1e-3], [2, 50, 2, 5])); q["fit_softplus_rmse"] = e
     q["fit_softplus_params(c,a,x0,s)"] = [float(v) for v in p] if p is not None else None
-    p, e = _fit(f_sigmoid, [[0, 1, 0.5, 0.1], [0, 1, 0.3, 0.2], [0, 1, 0.8, 0.1]], x, yn, bounds=([-2, 0, -1, 1e-3], [2, 50, 2, 5])); q["fit_sigmoid_rmse"] = e
+    p, e = _fit(f_sigmoid, [[0, 1, 0.5, 0.1], [0, 1, 0.3, 0.2], [0, 1, 0.8, 0.1]], x, yn, bounds=([-2, -50, -1, 1e-3], [2, 50, 2, 5])); q["fit_sigmoid_rmse"] = e
     q["fit_sigmoid_params(c,a,x0,s)"] = [float(v) for v in p] if p is not None else None
     # transmission-vs-linear-input fits (the deck plots T vs E_in): sigmoid in x
     Tn = (Tx - Tx.min()) / max(Tx.max() - Tx.min(), 1e-12)
-    p, e = _fit(f_sigmoid, [[0, 1, 0.5, 0.1], [0, 1, 0.2, 0.2], [0, 1, 0.8, 0.1]], x, Tn, bounds=([-2, 0, -1, 1e-3], [2, 50, 2, 5])); q["fit_T_sigmoid_rmse_norm"] = e
+    p, e = _fit(f_sigmoid, [[0, 1, 0.5, 0.1], [0, 1, 0.2, 0.2], [0, 1, 0.8, 0.1], [1, -1, 0.5, 0.1], [1, -1, 0.2, 0.2]], x, Tn, bounds=([-2, -50, -1, 1e-3], [2, 50, 2, 5])); q["fit_T_sigmoid_rmse_norm"] = e
     q["fit_T_sigmoid_params(c,a,x0,s)"] = [float(v) for v in p] if p is not None else None
     if Tsens is not None:
         for tag, Ts in Tsens.items():
@@ -289,9 +313,9 @@ def fig34_activation(H, Hs, lam_ops_j, Q):
     ax3[0].legend(fontsize=8); ax3[0].grid(alpha=0.3); deck_band(ax3[0]); add_energy_axis(ax3[0])
     ax3[1].set_xscale("log"); ax3[1].set_yscale("log"); ax3[1].axhline(ttm.TE_TRUST, color="k", ls="--", lw=0.8); ax3[1].axhline(ttm.TE_MAX_MODEL, color="r", lw=0.8)
     ax3[1].set_xlabel("I_peak [W/cm²]"); ax3[1].set_ylabel("peak T_e [K]"); ax3[1].grid(alpha=0.3); ax3[1].legend(fontsize=8); deck_band(ax3[1]); add_energy_axis(ax3[1])
-    fig3.tight_layout(); fig3.savefig(FIG / "fig3_T_vs_I.png", dpi=170); plt.close(fig3)
+    fig3.tight_layout(); fig3.savefig(_p(FIG / "fig3_T_vs_I.png"), dpi=170); plt.close(fig3)
     fig4.suptitle("fig4 — input–output characteristic I_out(I_in) on the trusted range (Lane B); fits are shape descriptors, not labels", fontsize=10)
-    fig4.tight_layout(); fig4.savefig(FIG / "fig4_Iout_vs_Iin.png", dpi=170); plt.close(fig4)
+    fig4.tight_layout(); fig4.savefig(_p(FIG / "fig4_Iout_vs_Iin.png"), dpi=170); plt.close(fig4)
 
 
 # ----------------------------------------------------------------------------- fig 5 traces
@@ -300,7 +324,7 @@ def fig5_traces(lk, th, j, I_list, G, Cl, dt):
     tr = o["traces"]; t = tr["t"] * 1e15
     fig, axs = plt.subplots(2, 2, figsize=(12, 8))
     for n, Iv in enumerate(I_list):
-        lab = f"I_peak = {Iv:.1e} W/cm² (E_cell = {ttm.e_cell_from_I(Iv):.2e} J)"
+        lab = f"I_peak = {Iv:.1e} W/cm² (E_cell = {ttm.e_cell_from_I(Iv, P_CELL[0]):.2e} J)"
         axs[0, 0].plot(t, tr["Te"][:, n], label=lab); axs[0, 0].plot(t, tr["Tl"][:, n], ls="--", color=axs[0, 0].lines[-1].get_color())
         axs[0, 1].plot(t, tr["A"][:, n], label=lab)
         axs[1, 0].plot(t, tr["T"][:, n], label=lab)
@@ -313,10 +337,10 @@ def fig5_traces(lk, th, j, I_list, G, Cl, dt):
         ax.set_xlabel("t [fs]"); ax.grid(alpha=0.3)
     axs[0, 0].legend(fontsize=7)
     fig.suptitle(f"fig5 — TTM traces at λ_op = {lk.lam[j]:.0f} nm; G = {G:.2e} W m⁻³ K⁻¹, C_l = {Cl:.1e} J m⁻³ K⁻¹, dt = {dt*1e15:.2f} fs (Lane B)", fontsize=10)
-    fig.tight_layout(); fig.savefig(FIG / "fig5_TTM_traces.png", dpi=170); plt.close(fig)
-    np.savez_compressed(OUT / "TTM_traces.npz", t_s=tr["t"], I_peak_Wcm2=np.array(I_list), Te=tr["Te"], Tl=tr["Tl"], T=tr["T"], A=tr["A"], I_t=tr["I"],
+    fig.tight_layout(); fig.savefig(_p(FIG / "fig5_TTM_traces.png"), dpi=170); plt.close(fig)
+    np.savez_compressed(_p(OUT / "TTM_traces.npz"), t_s=tr["t"], I_peak_Wcm2=np.array(I_list), Te=tr["Te"], Tl=tr["Tl"], T=tr["T"], A=tr["A"], I_t=tr["I"],
                         lam_op=lk.lam[j], G=G, Cl=Cl, dt=dt, Te_peak=o["Te_peak"], energy_resid=o["energy_resid"])
-    with open(OUT / "TTM_traces.csv", "w", newline="") as f:
+    with open(_p(OUT / "TTM_traces.csv"), "w", newline="") as f:
         w = csv.writer(f); w.writerow(["t_fs"] + [f"{k}@{Iv:.2e}" for Iv in I_list for k in ("I_Wcm2", "Te_K", "Tl_K", "A", "T")])
         for i in range(0, len(t), 4):
             w.writerow([f"{t[i]:.2f}"] + [f"{v:.6g}" for n in range(len(I_list)) for v in (tr["I"][i, n] / 1e4, tr["Te"][i, n], tr["Tl"][i, n], tr["A"][i, n], tr["T"][i, n])])
@@ -347,7 +371,7 @@ def fig6_eps(lk, H, model, lam_ops_j, lam_ze):
     axs[2].set_xlabel("T_e [K]"); axs[2].set_ylabel("λ_ENZ(T_e) [nm] (ε′ = 0)"); axs[2].grid(alpha=0.3)
     axs[2].set_title("Kane-band Drude weight, γ const. (Lane B)", fontsize=9)
     fig.suptitle("fig6 — ITO permittivity vs input (Lane B literature model anchored to the supplied cold ITO_nk.csv)", fontsize=10)
-    fig.tight_layout(); fig.savefig(FIG / "fig6_eps_vs_input.png", dpi=170); plt.close(fig)
+    fig.tight_layout(); fig.savefig(_p(FIG / "fig6_eps_vs_input.png"), dpi=170); plt.close(fig)
 
 
 # ----------------------------------------------------------------------------- composite
@@ -375,7 +399,7 @@ def composite(lk, H, lam_ze, lam_ops_j, Q):
     axs[2].set_xlabel("E_in / E_in,max (trusted range)"); axs[2].set_ylabel("E_out / E_out,max"); axs[2].legend(fontsize=7); axs[2].grid(alpha=0.3)
     axs[2].set_title("(c) normalized activation E_out(E_in) at selected λ_op", fontsize=10)
     fig.suptitle("Slide-17 analogue for the frozen best freeform design (Lane B literature ITO model — provisional, not the measured nonlinear response)", fontsize=10)
-    fig.tight_layout(); fig.savefig(FIG / "fig_composite_slide17_analogue.png", dpi=160); plt.close(fig)
+    fig.tight_layout(); fig.savefig(_p(FIG / "fig_composite_slide17_analogue.png"), dpi=160); plt.close(fig)
 
 
 def main():
@@ -383,16 +407,20 @@ def main():
     ap.add_argument("--tags", nargs="*", default=["base", "G05", "G2"])
     ap.add_argument("--lam-ops", type=float, nargs="*", default=[])
     ap.add_argument("--lookup", default=str(OUT / "lookup_order7.npz"))
+    ap.add_argument("--suffix", default="", help="appended to every output file name (e.g. _cyl for the comparison lane)")
     a = ap.parse_args()
     FIG.mkdir(parents=True, exist_ok=True)
+    SFX[0] = a.suffix
     lk = ttm.Lookup(a.lookup)
     model = nl.ITOHot(); th = ttm.Thermo(model)
     lam_ze, _ = mat.ito_zero_crossing()
     cold = json.load(open(OUT / "cold_state_reference.json"))
-    cold_ref = dict(lam=cold.get("lam_nm", 1302.0), T=cold.get("T", np.nan))
+    cold_ref = dict(lam=cold["lambda_ZE"], T=cold["reference"]["11"]["T"]) if not a.suffix else None
     H = load_heat(a.tags[0]); assert H is not None, "run ttm_activation.py first"
+    P_CELL[0] = H["P"]
     Hs = {t: load_heat(t) for t in a.tags[1:]}; Hs = {t: h for t, h in Hs.items() if h is not None}
     lam_ops_j, swing = select_lam_ops(H, lam_ze, extra=a.lam_ops)
+    print(f"single-order window: lambda >= {mat.n_glass(1250.0) * P_CELL[0] + 1:.1f} nm (Rayleigh anomaly in glass at {mat.n_glass(1250.0) * P_CELL[0]:.1f} nm)")
     lam_ops = [float(H["lam"][j]) for j in lam_ops_j]
     print("selected lambda_op:", lam_ops)
     fig1_spectra(lk, lam_ze, lam_ops, cold_ref)
@@ -403,13 +431,13 @@ def main():
                           Tsens={t: h["T"][j] for t, h in Hs.items()}))
     fig34_activation(H, Hs, lam_ops_j, Q)
     # per-lambda swing table (all lambda_op) for the report
-    with open(OUT / "swing_vs_lambda_op.csv", "w", newline="") as f:
+    with open(_p(OUT / "swing_vs_lambda_op.csv"), "w", newline="") as f:
         w = csv.writer(f); w.writerow(["lambda_op_nm", "T_cold", "T_at_I_max_trust", "dT_trust", "I_max_trust_Wcm2", "E_cell_max_trust_J", "I_max_model_Wcm2"])
         for j in range(len(H["lam"])):
             ok = np.where(H["valid_trust"][j])[0]; okm = np.where(H["valid_model"][j])[0]
             w.writerow([f"{H['lam'][j]:.0f}", f"{H['T'][j,0]:.6f}", f"{H['T'][j,ok[-1]]:.6f}", f"{swing[j]:+.6f}", f"{H['I'][ok[-1]]:.3e}", f"{H['E'][ok[-1]]:.3e}", f"{H['I'][okm[-1]]:.3e}"])
     # activation_curves.csv
-    with open(OUT / "activation_curves.csv", "w", newline="") as f:
+    with open(_p(OUT / "activation_curves.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["lambda_op_nm", "I_peak_Wcm2", "E_cell_J", "E_per_10um_pixel_nJ_equiv", "T_avg", "R_avg", "A_avg", "Fz_avg", "Te_peak_K", "I_out_Wcm2", "valid_trust(Te<=6000K)", "valid_model(Te<=8000K)"] +
                    [f"T_avg_{t}" for t in Hs])
@@ -418,12 +446,12 @@ def main():
                 w.writerow([f"{H['lam'][j]:.0f}", f"{H['I'][i]:.4e}", f"{H['E'][i]:.4e}", f"{H['I'][i]/DECK_I_PER_NJ:.4e}", f"{H['T'][j,i]:.6f}", f"{H['R'][j,i]:.6f}", f"{H['A'][j,i]:.6f}",
                             f"{H['Fz'][j,i]:.6f}", f"{H['Te_peak'][j,i]:.1f}", f"{H['T'][j,i]*H['I'][i]:.4e}", int(H["valid_trust"][j, i]), int(H["valid_model"][j, i])] +
                            [f"{h['T'][j,i]:.6f}" for h in Hs.values()])
-    with open(OUT / "threshold_summary.csv", "w", newline="") as f:
+    with open(_p(OUT / "threshold_summary.csv"), "w", newline="") as f:
         keys = sorted(set().union(*[q.keys() for q in Q]), key=lambda k: (k != "lam_op_nm", k))
         w = csv.DictWriter(f, fieldnames=keys); w.writeheader()
         for q in Q:
             w.writerow({k: (json.dumps(v) if isinstance(v, list) else v) for k, v in q.items()})
-    json.dump(dict(lam_ze=lam_ze, lam_ops=lam_ops, deck_I_per_nJ_Wcm2=DECK_I_PER_NJ, quant=Q, G=H["G"]), open(OUT / "activation_summary.json", "w"), indent=1, default=float)
+    json.dump(dict(lam_ze=lam_ze, lam_ops=lam_ops, deck_I_per_nJ_Wcm2=DECK_I_PER_NJ, quant=Q, G=H["G"]), open(_p(OUT / "activation_summary.json"), "w"), indent=1, default=float)
     # traces at the first lambda_op
     j0 = lam_ops_j[0]
     okt = np.where(H["valid_trust"][j0])[0]; okm = np.where(H["valid_model"][j0])[0]
@@ -433,7 +461,7 @@ def main():
     fig6_eps(lk, H, model, lam_ops_j, lam_ze)
     composite(lk, H, lam_ze, lam_ops_j, Q)
     for q in Q:
-        print(json.dumps({k: (round(v, 5) if isinstance(v, float) else v) for k, v in q.items() if not k.startswith("fit_") or k.endswith("rmse") or k.endswith("norm")}, default=str))
+        print(json.dumps({k: (float(f"{v:.4g}") if isinstance(v, float) else v) for k, v in q.items() if not k.startswith("fit_") or k.endswith("rmse") or k.endswith("norm")}, default=str))
     print("[figures] done")
 
 
