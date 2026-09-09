@@ -99,13 +99,17 @@ def graded(d0, d1, ratio=1.25):
     return out
 
 
-def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.25, glass_bulk=250e-9, air_gap_to_source=300e-9, source_to_R=120e-9, R_to_pml=100e-9):
-    """Returns widths (bottom -> top) and index bookkeeping. Bottom = glass PML, top = air PML."""
+def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, air_gap_to_source=300e-9, source_to_R=120e-9, R_to_pml=100e-9, T_below_ito=300e-9):
+    """Returns widths (bottom -> top) and index bookkeeping. Bottom = glass PML, top = air PML.
+    The glass region is thick (default 1.25 um of bulk + PML) because the (+-1, 0) diffraction orders are evanescent
+    in the glass only just below cut-off (n_glass P = 1251 nm): at 1302 nm their decay length is ~475 nm, so a PML
+    closer than ~1 um produces spurious flux through the transmission plane (observed with a 350-nm glass region)."""
     dz_ito = D_ITO / n_ito
+    dz_glass = dz_coarse                                                 # bulk-glass cells (25.8 nm at NXY = 64: 33 cells per wavelength in glass)
     # glass: [PML coarse][bulk coarse][graded coarse -> dz_ito]
-    g_grade = graded(dz_ito, dz_coarse, ratio)[::-1]                    # from coarse (below) down to fine (at ITO)
-    n_bulk = int(round(glass_bulk / dz_coarse))
-    glass = [dz_coarse] * (PML_CELLS + n_bulk) + g_grade
+    g_grade = graded(dz_ito, dz_glass, ratio)[::-1]                    # from coarse (below) down to fine (at ITO)
+    n_bulk = int(round(glass_bulk / dz_glass))
+    glass = [dz_glass] * (PML_CELLS + n_bulk) + g_grade
     ito = [dz_ito] * n_ito
     # a-Si: graded dz_ito -> dz_fine, then uniform to exactly h
     a_grade = graded(dz_ito, dz_fine, ratio)
@@ -119,8 +123,10 @@ def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.25, glass_bulk=250e-9, ai
     n_sr = int(round(source_to_R / dz_coarse)); n_rp = int(round(R_to_pml / dz_coarse))
     air = air_grade + [dz_coarse] * (n_gap + n_sr + n_rp + PML_CELLS)
     widths = np.array(glass + ito + asi + air)
+    zc = np.cumsum(glass)
     idx = dict(z_glass0=0, z_ito0=len(glass), z_asi0=len(glass) + n_ito, z_asi1=len(glass) + n_ito + len(asi),
-               z_src=len(glass) + n_ito + len(asi) + len(air_grade) + n_gap, z_T=PML_CELLS + n_bulk // 2)
+               z_src=len(glass) + n_ito + len(asi) + len(air_grade) + n_gap,
+               z_T=int(np.argmin(np.abs(zc - (zc[-1] - T_below_ito)))))                     # T plane ~T_below_ito under the ITO (in the bulk glass)
     idx["z_R"] = idx["z_src"] + n_sr
     idx["z_pml_top0"] = len(widths) - PML_CELLS
     idx["n_z"] = len(widths)

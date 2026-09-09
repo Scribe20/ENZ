@@ -22,7 +22,8 @@ from fx_sim import eps_model, MODELS, PROV                     # noqa: E402
 C0 = 299792458.0; EPS0 = 8.8541878128e-12; MU0 = 4e-7 * np.pi; ETA0 = np.sqrt(MU0 / EPS0)
 DESIGNS = ["final3", "final1", "final0", "final2"]
 LAM_ZE = MODELS["lambda_ZE_data_nm"]
-REF_TAG = "ref64"
+import os
+REF_TAG = os.environ.get("FX_REF_TAG", "ref64")
 COMP = HERE / "comparison"; COMP.mkdir(exist_ok=True)
 
 
@@ -330,8 +331,28 @@ def do_convergence():
     print("[convergence]", json.dumps(out, indent=1))
 
 
+def do_decay():
+    """End-of-run field level relative to the peak from the two time-domain probes (decay check for the DFT)."""
+    out = {}
+    for d in DESIGNS:
+        for t in ("prod", "prod_ito10", "noito"):
+            run = load_run(d, t)
+            if run is None:
+                continue
+            r = {}
+            for k in ("probe_asi", "probe_ito"):
+                f = run["z"][f"{k}/fields"]; a = np.abs(f).max(axis=1); pk = a.max()
+                r[f"{k}_end_over_peak"] = float(a[-50:].max() / pk); r[f"{k}_peak_time_fs"] = float(np.argmax(a) * run["meta"]["dt_s"] * 1e15)
+            out[f"{d}/{t}"] = r
+    json.dump(out, open(COMP / "decay_check.json", "w"), indent=1)
+    for k, v in out.items():
+        print(f"[decay] {k}: a-Si {v['probe_asi_end_over_peak']:.1e} (peak at {v['probe_asi_peak_time_fs']:.0f} fs), ITO {v['probe_ito_end_over_peak']:.1e}")
+
+
 if __name__ == "__main__":
     what = sys.argv[1] if len(sys.argv) > 1 else "all"
+    if what in ("decay", "all"):
+        do_decay()
     if what in ("spectra", "all"):
         do_spectra()
     if what in ("fields", "all"):
