@@ -1,0 +1,10 @@
+  lam 1200: T_cold=0.6733 T(1e9)=0.6767 T(1e10)=0.7284 Te_peak(1e10)=2954 K  max|energy resid|=3.1e-07  1s
+  lam 1220: T_cold=0.6660 T(1e9)=0.6701 T(1e10)=0.7311 Te_peak(1e10)=3329 K  max|energy resid|=7.0e-07  9s
+  lam 1240: T_cold=0.5217 T(1e9)=0.5286 T(1e10)=0.6182 Te_peak(1e10)=4120 K  max|energy resid|=5.5e-07  16s
+  lam 1260: T_cold=0.0224 T(1e9)=0.0247 T(1e10)=0.0561 Te_peak(1e10)=5186 K  max|energy resid|=5.4e-07  23s
+  lam 1280: T_cold=0.0331 T(1e9)=0.0380 T(1e10)=0.0836 Te_peak(1e10)=6009 K  max|energy resid|=7.2e-07  31s
+  lam 1300: T_cold=0.0026 T(1e9)=0.0021 T(1e10)=0.0022 Te_peak(1e10)=6644 K  max|energy resid|=7.4e-07  39s
+  lam 1320: T_cold=0.0118 T(1e9)=0.0117 T(1e10)=0.0216 Te_peak(1e10)=7094 K  max|energy resid|=7.8e-07  46s
+  lam 1340: T_cold=0.0274 T(1e9)=0.0283 T(1e10)=0.0734 Te_peak(1e10)=7261 K  max|energy resid|=7.0e-07  54s
+  lam 1360: T_cold=0.0422 T(1e9)=0.0426 T(1e10)=0.1109 Te_peak(1e10)=7234 K  max|energy resid|=8.6e-07  62s
+  lam 1380: T_cold=0.0573 T(1e9)=0.0563 T(1e10)=0.1227 Te_peak(1e10)=7140 K  max|energy resid|=7.4e-07  69s

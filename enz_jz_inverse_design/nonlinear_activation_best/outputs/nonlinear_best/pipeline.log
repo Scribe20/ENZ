@@ -1,0 +1,116 @@
+== TTM scans (best design) ==
+[ttm base] G = 1.352e+17 W/m3/K (tau_ep(2000 K) = 150 fs), Cl = 2.40e+06, dt = 0.50 fs, 91 lambdas x 61 intensities
+  lam 1200: T_cold=0.6733 T(1e9)=0.6802 T(1e10)=0.7496 Te_peak(1e10)=3751 K  max|energy resid|=4.2e-07  1s
+  lam 1220: T_cold=0.6660 T(1e9)=0.6743 T(1e10)=0.7538 Te_peak(1e10)=4205 K  max|energy resid|=6.7e-07  9s
+  lam 1240: T_cold=0.5217 T(1e9)=0.5353 T(1e10)=0.6440 Te_peak(1e10)=5149 K  max|energy resid|=7.8e-07  16s
+  lam 1260: T_cold=0.0224 T(1e9)=0.0268 T(1e10)=0.0667 Te_peak(1e10)=6359 K  max|energy resid|=5.0e-07  23s
+  lam 1280: T_cold=0.0331 T(1e9)=0.0420 T(1e10)=0.0951 Te_peak(1e10)=7223 K  max|energy resid|=6.7e-07  31s
+  lam 1300: T_cold=0.0026 T(1e9)=0.0018 T(1e10)=0.0031 Te_peak(1e10)=7905 K  max|energy resid|=7.9e-07  39s
+  lam 1320: T_cold=0.0118 T(1e9)=0.0120 T(1e10)=0.0224 Te_peak(1e10)=8517 K  max|energy resid|=9.3e-07  46s
+  lam 1340: T_cold=0.0274 T(1e9)=0.0296 T(1e10)=0.0814 Te_peak(1e10)=8816 K  max|energy resid|=8.9e-07  54s
+  lam 1360: T_cold=0.0422 T(1e9)=0.0437 T(1e10)=0.1280 Te_peak(1e10)=8820 K  max|energy resid|=8.8e-07  61s
+  lam 1380: T_cold=0.0573 T(1e9)=0.0562 T(1e10)=0.1463 Te_peak(1e10)=8709 K  max|energy resid|=7.3e-07  69s
+[ttm base] done in 69 s; max |energy resid| = 9.57e-07; Te_peak range 300-12000 K; valid(<=8000K) fraction 0.853
+[ttm G05] G = 6.760e+16 W/m3/K (tau_ep(2000 K) = 300 fs), Cl = 2.40e+06, dt = 0.50 fs, 91 lambdas x 61 intensities
+  lam 1200: T_cold=0.6733 T(1e9)=0.6843 T(1e10)=0.7630 Te_peak(1e10)=4383 K  max|energy resid|=5.9e-07  1s
+  lam 1220: T_cold=0.6660 T(1e9)=0.6791 T(1e10)=0.7678 Te_peak(1e10)=4894 K  max|energy resid|=7.8e-07  9s
+  lam 1240: T_cold=0.5217 T(1e9)=0.5422 T(1e10)=0.6587 Te_peak(1e10)=5949 K  max|energy resid|=4.5e-07  17s
+  lam 1260: T_cold=0.0224 T(1e9)=0.0289 T(1e10)=0.0739 Te_peak(1e10)=7288 K  max|energy resid|=5.7e-07  24s
+  lam 1280: T_cold=0.0331 T(1e9)=0.0455 T(1e10)=0.1025 Te_peak(1e10)=8191 K  max|energy resid|=6.5e-07  32s
+  lam 1300: T_cold=0.0026 T(1e9)=0.0017 T(1e10)=0.0034 Te_peak(1e10)=9048 K  max|energy resid|=8.4e-07  39s
+  lam 1320: T_cold=0.0118 T(1e9)=0.0124 T(1e10)=0.0227 Te_peak(1e10)=9865 K  max|energy resid|=5.4e-07  47s
+  lam 1340: T_cold=0.0274 T(1e9)=0.0312 T(1e10)=0.0837 Te_peak(1e10)=10243 K  max|energy resid|=7.2e-07  55s
+  lam 1360: T_cold=0.0422 T(1e9)=0.0453 T(1e10)=0.1328 Te_peak(1e10)=10257 K  max|energy resid|=6.3e-07  62s
+  lam 1380: T_cold=0.0573 T(1e9)=0.0566 T(1e10)=0.1527 Te_peak(1e10)=10125 K  max|energy resid|=9.3e-07  70s
+[ttm G05] done in 70 s; max |energy resid| = 1.00e-06; Te_peak range 300-12000 K; valid(<=8000K) fraction 0.833
+[ttm G2] G = 2.704e+17 W/m3/K (tau_ep(2000 K) = 75 fs), Cl = 2.40e+06, dt = 0.50 fs, 91 lambdas x 61 intensities
+  lam 1200: T_cold=0.6733 T(1e9)=0.6767 T(1e10)=0.7284 Te_peak(1e10)=2954 K  max|energy resid|=3.1e-07  1s
+  lam 1220: T_cold=0.6660 T(1e9)=0.6701 T(1e10)=0.7311 Te_peak(1e10)=3329 K  max|energy resid|=7.0e-07  9s
+  lam 1240: T_cold=0.5217 T(1e9)=0.5286 T(1e10)=0.6182 Te_peak(1e10)=4120 K  max|energy resid|=5.5e-07  16s
+  lam 1260: T_cold=0.0224 T(1e9)=0.0247 T(1e10)=0.0561 Te_peak(1e10)=5186 K  max|energy resid|=5.4e-07  23s
+  lam 1280: T_cold=0.0331 T(1e9)=0.0380 T(1e10)=0.0836 Te_peak(1e10)=6009 K  max|energy resid|=7.2e-07  31s
+  lam 1300: T_cold=0.0026 T(1e9)=0.0021 T(1e10)=0.0022 Te_peak(1e10)=6644 K  max|energy resid|=7.4e-07  39s
+  lam 1320: T_cold=0.0118 T(1e9)=0.0117 T(1e10)=0.0216 Te_peak(1e10)=7094 K  max|energy resid|=7.8e-07  46s
+  lam 1340: T_cold=0.0274 T(1e9)=0.0283 T(1e10)=0.0734 Te_peak(1e10)=7261 K  max|energy resid|=7.0e-07  54s
+  lam 1360: T_cold=0.0422 T(1e9)=0.0426 T(1e10)=0.1109 Te_peak(1e10)=7234 K  max|energy resid|=8.6e-07  62s
+  lam 1380: T_cold=0.0573 T(1e9)=0.0563 T(1e10)=0.1227 Te_peak(1e10)=7140 K  max|energy resid|=7.4e-07  69s
+[ttm G2] done in 69 s; max |energy resid| = 9.01e-07; Te_peak range 300-12000 K; valid(<=8000K) fraction 0.877
+[ttm dt1] G = 1.352e+17 W/m3/K (tau_ep(2000 K) = 150 fs), Cl = 2.40e+06, dt = 1.00 fs, 91 lambdas x 13 intensities
+  lam 1200: T_cold=0.6733 T(1e9)=0.6802 T(1e10)=0.7496 Te_peak(1e10)=3751 K  max|energy resid|=2.1e-06  1s
+  lam 1220: T_cold=0.6660 T(1e9)=0.6743 T(1e10)=0.7538 Te_peak(1e10)=4205 K  max|energy resid|=1.8e-06  4s
+  lam 1240: T_cold=0.5217 T(1e9)=0.5353 T(1e10)=0.6440 Te_peak(1e10)=5149 K  max|energy resid|=4.0e-07  8s
+  lam 1260: T_cold=0.0224 T(1e9)=0.0268 T(1e10)=0.0667 Te_peak(1e10)=6359 K  max|energy resid|=6.0e-07  11s
+  lam 1280: T_cold=0.0331 T(1e9)=0.0420 T(1e10)=0.0951 Te_peak(1e10)=7223 K  max|energy resid|=1.3e-06  15s
+  lam 1300: T_cold=0.0026 T(1e9)=0.0018 T(1e10)=0.0031 Te_peak(1e10)=7905 K  max|energy resid|=2.2e-06  18s
+  lam 1320: T_cold=0.0118 T(1e9)=0.0120 T(1e10)=0.0224 Te_peak(1e10)=8517 K  max|energy resid|=1.3e-06  22s
+  lam 1340: T_cold=0.0274 T(1e9)=0.0296 T(1e10)=0.0814 Te_peak(1e10)=8816 K  max|energy resid|=1.4e-06  25s
+  lam 1360: T_cold=0.0422 T(1e9)=0.0437 T(1e10)=0.1280 Te_peak(1e10)=8820 K  max|energy resid|=1.8e-06  29s
+  lam 1380: T_cold=0.0573 T(1e9)=0.0562 T(1e10)=0.1463 Te_peak(1e10)=8709 K  max|energy resid|=2.5e-06  32s
+[ttm dt1] done in 32 s; max |energy resid| = 3.88e-06; Te_peak range 300-12000 K; valid(<=8000K) fraction 0.827
+[ttm dt025] G = 1.352e+17 W/m3/K (tau_ep(2000 K) = 150 fs), Cl = 2.40e+06, dt = 0.25 fs, 91 lambdas x 13 intensities
+  lam 1200: T_cold=0.6733 T(1e9)=0.6802 T(1e10)=0.7496 Te_peak(1e10)=3751 K  max|energy resid|=3.4e-08  2s
+  lam 1220: T_cold=0.6660 T(1e9)=0.6743 T(1e10)=0.7538 Te_peak(1e10)=4205 K  max|energy resid|=1.4e-07  16s
+  lam 1240: T_cold=0.5217 T(1e9)=0.5353 T(1e10)=0.6440 Te_peak(1e10)=5149 K  max|energy resid|=9.9e-08  30s
+  lam 1260: T_cold=0.0224 T(1e9)=0.0268 T(1e10)=0.0667 Te_peak(1e10)=6359 K  max|energy resid|=4.3e-08  44s
+  lam 1280: T_cold=0.0331 T(1e9)=0.0420 T(1e10)=0.0951 Te_peak(1e10)=7223 K  max|energy resid|=1.2e-07  58s
+  lam 1300: T_cold=0.0026 T(1e9)=0.0018 T(1e10)=0.0031 Te_peak(1e10)=7905 K  max|energy resid|=2.2e-07  72s
+  lam 1320: T_cold=0.0118 T(1e9)=0.0120 T(1e10)=0.0224 Te_peak(1e10)=8517 K  max|energy resid|=7.9e-08  86s
+  lam 1340: T_cold=0.0274 T(1e9)=0.0296 T(1e10)=0.0814 Te_peak(1e10)=8816 K  max|energy resid|=1.0e-07  100s
+  lam 1360: T_cold=0.0422 T(1e9)=0.0437 T(1e10)=0.1280 Te_peak(1e10)=8820 K  max|energy resid|=2.1e-07  114s
+  lam 1380: T_cold=0.0573 T(1e9)=0.0562 T(1e10)=0.1463 Te_peak(1e10)=8709 K  max|energy resid|=1.4e-07  128s
+[ttm dt025] done in 128 s; max |energy resid| = 2.35e-07; Te_peak range 300-12000 K; valid(<=8000K) fraction 0.827
+== figures / quantification (best design) ==
+single-order window: lambda >= 1252.2 nm (Rayleigh anomaly in glass at 1251.2 nm)
+selected lambda_op: [1302.0, 1268.0, 1306.0, 1292.0]
+{"lam_op_nm": 1302.0, "n_valid_trust": 48, "n_valid_model": 51, "I_max_trust_Wcm2": 5012000000.0, "E_cell_max_trust_J": 5.447e-12, "I_max_model_Wcm2": 10000000000.0, "E_cell_max_model_J": 1.087e-11, "Te_peak_at_I_max_trust": 5853.0, "T_low": 0.002567, "T_high_trust": 0.0006322, "T_high_model": 0.001256, "dT_trust": -0.001935, "dT_model": -0.001312, "contrast_trust": 0.2462, "contrast_dB_trust": -6.087, "R_low": 0.003944, "R_high_trust": 0.2408, "A_low": 0.9935, "A_high_trust": 0.7586, "Fz_low": 0.9559, "Fz_high_trust": 0.6978, "I_10_Wcm2": 241800000.0, "E_cell_10_J": 2.627e-13, "I_50_Wcm2": 979900000.0, "E_cell_50_J": 1.065e-12, "I_90_Wcm2": 2247000000.0, "E_cell_90_J": 2.442e-12, "dynamic_range_decades_10_90": 0.9682, "max_abs_dT_dlog10I": 0.002276, "I_at_max_slope_Wcm2": 1259000000.0, "slope_at_I_max_trust_over_max": 0.1715, "saturating_within_trusted_range": true, "dIout_dIin_min": 8.762e-05, "dIout_dIin_max": 0.002567, "dIout_dIin_cold": 0.002567, "monotonic_T_trust": "decreasing", "monotonic_Iout_trust": true, "fit_linear_rmse": 0.1559, "fit_leakyrelu_rmse": 0.04109, "fit_softplus_rmse": 0.07288, "fit_sigmoid_rmse": 0.06958, "fit_T_sigmoid_rmse_norm": 0.006595, "T_high_trust_G05": 0.00077, "dT_trust_G05": -0.001797, "T_high_trust_G2": 0.0005723, "dT_trust_G2": -0.001995}
+{"lam_op_nm": 1268.0, "n_valid_trust": 49, "n_valid_model": 51, "I_max_trust_Wcm2": 6310000000.0, "E_cell_max_trust_J": 6.857e-12, "I_max_model_Wcm2": 10000000000.0, "E_cell_max_model_J": 1.087e-11, "Te_peak_at_I_max_trust": 5816.0, "T_low": 0.07869, "T_high_trust": 0.2035, "T_high_model": 0.2459, "dT_trust": 0.1248, "dT_model": 0.1672, "contrast_trust": 2.586, "contrast_dB_trust": 4.126, "R_low": 0.02786, "R_high_trust": 0.196, "A_low": 0.8935, "A_high_trust": 0.6005, "Fz_low": 0.7744, "Fz_high_trust": 0.4193, "I_10_Wcm2": 650300000.0, "E_cell_10_J": 7.067e-13, "I_50_Wcm2": 2749000000.0, "E_cell_50_J": 2.988e-12, "I_90_Wcm2": 5467000000.0, "E_cell_90_J": 5.941e-12, "dynamic_range_decades_10_90": 0.9247, "max_abs_dT_dlog10I": 0.2005, "I_at_max_slope_Wcm2": 6310000000.0, "slope_at_I_max_trust_over_max": 1.0, "saturating_within_trusted_range": false, "dIout_dIin_min": 0.07869, "dIout_dIin_max": 0.2809, "dIout_dIin_cold": 0.07869, "monotonic_T_trust": "increasing", "monotonic_Iout_trust": true, "fit_linear_rmse": 0.06355, "fit_leakyrelu_rmse": 0.01208, "fit_softplus_rmse": 0.001133, "fit_sigmoid_rmse": 0.002081, "fit_T_sigmoid_rmse_norm": 0.003662, "T_high_trust_G05": 0.2221, "dT_trust_G05": 0.1434, "T_high_trust_G2": 0.173, "dT_trust_G2": 0.09429}
+{"lam_op_nm": 1306.0, "n_valid_trust": 48, "n_valid_model": 50, "I_max_trust_Wcm2": 5012000000.0, "E_cell_max_trust_J": 5.447e-12, "I_max_model_Wcm2": 7943000000.0, "E_cell_max_model_J": 8.632e-12, "Te_peak_at_I_max_trust": 5932.0, "T_low": 0.003375, "T_high_trust": 0.0008627, "T_high_model": 0.0006825, "dT_trust": -0.002513, "dT_model": -0.002693, "contrast_trust": 0.2556, "contrast_dB_trust": -5.925, "R_low": 0.008219, "R_high_trust": 0.2279, "A_low": 0.9884, "A_high_trust": 0.7712, "Fz_low": 0.9529, "Fz_high_trust": 0.7133, "I_10_Wcm2": 269400000.0, "E_cell_10_J": 2.928e-13, "I_50_Wcm2": 1141000000.0, "E_cell_50_J": 1.24e-12, "I_90_Wcm2": 3185000000.0, "E_cell_90_J": 3.462e-12, "dynamic_range_decades_10_90": 1.073, "max_abs_dT_dlog10I": 0.002557, "I_at_max_slope_Wcm2": 1259000000.0, "slope_at_I_max_trust_over_max": 0.45, "saturating_within_trusted_range": false, "dIout_dIin_min": 0.0004182, "dIout_dIin_max": 0.003375, "dIout_dIin_cold": 0.003375, "monotonic_T_trust": "decreasing", "monotonic_Iout_trust": true, "fit_linear_rmse": 0.1755, "fit_leakyrelu_rmse": 0.01743, "fit_softplus_rmse": 0.06687, "fit_sigmoid_rmse": 0.03328, "fit_T_sigmoid_rmse_norm": 0.00822, "T_high_trust_G05": 0.0007889, "dT_trust_G05": -0.002586, "T_high_trust_G2": 0.00102, "dT_trust_G2": -0.002355}
+{"lam_op_nm": 1292.0, "n_valid_trust": 48, "n_valid_model": 51, "I_max_trust_Wcm2": 5012000000.0, "E_cell_max_trust_J": 5.447e-12, "I_max_model_Wcm2": 10000000000.0, "E_cell_max_model_J": 1.087e-11, "Te_peak_at_I_max_trust": 5609.0, "T_low": 0.00712, "T_high_trust": 0.01569, "T_high_model": 0.02176, "dT_trust": 0.008572, "dT_model": 0.01464, "contrast_trust": 2.204, "contrast_dB_trust": 3.432, "R_low": 0.0002239, "R_high_trust": 0.2655, "A_low": 0.9927, "A_high_trust": 0.7188, "Fz_low": 0.9476, "Fz_high_trust": 0.6492, "I_10_Wcm2": 708100000.0, "E_cell_10_J": 7.695e-13, "I_50_Wcm2": 2488000000.0, "E_cell_50_J": 2.704e-12, "I_90_Wcm2": 4434000000.0, "E_cell_90_J": 4.819e-12, "dynamic_range_decades_10_90": 0.7967, "max_abs_dT_dlog10I": 0.01612, "I_at_max_slope_Wcm2": 5012000000.0, "slope_at_I_max_trust_over_max": 1.0, "saturating_within_trusted_range": false, "dIout_dIin_min": 0.00712, "dIout_dIin_max": 0.02192, "dIout_dIin_cold": 0.00712, "monotonic_T_trust": "increasing", "monotonic_Iout_trust": true, "fit_linear_rmse": 0.06301, "fit_leakyrelu_rmse": 0.01167, "fit_softplus_rmse": 0.0006164, "fit_sigmoid_rmse": 0.001345, "fit_T_sigmoid_rmse_norm": 0.004877, "T_high_trust_G05": 0.01738, "dT_trust_G05": 0.01026, "T_high_trust_G2": 0.01325, "dT_trust_G2": 0.006132}
+[figures] done
+== TCMT fit (best design) ==
+Te=   300: lam0=1208.2 nm  g_r=97.8 (g1 70.8 + g2 27.1) g_nr=0.0 meV  Q_l=10.5 r_d=0.83 | rmse T 0.0139 R 0.0212 A 0.0153 max|dT| 0.0576 | RCWA T-min 0.0026@1302 A-max 0.996@1298 FWHM_A nan
+Te=   400: lam0=1208.2 nm  g_r=97.9 (g1 70.9 + g2 27.0) g_nr=0.0 meV  Q_l=10.5 r_d=0.83 | rmse T 0.0140 R 0.0212 A 0.0152 max|dT| 0.0578 | RCWA T-min 0.0025@1302 A-max 0.996@1298 FWHM_A nan
+Te=   500: lam0=1208.3 nm  g_r=98.0 (g1 71.0 + g2 27.0) g_nr=0.0 meV  Q_l=10.5 r_d=0.83 | rmse T 0.0141 R 0.0211 A 0.0150 max|dT| 0.0581 | RCWA T-min 0.0025@1302 A-max 0.996@1298 FWHM_A nan
+Te=   600: lam0=1208.4 nm  g_r=98.1 (g1 71.2 + g2 26.9) g_nr=0.0 meV  Q_l=10.5 r_d=0.83 | rmse T 0.0142 R 0.0211 A 0.0148 max|dT| 0.0585 | RCWA T-min 0.0025@1302 A-max 0.996@1298 FWHM_A nan
+Te=   800: lam0=1208.6 nm  g_r=98.3 (g1 71.5 + g2 26.8) g_nr=0.0 meV  Q_l=10.4 r_d=0.83 | rmse T 0.0146 R 0.0209 A 0.0143 max|dT| 0.0595 | RCWA T-min 0.0024@1302 A-max 0.997@1298 FWHM_A nan
+Te=  1000: lam0=1208.8 nm  g_r=98.5 (g1 71.9 + g2 26.7) g_nr=0.0 meV  Q_l=10.4 r_d=0.83 | rmse T 0.0150 R 0.0208 A 0.0137 max|dT| 0.0606 | RCWA T-min 0.0022@1302 A-max 0.997@1300 FWHM_A nan
+Te=  1250: lam0=1209.1 nm  g_r=98.8 (g1 72.2 + g2 26.6) g_nr=0.0 meV  Q_l=10.4 r_d=0.83 | rmse T 0.0157 R 0.0206 A 0.0129 max|dT| 0.0626 | RCWA T-min 0.0020@1302 A-max 0.996@1300 FWHM_A nan
+Te=  1500: lam0=1209.2 nm  g_r=99.0 (g1 72.0 + g2 26.9) g_nr=0.0 meV  Q_l=10.4 r_d=0.83 | rmse T 0.0166 R 0.0206 A 0.0123 max|dT| 0.0656 | RCWA T-min 0.0018@1302 A-max 0.995@1302 FWHM_A nan
+Te=  2000: lam0=1208.2 nm  g_r=101.1 (g1 71.3 + g2 29.8) g_nr=0.0 meV  Q_l=10.2 r_d=0.82 | rmse T 0.0187 R 0.0213 A 0.0121 max|dT| 0.0731 | RCWA T-min 0.0013@1302 A-max 0.989@1306 FWHM_A nan
+Te=  2500: lam0=1220.2 nm  g_r=100.5 (g1 67.0 + g2 33.6) g_nr=22.1 meV  Q_l=8.3 r_d=0.80 | rmse T 0.0209 R 0.0236 A 0.0128 max|dT| 0.0828 | RCWA T-min 0.0009@1302 A-max 0.976@1310 FWHM_A nan
+Te=  3000: lam0=1242.3 nm  g_r=130.1 (g1 58.8 + g2 71.3) g_nr=14.2 meV  Q_l=6.9 r_d=0.77 | rmse T 0.0232 R 0.0269 A 0.0133 max|dT| 0.0931 | RCWA T-min 0.0006@1302 A-max 0.955@1316 FWHM_A nan
+Te=  3500: lam0=1266.5 nm  g_r=94.7 (g1 49.5 + g2 45.2) g_nr=60.6 meV  Q_l=6.3 r_d=0.75 | rmse T 0.0261 R 0.0307 A 0.0141 max|dT| 0.1023 | RCWA T-min 0.0003@1304 A-max 0.925@1320 FWHM_A nan
+Te=  4000: lam0=1288.2 nm  g_r=147.4 (g1 40.9 + g2 106.5) g_nr=10.2 meV  Q_l=6.1 r_d=0.72 | rmse T 0.0295 R 0.0348 A 0.0154 max|dT| 0.1099 | RCWA T-min 0.0001@1304 A-max 0.888@1326 FWHM_A nan
+Te=  4500: lam0=1302.9 nm  g_r=99.1 (g1 34.1 + g2 65.0) g_nr=57.3 meV  Q_l=6.1 r_d=0.69 | rmse T 0.0331 R 0.0394 A 0.0166 max|dT| 0.1169 | RCWA T-min 0.0001@1304 A-max 0.845@1330 FWHM_A nan
+Te=  5000: lam0=1309.0 nm  g_r=114.6 (g1 29.7 + g2 84.9) g_nr=43.1 meV  Q_l=6.0 r_d=0.64 | rmse T 0.0366 R 0.0446 A 0.0182 max|dT| 0.1247 | RCWA T-min 0.0000@1304 A-max 0.800@1336 FWHM_A nan
+Te=  6000: lam0=1300.7 nm  g_r=158.1 (g1 42.2 + g2 115.8) g_nr=18.1 meV  Q_l=5.4 r_d=0.36 | rmse T 0.0426 R 0.0556 A 0.0243 max|dT| 0.1423 | RCWA T-min 0.0001@1304 A-max 0.705@1344 FWHM_A nan
+Te=  7000: lam0=1309.0 nm  g_r=140.4 (g1 57.5 + g2 82.9) g_nr=24.0 meV  Q_l=5.8 r_d=0.23 | rmse T 0.0488 R 0.0650 A 0.0329 max|dT| 0.1571 | RCWA T-min 0.0003@1304 A-max 0.616@1352 FWHM_A nan
+Te=  8000: lam0=1311.6 nm  g_r=132.7 (g1 54.7 + g2 78.0) g_nr=17.2 meV  Q_l=6.3 r_d=0.18 | rmse T 0.0547 R 0.0733 A 0.0431 max|dT| 0.1809 | RCWA T-min 0.0004@1306 A-max 0.536@1358 FWHM_A nan
+intensity validation: {"lam_op": 1302.0, "rmse_T_trust": 0.00972, "maxerr_T_trust": 0.02345, "rmse_T_model": 0.0111, "maxerr_T_model": 0.02452, "T_cold_rcwa": 0.00257, "T_cold_tcmt": 0.00966, "dT_trust_rcwa": -0.00194, "dT_trust_tcmt": 0.01442, "Te_peak_max_trust_rcwa": 5853.00244, "Te_peak_max_trust_tcmt": 5865.13492}
+intensity validation: {"lam_op": 1268.0, "rmse_T_trust": 0.03851, "maxerr_T_trust": 0.09427, "rmse_T_model": 0.04381, "maxerr_T_model": 0.1175, "T_cold_rcwa": 0.07869, "T_cold_tcmt": 0.04948, "dT_trust_rcwa": 0.1248, "dT_trust_tcmt": 0.05974, "Te_peak_max_trust_rcwa": 5815.93592, "Te_peak_max_trust_tcmt": 5557.87683}
+intensity validation: {"lam_op": 1306.0, "rmse_T_trust": 0.00872, "maxerr_T_trust": 0.01967, "rmse_T_model": 0.00946, "maxerr_T_model": 0.02036, "T_cold_rcwa": 0.00338, "T_cold_tcmt": 0.01007, "dT_trust_rcwa": -0.00251, "dT_trust_tcmt": 0.01047, "Te_peak_max_trust_rcwa": 5931.97604, "Te_peak_max_trust_tcmt": 5930.38058}
+intensity validation: {"lam_op": 1292.0, "rmse_T_trust": 0.00786, "maxerr_T_trust": 0.02322, "rmse_T_model": 0.00966, "maxerr_T_model": 0.02491, "T_cold_rcwa": 0.00712, "T_cold_tcmt": 0.01176, "dT_trust_rcwa": 0.00857, "dT_trust_tcmt": 0.02715, "Te_peak_max_trust_rcwa": 5609.28698, "Te_peak_max_trust_tcmt": 5664.2558}
+[tcmt] done
+== certification of selected states at [9,9] and [11,11] ==
+Te=   300 K: eps(1302)=+0.0015+0.4316i  T(1302)=0.0025 A=0.9924 Fz=0.9553 | T_min=0.0025@1302 A_max=0.9939@1292 | max|Ftot-A|=2.1e-04 | 13s
+Te=  2000 K: eps(1302)=+0.1456+0.4132i  T(1302)=0.0013 A=0.9857 Fz=0.9440 | T_min=0.0013@1302 A_max=0.9865@1306 | max|Ftot-A|=1.9e-04 | 25s
+Te=  4000 K: eps(1302)=+0.4525+0.3740i  T(1302)=0.0001 A=0.8348 Fz=0.7778 | T_min=0.0001@1302 A_max=0.8516@1306 | max|Ftot-A|=1.5e-04 | 38s
+Te=  6000 K: eps(1302)=+0.7694+0.3336i  T(1302)=0.0002 A=0.5945 Fz=0.5259 | T_min=0.0002@1302 A_max=0.6159@1306 | max|Ftot-A|=1.1e-04 | 50s
+Te=  8000 K: eps(1302)=+1.0520+0.2975i  T(1302)=0.0007 A=0.4150 Fz=0.3437 | T_min=0.0007@1302 A_max=0.4323@1306 | max|Ftot-A|=8.9e-05 | 63s
+[lookup order9] done in 63 s
+Te=   300 K: eps(1302)=+0.0015+0.4316i  T(1302)=0.0026 A=0.9911 Fz=0.9544 | T_min=0.0026@1302 A_max=0.9939@1292 | max|Ftot-A|=2.3e-04 | 40s
+Te=  2000 K: eps(1302)=+0.1456+0.4132i  T(1302)=0.0014 A=0.9838 Fz=0.9426 | T_min=0.0014@1302 A_max=0.9840@1306 | max|Ftot-A|=2.0e-04 | 80s
+Te=  4000 K: eps(1302)=+0.4525+0.3740i  T(1302)=0.0002 A=0.8351 Fz=0.7791 | T_min=0.0002@1302 A_max=0.8508@1306 | max|Ftot-A|=1.6e-04 | 119s
+Te=  6000 K: eps(1302)=+0.7694+0.3336i  T(1302)=0.0001 A=0.5975 Fz=0.5302 | T_min=0.0001@1302 A_max=0.6180@1306 | max|Ftot-A|=1.3e-04 | 157s
+Te=  8000 K: eps(1302)=+1.0520+0.2975i  T(1302)=0.0003 A=0.4182 Fz=0.3483 | T_min=0.0003@1302 A_max=0.4351@1306 | max|Ftot-A|=9.3e-05 | 195s
+[lookup order11] done in 195 s
+Traceback (most recent call last):
+  File "/home/user/ENZ/enz_jz_inverse_design/nonlinear_activation_best/certify_compare.py", line 49, in <module>
+    main()
+  File "/home/user/ENZ/enz_jz_inverse_design/nonlinear_activation_best/certify_compare.py", line 39, in main
+    summary[order] = {k: dict(max_abs=float(np.max(abs(diffs[k]))), rms=float(np.sqrt(np.mean(np.square(diffs[k]))))) for k in KEYS if diffs[k]}
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ENZ/enz_jz_inverse_design/nonlinear_activation_best/certify_compare.py", line 39, in <dictcomp>
+    summary[order] = {k: dict(max_abs=float(np.max(abs(diffs[k]))), rms=float(np.sqrt(np.mean(np.square(diffs[k]))))) for k in KEYS if diffs[k]}
+                                                   ^^^^^^^^^^^^^
+TypeError: bad operand type for abs(): 'list'

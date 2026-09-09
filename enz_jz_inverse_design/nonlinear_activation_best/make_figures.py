@@ -103,7 +103,7 @@ def fig1_spectra(lk, lam_ze, lam_ops, cold_ref):
         ax.axvline(mat.n_glass(1250.0) * P_CELL[0], color="0.5", ls="-.", lw=0.8)
         ax.set_ylabel({"T": "T (all orders)", "A": "A = 1 − R − T", "R": "R (all orders)", "Fz": "F_z (longitudinal ITO absorption)"}[k])
         ax.grid(alpha=0.3)
-    axs[0, 0].legend(fontsize=7, ncol=2, loc="lower left")
+    axs[0, 0].legend(fontsize=7, ncol=2, loc="upper center")
     axs[1, 0].set_xlabel("wavelength [nm]"); axs[1, 1].set_xlabel("wavelength [nm]")
     axs[0, 1].text(mat.n_glass(1250.0) * P_CELL[0] + 1, 0.05, "Rayleigh (glass) ←", fontsize=7, color="0.4")
     fig.suptitle(f"fig1 — {'frozen best design' if not SFX[0] else 'deck cylinder (comparison lane)'}, RCWA [{lk.order},{lk.order}], Lane-B ε_ITO(λ, T_e): T, A, R, F_z vs wavelength for the electron-temperature set", fontsize=11)

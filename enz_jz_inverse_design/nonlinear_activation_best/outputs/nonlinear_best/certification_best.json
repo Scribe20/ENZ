@@ -1,0 +1,70 @@
+{
+ "base": "/home/user/ENZ/enz_jz_inverse_design/nonlinear_activation_best/outputs/nonlinear_best/lookup_order7.npz",
+ "others": [
+  "/home/user/ENZ/enz_jz_inverse_design/nonlinear_activation_best/outputs/nonlinear_best/lookup_order9.npz",
+  "/home/user/ENZ/enz_jz_inverse_design/nonlinear_activation_best/outputs/nonlinear_best/lookup_order11.npz"
+ ],
+ "summary": {
+  "[9,9]": {
+   "T": {
+    "max_abs": 0.023574028804315278,
+    "rms": 0.007496811834536562
+   },
+   "R": {
+    "max_abs": 0.049541720431345276,
+    "rms": 0.014557354299210217
+   },
+   "A": {
+    "max_abs": 0.03597400793314909,
+    "rms": 0.010716990192652433
+   },
+   "Fz": {
+    "max_abs": 0.020873404289603492,
+    "rms": 0.01037712566092672
+   },
+   "Ftot": {
+    "max_abs": 0.035979822898286495,
+    "rms": 0.010716248087366306
+   },
+   "Fx": {
+    "max_abs": 0.003216007261176282,
+    "rms": 0.0016237457229597383
+   },
+   "Fy": {
+    "max_abs": 0.05467448470500727,
+    "rms": 0.0168657272520484
+   }
+  },
+  "[11,11]": {
+   "T": {
+    "max_abs": 0.05472821057403837,
+    "rms": 0.017421776201204962
+   },
+   "R": {
+    "max_abs": 0.0944049450974127,
+    "rms": 0.03185929457543705
+   },
+   "A": {
+    "max_abs": 0.06289170496700691,
+    "rms": 0.017788540653078846
+   },
+   "Fz": {
+    "max_abs": 0.03433609253704406,
+    "rms": 0.016840312817771187
+   },
+   "Ftot": {
+    "max_abs": 0.06290086758747815,
+    "rms": 0.01778737887933515
+   },
+   "Fx": {
+    "max_abs": 0.0044173424410786505,
+    "rms": 0.00270815951447668
+   },
+   "Fy": {
+    "max_abs": 0.0889844247634699,
+    "rms": 0.026569242282249134
+   }
+  }
+ },
+ "n_states": 40
+}

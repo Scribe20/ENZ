@@ -36,7 +36,7 @@ def main():
                     row[f"{k}_7"] = float(b[k][ib, jb]); row[k] = float(z[k][i, j]); row[f"d{k}"] = float(z[k][i, j] - b[k][ib, jb])
                     diffs[k].append(row[f"d{k}"])
                 rows.append(row)
-        summary[order] = {k: dict(max_abs=float(np.max(abs(diffs[k]))), rms=float(np.sqrt(np.mean(np.square(diffs[k]))))) for k in KEYS if diffs[k]}
+        summary[order] = {k: dict(max_abs=float(np.max(np.abs(diffs[k]))), rms=float(np.sqrt(np.mean(np.square(diffs[k]))))) for k in KEYS if diffs[k]}
         print(order, {k: f"max|d|={v['max_abs']:.2e}" for k, v in summary[order].items()})
     with open(OUT / f"certification_{a.tag}.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
