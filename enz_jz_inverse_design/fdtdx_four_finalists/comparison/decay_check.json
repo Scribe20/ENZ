@@ -11,10 +11,16 @@
   "probe_ito_end_over_peak": 0.0380348302423954,
   "probe_ito_peak_time_fs": 85.24761005151494
  },
- "final3/noito": {
-  "probe_asi_end_over_peak": 0.036981698125600815,
-  "probe_asi_peak_time_fs": 76.92270886665436,
-  "probe_ito_end_over_peak": 0.06756038963794708,
-  "probe_ito_peak_time_fs": 98.77234990659899
+ "final1/prod": {
+  "probe_asi_end_over_peak": 0.016066044569015503,
+  "probe_asi_peak_time_fs": 78.96582598593447,
+  "probe_ito_end_over_peak": 0.023249516263604164,
+  "probe_ito_peak_time_fs": 78.60144841052147
+ },
+ "final0/prod": {
+  "probe_asi_end_over_peak": 0.007129383739084005,
+  "probe_asi_peak_time_fs": 79.00486644044301,
+  "probe_ito_end_over_peak": 0.04743329435586929,
+  "probe_ito_peak_time_fs": 82.83083098227965
  }
 }
