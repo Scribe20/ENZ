@@ -273,7 +273,8 @@ def quantify(lam_op, I, E, T, R, A, Fz, Te_peak, valid_trust, valid_model, Tsens
 
 
 # ----------------------------------------------------------------------------- fig 3 / 4
-def fig34_activation(H, Hs, lam_ops_j, Q):
+def fig34_activation(H, Hs, lam_ops_j, Q, obs="T"):
+    """obs: name of the observable stored under H["T"] (labels only; "R" for the reflection-mode run)."""
     lam, I, E = H["lam"], H["I"], H["E"]
     cols = plt.get_cmap("tab10")
     fig3, ax3 = plt.subplots(1, 2, figsize=(13, 5))
@@ -304,17 +305,17 @@ def fig34_activation(H, Hs, lam_ops_j, Q):
             ax.plot(xx * I[it], yy, color="tab:purple", lw=0.9, ls="-.", label=f"softplus fit, RMSE {q['fit_softplus_rmse']:.3f}")
             yy = f_sigmoid(xx, *q["fit_sigmoid_params(c,a,x0,s)"]) * np.max(np.interp(xx * I[it], I[: it + 1], H["T"][j, : it + 1]) * xx)
             ax.plot(xx * I[it], yy, color="tab:olive", lw=0.9, ls="-.", label=f"sigmoid fit, RMSE {q['fit_sigmoid_rmse']:.3f}")
-        ax.set_xlabel("I_in = I_peak [W/cm²]"); ax.set_ylabel("I_out = ⟨T⟩·I_in [W/cm²]")
-        ax.set_title(f"{lab}: ΔT = {q.get('dT_trust', np.nan):+.4f} (T {q.get('T_low', np.nan):.4f} → {q.get('T_high_trust', np.nan):.4f}), {q.get('monotonic_T_trust','')}", fontsize=8)
+        ax.set_xlabel("I_in = I_peak [W/cm²]"); ax.set_ylabel(f"I_out = ⟨{obs}⟩·I_in [W/cm²]")
+        ax.set_title(f"{lab}: Δ{obs} = {q.get('dT_trust', np.nan):+.4f} ({obs} {q.get('T_low', np.nan):.4f} → {q.get('T_high_trust', np.nan):.4f}), {q.get('monotonic_T_trust','')}", fontsize=8)
         ax.legend(fontsize=6.5); ax.grid(alpha=0.3)
         ax.ticklabel_format(axis="both", style="sci", scilimits=(0, 0))
-    ax3[0].set_xscale("log"); ax3[0].set_yscale("log"); ax3[0].set_xlabel("I_peak [W/cm²]"); ax3[0].set_ylabel("⟨T⟩ (pulse-averaged)")
-    ax3[0].set_title("fig3 — ⟨T⟩(I_peak) at selected λ_op (solid: T_e,peak ≤ 6000 K; dashed: ≤ 8000 K; band: G × ½ … × 2)", fontsize=9)
+    ax3[0].set_xscale("log"); ax3[0].set_yscale("log"); ax3[0].set_xlabel("I_peak [W/cm²]"); ax3[0].set_ylabel(f"⟨{obs}⟩ (pulse-averaged)")
+    ax3[0].set_title(f"fig3 — ⟨{obs}⟩(I_peak) at selected λ_op (solid: T_e,peak ≤ 6000 K; dashed: ≤ 8000 K; band: G × ½ … × 2)", fontsize=9)
     ax3[0].legend(fontsize=8); ax3[0].grid(alpha=0.3); deck_band(ax3[0]); add_energy_axis(ax3[0])
     ax3[1].set_xscale("log"); ax3[1].set_yscale("log"); ax3[1].axhline(ttm.TE_TRUST, color="k", ls="--", lw=0.8); ax3[1].axhline(ttm.TE_MAX_MODEL, color="r", lw=0.8)
     ax3[1].set_xlabel("I_peak [W/cm²]"); ax3[1].set_ylabel("peak T_e [K]"); ax3[1].grid(alpha=0.3); ax3[1].legend(fontsize=8); deck_band(ax3[1]); add_energy_axis(ax3[1])
     fig3.tight_layout(); fig3.savefig(_p(FIG / "fig3_T_vs_I.png"), dpi=170); plt.close(fig3)
-    fig4.suptitle("fig4 — input–output characteristic I_out(I_in) on the trusted range (Lane B); fits are shape descriptors, not labels", fontsize=10)
+    fig4.suptitle(f"fig4 — input–output characteristic I_out = ⟨{obs}⟩·I_in on the trusted range (Lane B); fits are shape descriptors, not labels", fontsize=10)
     fig4.tight_layout(); fig4.savefig(_p(FIG / "fig4_Iout_vs_Iin.png"), dpi=170); plt.close(fig4)
 
 
