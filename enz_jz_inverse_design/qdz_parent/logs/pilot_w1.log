@@ -1,0 +1,4 @@
+[worker 1] 3 of 6 jobs
+[worker 1] --threads 2 --h 600 --q-target 100 --warm final1 --tag pilot_h600_Q100_warm_final1 --out pilot/pilot_h600_Q100_warm_final1 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 1] rc=0 787s :: [pilot_h600_Q100_warm_final1] done: eta_soft=0.15455 eta_hard=0.15454 Q_hard=4.231885553431275 lam_hard=1405.910981686669 u=0.001 U_mid=16.34 fill=0.225 wall=777s
+[worker 1] --threads 2 --h 425 --q-target 50 --warm final2 --tag pilot_h425_Q50_warm_final2 --out pilot/pilot_h425_Q50_warm_final2 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5

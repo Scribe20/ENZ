@@ -1,0 +1,4 @@
+[worker 0] 3 of 6 jobs
+[worker 0] --threads 2 --h 525 --q-target 100 --warm final3 --tag pilot_h525_Q100_warm_final3 --out pilot/pilot_h525_Q100_warm_final3 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
+[worker 0] rc=0 787s :: [pilot_h525_Q100_warm_final3] done: eta_soft=0.18309 eta_hard=0.18311 Q_hard=6.150223105393225 lam_hard=1326.2084707255337 u=0.004 U_mid=18.10 fill=0.245 wall=778s
+[worker 0] --threads 2 --h 675 --q-target 100 --warm final1 --tag pilot_h675_Q100_warm_final1 --out pilot/pilot_h675_Q100_warm_final1 --iters 80 --span 0.25 --span-acquire 0.5 --lam-shape 3.0 --tol-factor 0.25 --n-z 5
