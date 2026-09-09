@@ -3,3 +3,8 @@
 */*/phasors.npz
 reference/*/phasors.npz
 __pycache__/
+# superseded thin-glass configuration: keep only the metadata and spectra for the record
+*_superseded/*
+!*_superseded/run_meta.json
+!*_superseded/spectra_prod.csv
+!*_superseded/spectra_prod.png

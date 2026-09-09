@@ -1,0 +1,2 @@
+[fx] final3 no_ito=False ref=False cells=[64, 64, 164] n_z=164 dt=7.07 as steps=42452 stride=35 devices=['cpu:0']
+FDTD (checkpointed):   0%|          | 0/42452 [00:00<?, ?step/s]FDTD (checkpointed):   0%|          | 0/42452 [00:00<?, ?step/s]FDTD (checkpointed):  12%|█▏        | 5000/42452 [06:00<44:56, 13.89step/s]FDTD (checkpointed):  24%|██▎       | 10000/42452 [12:30<40:36, 13.32step/s]FDTD (checkpointed):  35%|███▌      | 15000/42452 [18:40<34:10, 13.39step/s]
