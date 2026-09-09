@@ -1,0 +1,210 @@
+{
+ "check3_lambda_E": {
+  "lambda_E_nm": 1302.2819858898874,
+  "bracket_nm": [
+   1302.2819858898874,
+   1302.2820191189803
+  ],
+  "eps_at_lambda_E": [
+   -4.718447854656915e-16,
+   0.43195341058831205
+  ],
+  "source_file": "/home/user/ENZ/enz_jz_inverse_design/materials_data/ITO_nk.csv",
+  "file_sha256": "b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c",
+  "hard_coded_anywhere": false,
+  "note": "lambda_E = the eps' = 0 crossing of the supplied ITO_nk.csv, via materials.ito_zero_crossing()"
+ },
+ "check0_synthesis": {
+  "ifft2_vs_field_xy_max_abs": 1.605234710174538e-08,
+  "field_scale": 4.763904573941441,
+  "grid": "edge grid x_j = j P / nx - the SAME grid on which rho and eps are defined (torcwa FFTs the eps array with that convention); forward.cell_axes is cell-centred and differs by half a cell",
+  "energy_resid_RplusT_minus_1": -2.4702462297909733e-13,
+  "Dz_glass_over_Dz_inSi": 0.9999999999787667,
+  "note": "Dz_mn = Ky Hx - Kx Hy is taken before the inverse convolution; evaluated on the glass side (homogeneous, no Gibbs error) it is identical to the in-Si value, confirming normal-D continuity"
+ },
+ "check1_scale_invariance": {
+  "eta_Dz_reference": 0.07655183105786567,
+  "eta_Dz_scaled": {
+   "0.001": 0.07655183105786567,
+   "7.5": 0.07655183105786566,
+   "10000": 0.07655183105786569
+  },
+  "max_rel_deviation": 1.8128616410656736e-16,
+  "passed": true
+ },
+ "check2_contact_region": {
+  "eta_Dz_rho_weighted": 0.07655183105786567,
+  "eta_Dz_binary_support": 0.07655183105786567,
+  "eta_Dz_complement_mask": 0.006207432957106561,
+  "eta_Dz_full_cell_mask": 0.017541422924712974,
+  "S_Dz_contact": 185910663.14605677,
+  "S_Dz_complement": 78488593.92519745,
+  "S_Dz_full_cell": 264399257.0712542,
+  "contact_fraction": 0.31756591796875,
+  "identity_hardbinary_equals_support": true,
+  "complement_is_distinct": true,
+  "additivity_resid": 1.1271711848896665e-16,
+  "note": "for a hard-binary rho the density weight equals its own support; the complementary (air) mask gives a different and independent integral, and contact + complement = full cell"
+ },
+ "convergence_on_final3_parent": {
+  "order": [
+   {
+    "order": [
+     5,
+     5
+    ],
+    "eta_Dz": 0.07655183105786567,
+    "eta_Dz_P": 0.048203272828230774,
+    "S_Dz": 185910663.14605677,
+    "W_Si": 2428559324.799515,
+    "W_layer": 3856805819.1512704,
+    "U_mid": 21.226093816888294,
+    "R": 0.9071951097467008,
+    "T": 0.09280489025444777
+   },
+   {
+    "order": [
+     7,
+     7
+    ],
+    "eta_Dz": 0.10143233770840526,
+    "eta_Dz_P": 0.06436844059416258,
+    "S_Dz": 217633652.48139483,
+    "W_Si": 2145604226.4059982,
+    "W_layer": 3381061440.55215,
+    "U_mid": 18.350358357288815,
+    "R": 0.9736022119042232,
+    "T": 0.02639778809552968
+   },
+   {
+    "order": [
+     9,
+     9
+    ],
+    "eta_Dz": 0.11128853276033485,
+    "eta_Dz_P": 0.07091477169319978,
+    "S_Dz": 231459039.0880126,
+    "W_Si": 2079810321.396461,
+    "W_layer": 3263904452.648867,
+    "U_mid": 17.769528399262448,
+    "R": 0.9832884554073853,
+    "T": 0.016711544592677475
+   },
+   {
+    "order": [
+     11,
+     11
+    ],
+    "eta_Dz": 0.11934409764334504,
+    "eta_Dz_P": 0.07619170598316044,
+    "S_Dz": 242678405.0664839,
+    "W_Si": 2033434496.2054045,
+    "W_layer": 3185102655.6633296,
+    "U_mid": 17.361640646705045,
+    "R": 0.9888918320426529,
+    "T": 0.011108167952714475
+   }
+  ],
+  "n_z": [
+   {
+    "n_z": 5,
+    "eta_Dz": 0.1010789705173461,
+    "W_Si": 2153105154.9842095,
+    "U_mid": 19.43700548441013
+   },
+   {
+    "n_z": 7,
+    "eta_Dz": 0.10143233770840526,
+    "W_Si": 2145604226.4059982,
+    "U_mid": 18.350358357288815
+   },
+   {
+    "n_z": 9,
+    "eta_Dz": 0.10151063544447927,
+    "W_Si": 2143949267.2709002,
+    "U_mid": 17.69052027309452
+   },
+   {
+    "n_z": 15,
+    "eta_Dz": 0.10149184682460696,
+    "W_Si": 2144346164.6480649,
+    "U_mid": 18.668800713858193
+   },
+   {
+    "n_z": 25,
+    "eta_Dz": 0.10143344441690598,
+    "W_Si": 2145580816.3911831,
+    "U_mid": 18.504563533743287
+   }
+  ]
+ },
+ "check5_gradients": {
+  "soft_random_projected": {
+   "grad_norm": 0.518070802408488,
+   "finite": true,
+   "nonzero": true,
+   "n_nonzero_pixels": 16384,
+   "fd_analytic": [
+    [
+     -0.01211374169418633,
+     -0.012113740911103192
+    ],
+    [
+     -0.012101096926731003,
+     -0.012101097731525944
+    ],
+    [
+     -0.012093765933141043,
+     -0.012093765599069096
+    ],
+    [
+     -0.012092696342058673,
+     -0.012092697375502424
+    ]
+   ],
+   "max_rel_fd_error": 8.546015157939885e-08,
+   "passed": true
+  },
+  "hard_binary_final3": {
+   "grad_norm": 0.5884901406712039,
+   "finite": true,
+   "nonzero": true,
+   "n_nonzero_pixels": 16384,
+   "fd_analytic": [
+    [
+     0.02132732647375235,
+     0.021327314184974994
+    ],
+    [
+     0.021312997606770523,
+     0.021312997267387147
+    ],
+    [
+     0.021267398451207953,
+     0.02126739348484261
+    ],
+    [
+     0.021210294613993597,
+     0.02121029126477836
+    ]
+   ],
+   "max_rel_fd_error": 5.761990117571572e-07,
+   "passed": true
+  },
+  "q_proxy_loss": {
+   "grad_norm": 155.22674954773288,
+   "finite": true,
+   "Q_proxy": 9.82773332184504,
+   "lambda_r_proxy": 1280.244218659095,
+   "kappa": 0.14971123214941465,
+   "rel_resid": 0.17264726766945426,
+   "well_posed": true,
+   "passed": true
+  }
+ },
+ "wall_s": 27.444021463394165,
+ "geometry_hashes": {
+  "final3_hard": "b6db683ab862df0323c6e6177c6d1127f02126a0cd119c42c6203a86173887e1",
+  "soft_random_seed4242": "97ad46923f8a4d920e56d81867ccfc42f3ed63a394347b53a93ae2cf820de40b"
+ }
+}
