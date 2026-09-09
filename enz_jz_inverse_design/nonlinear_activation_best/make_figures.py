@@ -182,7 +182,7 @@ def select_lam_ops(H, lam_ze, extra=(), lam_min=None):
     picks = [jz]
     if jmin != jz:
         picks.append(jmin)
-    picks += [int(np.argmax(sw)), int(np.argmin(sw))]
+    picks += [j for j in (int(np.argmax(sw)), int(np.argmin(sw))) if abs(sw[j]) > 1e-3]   # skip negligible swings
     for e in extra:
         picks.append(int(np.argmin(abs(lam - e))))
     seen, out = set(), []
@@ -298,12 +298,13 @@ def fig34_activation(H, Hs, lam_ops_j, Q, obs="T"):
         ax.plot(x, H["T"][j, 0] * x, color="0.5", lw=1, ls=":", label=f"linear, cold T = {H['T'][j, 0]:.4f}")
         q = Q[n]
         if q.get("fit_leakyrelu_params(a,b,x0)"):
-            xx = np.linspace(0, 1, 201); ymax = (H["T"][j, it] * I[it])
-            yy = f_lrelu(xx, *q["fit_leakyrelu_params(a,b,x0)"]) * np.max(np.interp(xx * I[it], I[: it + 1], H["T"][j, : it + 1]) * xx) 
+            xx = np.linspace(0, 1, 201)
+            scale = np.max(np.interp(xx * I[it], I[: it + 1], H["T"][j, : it + 1]) * xx) * I[it]      # y_max in W/cm^2 (same normalization as quantify)
+            yy = f_lrelu(xx, *q["fit_leakyrelu_params(a,b,x0)"]) * scale
             ax.plot(xx * I[it], yy, color="tab:red", lw=0.9, ls="-.", label=f"leaky-ReLU fit, RMSE {q['fit_leakyrelu_rmse']:.3f}")
-            yy = f_softplus(xx, *q["fit_softplus_params(c,a,x0,s)"]) * np.max(np.interp(xx * I[it], I[: it + 1], H["T"][j, : it + 1]) * xx)
+            yy = f_softplus(xx, *q["fit_softplus_params(c,a,x0,s)"]) * scale
             ax.plot(xx * I[it], yy, color="tab:purple", lw=0.9, ls="-.", label=f"softplus fit, RMSE {q['fit_softplus_rmse']:.3f}")
-            yy = f_sigmoid(xx, *q["fit_sigmoid_params(c,a,x0,s)"]) * np.max(np.interp(xx * I[it], I[: it + 1], H["T"][j, : it + 1]) * xx)
+            yy = f_sigmoid(xx, *q["fit_sigmoid_params(c,a,x0,s)"]) * scale
             ax.plot(xx * I[it], yy, color="tab:olive", lw=0.9, ls="-.", label=f"sigmoid fit, RMSE {q['fit_sigmoid_rmse']:.3f}")
         ax.set_xlabel("I_in = I_peak [W/cm²]"); ax.set_ylabel(f"I_out = ⟨{obs}⟩·I_in [W/cm²]")
         ax.set_title(f"{lab}: Δ{obs} = {q.get('dT_trust', np.nan):+.4f} ({obs} {q.get('T_low', np.nan):.4f} → {q.get('T_high_trust', np.nan):.4f}), {q.get('monotonic_T_trust','')}", fontsize=8)
