@@ -1,0 +1,13 @@
+{
+ "platform": "Linux-6.18.44-fc-v24-x86_64-with-glibc2.39",
+ "python_system": "3.11.15",
+ "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+ "n_cores": 4,
+ "mem_total_GB": 15.6985,
+ "nvidia_smi": "/bin/sh: 1: nvidia-smi: not found",
+ "dev_nvidia": "ls: cannot access '/dev/nvidia*': No such file or directory",
+ "jax": "0.10.2 ['cpu:0'] cpu device_count 1",
+ "fdtdx": "0.6.2",
+ "fdtdx_source": "supplied fdtdx-main.zip (cf0f5522-fdtdxmain.zip), installed editable in /opt/venv-fdtdx",
+ "fdtdx_source_sha256": "0a175d978db7ccbb6db2810780790e0cf2806aa37db20304eaebbfee3d4967ca"
+}

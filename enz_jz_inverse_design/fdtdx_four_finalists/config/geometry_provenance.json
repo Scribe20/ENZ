@@ -1,0 +1,126 @@
+{
+ "final3": {
+  "source_file": "enz_jz_inverse_design/outputs/stage3/runs/final3_div_F1_P825_h500_pad0.12_s333_h525/rho_hard_binary.npy",
+  "sha256": "8398ee3dd92c2b016393c929ff49062d9f3cb6af63539575df363b2ae3a870c1",
+  "sha256_copy": "8398ee3dd92c2b016393c929ff49062d9f3cb6af63539575df363b2ae3a870c1",
+  "shape": [
+   128,
+   128
+  ],
+  "dtype": "uint8",
+  "P_nm": 825.0,
+  "h_nm": 525.0,
+  "pad_frac": 0.12,
+  "pixel_nm": 6.4453125,
+  "fill_fraction": 0.31756591796875,
+  "n_material_pixels": 5203,
+  "certification_file": "enz_jz_inverse_design/outputs/stage4/final3_div_F1_P825_h500_pad0.12_s333_h525/certify.json",
+  "torcwa_reference": {
+   "Fz_certified": 0.9542524861707444,
+   "Fx_certified": 0.02823310883743173,
+   "Fy_certified": 0.008144135719084046,
+   "Ftot_certified": 0.9907369060570671,
+   "A_certified": 0.990748324095046,
+   "R_certified": 0.0065614145724554014,
+   "T_certified": 0.0026902613324986096,
+   "eta_z_abs": 0.963174461692839,
+   "mean_Ez2": 19.905629745473714,
+   "max_Ez2": 103.52418110848882,
+   "lam": 1302.2819858898874
+  },
+  "array_convention": "rho[i, j]: i -> x (axis 0), j -> y (axis 1), cell-centred pixels of size P/128; 1 = a-Si:H, 0 = air (pad already included)"
+ },
+ "final1": {
+  "source_file": "enz_jz_inverse_design/outputs/stage3/runs/final1_F0_P825_h600_pad0.12_s1001_h575/rho_hard_binary.npy",
+  "sha256": "cabe4bcc80686fcb10a5a72fd9d5e53d41106a49376633b9defc81e9f542abbd",
+  "sha256_copy": "cabe4bcc80686fcb10a5a72fd9d5e53d41106a49376633b9defc81e9f542abbd",
+  "shape": [
+   128,
+   128
+  ],
+  "dtype": "uint8",
+  "P_nm": 825.0,
+  "h_nm": 575.0,
+  "pad_frac": 0.12,
+  "pixel_nm": 6.4453125,
+  "fill_fraction": 0.2816162109375,
+  "n_material_pixels": 4614,
+  "certification_file": "enz_jz_inverse_design/outputs/stage4/final1_F0_P825_h600_pad0.12_s1001_h575/certify.json",
+  "torcwa_reference": {
+   "Fz_certified": 0.9539787637339017,
+   "Fx_certified": 0.02799873000920726,
+   "Fy_certified": 0.009426617513792406,
+   "Ftot_certified": 0.9915157620787846,
+   "A_certified": 0.9915276681250383,
+   "R_certified": 0.005987990426547726,
+   "T_certified": 0.002484341448413965,
+   "eta_z_abs": 0.9621418037105292,
+   "mean_Ez2": 19.899823508410698,
+   "max_Ez2": 106.48554856560628,
+   "lam": 1302.2819858898874
+  },
+  "array_convention": "rho[i, j]: i -> x (axis 0), j -> y (axis 1), cell-centred pixels of size P/128; 1 = a-Si:H, 0 = air (pad already included)"
+ },
+ "final0": {
+  "source_file": "enz_jz_inverse_design/outputs/stage3/runs/final0_F2_P850_h600_pad0.12_s333_P825/rho_hard_binary.npy",
+  "sha256": "230b52b4444136d8e032c63ee66b016f48289a774c301c1719a38177fc15b959",
+  "sha256_copy": "230b52b4444136d8e032c63ee66b016f48289a774c301c1719a38177fc15b959",
+  "shape": [
+   128,
+   128
+  ],
+  "dtype": "uint8",
+  "P_nm": 825.0,
+  "h_nm": 600.0,
+  "pad_frac": 0.12,
+  "pixel_nm": 6.4453125,
+  "fill_fraction": 0.279541015625,
+  "n_material_pixels": 4580,
+  "certification_file": "enz_jz_inverse_design/outputs/stage4/final0_F2_P850_h600_pad0.12_s333_P825/certify.json",
+  "torcwa_reference": {
+   "Fz_certified": 0.9538558736546515,
+   "Fx_certified": 0.02775702977606409,
+   "Fy_certified": 0.010132513767082378,
+   "Ftot_certified": 0.9918578261822647,
+   "A_certified": 0.9918698114788287,
+   "R_certified": 0.00467001356773955,
+   "T_certified": 0.003460174953431757,
+   "eta_z_abs": 0.9616860889489721,
+   "mean_Ez2": 19.89724490576364,
+   "max_Ez2": 111.69133572088897,
+   "lam": 1302.2819858898874
+  },
+  "array_convention": "rho[i, j]: i -> x (axis 0), j -> y (axis 1), cell-centred pixels of size P/128; 1 = a-Si:H, 0 = air (pad already included)"
+ },
+ "final2": {
+  "source_file": "enz_jz_inverse_design/outputs/stage3/runs/final2_F0_P825_h600_pad0.12_s1001_pad0.08/rho_hard_binary.npy",
+  "sha256": "3bef302a6c2012a0432e247cd9ed3c27f337baca5be0c8386d30f69349dbdc02",
+  "sha256_copy": "3bef302a6c2012a0432e247cd9ed3c27f337baca5be0c8386d30f69349dbdc02",
+  "shape": [
+   128,
+   128
+  ],
+  "dtype": "uint8",
+  "P_nm": 825.0,
+  "h_nm": 600.0,
+  "pad_frac": 0.08,
+  "pixel_nm": 6.4453125,
+  "fill_fraction": 0.275146484375,
+  "n_material_pixels": 4508,
+  "certification_file": "enz_jz_inverse_design/outputs/stage4/final2_F0_P825_h600_pad0.12_s1001_pad0.08/certify.json",
+  "torcwa_reference": {
+   "Fz_certified": 0.9536028622146505,
+   "Fx_certified": 0.02922055956781422,
+   "Fy_certified": 0.009206188502789335,
+   "Ftot_certified": 0.9921425326412555,
+   "A_certified": 0.9921545727075098,
+   "R_certified": 0.004757854068365678,
+   "T_certified": 0.003087573224124475,
+   "eta_z_abs": 0.9611551070953427,
+   "mean_Ez2": 19.89195604577869,
+   "max_Ez2": 110.95847300289148,
+   "lam": 1302.2819858898874
+  },
+  "array_convention": "rho[i, j]: i -> x (axis 0), j -> y (axis 1), cell-centred pixels of size P/128; 1 = a-Si:H, 0 = air (pad already included)"
+ }
+}

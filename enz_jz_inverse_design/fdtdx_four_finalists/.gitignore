@@ -1,0 +1,5 @@
+# raw FDTDX phasor dumps are large (tens of MB per run); the derived deliverables (spectra, normalized fields at the
+# analysis wavelengths, U(z), multipoles, figures, metadata) are committed instead
+*/*/phasors.npz
+reference/*/phasors.npz
+__pycache__/

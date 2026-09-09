@@ -1,0 +1,67 @@
+{
+ "source_files": {
+  "ITO": "/home/user/ENZ/enz_jz_inverse_design/materials_data/ITO_nk.csv",
+  "aSiH": "/home/user/ENZ/enz_jz_inverse_design/materials_data/aSi_H_measured_Postech.txt",
+  "glass": "/home/user/ENZ/enz_jz_inverse_design/materials_data/SiO2_substrate_measured.txt"
+ },
+ "loader": "enz_jz_inverse_design/materials.py (identical interpolation to the TORCWA campaign)",
+ "lambda_ZE_data_nm": 1302.2819858898874,
+ "lambda_ZE_fit_nm": 1302.1320579233723,
+ "fit_window_nm": [
+  1150.0,
+  1450.0
+ ],
+ "time_convention": "exp(-i omega t): Drude chi = -wp^2/(w^2 + i g w), Lorentz chi = de w0^2/(w0^2 - w^2 - i g w) (FDTDX ADE)",
+ "ITO": {
+  "model": "eps_inf + Drude(wp, gd) + Lorentz(de, w0, gl)",
+  "eps_inf": 3.428830422608032,
+  "wp_rad_s": 2419434016182092.0,
+  "gamma_d_rad_s": 1010893880299.2192,
+  "delta_eps_L": 1.6355516318111736,
+  "w0_L_rad_s": 867830423204154.0,
+  "gamma_L_rad_s": 625342690020237.2,
+  "err_max_abs_1200_1400": 0.006412870568835214,
+  "err_rms_1200_1400": 0.0027773330066942765,
+  "err_max_abs_1150_1450": 0.016753483999843694,
+  "err_re_max_1200_1400": 0.0014263759508750251,
+  "err_im_max_1200_1400": 0.006343426036044764,
+  "eps_at_lambda_ZE_data": [
+   -4.718447854656915e-16,
+   0.43195341058831205
+  ],
+  "eps_fit_at_lambda_ZE": [
+   -0.0007746167186525321,
+   0.42865815072585145
+  ],
+  "drude_only_reference": {
+   "eps_inf": 3.415029972123424,
+   "wp_rad_s": 2694098744363283.5,
+   "gamma_rad_s": 183782658721278.25,
+   "err_max_abs_1200_1400": 0.03427954990100572
+  }
+ },
+ "aSiH": {
+  "model": "eps_inf + de w0^2/(w0^2 - w^2) (lossless Lorentz; supplied k = 0 in band, max |Im eps| = 0.00e+00)",
+  "eps_inf": 5.494431244583839,
+  "delta_eps": 3.034541439623472,
+  "w0_rad_s": 4656727442597332.0,
+  "gamma_rad_s": 0.0,
+  "err_max_abs": 3.324944135130181e-05,
+  "fit_range_nm": [
+   1150.0,
+   1400.0
+  ],
+  "eps_at_lambda_ZE_data": 8.853017946254587,
+  "eps_fit_at_lambda_ZE": 8.853001699113765
+ },
+ "glass": {
+  "model": "eps_inf + de w0^2/(w0^2 - w^2) (lossless Lorentz; supplied k = 0, max |Im eps| = 0.00e+00)",
+  "eps_inf": 1.0000000000998577,
+  "delta_eps": 1.295667823045525,
+  "w0_rad_s": 2.550806569239335e+16,
+  "gamma_rad_s": 0.0,
+  "err_max_abs": 2.0789036740076483e-05,
+  "n_at_lambda_ZE_data": 1.516528710905342,
+  "eps_fit_at_lambda_ZE": 2.299847362124576
+ }
+}
