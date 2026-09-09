@@ -142,9 +142,19 @@ def normalized_fields(run, ref):
     """E / E_inc at each field wavelength: E_inc = reference Ex phasor at the ITO mid-plane position (uniform plane, air)."""
     lamf = run["z"]["lam_field_m"] * 1e9
     lamr = ref["z"]["lam_field_m"] * 1e9
-    assert np.allclose(lamf, lamr), (lamf, lamr)
-    E0 = ref["z"]["inc_field_plane/phasor"][:, 0, :, :, 0].mean(axis=(1, 2))          # (Nlam,) complex Ex incident amplitude
-    E0_unif = ref["z"]["inc_field_plane/phasor"][:, 0, :, :, 0].std(axis=(1, 2)) / np.abs(E0)
+    lams = ref["z"]["lam_spec_m"] * 1e9
+    Ef = ref["z"]["inc_field_plane/phasor"][:, 0, :, :, 0]        # exact incident Ex phasor at the with-ITO field wavelengths
+    Es = ref["z"]["inc_ito_plane/phasor"][:, 0, :, :, 0]          # exact incident Ex phasor on the 2-nm spectral grid (same plane)
+    E0 = np.zeros(len(lamf), complex); E0_unif = np.zeros(len(lamf))
+    for i, l in enumerate(lamf):
+        if np.min(abs(lamr - l)) < 1e-3:
+            src = Ef[int(np.argmin(abs(lamr - l)))]
+        elif np.min(abs(lams - l)) < 1e-3:
+            src = Es[int(np.argmin(abs(lams - l)))]
+        else:                                                      # not recorded exactly: interpolate amplitude and unwrapped phase on the 2-nm grid
+            m = Es.mean(axis=(1, 2)); amp = np.interp(l, lams, np.abs(m)); ph = np.interp(l, lams, np.unwrap(np.angle(m)))
+            src = np.full(Es.shape[1:], amp * np.exp(1j * ph))
+        E0[i] = src.mean(); E0_unif[i] = src.std() / abs(E0[i])
     vol = run["z"]["vol_fields/phasor"] / E0[:, None, None, None, None]
     xz = run["z"]["xz_plane/phasor"] / E0[:, None, None, None, None]
     yz = run["z"]["yz_plane/phasor"] / E0[:, None, None, None, None]
