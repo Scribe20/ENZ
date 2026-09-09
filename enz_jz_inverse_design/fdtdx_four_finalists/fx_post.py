@@ -320,7 +320,7 @@ def do_overlays_U():
         vmax = max(m.max() for m in maps.values())
         fig, axs = plt.subplots(1, len(maps), figsize=(4.6 * len(maps), 4.4))
         for ax, (d, m) in zip(np.atleast_1d(axs), maps.items()):
-            im = ax.imshow(m.T, origin="lower", extent=[0, 825, 0, 825], cmap="inferno", vmin=0, vmax=vmax); ax.set_title(f"{d}: |Ez/E_inc|², ITO mid-plane, max {m.max():.1f}, mean {m.mean():.2f}", fontsize=8); ax.set_xlabel("x [nm]"); ax.set_ylabel("y [nm]")
+            im = ax.imshow(m.T, origin="lower", extent=[0, 825, 0, 825], cmap="inferno", vmin=0, vmax=vmax); ax.set_title(f"{d}: max {m.max():.1f}, mean {m.mean():.2f}", fontsize=9); ax.set_xlabel("x [nm]"); ax.set_ylabel("y [nm]")
         plt.colorbar(im, ax=list(np.atleast_1d(axs)), pad=0.01, shrink=0.9)
         fig.suptitle(f"ITO-plane |Ez/E_inc|² at λ_ZE, common colour scale (0 … {vmax:.1f})", fontsize=10); fig.savefig(COMP / "overlay_ITO_plane_Ez2_common_scale.png", dpi=150); plt.close(fig)
 
