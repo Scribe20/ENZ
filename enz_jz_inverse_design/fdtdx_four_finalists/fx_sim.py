@@ -99,7 +99,7 @@ def graded(d0, d1, ratio=1.25):
     return out
 
 
-def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, air_gap_to_source=300e-9, source_to_R=120e-9, R_to_pml=100e-9, T_below_ito=300e-9):
+def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, glass_extra=0.0, air_gap_to_source=300e-9, source_to_R=120e-9, R_to_pml=100e-9, T_below_ito=300e-9):
     """Returns widths (bottom -> top) and index bookkeeping. Bottom = glass PML, top = air PML.
     The glass region is thick (default 1.25 um of bulk + PML) because the (+-1, 0) diffraction orders are evanescent
     in the glass only just below cut-off (n_glass P = 1251 nm): at 1302 nm their decay length is ~475 nm, so a PML
@@ -108,7 +108,7 @@ def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, ai
     dz_glass = dz_coarse                                                 # bulk-glass cells (25.8 nm at NXY = 64: 33 cells per wavelength in glass)
     # glass: [PML coarse][bulk coarse][graded coarse -> dz_ito]
     g_grade = graded(dz_ito, dz_glass, ratio)[::-1]                    # from coarse (below) down to fine (at ITO)
-    n_bulk = int(round(glass_bulk / dz_glass))
+    n_bulk = int(round((glass_bulk + glass_extra) / dz_glass))
     glass = [dz_glass] * (PML_CELLS + n_bulk) + g_grade
     ito = [dz_ito] * n_ito
     # a-Si: graded dz_ito -> dz_fine, then uniform to exactly h
@@ -134,7 +134,7 @@ def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, ai
 
 
 # --------------------------------------------------------------------------- scene
-def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, stride=None, courant=0.95, nxy=128, subpixel=True, dz_asi=None, conv_check_fs=None):
+def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, stride=None, courant=0.95, nxy=128, subpixel=True, dz_asi=None, conv_check_fs=None, glass_extra=0.0):
     global NXY
     NXY = nxy
     P = PROV[design]["P_nm"] * 1e-9; h = PROV[design]["h_nm"] * 1e-9
@@ -142,7 +142,7 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
     fill = area_fraction(rho, NXY)
     dxy = P / NXY
     dz_fine = dxy if dz_asi is None else dz_asi
-    widths, idx = build_z_mesh(h, n_ito, dz_coarse=max(2 * dxy, 12.0e-9), dz_fine=dz_fine)
+    widths, idx = build_z_mesh(h, n_ito, dz_coarse=max(2 * dxy, 12.0e-9), dz_fine=dz_fine, glass_extra=glass_extra)
     z_edges = np.concatenate([[0.0], np.cumsum(widths)])
     xy_edges = dxy * np.arange(NXY + 1)
     grid = fdtdx.RectilinearGrid(x_edges=jnp.asarray(xy_edges), y_edges=jnp.asarray(xy_edges), z_edges=jnp.asarray(z_edges))
@@ -229,7 +229,7 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
                 idx=idx, dt_s=dt, time_s=time_s, n_steps=int(config.time_steps_total), courant_factor=courant, dft_stride=stride, lam_spec_m=LAM_SPEC.tolist(), lam_field_m=list(map(float, field_lams_m)),
                 source=dict(type="UniformPlaneSource TFSF, direction -z, E along x, GaussianPulseProfile center 1300 nm, sigma_f 13 THz (sigma_t 12.2 fs, peak at t0 = 6 sigma_t)"),
                 pml_cells=PML_CELLS, n_cells=[NXY, NXY, idx["n_z"]], dtype="float32", backend=str(jax.default_backend()), devices=[str(d) for d in jax.devices()],
-                conv_check_fs=conv_check_fs)
+                conv_check_fs=conv_check_fs, glass_extra_nm=glass_extra * 1e9)
     return objects, constraints, config, meta
 
 
@@ -260,6 +260,12 @@ def main():
     ap.add_argument("--nxy", type=int, default=128, help="cells per period in x and y (128 = 1 cell per design pixel)")
     ap.add_argument("--no-subpixel", action="store_true", help="binary (>= 0.5 fill) cells instead of fill-fraction subpixel smoothing")
     ap.add_argument("--dz-asi", type=float, default=None, help="bulk a-Si:H z spacing [nm] (default = in-plane cell)")
+    ap.add_argument("--glass-extra-nm", type=float, default=0.0,
+                    help="extra bulk glass below the stack [nm].  Within a few nm of the glass Rayleigh cut-off "
+                         "(n_glass P = 1251.2 nm) the (+-1,0) orders are evanescent with 1.3-1.9 um decay lengths, "
+                         "so a large evanescent amplitude reaches the PML face and the CPML (a propagating-wave "
+                         "absorber) mis-partitions the flux between the R and T planes, giving R > 1 with a "
+                         "compensating T < 0 at fixed R + T = 1.  Deepening the glass removes it.")
     ap.add_argument("--conv-check-fs", type=float, default=None,
                     help="also record R/T flux phasors on a DFT window closed at this time [fs]; the early vs full "
                          "window comparison is the in-run convergence certificate")
@@ -270,7 +276,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     objects, constraints, config, meta = build_scene(a.design, a.no_ito, a.ito_cells, a.time_fs * 1e-15, [l * 1e-9 for l in a.field_lams], reference=a.reference, stride=a.stride, courant=a.courant,
                                                      nxy=a.nxy, subpixel=not a.no_subpixel, dz_asi=(a.dz_asi * 1e-9 if a.dz_asi else None),
-                                                     conv_check_fs=a.conv_check_fs)
+                                                     conv_check_fs=a.conv_check_fs, glass_extra=a.glass_extra_nm * 1e-9)
     print(f"[fx] {a.design} no_ito={a.no_ito} ref={a.reference} cells={meta['n_cells']} n_z={meta['idx']['n_z']} dt={meta['dt_s']*1e18:.2f} as steps={meta['n_steps']} stride={meta['dft_stride']} devices={meta['devices']}", flush=True)
     arrays, objs, config, timing = run(objects, constraints, config, bench_steps=a.bench_steps)
     meta.update(timing=timing, bench_steps=a.bench_steps, n_steps_run=int(config.time_steps_total))
