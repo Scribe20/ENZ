@@ -600,7 +600,7 @@
    "n_enclosed_air_regions": 1
   }
  },
- "wall_s": 2495.4429743289948,
+ "wall_s": 2315.823267221451,
  "run_dir": "frontier/fr_Q100_final3_h640",
  "Q_target": 100.0,
  "acquired_resonance_during_run": true,

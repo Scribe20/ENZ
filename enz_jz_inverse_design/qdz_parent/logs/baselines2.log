@@ -1,1 +1,22 @@
 === baseline final0: P=825.0 h=600.0
+Traceback (most recent call last):
+  File "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/baselines.py", line 78, in <module>
+    main()
+  File "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/baselines.py", line 59, in main
+    r = cp.certify(rho, P, h, name, OUT / name, orders=orders, n_z=9)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/certify_parent.py", line 105, in certify
+    res["local_refine"] = pp.refine_pole(rho, P, h, order_c, near, ray=pk["rayleigh"])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/poles_parent.py", line 56, in refine_pole
+    r, t, R, T = parent_rt(rho, P, h, lams, order)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/poles_parent.py", line 32, in parent_rt
+    sim = fwd.build_sim(rho, P, h, float(lam), order, with_ito=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/ENZ/enz_jz_inverse_design/forward.py", line 127, in build_sim
+    n_glass = mat.n_glass(lam) if n_glass is None else n_glass
+              ^^^^^^^^^^^^^^^^
+  File "/home/user/ENZ/enz_jz_inverse_design/materials.py", line 159, in n_glass
+    raise ValueError(f"glass k = {nk.imag:g} at {lam} nm is not zero; a lossy "
+ValueError: glass k = 1.10542e-06 at 350.654462936817 nm is not zero; a lossy semi-infinite substrate is outside this model

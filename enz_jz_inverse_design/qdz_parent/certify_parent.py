@@ -141,13 +141,23 @@ def certify(rho, P, h, tag, out_dir, orders=([5, 5], [7, 7], [9, 9]), n_z=9, lam
     res["W_Si_peak_lambda_nm"] = float(lams[int(np.argmax(W))])
     res["W_Si_peak_over_edge"] = float(W.max() / max(W.min(), 1e-300))
     # ---- Q proxy at the certification point (for the calibration record) ----------
-    lams_p, om_p, kt = qp.probe_wavelengths(lam_E, res["Q_r"] if res.get("Q_r") else 100.0)
-    Wp = torch.stack([pf.parent_metrics(rho, P, h, float(l), order_c, n_z=n_z)["W_Si"] for l in lams_p])
-    fit = qp.lorentz_fit(om_p, Wp, qp.omega_of(lam_E))
-    res["q_proxy_at_certification"] = dict(Q_proxy=float(fit["Q"]), lambda_r_proxy=float(fit["lambda_r"]),
-                                           kappa_proxy=float(fit["kappa"]), rel_resid=float(fit["rel_resid"]),
-                                           well_posed=bool(fit["well_posed"]),
-                                           rel_err_vs_pole=(abs(float(fit["Q"]) - res["Q_r"]) / res["Q_r"] if res.get("Q_r") else None))
+    # The probe span is +-0.25 * lambda_E / Q; a very small Q would push the probes outside the range of
+    # the supplied material data, so the proxy is only evaluated when the whole probe set stays inside it.
+    Q_probe = res["Q_r"] if res.get("Q_r") else 100.0
+    lams_p, om_p, kt = qp.probe_wavelengths(lam_E, Q_probe)
+    if float(np.min(lams_p)) >= 260.0 and float(np.max(lams_p)) <= 1399.0:
+        Wp = torch.stack([pf.parent_metrics(rho, P, h, float(l), order_c, n_z=n_z)["W_Si"] for l in lams_p])
+        fit = qp.lorentz_fit(om_p, Wp, qp.omega_of(lam_E))
+        res["q_proxy_at_certification"] = dict(Q_proxy=float(fit["Q"]), lambda_r_proxy=float(fit["lambda_r"]),
+                                               kappa_proxy=float(fit["kappa"]), rel_resid=float(fit["rel_resid"]),
+                                               well_posed=bool(fit["well_posed"]), probe_lams_nm=[float(x) for x in lams_p],
+                                               rel_err_vs_pole=(abs(float(fit["Q"]) - res["Q_r"]) / res["Q_r"] if res.get("Q_r") else None))
+    else:
+        res["q_proxy_at_certification"] = dict(skipped=True, Q_used_for_probe=float(Q_probe),
+                                               probe_range_nm=[float(np.min(lams_p)), float(np.max(lams_p))],
+                                               reason="probe window falls outside the supplied material range "
+                                                      "[246, 1400] nm because the certified Q is very small "
+                                                      "(no well-defined resonance near lambda_E)")
     # ---- field maps ---------------------------------------------------------------
     if want_maps:
         for label, lam in (("lambda_E", lam_E), ("lambda_r", res.get("lambda_r"))):

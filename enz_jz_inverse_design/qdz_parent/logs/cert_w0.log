@@ -1,1 +1,13 @@
 [certify worker 0] 11 of 21 candidates
+[cert fr_Q100_final0_h700] lambda_r=1293.951094042339 Q_r=80.92604233713739 eta_Dz(lambda_E)=0.04723631330565328 U_mid=66.69691504485318 (2366 s)
+[cert fr_Q100_final3_h640] lambda_r=1287.5932211888228 Q_r=499.19564118349035 eta_Dz(lambda_E)=0.05979108576061663 U_mid=24.013716939470775 (2316 s)
+  FAILED fr_Q200_final3_h600: ValueError: a-Si:H: lambda = 1412.2310575139354 nm outside the supplied range [246.0, 1400.0] nm - refusing to extrapolate
+[cert fr_Q20_final1_h420] lambda_r=1303.1033987331537 Q_r=545.6789839957036 eta_Dz(lambda_E)=0.13801889977815002 U_mid=111.30352444365312 (2328 s)
+  FAILED fr_Q20_final3_h380: ValueError: a-Si:H: lambda = 1416.4147921627593 nm outside the supplied range [246.0, 1400.0] nm - refusing to extrapolate
+  FAILED fr_Q500_final3_h600: ValueError: a-Si:H: lambda = 39.76860863706884 nm outside the supplied range [246.0, 1400.0] nm - refusing to extrapolate
+  FAILED fr_Q50_final0_h680: ValueError: a-Si:H: lambda = 97.37794363664193 nm outside the supplied range [246.0, 1400.0] nm - refusing to extrapolate
+  FAILED fr_Q50_fresh8080_h480: ValueError: a-Si:H: lambda = 1405.435883558487 nm outside the supplied range [246.0, 1400.0] nm - refusing to extrapolate
+[cert pilot_h525_Q100_fresh4242] lambda_r=1380.2525680729389 Q_r=808.700692451386 eta_Dz(lambda_E)=0.03022647708009449 U_mid=4.870673445659958 (2317 s)
+[cert pilot_h525_Q50_fresh8080] lambda_r=None Q_r=None eta_Dz(lambda_E)=0.19410409734547238 U_mid=13.180796756462014 (1960 s)
+[cert pilot_h675_Q100_warm_final1] lambda_r=1294.1158455055058 Q_r=79.13888358273805 eta_Dz(lambda_E)=0.04359122990505163 U_mid=68.54137631066462 (2255 s)
+[certify worker 0] done
