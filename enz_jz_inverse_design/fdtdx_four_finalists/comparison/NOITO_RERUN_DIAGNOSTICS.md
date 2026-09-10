@@ -84,3 +84,40 @@ The window series is the measurement that decides the outcome: an exponentially 
 the longer run converges, while a residual falling like 1/T means the field is still ringing at the end
 of any window and the remaining error is quantified rather than removed.  Whatever the series shows is
 reported as it is; no spectrum is smoothed, clipped, renormalised or otherwise modified.
+
+## 7. Result of the final3 deep-glass rerun
+
+The extra 4.5 um of glass removes the flux mis-partition completely:
+
+| | shallow glass | deep glass |
+|---|---|---|
+| `R_max` | 1.2257 | 0.9997 |
+| `T_min` | -0.2265 | +0.0003 |
+| `max \|1 - R - T\|` | 0.0023 | 0.0024 (0 / 101 points over 0.01) |
+
+What remains is a 3 ps -> 6 ps window drift of up to 0.030 in `R` and 0.035 in `T` at five points, all
+within +-5 nm of the glass Rayleigh cut-off at `n_glass P = 1251.2 nm`.  There `R` and `T` exchange
+with their sum conserved (`|dR + dT| <= 0.005`), which is the slow settling of the near-grazing
+diffracted orders whose group velocity vanishes at cut-off, not a mis-set monitor.
+
+## 8. How far the mesh itself places the parent's features
+
+The lossless parent has sharp spectral features, and the spatial mesh moves them.  Comparing the
+accepted final3 no-ITO spectrum with the RCWA parent on the identical 101-point wavelength grid
+(`comparison/rcwa_parent_on_fdtd_grid.json`, order [9,9], both rasterisations):
+
+| | rms `\|R_FDTD - R_RCWA\|` | after allowing a wavelength shift |
+|---|---|---|
+| 64 x 64 rasterisation | 0.2237 | 0.0961 at +12.75 nm (0.98 %) |
+| 128 x 128 rasterisation | 0.2229 | 0.0850 at +12.25 nm (0.94 %) |
+
+i.e. the two are largely the same curve with the FDTD features about 1 % lower in wavelength.  This is
+a property of the 64 x 64 x ~160 mesh, not of the rerun: the campaign's own TORCWA/FDTDX comparison
+already recorded rms 0.245 for final3 without ITO against rms 0.042 with ITO, because the with-ITO
+resonance is broad and lossy and therefore insensitive to the same mesh.  The mesh is deliberately left
+unchanged - the brief requires the without-ITO run to use the mesh of its with-ITO partner so that the
+difference between them is attributable to the ITO alone - so this offset applies equally to both
+members of every pair and is reported rather than tuned away.
+
+Against that ~12 nm offset, the residual 0.03 window drift at five points near the Rayleigh cut-off is
+a small term, so final3 is not re-run again for it; the drift is reported with the data instead.
