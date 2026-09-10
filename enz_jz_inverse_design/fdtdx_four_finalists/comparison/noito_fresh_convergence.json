@@ -112,6 +112,8 @@
   "time_fs": 6000.0,
   "n_steps": 461060,
   "conv_check_fs": 3000.0,
+  "run_tag": "noito6ps",
+  "reference_tag": "ref64_fresh",
   "max_abs_A": 0.023930177295792165,
   "lam_max_abs_A": 1308.0,
   "rms_A": 0.003497990154953726,

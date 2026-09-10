@@ -63,14 +63,21 @@ def main():
     ap.add_argument("--designs", nargs="*", default=DESIGNS)
     ap.add_argument("--tol", type=float, default=0.01, help="acceptance tolerance on |A| and on the window difference")
     a = ap.parse_args()
-    ref = fp.load_run("reference", a.ref)
-    assert ref is not None, f"reference run {a.ref} missing"
     OUT.mkdir(exist_ok=True)
+    refs = {}
     report, overlay = {}, {}
-    for d in a.designs:
-        run = fp.load_run(d, a.tag)
+    for spec in a.designs:
+        # spec: design[=run_tag][@reference_tag]
+        d, _, rest = spec.partition("=")
+        tag, _, rtag = (rest or a.tag).partition("@")
+        rtag = rtag or a.ref
+        if rtag not in refs:
+            refs[rtag] = fp.load_run("reference", rtag)
+            assert refs[rtag] is not None, f"reference run {rtag} missing"
+        ref = refs[rtag]
+        run = fp.load_run(d, tag)
         if run is None:
-            print(f"  {d}: run {a.tag} missing"); continue
+            print(f"  {d}: run {tag} missing"); continue
         full = spectra_from(run, ref, "")
         wins = window_list(run, ref)          # [(t_fs, spectra), ...] for every early DFT window
         early = wins[-1][1] if wins else None  # the longest early window = the tightest convergence test
@@ -93,7 +100,7 @@ def main():
         dR = np.abs(full["R"] - early["R"]).max() if early else float("nan")
         dT = np.abs(full["T"] - early["T"]).max() if early else float("nan")
         rep = dict(design=d, time_fs=run["meta"]["time_s"] * 1e15, n_steps=run["meta"]["n_steps_run"],
-                   conv_check_fs=run["meta"].get("conv_check_fs"),
+                   conv_check_fs=run["meta"].get("conv_check_fs"), run_tag=tag, reference_tag=rtag,
                    max_abs_A=float(np.abs(full["A"]).max()), lam_max_abs_A=float(lam[int(np.argmax(np.abs(full["A"])))]),
                    rms_A=float(np.sqrt(np.mean(full["A"] ** 2))),
                    n_points_absA_gt_tol=int((np.abs(full["A"]) > a.tol).sum()), n_points=int(len(lam)),
