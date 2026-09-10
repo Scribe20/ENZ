@@ -134,7 +134,7 @@ def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, ai
 
 
 # --------------------------------------------------------------------------- scene
-def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, stride=None, courant=0.95, nxy=128, subpixel=True, dz_asi=None):
+def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, stride=None, courant=0.95, nxy=128, subpixel=True, dz_asi=None, conv_check_fs=None):
     global NXY
     NXY = nxy
     P = PROV[design]["P_nm"] * 1e-9; h = PROV[design]["h_nm"] * 1e-9
@@ -190,6 +190,17 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
         objects.append(d)
     plane_det("R_plane", idx["z_R"], wc_spec, ("Ex", "Ey", "Hx", "Hy"))
     plane_det("T_plane", idx["z_T"], wc_spec, ("Ex", "Ey", "Hx", "Hy"))
+    if conv_check_fs:
+        # Identical R/T flux planes whose DFT window is CLOSED EARLY.  Comparing the early-window and
+        # full-window spectra from the SAME simulation is a direct, zero-extra-cost demonstration that
+        # the recorded spectrum has stopped changing with simulation time (no post-processing involved).
+        sw = fdtdx.OnOffSwitch(end_time=float(conv_check_fs) * 1e-15)
+        for nm, zz in (("R_plane_early", idx["z_R"]), ("T_plane_early", idx["z_T"])):
+            d = fdtdx.PhasorDetector(name=nm, partial_grid_shape=(NXY, NXY, 1), wave_characters=wc_spec,
+                                     components=("Ex", "Ey", "Hx", "Hy"), scaling_mode="pulse",
+                                     dft_subsample=stride, plot=False, switch=sw)
+            constraints.extend([d.same_size(volume, axes=(0, 1)), d.place_at_center(volume, axes=(0, 1)), at(d, (2,), (zz,))])
+            objects.append(d)
     if reference:
         plane_det("inc_ito_plane", idx["z_ito0"] + n_ito // 2, wc_spec, ("Ex", "Ey", "Hx", "Hy"))   # incident field amplitude at the ITO mid-plane position (air)
         plane_det("inc_field_plane", idx["z_ito0"] + n_ito // 2, wc_field, ("Ex", "Ey", "Ez"))
@@ -217,7 +228,8 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
     meta = dict(design=design, no_ito=no_ito, reference=reference, P_m=P, h_m=h, dxy_m=dxy, nxy=NXY, subpixel_smoothing=subpixel, fill_fraction_mean=float(fill.mean()), n_ito=n_ito, dz_ito_m=D_ITO / n_ito, widths_m=widths.tolist(), z_edges_m=z_edges.tolist(),
                 idx=idx, dt_s=dt, time_s=time_s, n_steps=int(config.time_steps_total), courant_factor=courant, dft_stride=stride, lam_spec_m=LAM_SPEC.tolist(), lam_field_m=list(map(float, field_lams_m)),
                 source=dict(type="UniformPlaneSource TFSF, direction -z, E along x, GaussianPulseProfile center 1300 nm, sigma_f 13 THz (sigma_t 12.2 fs, peak at t0 = 6 sigma_t)"),
-                pml_cells=PML_CELLS, n_cells=[NXY, NXY, idx["n_z"]], dtype="float32", backend=str(jax.default_backend()), devices=[str(d) for d in jax.devices()])
+                pml_cells=PML_CELLS, n_cells=[NXY, NXY, idx["n_z"]], dtype="float32", backend=str(jax.default_backend()), devices=[str(d) for d in jax.devices()],
+                conv_check_fs=conv_check_fs)
     return objects, constraints, config, meta
 
 
@@ -248,13 +260,17 @@ def main():
     ap.add_argument("--nxy", type=int, default=128, help="cells per period in x and y (128 = 1 cell per design pixel)")
     ap.add_argument("--no-subpixel", action="store_true", help="binary (>= 0.5 fill) cells instead of fill-fraction subpixel smoothing")
     ap.add_argument("--dz-asi", type=float, default=None, help="bulk a-Si:H z spacing [nm] (default = in-plane cell)")
+    ap.add_argument("--conv-check-fs", type=float, default=None,
+                    help="also record R/T flux phasors on a DFT window closed at this time [fs]; the early vs full "
+                         "window comparison is the in-run convergence certificate")
     ap.add_argument("--stride", type=int, default=None)
     ap.add_argument("--bench-steps", type=int, default=None)
     a = ap.parse_args()
     out = HERE / ("reference" if a.reference else a.design) / a.tag
     out.mkdir(parents=True, exist_ok=True)
     objects, constraints, config, meta = build_scene(a.design, a.no_ito, a.ito_cells, a.time_fs * 1e-15, [l * 1e-9 for l in a.field_lams], reference=a.reference, stride=a.stride, courant=a.courant,
-                                                     nxy=a.nxy, subpixel=not a.no_subpixel, dz_asi=(a.dz_asi * 1e-9 if a.dz_asi else None))
+                                                     nxy=a.nxy, subpixel=not a.no_subpixel, dz_asi=(a.dz_asi * 1e-9 if a.dz_asi else None),
+                                                     conv_check_fs=a.conv_check_fs)
     print(f"[fx] {a.design} no_ito={a.no_ito} ref={a.reference} cells={meta['n_cells']} n_z={meta['idx']['n_z']} dt={meta['dt_s']*1e18:.2f} as steps={meta['n_steps']} stride={meta['dft_stride']} devices={meta['devices']}", flush=True)
     arrays, objs, config, timing = run(objects, constraints, config, bench_steps=a.bench_steps)
     meta.update(timing=timing, bench_steps=a.bench_steps, n_steps_run=int(config.time_steps_total))
