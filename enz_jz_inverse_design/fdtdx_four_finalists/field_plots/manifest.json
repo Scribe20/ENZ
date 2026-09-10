@@ -1,0 +1,164 @@
+{
+ "lambda_ZE_nm": 1302.2819858898874,
+ "tag": "prod",
+ "designs": {
+  "final3": {
+   "P_nm": 825.0,
+   "h_nm": 525.0,
+   "pad_frac": 0.12,
+   "fill_fraction": 0.31756591796875,
+   "lambda_used_nm": 1302.282,
+   "raw_inputs": [
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final3/prod/fields_normalized.npz",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final3/prod/Ez2_slices_aSi_1302.3nm.npz",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final3/prod/run_meta.json",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final3/rho_hard_binary.npy"
+   ],
+   "volume_block": {
+    "shape_lam_c_x_y_z": [
+     5,
+     3,
+     64,
+     64,
+     55
+    ],
+    "n_glass_cells": 4,
+    "n_ito_cells": 5,
+    "n_asi_cells": 42,
+    "n_air_cells": 4,
+    "z_nm_min": 1689.2827993999995,
+    "z_nm_max": 2364.3865281499975,
+    "glass_depth_stored_nm": 36.998259999999846
+   },
+   "outputs": {
+    "zprofile_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final3/zprofile_final3_1302.3nm.png",
+    "zprofile_csv": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final3/zprofile_final3_1302.3nm.csv",
+    "slices_fullstack_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final3/Ez2_xy_slices_fullstack_final3_1302.3nm.png",
+    "n_fullstack_panels": 23,
+    "slices_asi_all_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final3/Ez2_xy_slices_aSi_all_final3_1302.3nm.png",
+    "n_asi_panels": 42,
+    "fullheight_planes_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final3/Ez2_xz_yz_fullheight_final3_1302.3nm.png",
+    "geometry_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/geometry/geometry_final3.png"
+   }
+  },
+  "final1": {
+   "P_nm": 825.0,
+   "h_nm": 575.0,
+   "pad_frac": 0.12,
+   "fill_fraction": 0.2816162109375,
+   "lambda_used_nm": 1302.282,
+   "raw_inputs": [
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final1/prod/fields_normalized.npz",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final1/prod/Ez2_slices_aSi_1302.3nm.npz",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final1/prod/run_meta.json",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final1/rho_hard_binary.npy"
+   ],
+   "volume_block": {
+    "shape_lam_c_x_y_z": [
+     5,
+     3,
+     64,
+     64,
+     59
+    ],
+    "n_glass_cells": 4,
+    "n_ito_cells": 5,
+    "n_asi_cells": 46,
+    "n_air_cells": 4,
+    "z_nm_min": 1689.2827993999995,
+    "z_nm_max": 2414.3865281499984,
+    "glass_depth_stored_nm": 36.998259999999846
+   },
+   "outputs": {
+    "zprofile_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final1/zprofile_final1_1302.3nm.png",
+    "zprofile_csv": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final1/zprofile_final1_1302.3nm.csv",
+    "slices_fullstack_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final1/Ez2_xy_slices_fullstack_final1_1302.3nm.png",
+    "n_fullstack_panels": 23,
+    "slices_asi_all_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final1/Ez2_xy_slices_aSi_all_final1_1302.3nm.png",
+    "n_asi_panels": 46,
+    "fullheight_planes_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final1/Ez2_xz_yz_fullheight_final1_1302.3nm.png",
+    "geometry_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/geometry/geometry_final1.png"
+   }
+  },
+  "final0": {
+   "P_nm": 825.0,
+   "h_nm": 600.0,
+   "pad_frac": 0.12,
+   "fill_fraction": 0.279541015625,
+   "lambda_used_nm": 1302.282,
+   "raw_inputs": [
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final0/prod/fields_normalized.npz",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final0/prod/Ez2_slices_aSi_1302.3nm.npz",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final0/prod/run_meta.json",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final0/rho_hard_binary.npy"
+   ],
+   "volume_block": {
+    "shape_lam_c_x_y_z": [
+     5,
+     3,
+     64,
+     64,
+     61
+    ],
+    "n_glass_cells": 4,
+    "n_ito_cells": 5,
+    "n_asi_cells": 48,
+    "n_air_cells": 4,
+    "z_nm_min": 1689.2827993999995,
+    "z_nm_max": 2439.3865281500034,
+    "glass_depth_stored_nm": 36.998259999999846
+   },
+   "outputs": {
+    "zprofile_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final0/zprofile_final0_1302.3nm.png",
+    "zprofile_csv": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final0/zprofile_final0_1302.3nm.csv",
+    "slices_fullstack_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final0/Ez2_xy_slices_fullstack_final0_1302.3nm.png",
+    "n_fullstack_panels": 23,
+    "slices_asi_all_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final0/Ez2_xy_slices_aSi_all_final0_1302.3nm.png",
+    "n_asi_panels": 48,
+    "fullheight_planes_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final0/Ez2_xz_yz_fullheight_final0_1302.3nm.png",
+    "geometry_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/geometry/geometry_final0.png"
+   }
+  },
+  "final2": {
+   "P_nm": 825.0,
+   "h_nm": 600.0,
+   "pad_frac": 0.08,
+   "fill_fraction": 0.275146484375,
+   "lambda_used_nm": 1302.282,
+   "raw_inputs": [
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final2/prod/fields_normalized.npz",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final2/prod/Ez2_slices_aSi_1302.3nm.npz",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final2/prod/run_meta.json",
+    "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/final2/rho_hard_binary.npy"
+   ],
+   "volume_block": {
+    "shape_lam_c_x_y_z": [
+     5,
+     3,
+     64,
+     64,
+     61
+    ],
+    "n_glass_cells": 4,
+    "n_ito_cells": 5,
+    "n_asi_cells": 48,
+    "n_air_cells": 4,
+    "z_nm_min": 1689.2827993999995,
+    "z_nm_max": 2439.3865281500034,
+    "glass_depth_stored_nm": 36.998259999999846
+   },
+   "outputs": {
+    "zprofile_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final2/zprofile_final2_1302.3nm.png",
+    "zprofile_csv": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final2/zprofile_final2_1302.3nm.csv",
+    "slices_fullstack_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final2/Ez2_xy_slices_fullstack_final2_1302.3nm.png",
+    "n_fullstack_panels": 23,
+    "slices_asi_all_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final2/Ez2_xy_slices_aSi_all_final2_1302.3nm.png",
+    "n_asi_panels": 48,
+    "fullheight_planes_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/final2/Ez2_xz_yz_fullheight_final2_1302.3nm.png",
+    "geometry_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/geometry/geometry_final2.png"
+   }
+  }
+ },
+ "overlay_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/overlay_zprofiles_all_candidates.png",
+ "geometry_all_png": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/field_plots/geometry/geometry_all_four.png"
+}
