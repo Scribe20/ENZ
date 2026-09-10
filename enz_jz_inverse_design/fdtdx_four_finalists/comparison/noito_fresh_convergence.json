@@ -78,39 +78,39 @@
  "final3": {
   "design": "final3",
   "time_fs": 6000.0,
-  "n_steps": 461060,
+  "n_steps": 461078,
   "conv_check_fs": 3000.0,
-  "run_tag": "noito6ps",
+  "run_tag": "noito6ps_deepglass",
   "reference_tag": "ref64_fresh",
-  "max_abs_A": 0.0022896503894059284,
-  "lam_max_abs_A": 1258.0,
-  "rms_A": 0.00047694516236573213,
+  "max_abs_A": 0.002349848828814345,
+  "lam_max_abs_A": 1256.0000000000002,
+  "rms_A": 0.0006075023782603378,
   "n_points_absA_gt_tol": 0,
   "n_points": 101,
-  "R_max": 1.22569999754268,
-  "lam_R_max": 1256.0000000000002,
-  "T_min": -0.22650461260707788,
-  "lam_T_min": 1256.0000000000002,
-  "n_points_R_gt_1": 3,
-  "n_points_T_lt_0": 3,
-  "max_window_diff_R": 0.034040442538936455,
-  "max_window_diff_T": 0.022507740515313124,
+  "R_max": 0.9997048147200975,
+  "lam_R_max": 1292.0,
+  "T_min": 0.00028612181542668415,
+  "lam_T_min": 1292.0,
+  "n_points_R_gt_1": 0,
+  "n_points_T_lt_0": 0,
+  "max_window_diff_R": 0.03012545303042291,
+  "max_window_diff_T": 0.03485846247595992,
   "window_fs": [
    3000.0
   ],
   "window_max_abs_A": [
-   0.02904404672927008
+   0.005030099534583665
   ],
   "window_drift_vs_full_R": [
-   0.034040442538936455
+   0.03012545303042291
   ],
   "window_drift_vs_full_T": [
-   0.022507740515313124
+   0.03485846247595992
   ],
   "max_leak_over_Pinc": 1.336728319031047e-07,
-  "R_at_lamZE": 0.9870691435928817,
-  "T_at_lamZE": 0.012785147280024573,
-  "A_at_lamZE": 0.00014570912709370765,
+  "R_at_lamZE": 0.9863385895430776,
+  "T_at_lamZE": 0.013343756483414704,
+  "A_at_lamZE": 0.00031765397350767653,
   "passes": false
  },
  "final2": {
