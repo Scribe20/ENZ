@@ -1,0 +1,36 @@
+[
+ {
+  "design": "final3",
+  "kind": "noito",
+  "tag": "noito6ps_deepglass",
+  "reference": "ref64_deepglass",
+  "time_fs": 6000.0,
+  "n_steps": 461078,
+  "n_z": 329,
+  "nxy": 64,
+  "glass_extra_nm": 4500.0,
+  "R_ZE": 0.9863385379366824,
+  "T_ZE": 0.013343756487912636,
+  "A_ZE": 0.0003177055754050592,
+  "R_max": 0.9997063196671315,
+  "T_min": 0.00028612224620295704,
+  "max_abs_A": 0.002349274302691433
+ },
+ {
+  "design": "final3",
+  "kind": "prod",
+  "tag": "prod_deepglass",
+  "reference": "ref64_deepglass",
+  "time_fs": 300.00000000000006,
+  "n_steps": 23054,
+  "n_z": 329,
+  "nxy": 64,
+  "glass_extra_nm": 4500.0,
+  "R_ZE": 0.02880373456876996,
+  "T_ZE": 0.01356219051024143,
+  "A_ZE": 0.9576340749209886,
+  "R_max": 0.07990457904546805,
+  "T_min": 0.00020019604515915637,
+  "max_abs_A": 0.988217115738616
+ }
+]

@@ -1,1 +1,2 @@
 [A final3 deepglass with-ITO] [fx] done: setup 20 s, run 3086 s for 23054 steps (1.01e+07 cell-steps/s); final max|E| = 2.980e-03 finite=True
+[A reference deepglass] [fx] done: setup 11 s, run 1402 s for 30739 steps (2.95e+07 cell-steps/s); final max|E| = 2.570e-08 finite=True

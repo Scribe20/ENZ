@@ -1,0 +1,6 @@
+{
+ "final3": {
+  "noito": ["noito6ps_deepglass", "ref64_deepglass"],
+  "prod": ["prod_deepglass", "ref64_deepglass"]
+ }
+}

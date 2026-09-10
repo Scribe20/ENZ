@@ -115,14 +115,25 @@ def main():
                    max_leak_over_Pinc=float(np.abs(full["leak_over_Pinc"]).max()),
                    R_at_lamZE=float(np.interp(LAM_ZE, lam, full["R"])), T_at_lamZE=float(np.interp(LAM_ZE, lam, full["T"])),
                    A_at_lamZE=float(np.interp(LAM_ZE, lam, full["A"])))
-        rep["passes"] = bool(rep["max_abs_A"] <= a.tol and rep["n_points_R_gt_1"] == 0 and rep["n_points_T_lt_0"] == 0
-                             and (not early or max(dR, dT) <= a.tol))
+        # Two separate criteria, reported separately because they mean different things:
+        #   physical validity - the run conserves energy and produces no R > 1 or T < 0;
+        #   time stability    - the spectrum has stopped changing with the length of the DFT window.
+        rep["passes_physical"] = bool(rep["max_abs_A"] <= a.tol and rep["n_points_R_gt_1"] == 0
+                                      and rep["n_points_T_lt_0"] == 0)
+        rep["passes_stability"] = bool(early is None or max(dR, dT) <= a.tol)
+        rep["n_points_drift_gt_tol"] = int((np.maximum(np.abs(full["R"] - early["R"]),
+                                                       np.abs(full["T"] - early["T"])) > a.tol).sum()) if early else 0
+        rep["max_abs_dR_plus_dT"] = float(np.abs((full["R"] - early["R"]) + (full["T"] - early["T"])).max()) if early else 0.0
+        rep["passes"] = bool(rep["passes_physical"] and rep["passes_stability"])
         report[d] = rep; overlay[d] = full
         wtxt = (f"{wins[-1][0]:.0f}->{rep['time_fs']:.0f} fs window drift: dR {dR:.4f} dT {dT:.4f}"
                 if wins else "no early window")
         print(f"  {d}: max|A| = {rep['max_abs_A']:.4f} @ {rep['lam_max_abs_A']:.0f} nm (rms {rep['rms_A']:.4f}, "
               f"{rep['n_points_absA_gt_tol']}/{rep['n_points']} points > {a.tol}); R_max = {rep['R_max']:.4f}, "
-              f"T_min = {rep['T_min']:+.4f}; {wtxt}  -> {'PASS' if rep['passes'] else 'NOT CONVERGED'}")
+              f"T_min = {rep['T_min']:+.4f}; {wtxt}  -> physical {'PASS' if rep['passes_physical'] else 'FAIL'}"
+              f", stability {'PASS' if rep['passes_stability'] else 'FAIL'}"
+              + (f" ({rep['n_points_drift_gt_tol']} pts, max |dR+dT| {rep['max_abs_dR_plus_dT']:.4f})"
+                 if not rep['passes_stability'] else ""))
         if len(wins) > 1:
             print("      window max|A|: " + "  ".join(f"{t:.0f}fs {v:.4f}" for (t, _), v
                                                       in zip(wins, rep["window_max_abs_A"]))

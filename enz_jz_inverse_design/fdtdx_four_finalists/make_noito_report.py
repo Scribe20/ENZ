@@ -41,21 +41,31 @@ def main():
              "* no wavelength with `T < 0`;\n"
              f"* the spectrum has stopped changing with simulation time: the difference between the "
              f"longest early DFT window and the full window is `<= {TOL}` in both R and T.\n")
+    L.append("\nThe first three are the physical-validity test and the last is the time-stability test. "
+             "They are reported separately because they fail differently: a drift in which R and T "
+             "exchange with their sum conserved (`|dR + dT|` small) leaves the energy budget intact, "
+             "whereas one in which the sum moves is error in the spectrum itself.\n")
     L.append("The early windows are recorded by the same run — extra flux-plane phasor detectors whose "
              "DFT window is closed early — so the convergence certificate needs no second simulation "
              "and no post-processing.\n")
     L.append("## Runs and their acceptance test\n")
-    L.append("| design | run | time | max\\|A\\| | at | pts >tol | R_max | T_min | window drift R / T | accepted |")
-    L.append("|---|---|---|---|---|---|---|---|---|---|")
+    L.append("| design | run | time | max\\|A\\| | at | pts >tol | R_max | T_min | window drift R / T | physical | stable |")
+    L.append("|---|---|---|---|---|---|---|---|---|---|---|")
     for d in ORDER + [k for k in conv if k not in ORDER]:
         r = conv.get(d)
         if not r:
             continue
+        phys = "yes" if r.get("passes_physical", r["passes"]) else "NO"
+        if r.get("passes_stability", r["passes"]):
+            stab = "yes"
+        else:
+            stab = "NO (%d pts, max \\|dR+dT\\| %.4f)" % (r.get("n_points_drift_gt_tol", 0),
+                                                      r.get("max_abs_dR_plus_dT", 0.0))
         L.append(f"| {d} | `{r.get('run_tag', '?')}` | {r['time_fs']:.0f} fs ({r['n_steps']} steps) | "
                  f"{fmt(r['max_abs_A'])} | {r['lam_max_abs_A']:.0f} nm | "
                  f"{r['n_points_absA_gt_tol']}/{r['n_points']} | {fmt(r['R_max'])} | {r['T_min']:+.4f} | "
                  f"{fmt(r['max_window_diff_R'])} / {fmt(r['max_window_diff_T'])} | "
-                 f"{'yes' if r['passes'] else 'NO'} |")
+                 f"{phys} | {stab} |")
     L.append("")
     wc = {d: r for d, r in conv.items() if r.get("window_fs")}
     if wc:

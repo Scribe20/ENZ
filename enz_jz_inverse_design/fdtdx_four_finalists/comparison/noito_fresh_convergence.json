@@ -35,6 +35,10 @@
   "R_at_lamZE": 0.9939002166312576,
   "T_at_lamZE": 0.005603695936662115,
   "A_at_lamZE": 0.000496087432080309,
+  "passes_physical": false,
+  "passes_stability": false,
+  "n_points_drift_gt_tol": 5,
+  "max_abs_dR_plus_dT": 0.12203883225293821,
   "passes": false
  },
  "final0": {
@@ -73,6 +77,10 @@
   "R_at_lamZE": 0.9726672332651897,
   "T_at_lamZE": 0.026426401964583734,
   "A_at_lamZE": 0.0009063647702265888,
+  "passes_physical": false,
+  "passes_stability": false,
+  "n_points_drift_gt_tol": 8,
+  "max_abs_dR_plus_dT": 0.20174217412393203,
   "passes": false
  },
  "final3": {
@@ -81,36 +89,40 @@
   "n_steps": 461078,
   "conv_check_fs": 3000.0,
   "run_tag": "noito6ps_deepglass",
-  "reference_tag": "ref64_fresh",
-  "max_abs_A": 0.002349848828814345,
+  "reference_tag": "ref64_deepglass",
+  "max_abs_A": 0.002349274302691433,
   "lam_max_abs_A": 1256.0000000000002,
-  "rms_A": 0.0006075023782603378,
+  "rms_A": 0.0006071018159273764,
   "n_points_absA_gt_tol": 0,
   "n_points": 101,
-  "R_max": 0.9997048147200975,
+  "R_max": 0.9997063196671315,
   "lam_R_max": 1292.0,
-  "T_min": 0.00028612181542668415,
+  "T_min": 0.00028612224620295704,
   "lam_T_min": 1292.0,
   "n_points_R_gt_1": 0,
   "n_points_T_lt_0": 0,
-  "max_window_diff_R": 0.03012545303042291,
-  "max_window_diff_T": 0.03485846247595992,
+  "max_window_diff_R": 0.030125455801155,
+  "max_window_diff_T": 0.034858474915455406,
   "window_fs": [
    3000.0
   ],
   "window_max_abs_A": [
-   0.005030099534583665
+   0.005030164684600713
   ],
   "window_drift_vs_full_R": [
-   0.03012545303042291
+   0.030125455801155
   ],
   "window_drift_vs_full_T": [
-   0.03485846247595992
+   0.034858474915455406
   ],
-  "max_leak_over_Pinc": 1.336728319031047e-07,
-  "R_at_lamZE": 0.9863385895430776,
-  "T_at_lamZE": 0.013343756483414704,
-  "A_at_lamZE": 0.00031765397350767653,
+  "max_leak_over_Pinc": 1.445726491229946e-07,
+  "R_at_lamZE": 0.9863385379366824,
+  "T_at_lamZE": 0.013343756487912636,
+  "A_at_lamZE": 0.0003177055754050592,
+  "passes_physical": true,
+  "passes_stability": false,
+  "n_points_drift_gt_tol": 5,
+  "max_abs_dR_plus_dT": 0.005140142603216304,
   "passes": false
  },
  "final2": {
@@ -149,6 +161,10 @@
   "R_at_lamZE": 0.972825603478454,
   "T_at_lamZE": 0.03025783192111783,
   "A_at_lamZE": -0.0030834353995718247,
+  "passes_physical": false,
+  "passes_stability": false,
+  "n_points_drift_gt_tol": 14,
+  "max_abs_dR_plus_dT": 0.20678977537691284,
   "passes": false
  }
 }
