@@ -190,13 +190,16 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
         objects.append(d)
     plane_det("R_plane", idx["z_R"], wc_spec, ("Ex", "Ey", "Hx", "Hy"))
     plane_det("T_plane", idx["z_T"], wc_spec, ("Ex", "Ey", "Hx", "Hy"))
-    if conv_check_fs:
+    conv_list = [] if not conv_check_fs else [float(t) for t in np.atleast_1d(conv_check_fs)]
+    for k, t_end in enumerate(conv_list):
         # Identical R/T flux planes whose DFT window is CLOSED EARLY.  Comparing the early-window and
         # full-window spectra from the SAME simulation is a direct, zero-extra-cost demonstration that
         # the recorded spectrum has stopped changing with simulation time (no post-processing involved).
-        sw = fdtdx.OnOffSwitch(end_time=float(conv_check_fs) * 1e-15)
-        for nm, zz in (("R_plane_early", idx["z_R"]), ("T_plane_early", idx["z_T"])):
-            d = fdtdx.PhasorDetector(name=nm, partial_grid_shape=(NXY, NXY, 1), wave_characters=wc_spec,
+        # With several windows the run also records its own convergence curve vs simulated time.
+        sw = fdtdx.OnOffSwitch(end_time=t_end * 1e-15)
+        sfx = "_early" if k == 0 else f"_early{k + 1}"
+        for base, zz in (("R_plane", idx["z_R"]), ("T_plane", idx["z_T"])):
+            d = fdtdx.PhasorDetector(name=base + sfx, partial_grid_shape=(NXY, NXY, 1), wave_characters=wc_spec,
                                      components=("Ex", "Ey", "Hx", "Hy"), scaling_mode="pulse",
                                      dft_subsample=stride, plot=False, switch=sw)
             constraints.extend([d.same_size(volume, axes=(0, 1)), d.place_at_center(volume, axes=(0, 1)), at(d, (2,), (zz,))])
@@ -229,7 +232,7 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
                 idx=idx, dt_s=dt, time_s=time_s, n_steps=int(config.time_steps_total), courant_factor=courant, dft_stride=stride, lam_spec_m=LAM_SPEC.tolist(), lam_field_m=list(map(float, field_lams_m)),
                 source=dict(type="UniformPlaneSource TFSF, direction -z, E along x, GaussianPulseProfile center 1300 nm, sigma_f 13 THz (sigma_t 12.2 fs, peak at t0 = 6 sigma_t)"),
                 pml_cells=PML_CELLS, n_cells=[NXY, NXY, idx["n_z"]], dtype="float32", backend=str(jax.default_backend()), devices=[str(d) for d in jax.devices()],
-                conv_check_fs=conv_check_fs, glass_extra_nm=glass_extra * 1e9)
+                conv_check_fs=conv_list, glass_extra_nm=glass_extra * 1e9)
     return objects, constraints, config, meta
 
 
@@ -266,9 +269,10 @@ def main():
                          "so a large evanescent amplitude reaches the PML face and the CPML (a propagating-wave "
                          "absorber) mis-partitions the flux between the R and T planes, giving R > 1 with a "
                          "compensating T < 0 at fixed R + T = 1.  Deepening the glass removes it.")
-    ap.add_argument("--conv-check-fs", type=float, default=None,
-                    help="also record R/T flux phasors on a DFT window closed at this time [fs]; the early vs full "
-                         "window comparison is the in-run convergence certificate")
+    ap.add_argument("--conv-check-fs", type=float, nargs="*", default=None,
+                    help="also record R/T flux phasors on DFT windows closed at these times [fs]; the early vs full "
+                         "window comparison is the in-run convergence certificate, and several windows give the "
+                         "run's own spectrum-vs-simulated-time convergence curve")
     ap.add_argument("--stride", type=int, default=None)
     ap.add_argument("--bench-steps", type=int, default=None)
     a = ap.parse_args()

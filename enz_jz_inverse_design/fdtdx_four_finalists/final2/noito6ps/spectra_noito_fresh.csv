@@ -1,4 +1,4 @@
-lambda_nm,R,T,A_closure_residual,R_3ps_window,T_3ps_window
+lambda_nm,R,T,A_closure_residual,R_3000fs_window,T_3000fs_window
 1200.00,0.142313,0.857359,0.000328,0.140994,0.852796
 1202.00,0.137598,0.861383,0.001019,0.138834,0.860324
 1204.00,0.133744,0.865157,0.001099,0.135039,0.869059

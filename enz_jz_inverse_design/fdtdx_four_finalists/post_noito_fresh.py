@@ -42,6 +42,20 @@ def spectra_from(run, ref, suffix=""):
                 leak_over_Pinc=leak / P_inc)
 
 
+def window_list(run, ref):
+    """[(window end time [fs], spectra)] for every early DFT window the run recorded, in time order."""
+    keys = [k for k in run["z"].files if k.startswith("R_plane_early") and k.endswith("/phasor")]
+    sfx = sorted(k[len("R_plane"):-len("/phasor")] for k in keys)
+    tw = run["meta"].get("conv_check_fs") or []
+    tw = [float(t) for t in np.atleast_1d(tw)] if np.size(tw) else []
+    order = ["_early"] + [f"_early{i + 2}" for i in range(len(sfx) - 1)]
+    out = []
+    for i, s in enumerate(order):
+        if s in sfx:
+            out.append((tw[i] if i < len(tw) else float("nan"), spectra_from(run, ref, s)))
+    return sorted(out, key=lambda p: p[0])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tag", default="noito6ps")
@@ -58,18 +72,22 @@ def main():
         if run is None:
             print(f"  {d}: run {a.tag} missing"); continue
         full = spectra_from(run, ref, "")
-        early = spectra_from(run, ref, "_early") if f"R_plane_early/phasor" in run["z"].files else None
+        wins = window_list(run, ref)          # [(t_fs, spectra), ...] for every early DFT window
+        early = wins[-1][1] if wins else None  # the longest early window = the tightest convergence test
         lam = full["lam"]
         outd = run["dir"]
         with open(outd / "spectra_noito_fresh.csv", "w", newline="") as f:
             w = csv.writer(f)
-            w.writerow(["lambda_nm", "R", "T", "A_closure_residual", "R_3ps_window", "T_3ps_window"])
+            w.writerow(["lambda_nm", "R", "T", "A_closure_residual"]
+                       + [f"{c}_{t:.0f}fs_window" for t, _ in wins for c in ("R", "T")])
             for i in range(len(lam)):
-                w.writerow([f"{lam[i]:.2f}", f"{full['R'][i]:.6f}", f"{full['T'][i]:.6f}", f"{full['A'][i]:.6f}",
-                            f"{early['R'][i]:.6f}" if early else "", f"{early['T'][i]:.6f}" if early else ""])
+                w.writerow([f"{lam[i]:.2f}", f"{full['R'][i]:.6f}", f"{full['T'][i]:.6f}", f"{full['A'][i]:.6f}"]
+                           + [f"{sp[c][i]:.6f}" for _, sp in wins for c in ("R", "T")])
         np.savez(outd / "spectra_noito_fresh.npz", lam_nm=lam, R=full["R"], T=full["T"], A=full["A"],
                  P_inc=full["P_inc"], leak_over_Pinc=full["leak_over_Pinc"],
                  **({"R_early": early["R"], "T_early": early["T"], "A_early": early["A"]} if early else {}),
+                 **{f"{c}_win{t:.0f}fs": sp[c] for t, sp in wins for c in ("R", "T", "A")},
+                 window_fs=np.array([t for t, _ in wins], dtype=float),
                  time_fs=run["meta"]["time_s"] * 1e15, conv_check_fs=run["meta"].get("conv_check_fs"),
                  n_steps=run["meta"]["n_steps_run"], order="FDTDX, no ITO, fresh run")
         dR = np.abs(full["R"] - early["R"]).max() if early else float("nan")
@@ -83,16 +101,25 @@ def main():
                    T_min=float(full["T"].min()), lam_T_min=float(lam[int(np.argmin(full["T"]))]),
                    n_points_R_gt_1=int((full["R"] > 1.0).sum()), n_points_T_lt_0=int((full["T"] < 0.0).sum()),
                    max_window_diff_R=float(dR), max_window_diff_T=float(dT),
+                   window_fs=[float(t) for t, _ in wins],
+                   window_max_abs_A=[float(np.abs(sp["A"]).max()) for _, sp in wins],
+                   window_drift_vs_full_R=[float(np.abs(full["R"] - sp["R"]).max()) for _, sp in wins],
+                   window_drift_vs_full_T=[float(np.abs(full["T"] - sp["T"]).max()) for _, sp in wins],
                    max_leak_over_Pinc=float(np.abs(full["leak_over_Pinc"]).max()),
                    R_at_lamZE=float(np.interp(LAM_ZE, lam, full["R"])), T_at_lamZE=float(np.interp(LAM_ZE, lam, full["T"])),
                    A_at_lamZE=float(np.interp(LAM_ZE, lam, full["A"])))
         rep["passes"] = bool(rep["max_abs_A"] <= a.tol and rep["n_points_R_gt_1"] == 0 and rep["n_points_T_lt_0"] == 0
                              and (not early or max(dR, dT) <= a.tol))
         report[d] = rep; overlay[d] = full
+        wtxt = (f"{wins[-1][0]:.0f}->{rep['time_fs']:.0f} fs window drift: dR {dR:.4f} dT {dT:.4f}"
+                if wins else "no early window")
         print(f"  {d}: max|A| = {rep['max_abs_A']:.4f} @ {rep['lam_max_abs_A']:.0f} nm (rms {rep['rms_A']:.4f}, "
               f"{rep['n_points_absA_gt_tol']}/{rep['n_points']} points > {a.tol}); R_max = {rep['R_max']:.4f}, "
-              f"T_min = {rep['T_min']:+.4f}; 3ps->6ps window drift: dR {dR:.4f} dT {dT:.4f}  -> "
-              f"{'PASS' if rep['passes'] else 'NOT CONVERGED'}")
+              f"T_min = {rep['T_min']:+.4f}; {wtxt}  -> {'PASS' if rep['passes'] else 'NOT CONVERGED'}")
+        if len(wins) > 1:
+            print("      window max|A|: " + "  ".join(f"{t:.0f}fs {v:.4f}" for (t, _), v
+                                                      in zip(wins, rep["window_max_abs_A"]))
+                  + f"  {rep['time_fs']:.0f}fs {rep['max_abs_A']:.4f}")
         # per-design figure
         fig, axs = plt.subplots(1, 2, figsize=(13, 4.6))
         axs[0].plot(lam, full["R"], "b-", label="R"); axs[0].plot(lam, full["T"], "r-", label="T")
@@ -121,7 +148,10 @@ def main():
         ax.set_ylim(-0.05, 1.05); ax.grid(alpha=0.3); ax.legend(fontsize=7, ncol=2)
         ax.set_title("FDTDX without ITO (fresh runs) — R and T", fontsize=10)
         fig.tight_layout(); fig.savefig(OUT / "overlay_RT_noITO_fresh.png", dpi=160); plt.close(fig)
-    json.dump(report, open(OUT / "noito_fresh_convergence.json", "w"), indent=1)
+    rp = OUT / "noito_fresh_convergence.json"
+    merged = json.load(open(rp)) if rp.exists() else {}
+    merged.update(report)
+    json.dump(merged, open(rp, "w"), indent=1)
     print(f"\n[noito fresh] {sum(r['passes'] for r in report.values())}/{len(report)} designs pass at tol {a.tol}")
 
 
