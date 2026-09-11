@@ -1,4 +1,1 @@
-[final0/noito36ps] starting/resuming at 02:03:37
-./run_noito_resume.sh: line 17:  1106 Killed                  $PY fx_sim.py --design "$d" --no-ito --nxy 64 --ito-cells 5 --time-fs "$tfs" --conv-check-fs "$@" --tag "$tag" --segment-steps $SEG --field-lams $FLN >> "logs/${d}_${tag}.log" 2>&1
-[final0/noito36ps] 
-[resume A] done
+[final0/noito36ps] attempt 1, starting/resuming at 11:06:52
