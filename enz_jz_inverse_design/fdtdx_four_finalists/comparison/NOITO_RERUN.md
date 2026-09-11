@@ -23,7 +23,7 @@ The early windows are recorded by the same run — extra flux-plane phasor detec
 | final3 | `noito6ps_deepglass` | 6000 fs (461078 steps) | 0.0023 | 1256 nm | 0/101 | 0.9997 | +0.0003 | 0.0301 / 0.0349 | yes | NO (5 pts, max \|dR+dT\| 0.0051) |
 | final1 | `noito6ps` | 6000 fs (461060 steps) | 0.1349 | 1330 nm | 2/101 | 1.0010 | +0.0000 | 0.0251 / 0.1404 | NO | NO (5 pts, max \|dR+dT\| 0.1220) |
 | final0 | `noito6ps` | 6000 fs (461060 steps) | 0.0941 | 1340 nm | 5/101 | 1.0005 | +0.0004 | 0.1294 / 0.0724 | NO | NO (8 pts, max \|dR+dT\| 0.2017) |
-| final2 | `noito6ps` | 6000 fs (461060 steps) | 0.0239 | 1308 nm | 3/101 | 0.9977 | +0.0009 | 0.0968 / 0.1100 | NO | NO (14 pts, max \|dR+dT\| 0.2068) |
+| final2 | `noito12ps` | 12000 fs (922120 steps) | 0.0021 | 1308 nm | 0/101 | 0.9991 | +0.0008 | 0.0058 / 0.0118 | yes | NO (1 pts, max \|dR+dT\| 0.0060) |
 
 ### Closure residual vs simulated time (windows recorded inside each run)
 
@@ -32,7 +32,7 @@ The early windows are recorded by the same run — extra flux-plane phasor detec
 | final1 | 0.2570 | 0.1349 |
 | final0 | 0.1076 | 0.0941 |
 | final3 | 0.0050 | 0.0023 |
-| final2 | 0.2307 | 0.0239 |
+| final2 | 0.2307 | 0.0239 | 0.0041 | 0.0021 |
 
 ## Accepted with / without ITO pairs
 
@@ -40,6 +40,8 @@ The early windows are recorded by the same run — extra flux-plane phasor detec
 |---|---|---|---|---|---|---|---|---|---|
 | final3 | without ITO | `noito6ps_deepglass` | `ref64_deepglass` | 6000 fs | 64²×329 (+4500 nm glass) | 0.9863 | 0.0133 | +0.0003 | 0.0023 |
 | final3 | with ITO | `prod_deepglass` | `ref64_deepglass` | 300 fs | 64²×329 (+4500 nm glass) | 0.0288 | 0.0136 | +0.9576 | 0.9882 |
+| final2 | without ITO | `noito12ps` | `ref64_fresh` | 12000 fs | 64²×160 | 0.9684 | 0.0315 | +0.0001 | 0.0021 |
+| final2 | with ITO | `prod` | `ref64_fresh` | 300 fs | 64²×160 | 0.0191 | 0.0173 | +0.9636 | 0.9930 |
 
 ## Files
 

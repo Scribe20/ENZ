@@ -127,44 +127,56 @@
  },
  "final2": {
   "design": "final2",
-  "time_fs": 6000.0,
-  "n_steps": 461060,
-  "conv_check_fs": 3000.0,
-  "run_tag": "noito6ps",
+  "time_fs": 12000.0,
+  "n_steps": 922120,
+  "conv_check_fs": [
+   3000.0,
+   6000.0,
+   9000.0
+  ],
+  "run_tag": "noito12ps",
   "reference_tag": "ref64_fresh",
-  "max_abs_A": 0.023930177295792165,
+  "max_abs_A": 0.0021014797343951175,
   "lam_max_abs_A": 1308.0,
-  "rms_A": 0.003497990154953726,
-  "n_points_absA_gt_tol": 3,
+  "rms_A": 0.0004051991192226447,
+  "n_points_absA_gt_tol": 0,
   "n_points": 101,
-  "R_max": 0.9976805930888692,
-  "lam_R_max": 1292.0,
-  "T_min": 0.0008920122080652466,
+  "R_max": 0.999085804225888,
+  "lam_R_max": 1310.0000000000002,
+  "T_min": 0.0008383600604594454,
   "lam_T_min": 1292.0,
   "n_points_R_gt_1": 0,
   "n_points_T_lt_0": 0,
-  "max_window_diff_R": 0.09681487445993558,
-  "max_window_diff_T": 0.10997490091697726,
+  "max_window_diff_R": 0.0058156553555099855,
+  "max_window_diff_T": 0.011828492248064648,
   "window_fs": [
-   3000.0
+   3000.0,
+   6000.0,
+   9000.0
   ],
   "window_max_abs_A": [
-   0.23071995267270495
+   0.23071995267270495,
+   0.023930177295792165,
+   0.004065105726593493
   ],
   "window_drift_vs_full_R": [
-   0.09681487445993558
+   0.1468066845072009,
+   0.04999181004726533,
+   0.0058156553555099855
   ],
   "window_drift_vs_full_T": [
-   0.10997490091697726
+   0.08181178843110892,
+   0.028163112485868336,
+   0.011828492248064648
   ],
   "max_leak_over_Pinc": 1.336728319031047e-07,
-  "R_at_lamZE": 0.972825603478454,
-  "T_at_lamZE": 0.03025783192111783,
-  "A_at_lamZE": -0.0030834353995718247,
-  "passes_physical": false,
+  "R_at_lamZE": 0.9683795855734048,
+  "T_at_lamZE": 0.031508669056681975,
+  "A_at_lamZE": 0.00011174536991330152,
+  "passes_physical": true,
   "passes_stability": false,
-  "n_points_drift_gt_tol": 14,
-  "max_abs_dR_plus_dT": 0.20678977537691284,
+  "n_points_drift_gt_tol": 1,
+  "max_abs_dR_plus_dT": 0.006012836892554663,
   "passes": false
  }
 }
