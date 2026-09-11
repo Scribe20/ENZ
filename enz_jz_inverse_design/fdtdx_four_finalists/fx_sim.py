@@ -271,7 +271,32 @@ def _state_load(path, arrays):
     return step, arrays
 
 
-def run(objects, constraints, config, bench_steps=None, segment_steps=None, state_path=None):
+def write_outputs(out, arrays, meta, steps_done, total_steps, timing):
+    """Write phasors.npz / run_meta.json for the state reached so far.
+
+    Called after every segment as well as at the end, so a long run that is interrupted (or that turns
+    out to have converged before its nominal end) still leaves a usable spectrum on disk, marked with
+    the number of steps actually simulated.  `complete` is the flag the drivers use to decide whether a
+    job still needs work - the presence of phasors.npz no longer means the run finished.
+    """
+    save = {}
+    for name, st in arrays.detector_states.items():
+        for k, v in st.items():
+            arr = np.asarray(v)
+            save[f"{name}/{k}"] = arr[0] if (k == "phasor" and arr.shape[0] == 1) else arr
+    tmp = out / "phasors.tmp.npz"
+    np.savez_compressed(tmp, **save, z_edges_m=np.array(meta["z_edges_m"]), lam_spec_m=LAM_SPEC,
+                        lam_field_m=np.array(meta["lam_field_m"]))
+    tmp.replace(out / "phasors.npz")
+    E = np.asarray(arrays.fields.E)
+    m = dict(meta, n_steps_run=int(steps_done), steps_done=int(steps_done), n_steps_total=int(total_steps),
+             complete=bool(steps_done >= total_steps), time_simulated_s=float(steps_done) * meta["dt_s"],
+             timing=timing, max_abs_E_final=float(np.abs(E).max()), finite=bool(np.isfinite(E).all()))
+    json.dump(m, open(out / "run_meta.json", "w"), indent=1)
+    return m
+
+
+def run(objects, constraints, config, bench_steps=None, segment_steps=None, state_path=None, on_segment=None):
     key = jax.random.PRNGKey(0)
     t0 = time.time()
     objs, arrays, params, config, _ = fdtdx.place_objects(object_list=objects, config=config, constraints=constraints, key=key)
@@ -299,6 +324,8 @@ def run(objects, constraints, config, bench_steps=None, segment_steps=None, stat
         step = int(st)
         if state_path is not None:
             _state_save(state_path, step, arrays)
+        if on_segment is not None:
+            on_segment(arrays, step, total, dict(setup_s=t1 - t0, run_s=time.time() - t1))
         print(f"[fx] segment done: step {step}/{total} ({100 * step / total:.1f} %), "
               f"max|E| = {float(np.abs(np.asarray(arrays.fields.E)).max()):.3e}, "
               f"elapsed {time.time() - t1:.0f} s", flush=True)
@@ -346,22 +373,16 @@ def main():
     state_path = out / "state.npz" if a.segment_steps else None
     if a.restart and state_path is not None and state_path.exists():
         state_path.unlink()
+    total_steps = int(config.time_steps_total)
     arrays, objs, config, timing = run(objects, constraints, config, bench_steps=a.bench_steps,
-                                       segment_steps=a.segment_steps, state_path=state_path)
+                                       segment_steps=a.segment_steps, state_path=state_path,
+                                       on_segment=(lambda ar, st, tot, tm: write_outputs(out, ar, meta, st, tot, tm))
+                                       if a.segment_steps else None)
     meta.update(timing=timing, bench_steps=a.bench_steps, n_steps_run=int(config.time_steps_total))
-    ds = arrays.detector_states
-    save = {}
-    for name, st in ds.items():
-        for k, v in st.items():
-            arr = np.asarray(v)
-            save[f"{name}/{k}"] = arr[0] if (k == "phasor" and arr.shape[0] == 1) else arr
-    np.savez_compressed(out / "phasors.npz", **save, z_edges_m=np.array(meta["z_edges_m"]), lam_spec_m=LAM_SPEC, lam_field_m=np.array(meta["lam_field_m"]))
-    json.dump(meta, open(out / "run_meta.json", "w"), indent=1)
-    E = np.asarray(arrays.fields.E)
-    meta_short = dict(max_abs_E_final=float(np.abs(E).max()), finite=bool(np.isfinite(E).all()))
-    print(f"[fx] done: setup {timing['setup_s']:.0f} s, run {timing['run_s']:.0f} s for {meta['n_steps_run']} steps "
-          f"({meta['n_steps_run'] * np.prod(meta['n_cells']) / max(timing['run_s'], 1e-9):.2e} cell-steps/s); final max|E| = {meta_short['max_abs_E_final']:.3e} finite={meta_short['finite']}", flush=True)
-    json.dump({**meta, **meta_short}, open(out / "run_meta.json", "w"), indent=1)
+    m = write_outputs(out, arrays, meta, total_steps, total_steps, timing)
+    print(f"[fx] done: setup {timing['setup_s']:.0f} s, run {timing['run_s']:.0f} s for {m['n_steps_run']} steps "
+          f"({m['n_steps_run'] * np.prod(meta['n_cells']) / max(timing['run_s'], 1e-9):.2e} cell-steps/s); "
+          f"final max|E| = {m['max_abs_E_final']:.3e} finite={m['finite']}", flush=True)
     if state_path is not None and state_path.exists():
         state_path.unlink()                 # the run finished; the resume state is no longer needed
 

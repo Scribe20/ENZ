@@ -1,1 +1,2 @@
 [fx] final2 no_ito=True ref=False cells=[64, 64, 160] n_z=160 dt=13.01 as steps=922120 stride=19 devices=['cpu:0']
+FDTD (forward):   0%|          | 0/50000 [00:00<?, ?step/s]FDTD (forward):   0%|          | 0/50000 [00:00<?, ?step/s]FDTD (forward):  10%|█         | 5000/50000 [00:59<08:51, 84.63step/s]FDTD (forward):  20%|██        | 10000/50000 [01:58<07:54, 84.33step/s]FDTD (forward):  30%|███       | 15000/50000 [02:57<06:53, 84.74step/s][fx] final2 no_ito=True ref=False cells=[64, 64, 160] n_z=160 dt=13.01 as steps=922120 stride=19 devices=['cpu:0']
