@@ -9,10 +9,22 @@ Lorentz ADE), Lorentz a-Si:H and glass (fitted to the supplied data, materials/m
 Saves outputs/<design>/<tag>/phasors.npz (complex64 phasors of every detector, grid edges, dt, wavelengths, indices)
 and run_meta.json.  Post-processing is done separately (fx_post.py).
 """
-import argparse, json, sys, time
+import argparse, json, os, sys, time
 from pathlib import Path
 import numpy as np
 import jax
+
+# Persistent compilation cache.  The container restarts roughly hourly and kills the runs; each restart
+# otherwise re-traces and re-compiles the whole FDTD step function before any stepping happens, which
+# cost ~16 min when one process restarted alone and ~44 min when both restarted together and competed
+# for cores - i.e. most of the hour between restarts.  Caching the compiled kernels on disk makes the
+# restart nearly free.  The cache is keyed on the computation, so it is only reused for an identical
+# mesh and step function.
+_CACHE = Path(os.environ.get("FX_JAX_CACHE", Path(__file__).resolve().parent / ".jaxcache"))
+_CACHE.mkdir(parents=True, exist_ok=True)
+jax.config.update("jax_compilation_cache_dir", str(_CACHE))
+jax.config.update("jax_persistent_cache_min_entry_size_bytes", -1)   # cache every entry
+jax.config.update("jax_persistent_cache_min_compile_time_secs", 0.0)  # regardless of compile time
 import jax.numpy as jnp
 
 import fdtdx

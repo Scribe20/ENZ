@@ -8,3 +8,4 @@ __pycache__/
 enz_jz_inverse_design/fdtdx_four_finalists/*/*/phasors.npz
 enz_jz_inverse_design/fdtdx_four_finalists/*/*/state.npz
 enz_jz_inverse_design/fdtdx_four_finalists/*/*/*.tmp.npz
+enz_jz_inverse_design/fdtdx_four_finalists/.jaxcache/
