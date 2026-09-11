@@ -486,15 +486,15 @@
   18000.0
  ],
  "glass_extra_nm": 0.0,
- "n_steps_run": 160000,
- "steps_done": 160000,
+ "n_steps_run": 180000,
+ "steps_done": 180000,
  "n_steps_total": 1844241,
  "complete": false,
- "time_simulated_s": 2.082157573788648e-12,
+ "time_simulated_s": 2.342427270512229e-12,
  "timing": {
   "setup_s": 309.517294883728,
-  "run_s": 3694.950407743454
+  "run_s": 4185.895925760269
  },
- "max_abs_E_final": 0.00324126984924078,
+ "max_abs_E_final": 0.004132435657083988,
  "finite": true
 }

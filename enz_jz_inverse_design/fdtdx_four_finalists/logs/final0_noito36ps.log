@@ -87,3 +87,5 @@
 /usr/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
   warnings.warn('resource_tracker: There appear to be %d '
 [fx] final0 no_ito=True ref=False cells=[64, 64, 160] n_z=160 dt=13.01 as steps=2766361 stride=19 devices=['cpu:0']
+[fx] resuming from saved state at step 840000/2766361
+FDTD (forward):   0%|          | 0/20000 [00:00<?, ?step/s]FDTD (forward):   0%|          | 0/20000 [00:00<?, ?step/s]
