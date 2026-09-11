@@ -12,7 +12,7 @@
 cd "$(dirname "$0")"
 PY=/opt/venv-fdtdx/bin/python
 FLN="1302.282 1280 1290 1300 1310 1320"
-SEG=20000
+SEG=10000   # the VM now kills background work ~10 min after the session goes idle; smaller segments bank more of that window
 
 done_p () { [ -f "$1/$2/run_meta.json" ] && grep -q '"complete": true' "$1/$2/run_meta.json"; }
 
