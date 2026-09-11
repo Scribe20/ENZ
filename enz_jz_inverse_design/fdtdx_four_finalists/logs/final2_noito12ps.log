@@ -1,0 +1,1 @@
+[fx] final2 no_ito=True ref=False cells=[64, 64, 160] n_z=160 dt=13.01 as steps=922120 stride=19 devices=['cpu:0']

@@ -20,6 +20,7 @@ from fdtdx.constants import c as C0
 from fdtdx.objects.static_material.static import StaticMultiMaterialObject, UniformMaterialObject
 from fdtdx.materials import compute_ordered_names
 from fdtdx.core.jax.pytrees import autoinit, frozen_field
+from fdtdx.fdtd.fdtd import custom_fdtd_forward
 from fdtdx.objects.object import RealCoordinateConstraint
 
 HERE = Path(__file__).resolve().parent
@@ -236,7 +237,41 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
     return objects, constraints, config, meta
 
 
-def run(objects, constraints, config, bench_steps=None):
+# --------------------------------------------------------------------- segmented / resumable running
+# A long run on this machine can outlive the container it runs in.  FDTD itself has no restart, but the
+# whole dynamic state of a forward run is the ArrayContainer's fields (E, H and the PML/ADE auxiliaries)
+# plus the detector accumulators; everything else is rebuilt deterministically by place_objects /
+# apply_params.  So the run is executed in segments with fdtdx's custom_fdtd_forward, which takes an
+# explicit (start_time, end_time) and does not reset the container, and the two dynamic sub-trees are
+# written to disk after each segment.  Restarting the same command picks up from the last segment.
+# The result is bit-identical to a single uninterrupted run apart from the order of floating-point
+# reductions, because the state handed to the next segment is exactly the state the loop would have had.
+
+STATE_PARTS = (("fields", lambda a: a.fields), ("det", lambda a: a.detector_states))
+
+
+def _state_save(path, step, arrays):
+    d = {"__step__": np.asarray(step, np.int64)}
+    for tag, get in STATE_PARTS:
+        leaves, _ = jax.tree_util.tree_flatten(get(arrays))
+        for i, v in enumerate(leaves):
+            d[f"{tag}/{i}"] = np.asarray(v)
+    tmp = path.with_suffix(".tmp.npz")
+    np.savez(tmp, **d)                      # write then rename: a reboot mid-write cannot corrupt it
+    tmp.replace(path)
+
+
+def _state_load(path, arrays):
+    z = np.load(path)
+    step = int(z["__step__"])
+    for tag, get in STATE_PARTS:
+        leaves, td = jax.tree_util.tree_flatten(get(arrays))
+        new = jax.tree_util.tree_unflatten(td, [jnp.asarray(z[f"{tag}/{i}"]) for i in range(len(leaves))])
+        arrays = arrays.aset("fields" if tag == "fields" else "detector_states", new)
+    return step, arrays
+
+
+def run(objects, constraints, config, bench_steps=None, segment_steps=None, state_path=None):
     key = jax.random.PRNGKey(0)
     t0 = time.time()
     objs, arrays, params, config, _ = fdtdx.place_objects(object_list=objects, config=config, constraints=constraints, key=key)
@@ -244,10 +279,31 @@ def run(objects, constraints, config, bench_steps=None):
     t1 = time.time()
     if bench_steps:
         config = config.aset("time", bench_steps * config.time_step_duration)
-    _, arrays = fdtdx.run_fdtd(arrays=arrays, objects=objs, config=config, key=key)
-    jax.block_until_ready(arrays.fields.E)
-    t2 = time.time()
-    return arrays, objs, config, dict(setup_s=t1 - t0, run_s=t2 - t1)
+    total = int(config.time_steps_total)
+    if not segment_steps:
+        _, arrays = fdtdx.run_fdtd(arrays=arrays, objects=objs, config=config, key=key)
+        jax.block_until_ready(arrays.fields.E)
+        return arrays, objs, config, dict(setup_s=t1 - t0, run_s=time.time() - t1, segments=0, resumed_from=0)
+    arrays = arrays.reset()                 # run_fdtd resets internally; custom_fdtd_forward does not
+    step, resumed = 0, 0
+    if state_path is not None and state_path.exists():
+        step, arrays = _state_load(state_path, arrays)
+        resumed = step
+        print(f"[fx] resuming from saved state at step {step}/{total}", flush=True)
+    while step < total:
+        end = min(step + int(segment_steps), total)
+        st, arrays = custom_fdtd_forward(arrays=arrays, objects=objs, config=config, key=key,
+                                         reset_container=False, record_detectors=True,
+                                         start_time=step, end_time=end)
+        jax.block_until_ready(arrays.fields.E)
+        step = int(st)
+        if state_path is not None:
+            _state_save(state_path, step, arrays)
+        print(f"[fx] segment done: step {step}/{total} ({100 * step / total:.1f} %), "
+              f"max|E| = {float(np.abs(np.asarray(arrays.fields.E)).max()):.3e}, "
+              f"elapsed {time.time() - t1:.0f} s", flush=True)
+    return arrays, objs, config, dict(setup_s=t1 - t0, run_s=time.time() - t1,
+                                      segments=1, resumed_from=int(resumed))
 
 
 def main():
@@ -275,6 +331,11 @@ def main():
                          "run's own spectrum-vs-simulated-time convergence curve")
     ap.add_argument("--stride", type=int, default=None)
     ap.add_argument("--bench-steps", type=int, default=None)
+    ap.add_argument("--segment-steps", type=int, default=None,
+                    help="run in segments of this many time steps, saving the full dynamic state after each "
+                         "so the run resumes where it stopped if the machine restarts; re-running the same "
+                         "command continues from the last saved segment")
+    ap.add_argument("--restart", action="store_true", help="ignore any saved state and start from step 0")
     a = ap.parse_args()
     out = HERE / ("reference" if a.reference else a.design) / a.tag
     out.mkdir(parents=True, exist_ok=True)
@@ -282,7 +343,11 @@ def main():
                                                      nxy=a.nxy, subpixel=not a.no_subpixel, dz_asi=(a.dz_asi * 1e-9 if a.dz_asi else None),
                                                      conv_check_fs=a.conv_check_fs, glass_extra=a.glass_extra_nm * 1e-9)
     print(f"[fx] {a.design} no_ito={a.no_ito} ref={a.reference} cells={meta['n_cells']} n_z={meta['idx']['n_z']} dt={meta['dt_s']*1e18:.2f} as steps={meta['n_steps']} stride={meta['dft_stride']} devices={meta['devices']}", flush=True)
-    arrays, objs, config, timing = run(objects, constraints, config, bench_steps=a.bench_steps)
+    state_path = out / "state.npz" if a.segment_steps else None
+    if a.restart and state_path is not None and state_path.exists():
+        state_path.unlink()
+    arrays, objs, config, timing = run(objects, constraints, config, bench_steps=a.bench_steps,
+                                       segment_steps=a.segment_steps, state_path=state_path)
     meta.update(timing=timing, bench_steps=a.bench_steps, n_steps_run=int(config.time_steps_total))
     ds = arrays.detector_states
     save = {}
@@ -297,6 +362,8 @@ def main():
     print(f"[fx] done: setup {timing['setup_s']:.0f} s, run {timing['run_s']:.0f} s for {meta['n_steps_run']} steps "
           f"({meta['n_steps_run'] * np.prod(meta['n_cells']) / max(timing['run_s'], 1e-9):.2e} cell-steps/s); final max|E| = {meta_short['max_abs_E_final']:.3e} finite={meta_short['finite']}", flush=True)
     json.dump({**meta, **meta_short}, open(out / "run_meta.json", "w"), indent=1)
+    if state_path is not None and state_path.exists():
+        state_path.unlink()                 # the run finished; the resume state is no longer needed
 
 
 if __name__ == "__main__":
