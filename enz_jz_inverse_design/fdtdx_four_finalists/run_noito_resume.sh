@@ -45,7 +45,11 @@ case "$1" in
   # two jobs were getting ~82 step/s each against ~110 alone, so serialising them costs little
   # wall-clock and removes the coincident-save spike entirely.  final1 goes first: it is closest to
   # finishing.
-  S) job final1 noito24ps 24000 6000 12000 18000
+  S) job final0 noito36ps 36000 9000 18000 27000 ;;
+  # final1 was stopped at 19.26 ps of its nominal 24 ps: it already satisfies every acceptance
+  # criterion there (max|A| 0.0093, no R>1, no T<0, and a 12->18 ps closed-window drift of
+  # 0.0091/0.0063), so the remaining 4.7 ps would only have delayed final0, which still needs time.
+  S_OLD) job final1 noito24ps 24000 6000 12000 18000
      job final0 noito36ps 36000 9000 18000 27000 ;;
   A) job final0 noito36ps 36000 9000 18000 27000 ;;
   B) job final2 noito12ps 12000 3000 6000 9000

@@ -99,7 +99,27 @@ def main():
                  n_steps=run["meta"]["n_steps_run"], order="FDTDX, no ITO, fresh run")
         dR = np.abs(full["R"] - early["R"]).max() if early else float("nan")
         dT = np.abs(full["T"] - early["T"]).max() if early else float("nan")
-        rep = dict(design=d, time_fs=run["meta"]["time_s"] * 1e15, n_steps=run["meta"]["n_steps_run"],
+        md = run["meta"]
+        # A run may be evaluated before its nominal end (outputs are rewritten every segment), so the
+        # time that matters is the one actually simulated, steps_done * dt - never the nominal --time-fs.
+        steps_done = int(md.get("steps_done", md["n_steps_run"]))
+        act_fs = steps_done * md["dt_s"] * 1e15
+        # Drift between CONSECUTIVE CLOSED windows.  Comparing the last closed window with the running
+        # accumulation is near-vacuous when the run is stopped just after that window (e.g. an 18 ps
+        # window against a 19.26 ps accumulation), so stability is judged on the last closed pair.
+        # Every window pair, then pick the tightest test that is still meaningful: the two windows
+        # compared must differ in duration by at least 15 %, otherwise the comparison is vacuous.
+        seq = wins + [(act_fs, full)]
+        allp = [dict(from_fs=ta, to_fs=tb,
+                     max_abs_dR=float(np.abs(sb["R"] - sa["R"]).max()),
+                     max_abs_dT=float(np.abs(sb["T"] - sa["T"]).max()))
+                for (ta, sa), (tb, sb) in zip(seq, seq[1:])]
+        sep = [p for p in allp if p["to_fs"] >= 1.15 * p["from_fs"]]
+        pair = sep[-1:] if sep else allp[-1:]
+        rep = dict(design=d, time_fs=act_fs, nominal_time_fs=md["time_s"] * 1e15,
+                   steps_done=steps_done, n_steps_total=int(md.get("n_steps_total", md["n_steps_run"])),
+                   complete=bool(md.get("complete", True)), window_drift=allp, stability_pair=pair,
+                   n_steps=run["meta"]["n_steps_run"],
                    conv_check_fs=run["meta"].get("conv_check_fs"), run_tag=tag, reference_tag=rtag,
                    max_abs_A=float(np.abs(full["A"]).max()), lam_max_abs_A=float(lam[int(np.argmax(np.abs(full["A"])))]),
                    rms_A=float(np.sqrt(np.mean(full["A"] ** 2))),
@@ -120,15 +140,20 @@ def main():
         #   time stability    - the spectrum has stopped changing with the length of the DFT window.
         rep["passes_physical"] = bool(rep["max_abs_A"] <= a.tol and rep["n_points_R_gt_1"] == 0
                                       and rep["n_points_T_lt_0"] == 0)
-        rep["passes_stability"] = bool(early is None or max(dR, dT) <= a.tol)
+        rep["passes_stability"] = bool(
+            max(pair[-1]["max_abs_dR"], pair[-1]["max_abs_dT"]) <= a.tol if pair
+            else (early is None or max(dR, dT) <= a.tol))
         rep["n_points_drift_gt_tol"] = int((np.maximum(np.abs(full["R"] - early["R"]),
                                                        np.abs(full["T"] - early["T"])) > a.tol).sum()) if early else 0
         rep["max_abs_dR_plus_dT"] = float(np.abs((full["R"] - early["R"]) + (full["T"] - early["T"])).max()) if early else 0.0
         rep["passes"] = bool(rep["passes_physical"] and rep["passes_stability"])
         report[d] = rep; overlay[d] = full
-        wtxt = (f"{wins[-1][0]:.0f}->{rep['time_fs']:.0f} fs window drift: dR {dR:.4f} dT {dT:.4f}"
-                if wins else "no early window")
-        print(f"  {d}: max|A| = {rep['max_abs_A']:.4f} @ {rep['lam_max_abs_A']:.0f} nm (rms {rep['rms_A']:.4f}, "
+        wtxt = (f"{pair[-1]['from_fs']/1000:.0f}->{pair[-1]['to_fs']/1000:.0f} ps closed-window drift: "
+                f"dR {pair[-1]['max_abs_dR']:.4f} dT {pair[-1]['max_abs_dT']:.4f}"
+                if pair else "no closed-window pair")
+        print(f"  {d}: {rep['time_fs']/1000:.2f} ps simulated"
+              + ("" if rep["complete"] else f" of a nominal {rep['nominal_time_fs']/1000:.0f} ps") + "; "
+              f"max|A| = {rep['max_abs_A']:.4f} @ {rep['lam_max_abs_A']:.0f} nm (rms {rep['rms_A']:.4f}, "
               f"{rep['n_points_absA_gt_tol']}/{rep['n_points']} points > {a.tol}); R_max = {rep['R_max']:.4f}, "
               f"T_min = {rep['T_min']:+.4f}; {wtxt}  -> physical {'PASS' if rep['passes_physical'] else 'FAIL'}"
               f", stability {'PASS' if rep['passes_stability'] else 'FAIL'}"

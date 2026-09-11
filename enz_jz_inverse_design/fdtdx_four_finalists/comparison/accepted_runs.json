@@ -18,5 +18,15 @@
    "prod",
    "ref64_fresh"
   ]
+ },
+ "final1": {
+  "noito": [
+   "noito24ps",
+   "ref64_fresh"
+  ],
+  "prod": [
+   "prod",
+   "ref64_fresh"
+  ]
  }
 }

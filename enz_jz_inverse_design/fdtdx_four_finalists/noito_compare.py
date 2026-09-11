@@ -40,7 +40,13 @@ def main():
             assert run is not None, f"{d}/{tag} missing"
             got[kind] = (run, spectra_from(run, refs[rtag]))
             rows.append(dict(design=d, kind=kind, tag=tag, reference=rtag,
-                             time_fs=run["meta"]["time_s"] * 1e15, n_steps=run["meta"]["n_steps_run"],
+                             # actual simulated time (steps_done * dt), never the nominal --time-fs:
+                             # a run may be accepted before its nominal end
+                             time_fs=int(run["meta"].get("steps_done", run["meta"]["n_steps_run"]))
+                             * run["meta"]["dt_s"] * 1e15,
+                             nominal_time_fs=run["meta"]["time_s"] * 1e15,
+                             complete=bool(run["meta"].get("complete", True)),
+                             n_steps=run["meta"]["n_steps_run"],
                              n_z=run["meta"]["idx"]["n_z"], nxy=run["meta"]["nxy"],
                              glass_extra_nm=run["meta"].get("glass_extra_nm", 0.0),
                              R_ZE=float(np.interp(LAM_ZE, got[kind][1]["lam"], got[kind][1]["R"])),
@@ -87,7 +93,8 @@ def main():
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
     json.dump(rows, open(COMP / "spectra_table_noito_accepted.json", "w"), indent=1)
     for r in rows:
-        print(f"{r['design']:7s} {r['kind']:6s} {r['tag']:22s} {r['time_fs']:7.0f} fs  "
+        print(f"{r['design']:7s} {r['kind']:6s} {r['tag']:22s} {r['time_fs']/1000:6.2f} ps"
+              + ("  " if r["complete"] else "* ") + " "
               f"R_ZE={r['R_ZE']:.4f} T_ZE={r['T_ZE']:.4f} A_ZE={r['A_ZE']:+.4f}  "
               f"R_max={r['R_max']:.4f} T_min={r['T_min']:+.4f} max|A|={r['max_abs_A']:.4f}")
 
