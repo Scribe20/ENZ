@@ -37,9 +37,19 @@ job () {   # job <design> <tag> <time_fs> <windows...>
 }
 
 case "$1" in
+  # Sequential slot: one simulation at a time.  Running the two long jobs in parallel twice took the
+  # whole process group down with the OOM killer just after both resumed - each holds ~3.5 GB of the
+  # 15.7 GB machine, a resume loads a 220 MB checkpoint on top of freshly built arrays, and a segment
+  # save briefly materialises ~1 GB more.  The second time it killed the worker shells as well, so the
+  # retry loop could not fire and nothing ran for the best part of an hour.  On four shared cores the
+  # two jobs were getting ~82 step/s each against ~110 alone, so serialising them costs little
+  # wall-clock and removes the coincident-save spike entirely.  final1 goes first: it is closest to
+  # finishing.
+  S) job final1 noito24ps 24000 6000 12000 18000
+     job final0 noito36ps 36000 9000 18000 27000 ;;
   A) job final0 noito36ps 36000 9000 18000 27000 ;;
   B) job final2 noito12ps 12000 3000 6000 9000
      job final1 noito24ps 24000 6000 12000 18000 ;;
-  *) echo "usage: $0 A|B"; exit 1 ;;
+  *) echo "usage: $0 S|A|B"; exit 1 ;;
 esac
 echo "[resume $1] done"

@@ -230,3 +230,5 @@ E0911 19:45:35.473749    1047 slow_operation_alarm.cc:140] The operation took 3m
 [fx] final0 no_ito=True ref=False cells=[64, 64, 160] n_z=160 dt=13.01 as steps=2766361 stride=19 devices=['cpu:0']
 [fx] resuming from saved state at step 2080000/2766361
 FDTD (forward):   0%|          | 0/20000 [00:00<?, ?step/s]FDTD (forward):   0%|          | 0/20000 [00:00<?, ?step/s]FDTD (forward):   5%|▌         | 1000/20000 [00:12<03:55, 80.67step/s][fx] final0 no_ito=True ref=False cells=[64, 64, 160] n_z=160 dt=13.01 as steps=2766361 stride=19 devices=['cpu:0']
+[fx] resuming from saved state at step 2080000/2766361
+FDTD (forward):   0%|          | 0/20000 [00:00<?, ?step/s]FDTD (forward):   0%|          | 0/20000 [00:00<?, ?step/s]FDTD (forward):   5%|▌         | 1000/20000 [00:12<03:50, 82.55step/s]FDTD (forward):  10%|█         | 2000/20000 [00:24<03:40, 81.46step/s]FDTD (forward):  15%|█▌        | 3000/20000 [00:37<03:29, 81.06step/s]
