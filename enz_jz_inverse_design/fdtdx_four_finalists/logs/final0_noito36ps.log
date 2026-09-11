@@ -228,3 +228,5 @@ E0911 19:45:35.473749    1047 slow_operation_alarm.cc:140] The operation took 3m
 /usr/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
   warnings.warn('resource_tracker: There appear to be %d '
 [fx] final0 no_ito=True ref=False cells=[64, 64, 160] n_z=160 dt=13.01 as steps=2766361 stride=19 devices=['cpu:0']
+[fx] resuming from saved state at step 2080000/2766361
+FDTD (forward):   0%|          | 0/20000 [00:00<?, ?step/s]FDTD (forward):   0%|          | 0/20000 [00:00<?, ?step/s]FDTD (forward):   5%|▌         | 1000/20000 [00:12<03:55, 80.67step/s][fx] final0 no_ito=True ref=False cells=[64, 64, 160] n_z=160 dt=13.01 as steps=2766361 stride=19 devices=['cpu:0']
