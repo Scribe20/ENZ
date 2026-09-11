@@ -1,2 +1,5 @@
 [final2/noito12ps] already complete, skipping
 [final1/noito24ps] attempt 1, starting/resuming at 16:14:17
+./run_noito_resume.sh: line 19:  1305 Killed                  $PY fx_sim.py --design "$d" --no-ito --nxy 64 --ito-cells 5 --time-fs "$tfs" --conv-check-fs "$@" --tag "$tag" --segment-steps $SEG --field-lams $FLN >> "logs/${d}_${tag}.log" 2>&1
+[final1/noito24ps] exited without completing; retrying in 60 s
+[final1/noito24ps] attempt 2, starting/resuming at 19:46:36
