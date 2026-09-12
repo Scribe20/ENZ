@@ -22,7 +22,7 @@ The early windows are recorded by the same run — extra flux-plane phasor detec
 |---|---|---|---|---|---|---|---|---|---|---|
 | final3 | `noito6ps_deepglass` | 6000 fs (461078 steps) | 0.0023 | 1256 nm | 0/101 | 0.9997 | +0.0003 | 0.0301 / 0.0349 | yes | NO (5 pts, max \|dR+dT\| 0.0051) |
 | final1 | `noito24ps` | 19260 fs (1480000 steps) | 0.0093 | 1330 nm | 0/101 | 0.9997 | +0.0001 | 0.0007 / 0.0001 | yes | yes |
-| final0 | `noito36ps` | 27068 fs (2080000 steps) | 0.0035 | 1340 nm | 0/101 | 0.9995 | +0.0004 | 0.0004 / 0.0004 | yes | NO (0 pts, max \|dR+dT\| 0.0006) |
+| final0 | `noito36ps` | 36000 fs (2766361 steps) | 0.0016 | 1342 nm | 0/101 | 0.9994 | +0.0004 | 0.0049 / 0.0024 | yes | yes |
 | final2 | `noito12ps` | 12000 fs (922120 steps) | 0.0021 | 1308 nm | 0/101 | 0.9991 | +0.0008 | 0.0058 / 0.0118 | yes | NO (1 pts, max \|dR+dT\| 0.0060) |
 
 ### Closure residual vs simulated time (windows recorded inside each run)
@@ -30,7 +30,7 @@ The early windows are recorded by the same run — extra flux-plane phasor detec
 | design | 6000 fs | 12000 fs | 18000 fs | full |
 |---|---|---|---|---|
 | final1 | 0.1349 | 0.0254 | 0.0100 | 0.0093 |
-| final0 | 0.0111 | 0.0076 | 0.0040 | 0.0035 |
+| final0 | 0.0111 | 0.0076 | 0.0040 | 0.0016 |
 | final3 | 0.0050 | 0.0023 |
 | final2 | 0.2307 | 0.0239 | 0.0041 | 0.0021 |
 
@@ -42,8 +42,10 @@ The early windows are recorded by the same run — extra flux-plane phasor detec
 | final3 | with ITO | `prod_deepglass` | `ref64_deepglass` | 300 fs | 64²×329 (+4500 nm glass) | 0.0288 | 0.0136 | +0.9576 | 0.9882 |
 | final2 | without ITO | `noito12ps` | `ref64_fresh` | 12000 fs | 64²×160 | 0.9684 | 0.0315 | +0.0001 | 0.0021 |
 | final2 | with ITO | `prod` | `ref64_fresh` | 300 fs | 64²×160 | 0.0191 | 0.0173 | +0.9636 | 0.9930 |
-| final1 | without ITO | `noito24ps` | `ref64_fresh` | 24000 fs | 64²×158 | 0.9944 | 0.0054 | +0.0001 | 0.0093 |
+| final1 | without ITO | `noito24ps` | `ref64_fresh` | 19260 fs | 64²×158 | 0.9944 | 0.0054 | +0.0001 | 0.0093 |
 | final1 | with ITO | `prod` | `ref64_fresh` | 300 fs | 64²×158 | 0.0246 | 0.0147 | +0.9607 | 0.9943 |
+| final0 | without ITO | `noito36ps` | `ref64_fresh` | 36000 fs | 64²×160 | 0.9731 | 0.0266 | +0.0002 | 0.0016 |
+| final0 | with ITO | `prod` | `ref64_fresh` | 300 fs | 64²×160 | 0.0236 | 0.0266 | +0.9498 | 0.9851 |
 
 ## Files
 
