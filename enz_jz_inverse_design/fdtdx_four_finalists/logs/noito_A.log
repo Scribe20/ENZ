@@ -1,0 +1,3 @@
+[final3] [fx] done: setup 78 s, run 13865 s for 461060 steps (2.10e+07 cell-steps/s); final max|E| = 3.121e-05 finite=True
+[final1] [fx] done: setup 77 s, run 13726 s for 461060 steps (2.17e+07 cell-steps/s); final max|E| = 1.110e-03 finite=True
+[noito fresh final3 final1] done

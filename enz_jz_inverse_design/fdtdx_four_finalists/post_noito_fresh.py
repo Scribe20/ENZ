@@ -1,0 +1,202 @@
+"""Post-processing of the FRESH no-ITO runs (fx_sim.py --no-ito --time-fs 6000 --conv-check-fs 3000).
+
+R, T and A = 1 - R - T are computed from the actual FDTDX flux phasors exactly as for the with-ITO
+production runs (fx_post.spectra_of): T = -S_z(T plane)/P_inc, R = (S_z(R plane) - TFSF leakage)/P_inc,
+with S_z = 1/2 Re(Ex Hy* - Ey Hx*) integrated over the cell, P_inc from the empty-domain reference run.
+NOTHING is smoothed, clipped, renormalised or otherwise altered: the numbers written are the ones the
+simulation produced.
+
+Convergence is judged on two quantities that the simulation itself supplies:
+  * the lossless-closure residual A = 1 - R - T (every material is lossless without the ITO, so the
+    exact value is 0 at every wavelength) - this also catches R > 1 and T < 0;
+  * the difference between the 3-ps and 6-ps DFT windows recorded in the SAME run, i.e. whether the
+    spectrum has stopped changing with simulation time.
+"""
+import argparse, csv, json, sys
+from pathlib import Path
+
+import numpy as np
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import fx_post as fp                       # noqa: E402
+
+DESIGNS = ["final3", "final1", "final0", "final2"]
+LAM_ZE = fp.LAM_ZE
+OUT = HERE / "comparison"
+
+
+def spectra_from(run, ref, suffix=""):
+    """R, T, A from the flux phasors of one detector pair (suffix '' or '_early')."""
+    dxy = run["meta"]["dxy_m"]
+    P_inc = -fp.plane_flux(ref["z"]["T_plane/phasor"], dxy)
+    leak = fp.plane_flux(ref["z"]["R_plane/phasor"], dxy)
+    S_T = fp.plane_flux(run["z"][f"T_plane{suffix}/phasor"], dxy)
+    S_R = fp.plane_flux(run["z"][f"R_plane{suffix}/phasor"], dxy)
+    T = -S_T / P_inc
+    R = (S_R - leak) / P_inc
+    return dict(lam=run["z"]["lam_spec_m"] * 1e9, R=R, T=T, A=1 - R - T, P_inc=P_inc,
+                leak_over_Pinc=leak / P_inc)
+
+
+def window_list(run, ref):
+    """[(window end time [fs], spectra)] for every early DFT window the run recorded, in time order."""
+    keys = [k for k in run["z"].files if k.startswith("R_plane_early") and k.endswith("/phasor")]
+    sfx = sorted(k[len("R_plane"):-len("/phasor")] for k in keys)
+    tw = run["meta"].get("conv_check_fs") or []
+    tw = [float(t) for t in np.atleast_1d(tw)] if np.size(tw) else []
+    order = ["_early"] + [f"_early{i + 2}" for i in range(len(sfx) - 1)]
+    out = []
+    for i, s in enumerate(order):
+        if s in sfx:
+            out.append((tw[i] if i < len(tw) else float("nan"), spectra_from(run, ref, s)))
+    return sorted(out, key=lambda p: p[0])
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--tag", default="noito6ps")
+    ap.add_argument("--ref", default="ref64_fresh")
+    ap.add_argument("--designs", nargs="*", default=DESIGNS)
+    ap.add_argument("--tol", type=float, default=0.01, help="acceptance tolerance on |A| and on the window difference")
+    a = ap.parse_args()
+    OUT.mkdir(exist_ok=True)
+    refs = {}
+    report, overlay = {}, {}
+    for spec in a.designs:
+        # spec: design[=run_tag][@reference_tag]
+        d, _, rest = spec.partition("=")
+        tag, _, rtag = (rest or a.tag).partition("@")
+        rtag = rtag or a.ref
+        if rtag not in refs:
+            refs[rtag] = fp.load_run("reference", rtag)
+            assert refs[rtag] is not None, f"reference run {rtag} missing"
+        ref = refs[rtag]
+        run = fp.load_run(d, tag)
+        if run is None:
+            print(f"  {d}: run {tag} missing"); continue
+        full = spectra_from(run, ref, "")
+        wins = window_list(run, ref)          # [(t_fs, spectra), ...] for every early DFT window
+        early = wins[-1][1] if wins else None  # the longest early window = the tightest convergence test
+        lam = full["lam"]
+        outd = run["dir"]
+        with open(outd / "spectra_noito_fresh.csv", "w", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["lambda_nm", "R", "T", "A_closure_residual"]
+                       + [f"{c}_{t:.0f}fs_window" for t, _ in wins for c in ("R", "T")])
+            for i in range(len(lam)):
+                w.writerow([f"{lam[i]:.2f}", f"{full['R'][i]:.6f}", f"{full['T'][i]:.6f}", f"{full['A'][i]:.6f}"]
+                           + [f"{sp[c][i]:.6f}" for _, sp in wins for c in ("R", "T")])
+        np.savez(outd / "spectra_noito_fresh.npz", lam_nm=lam, R=full["R"], T=full["T"], A=full["A"],
+                 P_inc=full["P_inc"], leak_over_Pinc=full["leak_over_Pinc"],
+                 **({"R_early": early["R"], "T_early": early["T"], "A_early": early["A"]} if early else {}),
+                 **{f"{c}_win{t:.0f}fs": sp[c] for t, sp in wins for c in ("R", "T", "A")},
+                 window_fs=np.array([t for t, _ in wins], dtype=float),
+                 time_fs=run["meta"]["time_s"] * 1e15, conv_check_fs=run["meta"].get("conv_check_fs"),
+                 n_steps=run["meta"]["n_steps_run"], order="FDTDX, no ITO, fresh run")
+        dR = np.abs(full["R"] - early["R"]).max() if early else float("nan")
+        dT = np.abs(full["T"] - early["T"]).max() if early else float("nan")
+        md = run["meta"]
+        # A run may be evaluated before its nominal end (outputs are rewritten every segment), so the
+        # time that matters is the one actually simulated, steps_done * dt - never the nominal --time-fs.
+        steps_done = int(md.get("steps_done", md["n_steps_run"]))
+        act_fs = steps_done * md["dt_s"] * 1e15
+        # Drift between CONSECUTIVE CLOSED windows.  Comparing the last closed window with the running
+        # accumulation is near-vacuous when the run is stopped just after that window (e.g. an 18 ps
+        # window against a 19.26 ps accumulation), so stability is judged on the last closed pair.
+        # Every window pair, then pick the tightest test that is still meaningful: the two windows
+        # compared must differ in duration by at least 15 %, otherwise the comparison is vacuous.
+        seq = wins + [(act_fs, full)]
+        allp = [dict(from_fs=ta, to_fs=tb,
+                     max_abs_dR=float(np.abs(sb["R"] - sa["R"]).max()),
+                     max_abs_dT=float(np.abs(sb["T"] - sa["T"]).max()))
+                for (ta, sa), (tb, sb) in zip(seq, seq[1:])]
+        sep = [p for p in allp if p["to_fs"] >= 1.15 * p["from_fs"]]
+        pair = sep[-1:] if sep else allp[-1:]
+        rep = dict(design=d, time_fs=act_fs, nominal_time_fs=md["time_s"] * 1e15,
+                   steps_done=steps_done, n_steps_total=int(md.get("n_steps_total", md["n_steps_run"])),
+                   complete=bool(md.get("complete", True)), window_drift=allp, stability_pair=pair,
+                   n_steps=run["meta"]["n_steps_run"],
+                   conv_check_fs=run["meta"].get("conv_check_fs"), run_tag=tag, reference_tag=rtag,
+                   max_abs_A=float(np.abs(full["A"]).max()), lam_max_abs_A=float(lam[int(np.argmax(np.abs(full["A"])))]),
+                   rms_A=float(np.sqrt(np.mean(full["A"] ** 2))),
+                   n_points_absA_gt_tol=int((np.abs(full["A"]) > a.tol).sum()), n_points=int(len(lam)),
+                   R_max=float(full["R"].max()), lam_R_max=float(lam[int(np.argmax(full["R"]))]),
+                   T_min=float(full["T"].min()), lam_T_min=float(lam[int(np.argmin(full["T"]))]),
+                   n_points_R_gt_1=int((full["R"] > 1.0).sum()), n_points_T_lt_0=int((full["T"] < 0.0).sum()),
+                   max_window_diff_R=float(dR), max_window_diff_T=float(dT),
+                   window_fs=[float(t) for t, _ in wins],
+                   window_max_abs_A=[float(np.abs(sp["A"]).max()) for _, sp in wins],
+                   window_drift_vs_full_R=[float(np.abs(full["R"] - sp["R"]).max()) for _, sp in wins],
+                   window_drift_vs_full_T=[float(np.abs(full["T"] - sp["T"]).max()) for _, sp in wins],
+                   max_leak_over_Pinc=float(np.abs(full["leak_over_Pinc"]).max()),
+                   R_at_lamZE=float(np.interp(LAM_ZE, lam, full["R"])), T_at_lamZE=float(np.interp(LAM_ZE, lam, full["T"])),
+                   A_at_lamZE=float(np.interp(LAM_ZE, lam, full["A"])))
+        # Two separate criteria, reported separately because they mean different things:
+        #   physical validity - the run conserves energy and produces no R > 1 or T < 0;
+        #   time stability    - the spectrum has stopped changing with the length of the DFT window.
+        rep["passes_physical"] = bool(rep["max_abs_A"] <= a.tol and rep["n_points_R_gt_1"] == 0
+                                      and rep["n_points_T_lt_0"] == 0)
+        rep["passes_stability"] = bool(
+            max(pair[-1]["max_abs_dR"], pair[-1]["max_abs_dT"]) <= a.tol if pair
+            else (early is None or max(dR, dT) <= a.tol))
+        rep["n_points_drift_gt_tol"] = int((np.maximum(np.abs(full["R"] - early["R"]),
+                                                       np.abs(full["T"] - early["T"])) > a.tol).sum()) if early else 0
+        rep["max_abs_dR_plus_dT"] = float(np.abs((full["R"] - early["R"]) + (full["T"] - early["T"])).max()) if early else 0.0
+        rep["passes"] = bool(rep["passes_physical"] and rep["passes_stability"])
+        report[d] = rep; overlay[d] = full
+        wtxt = (f"{pair[-1]['from_fs']/1000:.0f}->{pair[-1]['to_fs']/1000:.0f} ps closed-window drift: "
+                f"dR {pair[-1]['max_abs_dR']:.4f} dT {pair[-1]['max_abs_dT']:.4f}"
+                if pair else "no closed-window pair")
+        print(f"  {d}: {rep['time_fs']/1000:.2f} ps simulated"
+              + ("" if rep["complete"] else f" of a nominal {rep['nominal_time_fs']/1000:.0f} ps") + "; "
+              f"max|A| = {rep['max_abs_A']:.4f} @ {rep['lam_max_abs_A']:.0f} nm (rms {rep['rms_A']:.4f}, "
+              f"{rep['n_points_absA_gt_tol']}/{rep['n_points']} points > {a.tol}); R_max = {rep['R_max']:.4f}, "
+              f"T_min = {rep['T_min']:+.4f}; {wtxt}  -> physical {'PASS' if rep['passes_physical'] else 'FAIL'}"
+              f", stability {'PASS' if rep['passes_stability'] else 'FAIL'}"
+              + (f" ({rep['n_points_drift_gt_tol']} pts, max |dR+dT| {rep['max_abs_dR_plus_dT']:.4f})"
+                 if not rep['passes_stability'] else ""))
+        if len(wins) > 1:
+            print("      window max|A|: " + "  ".join(f"{t:.0f}fs {v:.4f}" for (t, _), v
+                                                      in zip(wins, rep["window_max_abs_A"]))
+                  + f"  {rep['time_fs']:.0f}fs {rep['max_abs_A']:.4f}")
+        # per-design figure
+        fig, axs = plt.subplots(1, 2, figsize=(13, 4.6))
+        axs[0].plot(lam, full["R"], "b-", label="R"); axs[0].plot(lam, full["T"], "r-", label="T")
+        axs[0].plot(lam, full["A"], "k-", lw=1, label="A = 1 − R − T (exact value 0: no lossy material)")
+        if early:
+            axs[0].plot(lam, early["R"], "b--", lw=0.8, alpha=0.7, label="R (3-ps DFT window)")
+            axs[0].plot(lam, early["T"], "r--", lw=0.8, alpha=0.7, label="T (3-ps DFT window)")
+        axs[0].axvline(LAM_ZE, color="0.5", ls=":", lw=0.8); axs[0].set_xlabel("λ [nm]"); axs[0].set_ylabel("R, T, A")
+        axs[0].grid(alpha=0.3); axs[0].legend(fontsize=7); axs[0].set_ylim(-0.05, 1.05)
+        axs[0].set_title(f"{d} without ITO — fresh FDTDX run, {rep['time_fs']:.0f} fs ({rep['n_steps']} steps)", fontsize=9)
+        axs[1].plot(lam, full["A"], "k-", label="A (full window)")
+        if early:
+            axs[1].plot(lam, early["A"], "g--", lw=0.9, label="A (3-ps window)")
+            axs[1].plot(lam, full["R"] - early["R"], "b:", lw=0.9, label="R(6 ps) − R(3 ps)")
+        axs[1].axhline(0, color="0.6", lw=0.8); axs[1].axhline(a.tol, color="r", ls=":", lw=0.8)
+        axs[1].axhline(-a.tol, color="r", ls=":", lw=0.8)
+        axs[1].set_xlabel("λ [nm]"); axs[1].set_ylabel("closure residual / window drift"); axs[1].grid(alpha=0.3)
+        axs[1].legend(fontsize=7); axs[1].set_title("energy-conservation and time-convergence check", fontsize=9)
+        fig.tight_layout(); fig.savefig(outd / "spectra_noito_fresh.png", dpi=150); plt.close(fig)
+    if overlay:
+        fig, ax = plt.subplots(figsize=(8, 5))
+        for d, s in overlay.items():
+            ax.plot(s["lam"], s["R"], label=f"{d} R")
+            ax.plot(s["lam"], s["T"], ls="--", label=f"{d} T")
+        ax.axvline(LAM_ZE, color="k", ls=":", lw=0.8); ax.set_xlabel("λ [nm]"); ax.set_ylabel("R, T")
+        ax.set_ylim(-0.05, 1.05); ax.grid(alpha=0.3); ax.legend(fontsize=7, ncol=2)
+        ax.set_title("FDTDX without ITO (fresh runs) — R and T", fontsize=10)
+        fig.tight_layout(); fig.savefig(OUT / "overlay_RT_noITO_fresh.png", dpi=160); plt.close(fig)
+    rp = OUT / "noito_fresh_convergence.json"
+    merged = json.load(open(rp)) if rp.exists() else {}
+    merged.update(report)
+    json.dump(merged, open(rp, "w"), indent=1)
+    print(f"\n[noito fresh] {sum(r['passes'] for r in report.values())}/{len(report)} designs pass at tol {a.tol}")
+
+
+if __name__ == "__main__":
+    main()

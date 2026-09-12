@@ -9,10 +9,22 @@ Lorentz ADE), Lorentz a-Si:H and glass (fitted to the supplied data, materials/m
 Saves outputs/<design>/<tag>/phasors.npz (complex64 phasors of every detector, grid edges, dt, wavelengths, indices)
 and run_meta.json.  Post-processing is done separately (fx_post.py).
 """
-import argparse, json, sys, time
+import argparse, json, os, sys, time
 from pathlib import Path
 import numpy as np
 import jax
+
+# Persistent compilation cache.  The container restarts roughly hourly and kills the runs; each restart
+# otherwise re-traces and re-compiles the whole FDTD step function before any stepping happens, which
+# cost ~16 min when one process restarted alone and ~44 min when both restarted together and competed
+# for cores - i.e. most of the hour between restarts.  Caching the compiled kernels on disk makes the
+# restart nearly free.  The cache is keyed on the computation, so it is only reused for an identical
+# mesh and step function.
+_CACHE = Path(os.environ.get("FX_JAX_CACHE", Path(__file__).resolve().parent / ".jaxcache"))
+_CACHE.mkdir(parents=True, exist_ok=True)
+jax.config.update("jax_compilation_cache_dir", str(_CACHE))
+jax.config.update("jax_persistent_cache_min_entry_size_bytes", -1)   # cache every entry
+jax.config.update("jax_persistent_cache_min_compile_time_secs", 0.0)  # regardless of compile time
 import jax.numpy as jnp
 
 import fdtdx
@@ -20,6 +32,7 @@ from fdtdx.constants import c as C0
 from fdtdx.objects.static_material.static import StaticMultiMaterialObject, UniformMaterialObject
 from fdtdx.materials import compute_ordered_names
 from fdtdx.core.jax.pytrees import autoinit, frozen_field
+from fdtdx.fdtd.fdtd import custom_fdtd_forward
 from fdtdx.objects.object import RealCoordinateConstraint
 
 HERE = Path(__file__).resolve().parent
@@ -99,7 +112,7 @@ def graded(d0, d1, ratio=1.25):
     return out
 
 
-def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, air_gap_to_source=300e-9, source_to_R=120e-9, R_to_pml=100e-9, T_below_ito=300e-9):
+def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, glass_extra=0.0, air_gap_to_source=300e-9, source_to_R=120e-9, R_to_pml=100e-9, T_below_ito=300e-9):
     """Returns widths (bottom -> top) and index bookkeeping. Bottom = glass PML, top = air PML.
     The glass region is thick (default 1.25 um of bulk + PML) because the (+-1, 0) diffraction orders are evanescent
     in the glass only just below cut-off (n_glass P = 1251 nm): at 1302 nm their decay length is ~475 nm, so a PML
@@ -108,7 +121,7 @@ def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, ai
     dz_glass = dz_coarse                                                 # bulk-glass cells (25.8 nm at NXY = 64: 33 cells per wavelength in glass)
     # glass: [PML coarse][bulk coarse][graded coarse -> dz_ito]
     g_grade = graded(dz_ito, dz_glass, ratio)[::-1]                    # from coarse (below) down to fine (at ITO)
-    n_bulk = int(round(glass_bulk / dz_glass))
+    n_bulk = int(round((glass_bulk + glass_extra) / dz_glass))
     glass = [dz_glass] * (PML_CELLS + n_bulk) + g_grade
     ito = [dz_ito] * n_ito
     # a-Si: graded dz_ito -> dz_fine, then uniform to exactly h
@@ -134,7 +147,7 @@ def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, ai
 
 
 # --------------------------------------------------------------------------- scene
-def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, stride=None, courant=0.95, nxy=128, subpixel=True, dz_asi=None):
+def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, stride=None, courant=0.95, nxy=128, subpixel=True, dz_asi=None, conv_check_fs=None, glass_extra=0.0):
     global NXY
     NXY = nxy
     P = PROV[design]["P_nm"] * 1e-9; h = PROV[design]["h_nm"] * 1e-9
@@ -142,7 +155,7 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
     fill = area_fraction(rho, NXY)
     dxy = P / NXY
     dz_fine = dxy if dz_asi is None else dz_asi
-    widths, idx = build_z_mesh(h, n_ito, dz_coarse=max(2 * dxy, 12.0e-9), dz_fine=dz_fine)
+    widths, idx = build_z_mesh(h, n_ito, dz_coarse=max(2 * dxy, 12.0e-9), dz_fine=dz_fine, glass_extra=glass_extra)
     z_edges = np.concatenate([[0.0], np.cumsum(widths)])
     xy_edges = dxy * np.arange(NXY + 1)
     grid = fdtdx.RectilinearGrid(x_edges=jnp.asarray(xy_edges), y_edges=jnp.asarray(xy_edges), z_edges=jnp.asarray(z_edges))
@@ -190,6 +203,20 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
         objects.append(d)
     plane_det("R_plane", idx["z_R"], wc_spec, ("Ex", "Ey", "Hx", "Hy"))
     plane_det("T_plane", idx["z_T"], wc_spec, ("Ex", "Ey", "Hx", "Hy"))
+    conv_list = [] if not conv_check_fs else [float(t) for t in np.atleast_1d(conv_check_fs)]
+    for k, t_end in enumerate(conv_list):
+        # Identical R/T flux planes whose DFT window is CLOSED EARLY.  Comparing the early-window and
+        # full-window spectra from the SAME simulation is a direct, zero-extra-cost demonstration that
+        # the recorded spectrum has stopped changing with simulation time (no post-processing involved).
+        # With several windows the run also records its own convergence curve vs simulated time.
+        sw = fdtdx.OnOffSwitch(end_time=t_end * 1e-15)
+        sfx = "_early" if k == 0 else f"_early{k + 1}"
+        for base, zz in (("R_plane", idx["z_R"]), ("T_plane", idx["z_T"])):
+            d = fdtdx.PhasorDetector(name=base + sfx, partial_grid_shape=(NXY, NXY, 1), wave_characters=wc_spec,
+                                     components=("Ex", "Ey", "Hx", "Hy"), scaling_mode="pulse",
+                                     dft_subsample=stride, plot=False, switch=sw)
+            constraints.extend([d.same_size(volume, axes=(0, 1)), d.place_at_center(volume, axes=(0, 1)), at(d, (2,), (zz,))])
+            objects.append(d)
     if reference:
         plane_det("inc_ito_plane", idx["z_ito0"] + n_ito // 2, wc_spec, ("Ex", "Ey", "Hx", "Hy"))   # incident field amplitude at the ITO mid-plane position (air)
         plane_det("inc_field_plane", idx["z_ito0"] + n_ito // 2, wc_field, ("Ex", "Ey", "Ez"))
@@ -217,11 +244,71 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
     meta = dict(design=design, no_ito=no_ito, reference=reference, P_m=P, h_m=h, dxy_m=dxy, nxy=NXY, subpixel_smoothing=subpixel, fill_fraction_mean=float(fill.mean()), n_ito=n_ito, dz_ito_m=D_ITO / n_ito, widths_m=widths.tolist(), z_edges_m=z_edges.tolist(),
                 idx=idx, dt_s=dt, time_s=time_s, n_steps=int(config.time_steps_total), courant_factor=courant, dft_stride=stride, lam_spec_m=LAM_SPEC.tolist(), lam_field_m=list(map(float, field_lams_m)),
                 source=dict(type="UniformPlaneSource TFSF, direction -z, E along x, GaussianPulseProfile center 1300 nm, sigma_f 13 THz (sigma_t 12.2 fs, peak at t0 = 6 sigma_t)"),
-                pml_cells=PML_CELLS, n_cells=[NXY, NXY, idx["n_z"]], dtype="float32", backend=str(jax.default_backend()), devices=[str(d) for d in jax.devices()])
+                pml_cells=PML_CELLS, n_cells=[NXY, NXY, idx["n_z"]], dtype="float32", backend=str(jax.default_backend()), devices=[str(d) for d in jax.devices()],
+                conv_check_fs=conv_list, glass_extra_nm=glass_extra * 1e9)
     return objects, constraints, config, meta
 
 
-def run(objects, constraints, config, bench_steps=None):
+# --------------------------------------------------------------------- segmented / resumable running
+# A long run on this machine can outlive the container it runs in.  FDTD itself has no restart, but the
+# whole dynamic state of a forward run is the ArrayContainer's fields (E, H and the PML/ADE auxiliaries)
+# plus the detector accumulators; everything else is rebuilt deterministically by place_objects /
+# apply_params.  So the run is executed in segments with fdtdx's custom_fdtd_forward, which takes an
+# explicit (start_time, end_time) and does not reset the container, and the two dynamic sub-trees are
+# written to disk after each segment.  Restarting the same command picks up from the last segment.
+# The result is bit-identical to a single uninterrupted run apart from the order of floating-point
+# reductions, because the state handed to the next segment is exactly the state the loop would have had.
+
+STATE_PARTS = (("fields", lambda a: a.fields), ("det", lambda a: a.detector_states))
+
+
+def _state_save(path, step, arrays):
+    d = {"__step__": np.asarray(step, np.int64)}
+    for tag, get in STATE_PARTS:
+        leaves, _ = jax.tree_util.tree_flatten(get(arrays))
+        for i, v in enumerate(leaves):
+            d[f"{tag}/{i}"] = np.asarray(v)
+    tmp = path.with_suffix(".tmp.npz")
+    np.savez(tmp, **d)                      # write then rename: a reboot mid-write cannot corrupt it
+    tmp.replace(path)
+
+
+def _state_load(path, arrays):
+    z = np.load(path)
+    step = int(z["__step__"])
+    for tag, get in STATE_PARTS:
+        leaves, td = jax.tree_util.tree_flatten(get(arrays))
+        new = jax.tree_util.tree_unflatten(td, [jnp.asarray(z[f"{tag}/{i}"]) for i in range(len(leaves))])
+        arrays = arrays.aset("fields" if tag == "fields" else "detector_states", new)
+    return step, arrays
+
+
+def write_outputs(out, arrays, meta, steps_done, total_steps, timing):
+    """Write phasors.npz / run_meta.json for the state reached so far.
+
+    Called after every segment as well as at the end, so a long run that is interrupted (or that turns
+    out to have converged before its nominal end) still leaves a usable spectrum on disk, marked with
+    the number of steps actually simulated.  `complete` is the flag the drivers use to decide whether a
+    job still needs work - the presence of phasors.npz no longer means the run finished.
+    """
+    save = {}
+    for name, st in arrays.detector_states.items():
+        for k, v in st.items():
+            arr = np.asarray(v)
+            save[f"{name}/{k}"] = arr[0] if (k == "phasor" and arr.shape[0] == 1) else arr
+    tmp = out / "phasors.tmp.npz"
+    np.savez_compressed(tmp, **save, z_edges_m=np.array(meta["z_edges_m"]), lam_spec_m=LAM_SPEC,
+                        lam_field_m=np.array(meta["lam_field_m"]))
+    tmp.replace(out / "phasors.npz")
+    E = np.asarray(arrays.fields.E)
+    m = dict(meta, n_steps_run=int(steps_done), steps_done=int(steps_done), n_steps_total=int(total_steps),
+             complete=bool(steps_done >= total_steps), time_simulated_s=float(steps_done) * meta["dt_s"],
+             timing=timing, max_abs_E_final=float(np.abs(E).max()), finite=bool(np.isfinite(E).all()))
+    json.dump(m, open(out / "run_meta.json", "w"), indent=1)
+    return m
+
+
+def run(objects, constraints, config, bench_steps=None, segment_steps=None, state_path=None, on_segment=None):
     key = jax.random.PRNGKey(0)
     t0 = time.time()
     objs, arrays, params, config, _ = fdtdx.place_objects(object_list=objects, config=config, constraints=constraints, key=key)
@@ -229,10 +316,33 @@ def run(objects, constraints, config, bench_steps=None):
     t1 = time.time()
     if bench_steps:
         config = config.aset("time", bench_steps * config.time_step_duration)
-    _, arrays = fdtdx.run_fdtd(arrays=arrays, objects=objs, config=config, key=key)
-    jax.block_until_ready(arrays.fields.E)
-    t2 = time.time()
-    return arrays, objs, config, dict(setup_s=t1 - t0, run_s=t2 - t1)
+    total = int(config.time_steps_total)
+    if not segment_steps:
+        _, arrays = fdtdx.run_fdtd(arrays=arrays, objects=objs, config=config, key=key)
+        jax.block_until_ready(arrays.fields.E)
+        return arrays, objs, config, dict(setup_s=t1 - t0, run_s=time.time() - t1, segments=0, resumed_from=0)
+    arrays = arrays.reset()                 # run_fdtd resets internally; custom_fdtd_forward does not
+    step, resumed = 0, 0
+    if state_path is not None and state_path.exists():
+        step, arrays = _state_load(state_path, arrays)
+        resumed = step
+        print(f"[fx] resuming from saved state at step {step}/{total}", flush=True)
+    while step < total:
+        end = min(step + int(segment_steps), total)
+        st, arrays = custom_fdtd_forward(arrays=arrays, objects=objs, config=config, key=key,
+                                         reset_container=False, record_detectors=True,
+                                         start_time=step, end_time=end)
+        jax.block_until_ready(arrays.fields.E)
+        step = int(st)
+        if state_path is not None:
+            _state_save(state_path, step, arrays)
+        if on_segment is not None:
+            on_segment(arrays, step, total, dict(setup_s=t1 - t0, run_s=time.time() - t1))
+        print(f"[fx] segment done: step {step}/{total} ({100 * step / total:.1f} %), "
+              f"max|E| = {float(np.abs(np.asarray(arrays.fields.E)).max()):.3e}, "
+              f"elapsed {time.time() - t1:.0f} s", flush=True)
+    return arrays, objs, config, dict(setup_s=t1 - t0, run_s=time.time() - t1,
+                                      segments=1, resumed_from=int(resumed))
 
 
 def main():
@@ -248,29 +358,45 @@ def main():
     ap.add_argument("--nxy", type=int, default=128, help="cells per period in x and y (128 = 1 cell per design pixel)")
     ap.add_argument("--no-subpixel", action="store_true", help="binary (>= 0.5 fill) cells instead of fill-fraction subpixel smoothing")
     ap.add_argument("--dz-asi", type=float, default=None, help="bulk a-Si:H z spacing [nm] (default = in-plane cell)")
+    ap.add_argument("--glass-extra-nm", type=float, default=0.0,
+                    help="extra bulk glass below the stack [nm].  Within a few nm of the glass Rayleigh cut-off "
+                         "(n_glass P = 1251.2 nm) the (+-1,0) orders are evanescent with 1.3-1.9 um decay lengths, "
+                         "so a large evanescent amplitude reaches the PML face and the CPML (a propagating-wave "
+                         "absorber) mis-partitions the flux between the R and T planes, giving R > 1 with a "
+                         "compensating T < 0 at fixed R + T = 1.  Deepening the glass removes it.")
+    ap.add_argument("--conv-check-fs", type=float, nargs="*", default=None,
+                    help="also record R/T flux phasors on DFT windows closed at these times [fs]; the early vs full "
+                         "window comparison is the in-run convergence certificate, and several windows give the "
+                         "run's own spectrum-vs-simulated-time convergence curve")
     ap.add_argument("--stride", type=int, default=None)
     ap.add_argument("--bench-steps", type=int, default=None)
+    ap.add_argument("--segment-steps", type=int, default=None,
+                    help="run in segments of this many time steps, saving the full dynamic state after each "
+                         "so the run resumes where it stopped if the machine restarts; re-running the same "
+                         "command continues from the last saved segment")
+    ap.add_argument("--restart", action="store_true", help="ignore any saved state and start from step 0")
     a = ap.parse_args()
     out = HERE / ("reference" if a.reference else a.design) / a.tag
     out.mkdir(parents=True, exist_ok=True)
     objects, constraints, config, meta = build_scene(a.design, a.no_ito, a.ito_cells, a.time_fs * 1e-15, [l * 1e-9 for l in a.field_lams], reference=a.reference, stride=a.stride, courant=a.courant,
-                                                     nxy=a.nxy, subpixel=not a.no_subpixel, dz_asi=(a.dz_asi * 1e-9 if a.dz_asi else None))
+                                                     nxy=a.nxy, subpixel=not a.no_subpixel, dz_asi=(a.dz_asi * 1e-9 if a.dz_asi else None),
+                                                     conv_check_fs=a.conv_check_fs, glass_extra=a.glass_extra_nm * 1e-9)
     print(f"[fx] {a.design} no_ito={a.no_ito} ref={a.reference} cells={meta['n_cells']} n_z={meta['idx']['n_z']} dt={meta['dt_s']*1e18:.2f} as steps={meta['n_steps']} stride={meta['dft_stride']} devices={meta['devices']}", flush=True)
-    arrays, objs, config, timing = run(objects, constraints, config, bench_steps=a.bench_steps)
+    state_path = out / "state.npz" if a.segment_steps else None
+    if a.restart and state_path is not None and state_path.exists():
+        state_path.unlink()
+    total_steps = int(config.time_steps_total)
+    arrays, objs, config, timing = run(objects, constraints, config, bench_steps=a.bench_steps,
+                                       segment_steps=a.segment_steps, state_path=state_path,
+                                       on_segment=(lambda ar, st, tot, tm: write_outputs(out, ar, meta, st, tot, tm))
+                                       if a.segment_steps else None)
     meta.update(timing=timing, bench_steps=a.bench_steps, n_steps_run=int(config.time_steps_total))
-    ds = arrays.detector_states
-    save = {}
-    for name, st in ds.items():
-        for k, v in st.items():
-            arr = np.asarray(v)
-            save[f"{name}/{k}"] = arr[0] if (k == "phasor" and arr.shape[0] == 1) else arr
-    np.savez_compressed(out / "phasors.npz", **save, z_edges_m=np.array(meta["z_edges_m"]), lam_spec_m=LAM_SPEC, lam_field_m=np.array(meta["lam_field_m"]))
-    json.dump(meta, open(out / "run_meta.json", "w"), indent=1)
-    E = np.asarray(arrays.fields.E)
-    meta_short = dict(max_abs_E_final=float(np.abs(E).max()), finite=bool(np.isfinite(E).all()))
-    print(f"[fx] done: setup {timing['setup_s']:.0f} s, run {timing['run_s']:.0f} s for {meta['n_steps_run']} steps "
-          f"({meta['n_steps_run'] * np.prod(meta['n_cells']) / max(timing['run_s'], 1e-9):.2e} cell-steps/s); final max|E| = {meta_short['max_abs_E_final']:.3e} finite={meta_short['finite']}", flush=True)
-    json.dump({**meta, **meta_short}, open(out / "run_meta.json", "w"), indent=1)
+    m = write_outputs(out, arrays, meta, total_steps, total_steps, timing)
+    print(f"[fx] done: setup {timing['setup_s']:.0f} s, run {timing['run_s']:.0f} s for {m['n_steps_run']} steps "
+          f"({m['n_steps_run'] * np.prod(meta['n_cells']) / max(timing['run_s'], 1e-9):.2e} cell-steps/s); "
+          f"final max|E| = {m['max_abs_E_final']:.3e} finite={m['finite']}", flush=True)
+    if state_path is not None and state_path.exists():
+        state_path.unlink()                 # the run finished; the resume state is no longer needed
 
 
 if __name__ == "__main__":

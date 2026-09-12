@@ -1,0 +1,16 @@
+{
+ "final3/rho64": {
+  "rms_R_zero_shift": 0.22367206325274885,
+  "best_shift_nm": 12.75,
+  "rms_R_at_best_shift": 0.09610527331688441,
+  "shift_percent": 0.9807692307692307,
+  "note": "R_FDTD(lam) compared with R_RCWA(lam + shift); positive shift = FDTD features sit at shorter wavelength than RCWA"
+ },
+ "final3/rho128": {
+  "rms_R_zero_shift": 0.222922799097942,
+  "best_shift_nm": 12.25,
+  "rms_R_at_best_shift": 0.08496708884301973,
+  "shift_percent": 0.9423076923076923,
+  "note": "R_FDTD(lam) compared with R_RCWA(lam + shift); positive shift = FDTD features sit at shorter wavelength than RCWA"
+ }
+}
