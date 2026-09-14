@@ -1,0 +1,13 @@
+run rv32_32b: start=rod_veins:0.32,0.08 bands TM3-4 TE2-3 nvar=1176 opts={'step0': 0.15, 'R': 3.0, 'betas': '1:10,2:8,4:8,8:8,16:10,32:12,64:14,128:16,256:16', 'seed': 0, 'sym': 1, 'Mmax': 9, 'noise': 0.02, 'stepmin': 0.004, 'refine': 1, 'refine_rounds': 120, 'depth': 2}
+  it   0 beta=  1.0 step=0.1500 pred=0.03082 actual=0.03027 (score 14.800%) ACCEPT | active: tm band4 hi k=(0.0,0.0)pi | fill(phys)=0.383 gray=0.195 | 4s
+  it   1 beta=  1.0 step=0.1950 pred=0.03357 actual=0.03334 (score 16.301%) ACCEPT | active: tm band4 hi k=(0.0,0.0)pi | fill(phys)=0.384 gray=0.205 | 7s
+  it   2 beta=  1.0 step=0.2535 pred=0.03624 actual=0.02768 (score 13.536%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.382 gray=0.206 | 11s
+  it   3 beta=  1.0 step=0.1268 pred=0.03513 actual=0.03496 (score 17.096%) ACCEPT | active: tm band4 hi k=(0.0,0.0)pi | fill(phys)=0.383 gray=0.200 | 14s
+  it   4 beta=  1.0 step=0.1648 pred=0.03660 actual=0.03234 (score 15.812%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.383 gray=0.214 | 18s
+  it   5 beta=  1.0 step=0.0824 pred=0.03589 actual=0.03472 (score 16.979%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.383 gray=0.212 | 22s
+  it   6 beta=  1.0 step=0.0412 pred=0.03554 actual=0.03516 (score 17.194%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.383 gray=0.208 | 25s
+  it   7 beta=  1.0 step=0.0536 pred=0.03598 actual=0.03559 (score 17.402%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.384 gray=0.214 | 29s
+  it   8 beta=  1.0 step=0.0696 pred=0.03658 actual=0.03596 (score 17.581%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.384 gray=0.224 | 32s
+  it   9 beta=  1.0 step=0.0905 pred=0.03725 actual=0.03572 (score 17.464%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.385 gray=0.221 | 36s
+  [beta -> 2.0] current min margin 0.03022 (score 14.775%)
+  it  10 beta=  2.0 step=0.0453 pred=0.03718 actual=0.03648 (score 17.837%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.386 gray=0.216 | 43s

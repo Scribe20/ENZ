@@ -1,0 +1,8 @@
+[ref_d3 START] score = 10.616%  fill = 0.4145  Mmax=9 nk=66 form=official t=3.1s
+    complete gap [0.38706, 0.43074]  width=0.04368 ratio=10.68%  TM bands 3-4, TE bands 2-3  margins: lo=0.02197 hi=0.02171
+    TM gap at target: (0.37145, 0.43074, 3)   TE gap at target: (0.38706, 0.45002, 2)
+  refine start: min margin 0.02171 (score 10.616%)
+  no improving flip set predicted; stop
+[ref_d3 REFINED] score = 10.616%  fill = 0.4145  Mmax=9 nk=66 form=official t=3.2s
+    complete gap [0.38706, 0.43074]  width=0.04368 ratio=10.68%  TM bands 3-4, TE bands 2-3  margins: lo=0.02197 hi=0.02171
+    TM gap at target: (0.37145, 0.43074, 3)   TE gap at target: (0.38706, 0.45002, 2)

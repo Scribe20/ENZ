@@ -12,7 +12,7 @@ import stageA as SA
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 
 name, start, n_tm, n_te = sys.argv[1], sys.argv[2], int(sys.argv[3]) - 1, int(sys.argv[4]) - 1
-opts = dict(iters=80, step0=0.15, R=2.0, betas='1,2,4,8,16,32,64,128', seed=0, sym=1, Mmax=9, noise=0.02, stepmin=0.004, refine=1, refine_rounds=80)
+opts = dict(step0=0.15, R=3.0, betas='1:10,2:8,4:8,8:8,16:10,32:12,64:14,128:16,256:16', seed=0, sym=1, Mmax=9, noise=0.02, stepmin=0.004, refine=1, refine_rounds=120, depth=2)
 for a in sys.argv[5:]:
     k, v = a.split('='); opts[k] = type(opts[k])(v) if k in opts else v
 rng = np.random.default_rng(int(opts['seed']))
@@ -33,10 +33,12 @@ else:
     rho0 = 0.9 * rho0 + 0.05
 if int(opts['sym']): rho0 = symmetrize_c4v(rho0)
 
-betas = [float(b) for b in str(opts['betas']).split(',')]
-iters = int(opts['iters'])
-per = max(1, iters // len(betas))
-schedule = [(i * per, b) for i, b in enumerate(betas)]
+bspec = [(float(s.split(':')[0]), int(s.split(':')[1])) for s in str(opts['betas']).split(',')]
+betas = [b for b, n in bspec]
+schedule = []; acc = 0
+for b, n in bspec:
+    schedule.append((acc, b)); acc += n
+iters = acc
 
 opt = ScoreOptimizer(rho0, n_tm, n_te, Mmax=int(opts['Mmax']), symmetric=bool(int(opts['sym'])), filter_R=float(opts['R']), beta=betas[0], name=name)
 print(f"run {name}: start={start} bands TM{n_tm+1}-{n_tm+2} TE{n_te+1}-{n_te+2} nvar={opt.nvar} opts={opts}", flush=True)
@@ -55,7 +57,7 @@ score_prerefine = r['score']
 if int(opts['refine']):
     print("=== discrete refinement of the binary design", flush=True)
     rlog = []
-    mask, cur_b = discrete_refine(mask, n_tm, n_te, Mmax=9, symmetric=bool(int(opts['sym'])), max_rounds=int(opts['refine_rounds']), log=rlog)
+    mask, cur_b = discrete_refine(mask, n_tm, n_te, Mmax=9, symmetric=bool(int(opts['sym'])), max_rounds=int(opts['refine_rounds']), log=rlog, depth=int(opts['depth']))
     eps = mask_to_eps(mask)
     r = evaluate(eps, Mmax=9, nbands=10)
     print(summarize(r, name + ' REFINED official'), flush=True)

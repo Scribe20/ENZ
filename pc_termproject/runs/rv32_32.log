@@ -1,0 +1,94 @@
+run rv32_32: start=rod_veins:0.32,0.08 bands TM3-4 TE2-3 nvar=1176 opts={'iters': 80, 'step0': 0.15, 'R': 2.0, 'betas': '1,2,4,8,16,32,64,128', 'seed': 0, 'sym': 1, 'Mmax': 9, 'noise': 0.02, 'stepmin': 0.004, 'refine': 1, 'refine_rounds': 80}
+  it   0 beta=  1.0 step=0.1500 pred=0.03091 actual=0.03047 (score 14.900%) ACCEPT | active: tm band4 hi k=(0.0,0.0)pi | fill(phys)=0.383 gray=0.159 | 4s
+  it   1 beta=  1.0 step=0.1950 pred=0.03408 actual=0.03395 (score 16.602%) ACCEPT | active: tm band4 hi k=(0.0,0.0)pi | fill(phys)=0.386 gray=0.169 | 7s
+  it   2 beta=  1.0 step=0.2535 pred=0.03708 actual=0.02407 (score 11.771%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.385 gray=0.195 | 14s
+  it   3 beta=  1.0 step=0.1268 pred=0.03584 actual=0.03227 (score 15.778%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.386 gray=0.183 | 18s
+  it   4 beta=  1.0 step=0.0634 pred=0.03519 actual=0.03409 (score 16.669%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.386 gray=0.171 | 23s
+  it   5 beta=  1.0 step=0.0824 pred=0.03605 actual=0.03402 (score 16.634%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.386 gray=0.191 | 29s
+  it   6 beta=  1.0 step=0.0412 pred=0.03562 actual=0.03500 (score 17.113%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.386 gray=0.181 | 35s
+  it   7 beta=  1.0 step=0.0536 pred=0.03615 actual=0.03540 (score 17.307%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.387 gray=0.193 | 41s
+  it   8 beta=  1.0 step=0.0696 pred=0.03682 actual=0.03557 (score 17.392%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.387 gray=0.209 | 46s
+  it   9 beta=  1.0 step=0.0905 pred=0.03731 actual=0.03447 (score 16.854%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.387 gray=0.201 | 51s
+  [beta -> 2.0] current min margin 0.03031 (score 14.820%)
+  it  10 beta=  2.0 step=0.0453 pred=0.03723 actual=0.03644 (score 17.819%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.206 | 61s
+  it  11 beta=  2.0 step=0.0588 pred=0.03742 actual=0.03627 (score 17.737%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.387 gray=0.203 | 66s
+  it  12 beta=  2.0 step=0.0294 pred=0.03729 actual=0.03700 (score 18.091%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.206 | 71s
+  it  13 beta=  2.0 step=0.0382 pred=0.03742 actual=0.03699 (score 18.088%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.199 | 76s
+  it  14 beta=  2.0 step=0.0191 pred=0.03735 actual=0.03724 (score 18.208%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.204 | 80s
+  it  15 beta=  2.0 step=0.0249 pred=0.03742 actual=0.03729 (score 18.235%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.196 | 85s
+  it  16 beta=  2.0 step=0.0323 pred=0.03753 actual=0.03715 (score 18.164%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.195 | 90s
+  it  17 beta=  2.0 step=0.0162 pred=0.03747 actual=0.03738 (score 18.276%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.195 | 95s
+  it  18 beta=  2.0 step=0.0210 pred=0.03753 actual=0.03743 (score 18.301%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.196 | 100s
+  it  19 beta=  2.0 step=0.0273 pred=0.03761 actual=0.03734 (score 18.260%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.388 gray=0.194 | 105s
+  [beta -> 4.0] current min margin 0.02051 (score 10.028%)
+  it  20 beta=  4.0 step=0.0137 pred=0.02707 actual=0.02699 (score 13.198%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.156 | 114s
+  it  21 beta=  4.0 step=0.0177 pred=0.03522 actual=0.03509 (score 17.158%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.392 gray=0.161 | 120s
+  it  22 beta=  4.0 step=0.0231 pred=0.03687 actual=0.03652 (score 17.856%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.171 | 125s
+  it  23 beta=  4.0 step=0.0300 pred=0.03758 actual=0.03733 (score 18.251%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.174 | 129s
+  it  24 beta=  4.0 step=0.0390 pred=0.03780 actual=0.03719 (score 18.186%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.172 | 133s
+  it  25 beta=  4.0 step=0.0195 pred=0.03769 actual=0.03757 (score 18.368%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.174 | 138s
+  it  26 beta=  4.0 step=0.0253 pred=0.03777 actual=0.03753 (score 18.349%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.174 | 141s
+  it  27 beta=  4.0 step=0.0127 pred=0.03773 actual=0.03767 (score 18.420%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.172 | 145s
+  it  28 beta=  4.0 step=0.0165 pred=0.03778 actual=0.03764 (score 18.405%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.174 | 148s
+  it  29 beta=  4.0 step=0.0082 pred=0.03775 actual=0.03771 (score 18.441%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.389 gray=0.172 | 152s
+  [beta -> 8.0] current min margin 0.00762 (score 3.727%)
+  it  30 beta=  8.0 step=0.0107 pred=0.01550 actual=0.01540 (score  7.532%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.385 gray=0.105 | 159s
+  it  31 beta=  8.0 step=0.0139 pred=0.02539 actual=0.02518 (score 12.311%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.390 gray=0.107 | 162s
+  it  32 beta=  8.0 step=0.0181 pred=0.03515 actual=0.03470 (score 16.966%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.391 gray=0.112 | 166s
+  it  33 beta=  8.0 step=0.0235 pred=0.03667 actual=0.03566 (score 17.435%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.390 gray=0.117 | 169s
+  it  34 beta=  8.0 step=0.0306 pred=0.03746 actual=0.03640 (score 17.796%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.391 gray=0.132 | 173s
+  it  35 beta=  8.0 step=0.0398 pred=0.03804 actual=0.03566 (score 17.436%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.392 gray=0.136 | 176s
+  it  36 beta=  8.0 step=0.0199 pred=0.03777 actual=0.03715 (score 18.163%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.391 gray=0.135 | 180s
+  it  37 beta=  8.0 step=0.0258 pred=0.03796 actual=0.03649 (score 17.844%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.392 gray=0.136 | 184s
+  it  38 beta=  8.0 step=0.0129 pred=0.03783 actual=0.03748 (score 18.326%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.392 gray=0.138 | 187s
+  it  39 beta=  8.0 step=0.0168 pred=0.03790 actual=0.03756 (score 18.367%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.392 gray=0.136 | 191s
+  [beta -> 16.0] current min margin 0.00852 (score 4.164%)
+  it  40 beta= 16.0 step=0.0218 pred=0.03625 actual=0.03412 (score 16.686%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.099 | 198s
+  it  41 beta= 16.0 step=0.0284 pred=0.03740 actual=0.03265 (score 15.965%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.108 | 202s
+  it  42 beta= 16.0 step=0.0142 pred=0.03649 actual=0.03525 (score 17.235%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.105 | 205s
+  it  43 beta= 16.0 step=0.0185 pred=0.03718 actual=0.03529 (score 17.257%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.111 | 209s
+  it  44 beta= 16.0 step=0.0240 pred=0.03788 actual=0.03355 (score 16.406%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.120 | 212s
+  it  45 beta= 16.0 step=0.0120 pred=0.03736 actual=0.03629 (score 17.744%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.118 | 216s
+  it  46 beta= 16.0 step=0.0156 pred=0.03766 actual=0.03507 (score 17.147%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.120 | 219s
+  it  47 beta= 16.0 step=0.0078 pred=0.03738 actual=0.03675 (score 17.971%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.119 | 223s
+  it  48 beta= 16.0 step=0.0101 pred=0.03763 actual=0.03660 (score 17.897%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.120 | 226s
+  it  49 beta= 16.0 step=0.0051 pred=0.03743 actual=0.03718 (score 18.177%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.394 gray=0.119 | 230s
+  [beta -> 32.0] current min margin 0.01337 (score 6.536%)
+  it  50 beta= 32.0 step=0.0066 pred=0.03240 actual=0.03139 (score 15.349%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.393 gray=0.094 | 237s
+  it  51 beta= 32.0 step=0.0086 pred=0.03641 actual=0.03461 (score 16.921%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.395 gray=0.095 | 241s
+  it  52 beta= 32.0 step=0.0111 pred=0.03674 actual=0.03440 (score 16.818%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.396 gray=0.101 | 244s
+  it  53 beta= 32.0 step=0.0056 pred=0.03626 actual=0.03566 (score 17.435%) ACCEPT | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.395 gray=0.095 | 247s
+  it  54 beta= 32.0 step=0.0072 pred=0.03658 actual=0.03507 (score 17.149%) reject | active: te band2 lo k=(1.0,1.0)pi | fill(phys)=0.396 gray=0.099 | 251s
+  trust region exhausted
+continuous optimisation done in 255s, final min margin 0.03566 (score 17.435%)
+[rv32_32 BINARY official] score = 0.000%  fill = 0.3880  Mmax=9 nk=66 form=official t=3.2s
+    TM gap at target: (0.37151, 0.4479, 3)   TE gap at target: None
+=== discrete refinement of the binary design
+  refine start: min margin -0.05026 (score -24.575%)
+  round   0: k= 8 flips pred -0.00044 actual -0.04507 (score -22.039%) ACCEPT fill=0.3945
+  round   1: k=16 flips pred -0.00176 actual -0.04027 (score -19.692%) ACCEPT fill=0.3928
+  round   2: k=28 flips pred 0.00003 actual -0.04194 (score -20.509%) reject fill=0.3767
+  round   3: k=16 flips pred -0.00047 actual -0.03627 (score -17.734%) ACCEPT fill=0.3872
+  round   4: k=32 flips pred -0.00067 actual -0.04426 (score -21.640%) reject fill=0.3733
+  round   5: k=16 flips pred -0.00156 actual -0.03560 (score -17.406%) ACCEPT fill=0.3872
+  round   6: k=23 flips pred -0.00002 actual -0.03913 (score -19.134%) reject fill=0.3793
+  round   7: k=16 flips pred -0.00032 actual -0.03582 (score -17.517%) reject fill=0.3854
+  round   8: k= 7 flips pred -0.00062 actual -0.03228 (score -15.782%) ACCEPT fill=0.3932
+  round   9: k=16 flips pred -0.00042 actual -0.03301 (score -16.143%) reject fill=0.3915
+  round  10: k= 7 flips pred -0.00074 actual -0.02924 (score -14.298%) ACCEPT fill=0.3993
+  round  11: k=16 flips pred -0.00058 actual -0.03034 (score -14.834%) reject fill=0.3971
+  round  12: k= 7 flips pred -0.00090 actual -0.02650 (score -12.958%) ACCEPT fill=0.4049
+  round  13: k=16 flips pred -0.00099 actual -0.02793 (score -13.659%) reject fill=0.4015
+  round  14: k= 6 flips pred -0.00134 actual -0.02395 (score -11.709%) ACCEPT fill=0.4102
+  round  15: k=16 flips pred -0.00053 actual -0.02574 (score -12.584%) reject fill=0.4067
+  round  16: k= 6 flips pred -0.00087 actual -0.02173 (score -10.625%) ACCEPT fill=0.4154
+  round  17: k=16 flips pred -0.00108 actual -0.02382 (score -11.646%) reject fill=0.4102
+  round  18: k= 5 flips pred -0.00144 actual -0.01969 (score -9.626%) ACCEPT fill=0.4197
+  round  19: k=15 flips pred -0.00121 actual -0.02077 (score -10.153%) reject fill=0.4132
+  round  20: k= 4 flips pred -0.00347 actual -0.01802 (score -8.810%) ACCEPT fill=0.4227
+  round  21: k=13 flips pred -0.00361 actual -0.01897 (score -9.273%) reject fill=0.4167
+  round  22: k= 3 flips pred -0.00559 actual -0.01671 (score -8.169%) ACCEPT fill=0.4253
+  round  23: k= 9 flips pred -0.00676 actual -0.01685 (score -8.239%) reject fill=0.4210
+  round  24: k= 2 flips pred -0.00715 actual -0.01584 (score -7.748%) ACCEPT fill=0.4271
+  round  25: k=12 flips pred -0.00654 actual -0.01722 (score -8.422%) reject fill=0.4201
+  round  26: k= 2 flips pred -0.00866 actual -0.01500 (score -7.337%) ACCEPT fill=0.4288

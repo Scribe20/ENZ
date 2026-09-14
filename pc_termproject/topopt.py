@@ -74,7 +74,9 @@ def field_on_grid(coeffs, basis, N=N_GRID):
 
 def band_values_and_grads(st, k, bands_tm, bands_te, nb_solve=None):
     """For one k: eigenvalues and d(omega)/d(eps_p) fields for the requested band indices (0-based).
-    Returns dict pol -> list of (omega, grad_field[N,N]) in the order of the requested band lists."""
+    Returns dict pol -> list of (omega, grad_field[N,N]) in the order of the requested band lists.
+    TM gradients are d omega / d eps_p ; TE gradients are d omega / d eta_p with eta = 1/eps (exact for finite flips
+    when multiplied by the change of 1/eps)."""
     from pwem import _matrices
     A_tm, A_te, kG, mag = _matrices(st, k, 'official')
     N = st.N
@@ -93,13 +95,11 @@ def band_values_and_grads(st, k, bands_tm, bands_te, nb_solve=None):
     if bands_te:
         nb = max(bands_te) + 1 if nb_solve is None else nb_solve
         lam, V = sla.eigh(A_te, subset_by_index=[0, nb - 1], driver='evr')
-        eps2 = st.eps**2
         for n in bands_te:
             v = V[:, n]; l = max(lam[n], 0.0); w = np.sqrt(l) / (2 * np.pi)
             wf = field_on_grid(kG * v[:, None], st.basis, N)    # (2,N,N)
             dl_deta = (np.abs(wf[0])**2 + np.abs(wf[1])**2) / N**2
-            dl_deps = dl_deta * (-1.0 / eps2)
-            dw = dl_deps / (8 * np.pi**2 * w) if w > 1e-9 else np.zeros_like(dl_deps)
+            dw = dl_deta / (8 * np.pi**2 * w) if w > 1e-9 else np.zeros_like(dl_deta)   # d omega / d eta_p  (eta = 1/eps)
             out['te'].append((w, dw))
     return out
 
@@ -147,10 +147,13 @@ class ScoreOptimizer:
         st = Structure(eps, self.Mmax)
         st.eps_inv_mat
         f = []; G = []; info = []
+        deta_deps = -1.0 / eps**2
         for k in self.K:
             res = band_values_and_grads(st, k, [self.n_tm, self.n_tm + 1], [self.n_te, self.n_te + 1])
             for pol, n0 in (('tm', self.n_tm), ('te', self.n_te)):
                 (w_lo, g_lo), (w_hi, g_hi) = res[pol]
+                if pol == 'te':
+                    g_lo = g_lo * deta_deps; g_hi = g_hi * deta_deps      # d omega/d eps = d omega/d eta * d eta/d eps
                 # margins
                 f.append(TARGET - w_lo); f.append(w_hi - TARGET)
                 info.append((pol, n0, 'lo', tuple(k), w_lo)); info.append((pol, n0 + 1, 'hi', tuple(k), w_hi))
@@ -223,7 +226,7 @@ class ScoreOptimizer:
 
 # ----------------------------------------------------------------------------- discrete (binary) refinement
 def discrete_refine(mask0, n_tm, n_te, K=None, Mmax=9, symmetric=True, max_rounds=60, k_init=8, verbose=True,
-                    log=None, boundary_only=True, min_gain=1e-6):
+                    log=None, boundary_only=True, min_gain=1e-6, depth=1, k_max=64):
     """Gradient-guided flips of pixel orbits on a BINARY design, accepted only if the exact min margin improves.
     Each round: linearised margins f_i + sum_p G_ip * d_p (d_p = +1 for air->Si, -1 for Si->air) rank the candidate
     orbit flips; a greedy set of up to k flips is chosen so that the predicted min margin keeps increasing; the set is
@@ -237,13 +240,17 @@ def discrete_refine(mask0, n_tm, n_te, K=None, Mmax=9, symmetric=True, max_round
     def margins_and_grads(mask):
         eps = mask_to_eps(mask)
         st = Structure(eps, Mmax); st.eps_inv_mat
+        # per-pixel change of eps and of eta=1/eps if the pixel is flipped (air->Si: +, Si->air: -)
+        d_eps = np.where(mask, EPS_AIR - EPS_SI, EPS_SI - EPS_AIR)
+        d_eta = np.where(mask, 1.0 / EPS_AIR - 1.0 / EPS_SI, 1.0 / EPS_SI - 1.0 / EPS_AIR)
         f = []; G = []
         for k in K:
             res = band_values_and_grads(st, k, [n_tm, n_tm + 1], [n_te, n_te + 1])
-            for pol, n0 in (('tm', n_tm), ('te', n_te)):
+            for pol, n0, dvar in (('tm', n_tm, d_eps), ('te', n_te, d_eta)):
                 (w_lo, g_lo), (w_hi, g_hi) = res[pol]
-                f.append(TARGET - w_lo); G.append(reduce_to_orbits(-g_lo * (EPS_SI - EPS_AIR), orb_ids, nvar))
-                f.append(w_hi - TARGET); G.append(reduce_to_orbits(+g_hi * (EPS_SI - EPS_AIR), orb_ids, nvar))
+                # G_ip = predicted change of margin i if orbit p is flipped (first-order in the pixel area)
+                f.append(TARGET - w_lo); G.append(reduce_to_orbits(-g_lo * dvar, orb_ids, nvar))
+                f.append(w_hi - TARGET); G.append(reduce_to_orbits(+g_hi * dvar, orb_ids, nvar))
         return np.array(f), np.array(G)
 
     f, G = margins_and_grads(mask)
@@ -254,25 +261,40 @@ def discrete_refine(mask0, n_tm, n_te, K=None, Mmax=9, symmetric=True, max_round
     for rnd in range(max_rounds):
         # candidate orbits: boundary pixels only (interior flips are never first-order optimal for a gap)
         if boundary_only:
-            pm = np.pad(mask, 2, mode='wrap')
-            bd = (mask ^ ndimage.binary_erosion(pm, iterations=1)[2:-2, 2:-2]) | (mask ^ ndimage.binary_dilation(pm, iterations=1)[2:-2, 2:-2])
+            pm = np.pad(mask, 4, mode='wrap')
+            bd = (mask ^ ndimage.binary_erosion(pm, iterations=depth)[4:-4, 4:-4]) | (mask ^ ndimage.binary_dilation(pm, iterations=depth)[4:-4, 4:-4])
             cand = np.unique(orb_ids[bd])
         else:
             cand = np.arange(nvar)
-        d = 1.0 - 2.0 * xo[cand]                       # +1 if currently air (0) -> Si, -1 if Si -> air
-        # predicted min margin after each single flip
-        pred_single = np.min(f[:, None] + G[:, cand] * d[None, :], axis=0)
-        order = np.argsort(-pred_single)
-        # greedy accumulation
-        chosen = []; acc = np.zeros(len(f))
-        for j in order[:max(4 * k, 20)]:
-            trial = acc + G[:, cand[j]] * d[j]
-            if np.min(f + trial) > np.min(f + acc) + min_gain and len(chosen) < k:
-                chosen.append(j); acc = trial
-        if not chosen:
-            if verbose: print("  no improving flip predicted; stop", flush=True)
+        # --- LP over candidate flips: max t  s.t.  f_i + sum_p G_ip x_p >= t ,  0<=x_p<=1 ,  sum_p x_p <= k
+        Gc = G[:, cand]
+        nc = len(cand)
+        c = np.zeros(nc + 1); c[-1] = -1.0
+        A_ub = np.vstack([np.hstack([-Gc, np.ones((len(f), 1))]), np.hstack([np.ones((1, nc)), np.zeros((1, 1))])])
+        b_ub = np.concatenate([f, [float(k)]])
+        bounds = [(0.0, 1.0)] * nc + [(None, None)]
+        lp = linprog(c, A_ub=A_ub, b_ub=b_ub, bounds=bounds, method='highs')
+        if not lp.success:
+            if verbose: print("  LP failed:", lp.message, flush=True)
             break
-        pred = np.min(f + acc)
+        xlp = lp.x[:nc]
+        # rounding: take flips in decreasing LP weight while the predicted min margin keeps improving over the current one
+        order = np.argsort(-xlp)
+        chosen = []; acc = np.zeros(len(f)); best_pred = f.min(); best_set = []
+        for j in order:
+            if xlp[j] < 0.05 or len(chosen) >= k: break
+            chosen.append(j); acc = acc + Gc[:, j]
+            p = np.min(f + acc)
+            if p > best_pred + min_gain:
+                best_pred = p; best_set = list(chosen)
+        chosen = best_set; acc = Gc[:, chosen].sum(axis=1) if chosen else np.zeros(len(f))
+        if not chosen:
+            k = k // 2
+            if k < 1:
+                if verbose: print("  no improving flip set predicted; stop", flush=True)
+                break
+            continue
+        pred = best_pred
         # apply
         xo_new = xo.copy(); xo_new[cand[chosen]] = 1.0 - xo_new[cand[chosen]]
         mask_new = xo_new[orb_ids] > 0.5
@@ -284,7 +306,7 @@ def discrete_refine(mask0, n_tm, n_te, K=None, Mmax=9, symmetric=True, max_round
             log.append(dict(round=rnd, k=len(chosen), pred=float(pred), actual=float(new), accepted=bool(new > cur + min_gain)))
         if new > cur + min_gain:
             mask, xo, f, G, cur = mask_new, xo_new, f_new, G_new, new
-            k = min(k * 2, 64)
+            k = min(k * 2, k_max)
         else:
             k = k // 2
             if k < 1:
