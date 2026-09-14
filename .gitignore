@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 **/checkpoint.pt
+pc_termproject/runs/*/rho_*.npy
+pc_termproject/__pycache__/

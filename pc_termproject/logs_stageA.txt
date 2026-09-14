@@ -1,0 +1,200 @@
+Stage A: 1052 evaluations planned
+[1/1052      4s] circle_rod             [0.08]                     fill=0.020 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[2/1052      7s] circle_rod             [0.1]                      fill=0.031 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[3/1052     10s] circle_rod             [0.12]                     fill=0.046 score=  0.00%  no complete gap at target  | TM@t=[0.373,0.488] TE@t=-
+[4/1052     13s] circle_rod             [0.14]                     fill=0.061 score=  0.00%  no complete gap at target  | TM@t=[0.344,0.479] TE@t=-
+[5/1052     16s] circle_rod             [0.16]                     fill=0.079 score=  0.00%  no complete gap at target  | TM@t=[0.318,0.463] TE@t=-
+[6/1052     19s] circle_rod             [0.18]                     fill=0.102 score=  0.00%  no complete gap at target  | TM@t=[0.296,0.441] TE@t=-
+[7/1052     22s] circle_rod             [0.2]                      fill=0.126 score=  0.00%  no complete gap at target  | TM@t=[0.279,0.416] TE@t=-
+[8/1052     25s] circle_rod             [0.22]                     fill=0.151 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[9/1052     28s] circle_rod             [0.24]                     fill=0.181 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[10/1052     31s] circle_rod             [0.26]                     fill=0.214 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[11/1052     34s] circle_rod             [0.28]                     fill=0.248 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[12/1052     37s] circle_rod             [0.3]                      fill=0.283 score=  0.00%  no complete gap at target  | TM@t=[0.406,0.510] TE@t=-
+[13/1052     40s] circle_rod             [0.32]                     fill=0.324 score=  0.00%  no complete gap at target  | TM@t=[0.388,0.482] TE@t=-
+[14/1052     44s] circle_rod             [0.34]                     fill=0.365 score=  0.00%  no complete gap at target  | TM@t=[0.374,0.452] TE@t=-
+[15/1052     47s] circle_rod             [0.36]                     fill=0.406 score=  0.00%  no complete gap at target  | TM@t=[0.362,0.426] TE@t=-
+[16/1052     50s] circle_rod             [0.38]                     fill=0.451 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[17/1052     53s] circle_rod             [0.4]                      fill=0.502 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[18/1052     56s] circle_rod             [0.42]                     fill=0.553 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[19/1052     59s] circle_rod             [0.44]                     fill=0.607 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[20/1052     62s] circle_rod             [0.46]                     fill=0.666 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[21/1052     64s] circle_rod             [0.48]                     fill=0.724 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+=== best circle_rod: score=0.00% params=[0.08] fill=0.020 no complete gap at target
+[22/1052     68s] square_rod             [0.15]                     fill=0.021 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[23/1052     70s] square_rod             [0.2]                      fill=0.043 score=  0.00%  no complete gap at target  | TM@t=[0.380,0.489] TE@t=-
+[24/1052     73s] square_rod             [0.25]                     fill=0.062 score=  0.00%  no complete gap at target  | TM@t=[0.342,0.477] TE@t=-
+[25/1052     76s] square_rod             [0.3]                      fill=0.085 score=  0.00%  no complete gap at target  | TM@t=[0.313,0.457] TE@t=-
+[26/1052     79s] square_rod             [0.35]                     fill=0.125 score=  0.00%  no complete gap at target  | TM@t=[0.281,0.415] TE@t=-
+[27/1052     82s] square_rod             [0.4]                      fill=0.157 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[28/1052     85s] square_rod             [0.45]                     fill=0.210 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[29/1052     88s] square_rod             [0.5]                      fill=0.250 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[30/1052     91s] square_rod             [0.55]                     fill=0.293 score=  0.00%  no complete gap at target  | TM@t=[0.402,0.473] TE@t=-
+[31/1052     94s] square_rod             [0.6]                      fill=0.365 score=  0.00%  no complete gap at target  | TM@t=[0.375,0.419] TE@t=-
+[32/1052     97s] square_rod             [0.65]                     fill=0.417 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[33/1052    100s] square_rod             [0.7]                      fill=0.502 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[34/1052    103s] square_rod             [0.75]                     fill=0.562 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[35/1052    106s] square_rod             [0.8]                      fill=0.627 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[36/1052    109s] square_rod             [0.85]                     fill=0.730 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[37/1052    112s] square_rod             [0.9]                      fill=0.803 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+=== best square_rod: score=0.00% params=[0.15] fill=0.021 no complete gap at target
+[38/1052    115s] diamond_rod            [0.15]                     fill=0.024 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[39/1052    119s] diamond_rod            [0.18]                     fill=0.034 score=  0.00%  no complete gap at target  | TM@t=[0.409,0.494] TE@t=-
+[40/1052    121s] diamond_rod            [0.21]                     fill=0.046 score=  0.00%  no complete gap at target  | TM@t=[0.375,0.488] TE@t=-
+[41/1052    125s] diamond_rod            [0.24]                     fill=0.059 score=  0.00%  no complete gap at target  | TM@t=[0.348,0.480] TE@t=-
+[42/1052    128s] diamond_rod            [0.27]                     fill=0.074 score=  0.00%  no complete gap at target  | TM@t=[0.325,0.467] TE@t=-
+[43/1052    131s] diamond_rod            [0.3]                      fill=0.091 score=  0.00%  no complete gap at target  | TM@t=[0.307,0.451] TE@t=-
+[44/1052    134s] diamond_rod            [0.33]                     fill=0.110 score=  0.00%  no complete gap at target  | TM@t=[0.291,0.432] TE@t=-
+[45/1052    137s] diamond_rod            [0.36]                     fill=0.130 score=  0.00%  no complete gap at target  | TM@t=[0.278,0.411] TE@t=-
+[46/1052    140s] diamond_rod            [0.39]                     fill=0.152 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[47/1052    143s] diamond_rod            [0.42]                     fill=0.176 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[48/1052    146s] diamond_rod            [0.45]                     fill=0.202 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[49/1052    149s] diamond_rod            [0.48]                     fill=0.229 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[50/1052    152s] diamond_rod            [0.51]                     fill=0.258 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[51/1052    155s] diamond_rod            [0.54]                     fill=0.289 score=  0.00%  no complete gap at target  | TM@t=[0.407,0.499] TE@t=-
+[52/1052    158s] diamond_rod            [0.57]                     fill=0.322 score=  0.00%  no complete gap at target  | TM@t=[0.393,0.476] TE@t=-
+[53/1052    161s] diamond_rod            [0.6]                      fill=0.356 score=  0.00%  no complete gap at target  | TM@t=[0.381,0.451] TE@t=-
+[54/1052    164s] diamond_rod            [0.63]                     fill=0.392 score=  0.00%  no complete gap at target  | TM@t=[0.371,0.427] TE@t=-
+[55/1052    167s] diamond_rod            [0.66]                     fill=0.430 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[56/1052    170s] diamond_rod            [0.69]                     fill=0.469 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.399,0.420]
+=== best diamond_rod: score=0.00% params=[0.15] fill=0.024 no complete gap at target
+[57/1052    173s] circle_hole            [0.2]                      fill=0.874 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[58/1052    176s] circle_hole            [0.22]                     fill=0.849 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[59/1052    179s] circle_hole            [0.24]                     fill=0.819 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[60/1052    182s] circle_hole            [0.26]                     fill=0.786 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[61/1052    185s] circle_hole            [0.28]                     fill=0.752 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[62/1052    188s] circle_hole            [0.3]                      fill=0.717 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[63/1052    191s] circle_hole            [0.32]                     fill=0.676 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[64/1052    194s] circle_hole            [0.34]                     fill=0.635 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[65/1052    197s] circle_hole            [0.36]                     fill=0.594 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[66/1052    200s] circle_hole            [0.38]                     fill=0.549 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[67/1052    203s] circle_hole            [0.4]                      fill=0.498 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.373,0.430]
+[68/1052    206s] circle_hole            [0.42]                     fill=0.447 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.390,0.454]
+[69/1052    209s] circle_hole            [0.44]                     fill=0.393 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[70/1052    212s] circle_hole            [0.46]                     fill=0.334 score=  0.00%  no complete gap at target  | TM@t=[0.407,0.422] TE@t=-
+[71/1052    215s] circle_hole            [0.48]                     fill=0.276 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[72/1052    218s] circle_hole            [0.5]                      fill=0.215 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[73/1052    222s] circle_hole            [0.52]                     fill=0.165 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[74/1052    225s] circle_hole            [0.54]                     fill=0.126 score=  0.00%  no complete gap at target  | TM@t=[0.283,0.413] TE@t=-
+[75/1052    228s] circle_hole            [0.56]                     fill=0.096 score=  0.00%  no complete gap at target  | TM@t=[0.304,0.444] TE@t=-
+[76/1052    231s] circle_hole            [0.58]                     fill=0.071 score=  0.00%  no complete gap at target  | TM@t=[0.331,0.470] TE@t=-
+[77/1052    234s] circle_hole            [0.6]                      fill=0.048 score=  0.00%  no complete gap at target  | TM@t=[0.370,0.487] TE@t=-
+[78/1052    237s] circle_hole            [0.62]                     fill=0.031 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+=== best circle_hole: score=0.00% params=[0.2] fill=0.874 no complete gap at target
+[79/1052    240s] square_hole            [0.3]                      fill=0.915 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[80/1052    243s] square_hole            [0.33]                     fill=0.889 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[81/1052    246s] square_hole            [0.36]                     fill=0.875 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[82/1052    249s] square_hole            [0.39]                     fill=0.843 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[83/1052    252s] square_hole            [0.42]                     fill=0.826 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[84/1052    255s] square_hole            [0.45]                     fill=0.790 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[85/1052    258s] square_hole            [0.48]                     fill=0.770 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[86/1052    261s] square_hole            [0.51]                     fill=0.750 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[87/1052    265s] square_hole            [0.54]                     fill=0.707 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[88/1052    268s] square_hole            [0.57]                     fill=0.684 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[89/1052    271s] square_hole            [0.6]                      fill=0.635 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[90/1052    274s] square_hole            [0.63]                     fill=0.609 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[91/1052    277s] square_hole            [0.66]                     fill=0.556 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[92/1052    280s] square_hole            [0.69]                     fill=0.527 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[93/1052    283s] square_hole            [0.72]                     fill=0.468 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[94/1052    286s] square_hole            [0.75]                     fill=0.438 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[95/1052    289s] square_hole            [0.78]                     fill=0.406 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[96/1052    292s] square_hole            [0.81]                     fill=0.340 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.319,0.421]
+[97/1052    295s] square_hole            [0.84]                     fill=0.306 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.336,0.436]
+[98/1052    298s] square_hole            [0.87]                     fill=0.234 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.375,0.462]
+[99/1052    301s] square_hole            [0.9]                      fill=0.197 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[100/1052    304s] square_hole            [0.93]                     fill=0.121 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[101/1052    307s] square_hole            [0.96]                     fill=0.082 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+=== best square_hole: score=0.00% params=[0.3] fill=0.915 no complete gap at target
+[102/1052    310s] diamond_hole           [0.3]                      fill=0.909 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[103/1052    313s] diamond_hole           [0.33]                     fill=0.890 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[104/1052    316s] diamond_hole           [0.36]                     fill=0.870 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[105/1052    319s] diamond_hole           [0.39]                     fill=0.848 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[106/1052    322s] diamond_hole           [0.42]                     fill=0.824 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[107/1052    325s] diamond_hole           [0.45]                     fill=0.798 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[108/1052    328s] diamond_hole           [0.48]                     fill=0.771 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[109/1052    331s] diamond_hole           [0.51]                     fill=0.742 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[110/1052    335s] diamond_hole           [0.54]                     fill=0.711 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[111/1052    338s] diamond_hole           [0.57]                     fill=0.678 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[112/1052    341s] diamond_hole           [0.6]                      fill=0.644 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[113/1052    344s] diamond_hole           [0.63]                     fill=0.608 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[114/1052    347s] diamond_hole           [0.66]                     fill=0.570 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[115/1052    350s] diamond_hole           [0.69]                     fill=0.531 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+=== best diamond_hole: score=0.00% params=[0.3] fill=0.909 no complete gap at target
+[116/1052    353s] rod_veins              [0.08, 0.02]               fill=0.055 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[117/1052    356s] rod_veins              [0.08, 0.04]               fill=0.090 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[118/1052    359s] rod_veins              [0.08, 0.06]               fill=0.125 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[119/1052    362s] rod_veins              [0.08, 0.08]               fill=0.161 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[120/1052    365s] rod_veins              [0.08, 0.1]                fill=0.197 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[121/1052    368s] rod_veins              [0.08, 0.12]               fill=0.234 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.375,0.462]
+[122/1052    371s] rod_veins              [0.08, 0.14]               fill=0.270 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.353,0.450]
+[123/1052    374s] rod_veins              [0.08, 0.16]               fill=0.306 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.336,0.436]
+[124/1052    377s] rod_veins              [0.08, 0.18]               fill=0.340 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.319,0.421]
+[125/1052    380s] rod_veins              [0.08, 0.2]                fill=0.373 score=  0.00%  no complete gap at target  | TM@t=[0.402,0.412] TE@t=-
+[126/1052    383s] rod_veins              [0.08, 0.22]               fill=0.406 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[127/1052    386s] rod_veins              [0.11, 0.02]               fill=0.070 score=  0.00%  no complete gap at target  | TM@t=[0.371,0.439] TE@t=-
+[128/1052    389s] rod_veins              [0.11, 0.04]               fill=0.103 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[129/1052    392s] rod_veins              [0.11, 0.06]               fill=0.136 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[130/1052    395s] rod_veins              [0.11, 0.08]               fill=0.169 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[131/1052    398s] rod_veins              [0.11, 0.1]                fill=0.202 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.407,0.469]
+[132/1052    401s] rod_veins              [0.11, 0.12]               fill=0.236 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.374,0.461]
+[133/1052    405s] rod_veins              [0.11, 0.14]               fill=0.270 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.353,0.450]
+[134/1052    408s] rod_veins              [0.11, 0.16]               fill=0.306 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.336,0.436]
+[135/1052    411s] rod_veins              [0.11, 0.18]               fill=0.340 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.319,0.421]
+[136/1052    414s] rod_veins              [0.11, 0.2]                fill=0.373 score=  0.00%  no complete gap at target  | TM@t=[0.402,0.412] TE@t=-
+[137/1052    417s] rod_veins              [0.11, 0.22]               fill=0.406 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[138/1052    420s] rod_veins              [0.14, 0.02]               fill=0.091 score=  0.00%  no complete gap at target  | TM@t=[0.330,0.430] TE@t=-
+[139/1052    423s] rod_veins              [0.14, 0.04]               fill=0.122 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[140/1052    426s] rod_veins              [0.14, 0.06]               fill=0.152 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[141/1052    429s] rod_veins              [0.14, 0.08]               fill=0.182 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[142/1052    432s] rod_veins              [0.14, 0.1]                fill=0.213 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.401,0.464]
+[143/1052    435s] rod_veins              [0.14, 0.12]               fill=0.244 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.369,0.455]
+[144/1052    438s] rod_veins              [0.14, 0.14]               fill=0.275 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.349,0.445]
+[145/1052    441s] rod_veins              [0.14, 0.16]               fill=0.307 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.334,0.433]
+[146/1052    444s] rod_veins              [0.14, 0.18]               fill=0.340 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.319,0.420]
+[147/1052    447s] rod_veins              [0.14, 0.2]                fill=0.373 score=  0.00%  no complete gap at target  | TM@t=[0.402,0.412] TE@t=-
+[148/1052    450s] rod_veins              [0.14, 0.22]               fill=0.406 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[149/1052    453s] rod_veins              [0.17, 0.02]               fill=0.117 score=  0.00%  no complete gap at target  | TM@t=[0.300,0.413] TE@t=-
+[150/1052    456s] rod_veins              [0.17, 0.04]               fill=0.145 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[151/1052    459s] rod_veins              [0.17, 0.06]               fill=0.173 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[152/1052    462s] rod_veins              [0.17, 0.08]               fill=0.201 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[153/1052    465s] rod_veins              [0.17, 0.1]                fill=0.228 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.394,0.453]
+[154/1052    468s] rod_veins              [0.17, 0.12]               fill=0.257 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.363,0.445]
+[155/1052    471s] rod_veins              [0.17, 0.14]               fill=0.286 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.345,0.435]
+[156/1052    474s] rod_veins              [0.17, 0.16]               fill=0.315 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.330,0.424]
+[157/1052    477s] rod_veins              [0.17, 0.18]               fill=0.345 score=  0.38%  gap [0.4083,0.4132] TM3-4/TE1-2  | TM@t=[0.408,0.424] TE@t=[0.316,0.413]
+[158/1052    480s] rod_veins              [0.17, 0.2]                fill=0.375 score=  0.00%  no complete gap at target  | TM@t=[0.401,0.411] TE@t=-
+[159/1052    483s] rod_veins              [0.17, 0.22]               fill=0.406 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[160/1052    486s] rod_veins              [0.2, 0.02]                fill=0.151 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[161/1052    489s] rod_veins              [0.2, 0.04]                fill=0.176 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[162/1052    492s] rod_veins              [0.2, 0.06]                fill=0.201 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[163/1052    495s] rod_veins              [0.2, 0.08]                fill=0.227 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[164/1052    498s] rod_veins              [0.2, 0.1]                 fill=0.252 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.386,0.431]
+[165/1052    501s] rod_veins              [0.2, 0.12]                fill=0.278 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.356,0.423]
+[166/1052    504s] rod_veins              [0.2, 0.14]                fill=0.304 score=  0.00%  no complete gap at target  | TM@t=- TE@t=[0.338,0.415]
+[167/1052    507s] rod_veins              [0.2, 0.16]                fill=0.330 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[168/1052    510s] rod_veins              [0.2, 0.18]                fill=0.357 score=  0.00%  no complete gap at target  | TM@t=[0.404,0.417] TE@t=-
+[169/1052    513s] rod_veins              [0.2, 0.2]                 fill=0.384 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[170/1052    517s] rod_veins              [0.2, 0.22]                fill=0.411 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[171/1052    520s] rod_veins              [0.23, 0.02]               fill=0.188 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[172/1052    523s] rod_veins              [0.23, 0.04]               fill=0.211 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[173/1052    526s] rod_veins              [0.23, 0.06]               fill=0.234 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[174/1052    529s] rod_veins              [0.23, 0.08]               fill=0.256 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[175/1052    532s] rod_veins              [0.23, 0.1]                fill=0.279 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[176/1052    535s] rod_veins              [0.23, 0.12]               fill=0.302 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[177/1052    539s] rod_veins              [0.23, 0.14]               fill=0.326 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[178/1052    542s] rod_veins              [0.23, 0.16]               fill=0.349 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[179/1052    545s] rod_veins              [0.23, 0.18]               fill=0.373 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[180/1052    548s] rod_veins              [0.23, 0.2]                fill=0.398 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[181/1052    551s] rod_veins              [0.23, 0.22]               fill=0.423 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[182/1052    554s] rod_veins              [0.26, 0.02]               fill=0.234 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[183/1052    557s] rod_veins              [0.26, 0.04]               fill=0.253 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[184/1052    560s] rod_veins              [0.26, 0.06]               fill=0.273 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[185/1052    563s] rod_veins              [0.26, 0.08]               fill=0.293 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[186/1052    566s] rod_veins              [0.26, 0.1]                fill=0.313 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[187/1052    569s] rod_veins              [0.26, 0.12]               fill=0.334 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[188/1052    573s] rod_veins              [0.26, 0.14]               fill=0.355 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[189/1052    576s] rod_veins              [0.26, 0.16]               fill=0.376 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[190/1052    579s] rod_veins              [0.26, 0.18]               fill=0.398 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[191/1052    582s] rod_veins              [0.26, 0.2]                fill=0.419 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[192/1052    585s] rod_veins              [0.26, 0.22]               fill=0.441 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
+[193/1052    588s] rod_veins              [0.29, 0.02]               fill=0.282 score=  0.00%  no complete gap at target  | TM@t=- TE@t=-
