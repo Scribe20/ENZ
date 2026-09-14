@@ -96,3 +96,32 @@ Lessons:
   harmless; only a *uniform* shift of all boundaries (fill change of ±3.5 %) closes the gap.
 * Gray-start continuous runs for the pair TM3-4/TE2-3 (3 seeds) converge to poor topologies (≤ 0 % after refinement):
   the parametric seed (rods + veins) is essential — the physics-guided start beats blind search.
+
+## 3b. Stage A complete: 1027 C4v structures, 19 families (SURROGATE-OFFICIAL, exact basis, wedge)
+
+| family | n | best score | params | fill | gap pair | # with score > 0 |
+|---|---|---|---|---|---|---|
+| rod_veins | 110 | 9.50 % | [0.32, 0.08] | 0.383 | TM3-4/TE2-3 | 3 |
+| rod_diagveins | 110 | 3.31 % | [0.32, 0.16] | 0.541 | TM4-5/TE3-4 | 4 |
+| diamond_rod_diagveins | 66 | 1.55 % | [0.6, 0.14] | 0.565 | TM4-5/TE3-4 | 1 |
+| diamond_rod_veins | 66 | 1.32 % | [0.6, 0.06] | 0.379 | TM3-4/TE2-3 | 2 |
+| ring | 41 | 0.28 % | [0.5, 0.3] | 0.502 | TM4-5/TE2-3 | 1 |
+| square_rod_veins | 66 | 0.16 % | [0.25, 0.18] | 0.344 | TM3-4/TE1-2 | 1 |
+| frame_rod | 78 | 0.05 % | [0.16, 0.1] | 0.336 | TM3-4/TE1-2 | 1 |
+| veins_cornerrod | 42 | 0.05 % | [0.16, 0.1] | 0.336 | TM3-4/TE1-2 | 1 |
+| circle_rod | 21 | 0.00 % | [0.08] | 0.020 | - | 0 |
+| square_rod | 16 | 0.00 % | [0.15] | 0.021 | - | 0 |
+| diamond_rod | 19 | 0.00 % | [0.15] | 0.024 | - | 0 |
+| circle_hole | 22 | 0.00 % | [0.2] | 0.874 | - | 0 |
+| square_hole | 23 | 0.00 % | [0.3] | 0.915 | - | 0 |
+| diamond_hole | 14 | 0.00 % | [0.3] | 0.909 | - | 0 |
+| cross | 56 | 0.00 % | [0.3, 0.05] | 0.023 | - | 0 |
+| cross45 | 84 | 0.00 % | [0.3, 0.05] | 0.029 | - | 0 |
+| hole_rod | 80 | 0.00 % | [0.3, 0.05] | 0.725 | - | 0 |
+| diamondhole_rod | 65 | 0.00 % | [0.4, 0.05] | 0.844 | - | 0 |
+| corner_center | 48 | 0.00 % | [0.05, 0.1] | 0.039 | - | 0 |
+
+Conclusions: (i) no single-inclusion family (rods, holes, crosses, rings, hole+rod, frame+rod, two-sublattice rods)
+opens a complete gap at the target — H1/H2 confirmed and H3 required; (ii) every hit is an island + connected-network
+hybrid; (iii) the gap pair is always a higher TM gap (3-4 or 4-5) with a low TE gap (1-2, 2-3 or 3-4) — H4 confirmed;
+(iv) rods + straight veins is the dominant family by a factor 3 (9.50 % vs 3.31 % for diagonal veins).
