@@ -1,0 +1,15 @@
+design check: {'shape': True, 'binary': True, 'finite': True} fill 0.4123263888888889 C4v True
+[runs/ref_rv33/mask.npy OFFICIAL-SETTINGS (231 k, 361 PW)] score = 10.634%  fill = 0.4123  Mmax=9 nk=231 form=official t=11.4s
+    complete gap [0.38719, 0.43078]  width=0.04359 ratio=10.66%  TM bands 3-4, TE bands 2-3  margins: lo=0.02184 hi=0.02175
+    TM gap at target: (0.37195, 0.43078, 3)   TE gap at target: (0.38719, 0.45154, 2)
+  wedge(66) vs full(231) band-extrema difference: 4.63e-14   scores 10.6339% vs 10.6339%
+  Mmax= 5 official: score= 0.000%  gap=none  | TM3max=0.37205 TM4min=0.43156  TE2max=0.45835 TE3min=0.45890  (0s)
+  Mmax= 5 eta     : score= 0.000%  gap=none  | TM3max=0.39696 TM4min=0.47682  TE2max=0.45835 TE3min=0.45890  (0s)
+  Mmax= 5 eps     : score=10.878%  gap=[0.37443, 0.43128] TM3-4/TE2-3  | TM3max=0.37205 TM4min=0.43156  TE2max=0.37443 TE3min=0.43128  (0s)
+  Mmax= 7 official: score= 0.000%  gap=none  | TM3max=0.37198 TM4min=0.43093  TE2max=0.41879 TE3min=0.45433  (1s)
+  Mmax= 7 eta     : score= 0.000%  gap=none  | TM3max=0.38893 TM4min=0.46599  TE2max=0.41879 TE3min=0.45433  (1s)
+  Mmax= 7 eps     : score=10.705%  gap=[0.37520, 0.43093] TM3-4/TE2-3  | TM3max=0.37198 TM4min=0.43093  TE2max=0.37520 TE3min=0.43423  (1s)
+  Mmax= 9 official: score=10.634%  gap=[0.38719, 0.43078] TM3-4/TE2-3  | TM3max=0.37195 TM4min=0.43078  TE2max=0.38719 TE3min=0.45154  (3s)
+  Mmax= 9 eta     : score=10.678%  gap=[0.38719, 0.45154] TM3-4/TE2-3  | TM3max=0.38407 TM4min=0.46003  TE2max=0.38719 TE3min=0.45154  (3s)
+  Mmax= 9 eps     : score=10.634%  gap=[0.37544, 0.43078] TM3-4/TE2-3  | TM3max=0.37195 TM4min=0.43078  TE2max=0.37544 TE3min=0.43567  (3s)
+  Mmax=11 official: score=10.622%  gap=[0.38512, 0.43076] TM3-4/TE2-3  | TM3max=0.37195 TM4min=0.43076  TE2max=0.38512 TE3min=0.44976  (9s)

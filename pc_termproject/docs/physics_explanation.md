@@ -63,3 +63,18 @@ orientation of the crystal.
 * Sub-pixel dithering could fool the Mmax = 9 evaluator (it averages ε for TM and 1/ε for TE inside a 5-pixel scale);
   the final design was produced with a filter radius ≥ 2 px, a discrete refinement restricted to boundary moves and
   checked at higher Mmax — the gap is a property of the geometry, not of the truncation.
+
+## 7. The vein-width window (discriminating test, rods r = 0.32a, official settings)
+| vein width | TE band 2 at M (vein mode) | TE band 2 at Γ (block ring) | TM band 4 at Γ | complete gap? |
+|---|---|---|---|---|
+| 4 px (26 nm) | 0.4717 | 0.3908 | 0.4689 | no (TE2 max = 0.472 > target) |
+| 6 px (40 nm) | 0.4464 | 0.3902 | 0.4486 | no (TE2 max = 0.446 > target) |
+| **8 px (53 nm)** | **0.3866** | **0.3896** | **0.4285** | **yes: [0.3896, 0.4285], 9.5 %** |
+| 10 px (66 nm) | 0.3451 | 0.3881 | 0.4098 | marginal: [0.3881, 0.4098], 0.4 % |
+The TE mode at M that lives in the veins (Bloch phase −1 between neighbouring cells) is weakly guided when the vein is thin
+and drops steeply as the vein widens (≈ −0.03 per 13 nm); TM band 4 at Γ, whose Ez leaks into the veins, drops about
+half as fast (lecture PC-III p.29: "increase of dielectric → air mode penetrates → reduced TM gap"). The complete gap
+exists only in the window where the vein mode has dropped below the target but TM band 4 has not: w ≈ 8 px. The same
+frequencies are obtained with Mmax = 15 (TE@Γ 0.3856, TM@Γ 0.4285), so this is geometry, not truncation.
+Along the rod radius, all four edges descend together (average index); the score is maximal where the two limiting
+edges (TE2 at Γ below, TM4 at Γ above) are symmetric about the target (r = 0.32).

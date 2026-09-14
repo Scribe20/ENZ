@@ -1,0 +1,5 @@
+run diag_43: start=rod_diagveins:0.32,0.16 bands TM4-5 TE3-4 nvar=1176 opts={'step0': 0.15, 'R': 3.0, 'betas': '1:10,2:8,4:8,8:8,16:10,32:12,64:14,128:16', 'seed': 0, 'sym': 1, 'Mmax': 9, 'noise': 0.02, 'stepmin': 0.004, 'refine': 1, 'refine_rounds': 120, 'depth': 2}
+  it   0 beta=  1.0 step=0.1500 pred=0.01872 actual=0.01838 (score  8.985%) ACCEPT | active: tm band4 lo k=(1.0,0.0)pi | fill(phys)=0.543 gray=0.316 | 4s
+  it   1 beta=  1.0 step=0.1950 pred=0.02286 actual=0.01981 (score  9.687%) ACCEPT | active: te band3 lo k=(0.0,0.0)pi | fill(phys)=0.549 gray=0.290 | 8s
+  it   2 beta=  1.0 step=0.2535 pred=0.02502 actual=0.01916 (score  9.367%) reject | active: te band3 lo k=(0.0,0.0)pi | fill(phys)=0.555 gray=0.321 | 11s
+  it   3 beta=  1.0 step=0.1268 pred=0.02395 actual=0.02181 (score 10.663%) ACCEPT | active: te band3 lo k=(0.0,0.0)pi | fill(phys)=0.553 gray=0.332 | 15s

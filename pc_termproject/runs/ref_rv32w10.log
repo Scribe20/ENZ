@@ -1,0 +1,14 @@
+[ref_rv32w10 START] score = 0.369%  fill = 0.3984  Mmax=9 nk=66 form=official t=3.3s
+    complete gap [0.38808, 0.40979]  width=0.02171 ratio=5.44%  TM bands 3-4, TE bands 2-3  margins: lo=0.02095 hi=0.00076
+    TM gap at target: (0.37835, 0.40979, 3)   TE gap at target: (0.38808, 0.46637, 2)
+  refine start: min margin 0.00076 (score 0.369%)
+  round   0: k= 8 flips pred 0.01020 actual 0.01012 (score 4.946%) ACCEPT fill=0.3915
+  round   1: k=16 flips pred 0.01880 actual 0.01911 (score 9.344%) ACCEPT fill=0.3828
+  round   2: k=18 flips pred 0.02018 actual 0.02006 (score 9.806%) ACCEPT fill=0.3893
+  round   3: k=13 flips pred 0.02074 actual 0.02071 (score 10.126%) ACCEPT fill=0.3950
+  round   4: k= 4 flips pred 0.02099 actual 0.02099 (score 10.263%) ACCEPT fill=0.3967
+  round   5: k= 8 flips pred 0.02129 actual 0.02130 (score 10.413%) ACCEPT fill=0.4015
+  no improving flip set predicted; stop
+[ref_rv32w10 REFINED] score = 10.413%  fill = 0.4015  Mmax=9 nk=66 form=official t=3.2s
+    complete gap [0.38746, 0.43033]  width=0.04287 ratio=10.48%  TM bands 3-4, TE bands 2-3  margins: lo=0.02157 hi=0.02130
+    TM gap at target: (0.37466, 0.43033, 3)   TE gap at target: (0.38746, 0.45791, 2)

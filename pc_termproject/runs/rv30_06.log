@@ -89,3 +89,9 @@ continuous optimisation done in 286s, final min margin 0.02459 (score 12.024%)
   round   4: k=28 flips pred -0.00618 actual -0.00650 (score -3.179%) ACCEPT fill=0.4722
   round   5: k=20 flips pred -0.00426 actual -0.00384 (score -1.878%) ACCEPT fill=0.4670
   round   6: k= 8 flips pred -0.00332 actual -0.00333 (score -1.628%) ACCEPT fill=0.4657
+  round   7: k= 5 flips pred -0.00321 actual -0.00308 (score -1.508%) ACCEPT fill=0.4648
+  round   8: k= 6 flips pred -0.00286 actual -0.00288 (score -1.408%) ACCEPT fill=0.4648
+  round   9: k= 2 flips pred -0.00275 actual -0.00275 (score -1.343%) ACCEPT fill=0.4648
+  no improving flip set predicted; stop
+[rv30_06 REFINED official] score = 0.000%  fill = 0.4648  Mmax=9 nk=66 form=official t=3.2s
+    TM gap at target: None   TE gap at target: None

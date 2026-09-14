@@ -1,0 +1,94 @@
+{
+ "name": "hop1",
+ "score": 0.10633367640128277,
+ "gap": {
+  "w_low": 0.3872108141543463,
+  "w_high": 0.4307792099478753,
+  "n_tm": 2,
+  "n_te": 1,
+  "width": 0.043568395793529,
+  "mid": 0.4089950120511108,
+  "ratio": 0.10652549422310413
+ },
+ "fill": 0.4110243055555556,
+ "hist": [
+  {
+   "hop": 0,
+   "kind": "dilate_patch",
+   "score": 0.10615798983416964,
+   "improved": false
+  },
+  {
+   "hop": 1,
+   "kind": "dilate_patch",
+   "score": 0.10615798983416964,
+   "improved": false
+  },
+  {
+   "hop": 2,
+   "kind": "shift_block",
+   "score": 0.10606536459299545,
+   "improved": false
+  },
+  {
+   "hop": 3,
+   "kind": "dilate_patch",
+   "score": 0.10606536459299545,
+   "improved": false
+  },
+  {
+   "hop": 4,
+   "kind": "orbits",
+   "score": 0.10595697840962869,
+   "improved": false
+  },
+  {
+   "hop": 5,
+   "kind": "dilate_patch",
+   "score": 0.10615798983416964,
+   "improved": false
+  },
+  {
+   "hop": 6,
+   "kind": "shift_block",
+   "score": 0.1059569784095991,
+   "improved": false
+  },
+  {
+   "hop": 7,
+   "kind": "erode_patch",
+   "score": 0.10595697840962869,
+   "improved": false
+  },
+  {
+   "hop": 8,
+   "kind": "dilate_patch",
+   "score": 0.10615798983416964,
+   "improved": false
+  },
+  {
+   "hop": 9,
+   "kind": "dilate_patch",
+   "score": 0.10615798983416964,
+   "improved": false
+  },
+  {
+   "hop": 10,
+   "kind": "shift_block",
+   "score": 0.1059569784095991,
+   "improved": false
+  },
+  {
+   "hop": 11,
+   "kind": "erode_patch",
+   "score": 0.10615798983416964,
+   "improved": false
+  },
+  {
+   "hop": 12,
+   "kind": "erode_patch",
+   "score": 0.10633367640128277,
+   "improved": true
+  }
+ ]
+}
