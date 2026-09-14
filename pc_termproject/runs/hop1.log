@@ -34,3 +34,11 @@ hop 31 [erode_patch ] refined 10.633%  (incumbent 10.633%, fill 0.4110, 7s)
 hop 32 [shift_vein  ] refined 10.607%  (incumbent 10.633%, fill 0.4167, 21s)
 hop 33 [erode_patch ] refined 10.633%  (incumbent 10.633%, fill 0.4110, 7s)
 hop 34 [orbits      ] refined 10.626%  (incumbent 10.633%, fill 0.4119, 18s)
+hop 35 [shift_vein  ] refined 10.615%  (incumbent 10.633%, fill 0.4158, 17s)
+hop 36 [shift_block ] refined 10.614%  (incumbent 10.633%, fill 0.4167, 17s)
+hop 37 [erode_patch ] refined 10.633%  (incumbent 10.633%, fill 0.4110, 7s)
+hop 38 [shift_block ] refined 10.615%  (incumbent 10.633%, fill 0.4167, 21s)
+hop 39 [shift_block ] refined 10.615%  (incumbent 10.633%, fill 0.4167, 21s)
+[hop1 FINAL] score = 10.633%  fill = 0.4110  Mmax=9 nk=66 form=official t=3.2s
+    complete gap [0.38721, 0.43078]  width=0.04357 ratio=10.65%  TM bands 3-4, TE bands 2-3  margins: lo=0.02182 hi=0.02175
+    TM gap at target: (0.37222, 0.43078, 3)   TE gap at target: (0.38721, 0.45238, 2)

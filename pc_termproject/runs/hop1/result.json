@@ -2,13 +2,13 @@
  "name": "hop1",
  "score": 0.10633367640128277,
  "gap": {
-  "w_low": 0.3872108141543463,
-  "w_high": 0.4307792099478753,
+  "w_low": 0.38721081415437036,
+  "w_high": 0.43077920994785746,
   "n_tm": 2,
   "n_te": 1,
-  "width": 0.043568395793529,
-  "mid": 0.4089950120511108,
-  "ratio": 0.10652549422310413
+  "width": 0.04356839579348709,
+  "mid": 0.4089950120511139,
+  "ratio": 0.10652549422300084
  },
  "fill": 0.4110243055555556,
  "hist": [
@@ -89,6 +89,168 @@
    "kind": "erode_patch",
    "score": 0.10633367640128277,
    "improved": true
+  },
+  {
+   "hop": 13,
+   "kind": "orbits",
+   "score": 0.10627311117431774,
+   "improved": false
+  },
+  {
+   "hop": 14,
+   "kind": "shift_vein",
+   "score": 0.10606536459299545,
+   "improved": false
+  },
+  {
+   "hop": 15,
+   "kind": "dilate_patch",
+   "score": 0.10633367640128277,
+   "improved": false
+  },
+  {
+   "hop": 16,
+   "kind": "orbits",
+   "score": 0.10601530808774538,
+   "improved": false
+  },
+  {
+   "hop": 17,
+   "kind": "shift_block",
+   "score": 0.10614752109292364,
+   "improved": false
+  },
+  {
+   "hop": 18,
+   "kind": "shift_block",
+   "score": 0.10613720590245716,
+   "improved": false
+  },
+  {
+   "hop": 19,
+   "kind": "orbits",
+   "score": 0.10611571179048569,
+   "improved": false
+  },
+  {
+   "hop": 20,
+   "kind": "shift_block",
+   "score": 0.10613720590245716,
+   "improved": false
+  },
+  {
+   "hop": 21,
+   "kind": "shift_block",
+   "score": 0.10614752109292364,
+   "improved": false
+  },
+  {
+   "hop": 22,
+   "kind": "dilate_patch",
+   "score": 0.10633367640128277,
+   "improved": false
+  },
+  {
+   "hop": 23,
+   "kind": "orbits",
+   "score": 0.10633367640124722,
+   "improved": false
+  },
+  {
+   "hop": 24,
+   "kind": "shift_vein",
+   "score": 0.10606536459299545,
+   "improved": false
+  },
+  {
+   "hop": 25,
+   "kind": "orbits",
+   "score": 0.10606536459289259,
+   "improved": false
+  },
+  {
+   "hop": 26,
+   "kind": "dilate_patch",
+   "score": 0.10540076734183378,
+   "improved": false
+  },
+  {
+   "hop": 27,
+   "kind": "shift_vein",
+   "score": 0.10606536459299545,
+   "improved": false
+  },
+  {
+   "hop": 28,
+   "kind": "shift_vein",
+   "score": 0.10615147992913279,
+   "improved": false
+  },
+  {
+   "hop": 29,
+   "kind": "shift_vein",
+   "score": 0.10615147992913279,
+   "improved": false
+  },
+  {
+   "hop": 30,
+   "kind": "dilate_patch",
+   "score": 0.10633367640128277,
+   "improved": false
+  },
+  {
+   "hop": 31,
+   "kind": "erode_patch",
+   "score": 0.10633367640128277,
+   "improved": false
+  },
+  {
+   "hop": 32,
+   "kind": "shift_vein",
+   "score": 0.10606536459299545,
+   "improved": false
+  },
+  {
+   "hop": 33,
+   "kind": "erode_patch",
+   "score": 0.10633367640128277,
+   "improved": false
+  },
+  {
+   "hop": 34,
+   "kind": "orbits",
+   "score": 0.1062584793378349,
+   "improved": false
+  },
+  {
+   "hop": 35,
+   "kind": "shift_vein",
+   "score": 0.10615147992913279,
+   "improved": false
+  },
+  {
+   "hop": 36,
+   "kind": "shift_block",
+   "score": 0.10613720590245716,
+   "improved": false
+  },
+  {
+   "hop": 37,
+   "kind": "erode_patch",
+   "score": 0.10633367640128277,
+   "improved": false
+  },
+  {
+   "hop": 38,
+   "kind": "shift_block",
+   "score": 0.10614752109292364,
+   "improved": false
+  },
+  {
+   "hop": 39,
+   "kind": "shift_block",
+   "score": 0.10614752109292364,
+   "improved": false
   }
  ]
 }

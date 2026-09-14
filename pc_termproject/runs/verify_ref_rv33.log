@@ -21,3 +21,5 @@ design check: {'shape': True, 'binary': True, 'finite': True} fill 0.41232638888
   Mmax=15 official: score=10.615%  gap=[0.38295, 0.43074] TM3-4/TE2-3  | TM3max=0.37194 TM4min=0.43074  TE2max=0.38295 TE3min=0.44745  (48s)
   Mmax=15 eta     : score=12.755%  gap=[0.38295, 0.44745] TM3-4/TE2-3  | TM3max=0.37862 TM4min=0.44769  TE2max=0.38295 TE3min=0.44745  (47s)
   Mmax=15 eps     : score=10.615%  gap=[0.37618, 0.43074] TM3-4/TE2-3  | TM3max=0.37194 TM4min=0.43074  TE2max=0.37618 TE3min=0.43803  (47s)
+  Mmax=17 official: score=10.609%  gap=[0.38227, 0.43073] TM3-4/TE2-3  | TM3max=0.37194 TM4min=0.43073  TE2max=0.38227 TE3min=0.44672  (96s)
+  Mmax=17 eta     : score=13.085%  gap=[0.38227, 0.44672] TM3-4/TE2-3  | TM3max=0.37800 TM4min=0.44712  TE2max=0.38227 TE3min=0.44672  (95s)

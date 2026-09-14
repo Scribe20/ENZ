@@ -74,3 +74,16 @@ run diag_43: start=rod_diagveins:0.32,0.16 bands TM4-5 TE3-4 nvar=1176 opts={'st
   it  65 beta=128.0 step=0.0061 pred=0.02253 actual=0.01764 (score  8.623%) reject | active: te band3 lo k=(0.0,0.0)pi | fill(phys)=0.554 gray=0.154 | 267s
   trust region exhausted
 continuous optimisation done in 270s, final min margin 0.01864 (score 9.114%)
+[diag_43 BINARY official] score = 0.000%  fill = 0.5538  Mmax=9 nk=66 form=official t=3.3s
+    TM gap at target: (0.38433, 0.43011, 4)   TE gap at target: None
+=== discrete refinement of the binary design
+  refine start: min margin -0.00789 (score -3.858%)
+  round   0: k= 8 flips pred 0.00267 actual 0.00425 (score 2.079%) ACCEPT fill=0.5608
+  round   1: k=16 flips pred 0.01262 actual 0.01265 (score 6.183%) ACCEPT fill=0.5668
+  round   2: k=13 flips pred 0.01345 actual 0.01351 (score 6.606%) ACCEPT fill=0.5660
+  round   3: k= 3 flips pred 0.01355 actual 0.01355 (score 6.627%) ACCEPT fill=0.5668
+  round   4: k= 4 flips pred 0.01358 actual 0.01358 (score 6.640%) ACCEPT fill=0.5686
+  no improving flip set predicted; stop
+[diag_43 REFINED official] score = 6.640%  fill = 0.5686  Mmax=9 nk=66 form=official t=3.2s
+    complete gap [0.39544, 0.42261]  width=0.02717 ratio=6.64%  TM bands 4-5, TE bands 3-4  margins: lo=0.01359 hi=0.01358
+    TM gap at target: (0.3821, 0.42261, 4)   TE gap at target: (0.39544, 0.46204, 3)
