@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def band_edge_kpoints(res, n_tm, n_te):
     """k-points (on the official grid) where the four gap-defining band extrema occur"""
-    K = kgrid_official(wedge=True)
+    K = res['K']
     btm, bte = res['bands_tm'], res['bands_te']
     return dict(tm_lo=(K[np.argmax(btm[:, n_tm])], btm[:, n_tm].max()), tm_hi=(K[np.argmin(btm[:, n_tm + 1])], btm[:, n_tm + 1].min()),
                 te_lo=(K[np.argmax(bte[:, n_te])], bte[:, n_te].max()), te_hi=(K[np.argmin(bte[:, n_te + 1])], bte[:, n_te + 1].min()))

@@ -286,7 +286,7 @@ def evaluate(eps, Mmax=MMAX_OFFICIAL, K=None, nbands=10, formulation='official',
     res['runtime_s'] = time.time() - t0
     res['nk'] = len(K); res['Mmax'] = Mmax; res['formulation'] = formulation
     res['fill'] = fill_fraction(eps_to_mask(eps))
-    res['bands_tm'] = btm; res['bands_te'] = bte
+    res['bands_tm'] = btm; res['bands_te'] = bte; res['K'] = K
     return res
 
 def summarize(res, label=''):

@@ -1,0 +1,16 @@
+design check: {'shape': True, 'binary': True, 'finite': True} fill 0.4144965277777778 C4v True
+[runs/ref_rv32_32pre/mask.npy OFFICIAL-SETTINGS (231 k, 361 PW)] score = 10.616%  fill = 0.4145  Mmax=9 nk=231 form=official t=14.9s
+    complete gap [0.38706, 0.43074]  width=0.04368 ratio=10.68%  TM bands 3-4, TE bands 2-3  margins: lo=0.02197 hi=0.02171
+    TM gap at target: (0.37145, 0.43074, 3)   TE gap at target: (0.38706, 0.45002, 2)
+  wedge(66) vs full(231) band-extrema difference: 3.56e-14   scores 10.6158% vs 10.6158%
+  Mmax= 5 official: score= 0.000%  gap=none  (0s)
+  Mmax= 7 official: score= 0.000%  gap=none  (1s)
+  Mmax= 9 official: score=10.616%  gap=[0.38706, 0.43074] TM3-4/TE2-3  (3s)
+  Mmax=11 official: score=10.604%  gap=[0.38497, 0.43072] TM3-4/TE2-3  (9s)
+  Mmax=13 official: score=10.601%  gap=[0.38367, 0.43071] TM3-4/TE2-3  (22s)
+  Mmax=15 official: score=10.597%  gap=[0.38280, 0.43070] TM3-4/TE2-3  (52s)
+[fine k-grid 41x41 (nk=231)] score = 10.616%  fill = 0.4145  Mmax=9 nk=231 form=official t=11.0s
+    complete gap [0.38706, 0.43074]  width=0.04368 ratio=10.68%  TM bands 3-4, TE bands 2-3  margins: lo=0.02197 hi=0.02171
+    TM gap at target: (0.37145, 0.43074, 3)   TE gap at target: (0.38706, 0.45002, 2)
+  erode1: fill=0.3789 score=0.000%
+  dilate1: fill=0.4497 score=0.000%

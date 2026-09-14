@@ -212,6 +212,16 @@ class ScoreOptimizer:
             else:
                 step *= 0.5
                 if step < step_min:
+                    # trust region exhausted at this beta: jump to the next beta of the schedule instead of stopping
+                    nxt = [b for (i0, b) in (beta_schedule or []) if i0 > it]
+                    if nxt:
+                        self.beta = nxt[0]
+                        # remove consumed schedule entries so the jump is not re-triggered
+                        beta_schedule = [(i0, b) for (i0, b) in beta_schedule if b > nxt[0]]
+                        step = step0
+                        f, G, info, rp = self.evaluate_constraints(x); cur = f.min()
+                        if verbose: print(f"  [trust region exhausted -> beta {self.beta}] current min margin {cur:.5f} (score {200*cur/TARGET:.3f}%)", flush=True)
+                        continue
                     if verbose: print("  trust region exhausted", flush=True)
                     break
         self.rho = x

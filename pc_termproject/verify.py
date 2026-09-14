@@ -15,17 +15,23 @@ def wedge_vs_full(eps):
     print(f"  wedge(66) vs full(231) band-extrema difference: {d:.2e}   scores {100*rw['score']:.4f}% vs {100*rf['score']:.4f}%")
     return d
 
-def basis_convergence(eps, Ms=(5, 7, 9, 11, 13, 15), forms=('official',), nbands=12):
+def basis_convergence(eps, Ms=(5, 7, 9, 11, 13, 15), forms=('official',), nbands=12, pair_bands=(2, 1)):
     out = []
     for M in Ms:
         for form in forms:
             t0 = time.time()
             r = evaluate(eps, Mmax=M, nbands=nbands, formulation=form, wedge=is_c4v(eps_to_mask(eps)))
             g = r['gap']
+            # gap edges of the specific band pairs (even when the complete gap is closed): TM n_tm..n_tm+1, TE n_te..n_te+1
+            btm, bte = r['bands_tm'], r['bands_te']
+            pair = pair_bands
+            tm_lo, tm_hi = btm[:, pair[0]].max(), btm[:, pair[0] + 1].min(); te_lo, te_hi = bte[:, pair[1]].max(), bte[:, pair[1] + 1].min()
             rec = dict(Mmax=M, form=form, score=r['score'], w_low=g['w_low'] if g else None, w_high=g['w_high'] if g else None,
-                       n_tm=g['n_tm'] if g else None, n_te=g['n_te'] if g else None, t=time.time() - t0)
+                       n_tm=g['n_tm'] if g else None, n_te=g['n_te'] if g else None, t=time.time() - t0,
+                       tm_pair=(float(tm_lo), float(tm_hi)), te_pair=(float(te_lo), float(te_hi)))
             out.append(rec)
-            print(f"  Mmax={M:2d} {form:8s}: score={100*r['score']:6.3f}%  gap={'[%.5f, %.5f] TM%d-%d/TE%d-%d' % (g['w_low'], g['w_high'], g['n_tm']+1, g['n_tm']+2, g['n_te']+1, g['n_te']+2) if g else 'none'}  ({rec['t']:.0f}s)", flush=True)
+            print(f"  Mmax={M:2d} {form:8s}: score={100*r['score']:6.3f}%  gap={'[%.5f, %.5f] TM%d-%d/TE%d-%d' % (g['w_low'], g['w_high'], g['n_tm']+1, g['n_tm']+2, g['n_te']+1, g['n_te']+2) if g else 'none'}"
+                  f"  | TM{pair[0]+1}max={tm_lo:.5f} TM{pair[0]+2}min={tm_hi:.5f}  TE{pair[1]+1}max={te_lo:.5f} TE{pair[1]+2}min={te_hi:.5f}  ({rec['t']:.0f}s)", flush=True)
     return out
 
 def fine_kgrid_check(eps, n=41):
@@ -74,8 +80,9 @@ if __name__ == '__main__':
     path = sys.argv[1]
     eps = load_mat(path) if path.endswith('.mat') else mask_to_eps(np.load(path))
     print("design check:", check_design(eps), "fill", fill_fraction(eps_to_mask(eps)), "C4v", is_c4v(eps_to_mask(eps)))
-    official_check(eps, path)
+    r0 = official_check(eps, path)
     wedge_vs_full(eps)
-    basis_convergence(eps)
+    g0 = r0['gap']
+    basis_convergence(eps, Ms=(5, 7, 9, 11, 13, 15, 17), forms=('official', 'eta', 'eps'), pair_bands=(g0['n_tm'], g0['n_te']) if g0 else (2, 1))
     fine_kgrid_check(eps)
     pixel_robustness(eps)
