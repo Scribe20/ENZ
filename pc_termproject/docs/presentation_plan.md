@@ -11,14 +11,14 @@
 5. **Method** — independent PWEM (formulation identified from Figure 1: TM eps-matrix, TE 1/ε), validation table
    (analytic 1D, textbook rods, digitised figure); staged search: A parametric families → B gradient max-min (Hellmann–
    Feynman sensitivities = field intensities) → exact pixel refinement → C verification.
-6. **Results 1: candidate evolution** — table/graph: rods 0 → rods+veins 9.5 → gradient + refinement 10.6 (C4v) → 10.75 (free);
+6. **Results 1: candidate evolution** — table/graph: rods 0 → rods+veins seed 9.5 → exact refinement 10.63 (C4v, final) → 10.75 (symmetry-free, 4 px, not adopted); alternative basin (diagonal veins) 6.6;
    professor's example 4.03 for comparison.
-7. **Results 2: final structure and band diagram** — geometry (nm axes), TE/TM bands Γ-X-M-Γ with the gap shaded, exact
-   gap edges, margins, score.
+7. **Results 2: final structure and band diagram** — geometry (nm axes), TE/TM bands Γ-X-M-Γ with the gap shaded (figs/final_analysis.png, figs/comparison_rod_seed_final.png);
+   gap [0.38719, 0.43078] = 1472–1637 nm, margins 0.02184 / 0.02175, score 10.634 % (surrogate; official to be filled in).
 8. **Discussion 1: why it works** — band-edge mode fields (TM3/TM4 Ez, TE2/TE3 |D|²/ε), energy-in-Si percentages, which
-   edge limits the gap and how block size / vein width move each edge (ablation plot: score vs r and w).
-9. **Discussion 2: robustness** — score vs Mmax (both formulations), fine k-grid, pixel erosion/dilation, symmetry-free
-   comparison; what fails (holes, crosses, rings, TE1-2 pairs) and why.
+   edge limits the gap and how block size / vein width move each edge (figs/ablation_rod_veins.png; the vein-width window table of docs/physics_explanation.md §7).
+9. **Discussion 2: robustness** — score vs Mmax for three formulations (figs/final_convergence.png), fine k-grid, random pixel flips 10.3–10.7 %,
+   uniform ±1 px boundary shift closes the gap, symmetry-free comparison; what fails (holes, crosses, rings, TE1-2 pairs) and why.
 10. **Conclusion + AI disclosure + consultation statement** — design principle in one sentence, final score, limitations
     (official evaluator not run by me; MATLAB mirror only), disclosure.
 

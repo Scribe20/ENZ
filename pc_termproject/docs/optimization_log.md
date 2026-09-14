@@ -125,3 +125,15 @@ Conclusions: (i) no single-inclusion family (rods, holes, crosses, rings, hole+r
 opens a complete gap at the target — H1/H2 confirmed and H3 required; (ii) every hit is an island + connected-network
 hybrid; (iii) the gap pair is always a higher TM gap (3-4 or 4-5) with a low TE gap (1-2, 2-3 or 3-4) — H4 confirmed;
 (iv) rods + straight veins is the dominant family by a factor 3 (9.50 % vs 3.31 % for diagonal veins).
+
+## 6. Final rounds and decision
+| run | method | score |
+|---|---|---|
+| ref_rv33 | rods r=0.33 + veins 0.08 (5.97 %) → discrete LP refinement | **10.634 %** (FINAL) |
+| ref_rv31 / ref_rv34 / ref_rv32w10 | other seeds → refinement | 10.50 / 10.39 / 10.41 % |
+| hop1 | 40 basin-hopping kicks from the 10.62 % design | 10.633 % |
+| rv30_06, rv34_10, gray seeds | continuous phase from other seeds | all fall into one wrong basin (identical mask, fill 0.465, −1.3 %) |
+| diag_43 | rods + diagonal veins seed, pair TM4-5/TE3-4, gradient + refinement | 6.64 % |
+Decision: ref_rv33 (C4v). The unconstrained 10.754 % variant (4 asymmetric pixels) was not adopted: the gain is a
+grid effect, the symmetric design is easier to defend and equally robust.
+Total computation: ≈ 1600 grading-setting evaluations (Stage A 1027 + fine sweep 121 + optimisation/verification) ≈ 3 h on 4 cores.

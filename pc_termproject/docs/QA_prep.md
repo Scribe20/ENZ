@@ -12,13 +12,13 @@ forced into the veins/air (44 % in Si) → TE 2-3 gap. The veins are thin enough
 **Q2. Why is the target frequency inside the gap?**
 The gap position is controlled by the average index (fill 0.41) and the block size; the optimiser maximised the *centred*
 score, so the two limiting edges — TE band 2 maximum at Γ (lower edge) and TM band 4 minimum at Γ (upper edge) — sit at
-equal distances (0.0220 and 0.0217 in a/λ) from 0.40903. The score is a min of two margins, so at the optimum they are equal.
+equal distances (0.02184 below and 0.02175 above, in a/λ) from 0.40903. The score is a min of two margins, so at the optimum they are equal.
 
 **Q3. Why C4v symmetry?**
 The lattice is square and the grader samples half of the Brillouin zone, so any symmetry is allowed. C4v was used because
 (i) it reduces the design space 8× (1176 orbit variables), (ii) band extrema then sit at Γ, X, M, so the irreducible wedge
 of the official grid is exact (verified: identical extrema to 1e-14), (iii) it makes the crystal isotropic in the two lattice
-directions. Removing the constraint was tested: the unconstrained refinement gains only +0.14 % and differs in 4 pixels.
+directions. Removing the constraint was tested: the unconstrained refinement gains only +0.14 % and differs in 4 pixels; basin hopping (40 kicks) and three other seeds all return 10.39–10.63 %.
 
 **Q4. What happens if the fill fraction changes?**
 Uniform 1-pixel erosion (fill 0.379) or dilation (0.450) closes the gap: the average index shifts the whole band structure
@@ -28,14 +28,14 @@ target frequency is fixed; wider gaps exist at other frequencies but they would 
 
 **Q5. How sensitive is the result to pixelisation?**
 The grader itself is pixel-based (Fourier sums over 96 × 96 pixel centres) so the design *is* the pixel map; the question
-is whether individual pixels matter. Random flips of 1 % of the boundary pixels change the score by [see RESULTS.md];
+is whether individual pixels matter. Random flips of 1 % of the boundary pixels change the score by a few tenths of a percent (table in RESULTS.md);
 single boundary-orbit flips change band edges by ≈ 1–2 × 10⁻³, i.e. ≈ 0.5–1 % of score. Features are all ≥ 7 px wide, above
 the resolution of the 361-plane-wave basis (≈ 5 px), so there is no sub-pixel exploitation.
 
 **Q6. Why is this better than a circular rod?**
 A rod lattice (any r) has no TE gap: the Ex,y discontinuity compensates the index contrast (PC-III p.28) and the field
-cannot stay inside an isolated rod. The example r = 0.2a in the project sheet scores 0 for that reason. Our Stage A sweep of
-21 rod radii and 3 rod shapes confirms it. The rod+vein hybrid r = 0.32, w = 0.08 already gives 9.5 %; the optimised block
+cannot stay inside an isolated rod. The example r = 0.2a in the project sheet scores 0 for that reason. Our Stage A sweep of 1027 structures in 19 families
+(21 rod radii, 3 rod shapes, holes, crosses, rings, frames …) confirms it. The rod+vein hybrid r = 0.32, w = 0.08 already gives 9.5 %; the optimised block
 shape (chamfered square rather than a circle) adds another 1.1 % by balancing the two edges.
 
 **Q7. How was the PWEM implementation validated?**
@@ -52,7 +52,7 @@ but E_n jumps, D_n continuous — a mode crossing an interface must pay for the 
 paths can the in-plane E stay in Si (large gaps for networks).
 
 **Q9. Is the optimum robust to basis truncation?**
-Yes in the relevant direction: Mmax 9 → 11 → 13 → 15 gives 10.62 → 10.60 → 10.60 → 10.60 %. The TM edges are converged
+Yes in the relevant direction: Mmax 9 → 11 → 13 → 15 gives 10.634 → 10.622 → 10.619 → 10.615 %, and the all-ε and all-1/ε formulations give 10.6–11.7 % at every Mmax ≥ 9. The TM edges are converged
 at Mmax = 5 (ε-matrix form), the TE edges of the 1/ε form drift by ≈ 0.004 and move *away* from the target. Below the official
 basis (Mmax 5, 7) the TE error is so large that the gap closes — this is a property of the grader's method, not of the design.
 Both alternative formulations (all-ε, all-1/ε) were also evaluated (table in the appendix).
@@ -81,5 +81,5 @@ Yes — the width is not the objective. Without the target constraint the same f
 **Q14. What limits further improvement?**
 Both limiting edges are at Γ: TE2 max and TM4 min. Any change that raises TM4 at Γ (smaller block) lowers TE2 at Γ less
 than it raises... — the LP-based refinement finds no combination of pixel moves (up to 3 px deep) that raises the min
-margin, i.e. the design is a local optimum for this topology; other topologies (diagonal veins, rings, frames, holes with
-rods) were all worse in Stage A.
+margin, i.e. the design is a local optimum for this topology; other topologies were all worse: the best alternative basin (diagonal veins, TM 4-5 / TE 3-4)
+reaches 6.64 % after the same gradient + refinement treatment.
