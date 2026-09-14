@@ -14,3 +14,4 @@ design check: {'shape': True, 'binary': True, 'finite': True} fill 0.41449652777
     TM gap at target: (0.37145, 0.43074, 3)   TE gap at target: (0.38706, 0.45002, 2)
   erode1: fill=0.3789 score=0.000%
   dilate1: fill=0.4497 score=0.000%
+  random flips of 1% of boundary pixels (652 boundary px): scores [10.71, 10.71, 10.6, 10.72, 10.63, 10.72, 10.62, 10.53]

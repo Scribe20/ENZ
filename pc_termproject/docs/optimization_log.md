@@ -80,3 +80,19 @@ Lessons:
   lower edge set by TE band 2 at Γ, upper edge by TM band 4 at Γ; margins 0.0220 / 0.0217.
   Band-edge modes: TM3 max at X (Ez dipole of the block, 98 % of electric energy in Si), TM4 min at Γ (quadrupole, 92 %),
   TE2 max at Γ (ring-shaped D-energy inside the block, 92 % in Si), TE3 min at M (energy pushed into the veins/air, 44 %).
+
+## 5. Stage C — verification of the C4v 10.62 % design (runs/ref_rv32_32pre)
+* Exact grading settings (231 k, 361 PW, official formulation): **10.616 %**, gap [0.38706, 0.43074]; wedge = full grid (3.6e-14).
+* Basis convergence (official formulation): Mmax 9: 10.616 % | 11: 10.604 % | 13: 10.601 % | 15: 10.597 %.
+  Upper edge (TM4 min at Γ) 0.43074 → 0.43070 (converged); lower edge (TE2 max at Γ) 0.3871 → 0.3828 (moves away from the
+  target as the TE 1/ε form converges). At Mmax = 5 and 7 the complete gap is closed (TE low-basis error) — the design
+  should never be judged with fewer than the official 361 plane waves.
+* Fine k-grid 41 × 41: identical score (extrema sit at Γ, X, M).
+* Uniform 1-pixel erosion (fill 0.379) or dilation (fill 0.450) of all boundaries: score 0 — the thin veins (≈ 8 px)
+  make the TE edges sensitive to a uniform ±6.6 nm boundary shift (a ±26 % change of the vein width). Random flips of 1 %
+  of the boundary pixels: see below.
+* Unconstrained (no symmetry) refinement from this design: 10.754 %, differing from the symmetric design in 4 pixels only.
+* Random flips of 1 % of the 652 boundary pixels (8 trials): scores 10.53–10.72 % (mean 10.65 %): individual pixel errors are
+  harmless; only a *uniform* shift of all boundaries (fill change of ±3.5 %) closes the gap.
+* Gray-start continuous runs for the pair TM3-4/TE2-3 (3 seeds) converge to poor topologies (≤ 0 % after refinement):
+  the parametric seed (rods + veins) is essential — the physics-guided start beats blind search.

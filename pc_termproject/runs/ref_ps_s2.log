@@ -1,0 +1,16 @@
+[ref_ps_s2 START] score = 0.000%  fill = 0.3602  Mmax=9 nk=66 form=official t=3.3s
+    TM gap at target: (0.37406, 0.44961, 3)   TE gap at target: None
+  refine start: min margin -0.05866 (score -28.682%)
+  round   0: k= 8 flips pred -0.05261 actual -0.04993 (score -24.415%) ACCEPT fill=0.3668
+  round   1: k=16 flips pred -0.04257 actual -0.03908 (score -19.111%) ACCEPT fill=0.3802
+  round   2: k=32 flips pred -0.02798 actual -0.02312 (score -11.303%) ACCEPT fill=0.4071
+  round   3: k=63 flips pred -0.01268 actual -0.01193 (score -5.831%) ACCEPT fill=0.4609
+  round   4: k=37 flips pred -0.00749 actual -0.00756 (score -3.694%) ACCEPT fill=0.4744
+  round   5: k=25 flips pred -0.00471 actual -0.00475 (score -2.325%) ACCEPT fill=0.4683
+  round   6: k=11 flips pred -0.00331 actual -0.00332 (score -1.623%) ACCEPT fill=0.4657
+  round   7: k= 5 flips pred -0.00290 actual -0.00291 (score -1.422%) ACCEPT fill=0.4648
+  round   8: k= 4 flips pred -0.00287 actual -0.00288 (score -1.408%) ACCEPT fill=0.4648
+  round   9: k= 2 flips pred -0.00275 actual -0.00275 (score -1.343%) ACCEPT fill=0.4648
+  no improving flip set predicted; stop
+[ref_ps_s2 REFINED] score = 0.000%  fill = 0.4648  Mmax=9 nk=66 form=official t=3.3s
+    TM gap at target: None   TE gap at target: None

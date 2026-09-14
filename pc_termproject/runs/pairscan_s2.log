@@ -1,1 +1,4 @@
 pair TM3-4/TE2-3 seed2: continuous score  18.072%  -> binary official  0.000%  fill=0.360    (72s)
+pair TM3-4/TE3-4 seed2: continuous score -14.191%  -> binary official  0.000%  fill=0.505    (70s)
+pair TM4-5/TE2-3 seed2: continuous score  -5.248%  -> binary official  0.000%  fill=0.520    (72s)
+pair TM4-5/TE3-4 seed2: continuous score  -0.477%  -> binary official  0.000%  fill=0.598    (64s)
