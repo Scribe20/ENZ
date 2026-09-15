@@ -1,0 +1,3 @@
+# raw FDTDX phasor dumps of the Te runs are large; the derived spectra / tables / figures are committed instead
+runs/*/phasors.npz
+__pycache__/
