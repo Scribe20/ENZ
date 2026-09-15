@@ -36,6 +36,7 @@ T range column: min T in band (negative values = closure/truncation error) … m
 
 * **300 K: 400 fs vs 600 fs** — decay a-Si 7.1e-03 / ITO 2.5e-02; T: max|Δ| 0.0429 in band (1250-1265: 0.0417, outside: 0.0429), rms 0.0206; R: max|Δ| 0.0158 in band (1250-1265: 0.0158, outside: 0.0120), rms 0.0063; A_rt: max|Δ| 0.0435 in band (1250-1265: 0.0372, outside: 0.0435), rms 0.0199
 * **8000 K: 400 fs vs 600 fs** — decay a-Si 4.6e-02 / ITO 4.9e-02; T: max|Δ| 0.1156 in band (1250-1265: 0.1156, outside: 0.0718), rms 0.0447; R: max|Δ| 0.1258 in band (1250-1265: 0.1258, outside: 0.0863), rms 0.0579; A_rt: max|Δ| 0.1085 in band (1250-1265: 0.1085, outside: 0.0731), rms 0.0474
+* **8000 K: 900 fs vs 600 fs** — decay a-Si 2.5e-02 / ITO 3.1e-02; T: max|Δ| 0.1435 in band (1250-1265: 0.1435, outside: 0.0754), rms 0.0409; R: max|Δ| 0.1915 in band (1250-1265: 0.1915, outside: 0.1195), rms 0.0669; A_ito: max|Δ| 0.1446 in band (1250-1265: 0.1446, outside: 0.0258), rms 0.0409
 * **300 K, 300 fs, refit ITO poles vs campaign final3/prod (300 fs, campaign poles): isolates the pole refit** — decay a-Si 1.3e-02 / ITO 3.9e-02; T: max|Δ| 0.0001 in band (1250-1265: 0.0001, outside: 0.0001), rms 0.0001; R: max|Δ| 0.0001 in band (1250-1265: 0.0001, outside: 0.0001), rms 0.0001
 * **300 K, 600 fs (this family) vs existing final3/prod (300 fs)** — max|ΔT| 0.0696, max|ΔR| 0.0213, max|ΔA| 0.0608 in 1230-1280 nm (rms 0.0307 / 0.0080 / 0.0291); 1−R−T at 1255 nm 0.9529 vs 0.8892.
 

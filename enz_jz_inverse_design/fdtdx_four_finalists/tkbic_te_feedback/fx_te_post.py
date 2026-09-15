@@ -206,14 +206,30 @@ def main():
             for j, l in enumerate(fam["lambda_nm"]):
                 w.writerow([f"{Te:.0f}", f"{l:.1f}", f"{fam['R'][i, j]:.6f}", f"{fam['T'][i, j]:.6f}", f"{fam['A_ito'][i, j]:.6f}", f"{fam['A_rt'][i, j]:.6f}"])
     json.dump(checks, open(OUT / "em_checks.json", "w"), indent=1)
+    # diagnostic: the same family with a 9-nm boxcar (one 600-fs ripple period) applied to every row
+    sm = {k: np.array([boxcar(fam["lambda_nm"], fam[k][i]) for i in range(len(fam["Te_K"]))]) for k in ("R", "T", "A_rt", "A_ito")}
+    np.savez(OUT / "diag_final3_Te_family_fdtdx_smooth9nm.npz", lambda_nm=fam["lambda_nm"], Te_K=fam["Te_K"], R=sm["R"], T=sm["T"], A=sm["A_ito"], A_rt=sm["A_rt"], A_ito=sm["A_ito"],
+             note="DIAGNOSTIC ONLY: 9-nm boxcar (one DFT-truncation ripple period at 600 fs) applied to the rows of final3_Te_family_fdtdx.npz")
     make_figures(fam, full, checks)
     print(json.dumps({k: v for k, v in checks.items() if k not in ("old_300K", "ito_fit_check")}, indent=1)[:6000])
 
 
+def boxcar(lam, y, width_nm=9.0):
+    """Running mean over +-width/2 (one DFT-truncation ripple period at 600 fs) on the 1-nm part of the grid."""
+    out = np.empty_like(y)
+    for i, l in enumerate(lam):
+        m = np.abs(lam - l) <= width_nm / 2
+        out[i] = y[m].mean()
+    return out
+
+
 def _diff_stats(lam, a, b):
     d = a - b; inb = (lam >= BAND[0]) & (lam <= BAND[1]); cut = (lam >= 1250) & (lam <= 1265)
+    ds = boxcar(lam, a) - boxcar(lam, b)
     return dict(max_abs_band=float(np.abs(d[inb]).max()), rms_band=float(np.sqrt(np.mean(d[inb] ** 2))),
-                max_abs_1250_1265=float(np.abs(d[cut]).max()), max_abs_band_outside_1250_1265=float(np.abs(d[inb & ~cut]).max()))
+                max_abs_1250_1265=float(np.abs(d[cut]).max()), max_abs_band_outside_1250_1265=float(np.abs(d[inb & ~cut]).max()),
+                smoothed9nm_max_abs_band=float(np.abs(ds[inb]).max()), smoothed9nm_max_abs_outside_1250_1265=float(np.abs(ds[inb & ~cut]).max()),
+                smoothed9nm_max_abs_1250_1265=float(np.abs(ds[cut]).max()))
 
 
 def extra_checks(ref, full):

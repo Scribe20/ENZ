@@ -210,7 +210,8 @@ def main():
 
     # --- tables
     sel_lams = np.array([m["lp"] for m in chosen.values()]); sel_labels = np.array(list(chosen.keys()))
-    np.savez(OUT / "final3_Teff_vs_I_fdtdx.npz",
+    tbl = "final3_Teff_vs_I_fdtdx" if a.out_prefix == "fig3" else f"{a.out_prefix}_Teff_vs_I"
+    np.savez(OUT / f"{tbl}.npz",
              lambda_nm=look.lam, Te_K=look.Te, R=look.R, T=look.T, A=look.A, A_key_used=A_key,
              **({"A_rt": d["A_rt"]} if "A_rt" in d.files else {}), **({"A_ito": d["A_ito"]} if "A_ito" in d.files else {}),
              I_grid_Wcm2=I_GRID, F_mJcm2=F_I, tau_eff_s=TAU_EFF, pulse_fwhm_s=150e-15,
@@ -224,7 +225,7 @@ def main():
              scan_lambda_nm=lam_scan, scan_Teff_I_tau450=np.array([scan_I[lp]["Teff"] for lp in lam_scan]), scan_Te_pk_I_tau450=np.array([scan_I[lp]["Te_pk"] for lp in lam_scan]),
              E_scan_nJ=E_SCAN, scan_Teff_E_tau450=M,
              gamma_e_Jm3K2=ttm.GAM_E, C_L_Jm3K=ttm.C_L, d_ITO_m=ttm.T_ITO_M, dt_fs=1.0, window_ps=[-1.0, 3.0])
-    with open(OUT / "final3_Teff_vs_I_fdtdx.csv", "w") as f:
+    with open(OUT / f"{tbl}.csv", "w") as f:
         f.write("# T_eff(I) for the selected wavelengths, TTM tau_ep = 450 fs (columns), plus g=0 / tau 1000 fs band\n")
         f.write("I_peak_Wcm2,F_mJcm2," + ",".join(f"Teff_{m['lp']:.0f}nm_tau450,Tepk_{m['lp']:.0f}nm_tau450,Teff_{m['lp']:.0f}nm_g0,Teff_{m['lp']:.0f}nm_tau1000" for m in chosen.values()) + "\n")
         for i in range(len(I_GRID)):
