@@ -257,8 +257,10 @@ def make_figures(fam, full, checks):
     if "old_300K" in checks:
         o = checks["old_300K"]; lo = np.array(o["lambda_nm"]); m = (lo >= lam[0]) & (lo <= lam[-1])
         ax.plot(lo[m], np.array(o["T"])[m], "k:", lw=1.2, label="300 K, existing final3/prod")
+    ax.axvspan(1250, 1265, color="0.88", zorder=0)
+    ax.text(1257.5, 0.985, "glass (±1,0) cut-off 1251 nm:\nslow mode, truncation-limited", fontsize=6.5, ha="center", va="top", color="0.35", transform=ax.get_xaxis_transform())
     ax.set_xlabel("Wavelength (nm)"); ax.set_ylabel("T"); ax.set_xlim(lam[0], lam[-1]); ax.grid(alpha=0.3)
-    ax.set_title(r"final3 (P825 / h525 / pad 12 %), FDTDX: $T(\lambda; T_e)$, ITO $\varepsilon(\lambda,T_e)$ = measured + Kane delta-Drude", fontsize=9.5)
+    ax.set_title(r"final3 (P825 / h525 / pad 12 %), FDTDX (600 fs): $T(\lambda; T_e)$, ITO $\varepsilon(\lambda,T_e)$ = measured + Kane delta-Drude", fontsize=9.5)
     ax.legend(fontsize=7.5, ncol=2, title="$T_e$", title_fontsize=8)
     fig.tight_layout(); fig.savefig(OUT / "fig1_T_lambda_Te_final3.png"); plt.close(fig)
     # Fig 2: 2D map, interpolated linearly in Te between the 9 computed rows (the lookup the feedback uses)
@@ -267,9 +269,12 @@ def make_figures(fam, full, checks):
     fig, ax = plt.subplots(figsize=(7.2, 4.6), dpi=130)
     im = ax.pcolormesh(lam, Te_f, Tmap, cmap="viridis", shading="auto", vmin=0, vmax=max(0.5, float(fam["T"].max())))
     for t in Te:
-        ax.axhline(t, color="w", lw=0.5, alpha=0.6)
-    ax.set_xlabel("Wavelength (nm)"); ax.set_ylabel(r"$T_e$ (K)")
-    ax.set_title(r"final3, FDTDX: $T(\lambda, T_e)$ (linear interpolation between the 9 computed $T_e$ rows, white lines)", fontsize=9)
+        ax.axhline(t, color="w", lw=0.6, alpha=0.7)
+    ax.axvline(1250, color="w", lw=0.8, ls=":", alpha=0.8); ax.axvline(1265, color="w", lw=0.8, ls=":", alpha=0.8)
+    ax.set_yticks(Te); ax.tick_params(axis="y", labelsize=8)
+    ax.set_xlabel("Wavelength (nm)"); ax.set_ylabel(r"$T_e$ (K)  (ticks = computed rows)")
+    ax.set_title(f"final3, FDTDX (600 fs): $T(\\lambda, T_e)$ — linear interpolation between the {len(Te)} computed $T_e$ rows (white lines);\n"
+                 "dotted: 1250-1265 nm glass cut-off region (truncation-limited)", fontsize=8.5)
     plt.colorbar(im, ax=ax, label="T")
     fig.tight_layout(); fig.savefig(OUT / "fig2_T_map_lambda_Te_final3.png"); plt.close(fig)
     # diagnostic: R, T, A_ito, 1-R-T on the full grid for all Te + 300 K comparison

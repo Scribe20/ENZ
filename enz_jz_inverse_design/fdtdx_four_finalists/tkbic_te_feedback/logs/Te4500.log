@@ -1,0 +1,2 @@
+[fx-te] tag=Te4500 Te=4500.0 ref=False cells=[64, 64, 154] dt=13.01 as steps=46106 stride=19 n_lam=126 ito={'eps_inf': 3.4341136428432453, 'wp_rad_s': 2256766962096809.5, 'gamma_d_rad_s': 1017735387442.6113, 'delta_eps_L': 1.164599417208604, 'w0_L_rad_s': 910839760252313.4, 'gamma_L_rad_s': 620810700694095.9}
+FDTD (checkpointed):   0%|          | 0/46106 [00:00<?, ?step/s]FDTD (checkpointed):   0%|          | 0/46106 [00:00<?, ?step/s]
