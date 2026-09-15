@@ -26,7 +26,7 @@ RUNS = HERE / "runs"
 TE_MODELS = json.load(open(HERE / "outputs" / "ito_te_models.json"))
 # spectral grid: the campaign 1200-1400 nm / 2 nm grid (300 K cross-check) plus 1230-1280 nm every 1 nm (study band)
 LAM_SPEC_TE = np.unique(np.concatenate([np.arange(1200.0, 1400.01, 2.0), np.arange(1230.0, 1280.01, 1.0)])) * 1e-9
-LAM_FIELD_CHECK = [1255e-9]                            # single volume-field wavelength for the ITO-loss (A = A_ITO) check
+LAM_FIELD_CHECK = [1255e-9, 1275e-9]                   # volume-field wavelengths for the ITO volume-loss cross-check
 
 
 def ito_model_for(Te):
@@ -35,11 +35,30 @@ def ito_model_for(Te):
                 delta_eps_L=m["delta_eps_L"], w0_L_rad_s=m["w0_L_rad_s"], gamma_L_rad_s=m["gamma_L_rad_s"])
 
 
+def add_ito_flux_planes(objects, constraints, meta):
+    """Two extra flux planes bracketing the ITO film (one lossless cell away from each interface): the ITO absorption
+    A_ITO(lam) = [S_z(above) - S_z(below)] / P_inc measured directly, on the full spectral grid (the ZIP's Lumerical
+    family used the same 'A_ito' flux-difference definition).  Same detector type / settings as the R and T planes."""
+    import fdtdx
+    from fdtdx.objects.object import RealCoordinateConstraint
+    volume = objects[0]                                   # fx_sim.build_scene appends the SimulationVolume first
+    z_edges = np.array(meta["z_edges_m"]); idx = meta["idx"]; n = meta["nxy"]
+    wc_spec = [fdtdx.WaveCharacter(wavelength=float(l)) for l in LAM_SPEC_TE]
+    planes = {"ito_bot_plane": idx["z_ito0"] - 2, "ito_top_plane": idx["z_asi0"] + 1}
+    for name, zi in planes.items():
+        d = fdtdx.PhasorDetector(name=name, partial_grid_shape=(n, n, 1), wave_characters=wc_spec, components=("Ex", "Ey", "Hx", "Hy"),
+                                 scaling_mode="pulse", dft_subsample=meta["dft_stride"], plot=False)
+        constraints.extend([d.same_size(volume, axes=(0, 1)), d.place_at_center(volume, axes=(0, 1)),
+                            RealCoordinateConstraint(object=d.name, axes=(2,), sides=("-",), coordinates=(float(z_edges[zi]),))])
+        objects.append(d)
+        idx[f"z_{name}"] = int(zi)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--Te", type=float, default=None, help="electron temperature [K] of the ITO model")
     ap.add_argument("--reference", action="store_true")
-    ap.add_argument("--time-fs", type=float, default=400.0)
+    ap.add_argument("--time-fs", type=float, default=600.0)
     ap.add_argument("--tag", default=None)
     ap.add_argument("--bench-steps", type=int, default=None)
     a = ap.parse_args()
@@ -56,6 +75,8 @@ def main():
         fx_sim.MODELS["ITO"] = dict(fx_sim.MODELS["ITO"], **ito_used)
     objects, constraints, config, meta = fx_sim.build_scene("final3", False, 5, a.time_fs * 1e-15, LAM_FIELD_CHECK,
                                                             reference=a.reference, nxy=64, subpixel=True)
+    if not a.reference:
+        add_ito_flux_planes(objects, constraints, meta)
     meta.update(Te_K=a.Te, ito_model=ito_used, ito_model_source=str(HERE / "outputs" / "ito_te_models.json"),
                 fdtdx_source=dict(module=str(Path(fx_sim.fdtdx.__file__).resolve().parent)),
                 lam_spec_m=LAM_SPEC_TE.tolist(), lam_field_m=[float(l) for l in LAM_FIELD_CHECK], campaign_driver=str(CAMP / "fx_sim.py"))

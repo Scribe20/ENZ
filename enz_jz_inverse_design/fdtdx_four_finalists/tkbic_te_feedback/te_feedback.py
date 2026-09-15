@@ -122,9 +122,12 @@ def main():
     ap.add_argument("--family", default=str(OUT / "final3_Te_family_fdtdx.npz"))
     ap.add_argument("--out-prefix", default="fig3")
     ap.add_argument("--title", default="final3 (P825 / h525 / pad 12 %), FDTDX family")
+    ap.add_argument("--A-key", default="A_ito", help="absorption column of the family used in the TTM source term (A_ito: flux difference across the ITO; A_rt: 1-R-T)")
     a = ap.parse_args()
     d = np.load(a.family)
-    look = Lookup(d["lambda_nm"], d["Te_K"], d["T"], d["A"], d["R"] if "R" in d.files else None)
+    A_key = a.A_key if a.A_key in d.files else "A"
+    look = Lookup(d["lambda_nm"], d["Te_K"], d["T"], d[A_key], d["R"] if "R" in d.files else None)
+    print(f"[feedback] family {a.family}: absorption column '{A_key}' drives the TTM; Te rows {look.Te.tolist()}; lambda {look.lam[0]}-{look.lam[-1]} nm")
     ttm.SIG = 150e-15 / (2 * np.sqrt(2 * np.log(2)))                  # demo section 8: 150 fs instead of the module's 280 fs
     Ce = ttm.HeatCapacity("sommerfeld")
     lam_scan = np.arange(look.lam[0], look.lam[-1] + 1e-9, 1.0)
@@ -199,7 +202,8 @@ def main():
     # --- tables
     sel_lams = np.array([m["lp"] for m in chosen.values()]); sel_labels = np.array(list(chosen.keys()))
     np.savez(OUT / "final3_Teff_vs_I_fdtdx.npz",
-             lambda_nm=look.lam, Te_K=look.Te, R=look.R, T=look.T, A=look.A,
+             lambda_nm=look.lam, Te_K=look.Te, R=look.R, T=look.T, A=look.A, A_key_used=A_key,
+             **({"A_rt": d["A_rt"]} if "A_rt" in d.files else {}), **({"A_ito": d["A_ito"]} if "A_ito" in d.files else {}),
              I_grid_Wcm2=I_GRID, F_mJcm2=F_I, tau_eff_s=TAU_EFF, pulse_fwhm_s=150e-15,
              selected_lambda_nm=sel_lams, selected_labels=sel_labels, selected_criteria_met=np.array([m["criteria_met"] for m in chosen.values()]),
              Teff_tau450=np.array([scan_I[m["lp"]]["Teff"] for m in chosen.values()]),
@@ -228,6 +232,7 @@ def main():
                                                     A_cold=float(scan_I[m["lp"]]["A_cold"]), A_eff_path_at_Imax=float(scan_I[m["lp"]]["A_eff"][-1]))
                                           for lab, m in chosen.items()},
                    above_table_first_I_Wcm2={lab: (float(I_GRID[np.argmax(scan_I[m["lp"]]["above_table"])]) if scan_I[m["lp"]]["above_table"].any() else None) for lab, m in chosen.items()},
+                   absorption_column_used=A_key,
                    conventions=dict(tau_eff_s=TAU_EFF, I_grid="logspace(6, 10.2, 60) W/cm^2", pulse="Gaussian FWHM 150 fs, int I dt = 1 (ZIP integrate_ttm, SIG overridden)",
                                     Ce="Sommerfeld gamma_e Te, gamma_e = %.4f" % ttm.GAM_E, C_L=ttm.C_L, d_ITO_m=ttm.T_ITO_M, g="C_e/tau_ep, tau_ep 450 fs primary; 1000 fs and g=0 band",
                                     interpolation="linear in lambda then linear in Te, clipped to [300, 8000] K (ZIP _at)", Teff="int I T[Te(t)] dt / int I dt (integrate_ttm avg)"))

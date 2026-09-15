@@ -38,6 +38,10 @@ class _ScaledPhasors:
         a = self.z[k]
         return a.astype(np.complex128) * self.dt if k.endswith("/phasor") else a
 
+    @property
+    def files(self):
+        return self.z.files
+
 
 def load_run(tag):
     d = RUNS / tag
@@ -61,18 +65,34 @@ def spectra_of(run, ref):
     leak = plane_flux(ref["z"]["R_plane/phasor"], dxy)
     T = -plane_flux(run["z"]["T_plane/phasor"], dxy) / P_inc
     R = (plane_flux(run["z"]["R_plane/phasor"], dxy) - leak) / P_inc
-    return dict(lam=lam, R=R, T=T, A=1 - R - T, leak_over_Pinc=leak / P_inc)
+    out = dict(lam=lam, R=R, T=T, A=1 - R - T, leak_over_Pinc=leak / P_inc)
+    if "ito_top_plane/phasor" in run["z"].files:
+        # ITO absorption measured directly: net downward power entering the ITO from above minus the power leaving below
+        # (S_z > 0 means +z; the wave travels in -z), normalized by the incident power.  Only lossless cells lie between
+        # the two planes and the ITO, so this is A_ITO on the full spectral grid (the ZIP's Lumerical-family 'A_ito').
+        S_top = plane_flux(run["z"]["ito_top_plane/phasor"], dxy)
+        S_bot = plane_flux(run["z"]["ito_bot_plane/phasor"], dxy)
+        out["A_ito"] = (S_bot - S_top) / P_inc
+        out["A_ito_minus_A"] = out["A_ito"] - out["A"]
+    return out
 
 
 def ito_loss_check(run, ref, Te):
     """Absorbed fraction from the volume fields at the single field wavelength: (w/c) Im(eps) sum |E/E_inc|^2 dV / P^2
     per material (fx_post do_fields formula), to verify A = 1 - R - T is the ITO absorption."""
     m = run["meta"]; idx = m["idx"]; ze = np.array(m["z_edges_m"]); dz = np.diff(ze)
-    lamf = float(run["z"]["lam_field_m"][0]) * 1e9
-    assert abs(float(ref["z"]["lam_field_m"][0]) * 1e9 - lamf) < 1e-6
-    E0 = ref["z"]["inc_field_plane/phasor"][0, 0, :, :, 0]
+    lam_f = np.asarray(run["z"]["lam_field_m"]) * 1e9
+    lam_s = np.asarray(ref["z"]["lam_spec_m"]) * 1e9
+    return [_ito_loss_at(run, ref, Te, il, float(l), lam_s, m, idx, dz) for il, l in enumerate(lam_f)]
+
+
+def _ito_loss_at(run, ref, Te, il, lamf, lam_s, m, idx, dz):
+    # E_inc: the reference Ex phasor at the same plane (ITO mid-plane position, air) - the spectral-grid detector of the
+    # reference run sits at that plane and contains every field wavelength (they are on the 1-nm grid)
+    js = int(np.argmin(np.abs(lam_s - lamf))); assert abs(lam_s[js] - lamf) < 1e-6, (lamf, lam_s[js])
+    E0 = ref["z"]["inc_ito_plane/phasor"][js, 0, :, :, 0]
     E0m = E0.mean()
-    vol = run["z"]["vol_fields/phasor"][0] / E0m                         # (3, nx, ny, nz_vol)
+    vol = run["z"]["vol_fields/phasor"][il] / E0m                        # (3, nx, ny, nz_vol)
     I2 = np.abs(vol) ** 2
     zv0 = idx["z_vol0"]
     i0, i1 = idx["z_ito0"] - zv0, idx["z_asi0"] - zv0
@@ -114,8 +134,8 @@ def decay_of(run):
 def main():
     ref = load_run("ref"); assert ref is not None, "reference run missing"
     lam_band = np.arange(BAND[0], BAND[1] + 0.01, 1.0)
-    fam = dict(lambda_nm=lam_band, Te_K=[], R=[], T=[], A=[])
-    full = dict(lambda_nm=None, R=[], T=[], A=[])
+    fam = dict(lambda_nm=lam_band, Te_K=[], R=[], T=[], A_rt=[], A_ito=[])
+    full = dict(lambda_nm=None, R=[], T=[], A_rt=[], A_ito=[])
     checks = dict(runs={}, missing=[])
     for Te in TE_LIST:
         run = load_run(f"Te{Te:.0f}")
@@ -125,56 +145,106 @@ def main():
         sel = np.isin(np.round(s["lam"], 6), np.round(lam_band, 6))
         assert sel.sum() == len(lam_band)
         fam["Te_K"].append(Te)
-        for k in ("R", "T", "A"):
-            fam[k].append(s[k][sel]); full[k].append(s[k])
+        assert "A_ito" in s, "ITO flux planes missing"
+        for k, sk in (("R", "R"), ("T", "T"), ("A_rt", "A"), ("A_ito", "A_ito")):
+            fam[k].append(s[sk][sel]); full[k].append(s[sk])
         full["lambda_nm"] = s["lam"]
-        lc = ito_loss_check(run, ref, Te)
-        A_at = float(np.interp(lc["lambda_nm"], s["lam"], s["A"]))
+        lcs = ito_loss_check(run, ref, Te)
+        for lc in lcs:
+            lc["A_rt_from_flux"] = float(np.interp(lc["lambda_nm"], s["lam"], s["A"]))
+            lc["A_ito_from_flux_planes"] = float(np.interp(lc["lambda_nm"], s["lam"], s["A_ito"]))
+            lc["A_ito_planes_minus_F_ito_volume"] = lc["A_ito_from_flux_planes"] - lc["F_ito"]
+            lc["A_rt_minus_F_ito_volume"] = lc["A_rt_from_flux"] - lc["F_ito"]
+            lc["nonITO_over_A"] = (lc["F_aSiH_volblock"] + lc["F_glass_volblock"]) / max(lc["A_ito_from_flux_planes"], 1e-12)
+        lc = lcs[0]; A_at = lc["A_rt_from_flux"]
+        inb = (s["lam"] >= BAND[0]) & (s["lam"] <= BAND[1]); cut = (s["lam"] >= 1250) & (s["lam"] <= 1265)
         rt = dict(time_fs=run["meta"]["time_s"] * 1e15, n_steps=run["meta"]["n_steps_run"], finite=run["meta"]["finite"],
                   max_abs_E_final=run["meta"]["max_abs_E_final"], decay=decay_of(run),
-                  closure=dict(max_abs_1_minus_RTA=float(np.abs(1 - s["R"] - s["T"] - s["A"]).max()),
-                               min_R_band=float(s["R"][sel].min()), min_T_band=float(s["T"][sel].min()), min_A_band=float(s["A"][sel].min()),
-                               max_A_band=float(s["A"][sel].max()), max_leak_over_Pinc=float(np.abs(s["leak_over_Pinc"]).max())),
-                  ito_loss_check=dict(lc, A_from_flux=A_at, A_minus_F_ito=A_at - lc["F_ito"],
-                                      nonITO_over_A=(lc["F_aSiH_volblock"] + lc["F_glass_volblock"]) / max(A_at, 1e-12)))
+                  closure=dict(min_R_band=float(s["R"][sel].min()), min_T_band=float(s["T"][sel].min()), min_A_rt_band=float(s["A"][sel].min()),
+                               max_A_rt_band=float(s["A"][sel].max()), min_A_ito_band=float(s["A_ito"][sel].min()), max_A_ito_band=float(s["A_ito"][sel].max()),
+                               max_leak_over_Pinc=float(np.abs(s["leak_over_Pinc"]).max()),
+                               A_ito_minus_A_rt=dict(max_abs_band=float(np.abs(s["A_ito_minus_A"][inb]).max()), rms_band=float(np.sqrt(np.mean(s["A_ito_minus_A"][inb] ** 2))),
+                                                     max_abs_1250_1265=float(np.abs(s["A_ito_minus_A"][cut]).max()), max_abs_band_outside_1250_1265=float(np.abs(s["A_ito_minus_A"][inb & ~cut]).max()),
+                                                     max_abs_1200_1400=float(np.abs(s["A_ito_minus_A"]).max()))),
+                  ito_loss_check=lcs)
         checks["runs"][f"{Te:.0f}"] = rt
         print(f"[post] Te={Te:6.0f} K  {rt['time_fs']:.0f} fs  decay a-Si {rt['decay']['probe_asi_end_over_peak']:.1e} ITO {rt['decay']['probe_ito_end_over_peak']:.1e} | "
-              f"band: T {s['T'][sel].min():.3f}..{s['T'][sel].max():.3f}  A {s['A'][sel].min():.3f}..{s['A'][sel].max():.3f} | "
-              f"A(1255)={A_at:.4f} vs ITO loss integral {lc['F_ito']:.4f} (a-Si {lc['F_aSiH_volblock']:.1e}, glass {lc['F_glass_volblock']:.1e})", flush=True)
-    for k in ("R", "T", "A"):
+              f"band: T {s['T'][sel].min():.3f}..{s['T'][sel].max():.3f}  A_ito {s['A_ito'][sel].min():.3f}..{s['A_ito'][sel].max():.3f} | "
+              f"|A_ito-(1-R-T)| band max {rt['closure']['A_ito_minus_A_rt']['max_abs_band']:.4f} (outside 1250-1265: {rt['closure']['A_ito_minus_A_rt']['max_abs_band_outside_1250_1265']:.4f}) | "
+              + " ".join(f"{l['lambda_nm']:.0f}nm: A_rt {l['A_rt_from_flux']:.4f} A_ito {l['A_ito_from_flux_planes']:.4f} F_vol {l['F_ito']:.4f}" for l in lcs), flush=True)
+    for k in ("R", "T", "A_rt", "A_ito"):
         fam[k] = np.array(fam[k]); full[k] = np.array(full[k])
     fam["Te_K"] = np.array(fam["Te_K"])
+    checks["extras"] = extra_checks(ref, full)
 
     # --- 300 K vs the existing final3 FDTDX result (final3/prod/spectra_prod.csv, 300 fs, same grid)
     if 300.0 in fam["Te_K"]:
         old = np.genfromtxt(CAMP / "final3" / "prod" / "spectra_prod.csv", delimiter=",", names=True)
         lam_o = old["lambda_nm"]; i300 = list(fam["Te_K"]).index(300.0)
         common = np.isin(np.round(full["lambda_nm"], 6), np.round(lam_o, 6)); io = np.isin(np.round(lam_o, 6), np.round(full["lambda_nm"], 6))
-        d = {k: full[k][i300][common] - old[k][io] for k in ("R", "T", "A")}
+        d = {k: full[kk][i300][common] - old[k][io] for k, kk in (("R", "R"), ("T", "T"), ("A", "A_rt"))}
         lam_c = full["lambda_nm"][common]; inb = (lam_c >= BAND[0]) & (lam_c <= BAND[1])
         checks["check_300K_vs_existing_final3_prod"] = {
             "note": "new 300 K run (400 fs, Te-refit ITO poles) minus existing final3/prod (300 fs, campaign ITO poles), same grid/source/detectors",
             **{f"max_abs_d{k}_1200_1400": float(np.abs(d[k]).max()) for k in d},
             **{f"max_abs_d{k}_1230_1280": float(np.abs(d[k][inb]).max()) for k in d},
             **{f"rms_d{k}_1230_1280": float(np.sqrt(np.mean(d[k][inb] ** 2))) for k in d},
-            "A_1255_new": float(np.interp(1255.0, full["lambda_nm"], full["A"][i300])), "A_1255_existing": float(np.interp(1255.0, lam_o, old["A"]))}
+            "A_1255_new_rt": float(np.interp(1255.0, full["lambda_nm"], full["A_rt"][i300])), "A_1255_existing": float(np.interp(1255.0, lam_o, old["A"]))}
         checks["old_300K"] = dict(lambda_nm=lam_o.tolist(), R=old["R"].tolist(), T=old["T"].tolist(), A=old["A"].tolist())
     # --- eps checks (the fit report, copied for the summary)
     checks["ito_fit_check"] = TE_MODELS["fit_check"]
     checks["lossless_other_media"] = dict(aSiH_gamma_rad_s=COLD_MODELS["aSiH"]["gamma_rad_s"], glass_gamma_rad_s=COLD_MODELS["glass"]["gamma_rad_s"],
                                           note="a-Si:H and glass are lossless Lorentz poles in the campaign model (ADE damping floor 1e9 rad/s); ITO is the only lossy medium")
     # --- save lookup tables
-    np.savez(OUT / "final3_Te_family_fdtdx.npz", lambda_nm=fam["lambda_nm"], Te_K=fam["Te_K"], R=fam["R"], T=fam["T"], A=fam["A"],
-             lambda_full_nm=full["lambda_nm"], R_full=full["R"], T_full=full["T"], A_full=full["A"],
-             note="final3 (P825/h525/pad12%), FDTDX, ITO eps(lam,Te) = eps_meas + delta-Drude(Te) refitted per Te; A = 1 - R - T; rows = Te_K, cols = lambda_nm")
+    np.savez(OUT / "final3_Te_family_fdtdx.npz", lambda_nm=fam["lambda_nm"], Te_K=fam["Te_K"], R=fam["R"], T=fam["T"], A=fam["A_ito"], A_rt=fam["A_rt"], A_ito=fam["A_ito"],
+             lambda_full_nm=full["lambda_nm"], R_full=full["R"], T_full=full["T"], A_rt_full=full["A_rt"], A_ito_full=full["A_ito"],
+             note="final3 (P825/h525/pad12%), FDTDX 600 fs, ITO eps(lam,Te) = eps_meas + delta-Drude(Te) refitted per Te; "
+                  "A = A_ito (flux difference across the ITO film, used by the feedback); A_rt = 1 - R - T; rows = Te_K, cols = lambda_nm")
     with open(OUT / "final3_Te_family_fdtdx.csv", "w", newline="") as f:
-        w = csv.writer(f); w.writerow(["Te_K", "lambda_nm", "R", "T", "A"])
+        w = csv.writer(f); w.writerow(["Te_K", "lambda_nm", "R", "T", "A_ito", "A_rt_1_minus_R_minus_T"])
         for i, Te in enumerate(fam["Te_K"]):
             for j, l in enumerate(fam["lambda_nm"]):
-                w.writerow([f"{Te:.0f}", f"{l:.1f}", f"{fam['R'][i, j]:.6f}", f"{fam['T'][i, j]:.6f}", f"{fam['A'][i, j]:.6f}"])
+                w.writerow([f"{Te:.0f}", f"{l:.1f}", f"{fam['R'][i, j]:.6f}", f"{fam['T'][i, j]:.6f}", f"{fam['A_ito'][i, j]:.6f}", f"{fam['A_rt'][i, j]:.6f}"])
     json.dump(checks, open(OUT / "em_checks.json", "w"), indent=1)
     make_figures(fam, full, checks)
     print(json.dumps({k: v for k, v in checks.items() if k not in ("old_300K", "ito_fit_check")}, indent=1)[:6000])
+
+
+def _diff_stats(lam, a, b):
+    d = a - b; inb = (lam >= BAND[0]) & (lam <= BAND[1]); cut = (lam >= 1250) & (lam <= 1265)
+    return dict(max_abs_band=float(np.abs(d[inb]).max()), rms_band=float(np.sqrt(np.mean(d[inb] ** 2))),
+                max_abs_1250_1265=float(np.abs(d[cut]).max()), max_abs_band_outside_1250_1265=float(np.abs(d[inb & ~cut]).max()))
+
+
+def extra_checks(ref, full):
+    """Time-convergence (400 / 600 / 900 fs) and pole-isolation (300 K, 300 fs) runs, when present."""
+    out = {}
+    base = {}
+    for tag, Te in (("Te300", 300.0), ("Te8000", 8000.0)):
+        r = load_run(tag)
+        if r is not None:
+            base[tag] = spectra_of(r, ref)
+    for tag, ref_tag, label in (("Te300_400fs", "Te300", "300 K: 400 fs vs 600 fs"), ("Te8000_400fs", "Te8000", "8000 K: 400 fs vs 600 fs"),
+                                ("Te8000_900fs", "Te8000", "8000 K: 900 fs vs 600 fs")):
+        r = load_run(tag)
+        if r is None or ref_tag not in base:
+            continue
+        s = spectra_of(r, ref); b = base[ref_tag]
+        e = dict(label=label, time_fs=r["meta"]["time_s"] * 1e15, decay=decay_of(r), T=_diff_stats(s["lam"], s["T"], b["T"]), R=_diff_stats(s["lam"], s["R"], b["R"]),
+                 A_rt=_diff_stats(s["lam"], s["A"], b["A"]))
+        if "A_ito" in s and "A_ito" in b:
+            e["A_ito"] = _diff_stats(s["lam"], s["A_ito"], b["A_ito"])
+        e["spectra"] = dict(lambda_nm=s["lam"].tolist(), T=s["T"].tolist(), R=s["R"].tolist(), A_rt=s["A"].tolist(), **({"A_ito": s["A_ito"].tolist()} if "A_ito" in s else {}))
+        out[tag] = e
+    r = load_run("Te300_300fs")
+    if r is not None:
+        s = spectra_of(r, ref)
+        old = np.genfromtxt(CAMP / "final3" / "prod" / "spectra_prod.csv", delimiter=",", names=True)
+        common = np.isin(np.round(s["lam"], 6), np.round(old["lambda_nm"], 6)); io = np.isin(np.round(old["lambda_nm"], 6), np.round(s["lam"], 6))
+        out["Te300_300fs_vs_existing_prod"] = dict(label="300 K, 300 fs, refit ITO poles vs campaign final3/prod (300 fs, campaign poles): isolates the pole refit",
+                                                    decay=decay_of(r), **{k: _diff_stats(s["lam"][common], s[kk][common], old[k][io]) for k, kk in (("R", "R"), ("T", "T"), ("A", "A"))},
+                                                    spectra=dict(lambda_nm=s["lam"].tolist(), T=s["T"].tolist(), R=s["R"].tolist(), A_rt=s["A"].tolist(), A_ito=s["A_ito"].tolist()))
+    return out
 
 
 def make_figures(fam, full, checks):
@@ -202,17 +272,35 @@ def make_figures(fam, full, checks):
     ax.set_title(r"final3, FDTDX: $T(\lambda, T_e)$ (linear interpolation between the 9 computed $T_e$ rows, white lines)", fontsize=9)
     plt.colorbar(im, ax=ax, label="T")
     fig.tight_layout(); fig.savefig(OUT / "fig2_T_map_lambda_Te_final3.png"); plt.close(fig)
-    # diagnostic: R, T, A on the full grid for all Te + 300 K comparison
-    fig, axs = plt.subplots(1, 3, figsize=(15, 4.2), dpi=120)
-    for k, ax in zip(("R", "T", "A"), axs):
+    # diagnostic: R, T, A_ito, 1-R-T on the full grid for all Te + 300 K comparison
+    fig, axs = plt.subplots(1, 4, figsize=(19, 4.2), dpi=120)
+    for (k, lab), ax in zip((("R", "R"), ("T", "T"), ("A_ito", "A_ITO (flux difference across the ITO)"), ("A_rt", "1 - R - T")), axs):
         for i, (t, c) in enumerate(zip(Te, cols)):
             ax.plot(full["lambda_nm"], full[k][i], "-", color=c, lw=1.1, label=f"{t:.0f} K")
-        if "old_300K" in checks:
-            o = checks["old_300K"]; ax.plot(o["lambda_nm"], o[k], "k:", lw=1.2, label="300 K existing")
-        ax.axvspan(*BAND, color="0.9", zorder=0); ax.set_xlabel("λ [nm]"); ax.set_ylabel(k); ax.grid(alpha=0.3)
+        if "old_300K" in checks and k in ("R", "T", "A_rt"):
+            o = checks["old_300K"]; ax.plot(o["lambda_nm"], o["A" if k == "A_rt" else k], "k:", lw=1.2, label="300 K existing (300 fs)")
+        ax.axvspan(*BAND, color="0.9", zorder=0); ax.axvspan(1250, 1265, color="0.8", zorder=0); ax.set_xlabel("λ [nm]"); ax.set_ylabel(lab); ax.grid(alpha=0.3)
     axs[0].legend(fontsize=6.5, ncol=2)
-    fig.suptitle("final3 FDTDX Te family, full recorded band (diagnostic)", fontsize=10); fig.tight_layout()
+    fig.suptitle("final3 FDTDX Te family, full recorded band (diagnostic; dark band = 1250-1265 nm glass Rayleigh cut-off region)", fontsize=10); fig.tight_layout()
     fig.savefig(OUT / "diag_RTA_full_band.png"); plt.close(fig)
+    # diagnostic: time convergence
+    ex = checks.get("extras", {})
+    if ex:
+        fig, axs = plt.subplots(1, len(ex), figsize=(5.2 * len(ex), 4.0), dpi=120, squeeze=False)
+        for ax, (tag, e) in zip(axs[0], ex.items()):
+            sp = e["spectra"]; lam_e = np.array(sp["lambda_nm"])
+            ax.plot(lam_e, sp["T"], "r-", lw=1.2, label=f"T, {tag}"); ax.plot(lam_e, sp["A_rt"], "k-", lw=1.0, label="1-R-T")
+            if "A_ito" in sp:
+                ax.plot(lam_e, sp["A_ito"], "b-", lw=1.0, label="A_ITO")
+            key = "Te300" if tag.startswith("Te300") else "Te8000"
+            if key in [f"Te{t:.0f}" for t in Te] and not tag.endswith("existing_prod"):
+                i = list(Te).index(300.0 if key == "Te300" else 8000.0)
+                ax.plot(full["lambda_nm"], full["T"][i], "r--", lw=1.0, label="T, 600 fs"); ax.plot(full["lambda_nm"], full["A_ito"][i], "b--", lw=1.0, label="A_ITO, 600 fs")
+            if tag.endswith("existing_prod") and "old_300K" in checks:
+                o = checks["old_300K"]; ax.plot(o["lambda_nm"], o["T"], "r--", lw=1.0, label="T existing prod"); ax.plot(o["lambda_nm"], o["A"], "k--", lw=1.0, label="A existing prod")
+            ax.axvspan(*BAND, color="0.92", zorder=0); ax.axvspan(1250, 1265, color="0.82", zorder=0); ax.set_xlim(1220, 1300); ax.set_xlabel("λ [nm]"); ax.grid(alpha=0.3)
+            ax.set_title(e["label"], fontsize=8.5); ax.legend(fontsize=6.5)
+        fig.tight_layout(); fig.savefig(OUT / "diag_time_convergence.png"); plt.close(fig)
 
 
 if __name__ == "__main__":
