@@ -160,7 +160,7 @@ def main():
         inb = (s["lam"] >= BAND[0]) & (s["lam"] <= BAND[1]); cut = (s["lam"] >= 1250) & (s["lam"] <= 1265)
         rt = dict(time_fs=run["meta"]["time_s"] * 1e15, n_steps=run["meta"]["n_steps_run"], finite=run["meta"]["finite"],
                   max_abs_E_final=run["meta"]["max_abs_E_final"], decay=decay_of(run),
-                  closure=dict(min_R_band=float(s["R"][sel].min()), min_T_band=float(s["T"][sel].min()), min_A_rt_band=float(s["A"][sel].min()),
+                  closure=dict(min_R_band=float(s["R"][sel].min()), min_T_band=float(s["T"][sel].min()), max_T_band=float(s["T"][sel].max()), min_A_rt_band=float(s["A"][sel].min()),
                                max_A_rt_band=float(s["A"][sel].max()), min_A_ito_band=float(s["A_ito"][sel].min()), max_A_ito_band=float(s["A_ito"][sel].max()),
                                max_leak_over_Pinc=float(np.abs(s["leak_over_Pinc"]).max()),
                                A_ito_minus_A_rt=dict(max_abs_band=float(np.abs(s["A_ito_minus_A"][inb]).max()), rms_band=float(np.sqrt(np.mean(s["A_ito_minus_A"][inb] ** 2))),
