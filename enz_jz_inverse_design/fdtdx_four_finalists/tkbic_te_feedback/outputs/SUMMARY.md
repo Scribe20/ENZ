@@ -20,14 +20,15 @@
 
 | Te [K] | probe end/peak a-Si / ITO | T range in band | A_ITO range in band | max abs(A_ITO − (1−R−T)) band / outside 1250-1265 | 1255 nm: 1−R−T / A_ITO / volume loss | 1275 nm: 1−R−T / A_ITO / volume loss | non-ITO loss / A |
 |---|---|---|---|---|---|---|---|
-| 300 | 8.0e-03 / 2.3e-02 | -0.002 … 0.000 | 0.457 … 0.991 | 0.040 / 0.020 | 0.953 / 0.935 / 0.936 | 0.986 / 0.979 / 0.985 | 8.7e-07 |
-| 600 | 8.1e-03 / 2.2e-02 | -0.002 … 0.000 | 0.453 … 0.990 | 0.041 / 0.020 | 0.949 / 0.932 / 0.932 | 0.985 / 0.978 / 0.983 | 8.7e-07 |
-| 1000 | 8.2e-03 / 2.2e-02 | -0.000 … 0.000 | 0.445 … 0.987 | 0.041 / 0.020 | 0.941 / 0.922 / 0.923 | 0.981 / 0.974 / 0.979 | 8.8e-07 |
-| 1500 | 8.4e-03 / 2.5e-02 | -0.000 … 0.000 | 0.429 … 0.981 | 0.041 / 0.020 | 0.923 / 0.904 / 0.904 | 0.972 / 0.965 / 0.970 | 9.1e-07 |
-| 2000 | 8.7e-03 / 2.5e-02 | -0.000 … 0.000 | 0.407 … 0.968 | 0.042 / 0.021 | 0.897 / 0.876 / 0.876 | 0.955 / 0.949 / 0.954 | 9.4e-07 |
-| 3000 | 9.7e-03 / 2.9e-02 | -0.001 … 0.000 | 0.349 … 0.910 | 0.046 / 0.022 | 0.818 / 0.791 / 0.790 | 0.888 / 0.882 / 0.888 | 1.1e-06 |
-| 4500 | 1.2e-02 / 3.9e-02 | -0.000 … 0.000 | 0.255 … 0.733 | 0.064 / 0.025 | 0.671 / 0.622 / 0.619 | 0.699 / 0.696 / 0.701 | 1.7e-06 |
-| 8000 | 2.9e-02 / 4.7e-02 | -0.003 … 0.000 | 0.121 … 0.404 | 0.153 / 0.044 | 0.527 / 0.374 / 0.360 | 0.278 / 0.291 / 0.295 | 5.8e-06 |
+| 300 | 8.0e-03 / 2.3e-02 | -0.002 … 0.498 | 0.457 … 0.991 | 0.040 / 0.020 | 0.953 / 0.935 / 0.936 | 0.986 / 0.979 / 0.985 | 8.7e-07 |
+| 600 | 8.1e-03 / 2.2e-02 | -0.002 … 0.500 | 0.453 … 0.990 | 0.041 / 0.020 | 0.949 / 0.932 / 0.932 | 0.985 / 0.978 / 0.983 | 8.7e-07 |
+| 1000 | 8.2e-03 / 2.2e-02 | -0.000 … 0.506 | 0.445 … 0.987 | 0.041 / 0.020 | 0.941 / 0.922 / 0.923 | 0.981 / 0.974 / 0.979 | 8.8e-07 |
+| 1500 | 8.4e-03 / 2.5e-02 | -0.000 … 0.518 | 0.429 … 0.981 | 0.041 / 0.020 | 0.923 / 0.904 / 0.904 | 0.972 / 0.965 / 0.970 | 9.1e-07 |
+| 2000 | 8.7e-03 / 2.5e-02 | -0.000 … 0.532 | 0.407 … 0.968 | 0.042 / 0.021 | 0.897 / 0.876 / 0.876 | 0.955 / 0.949 / 0.954 | 9.4e-07 |
+| 3000 | 9.7e-03 / 2.9e-02 | -0.001 … 0.571 | 0.349 … 0.910 | 0.046 / 0.022 | 0.818 / 0.791 / 0.790 | 0.888 / 0.882 / 0.888 | 1.1e-06 |
+| 4500 | 1.2e-02 / 3.9e-02 | -0.000 … 0.634 | 0.255 … 0.733 | 0.064 / 0.025 | 0.671 / 0.622 / 0.619 | 0.699 / 0.696 / 0.701 | 1.7e-06 |
+| 6000 | 1.7e-02 / 4.7e-02 | -0.001 … 0.686 | 0.182 … 0.517 | 0.097 / 0.034 | 0.571 / 0.481 / 0.472 | 0.483 / 0.485 / 0.490 | 3.1e-06 |
+| 8000 | 2.9e-02 / 4.7e-02 | -0.003 … 0.737 | 0.121 … 0.404 | 0.153 / 0.044 | 0.527 / 0.374 / 0.360 | 0.278 / 0.291 / 0.295 | 5.8e-06 |
 
 T range column: min T in band (negative values = closure/truncation error) … max T in band.  Non-ITO loss: a-Si:H + glass volume-loss integrals (lossless Lorentz models, ADE damping floor 1e9 rad/s) relative to A_ITO.  TFSF backward leakage ≤ 1.3e-07 of P_inc.
 
@@ -44,8 +45,8 @@ Absorption column driving the TTM: `A_ito`.  ZIP labels found with the ZIP crite
 
 | curve | λ [nm] | T0 | ΔT (0 → 2.4 nJ) | sat. fraction at 1.6 nJ | logistic E0 [nJ] | r² | ZIP criteria met | peak Te (feedback) | peak Te (fixed cold A) | max abs ΔT_eff vs fixed cold A | first I above the 8000 K table |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| sigmoid-like | 1244 | 0.373 | +0.225 | 0.90 | 0.00 | 0.98 | True | 8039 K | 13537 K | 0.046 | 1.6e+10 W/cm² |
-| cut-off zone 1250-1265 nm (truncation-limited), max ΔT there | 1258 | 0.008 | +0.108 | 0.95 | 0.00 | 1.00 | False | 11561 K | 17226 K | 0.020 | 7.0e+09 W/cm² |
-| no transmission response (T ≈ 0 at all Te) | 1274 | 0.003 | +0.001 | 0.86 | 0.72 | 0.95 | False | 10265 K | 17254 K | 0.001 | 8.2e+09 W/cm² |
+| sigmoid-like | 1244 | 0.373 | +0.225 | 0.90 | 0.00 | 0.98 | True | 7969 K | 13537 K | 0.045 | never |
+| cut-off zone 1250-1265 nm (truncation-limited), max ΔT there | 1258 | 0.008 | +0.107 | 0.95 | 0.00 | 1.00 | False | 11524 K | 17226 K | 0.021 | 7.0e+09 W/cm² |
+| no transmission response (T ≈ 0 at all Te) | 1274 | 0.003 | +0.001 | 0.75 | 0.93 | 0.92 | False | 10231 K | 17254 K | 0.001 | 8.2e+09 W/cm² |
 
-Family table: Te rows [300.0, 600.0, 1000.0, 1500.0, 2000.0, 3000.0, 4500.0, 8000.0], λ 1230-1280 nm / 1 nm.  Conventions: {"tau_eff_s": 1.8799712059732502e-13, "I_grid": "logspace(6, 10.2, 60) W/cm^2", "pulse": "Gaussian FWHM 150 fs, int I dt = 1 (ZIP integrate_ttm, SIG overridden)", "Ce": "Sommerfeld gamma_e Te, gamma_e = 5.2328", "C_L": 2600000.0, "d_ITO_m": 2.3e-08, "g": "C_e/tau_ep, tau_ep 450 fs primary; 1000 fs and g=0 band", "interpolation": "linear in lambda then linear in Te, clipped to [300, 8000] K (ZIP _at)", "Teff": "int I T[Te(t)] dt / int I dt (integrate_ttm avg)"}
+Family table: Te rows [300.0, 600.0, 1000.0, 1500.0, 2000.0, 3000.0, 4500.0, 6000.0, 8000.0], λ 1230-1280 nm / 1 nm.  Conventions: {"tau_eff_s": 1.8799712059732502e-13, "I_grid": "logspace(6, 10.2, 60) W/cm^2", "pulse": "Gaussian FWHM 150 fs, int I dt = 1 (ZIP integrate_ttm, SIG overridden)", "Ce": "Sommerfeld gamma_e Te, gamma_e = 5.2328", "C_L": 2600000.0, "d_ITO_m": 2.3e-08, "g": "C_e/tau_ep, tau_ep 450 fs primary; 1000 fs and g=0 band", "interpolation": "linear in lambda then linear in Te, clipped to [300, 8000] K (ZIP _at)", "Teff": "int I T[Te(t)] dt / int I dt (integrate_ttm avg)"}
