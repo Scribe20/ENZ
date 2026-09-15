@@ -66,6 +66,138 @@
     }
    ]
   },
+  "600": {
+   "time_fs": 600.0000000000001,
+   "n_steps": 46106,
+   "finite": true,
+   "max_abs_E_final": 0.0007403839263133705,
+   "decay": {
+    "probe_asi_end_over_peak": 0.008057684637606144,
+    "probe_asi_peak_time_fs": 78.87473159208122,
+    "probe_ito_end_over_peak": 0.022340942174196243,
+    "probe_ito_peak_time_fs": 85.25133916180896
+   },
+   "closure": {
+    "min_R_band": 0.01074708888539337,
+    "min_T_band": -0.0016898593477585372,
+    "min_A_rt_band": 0.46999455116606037,
+    "max_A_rt_band": 0.9891832016071715,
+    "min_A_ito_band": 0.4534706732614807,
+    "max_A_ito_band": 0.9897677253721056,
+    "max_leak_over_Pinc": 1.3367432858265814e-07,
+    "A_ito_minus_A_rt": {
+     "max_abs_band": 0.04053000046860078,
+     "rms_band": 0.014254422476241532,
+     "max_abs_1250_1265": 0.04053000046860078,
+     "max_abs_band_outside_1250_1265": 0.01998963854260516,
+     "max_abs_1200_1400": 0.04053000046860078
+    }
+   },
+   "ito_loss_check": [
+    {
+     "lambda_nm": 1255.0,
+     "F_ito": 0.9322011154325105,
+     "F_aSiH_volblock": 8.106281399180303e-07,
+     "F_glass_volblock": 1.655176568172194e-09,
+     "eps_ito_used": [
+      0.24729233131713046,
+      0.37048395685592034
+     ],
+     "Im_eps_aSiH": 2.615535393963856e-07,
+     "Im_eps_glass": 3.0095943095831e-09,
+     "E_inc_nonuniformity": 3.039425531226977e-08,
+     "A_rt_from_flux": 0.9494929018183704,
+     "A_ito_from_flux_planes": 0.9315137171828639,
+     "A_ito_planes_minus_F_ito_volume": -0.0006873982496465869,
+     "A_rt_minus_F_ito_volume": 0.01729178638585993,
+     "nonITO_over_A": 8.72003601774921e-07
+    },
+    {
+     "lambda_nm": 1275.0,
+     "F_ito": 0.9828219660151601,
+     "F_aSiH_volblock": 2.919520345057002e-07,
+     "F_glass_volblock": 5.77865454700273e-10,
+     "eps_ito_used": [
+      0.14637676854486792,
+      0.3938977516096718
+     ],
+     "Im_eps_aSiH": 2.5560276097072966e-07,
+     "Im_eps_glass": 2.961744373588913e-09,
+     "E_inc_nonuniformity": 2.007858716561942e-08,
+     "A_rt_from_flux": 0.9848266498343577,
+     "A_ito_from_flux_planes": 0.9781039197998185,
+     "A_ito_planes_minus_F_ito_volume": -0.004718046215341665,
+     "A_rt_minus_F_ito_volume": 0.0020046838191976057,
+     "nonITO_over_A": 2.990785478298364e-07
+    }
+   ]
+  },
+  "1000": {
+   "time_fs": 600.0000000000001,
+   "n_steps": 46106,
+   "finite": true,
+   "max_abs_E_final": 0.0007696020184084773,
+   "decay": {
+    "probe_asi_end_over_peak": 0.008154340088367462,
+    "probe_asi_peak_time_fs": 78.8877450769174,
+    "probe_ito_end_over_peak": 0.02222343534231186,
+    "probe_ito_peak_time_fs": 85.25133916180896
+   },
+   "closure": {
+    "min_R_band": 0.013244498343082828,
+    "min_T_band": -0.0002781375297089774,
+    "min_A_rt_band": 0.4615593005682699,
+    "max_A_rt_band": 0.9867402955470058,
+    "min_A_ito_band": 0.4450236907065114,
+    "max_A_ito_band": 0.9872820157941681,
+    "max_leak_over_Pinc": 1.3367432858265814e-07,
+    "A_ito_minus_A_rt": {
+     "max_abs_band": 0.04080782111779424,
+     "rms_band": 0.014330442374894824,
+     "max_abs_1250_1265": 0.04080782111779424,
+     "max_abs_band_outside_1250_1265": 0.02006778794159214,
+     "max_abs_1200_1400": 0.04080782111779424
+    }
+   },
+   "ito_loss_check": [
+    {
+     "lambda_nm": 1255.0,
+     "F_ito": 0.9230120246957013,
+     "F_aSiH_volblock": 8.125609195082552e-07,
+     "F_glass_volblock": 1.6857683257790763e-09,
+     "eps_ito_used": [
+      0.264106936712893,
+      0.36831360226788495
+     ],
+     "Im_eps_aSiH": 2.615535393963856e-07,
+     "Im_eps_glass": 3.0095943095831e-09,
+     "E_inc_nonuniformity": 3.039425531226977e-08,
+     "A_rt_from_flux": 0.9408761886601394,
+     "A_ito_from_flux_planes": 0.922394118393941,
+     "A_ito_planes_minus_F_ito_volume": -0.0006179063017602848,
+     "A_rt_minus_F_ito_volume": 0.01786416396443813,
+     "nonITO_over_A": 8.827535557704863e-07
+    },
+    {
+     "lambda_nm": 1275.0,
+     "F_ito": 0.9791169285056319,
+     "F_aSiH_volblock": 2.948114552582631e-07,
+     "F_glass_volblock": 5.911170525363123e-10,
+     "eps_ito_used": [
+      0.16372547749487099,
+      0.3916208369769468
+     ],
+     "Im_eps_aSiH": 2.5560276097072966e-07,
+     "Im_eps_glass": 2.961744373588913e-09,
+     "E_inc_nonuniformity": 2.007858716561942e-08,
+     "A_rt_from_flux": 0.9809922043179795,
+     "A_ito_from_flux_planes": 0.9743384526213464,
+     "A_ito_planes_minus_F_ito_volume": -0.004778475884285482,
+     "A_rt_minus_F_ito_volume": 0.0018752758123475877,
+     "nonITO_over_A": 3.031827097822656e-07
+    }
+   ]
+  },
   "1500": {
    "time_fs": 600.0000000000001,
    "n_steps": 46106,
@@ -132,6 +264,72 @@
     }
    ]
   },
+  "2000": {
+   "time_fs": 600.0000000000001,
+   "n_steps": 46106,
+   "finite": true,
+   "max_abs_E_final": 0.000927800836507231,
+   "decay": {
+    "probe_asi_end_over_peak": 0.00870087556540966,
+    "probe_asi_peak_time_fs": 78.8877450769174,
+    "probe_ito_end_over_peak": 0.025312451645731926,
+    "probe_ito_peak_time_fs": 85.30339310115366
+   },
+   "closure": {
+    "min_R_band": 0.03284365260460279,
+    "min_T_band": -0.00037537693943847663,
+    "min_A_rt_band": 0.4235791459231383,
+    "max_A_rt_band": 0.9673404575490967,
+    "min_A_ito_band": 0.40704505528838913,
+    "max_A_ito_band": 0.9676863970195861,
+    "max_leak_over_Pinc": 1.3367432858265814e-07,
+    "A_ito_minus_A_rt": {
+     "max_abs_band": 0.04240038090102338,
+     "rms_band": 0.014791882420106841,
+     "max_abs_1250_1265": 0.04240038090102338,
+     "max_abs_band_outside_1250_1265": 0.02050112101283852,
+     "max_abs_1200_1400": 0.04240038090102338
+    }
+   },
+   "ito_loss_check": [
+    {
+     "lambda_nm": 1255.0,
+     "F_ito": 0.8761715728199889,
+     "F_aSiH_volblock": 8.253971327935973e-07,
+     "F_glass_volblock": 1.8428801455035248e-09,
+     "eps_ito_used": [
+      0.34067371491191245,
+      0.35847765918380475
+     ],
+     "Im_eps_aSiH": 2.615535393963856e-07,
+     "Im_eps_glass": 3.0095943095831e-09,
+     "E_inc_nonuniformity": 3.039425531226977e-08,
+     "A_rt_from_flux": 0.8970234506321791,
+     "A_ito_from_flux_planes": 0.8757872890317733,
+     "A_ito_planes_minus_F_ito_volume": -0.0003842837882156447,
+     "A_rt_minus_F_ito_volume": 0.020851877812190223,
+     "nonITO_over_A": 9.445672748386839e-07
+    },
+    {
+     "lambda_nm": 1275.0,
+     "F_ito": 0.9536305780330043,
+     "F_aSiH_volblock": 3.0750129499527637e-07,
+     "F_glass_volblock": 6.675637925495396e-10,
+     "eps_ito_used": [
+      0.24276968389401377,
+      0.38129534568017553
+     ],
+     "Im_eps_aSiH": 2.5560276097072966e-07,
+     "Im_eps_glass": 2.961744373588913e-09,
+     "E_inc_nonuniformity": 2.007858716561942e-08,
+     "A_rt_from_flux": 0.9550347627114967,
+     "A_ito_from_flux_planes": 0.9486821515540634,
+     "A_ito_planes_minus_F_ito_volume": -0.004948426478940893,
+     "A_rt_minus_F_ito_volume": 0.0014041846784923484,
+     "nonITO_over_A": 3.2483889180691936e-07
+    }
+   ]
+  },
   "3000": {
    "time_fs": 600.0000000000001,
    "n_steps": 46106,
@@ -195,6 +393,72 @@
      "A_ito_planes_minus_F_ito_volume": -0.005465901221152869,
      "A_rt_minus_F_ito_volume": 0.00020137414813625742,
      "nonITO_over_A": 3.700992767037528e-07
+    }
+   ]
+  },
+  "4500": {
+   "time_fs": 600.0000000000001,
+   "n_steps": 46106,
+   "finite": true,
+   "max_abs_E_final": 0.002140256343409419,
+   "decay": {
+    "probe_asi_end_over_peak": 0.012366279028356075,
+    "probe_asi_peak_time_fs": 81.1260644687402,
+    "probe_ito_end_over_peak": 0.03858894854784012,
+    "probe_ito_peak_time_fs": 85.49859537369636
+   },
+   "closure": {
+    "min_R_band": 0.09349980580661477,
+    "min_T_band": -0.00037170536502806355,
+    "min_A_rt_band": 0.26916582894375474,
+    "max_A_rt_band": 0.73473308944367,
+    "min_A_ito_band": 0.2552893171261318,
+    "max_A_ito_band": 0.7329797107217824,
+    "max_leak_over_Pinc": 1.3367432858265814e-07,
+    "A_ito_minus_A_rt": {
+     "max_abs_band": 0.06401178770998883,
+     "rms_band": 0.021168052483860993,
+     "max_abs_1250_1265": 0.06401178770998883,
+     "max_abs_band_outside_1250_1265": 0.025333916930505296,
+     "max_abs_1200_1400": 0.06401178770998883
+    }
+   },
+   "ito_loss_check": [
+    {
+     "lambda_nm": 1255.0,
+     "F_ito": 0.6185085259230408,
+     "F_aSiH_volblock": 1.0641108477577726e-06,
+     "F_glass_volblock": 2.9188879048604084e-09,
+     "eps_ito_used": [
+      0.6981246696977275,
+      0.31267014295038864
+     ],
+     "Im_eps_aSiH": 2.615535393963856e-07,
+     "Im_eps_glass": 3.0095943095831e-09,
+     "E_inc_nonuniformity": 3.039425531226977e-08,
+     "A_rt_from_flux": 0.6714882144714145,
+     "A_ito_from_flux_planes": 0.6221701972325897,
+     "A_ito_planes_minus_F_ito_volume": 0.003661671309548864,
+     "A_rt_minus_F_ito_volume": 0.05297968854837365,
+     "nonITO_over_A": 1.7150126129614958e-06
+    },
+    {
+     "lambda_nm": 1275.0,
+     "F_ito": 0.7008654312432696,
+     "F_aSiH_volblock": 3.508376321573761e-07,
+     "F_glass_volblock": 1.249137442867543e-09,
+     "eps_ito_used": [
+      0.6114217875349468,
+      0.33327492036032186
+     ],
+     "Im_eps_aSiH": 2.5560276097072966e-07,
+     "Im_eps_glass": 2.961744373588913e-09,
+     "E_inc_nonuniformity": 2.007858716561942e-08,
+     "A_rt_from_flux": 0.6994119709226281,
+     "A_ito_from_flux_planes": 0.696059759016241,
+     "A_ito_planes_minus_F_ito_volume": -0.004805672227028657,
+     "A_rt_minus_F_ito_volume": -0.0014534603206415309,
+     "nonITO_over_A": 5.058283646476803e-07
     }
    ]
   },
@@ -266,10 +530,6 @@
   }
  },
  "missing": [
-  600.0,
-  1000.0,
-  2000.0,
-  4500.0,
   6000.0
  ],
  "extras": {

@@ -147,17 +147,26 @@ def main():
         m = strict[lab]
         if m is not None:
             chosen[lab] = dict(m, criteria_met=True)
-    # always show the strongest positive and strongest negative response even when no ZIP label applies
-    m_up = max(mets, key=lambda m: m["dT"]); m_dn = min(mets, key=lambda m: m["dT"])
-    if not any(v["lp"] == m_up["lp"] for v in chosen.values()):
-        chosen[f"max ΔT>0 ({'no ZIP label' if m_up['dT'] > 0 else 'no increase'})"] = dict(m_up, criteria_met=False)
-    if m_dn["dT"] < 0 and not any(v["lp"] == m_dn["lp"] for v in chosen.values()):
-        chosen[f"max ΔT<0 (no ZIP 'saturable' label)" if strict["saturable"] is None else "min ΔT"] = dict(m_dn, criteria_met=False)
-    # a mid-band representative if fewer than 3 curves
-    if len(chosen) < 3:
-        mid = lam_scan[len(lam_scan) // 2]
-        if not any(abs(v["lp"] - mid) < 0.5 for v in chosen.values()):
-            chosen[f"band centre {mid:.0f} nm"] = dict(next(m for m in mets if abs(m["lp"] - mid) < 0.5), criteria_met=False)
+
+    def _have(m):
+        return any(abs(v["lp"] - m["lp"]) < 0.5 for v in chosen.values())
+    # representative wavelengths beyond the ZIP labels, chosen from the data (labels state what the curve actually does):
+    m_up = max(mets, key=lambda m: m["dT"])                                   # strongest increase
+    if not _have(m_up):
+        chosen[f"max ΔT (no ZIP label met)"] = dict(m_up, criteria_met=False)
+    m_dn = min(mets, key=lambda m: m["dT"])                                   # strongest decrease, only if it is a real one
+    if m_dn["dT"] < -0.05 and not _have(m_dn):
+        chosen["decreasing (ZIP 'saturable' criteria not met)"] = dict(m_dn, criteria_met=False)
+    cut = [m for m in mets if 1250.0 <= m["lp"] <= 1265.0]                   # glass (+-1,0) cut-off zone: truncation-limited rows
+    if cut:
+        m_cut = max(cut, key=lambda m: m["dT"])
+        if not _have(m_cut):
+            chosen["cut-off zone 1250-1265 nm (truncation-limited), max ΔT there"] = dict(m_cut, criteria_met=False)
+    flat = [m for m in mets if m["lp"] > 1265.0 and m["T0"] < 0.02]          # T pinned near zero at every Te
+    if flat:
+        m_flat = min(flat, key=lambda m: abs(m["dT"]))
+        if not _have(m_flat):
+            chosen["no transmission response (T ≈ 0 at all Te)"] = dict(m_flat, criteria_met=False)
 
     # --- model band (tau 1000 fs, g = 0) for the chosen wavelengths on the I grid
     band = {lab: {k: run_ttm(look, m["lp"], F_I, MODELS[k], Ce) for k in ("tau1000", "g0")} for lab, m in chosen.items()}
@@ -172,7 +181,7 @@ def main():
 
     # --- figure 3
     fig, axs = plt.subplots(2, 1, figsize=(7.4, 7.6), dpi=130, sharex=True, gridspec_kw=dict(height_ratios=[1.4, 1]))
-    cols = ["C0", "C1", "C2", "C3", "C4", "C5"]
+    cols = ["C0", "C1", "C2", "C3", "C4", "C5", "C6"]
     for (lab, m), c in zip(chosen.items(), cols):
         r = scan_I[m["lp"]]
         axs[0].semilogx(I_GRID, r["Teff"], "-", lw=2.0, color=c, label=f"{lab}: λ = {m['lp']:.0f} nm (ΔT = {m['dT']:+.2f})")
