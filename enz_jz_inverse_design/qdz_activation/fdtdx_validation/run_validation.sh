@@ -15,4 +15,7 @@ for tag in "$@"; do
       --conv-check-fs 300 450 --segment-steps 8000 2>&1 | grep -v -i warning | tail -n 3
   echo "=== $tag: post-processing (raw phasors -> normalized fields, spectra vs TORCWA, profiles, slices, cuts) ==="
   $PY fx_fields_plots.py --design "$tag" 2>&1 | grep -v -i warning | tail -n 5
+  echo "=== $tag: shift-aware TORCWA cross-check (system python, torch) ==="
+  python3 fx_crosscheck.py --design "$tag" --threads 4 2>&1 | grep -v -i warning | tail -n 8
 done
+python3 fx_summary.py

@@ -397,6 +397,52 @@ A topology-level sensitivity optimizer (section 11) is proposed, not implemented
 
 ## 15. Independent FDTDX validation
 
-FDTDX_PLACEHOLDER
+Directory `fdtdx_validation/` (`README.md`, `METHOD.md`, `VALIDATION_SUMMARY.md`, `manifest.json`).  Run only
+after the campaign closed; the four geometries were frozen from the authoritative `rho_hard_binary.npy` files
+(SHA256 of file, uint8 array and Stage-B float64 array in the manifest) and nothing was changed afterwards.
+
+**A. Reused unchanged** (`fdtdx_four_finalists/`): the material ADE fits (`materials/material_models.json`, same
+supplied files as TORCWA; ITO fit errors over 1252-1400 nm: |d eps'| <= 0.0014, |d eps''| <= 0.0042, fitted ENZ
+crossing 1302.13 nm vs 1302.28 nm; a-Si:H / glass lossless Lorentz fits to 3e-5), the scene builder
+`fx_sim.build_scene` (periodic cell, 16-cell CPML in z, 1.25-um deep glass, rectilinear z mesh with 4.6-nm ITO
+cells, exact-area-fraction sub-pixel raster of the 128 x 128 binary on the 64 x 64 FDTD grid, TFSF x-polarized
+Gaussian pulse from air propagating -z, R/T flux planes, volume / xz / yz phasor detectors, time-domain decay
+probes, early-closing flux detectors as in-run convergence certificates, CFL 0.95), the segmented run loop and
+output writer, the empty-cell reference normalization and the flux / field post-processing routines
+(`fx_post`).  **Modified**: two backward-compatible keyword hooks in `build_scene` (volume-detector extent and
+components; geometry registry / directory) with defaults equal to the old behaviour; the raw H phasors are
+recorded too.  New here: the wrapper `fx_run.py`, `register_finalists.py`, `fx_fields_plots.py` (all figures
+from the raw phasors), `fx_crosscheck.py` (shift-aware comparison and material-fit isolation), `fx_summary.py`.
+fdtdx 0.6.2 from PyPI lacks `RectilinearGrid`; the main-branch snapshot 98aef1c (same API as the supplied zip
+used by the four-finalists runs) is installed in `/opt/venv-fdtdx` with jax 0.10.2 (CPU).
+
+**B/C. Structures and conditions**: stack air / frozen a-Si:H / 23-nm ITO / soda-lime glass, normal incidence
+from air, lab-frame x polarization, exp(-i w t); each candidate has its own reference run on the identical mesh
+(the z mesh depends on h).  Field wavelengths: lambda_op(+), lambda_E, the loaded-pole wavelength and
+lambda_op(-) of Stage B.  Volume detector: 24 glass cells (~620 nm) below the ITO, all ITO cells, all a-Si:H
+cells and 8 air cells above, E and H; xz / yz planes span PML to PML.
+
+**D. Convergence**: 600 fs for the cylinder (loaded Q = 52), 450 fs for the others (loaded Q <= 36 or no
+line), early-window certificates at 300 / 450 fs, time-domain decay probes, artefact screen (R > 1, T < 0,
+A < 0, leakage), ITO thickness read back from the true cell edges; the 64 x 64 / 5-ITO-cell mesh is the one
+the four-finalists package tested against a 10-cell ITO mesh (no in-plane refinement was affordable here;
+see H).
+
+**E. Raw data**: `<tag>/raw_fields/prod/phasors.npz` (every detector's complex phasors; regenerable, not
+committed, 130-270 MB), `run_meta.json` (mesh, edges, indices, dt, steps, timing), `fields_normalized.npz`
+(complex E/E_inc on the volume block with x/y/z centres AND edges, layer indices, boundaries, E_inc phasor,
+fill fractions; committed, ~50 MB) and `fields_normalized_H.npz` (H, not committed).
+
+**F/G/J. Figures** (all from the raw data; provenance in `<tag>/metadata/plot_manifest.json`): `geometry_<tag>.png`
+and `geometry_all_candidates.png` from the binaries; `zprofile_<tag>.png/.csv/.npz` with <|E|^2>, <|Ez|^2>,
+<|Dz|^2> (Dz = eps_zz Ez with the FDTDX material assignment: fill-weighted arithmetic mean in the patterned
+a-Si:H cells, fitted eps_ITO / eps_glass, 1 in air; layer boundaries and a z - z(ITO top) axis;
+z = 0 at the domain bottom, +z upward, source travelling -z); `Ez2_xy_slices_<tag>_<lam>nm_{lin,log}.png` (air,
+five a-Si:H depths, every ITO cell, five glass depths; one colour scale per wavelength, linear and 4-decade
+log) with `.npz`; `Ez2_{xz,yz}_<tag>_<lam>nm.png` drawn with `pcolormesh` on the true non-uniform z edges (the
+23-nm ITO is read back at 23.00 nm in every run).
+
+FDTDX_RESULTS_PLACEHOLDER
+
 
 
