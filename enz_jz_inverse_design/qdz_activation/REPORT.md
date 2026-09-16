@@ -12,6 +12,45 @@ of `nonlinear_activation_best/` (`claude/jz-1302-nonlinear-activation`, f8b5896,
 > **[provisional]** depends on the literature-derived hot-electron band model (Lane B of the nonlinear lane).
 
 
+## 0. Summary
+
+1. **What the old campaign optimized.**  `qdz_parent` maximized the parent (no-ITO) interface participation `eta_Dz`
+   under a finite-Q proxy constraint and a wavelength constraint, and certified exact poles post hoc.  It never
+   inserted the real ITO and never looked at the transmission background.  Its certified designs split into a
+   warm-started REFLECTOR family (parent T at lambda_E 0.04-0.47, Q_r 77-546) and a transmissive fresh4242 family
+   (T 0.87-0.96, Q_r 228-809)  [repo].
+2. **New workflow (this branch).**  Stage A adds a systematic parent background `T_bg` and resonance contrast
+   `C_res`; Stage B inserts the real 23-nm ITO and evaluates the small-signal transmission change `dT` between the
+   physical cold ITO and the hot-electron state Te = 1000 K of the repository's own (provisional) model, together
+   with `R`, `A`, `F_x,y,z`, `F_tot`, `eta_z`, loaded poles, order convergence, linearity, mechanism decomposition
+   and Rayleigh safety, at order [9,9], for 22 frozen geometries  [code, computed].
+3. **Result.**  No campaign design combines a transmissive background with a resonant, positive, interior
+   transmission activation of useful size.  The largest interior positive dT among the 20 campaign/baseline
+   designs are +0.0142 (pilot_h525_Q50_fresh8080, 1271 nm, a broadband ITO absorber: cold T 0.21, A 0.70) and
+   +0.0133 (fr_Q50_final2_h680, 1314 nm, on a loaded Q = 36 line: cold T 0.17, A 0.78); every design with a
+   transmissive parent (T_bg >= 0.75) except that pilot gives dT <= +0.0063.  The SNU deck cylinder, never
+   optimized here, gives dT = +0.0189 at 1279 nm from a cold T of 0.55 (S_T = 0.54, loaded Q = 52, exact
+   loss-scaling gamma_rad/gamma_nr = 1.46), i.e. the largest activation, the largest normalized sensitivity and
+   by far the most usable cold transmission  [computed].
+4. **Why.**  The real ITO over-damps every high-`eta_Dz` parent: with `Q_nr ~ |eps_ITO|^2/(eps'' eta_Dz_P) =
+   0.43/eta_Dz_P` the campaign's parents (eta_Dz_P 0.03-0.13) sit 6-120 x beyond the critical-coupling value
+   `eta_Dz_P ~ 0.43/Q_r`; their loaded lines are erased (no AAA pole for the whole fresh4242 family) or reduced to
+   few-percent features, and only the broadband background responds.  The cylinder's eta_Dz_P = 0.013 keeps its
+   loaded line visible.  `eta_Dz`, `Q_r` and `F_z` are therefore individually insufficient; the loaded
+   radiative/non-radiative ratio and the transmissive background decide  [computed, mechanism robust].
+5. **Robust vs provisional.**  Signs of dT, the ranking by S_T, the loss of the fresh4242 lines and the rejection
+   of the reflector family depend only on the supplied cold data and the fixed Drude perturbation direction
+   (S_T varies < 5 % between Te = 600 and 2000 K for the cylinder and the fresh designs, 20 % for
+   fr_Q50_final2_h680; 84-100 % of dT comes from Re(delta_eps)).  Absolute dT per kelvin and any intensity axis
+   are provisional (Lane B)  [computed / provisional].
+6. **Numerics.**  Small-signal dT on narrow loaded lines needs order [9,9]: [5,5]/[7,7] give the wrong sign
+   at 1341 nm for fr_Q100_final3_h640.  Several unguarded maxima sit 10-15 nm above the glass Rayleigh
+   wavelength (1251.2 nm) or at the 1400-nm end of the a-Si:H data and are excluded from the operating-point
+   selection by a 20-nm / 5-nm guard  [computed].
+7. **Frozen for independent FDTDX validation (section 15):** the deck cylinder (positive control), the two campaign
+   finalists above, and fr_Q200_fresh4242_h700 (the campaign's own transmissive high-Q / high-eta_Dz parent whose
+   line vanishes under loading).
+
 ## 1. What the existing `qdz_parent` campaign actually optimized  [repo]
 
 `optimize_parent.py` maximizes `eta_Dz` of the no-ITO parent under two soft constraints, `Q_proxy ~ Q_target`
@@ -111,14 +150,21 @@ ITO-induced loss rate to the radiative rate, not by either factor alone:
   loaded line (Q 64-90) but on a T_bg = 0.10-0.20 mirror background: dT_max,pos <= +0.0001 and the dominant
   channel is "absorption -> reflection, no transmission opening" (dR up to +0.017, dT at the line -0.008 to
   -0.011).  These are the designs the note's hypothesis wanted rejected, and T_bg rejects them.
+* The two largest interior campaign responses come from designs WITHOUT a useful parent resonance in the
+  usual sense: fr_Q50_final2_h680 (an uncertified frontier run whose exact [9,9] parent pole has Q = 32 and whose
+  parent poles fill the whole ENZ window, so T_bg is undefined) gives dT = +0.0133 at 1314 nm on a loaded Q = 36
+  line (T 0.166 -> 0.179, S_T = 0.36, A = 0.78, eta_z = 0.92, 63 nm from the anomaly, converged, linear within
+  20 %), and pilot_h525_Q50_fresh8080 (below) gives +0.0142 at 1271 nm.  Both are ITO absorbers with a cold
+  transmission of 0.17-0.21.
 * The highest certified Q_r among aligned designs (fr_Q100_final3_h640, Q_r = 499, eta_Dz_P = 0.042, T_bg = 0.25)
   gives the largest positive campaign dT that sits on a real loaded line: +0.0052 at 1341 nm (T 0.262 -> 0.267,
   loaded Q = 170, S_T = 0.13, linear, converged), while at lambda_E it does the opposite (dT = -0.013, T -> R).
 * The design with the highest parent eta_Dz of all (0.194, pilot_h525_Q50_fresh8080) has NO certified parent
   resonance; loaded, it is a broadband ITO absorber (A = 0.70, eta_z = 0.97, <|E_z|^2>_ITO = 14) whose
-  transmission opens as the ITO heats: dT = +0.0096 at lambda_E (T 0.157 -> 0.167, S_T = 0.26), i.e. the
-  largest campaign response at lambda_E itself, but from a low cold transmission and without a resonance to
-  narrow it.
+  transmission opens as the ITO heats: dT = +0.0096 at lambda_E (T 0.157 -> 0.167, S_T = 0.26) and
+  +0.0142 at its interior optimum 1271 nm (T 0.205 -> 0.219, S_T = 0.41, converged to 1e-4 between [9,9] and
+  [11,11], linear within 6 %), i.e. the largest campaign response, but from a low cold transmission and
+  without a resonance to narrow it (exact loss scaling of its only loaded pole: Q_rad = 13, Q_nr = 7.9).
 * The deck cylinder, with eta_Dz_P = 0.013 (3-8 x smaller than any campaign design) and Q_r = 172 on a
   T_bg = 0.97 background with a 0.95 far-field contrast, keeps a visible loaded line (Q = 52, T_min = 0.22,
   A_max = 0.47) and yields dT = +0.019 at 1279 nm (T 0.548 -> 0.567, S_T = 0.54, "R,A -> T", cold A = 0.31,
@@ -142,11 +188,15 @@ eta_Dz at lambda_r (+0.75).  The trade-off appears only after loading.
 
 ## 8. Are broadband-reflector solutions rejected?  [computed]
 
-Yes, by T_bg alone: every design with T_bg < 0.3 (the Q_target 100/200 warm family, the JZ finalists,
-fr_Q100_final3_h640) has dT_max,pos <= +0.007, and in all of them the dominant loaded response is
-"absorption -> reflection" or "T -> R"; the only positive dT of the JZ best design (+0.0073, S_T = 0.21)
-occurs 15 nm from the glass Rayleigh anomaly at T = 0.08 and is exactly the order-sensitive near-threshold
-state the nonlinear lane had flagged.  The threshold sweep (`outputs/tables/threshold_sweep.json`) shows
+Yes, by T_bg together with the cold loaded transmission: every design with T_bg < 0.3 (the Q_target 100/200
+warm family, the JZ finalists, the final3-lineage frontier runs, fr_Q100_final3_h640) has an interior positive
+dT <= +0.0093 and a cold loaded T <= 0.26 at its operating point (median loaded T over the window 0.03-0.15);
+their largest unguarded dT values (+0.0124 for jzfz_final1, +0.0142 for fr_Q50_final0_h680, +0.0107 for
+fr_Q500_final0_h380) sit exactly on the safe-window edges, 10 nm above the glass Rayleigh anomaly or at the
+1400-nm end of the material data, and change by 10-35 % between orders [5,5] and [11,11] there.  In the
+reflector family proper the dominant loaded response is "absorption -> reflection" or "T -> R"; the only
+positive dT of the JZ best design (+0.0073, S_T = 0.21) occurs 15 nm from the glass Rayleigh anomaly at
+T = 0.08 and is exactly the order-sensitive near-threshold state the nonlinear lane had flagged.  The threshold sweep (`outputs/tables/threshold_sweep.json`) shows
 which combinations of (T_bg_min, C_res_min, F_tot,min, eta_z,min) leave which survivors; no single
 threshold is hard-coded anywhere.
 
@@ -286,4 +336,54 @@ U_mid +0.86, eta_Dz +0.75.
 | pilot_h525_Q50_fresh8080 | 0.76 | 0.75 | 0.73 | 0/12 |
 | pilot_h675_Q100_warm_final1 | 0.11 | 0.10 | 0.11 | 0/12 |
 <!-- TABLES END -->
+
+## 13. Selection: reading the table without a scalar objective
+
+The decision surface is (interior positive dT, S_T, cold loaded T at lambda_op, parent T_bg, contrast, cold
+F_tot, eta_z, Rayleigh margin, order convergence).  Read across it:
+
+| role | candidate | why |
+|---|---|---|
+| positive control (not a campaign design) | deck_cylinder_P588_h970 | dT_int +0.0189 at 1279 nm, S_T 0.54, cold T 0.55, T_bg 0.97, contrast 0.95, F_tot 0.31, eta_z 0.90, margin 387 nm, loaded Q 52 with gamma_rad/gamma_nr = 1.46 (exact); non-dominated on every axis but F_tot |
+| campaign finalist A (resonant) | fr_Q50_final2_h680 | dT_int +0.0133 at 1314 nm on a loaded Q = 36 line, S_T 0.36, F_tot 0.78, eta_z 0.92, margin 63 nm; cold T only 0.17 and parent T_bg undefined (window full of poles); uncertified frontier run (exact pole computed here) |
+| campaign finalist B (broadband) | pilot_h525_Q50_fresh8080 | dT_int +0.0142 at 1271 nm, S_T 0.41, F_tot 0.70, eta_z 0.96, T_bg 0.75; no parent pole, no loaded line (Q_rad 13 / Q_nr 7.9), cold T 0.21, margin 20 nm (guard limit) |
+| parent-Q / eta_Dz control | fr_Q200_fresh4242_h700 | the campaign's transmissive Q_r = 228 parent (T_bg 0.97, contrast 0.30, eta_Dz 0.076): loaded line erased, dT_int +0.0026, cold T 0.90 |
+
+The threshold sweep (section 12.1) makes the same statement quantitatively: requiring a transmissive parent
+(T_bg >= 0.5) and any visible parent contrast leaves only the fresh lineages and the pilot fresh8080 among the
+campaign designs, none of which exceeds dT_int = +0.0142, and adding a cold-heating floor F_tot >= 0.2 removes
+the fresh4242 family (F_tot 0.07-0.10).  The campaign did not produce a design that is simultaneously
+transmissive after loading (cold T >= 0.3), resonant (visible loaded line) and sensitive (dT_int >= 0.01); the
+cylinder is.  This is the scientific outcome, and the FDTDX stage validates it on exactly these four frozen
+geometries.
+
+## 14. Exact commands
+
+Environment: Python 3.11, torch (CPU), scipy, numpy, matplotlib in the system interpreter; `/opt/venv-fdtdx`
+(fdtdx main-branch snapshot 98aef1c, jax 0.10.2) for the FDTDX stage.  All commands from
+`enz_jz_inverse_design/qdz_activation/`.
+
+    # sanity tests (17 s)
+    python tests/sanity_tests.py --threads 4
+    # the full frozen-candidate campaign as run here (two workers, ~6.5 h on 4 cores)
+    python run_stageAB.py --worker 0 --nworkers 2 --threads 2 --order 9 9 --order-A 9 9 --orders-check 5 5 7 7 9 9 11 11 --step 2 --Te 1000
+    python run_stageAB.py --worker 1 --nworkers 2 --threads 2 --order 9 9 --order-A 9 9 --orders-check 5 5 7 7 9 9 11 11 --step 2 --Te 1000
+    # one candidate, another perturbation kind / size, or an oblique-incidence run through the same code path
+    python run_stageAB.py --tags deck_cylinder_P588_h970 --threads 4 --kind drude_weight --delta 0.0106
+    python run_stageAB.py --tags fr_Q50_final2_h680 --threads 4 --theta 4 --phi 0 --out outputs/candidates_theta4
+    # selection tables, sweeps, correlations, figures; report tables
+    python select_pareto.py && python finalize_report.py
+    # exact loaded certification (loss-scaling continuation) of selected designs
+    python loaded_certify_finalists.py --tags deck_cylinder_P588_h970 fr_Q50_final2_h680 --order 7 7 --threads 4
+    # cheap angle look (not an ensemble) at a candidate's selected wavelengths
+    python angle_check.py --tag deck_cylinder_P588_h970 --thetas 0 2 4 6 8
+    # independent FDTDX validation of the frozen finalists (reference + 600-fs production + plots, ~1 h each)
+    cd fdtdx_validation && ./run_validation.sh deck_cylinder_P588_h970 fr_Q50_final2_h680 pilot_h525_Q50_fresh8080 fr_Q200_fresh4242_h700
+
+A topology-level sensitivity optimizer (section 11) is proposed, not implemented; no command exists for it.
+
+## 15. Independent FDTDX validation
+
+FDTDX_PLACEHOLDER
+
 
