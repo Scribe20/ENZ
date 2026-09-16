@@ -129,3 +129,4 @@
 [A jzfz_final1] T_bg=0.0936237040238514 (n=46 in [1261,1352]) T(lam_r)=None C_res=None C_ext=None T(lam_E)=0.014 eta_reg=0.0 (12 s)
   [B jzfz_final1]  1241.2 nm: T0=0.5364 T1=0.5502 dT=+0.0138 A0=0.4343 Fz0=0.3188 eta_z=0.73 (10 s)
   [B jzfz_final1]  1271.2 nm: T0=0.0655 T1=0.0718 dT=+0.0062 A0=0.9173 Fz0=0.8383 eta_z=0.91 (181 s)
+  [B jzfz_final1]  1301.2 nm: T0=0.0019 T1=0.0016 dT=-0.0003 A0=0.9945 Fz0=0.9558 eta_z=0.96 (338 s)

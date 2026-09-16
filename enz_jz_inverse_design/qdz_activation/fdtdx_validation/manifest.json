@@ -1,0 +1,331 @@
+{
+ "candidates": {
+  "deck_cylinder_P588_h970": {
+   "role": "positive control: SNU deck cylinder, largest real-ITO dT (+0.019 at 1279 nm), loaded Q 52 near critical coupling",
+   "kind": "reference",
+   "source_rho": "generated: {\"disc_d\": 405.7}",
+   "sha256_source_file": null,
+   "sha256_uint8_array": "7dea62acff327416bf950e8f1f745c5e246c6d5b0d26da00917d3b3633e1afdf",
+   "sha256_float64_array_stageB": "646438ddd7e5100b94e2b488c80b4a73e6bc37dde8eddcaeb9578aa0312d5a2b",
+   "sha256_copy_file": "112bfd862949f5b2b66992b49e9d6c7de7baf6ff141a3c21adcc136410f7db59",
+   "shape": [
+    128,
+    128
+   ],
+   "dtype": "uint8",
+   "P_nm": 588.0,
+   "h_nm": 970.5,
+   "d_ito_nm": 23.0,
+   "pad_frac": 0.0,
+   "pad_nm": 0.0,
+   "pixel_nm": 4.59375,
+   "fill_fraction": 0.374755859375,
+   "n_material_pixels": 6140,
+   "array_convention": "rho[i, j]: i -> x (axis 0), j -> y (axis 1), cell-centred pixels of size P/128; 1 = a-Si:H, 0 = air (pad included)",
+   "field_lams_nm": [
+    1279.214,
+    1282.025,
+    1295.847,
+    1302.282
+   ],
+   "lambda_op_pos_nm": 1279.2141221912127,
+   "lambda_E_nm": 1302.2819858898874,
+   "loaded_pole_cold": {
+    "omega_re": 1.469278659387311,
+    "omega_im": -0.15225613949214215,
+    "lambda_nm": 1282.0247236792616,
+    "Q": 4.825022702822239,
+    "gamma": 0.15225613949214215,
+    "fwhm_nm": 265.70335574367,
+    "res_r": 0.11251594774410781,
+    "res_t": 0.150402266309048,
+    "peak_r": 1.2854085537380502,
+    "peak_t": 1.2858435668613937,
+    "rt_rel_diff": 0.00387799354179859
+   },
+   "polarization": "lab-frame x (E along x), normal incidence from air (theta = phi = 0), propagation -z (towards the glass)",
+   "torcwa_stageB": {
+    "file": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/outputs/candidates/deck_cylinder_P588_h970/stageB.json",
+    "order": [
+     9,
+     9
+    ],
+    "at_lambda_op_pos": {
+     "lam_nm": 1279.2141221912127,
+     "T0": 0.5480630860688492,
+     "R0": 0.13712606613964187,
+     "A0": 0.3148108477915089,
+     "Fz0": 0.2823557633860266,
+     "Ftot0": 0.3147016253484799,
+     "eta_z0": 0.8972173660474883,
+     "mean_Ez2_0": 6.212006789905828,
+     "dT": 0.0189172830506803
+    },
+    "at_lambda_E": {
+     "lam_nm": 1302.0,
+     "T0": 0.540131835724881,
+     "R0": 0.2157063021270631,
+     "A0": 0.2441618621480559,
+     "Fz0": 0.21530586514412248,
+     "Ftot0": 0.2440908983647857,
+     "eta_z0": 0.8820724844166662,
+     "mean_Ez2_0": 4.494596302164641,
+     "dT": -0.006711425417969541
+    }
+   },
+   "torcwa_stageA": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/outputs/candidates/deck_cylinder_P588_h970/stageA.json",
+   "certification": null,
+   "Q_target": null,
+   "cert_summary": {
+    "Q_r": null,
+    "lambda_r": null,
+    "eta_Dz_lamE": null,
+    "eta_Dz_P_lamE": null
+   }
+  },
+  "fr_Q50_final2_h680": {
+   "role": "campaign finalist A: largest resonant interior dT (+0.013 at 1314 nm on a loaded Q 36 line), uncertified frontier run",
+   "kind": "qdz_uncertified",
+   "source_rho": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/frontier/fr_Q50_final2_h680/rho_hard_binary.npy",
+   "sha256_source_file": "496a0c39a5daf3f409c6e748faf3dd2669e91b1d9a0c5f85053324bd2b262709",
+   "sha256_uint8_array": "17156cffea03f54245565616c1a07db432d63b2824c642771c2aa8d028c355a5",
+   "sha256_float64_array_stageB": "b637e0a4d2fa9c777d45259909707fc8d7b79d50f4c0860fc42a0c4bf1d18581",
+   "sha256_copy_file": "27a9b0ed2ad4afa04e017ce4bb99866a74b80c627dbd8d9a8bd18d6ec2861260",
+   "shape": [
+    128,
+    128
+   ],
+   "dtype": "uint8",
+   "P_nm": 825.0,
+   "h_nm": 680.0,
+   "d_ito_nm": 23.0,
+   "pad_frac": 0.12,
+   "pad_nm": 99.0,
+   "pixel_nm": 6.4453125,
+   "fill_fraction": 0.2568359375,
+   "n_material_pixels": 4208,
+   "array_convention": "rho[i, j]: i -> x (axis 0), j -> y (axis 1), cell-centred pixels of size P/128; 1 = a-Si:H, 0 = air (pad included)",
+   "field_lams_nm": [
+    1302.282,
+    1314.15,
+    1324.734,
+    1399.228
+   ],
+   "lambda_op_pos_nm": 1314.1499573260803,
+   "lambda_E_nm": 1302.2819858898874,
+   "loaded_pole_cold": {
+    "omega_re": 1.4219094651154967,
+    "omega_im": -0.019630186306413725,
+    "lambda_nm": 1324.7338269570146,
+    "Q": 36.21742154965996,
+    "gamma": 0.019630186306413725,
+    "fwhm_nm": 36.577253991993594,
+    "res_r": 0.003153551326351436,
+    "res_t": 0.004495029476515053,
+    "peak_r": 0.22915804169987428,
+    "peak_t": 0.7081813754019253,
+    "rt_rel_diff": 0.0001304538779930748
+   },
+   "polarization": "lab-frame x (E along x), normal incidence from air (theta = phi = 0), propagation -z (towards the glass)",
+   "torcwa_stageB": {
+    "file": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/outputs/candidates/fr_Q50_final2_h680/stageB.json",
+    "order": [
+     9,
+     9
+    ],
+    "at_lambda_op_pos": {
+     "lam_nm": 1314.1499573260803,
+     "T0": 0.16555914245280787,
+     "R0": 0.05331538401674644,
+     "A0": 0.7811254735304457,
+     "Fz0": 0.7168063572712658,
+     "Ftot0": 0.7809024998520223,
+     "eta_z0": 0.9179204284876762,
+     "mean_Ez2_0": 14.567027318994219,
+     "dT": 0.013253084741727206
+    },
+    "at_lambda_E": {
+     "lam_nm": 1302.8700379667084,
+     "T0": 0.16757532500386113,
+     "R0": 0.06433601141354867,
+     "A0": 0.7680886635825901,
+     "Fz0": 0.7117485014847719,
+     "Ftot0": 0.7678944260376366,
+     "eta_z0": 0.926883276334509,
+     "mean_Ez2_0": 14.829114681068448,
+     "dT": 0.010794698823723026
+    }
+   },
+   "torcwa_stageA": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/outputs/candidates/fr_Q50_final2_h680/stageA.json",
+   "certification": null,
+   "Q_target": 50.0,
+   "cert_summary": {
+    "Q_r": null,
+    "lambda_r": null,
+    "eta_Dz_lamE": null,
+    "eta_Dz_P_lamE": null
+   }
+  },
+  "pilot_h525_Q50_fresh8080": {
+   "role": "campaign finalist B: largest interior dT of a certified design (+0.014 at 1271 nm), broadband ITO absorber, highest parent eta_Dz",
+   "kind": "qdz_certified",
+   "source_rho": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/pilot/pilot_h525_Q50_fresh8080/rho_hard_binary.npy",
+   "sha256_source_file": "73adba1497a31d73151535ee40c63cd85e2b13dce8cd2b5585f77c09c27016d0",
+   "sha256_uint8_array": "5ff19e0ab9515935615c0b4078137ac2d3c3f6de0b217d5d03b500e0b0ffdebf",
+   "sha256_float64_array_stageB": "c1794773503bc98e48fd80f751da8abde7fa93fe42f633f79798270db54d2e1c",
+   "sha256_copy_file": "5fb70db59adea95b02fd400d6a78af3404ef9ead51091e9eaa74ddceb784f963",
+   "shape": [
+    128,
+    128
+   ],
+   "dtype": "uint8",
+   "P_nm": 825.0,
+   "h_nm": 525.0,
+   "d_ito_nm": 23.0,
+   "pad_frac": 0.12,
+   "pad_nm": 99.0,
+   "pixel_nm": 6.4453125,
+   "fill_fraction": 0.236328125,
+   "n_material_pixels": 3872,
+   "array_convention": "rho[i, j]: i -> x (axis 0), j -> y (axis 1), cell-centred pixels of size P/128; 1 = a-Si:H, 0 = air (pad included)",
+   "field_lams_nm": [
+    1261.228,
+    1271.228,
+    1302.282,
+    1399.228
+   ],
+   "lambda_op_pos_nm": 1261.2277971023454,
+   "lambda_E_nm": 1302.2819858898874,
+   "loaded_pole_cold": {},
+   "polarization": "lab-frame x (E along x), normal incidence from air (theta = phi = 0), propagation -z (towards the glass)",
+   "torcwa_stageB": {
+    "file": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/outputs/candidates/pilot_h525_Q50_fresh8080/stageB.json",
+    "order": [
+     9,
+     9
+    ],
+    "at_lambda_op_pos": {
+     "lam_nm": 1261.2277971023454,
+     "T0": 0.21911974618570768,
+     "R0": 0.07830647675229478,
+     "A0": 0.7025737770619975,
+     "Fz0": 0.6755181245371923,
+     "Ftot0": 0.7024429262213988,
+     "eta_z0": 0.9616697660704747,
+     "mean_Ez2_0": 15.52425827812108,
+     "dT": 0.01473398202809234
+    },
+    "at_lambda_E": {
+     "lam_nm": 1303.2277971023454,
+     "T0": 0.15705591671352476,
+     "R0": 0.1324552154450058,
+     "A0": 0.7104888678414694,
+     "Fz0": 0.6864206938823542,
+     "Ftot0": 0.7103293296720267,
+     "eta_z0": 0.9663414774092017,
+     "mean_Ez2_0": 14.28998223225863,
+     "dT": 0.00959141645189382
+    }
+   },
+   "torcwa_stageA": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/outputs/candidates/pilot_h525_Q50_fresh8080/stageA.json",
+   "certification": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/outputs/certified/pilot_h525_Q50_fresh8080/certification.json",
+   "Q_target": 50.0,
+   "cert_summary": {
+    "Q_r": null,
+    "lambda_r": null,
+    "eta_Dz_lamE": 0.19410409734547238,
+    "eta_Dz_P_lamE": 0.12774381187810296
+   }
+  },
+  "fr_Q200_fresh4242_h700": {
+   "role": "parent-Q / eta_Dz control: transmissive Q_r 228 parent whose line vanishes under ITO loading",
+   "kind": "qdz_certified",
+   "source_rho": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/frontier/fr_Q200_fresh4242_h700/rho_hard_binary.npy",
+   "sha256_source_file": "745cb6f2cda36c44411d4e683e0e07661db829f5181382b1c0bedb8d24163547",
+   "sha256_uint8_array": "ca25e9c09a01645a644ca0e8721800c2d1d78693a64abd73f8fdaff65f495967",
+   "sha256_float64_array_stageB": "d0d93a75ae28f2fa1d9171064806e7e97d802d141f646eb817be8e6d7e7864bf",
+   "sha256_copy_file": "23416e8deb2a9c2f7de0670a706f50bbfa6499282dd6c88b8d032ed7b1e67e76",
+   "shape": [
+    128,
+    128
+   ],
+   "dtype": "uint8",
+   "P_nm": 825.0,
+   "h_nm": 700.0,
+   "d_ito_nm": 23.0,
+   "pad_frac": 0.12,
+   "pad_nm": 99.0,
+   "pixel_nm": 6.4453125,
+   "fill_fraction": 0.09490966796875,
+   "n_material_pixels": 1555,
+   "array_convention": "rho[i, j]: i -> x (axis 0), j -> y (axis 1), cell-centred pixels of size P/128; 1 = a-Si:H, 0 = air (pad included)",
+   "field_lams_nm": [
+    1261.228,
+    1302.282,
+    1333.228
+   ],
+   "lambda_op_pos_nm": 1333.2277971023454,
+   "lambda_E_nm": 1302.2819858898874,
+   "loaded_pole_cold": {},
+   "polarization": "lab-frame x (E along x), normal incidence from air (theta = phi = 0), propagation -z (towards the glass)",
+   "torcwa_stageB": {
+    "file": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/outputs/candidates/fr_Q200_fresh4242_h700/stageB.json",
+    "order": [
+     9,
+     9
+    ],
+    "at_lambda_op_pos": {
+     "lam_nm": 1333.2277971023454,
+     "T0": 0.9038636737634089,
+     "R0": 0.023639539834280725,
+     "A0": 0.07249678640231039,
+     "Fz0": 0.03845349458539146,
+     "Ftot0": 0.07245940491660989,
+     "eta_z0": 0.530690179275496,
+     "mean_Ez2_0": 0.7502606154952289,
+     "dT": 0.0025790097783353616
+    },
+    "at_lambda_E": {
+     "lam_nm": 1302.584678503002,
+     "T0": 0.9091382686995161,
+     "R0": 0.018765232660931493,
+     "A0": 0.07209649863955248,
+     "Fz0": 0.039869763665760956,
+     "Ftot0": 0.07206648569694203,
+     "eta_z0": 0.5532358527016773,
+     "mean_Ez2_0": 0.831207915161522,
+     "dT": 0.0020771253144434842
+    }
+   },
+   "torcwa_stageA": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/outputs/candidates/fr_Q200_fresh4242_h700/stageA.json",
+   "certification": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/outputs/certified/fr_Q200_fresh4242_h700/certification.json",
+   "Q_target": 200.0,
+   "cert_summary": {
+    "Q_r": 228.39455953946705,
+    "lambda_r": 1298.0380271998624,
+    "eta_Dz_lamE": 0.0758209982320642,
+    "eta_Dz_P_lamE": 0.05247723057820373
+   }
+  }
+ },
+ "provenance": {
+  "package": "qdz_activation",
+  "git_commit": "a0f7fcf9e507dc50b392bd30804e3fd831f56dcc",
+  "git_dirty": true,
+  "d_ito_nm": 23.0,
+  "nx": 128,
+  "sim_dtype": "torch.complex128",
+  "geo_dtype": "torch.float64",
+  "materials": {
+   "ito": "ITO_nk.csv",
+   "asi": "aSi_H_measured_Postech.txt",
+   "glass": "SiO2_substrate_measured.txt",
+   "sha256": {
+    "ito": "b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c",
+    "asi": "854b592c162c10a73ff8693a6561d5884dc68aaac6dfc23e17944ff3e89709d3",
+    "glass": "6b4f1d5dec1b518a7de46bbd572a72a558cd976898d709620f87d8a6b8cdd4f9"
+   }
+  }
+ },
+ "stack": "air / frozen freeform a-Si:H (h, rho) / ITO 23 nm / soda-lime glass; normal incidence from air, lab-frame x polarization, exp(-i w t)"
+}
