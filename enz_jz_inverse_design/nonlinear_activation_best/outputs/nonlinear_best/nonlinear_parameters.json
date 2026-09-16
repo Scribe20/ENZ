@@ -1,0 +1,30 @@
+{
+ "lane": "B (literature model: Alam 2016 / Liu 2014 band; N calibrated to the supplied cold Drude fit)",
+ "drude_fit_of_supplied_ITO_nk_csv": {
+  "eps_inf": 3.417057573100748,
+  "wp_rad_fs": 2.6947737879463776,
+  "gamma_rad_fs": 0.18467981456968208,
+  "gamma_meV": 121.55846208275979,
+  "rms_resid": 0.027341225856603993,
+  "max_abs_resid": 0.052533386416313006,
+  "range_nm": [
+   1150.0,
+   1450.0
+  ],
+  "n_points": 301
+ },
+ "m0_star_over_me": 0.3964,
+ "C_nonparabolicity_eV_inv": 0.4191,
+ "N_calibrated_m3": 1.2801653265297568e+27,
+ "EF_300K_eV": 0.8083466400561969,
+ "U_300K_J_m3": 107179003.5229516,
+ "gamma_Te_dependence": "none (held constant; assumption)",
+ "eps_300K_reduction_max_abs_dev": 0.0,
+ "lambda_ZE_supplied": 1302.2819858898874,
+ "provenance": {
+  "m0_C": "Liu, Chang, Boyd et al., APL 105, 181117 (2014); used by Alam, De Leon, Boyd, Science 352, 795 (2016)",
+  "eps_inf_wp_gamma": "least-squares Drude fit of the supplied ITO_nk.csv over 1150-1450 nm (this file)",
+  "N": "calibrated: wp(300 K) of the Kane-band Drude weight = fitted wp",
+  "NOT_from_sources": "electron-phonon coupling G, lattice heat capacity, gamma(Te), SNU's own parameter values"
+ }
+}

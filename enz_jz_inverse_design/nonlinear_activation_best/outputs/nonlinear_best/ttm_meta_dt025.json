@@ -1,0 +1,16 @@
+{
+ "tag": "dt025",
+ "G_W_m3_K": 1.3520532493946066e+17,
+ "tau_ep_2000K_fs": 150.0,
+ "Cl_J_m3_K": 2400000.0,
+ "dt_fs": 0.25,
+ "tau_fwhm_fs": 150.0,
+ "P_nm": 825.0,
+ "d_ITO_nm": 23.0,
+ "lookup": "/home/user/ENZ/enz_jz_inverse_design/nonlinear_activation_best/outputs/nonlinear_best/lookup_order7.npz",
+ "order": 7,
+ "Te_max_model": 8000.0,
+ "Te_trust": 6000.0,
+ "wall_s": 127.96354722976685,
+ "E_cell_check": "E_cell = I_peak P^2 tau sqrt(pi/(4 ln2)); e.g. 1e9 W/cm2 -> 1.087e-12 J"
+}
