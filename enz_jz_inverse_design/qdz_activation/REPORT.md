@@ -33,8 +33,9 @@ of `nonlinear_activation_best/` (`claude/jz-1302-nonlinear-activation`, f8b5896,
    loss-scaling gamma_rad/gamma_nr = 1.46), i.e. the largest activation, the largest normalized sensitivity and
    by far the most usable cold transmission  [computed].
 4. **Why.**  The real ITO over-damps every high-`eta_Dz` parent: with `Q_nr ~ |eps_ITO|^2/(eps'' eta_Dz_P) =
-   0.43/eta_Dz_P` the campaign's parents (eta_Dz_P 0.03-0.13) sit 6-120 x beyond the critical-coupling value
-   `eta_Dz_P ~ 0.43/Q_r`; their loaded lines are erased (no AAA pole for the whole fresh4242 family) or reduced to
+   0.43/eta_Dz_P` the campaign's parents (eta_Dz_P 0.03-0.13) sit 3-120 x beyond the critical-coupling value
+   `eta_Dz_P ~ 0.43/Q_r` whenever Q_r >= 20 (only the three broad Q_r <= 11 frontier parents are near or
+   below it, ratio 0.8-3); their loaded lines are erased (no AAA pole for the whole fresh4242 family) or reduced to
    few-percent features, and only the broadband background responds.  The cylinder's eta_Dz_P = 0.013 keeps its
    loaded line visible.  `eta_Dz`, `Q_r` and `F_z` are therefore individually insufficient; the loaded
    radiative/non-radiative ratio and the transmissive background decide  [computed, mechanism robust].
