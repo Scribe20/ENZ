@@ -674,15 +674,18 @@
  "manifest": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/manifest.json",
  "fx_sim_file": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/fx_sim.py",
  "material_models": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/materials/material_models.json",
- "n_steps_run": 48000,
- "steps_done": 48000,
- "n_steps_total": 50435,
- "complete": false,
- "time_simulated_s": 5.710300340071883e-13,
  "timing": {
   "setup_s": 11.272103786468506,
-  "run_s": 1588.785427570343
+  "run_s": 1679.7855954170227,
+  "segments": 1,
+  "resumed_from": 0
  },
- "max_abs_E_final": 0.0001878786861198023,
+ "bench_steps": null,
+ "n_steps_run": 50435,
+ "steps_done": 50435,
+ "n_steps_total": 50435,
+ "complete": true,
+ "time_simulated_s": 5.999979117740113e-13,
+ "max_abs_E_final": 0.0003687505086418241,
  "finite": true
 }

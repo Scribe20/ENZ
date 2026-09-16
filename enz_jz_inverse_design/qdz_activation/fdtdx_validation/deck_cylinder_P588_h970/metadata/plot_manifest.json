@@ -1,0 +1,118 @@
+{
+ "candidate": "deck_cylinder_P588_h970",
+ "provenance": {
+  "raw_phasors": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/raw_fields/prod/phasors.npz",
+  "raw_sha256": "ed58c16f296c93e30f308cf23ff1d0e2d2e4b93a106792cc143a4c386663d96a",
+  "run_meta": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/raw_fields/prod/run_meta.json",
+  "reference_phasors": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/reference/deck_cylinder_P588_h970_prod/phasors.npz",
+  "reference_sha256": "7b5be28c5c52ef16e066e7c73d52b3811a2cab8a10efb7d7747b8d923df94b0f",
+  "geometry_file": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/geometry/rho_hard_binary.npy",
+  "geometry_sha256_file": "112bfd862949f5b2b66992b49e9d6c7de7baf6ff141a3c21adcc136410f7db59",
+  "geometry_sha256_uint8": "7dea62acff327416bf950e8f1f745c5e246c6d5b0d26da00917d3b3633e1afdf",
+  "wavelengths_nm": [
+   1279.214,
+   1282.0250000000003,
+   1295.847,
+   1302.282
+  ],
+  "normalization": "E / E_inc, E_inc = incident Ex phasor of the empty-cell reference at the ITO mid-plane position; |E_inc| = 1 equivalent",
+  "time_convention": "exp(-i w t)",
+  "coordinates": "z = 0 at the domain bottom (glass PML); +z upward glass -> ITO -> a-Si:H -> air; source propagates -z; x, y cell-centred, period P",
+  "boundaries_nm": {
+   "ITO_bottom": 1597.5777380000004,
+   "ITO_top": 1620.577738,
+   "aSiH_top": 2591.07773800001,
+   "volume_block": [
+    1194.3749999999995,
+    2728.7983630000103
+   ]
+  },
+  "n_ito_cells": 5,
+  "dz_ito_nm": 4.6,
+  "field_components_recorded": [
+   "Ex",
+   "Ey",
+   "Ez",
+   "Hx",
+   "Hy",
+   "Hz"
+  ],
+  "E_inc_nonuniformity": [
+   2.7319101271125393e-08,
+   3.017053158677667e-08,
+   3.2514051004105266e-08,
+   3.3798619269320126e-08
+  ],
+  "material_eps_at_lams": {
+   "1279.214": {
+    "ITO": [
+     0.11763438120309777,
+     0.3997590960382812
+    ],
+    "aSiH": 8.866103497237443,
+    "glass": 2.2999999685331254
+   },
+   "1282.0250000000003": {
+    "ITO": [
+     0.10329011599774396,
+     0.4031938356512676
+    ],
+    "aSiH": 8.864463446100988,
+    "glass": 2.2999809286493
+   },
+   "1295.847": {
+    "ITO": [
+     0.03241394676884035,
+     0.4204321292419096
+    ],
+    "aSiH": 8.856576139888656,
+    "glass": 2.2998891107195196
+   },
+   "1302.282": {
+    "ITO": [
+     -0.0007746896228921774,
+     0.4286581689044019
+    ],
+    "aSiH": 8.853001691342321,
+    "glass": 2.299847362033714
+   }
+  }
+ },
+ "figures": {
+  "spectra": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/spectra/spectra_deck_cylinder_P588_h970.png",
+  "zprofile": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/profiles/zprofile_deck_cylinder_P588_h970.png",
+  "xy_slices": [
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xy_slices/Ez2_xy_slices_deck_cylinder_P588_h970_1279.2nm_lin.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xy_slices/Ez2_xy_slices_deck_cylinder_P588_h970_1279.2nm_log.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xy_slices/Ez2_xy_slices_deck_cylinder_P588_h970_1282.0nm_lin.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xy_slices/Ez2_xy_slices_deck_cylinder_P588_h970_1282.0nm_log.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xy_slices/Ez2_xy_slices_deck_cylinder_P588_h970_1295.8nm_lin.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xy_slices/Ez2_xy_slices_deck_cylinder_P588_h970_1295.8nm_log.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xy_slices/Ez2_xy_slices_deck_cylinder_P588_h970_1302.3nm_lin.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xy_slices/Ez2_xy_slices_deck_cylinder_P588_h970_1302.3nm_log.png"
+  ],
+  "xz_yz": [
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xz_yz/Ez2_xz_deck_cylinder_P588_h970_1279.2nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xz_yz/Ez2_xz_deck_cylinder_P588_h970_1282.0nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xz_yz/Ez2_xz_deck_cylinder_P588_h970_1295.8nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xz_yz/Ez2_xz_deck_cylinder_P588_h970_1302.3nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xz_yz/Ez2_yz_deck_cylinder_P588_h970_1279.2nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xz_yz/Ez2_yz_deck_cylinder_P588_h970_1282.0nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xz_yz/Ez2_yz_deck_cylinder_P588_h970_1295.8nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/xz_yz/Ez2_yz_deck_cylinder_P588_h970_1302.3nm.png"
+  ],
+  "geometry": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/geometry/geometry_deck_cylinder_P588_h970.png"
+ },
+ "colour_scales": {
+  "xy_slices": "common per wavelength across all panels; linear (0..max) and log (4 decades) versions",
+  "xz_yz": "log, per panel",
+  "zprofile": "log y, common physical normalization"
+ },
+ "field_definitions": {
+  "E2": "|Ex|^2+|Ey|^2+|Ez|^2 with |u|^2 = u conj(u)",
+  "Ez2": "Ez conj(Ez)",
+  "Dz": "eps_zz(x,y,z,lambda) Ez, eps0 omitted; per-cell eps_zz per the docstring (fill-weighted arithmetic mean in the patterned a-Si:H cells)"
+ },
+ "checks": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/spectra/checks_deck_cylinder_P588_h970.json",
+ "raw_normalized": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/deck_cylinder_P588_h970/raw_fields/fields_normalized.npz"
+}

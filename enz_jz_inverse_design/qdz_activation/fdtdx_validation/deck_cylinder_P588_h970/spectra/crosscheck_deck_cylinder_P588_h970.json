@@ -1,0 +1,186 @@
+{
+ "tag": "deck_cylinder_P588_h970",
+ "window_nm": [
+  1252.0,
+  1385.0
+ ],
+ "shift_scan_nm": [
+  -15.0,
+  15.0,
+  0.25
+ ],
+ "best_shift_nm": 5.5,
+ "meaning": "TORCWA(lam + d) matches FDTDX(lam): d > 0 means the FDTDX line is BLUE-shifted relative to TORCWA",
+ "rms_dT_no_shift": 0.08992665539625104,
+ "rms_dT_after_shift": 0.009209580583380216,
+ "max_dT_after_shift": 0.02086806625081994,
+ "max_dR_after_shift": 0.012896290662793547,
+ "max_dA_after_shift": 0.018706462388671297,
+ "lam_T_min": {
+  "fdtdx": 1286.0,
+  "torcwa": 1292.5
+ },
+ "T_min": {
+  "fdtdx": 0.21334814266719151,
+  "torcwa": 0.21524454588801914
+ },
+ "A_max": {
+  "fdtdx": 0.4631031106381619,
+  "torcwa": 0.46537420743249996
+ },
+ "material_fit_isolation": {
+  "grid_nm": [
+   1272.5,
+   1312.5,
+   1.0
+  ],
+  "lam_T_min_torcwa_tabulated": 1292.5,
+  "lam_T_min_torcwa_fdtdx_fits": 1292.5,
+  "shift_from_material_fits_nm": 0.0,
+  "max_dT_tabulated_vs_fits": 0.002016432606872731,
+  "eps_at_line": {
+   "ITO_tab": [
+    0.050285417610067384,
+    0.41930973479116224
+   ],
+   "ITO_fit": [
+    0.04962851018279346,
+    0.41620421828772264
+   ],
+   "aSiH_tab": 8.858450547419823,
+   "aSiH_fit": 8.858459494688088,
+   "n_glass_tab": 1.5165462227144393,
+   "n_glass_fit": 1.5165457702396428
+  },
+  "note": "remaining shift = discretization (64 x 64 in-plane sub-pixel raster, 12.9-nm a-Si:H z-cells, 4.6-nm ITO cells, CFL 0.95) and DFT/finite-time effects"
+ },
+ "fields_vs_torcwa": {
+  "1279.214": {
+   "fdtdx": {
+    "mean_Ez2": 7.75959633947335,
+    "max_Ez2": 52.767527046886734,
+    "Fz": 0.3504305695221265,
+    "Ftot": 0.38235786863041676,
+    "A_flux": 0.38030770353133125
+   },
+   "torcwa_same_lambda": {
+    "mean_Ez2": 6.211972713453548,
+    "Fz": 0.2823541327253438,
+    "Ftot": 0.31470000840432144,
+    "A": 0.31480923033090746,
+    "T": 0.5480660812793346
+   },
+   "torcwa_shift_equivalent": {
+    "lam": 1284.714,
+    "mean_Ez2": 7.926961109699114,
+    "Fz": 0.364998709070194,
+    "Ftot": 0.3963352095484116,
+    "A": 0.3964696149623206,
+    "T": 0.39011024397746374
+   },
+   "ratio_mean_Ez2_fdtdx_over_torcwa_shifted": 0.9788866416890852,
+   "ratio_Fz_fdtdx_over_torcwa_shifted": 0.9600871477458681
+  },
+  "1282.025": {
+   "fdtdx": {
+    "mean_Ez2": 8.760504231558482,
+    "max_Ez2": 55.41443983088634,
+    "Fz": 0.39815685525179784,
+    "Ftot": 0.4294638558128324,
+    "A_flux": 0.4260424452246481
+   },
+   "torcwa_same_lambda": {
+    "mean_Ez2": 7.052125700117126,
+    "Fz": 0.32267594719909815,
+    "Ftot": 0.35461189287334693,
+    "A": 0.35473367755997676,
+    "T": 0.47269204246639096
+   },
+   "torcwa_shift_equivalent": {
+    "lam": 1287.525,
+    "mean_Ez2": 8.782117463951286,
+    "Fz": 0.407030634495894,
+    "Ftot": 0.4375026680962688,
+    "A": 0.43764863013334004,
+    "T": 0.30185061988952805
+   },
+   "ratio_mean_Ez2_fdtdx_over_torcwa_shifted": 0.9975389497485633,
+   "ratio_Fz_fdtdx_over_torcwa_shifted": 0.9781987435538204
+  },
+  "1295.847": {
+   "fdtdx": {
+    "mean_Ez2": 4.82871237539151,
+    "max_Ez2": 23.770977606370987,
+    "Fz": 0.22640249636600182,
+    "Ftot": 0.25571859428180593,
+    "A_flux": 0.25428239269923314
+   },
+   "torcwa_same_lambda": {
+    "mean_Ez2": 8.10940977809481,
+    "Fz": 0.38310710105972895,
+    "Ftot": 0.41110843350062054,
+    "A": 0.41123626594197205,
+    "T": 0.2718538758677609
+   },
+   "torcwa_shift_equivalent": {
+    "lam": 1301.347,
+    "mean_Ez2": 4.858839661335586,
+    "Fz": 0.23241375993472047,
+    "Ftot": 0.2610310442880463,
+    "A": 0.26110746203905755,
+    "T": 0.5108566563195461
+   },
+   "ratio_mean_Ez2_fdtdx_over_torcwa_shifted": 0.9937994895810589,
+   "ratio_Fz_fdtdx_over_torcwa_shifted": 0.9741355091436623
+  },
+  "1302.282": {
+   "fdtdx": {
+    "mean_Ez2": 2.0215641632509955,
+    "max_Ez2": 10.888524776087479,
+    "Fz": 0.09616151593692263,
+    "Ftot": 0.1267566932837947,
+    "A_flux": 0.12775551335355728
+   },
+   "torcwa_same_lambda": {
+    "mean_Ez2": 4.342406533750998,
+    "Fz": 0.20814695974802216,
+    "Ftot": 0.2370073459226043,
+    "A": 0.2370760479031262,
+    "T": 0.5524827216814014
+   },
+   "torcwa_shift_equivalent": {
+    "lam": 1307.782,
+    "mean_Ez2": 2.1319368405838595,
+    "Fz": 0.10345020655052219,
+    "Ftot": 0.13381916609830083,
+    "A": 0.133856485151726,
+    "T": 0.7401832112039739
+   },
+   "ratio_mean_Ez2_fdtdx_over_torcwa_shifted": 0.9482289178404381,
+   "ratio_Fz_fdtdx_over_torcwa_shifted": 0.9295439723453818
+  }
+ },
+ "provenance": {
+  "package": "qdz_activation",
+  "git_commit": "b77e2ea2bbc72b267078ecb7492a8f6c5f868cc3",
+  "git_dirty": true,
+  "d_ito_nm": 23.0,
+  "nx": 128,
+  "sim_dtype": "torch.complex128",
+  "geo_dtype": "torch.float64",
+  "materials": {
+   "ito": "ITO_nk.csv",
+   "asi": "aSi_H_measured_Postech.txt",
+   "glass": "SiO2_substrate_measured.txt",
+   "sha256": {
+    "ito": "b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c",
+    "asi": "854b592c162c10a73ff8693a6561d5884dc68aaac6dfc23e17944ff3e89709d3",
+    "glass": "6b4f1d5dec1b518a7de46bbd572a72a558cd976898d709620f87d8a6b8cdd4f9"
+   }
+  },
+  "order": [
+   9,
+   9
+  ]
+ }
+}

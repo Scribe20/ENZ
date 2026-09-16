@@ -8,3 +8,4 @@ reference/*/phasors.npz
 reference/*/state.npz
 */rho_hard_binary.npy
 __pycache__/
+*/raw_fields/fields_normalized_H.npz

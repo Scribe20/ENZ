@@ -122,8 +122,12 @@ def main():
                 boundaries_nm=np.array([z_ito_bot, z_ito_top, z_asi_top]) * 1e9, E_inc_phasor=F["E0"], fill_fraction_per_cell=fill, geometry_sha256_uint8=cand["sha256_uint8_array"],
                 note=json.dumps(dict(prov, material_eps_at_lams=None)))
     if all(c in comps for c in ("Hx", "Hy", "Hz")):
-        save["H_over_Einc"] = F["vol"][:, [comps.index(c) for c in ("Hx", "Hy", "Hz")]].astype(np.complex64)
-        save["H_note"] = "H phasors (FDTDX eta0-normalized H) divided by the same E_inc phasor"
+        # H is kept in a separate (gitignored, regenerable) file so that the committed E file stays within the
+        # four-finalists size convention; the raw phasors.npz holds everything anyway
+        np.savez_compressed(HERE / tag / "raw_fields" / "fields_normalized_H.npz", lam_nm=lam,
+                            H_over_Einc=F["vol"][:, [comps.index(c) for c in ("Hx", "Hy", "Hz")]].astype(np.complex64),
+                            z_centers_m=zc_v, z_edges_m=ze_v, x_centers_m=xc, note="H phasors (FDTDX eta0-normalized H) divided by the same E_inc phasor as the E file")
+        save["H_file"] = "fields_normalized_H.npz (E-normalized H, same block; not committed)"
     np.savez_compressed(HERE / tag / "raw_fields" / "fields_normalized.npz", **save)
     # ---- 2. spectra vs TORCWA + checks ----------------------------------------------------------------------
     s = fx_post.spectra_of(run, ref)
