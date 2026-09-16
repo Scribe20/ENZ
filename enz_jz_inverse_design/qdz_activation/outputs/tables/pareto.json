@@ -12,9 +12,25 @@
  "non_dominated": [
   "fr_Q100_final0_h700",
   "fr_Q100_final1_h680",
-  "fr_Q100_final3_h640"
+  "fr_Q100_final3_h640",
+  "fr_Q200_final3_h600",
+  "fr_Q200_fresh4242_h700",
+  "fr_Q20_final1_h420",
+  "fr_Q20_final2_h440",
+  "fr_Q20_final3_h380",
+  "fr_Q500_final0_h380",
+  "fr_Q500_final3_h600",
+  "fr_Q500_fresh4242_h700",
+  "fr_Q50_final0_h680",
+  "fr_Q50_final2_h680",
+  "fr_Q50_fresh8080_h480",
+  "jzfz_final3",
+  "pilot_h525_Q100_fresh4242",
+  "pilot_h525_Q50_fresh8080",
+  "pilot_h675_Q100_warm_final1"
  ],
  "dominated": [
-  "fr_Q200_final1_h700"
+  "fr_Q200_final1_h700",
+  "jzfz_final1"
  ]
 }

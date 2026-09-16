@@ -1,1 +1,16 @@
 [worker 0] 1 of 1 candidates; order [9, 9]; perturbation hot_electron_Te Te=1000.0
+[A bare_ito_film_P825] T_bg=0.9578725070883263 (n=46 in [1261,1352]) T(lam_r)=None C_res=None C_ext=None T(lam_E)=0.958 eta_reg=None (512 s)
+  [B bare_ito_film_P825]  1241.2 nm: T0=0.9243 T1=0.9249 dT=+0.0005 A0=0.0254 Fz0=0.0000 eta_z=0.00 (16 s)
+  [B bare_ito_film_P825]  1271.2 nm: T0=0.9213 T1=0.9219 dT=+0.0005 A0=0.0273 Fz0=0.0000 eta_z=0.00 (265 s)
+  [B bare_ito_film_P825]  1301.2 nm: T0=0.9183 T1=0.9189 dT=+0.0006 A0=0.0292 Fz0=0.0000 eta_z=0.00 (517 s)
+  [B bare_ito_film_P825]  1331.2 nm: T0=0.9153 T1=0.9159 dT=+0.0006 A0=0.0311 Fz0=0.0000 eta_z=0.00 (767 s)
+  [B bare_ito_film_P825]  1361.2 nm: T0=0.9123 T1=0.9129 dT=+0.0006 A0=0.0330 Fz0=0.0000 eta_z=0.00 (1017 s)
+  [B bare_ito_film_P825]  1391.2 nm: T0=0.9093 T1=0.9099 dT=+0.0007 A0=0.0348 Fz0=0.0000 eta_z=0.00 (1271 s)
+  [B bare_ito_film_P825]  1399.2 nm: T0=0.9084 T1=0.9091 dT=+0.0007 A0=0.0353 Fz0=0.0000 eta_z=0.00 (1340 s)
+  [conv bare_ito_film_P825]  1261.2 nm: 5:+0.0005 7:+0.0005 9:+0.0005 11:+0.0005  -> ok (|d|=0.0000)
+  [conv bare_ito_film_P825]  1303.2 nm: 5:+0.0006 7:+0.0006 9:+0.0006 11:+0.0006  -> ok (|d|=0.0000)
+  [conv bare_ito_film_P825]  1399.7 nm: 5:+0.0007 7:+0.0007 9:+0.0007 11:+0.0007  -> ok (|d|=0.0000)
+  [lin bare_ito_film_P825]  1399.7 nm: S_T(Te)=600K:+0.016, 1000K:+0.016, 2000K:+0.016  Re-frac=0.39027068527698716
+[B bare_ito_film_P825] lam_op+=1399.7277971023454 dT=0.0006858548999107983 T0=0.9083860379188929 T1=0.9090718928188037 A0=0.035335127786385256 Ftot0=0.03533327781986478 eta_z=0.0 S_T=0.016259802249182657 chan=R,A->T (useful) | dT-=0.0005320453478785403@1261.2277971023454 | A->R dominant=False (1904 s)
+[worker 0] bare_ito_film_P825 done in 2416 s
+[worker 0] all done
