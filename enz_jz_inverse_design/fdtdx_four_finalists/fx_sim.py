@@ -147,11 +147,18 @@ def build_z_mesh(h, n_ito, dz_coarse, dz_fine, ratio=1.3, glass_bulk=1250e-9, gl
 
 
 # --------------------------------------------------------------------------- scene
-def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, stride=None, courant=0.95, nxy=128, subpixel=True, dz_asi=None, conv_check_fs=None, glass_extra=0.0):
+def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, stride=None, courant=0.95, nxy=128, subpixel=True, dz_asi=None, conv_check_fs=None, glass_extra=0.0,
+                vol_glass_cells=4, vol_air_cells=4, prov=None, design_dir=None, vol_components=("Ex", "Ey", "Ez")):
+    """vol_glass_cells / vol_air_cells: extent of the volume phasor detector below the ITO / above the a-Si:H
+    (defaults 4 / 4 = the four-finalists configuration).  prov / design_dir: optional overrides of the geometry
+    registry and of the directory holding <design>/rho_hard_binary.npy (default: this package), so that other
+    campaigns can run the identical scene on their own frozen geometries without copying this file."""
     global NXY
     NXY = nxy
-    P = PROV[design]["P_nm"] * 1e-9; h = PROV[design]["h_nm"] * 1e-9
-    rho = np.load(HERE / design / "rho_hard_binary.npy")
+    prov = PROV if prov is None else prov
+    design_dir = HERE if design_dir is None else Path(design_dir)
+    P = prov[design]["P_nm"] * 1e-9; h = prov[design]["h_nm"] * 1e-9
+    rho = np.load(design_dir / design / "rho_hard_binary.npy")
     fill = area_fraction(rho, NXY)
     dxy = P / NXY
     dz_fine = dxy if dz_asi is None else dz_asi
@@ -221,9 +228,9 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
         plane_det("inc_ito_plane", idx["z_ito0"] + n_ito // 2, wc_spec, ("Ex", "Ey", "Hx", "Hy"))   # incident field amplitude at the ITO mid-plane position (air)
         plane_det("inc_field_plane", idx["z_ito0"] + n_ito // 2, wc_field, ("Ex", "Ey", "Ez"))
     else:
-        # volume phasors: 4 coarse glass cells below the ITO .. 4 cells of air above the a-Si
-        z0 = idx["z_ito0"] - 4; z1 = idx["z_asi1"] + 4
-        v = fdtdx.PhasorDetector(name="vol_fields", partial_grid_shape=(NXY, NXY, z1 - z0), wave_characters=wc_field, components=("Ex", "Ey", "Ez"), scaling_mode="pulse", dft_subsample=stride, plot=False)
+        # volume phasors: vol_glass_cells glass cells below the ITO .. vol_air_cells cells of air above the a-Si
+        z0 = idx["z_ito0"] - int(vol_glass_cells); z1 = idx["z_asi1"] + int(vol_air_cells)
+        v = fdtdx.PhasorDetector(name="vol_fields", partial_grid_shape=(NXY, NXY, z1 - z0), wave_characters=wc_field, components=tuple(vol_components), scaling_mode="pulse", dft_subsample=stride, plot=False)
         constraints.extend([v.same_size(volume, axes=(0, 1)), v.place_at_center(volume, axes=(0, 1)), at(v, (2,), (z0,))])
         objects.append(v); idx["z_vol0"] = z0; idx["z_vol1"] = z1
         zp0, zp1 = PML_CELLS, idx["z_pml_top0"]
@@ -242,6 +249,7 @@ def build_scene(design, no_ito, n_ito, time_s, field_lams_m, reference=False, st
             objects.append(pr)
         idx["probe_ij"] = [int(ii), int(jj)]
     meta = dict(design=design, no_ito=no_ito, reference=reference, P_m=P, h_m=h, dxy_m=dxy, nxy=NXY, subpixel_smoothing=subpixel, fill_fraction_mean=float(fill.mean()), n_ito=n_ito, dz_ito_m=D_ITO / n_ito, widths_m=widths.tolist(), z_edges_m=z_edges.tolist(),
+                vol_glass_cells=int(vol_glass_cells), vol_air_cells=int(vol_air_cells), design_dir=str(design_dir), vol_components=list(vol_components),
                 idx=idx, dt_s=dt, time_s=time_s, n_steps=int(config.time_steps_total), courant_factor=courant, dft_stride=stride, lam_spec_m=LAM_SPEC.tolist(), lam_field_m=list(map(float, field_lams_m)),
                 source=dict(type="UniformPlaneSource TFSF, direction -z, E along x, GaussianPulseProfile center 1300 nm, sigma_f 13 THz (sigma_t 12.2 fs, peak at t0 = 6 sigma_t)"),
                 pml_cells=PML_CELLS, n_cells=[NXY, NXY, idx["n_z"]], dtype="float32", backend=str(jax.default_backend()), devices=[str(d) for d in jax.devices()],

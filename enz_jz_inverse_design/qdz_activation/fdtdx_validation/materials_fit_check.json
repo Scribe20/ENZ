@@ -1,0 +1,39 @@
+{
+ "source": "fdtdx_four_finalists/materials/ITO_eps_original_vs_fit.csv (Drude + Lorentz ADE fit of the supplied ITO_nk.csv, fx materials_fit.py)",
+ "model_file": "fdtdx_four_finalists/materials/material_models.json",
+ "errors": {
+  "1200-1400": {
+   "max_err_eps1": 0.001426999999999956,
+   "rms_err_eps1": 0.0006477954847401694,
+   "max_err_eps2": 0.0063429999999999875,
+   "rms_err_eps2": 0.0027007777044687,
+   "rel_err_eps2_max": 0.020730858354931343
+  },
+  "1252-1400": {
+   "max_err_eps1": 0.001426999999999956,
+   "rms_err_eps1": 0.0006614446767513389,
+   "max_err_eps2": 0.004226000000000063,
+   "rms_err_eps2": 0.0024632083405305093,
+   "rel_err_eps2_max": 0.00763016676407469
+  },
+  "1290-1320": {
+   "max_err_eps1": 0.0008890000000000009,
+   "rms_err_eps1": 0.0007892824017279368,
+   "max_err_eps2": 0.0033310000000000284,
+   "rms_err_eps2": 0.003251146785267445,
+   "rel_err_eps2_max": 0.00763016676407469
+  },
+  "at_lambda_E": {
+   "lam": 1302.0,
+   "supplied": [
+    0.001454,
+    0.431587
+   ],
+   "fit": [
+    0.000682,
+    0.428295
+   ]
+  },
+  "lambda_ENZ_fit_nm": 1302.1319914844203
+ }
+}
