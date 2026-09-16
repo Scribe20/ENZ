@@ -45,13 +45,14 @@ def main():
     chk = json.load(open(HERE / tag / "spectra" / f"checks_{tag}.json"))
     lo = max(1252.0, lam_t.min() + 15.0); hi = min(1385.0, lam_t.max() - 15.0)
     m = (lam_f >= lo) & (lam_f <= hi)
-    shifts = np.arange(-15.0, 15.01, 0.25)
+    shifts = np.arange(-30.0, 30.01, 0.25)
     rms = np.array([np.sqrt(np.mean((T_f[m] - np.interp(lam_f[m] + d, lam_t, T_t)) ** 2)) for d in shifts])
     d_best = float(shifts[int(np.argmin(rms))]); rms0 = float(rms[np.argmin(np.abs(shifts))]); rms_best = float(rms.min())
+    at_bound = bool(abs(abs(d_best) - 30.0) < 1e-9)
     Ts = np.interp(lam_f[m] + d_best, lam_t, T_t); Rs = np.interp(lam_f[m] + d_best, lam_t, R_t); As = np.interp(lam_f[m] + d_best, lam_t, A_t)
-    res = dict(tag=tag, window_nm=[lo, hi], shift_scan_nm=[-15.0, 15.0, 0.25], best_shift_nm=d_best,
+    res = dict(tag=tag, window_nm=[lo, hi], shift_scan_nm=[-30.0, 30.0, 0.25], best_shift_nm=d_best,
                meaning="TORCWA(lam + d) matches FDTDX(lam): d > 0 means the FDTDX line is BLUE-shifted relative to TORCWA",
-               rms_dT_no_shift=rms0, rms_dT_after_shift=rms_best, max_dT_after_shift=float(np.abs(T_f[m] - Ts).max()),
+               shift_at_scan_bound=at_bound, rms_dT_no_shift=rms0, rms_dT_after_shift=rms_best, max_dT_after_shift=float(np.abs(T_f[m] - Ts).max()),
                max_dR_after_shift=float(np.abs(R_f[m] - Rs).max()), max_dA_after_shift=float(np.abs(A_f[m] - As).max()),
                lam_T_min=dict(fdtdx=float(lam_f[m][np.argmin(T_f[m])]), torcwa=float(lam_t[np.argmin(T_t)])),
                T_min=dict(fdtdx=float(T_f[m].min()), torcwa=float(T_t.min())), A_max=dict(fdtdx=float(A_f[m].max()), torcwa=float(A_t.max())))
@@ -75,10 +76,10 @@ def main():
     fe = chk["ito_field_enhancement"]; comp = {}
     with torch.no_grad():
         for k, v in fe.items():
-            l = float(k); ls_ = l + d_best
+            l = float(k); ls_ = float(np.clip(l + d_best, 1160.0, 1399.5))      # stay inside the supplied a-Si:H data
             d0 = fwd.to_floats(fwd.evaluate(rho_t, c["P"], c["h"], l, list(a.order)))
             d1 = fwd.to_floats(fwd.evaluate(rho_t, c["P"], c["h"], ls_, list(a.order)))
-            comp[k] = dict(fdtdx=dict(mean_Ez2=v["mean_Ez2_ito_fdtdx"], max_Ez2=v["max_Ez2_ito_fdtdx"], Fz=v["Fz_fdtdx"], Ftot=v["Ftot_fdtdx"], A_flux=v["A_fdtdx_flux"]),
+            comp[k] = dict(shift_equivalent_lambda_clipped=bool(abs(ls_ - (l + d_best)) > 1e-9), fdtdx=dict(mean_Ez2=v["mean_Ez2_ito_fdtdx"], max_Ez2=v["max_Ez2_ito_fdtdx"], Fz=v["Fz_fdtdx"], Ftot=v["Ftot_fdtdx"], A_flux=v["A_fdtdx_flux"]),
                            torcwa_same_lambda=dict(mean_Ez2=d0["mean_Ez2"], Fz=d0["Fz"], Ftot=d0["Ftot"], A=d0["A"], T=d0["T"]),
                            torcwa_shift_equivalent=dict(lam=ls_, mean_Ez2=d1["mean_Ez2"], Fz=d1["Fz"], Ftot=d1["Ftot"], A=d1["A"], T=d1["T"]),
                            ratio_mean_Ez2_fdtdx_over_torcwa_shifted=v["mean_Ez2_ito_fdtdx"] / max(d1["mean_Ez2"], 1e-12),

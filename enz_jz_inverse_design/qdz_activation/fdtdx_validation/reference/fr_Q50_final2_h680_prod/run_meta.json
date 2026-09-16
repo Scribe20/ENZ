@@ -503,8 +503,8 @@
  "fx_sim_file": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/fx_sim.py",
  "material_models": "/home/user/ENZ/enz_jz_inverse_design/fdtdx_four_finalists/materials/material_models.json",
  "timing": {
-  "setup_s": 2.75642728805542,
-  "run_s": 139.98561692237854,
+  "setup_s": 3.2312073707580566,
+  "run_s": 134.17157745361328,
   "segments": 0,
   "resumed_from": 0
  },
