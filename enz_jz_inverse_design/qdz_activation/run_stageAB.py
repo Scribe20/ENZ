@@ -49,6 +49,7 @@ def main():
     ap.add_argument("--threads", type=int, default=4)
     ap.add_argument("--worker", type=int, default=0); ap.add_argument("--nworkers", type=int, default=1)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--skip-existing", action="store_true", help="skip candidates whose stageB.json already exists")
     a = ap.parse_args()
     fwd.set_threads(a.threads)
     out_root = Path(a.out) if a.out else cm.OUT / "candidates"
@@ -69,8 +70,11 @@ def main():
                          incidence=dict(theta_deg=a.theta, phi_deg=a.phi, pol=a.pol), m_R_nm=a.m_R, D_op_nm=a.D_op, k_excl=a.k_excl)
     for c in mine:
         t0 = time.time()
+        out = out_root / c["tag"]
+        if a.skip_existing and (out / "stageB.json").exists():
+            log(f"[worker {a.worker}] {c['tag']} skipped (stageB.json exists)"); continue
         rho = cd.get_rho(c)
-        out = out_root / c["tag"]; out.mkdir(parents=True, exist_ok=True)
+        out.mkdir(parents=True, exist_ok=True)
         meta = dict(candidate={k: v for k, v in c.items()}, rho_sha256=(cm.sha256_array(rho) if rho is not None else None),
                     fill_fraction=(float(np.mean(rho)) if rho is not None else None), provenance=prov)
         try:
