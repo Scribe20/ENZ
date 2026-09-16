@@ -1,0 +1,292 @@
+{
+ "n_tests": 10,
+ "n_passed": 10,
+ "all_passed": true,
+ "wall_s": 16.849068641662598,
+ "candidate_used": "fr_Q200_fresh4242_h700",
+ "order": [
+  7,
+  7
+ ],
+ "results": {
+  "T1_material_layer_reduces_to_supplied_csv_and_native_model": {
+   "passed": true,
+   "max_dev_300K": 0.0,
+   "max_dev_vs_ITOHot_1000K": 1.5700924586837752e-16,
+   "delta_drude_weight_1000K": 0.010617881570268661,
+   "eps0_lamE": [
+    -4.718447854656915e-16,
+    0.43195341058831205
+   ],
+   "eps1_lamE": [
+    0.036263401506469777,
+    0.42732328863455227
+   ],
+   "direction_deg": -7.276173352242196
+  },
+  "T2_dT_vanishes_for_identical_states": {
+   "passed": true,
+   "dT": 0.0,
+   "dR": 0.0,
+   "dA": 0.0,
+   "dFz": 0.0,
+   "tol": 1e-13
+  },
+  "T3_energy_conservation_and_absorption_identity": {
+   "passed": true,
+   "closure_cold": 0.0,
+   "closure_hot": 0.0,
+   "Ftot_minus_A_cold": -2.859140032597518e-05,
+   "Ftot_minus_A_hot": -2.6762250698350587e-05,
+   "tol_identity": 0.001,
+   "parent_R_plus_T_minus_1": -2.724487302430134e-13,
+   "tol_energy": 1e-09
+  },
+  "T4_sign_convention_planar_film_vs_independent_TMM": {
+   "passed": true,
+   "rows": [
+    {
+     "lam": 1280.0,
+     "T0_rcwa": 0.9204633096734778,
+     "T0_tmm": 0.9204633096607241,
+     "T1_rcwa": 0.921015869702469,
+     "T1_tmm": 0.9210158696899426,
+     "dT_rcwa": 0.0005525600289911781,
+     "dT_tmm": 0.0005525600292185517,
+     "R0_rcwa": 0.0516373709940631,
+     "R0_tmm": 0.051637370998155206,
+     "Ez2_in_ito": 0.0,
+     "same_sign": true
+    },
+    {
+     "lam": 1302.2819858898874,
+     "T0_rcwa": 0.9182291149397952,
+     "T0_tmm": 0.9182291149262071,
+     "T1_rcwa": 0.9188061695610854,
+     "T1_tmm": 0.9188061695477364,
+     "dT_rcwa": 0.0005770546212902072,
+     "dT_tmm": 0.0005770546215293493,
+     "R0_rcwa": 0.052469697352929306,
+     "R0_tmm": 0.05246969735744509,
+     "Ez2_in_ito": 0.0,
+     "same_sign": true
+    },
+    {
+     "lam": 1340.0,
+     "T0_rcwa": 0.9144359361013723,
+     "T0_tmm": 0.9144359360863658,
+     "T1_rcwa": 0.9150547966908421,
+     "T1_tmm": 0.9150547966760925,
+     "dT_rcwa": 0.0006188605894698052,
+     "dT_tmm": 0.0006188605897267108,
+     "R0_rcwa": 0.05391143229889249,
+     "R0_tmm": 0.05391143230414469,
+     "Ez2_in_ito": 0.0,
+     "same_sign": true
+    }
+   ],
+   "note": "dT > 0 means the perturbed state transmits MORE; planar film at normal incidence has Ez = 0 in the ITO"
+  },
+  "T5_qdz_parent_baseline_reproduced_and_proxy_not_used": {
+   "passed": true,
+   "max_rel_diff_vs_certification": 1.4137278538088247e-11,
+   "per_order": {
+    "[5, 5]": {
+     "eta_Dz": 0.0,
+     "eta_Dz_P": 6.454470896091979e-16,
+     "R": 2.0468338501964222e-14,
+     "T": 4.997868660896091e-16,
+     "U_mid": 1.4056893960243144e-14
+    },
+    "[7, 7]": {
+     "eta_Dz": 1.8588838992337783e-16,
+     "eta_Dz_P": 5.131272591496633e-14,
+     "R": 9.157914186501768e-13,
+     "T": 1.2255037147709485e-13,
+     "U_mid": 9.321278797907064e-13
+    },
+    "[9, 9]": {
+     "eta_Dz": 6.836303751045437e-13,
+     "eta_Dz_P": 2.0849514707861384e-12,
+     "R": 1.1814427952699657e-11,
+     "T": 3.523501929948544e-12,
+     "U_mid": 1.4137278538088247e-11
+    }
+   },
+   "Q_r_from_exact_pole": 228.39455953946705,
+   "Q_proxy": 226.52975567804765,
+   "ill_posed_example": {
+    "tag": "fr_Q100_final3_h640",
+    "Q_proxy": 7887919581568.241,
+    "well_posed": false,
+    "Q_r_exact": 499.19564118349035
+   }
+  },
+  "T6_total_equals_specular_in_single_order_window": {
+   "passed": true,
+   "lambda_R_glass": 1251.2277971035226,
+   "above": {
+    "lam": 1256.2277971035226,
+    "n_orders": 1,
+    "T_tot": 0.8515026980135977,
+    "T_00": 0.8515026980135977
+   },
+   "at_lamE": {
+    "lam": 1302.2819858898874,
+    "n_orders": 1,
+    "T_tot": 0.9076489543846138,
+    "T_00": 0.9076489543846138
+   },
+   "below": {
+    "lam": 1246.2277971035226,
+    "n_orders": 5,
+    "T_tot": 0.8548410197846927,
+    "T_00": 0.8426412199474618,
+    "diff": 0.012199799837230962
+   }
+  },
+  "T7_cold_and_perturbed_sims_identical_except_eps_ITO": {
+   "passed": true,
+   "eps_cold": [
+    -4.718447854656915e-16,
+    0.43195341058831205
+   ],
+   "eps_hot": [
+    0.036263401506469777,
+    0.42732328863455227
+   ],
+   "ito_layer": 1,
+   "thickness_layers": [
+    700.0,
+    23.0
+   ]
+  },
+  "T8_angle_hook": {
+   "passed": true,
+   "dT_default": 0.0020702782334495184,
+   "dT_theta0": 0.0020702782334495184,
+   "theta3": {
+    "T0": 0.9060676687032476,
+    "dT": 0.0021109529002387717,
+    "A0": 0.07666411467201084,
+    "resid": -2.884618572537856e-05,
+    "n_orders": 1
+   },
+   "rayleigh_theta3": [
+    [
+     -1,
+     -1,
+     "glass",
+     906.88
+    ],
+    [
+     1,
+     0,
+     "glass",
+     1208.14
+    ],
+    [
+     0,
+     -1,
+     "glass",
+     1250.48
+    ],
+    [
+     -1,
+     0,
+     "glass",
+     1294.32
+    ]
+   ]
+  },
+  "T9_rayleigh_dispersive_vs_fixed_index": {
+   "passed": true,
+   "rows": [
+    {
+     "P": 825.0,
+     "m": -2,
+     "n": 0,
+     "medium": "glass",
+     "dispersive": 627.5510027486484,
+     "fixed_index": 625.5686669513522,
+     "compared": false
+    },
+    {
+     "P": 825.0,
+     "m": -1,
+     "n": 0,
+     "medium": "air",
+     "dispersive": 825.0,
+     "fixed_index": 825.0,
+     "compared": false
+    },
+    {
+     "P": 825.0,
+     "m": -1,
+     "n": -1,
+     "medium": "glass",
+     "dispersive": 885.6369814184485,
+     "fixed_index": 884.6876929982599,
+     "compared": false
+    },
+    {
+     "P": 825.0,
+     "m": -1,
+     "n": 0,
+     "medium": "glass",
+     "dispersive": 1251.2277971023454,
+     "fixed_index": 1251.1373339027043,
+     "compared": true
+    },
+    {
+     "P": 588.0,
+     "m": -1,
+     "n": -1,
+     "medium": "glass",
+     "dispersive": 632.4991850700878,
+     "fixed_index": 630.5410466460326,
+     "compared": false
+    },
+    {
+     "P": 588.0,
+     "m": -1,
+     "n": 0,
+     "medium": "glass",
+     "dispersive": 892.6508286628516,
+     "fixed_index": 891.7196997997456,
+     "compared": false
+    }
+   ]
+  },
+  "T10_background_set_logic": {
+   "passed": true,
+   "n_points": 21,
+   "window": [
+    1261.2,
+    1352.2819858898874
+   ],
+   "cap_active_on_broad_pole": true,
+   "undefined_when_overbroad": true,
+   "note_overbroad": "background undefined: after excluding the parent poles fewer than n_min samples remain (resonances as broad as the operating window)"
+  }
+ },
+ "provenance": {
+  "package": "qdz_activation",
+  "git_commit": "457a85a93363b769b9a61d75736ccc853446fb65",
+  "git_dirty": false,
+  "d_ito_nm": 23.0,
+  "nx": 128,
+  "sim_dtype": "torch.complex128",
+  "geo_dtype": "torch.float64",
+  "materials": {
+   "ito": "ITO_nk.csv",
+   "asi": "aSi_H_measured_Postech.txt",
+   "glass": "SiO2_substrate_measured.txt",
+   "sha256": {
+    "ito": "b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c",
+    "asi": "854b592c162c10a73ff8693a6561d5884dc68aaac6dfc23e17944ff3e89709d3",
+    "glass": "6b4f1d5dec1b518a7de46bbd572a72a558cd976898d709620f87d8a6b8cdd4f9"
+   }
+  }
+ }
+}
