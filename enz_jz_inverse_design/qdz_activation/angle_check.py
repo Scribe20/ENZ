@@ -34,13 +34,14 @@ def main():
     pert = ip.ITOPerturbation("hot_electron_Te", Te=a.Te)
     rows = []
     for th in a.thetas:
-        ray = ry.rayleigh_wavelengths(c["P"], lo=1100.0, hi=1400.0, theta_deg=th, phi_deg=a.phi)
+        ray = ry.rayleigh_wavelengths(c["P"], lo=600.0, hi=1400.0, theta_deg=th, phi_deg=a.phi)
         for lam in lams:
             r = ls.evaluate_pair(rho, c["P"], c["h"], lam, a.order, pert, theta_deg=th, phi_deg=a.phi)
             rows.append(dict(theta=th, lam=lam, T0=r["T0"], T1=r["T1"], dT=r["dT"], S_T=r["S_T"], R0=r["R0"], A0=r["A0"], Fz0=r["Fz0"], Ftot0=r["Ftot0"],
                              n_orders=r["n_orders0"], rayleigh=ry.safety_margin(lam, ray)))
+            rm = rows[-1]["rayleigh"]
             print(f"  theta={th:4.1f} lam={lam:8.2f}: T0={r['T0']:.4f} dT={r['dT']:+.5f} S_T={r['S_T']:+.4f} A0={r['A0']:.4f} n_orders={r['n_orders0']} "
-                  f"nearest Rayleigh {rows[-1]['rayleigh']['nearest']['lam']:.1f} nm ({rows[-1]['rayleigh']['margin_nm']:+.1f})", flush=True)
+                  f"nearest Rayleigh {(rm['nearest'] or {}).get('lam', float('nan')):.1f} nm ({(rm['margin_nm'] if rm['margin_nm'] is not None else float('nan')):+.1f})", flush=True)
     summ = {}
     for lam in lams:
         d = np.array([r["dT"] for r in rows if r["lam"] == lam]); s = np.array([r["S_T"] for r in rows if r["lam"] == lam])
