@@ -4,6 +4,8 @@
 | pilot_h525_Q50_fresh8080 | qdz_certified | 50.0 | - | 0.194 | 0.128 | 0.75 | - | 0.14 | 1271.2 | +0.0142 | +0.406 | 0.205 | 0.698 | 0.96 | 1261.2 | +0.0147 | True | A->T (absorption to transmission, useful) | -0.0101 | - | - | False | False |
 | fr_Q50_final2_h680 | qdz_uncertified | 50.0 | 32 | 0.058 | 0.039 | - | - | 0.11 | 1314.1 | +0.0133 | +0.356 | 0.166 | 0.781 | 0.92 | 1314.1 | +0.0133 | False | A->T (absorption to transmission, useful) | -0.0046 | 2.9 | 36 | False | False |
 | fr_Q500_final0_h380 | qdz_uncertified | 500.0 | 8 | 0.163 | 0.120 | 0.23 | 0.69 | 0.11 | 1393.2 | +0.0093 | +0.221 | 0.503 | 0.493 | 0.91 | 1399.7 | +0.0107 | True | A->T (absorption to transmission, useful) | -0.0106 | 2.1 | 10 | False | False |
+| fr_Q50_fresh8080_h480 | qdz_uncertified | 50.0 | 44 | 0.118 | 0.094 | 0.86 | 0.62 | 0.77 | 1377.2 | +0.0063 | +0.155 | 0.779 | 0.192 | 0.80 | 1378.2 | +0.0063 | False | A->T (absorption to transmission, useful) | -0.0148 | 9.6 | - | False | False |
+| jzfz_final1 | jzfz_baseline | - | - | 0.101 | 0.063 | 0.09 | - | 0.03 | 1271.2 | +0.0062 | +0.179 | 0.066 | 0.917 | 0.91 | 1261.2 | +0.0124 | True | A->T,R | -0.0024 | - | 10 | False | False |
 | jzfz_final3 | jzfz_baseline | - | 220 | 0.111 | 0.071 | 0.03 | 0.92 | 0.03 | 1271.2 | +0.0054 | +0.154 | 0.063 | 0.913 | 0.91 | 1266.0 | +0.0073 | False | A->T,R | -0.0020 | 36.1 | 184 | False | False |
 | fr_Q100_final3_h640 | qdz_certified | 100.0 | 499 | 0.060 | 0.042 | 0.25 | 0.38 | 0.15 | 1341.2 | +0.0052 | +0.133 | 0.262 | 0.689 | 0.86 | 1341.2 | +0.0052 | False | A->T,R | -0.0134 | 48.7 | 170 | False | False |
 | fr_Q50_final0_h680 | qdz_uncertified | 50.0 | 6 | 0.083 | 0.052 | 0.43 | 0.44 | 0.11 | 1313.2 | +0.0044 | +0.119 | 0.107 | 0.861 | 0.96 | 1261.2 | +0.0142 | True | R,A->T (useful) | -0.0059 | 0.8 | 12 | False | False |
@@ -20,5 +22,3 @@
 | pilot_h675_Q100_warm_final1 | qdz_certified | 100.0 | 79 | 0.044 | 0.029 | 0.10 | 0.57 | 0.09 | 1393.9 | -0.0031 | -0.074 | 0.079 | 0.915 | 0.95 | 1266.2 | -0.0030 | False | A->R (absorption to reflection; NO transmission opening) | -0.0083 | 5.3 | 69 | False | False |
 | fr_Q100_final1_h680 | qdz_certified | 100.0 | 77 | 0.044 | 0.030 | 0.10 | 0.55 | 0.09 | 1387.2 | -0.0034 | -0.083 | 0.088 | 0.911 | 0.95 | 1265.6 | -0.0032 | False | T,A->R | -0.0086 | 5.3 | 68 | False | False |
 | fr_Q100_final0_h700 | qdz_certified | 100.0 | 81 | 0.047 | 0.032 | 0.15 | 0.59 | 0.09 | 1271.2 | -0.0036 | -0.104 | 0.040 | 0.677 | 0.79 | 1265.2 | +0.0001 | False | A->R (absorption to reflection; NO transmission opening) | -0.0077 | 5.9 | 64 | False | False |
-| fr_Q50_fresh8080_h480 | qdz_uncertified | 50.0 | 44 | 0.118 | 0.094 | 0.86 | 0.62 | - | - | - | - | - | - | - | - | - | False | - | - | - | - | - | False |
-| jzfz_final1 | jzfz_baseline | - | - | 0.101 | 0.063 | 0.09 | - | - | - | - | - | - | - | - | - | - | False | - | - | - | - | - | True |
