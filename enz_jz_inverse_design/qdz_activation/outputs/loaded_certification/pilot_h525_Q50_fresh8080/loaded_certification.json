@@ -1,0 +1,250 @@
+{
+ "tag": "pilot_h525_Q50_fresh8080",
+ "P": 825.0,
+ "h": 525.0,
+ "lam_E": 1302.2819858898874,
+ "order": [
+  7,
+  7
+ ],
+ "n_z": 7,
+ "at_lambda_E": {
+  "R": 0.13135022148940115,
+  "T": 0.14971715317102577,
+  "A": 0.7189326253395731,
+  "Fx": 0.018422073365131398,
+  "Fy": 0.004950241175751097,
+  "Fz": 0.69541266998189,
+  "Ftot": 0.7187849845227725,
+  "mean_Ez2": 14.51701844205133
+ },
+ "eta_z_abs": 0.9674835798686026,
+ "identity_resid": -0.00014764081680063157,
+ "A_max": 0.7649634364523011,
+ "lambda_A_max": 1398.0,
+ "Fz_max": 0.7313223922047133,
+ "lambda_Fz_max": 1382.0,
+ "loaded_poles": [
+  {
+   "omega_re": 1.4925126046796695,
+   "omega_im": -0.1441984494537792,
+   "lambda_nm": 1262.0674434526013,
+   "Q": 5.175203375394386,
+   "gamma": 0.1441984494537792,
+   "fwhm_nm": 243.86818293038064,
+   "res_r": 0.1606789320179206,
+   "res_t": 0.0804799008297534,
+   "peak_r": 2.9694005183918417,
+   "peak_t": 1.5018122135420207,
+   "rt_rel_diff": 0.0024461599149111423
+  }
+ ],
+ "parent_poles": [],
+ "rayleigh_nm": [
+  1251.1373339027043,
+  1251.1373339027043
+ ],
+ "parent_energy_resid": 4.694022948115162e-13,
+ "spectrum_file": "loaded_spectrum.npz",
+ "loss_scaling_rows": [
+  {
+   "omega_re": 1.4925126046796695,
+   "omega_im": -0.1441984494537792,
+   "lambda_nm": 1262.0674434526013,
+   "Q": 5.175203375394386,
+   "gamma": 0.1441984494537792,
+   "fwhm_nm": 243.86818293038064,
+   "res_r": 0.1606789320179206,
+   "res_t": 0.0804799008297534,
+   "peak_r": 2.9694005183918417,
+   "peak_t": 1.5018122135420207,
+   "rt_rel_diff": 0.0024461599149111423,
+   "s": 1.0,
+   "overlap_prev": 1.0,
+   "alternatives": {},
+   "jump_flag": false,
+   "n_candidates_near": 1
+  },
+  {
+   "omega_re": 1.5107758473741177,
+   "omega_im": -0.10884023129065235,
+   "lambda_nm": 1246.8107499751413,
+   "Q": 6.940337361741115,
+   "gamma": 0.10884023129065235,
+   "fwhm_nm": 179.6469948057907,
+   "res_r": 0.12020002640449287,
+   "res_t": 0.05804434230894218,
+   "peak_r": 1.9301000345261057,
+   "peak_t": 1.246227556402104,
+   "rt_rel_diff": 0.011106368599866686,
+   "s": 0.5,
+   "overlap_prev": 0.9971202765418615,
+   "alternatives": {},
+   "jump_flag": false,
+   "n_candidates_near": 1
+  },
+  {
+   "omega_re": 1.4942517585513797,
+   "omega_im": -0.10366349595232255,
+   "lambda_nm": 1260.5985280117602,
+   "Q": 7.207222488611728,
+   "gamma": 0.10366349595232255,
+   "fwhm_nm": 174.90767490578463,
+   "res_r": 0.1640089641715383,
+   "res_t": 0.08667473120439506,
+   "peak_r": 2.2731540498430136,
+   "peak_t": 1.7032551904068594,
+   "rt_rel_diff": 0.018316405687888646,
+   "s": 0.25,
+   "overlap_prev": 0.9993419430516405,
+   "alternatives": {},
+   "jump_flag": false,
+   "n_candidates_near": 1
+  },
+  {
+   "omega_re": 1.4983298434283001,
+   "omega_im": -0.05394627770790143,
+   "lambda_nm": 1257.1674892351514,
+   "Q": 13.887240298034891,
+   "gamma": 0.05394627770790143,
+   "fwhm_nm": 90.52680462460539,
+   "res_r": 0.005554360652814476,
+   "res_t": 0.007192053227318277,
+   "peak_r": 0.1289214263173605,
+   "peak_t": 0.2466927063330394,
+   "rt_rel_diff": 0.014277644056583005,
+   "s": 0.1,
+   "overlap_prev": 0.9995559853495815,
+   "alternatives": {},
+   "jump_flag": false,
+   "n_candidates_near": 1
+  },
+  {
+   "omega_re": 1.4989986199010363,
+   "omega_im": -0.043890325687833326,
+   "lambda_nm": 1256.6066054371763,
+   "Q": 17.076640425985357,
+   "gamma": 0.043890325687833326,
+   "fwhm_nm": 73.58628946271014,
+   "res_r": 0.005926503750875619,
+   "res_t": 0.0031169823697931687,
+   "peak_r": 0.1456652887737273,
+   "peak_t": 0.13323280996631756,
+   "rt_rel_diff": 0.00503908690524138,
+   "s": 0.03,
+   "overlap_prev": 0.9999467681363523,
+   "alternatives": {
+    "1256.6": 0.9999467681363523,
+    "1249.0": 0.9997611231146617
+   },
+   "jump_flag": false,
+   "n_candidates_near": 2
+  },
+  {
+   "omega_re": 1.5038694457412307,
+   "omega_im": -0.06106732344861119,
+   "lambda_nm": 1252.53662985382,
+   "Q": 12.313209101154998,
+   "gamma": 0.06106732344861119,
+   "fwhm_nm": 101.72300490993287,
+   "res_r": 0.052087536437658045,
+   "res_t": 0.0047049204060892,
+   "peak_r": 0.722205329925991,
+   "peak_t": 0.1421164911423073,
+   "rt_rel_diff": 0.019875141741097377,
+   "s": 0.0,
+   "overlap_prev": 0.999958302259757,
+   "alternatives": {},
+   "jump_flag": false,
+   "n_candidates_near": 1
+  }
+ ],
+ "gamma_fit": {
+  "gamma_rad": 0.056198605847594854,
+  "gamma_nr": 0.0949013130082612,
+  "Q_rad": 13.278911301885481,
+  "Q_nr": 7.863498182315695,
+  "Q_loaded": 5.175203375394386,
+  "lambda_loaded": 1262.0674434526013,
+  "gamma_ratio": 0.5921794342582251,
+  "linearity_resid": 0.1646311866915863,
+  "n_levels": 6,
+  "lossless_pole": {
+   "lambda_nm": 1252.53662985382,
+   "Q": 12.313209101154998
+  },
+  "pole_shift_nm": 9.530813598781378,
+  "critical_coupling_metric": 0.5239455916140106
+ },
+ "wall_s": 2006.42476272583,
+ "meta": {
+  "candidate": {
+   "tag": "pilot_h525_Q50_fresh8080",
+   "kind": "qdz_certified",
+   "rho_path": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/pilot/pilot_h525_Q50_fresh8080/rho_hard_binary.npy",
+   "P": 825.0,
+   "h": 525.0,
+   "pad": 0.12,
+   "Q_target": 50.0,
+   "certified": true,
+   "cert_path": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/outputs/certified/pilot_h525_Q50_fresh8080/certification.json",
+   "cert": {
+    "Q_r": null,
+    "lambda_r": null,
+    "fwhm_r_nm": null,
+    "detuning_nm": null,
+    "detuning_in_linewidths": null,
+    "pole_refine_converged": null,
+    "eta_Dz_lamE": 0.19410409734547238,
+    "eta_Dz_P_lamE": 0.12774381187810296,
+    "U_mid_lamE": 13.180796756462014,
+    "R_parent_lamE": 0.23930712463609552,
+    "T_parent_lamE": 0.760692875363941,
+    "eta_Dz_lamr": null,
+    "R_parent_lamr": null,
+    "T_parent_lamr": null,
+    "eta_order_conv_rel": 0.041180252428091126,
+    "parent_poles": [],
+    "cert_order": [
+     9,
+     9
+    ],
+    "Q_proxy_well_posed": false,
+    "Q_proxy": 3315669813496.1626,
+    "Q_proxy_rel_err": null,
+    "multipoles_lamE": {
+     "frac_ED_eff": 0.5192684061081424,
+     "frac_MD": 0.030113971512155963,
+     "frac_EQ": 0.4466879227178818,
+     "frac_MQ": 0.003929699661819868
+    },
+    "sha256_cert": "c1794773503bc98e48fd80f751da8abde7fa93fe42f633f79798270db54d2e1c"
+   },
+   "origin": "qdz_parent/pilot/pilot_h525_Q50_fresh8080"
+  },
+  "rho_sha256": "c1794773503bc98e48fd80f751da8abde7fa93fe42f633f79798270db54d2e1c",
+  "provenance": {
+   "package": "qdz_activation",
+   "git_commit": "2951e57fa2482923851b584d54beea4cf316b417",
+   "git_dirty": true,
+   "d_ito_nm": 23.0,
+   "nx": 128,
+   "sim_dtype": "torch.complex128",
+   "geo_dtype": "torch.float64",
+   "materials": {
+    "ito": "ITO_nk.csv",
+    "asi": "aSi_H_measured_Postech.txt",
+    "glass": "SiO2_substrate_measured.txt",
+    "sha256": {
+     "ito": "b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c",
+     "asi": "854b592c162c10a73ff8693a6561d5884dc68aaac6dfc23e17944ff3e89709d3",
+     "glass": "6b4f1d5dec1b518a7de46bbd572a72a558cd976898d709620f87d8a6b8cdd4f9"
+    }
+   },
+   "order": [
+    7,
+    7
+   ]
+  }
+ }
+}

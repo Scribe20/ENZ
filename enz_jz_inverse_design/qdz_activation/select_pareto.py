@@ -49,6 +49,8 @@ def row_of(tag, A, B):
                 contrast_pos=pos.get("contrast_ratio"), dR_pos=pos.get("dR"), dA_pos=pos.get("dA"), channel_pos=(pos.get("channel") or {}).get("label"),
                 A0_pos=pos.get("A0"), Ftot0_pos=pos.get("Ftot0"), Fz0_pos=pos.get("Fz0"), eta_z_pos=pos.get("eta_z0"), mean_Ez2_pos=pos.get("mean_Ez2_0"),
                 rayleigh_margin_nm_pos=(pos.get("rayleigh_margin") or {}).get("margin_nm"),
+                at_window_edge_pos=(bool(pos.get("lam_nm") is not None and (pos["lam_nm"] >= ((B or {}).get("grid") or {}).get("lam_hi", 1400.0) - 2.0
+                                                                          or pos["lam_nm"] <= ((B or {}).get("safe_window") or [0])[0] + 2.0))),
                 loaded_Q_pos=pos.get("pole_Q_cold"), loaded_pole_shift_nm=pos.get("pole_shift_nm"),
                 unresolved_pos=pos.get("numerically_unresolved"), dT_order_change=conv.get("dT_change_last_two"), dT_at_highest_order=hi.get("dT"),
                 highest_order=(hi.get("order") or [None])[0], linear_response=lin.get("linear_response"), S_T_spread_rel=lin.get("S_T_spread_rel"),
@@ -150,7 +152,7 @@ def main():
             for Fm in (0.02, 0.05, 0.1, 0.2):
                 for Ez in (0.0, 0.5, 0.7, 0.8):
                     surv = [r["tag"] for r in designs if (r["T_bg"] or 0) >= Tb and (r["C_res_ext"] or 0) >= Cr and (r["Ftot0_pos"] or 0) >= Fm
-                            and (r["eta_z_pos"] or 0) >= Ez and (r["dT_max_pos"] or 0) > 0 and not r.get("unresolved_pos")]
+                            and (r["eta_z_pos"] or 0) >= Ez and (r["dT_max_pos"] or 0) > 0 and not r.get("unresolved_pos") and not r.get("at_window_edge_pos")]
                     best = max(surv, key=lambda t: next(r["dT_max_pos"] for r in designs if r["tag"] == t), default=None)
                     sweep.append(dict(T_bg_min=Tb, C_res_min=Cr, Ftot_min=Fm, eta_z_min=Ez, n_survivors=len(surv), survivors=surv, best_dT=best))
     cm.jdump(sweep, TAB / "threshold_sweep.json")
@@ -179,7 +181,7 @@ def main():
     cols = [("tag", "{}"), ("kind", "{}"), ("Q_target", "{}"), ("Q_r", "{:.0f}"), ("eta_Dz_lamE", "{:.3f}"), ("eta_Dz_P_lamE", "{:.3f}"), ("T_bg", "{:.2f}"),
             ("C_res_ext", "{:.2f}"), ("lam_op_pos", "{:.1f}"), ("dT_max_pos", "{:+.4f}"), ("S_T_pos", "{:+.3f}"), ("T0_pos", "{:.3f}"), ("Ftot0_pos", "{:.3f}"),
             ("eta_z_pos", "{:.2f}"), ("channel_pos", "{}"), ("dT_max_neg", "{:+.4f}"), ("gamma_nr_over_gamma_r_est", "{:.1f}"), ("loaded_Q_pos", "{:.0f}"),
-            ("rayleigh_margin_nm_pos", "{:.0f}"), ("unresolved_pos", "{}"), ("dominated_activation_axes", "{}")]
+            ("rayleigh_margin_nm_pos", "{:.0f}"), ("at_window_edge_pos", "{}"), ("unresolved_pos", "{}"), ("dominated_activation_axes", "{}")]
     def fmt(v, f):
         if v is None or (isinstance(v, float) and not np.isfinite(v)):
             return "-"

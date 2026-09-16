@@ -1,2 +1,8 @@
 [loaded deck_cylinder_P588_h970] at lambda_E: R=0.2260 T=0.5159 A=0.2581 Fz=0.2295 Ftot=0.2580 eta_z=0.890 <|Ez|^2>=4.79 | A_max=0.4656@1292 nm | 2 loaded / 2 parent poles (2565 s)
 [loaded-cert deck_cylinder_P588_h970] loaded poles: [(1275.3, 5.0), (1295.4, 52.7)] | gamma fit: Q_rad=86.30541199913635 Q_nr=126.4228626135447 ratio=1.464831227673298 resid=0.04159980641976591 n=6
+[loaded fr_Q100_final3_h640] at lambda_E: R=0.1130 T=0.1764 A=0.7106 Fz=0.6718 Ftot=0.7105 eta_z=0.946 <|Ez|^2>=14.02 | A_max=0.8530@1374 nm | 4 loaded / 5 parent poles (2557 s)
+[loaded-cert fr_Q100_final3_h640] loaded poles: [(1266.1, 72.1), (1276.5, 189.1), (1342.7, 169.6), (1355.9, 6.4)] | gamma fit: Q_rad=271.1014711123392 Q_nr=1686.366753079041 ratio=6.220426418786356 resid=0.41379336396163263 n=5
+[loaded pilot_h525_Q50_fresh8080] at lambda_E: R=0.1314 T=0.1497 A=0.7189 Fz=0.6954 Ftot=0.7188 eta_z=0.967 <|Ez|^2>=14.52 | A_max=0.7650@1398 nm | 1 loaded / 0 parent poles (2006 s)
+[loaded-cert pilot_h525_Q50_fresh8080] loaded poles: [(1262.1, 5.2)] | gamma fit: Q_rad=13.278911301885481 Q_nr=7.863498182315695 ratio=0.5921794342582251 resid=0.1646311866915863 n=6
+[loaded fr_Q200_fresh4242_h700] at lambda_E: R=0.0174 T=0.9076 A=0.0750 Fz=0.0428 Ftot=0.0750 eta_z=0.571 <|Ez|^2>=0.89 | A_max=0.1374@1252 nm | 0 loaded / 1 parent poles (398 s)
+[loaded-cert fr_Q200_fresh4242_h700] loaded poles: [] | gamma fit: Q_rad=None Q_nr=None ratio=None resid=None n=None

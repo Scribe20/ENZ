@@ -1,0 +1,126 @@
+{
+ "tag": "fr_Q200_fresh4242_h700",
+ "P": 825.0,
+ "h": 700.0,
+ "lam_E": 1302.2819858898874,
+ "order": [
+  7,
+  7
+ ],
+ "n_z": 7,
+ "at_lambda_E": {
+  "R": 0.01738296687876873,
+  "T": 0.9076125233543684,
+  "A": 0.0750045097668629,
+  "Fx": 0.030578828723922265,
+  "Fy": 0.0015929592350823853,
+  "Fz": 0.04280415731357491,
+  "Ftot": 0.07497594527257956,
+  "mean_Ez2": 0.8935539542784223
+ },
+ "eta_z_abs": 0.5709052037684597,
+ "identity_resid": -2.8564494283345176e-05,
+ "A_max": 0.13736873326411403,
+ "lambda_A_max": 1252.0,
+ "Fz_max": 0.10821858035859855,
+ "lambda_Fz_max": 1252.0,
+ "loaded_poles": [],
+ "parent_poles": [
+  {
+   "omega_re": 1.4497034136524718,
+   "omega_im": -0.00329069458883116,
+   "lambda_nm": 1299.3358155673138,
+   "Q": 220.27316338818912,
+   "gamma": 0.00329069458883116,
+   "fwhm_nm": 5.898747698454233,
+   "res_r": 0.0009797769200196103,
+   "res_t": 0.0008588763948959388,
+   "peak_r": 0.7240199758108677,
+   "peak_t": 0.32458104715824027,
+   "rt_rel_diff": 8.674411476127448e-08
+  }
+ ],
+ "rayleigh_nm": [
+  1251.1373339027043,
+  1251.1373339027043
+ ],
+ "parent_energy_resid": 1.5808465647637604e-12,
+ "spectrum_file": "loaded_spectrum.npz",
+ "wall_s": 397.98616075515747,
+ "meta": {
+  "candidate": {
+   "tag": "fr_Q200_fresh4242_h700",
+   "kind": "qdz_certified",
+   "rho_path": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/frontier/fr_Q200_fresh4242_h700/rho_hard_binary.npy",
+   "P": 825.0,
+   "h": 700.0,
+   "pad": 0.12,
+   "Q_target": 200.0,
+   "certified": true,
+   "cert_path": "/home/user/ENZ/enz_jz_inverse_design/qdz_parent/outputs/certified/fr_Q200_fresh4242_h700/certification.json",
+   "cert": {
+    "Q_r": 228.39455953946705,
+    "lambda_r": 1298.0380271998624,
+    "fwhm_r_nm": 5.68331412892328,
+    "detuning_nm": -4.243958690025011,
+    "detuning_in_linewidths": -0.7467401227088323,
+    "pole_refine_converged": true,
+    "eta_Dz_lamE": 0.0758209982320642,
+    "eta_Dz_P_lamE": 0.05247723057820373,
+    "U_mid_lamE": 97.72898823870227,
+    "R_parent_lamE": 0.12962469670975468,
+    "T_parent_lamE": 0.8703753032900583,
+    "eta_Dz_lamr": 0.08471116464542947,
+    "R_parent_lamr": 0.33104175717743234,
+    "T_parent_lamr": 0.6689582428208344,
+    "eta_order_conv_rel": 0.01559726081165115,
+    "parent_poles": [
+     {
+      "lam": 1298.0380271998624,
+      "Q": 228.39455953946705,
+      "fwhm": 5.68331412892328
+     }
+    ],
+    "cert_order": [
+     9,
+     9
+    ],
+    "Q_proxy_well_posed": true,
+    "Q_proxy": 226.52975567804765,
+    "Q_proxy_rel_err": 0.008164834859374843,
+    "multipoles_lamE": {
+     "frac_ED_eff": 0.04055595070647029,
+     "frac_MD": 0.7723920161503731,
+     "frac_EQ": 0.18590419176622228,
+     "frac_MQ": 0.0011478413769343658
+    },
+    "sha256_cert": "d0d93a75ae28f2fa1d9171064806e7e97d802d141f646eb817be8e6d7e7864bf"
+   },
+   "origin": "qdz_parent/frontier/fr_Q200_fresh4242_h700"
+  },
+  "rho_sha256": "d0d93a75ae28f2fa1d9171064806e7e97d802d141f646eb817be8e6d7e7864bf",
+  "provenance": {
+   "package": "qdz_activation",
+   "git_commit": "2951e57fa2482923851b584d54beea4cf316b417",
+   "git_dirty": true,
+   "d_ito_nm": 23.0,
+   "nx": 128,
+   "sim_dtype": "torch.complex128",
+   "geo_dtype": "torch.float64",
+   "materials": {
+    "ito": "ITO_nk.csv",
+    "asi": "aSi_H_measured_Postech.txt",
+    "glass": "SiO2_substrate_measured.txt",
+    "sha256": {
+     "ito": "b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c",
+     "asi": "854b592c162c10a73ff8693a6561d5884dc68aaac6dfc23e17944ff3e89709d3",
+     "glass": "6b4f1d5dec1b518a7de46bbd572a72a558cd976898d709620f87d8a6b8cdd4f9"
+    }
+   },
+   "order": [
+    7,
+    7
+   ]
+  }
+ }
+}
