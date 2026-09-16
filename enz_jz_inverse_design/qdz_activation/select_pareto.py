@@ -236,9 +236,9 @@ def main():
                 ax.set_xscale("log")
             ax.set_xlabel(xk); ax.set_ylabel(yk); ax.grid(alpha=0.3); ax.axhline(0, color="k", lw=0.6)
         fig, axs = plt.subplots(2, 3, figsize=(16, 9))
-        sc(axs[0, 0], "Q_r", "dT_max_pos", logx=True); sc(axs[0, 1], "eta_Dz_lamE", "dT_max_pos"); sc(axs[0, 2], "T_bg", "dT_max_pos")
-        sc(axs[1, 0], "gamma_nr_over_gamma_r_est", "dT_max_pos", logx=True); sc(axs[1, 1], "Ftot0_pos", "dT_max_pos"); sc(axs[1, 2], "eta_z_pos", "dT_max_pos")
-        fig.suptitle("Stage B: max positive real-ITO dT (Te perturbation) vs parent / heating metrics  (red: absorption->reflection dominant; green: T_bg > 0.6)", fontsize=10)
+        sc(axs[0, 0], "Q_r", "dT_int", logx=True); sc(axs[0, 1], "eta_Dz_lamE", "dT_int"); sc(axs[0, 2], "T_bg", "dT_int")
+        sc(axs[1, 0], "gamma_nr_over_gamma_r_est", "dT_int", logx=True); sc(axs[1, 1], "Ftot0_int", "dT_int"); sc(axs[1, 2], "eta_z_int", "dT_int")
+        fig.suptitle("Stage B: interior positive real-ITO dT (Te = 1000 K; 20-nm Rayleigh guard) vs parent / heating metrics  (red: absorption->reflection dominant; green: T_bg > 0.6)", fontsize=10)
         fig.tight_layout(); fig.savefig(FIG / "dT_vs_metrics.png", dpi=150); plt.close(fig)
         # spectra panels for the top 6 by dT_max_pos and the references
         top = [r["tag"] for r in sorted(designs, key=lambda r: -(r["dT_max_pos"] or -9))[:6]] + [r["tag"] for r in rows if r["kind"] == "reference"]
