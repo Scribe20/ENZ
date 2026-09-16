@@ -358,6 +358,18 @@ transmissive after loading (cold T >= 0.3), resonant (visible loaded line) and s
 cylinder is.  This is the scientific outcome, and the FDTDX stage validates it on exactly these four frozen
 geometries.
 
+### 13.1 Angle look through the hook (`outputs/angle_check/*.json`; not an NA ensemble)
+
+`angle_check.py` runs the same two-state evaluation at theta = 0, 2, 4, 6, 8 deg (phi = 0, lab-x polarization,
+order [9,9]).  Deck cylinder at 1279 nm: dT = +0.0189, +0.0188, +0.0177, +0.0151, +0.0118 (mean +0.0165, spread
+0.0027, sign stable), cold T rising 0.55 -> 0.78; at 1302 nm dT stays negative (-0.004 to -0.019).  Its 588-nm
+period keeps a single propagating order in both media up to 8 deg (nearest anomaly 893-974 nm).
+fr_Q50_final2_h680 at 1314 nm: dT = +0.0133, +0.0134, +0.0121, +0.0101, +0.0093 (mean +0.0116, sign stable), but the
+825-nm period opens the (+-1,0) glass orders from theta = 4 deg on (Rayleigh wavelength 1308.7 nm at 4 deg,
+1337 nm at 6 deg), so its angular robustness is limited by diffraction, exactly the NA concern recorded for the
+Jz/Fz designs in SOURCE_AUDIT.md section 10.  A proper NA-weighted ensemble is a loop over theta, phi outside
+`loaded_sensitivity` (no material or objective code changes).
+
 ## 14. Exact commands
 
 Environment: Python 3.11, torch (CPU), scipy, numpy, matplotlib in the system interpreter; `/opt/venv-fdtdx`
