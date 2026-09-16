@@ -9,7 +9,7 @@ Reads outputs/candidates/<tag>/stageA.json + stageB.json and produces
     outputs/figures/*.png
 Nothing here re-solves Maxwell's equations; everything is derived from the stored stage outputs.
 """
-import argparse, csv
+import argparse, csv, json
 from pathlib import Path
 
 import numpy as np
@@ -88,6 +88,32 @@ def spearman(x, y):
     return dict(n=int(m.sum()), spearman=float(s.statistic), spearman_p=float(s.pvalue), pearson=float(p.statistic), pearson_p=float(p.pvalue))
 
 
+def buildup_table(rows_out):
+    """Hypothesis test on the CERTIFIED parents (independent of Stage B): does a larger exact Q_r buy internal
+    build-up (U_mid, W_Si at lambda_r) at the expense of interface participation (eta_Dz, eta_Dz_P)?"""
+    import candidates as cd
+    from scipy.stats import spearmanr
+    rows = []
+    for c in cd.registry(include=("certified", "baselines")):
+        ce = cm.jload(c["cert_path"])
+        if not ce.get("Q_r"):
+            continue
+        mE = ce["metrics"]["lambda_E"]["by_order"][-1]; mR = ce["metrics"]["lambda_r"]["by_order"][-1]
+        rows.append(dict(tag=c["tag"], Q_r=ce["Q_r"], lambda_r=ce["lambda_r"], detuning_lw=ce["detuning_in_linewidths"],
+                         eta_Dz_lamE=mE["eta_Dz"], eta_Dz_P_lamE=mE["eta_Dz_P"], U_mid_lamE=mE["U_mid"], W_Si_lamE=mE["W_Si"],
+                         eta_Dz_lamr=mR["eta_Dz"], eta_Dz_P_lamr=mR["eta_Dz_P"], U_mid_lamr=mR["U_mid"], W_Si_lamr=mR["W_Si"], T_parent_lamE=mE["T"], T_parent_lamr=mR["T"]))
+    out = dict(rows=rows, correlations={})
+    for subset, sel in (("all_certified_with_pole", rows), ("aligned_abs_detuning_lt_1p5_lw", [r for r in rows if abs(r["detuning_lw"]) < 1.5])):
+        Q = np.log([r["Q_r"] for r in sel]); d = {}
+        for k in ("U_mid_lamr", "W_Si_lamr", "eta_Dz_lamr", "eta_Dz_P_lamr", "U_mid_lamE", "eta_Dz_lamE", "T_parent_lamE"):
+            v = [r[k] for r in sel]
+            if len(sel) >= 4:
+                s_ = spearmanr(Q, v); d[k] = dict(spearman_vs_logQ=float(s_.statistic), p=float(s_.pvalue))
+        out["correlations"][subset] = dict(n=len(sel), **d)
+    cm.jdump(out, TAB / "certified_Q_vs_buildup.json")
+    return out
+
+
 def write_csv(rows, path):
     keys = list(rows[0].keys())
     with open(path, "w", newline="") as f:
@@ -147,6 +173,8 @@ def main():
         for yk in ("dT_max_pos", "S_T_pos", "dT_max_neg", "loaded_Q_pos"):
             cor[f"{xk}__vs__{yk}"] = spearman([r[xk] for r in designs], [r[yk] for r in designs])
     cm.jdump(cor, TAB / "correlations.json")
+    bt = buildup_table(rows)
+    print("certified parents, spearman vs log Q_r:", json.dumps(bt["correlations"], indent=None))
     # ---- markdown table --------------------------------------------------------------------------------
     cols = [("tag", "{}"), ("kind", "{}"), ("Q_target", "{}"), ("Q_r", "{:.0f}"), ("eta_Dz_lamE", "{:.3f}"), ("eta_Dz_P_lamE", "{:.3f}"), ("T_bg", "{:.2f}"),
             ("C_res_ext", "{:.2f}"), ("lam_op_pos", "{:.1f}"), ("dT_max_pos", "{:+.4f}"), ("S_T_pos", "{:+.3f}"), ("T0_pos", "{:.3f}"), ("Ftot0_pos", "{:.3f}"),
@@ -186,7 +214,8 @@ def main():
         fig.tight_layout(); fig.savefig(FIG / "dT_vs_metrics.png", dpi=150); plt.close(fig)
         # spectra panels for the top 6 by dT_max_pos and the references
         top = [r["tag"] for r in sorted(designs, key=lambda r: -(r["dT_max_pos"] or -9))[:6]] + [r["tag"] for r in rows if r["kind"] == "reference"]
-        fig, axs = plt.subplots(len(top), 1, figsize=(9, 2.6 * len(top)), sharex=True)
+        top = [t for t in top if (root / t / "stageB_scan.npz").exists()]
+        fig, axs = plt.subplots(max(len(top), 1), 1, figsize=(9, 2.6 * max(len(top), 1)), sharex=True)
         for ax, tag in zip(np.atleast_1d(axs), top):
             z = np.load(root / tag / "stageB_scan.npz") if (root / tag / "stageB_scan.npz").exists() else None
             if z is None:
@@ -199,8 +228,9 @@ def main():
                 ax.plot(A["spectrum"]["lam"], A["spectrum"]["T"], color="0.6", lw=0.8, ls="-.", label="T parent (no ITO)")
             ax.axvline(full[tag]["B"]["lam_E"], color="k", ls=":", lw=0.6)
             for rl in full[tag]["B"]["rayleigh"]:
-                ax.axvline(rl["lam"], color="m", ls=":", lw=0.6)
-            ax.set_title(tag, fontsize=9); ax.set_ylim(0, 1); ax.grid(alpha=0.3)
+                if 1160.0 <= rl["lam"] <= 1400.0:
+                    ax.axvline(rl["lam"], color="m", ls=":", lw=0.6)
+            ax.set_title(tag, fontsize=9); ax.set_ylim(0, 1); ax.set_xlim(1160.0, 1400.0); ax.grid(alpha=0.3)
             if ax is np.atleast_1d(axs)[0]:
                 ax.legend(fontsize=6, ncol=5, loc="upper left")
         np.atleast_1d(axs)[-1].set_xlabel("wavelength [nm]")

@@ -1,0 +1,162 @@
+{
+ "Q_r__vs__dT_max_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "Q_r__vs__S_T_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "Q_r__vs__dT_max_neg": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "Q_r__vs__loaded_Q_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_Dz_lamE__vs__dT_max_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_Dz_lamE__vs__S_T_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_Dz_lamE__vs__dT_max_neg": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_Dz_lamE__vs__loaded_Q_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_Dz_P_lamE__vs__dT_max_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_Dz_P_lamE__vs__S_T_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_Dz_P_lamE__vs__dT_max_neg": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_Dz_P_lamE__vs__loaded_Q_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "T_bg__vs__dT_max_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "T_bg__vs__S_T_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "T_bg__vs__dT_max_neg": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "T_bg__vs__loaded_Q_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "C_res_ext__vs__dT_max_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "C_res_ext__vs__S_T_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "C_res_ext__vs__dT_max_neg": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "C_res_ext__vs__loaded_Q_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "gamma_nr_over_gamma_r_est__vs__dT_max_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "gamma_nr_over_gamma_r_est__vs__S_T_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "gamma_nr_over_gamma_r_est__vs__dT_max_neg": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "gamma_nr_over_gamma_r_est__vs__loaded_Q_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "Ftot0_pos__vs__dT_max_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "Ftot0_pos__vs__S_T_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "Ftot0_pos__vs__dT_max_neg": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "Ftot0_pos__vs__loaded_Q_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_z_pos__vs__dT_max_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_z_pos__vs__S_T_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_z_pos__vs__dT_max_neg": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ },
+ "eta_z_pos__vs__loaded_Q_pos": {
+  "n": 2,
+  "spearman": null,
+  "pearson": null
+ }
+}

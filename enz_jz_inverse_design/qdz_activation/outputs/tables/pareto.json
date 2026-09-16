@@ -1,0 +1,20 @@
+{
+ "axes": [
+  "dT_max_pos",
+  "T_bg",
+  "C_res_ext",
+  "Ftot0_pos",
+  "eta_z_pos",
+  "rayleigh_margin_nm_pos",
+  "Q_r",
+  "eta_Dz_lamE"
+ ],
+ "non_dominated": [
+  "fr_Q100_final0_h700",
+  "fr_Q100_final1_h680",
+  "fr_Q100_final3_h640"
+ ],
+ "dominated": [
+  "fr_Q200_final1_h700"
+ ]
+}
