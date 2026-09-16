@@ -18,6 +18,29 @@ import common as cm                       # noqa: F401
 import parent_background as pb            # noqa: E402
 
 TAB = cm.OUT / "tables"; FIG = cm.OUT / "figures"
+ROOT = [cm.OUT / "candidates"]
+
+
+GUARD_R_NM, GUARD_EDGE_NM = 20.0, 5.0
+
+
+def interior_point(tag, B, root):
+    """Post-hoc operating point away from the window edges: argmax dT with lambda >= lambda_R + GUARD_R_NM and
+    lambda <= lam_hi - GUARD_EDGE_NM (from stageB_scan.npz; the Stage-B argmax may sit exactly at the safe-window
+    edge, where dT is still rising towards the Rayleigh anomaly or the end of the material data)."""
+    f = root / tag / "stageB_scan.npz"
+    if not B or not f.exists():
+        return {}
+    z = np.load(f); lam = z["lam"]
+    lo = max(B["safe_window"][0] - B.get("m_R_nm", 10.0) + GUARD_R_NM, lam.min()); hi = B["grid"]["lam_hi"] - GUARD_EDGE_NM
+    m = (lam >= lo) & (lam <= hi)
+    if not m.any():
+        return {}
+    i = np.where(m)[0][int(np.argmax(z["dT"][m]))]
+    win = (lam >= B["safe_window"][0]) & (lam <= B["safe_window"][1])
+    return dict(lam_op_int=float(lam[i]), dT_int=float(z["dT"][i]), S_T_int=float(z["S_T"][i]), T0_int=float(z["T0"][i]), T1_int=float(z["T1"][i]),
+                A0_int=float(z["A0"][i]), Ftot0_int=float(z["Ftot0"][i]), eta_z_int=float(z["eta_z0"][i]), dR_int=float(z["dR"][i]),
+                T0_loaded_median=float(np.median(z["T0"][win])), T0_loaded_max=float(z["T0"][win].max()), interior_window=[float(lo), float(hi)])
 
 
 def row_of(tag, A, B):
@@ -28,6 +51,7 @@ def row_of(tag, A, B):
     pts = (B or {}).get("points", {}); pos = pts.get("lambda_op_pos", {}); neg = pts.get("lambda_op_neg", {}); pE = pts.get("lambda_E", {})
     cc = (B or {}).get("critical_coupling_estimate", {}) or {}
     lin = ((B or {}).get("linearity_direction") or [{}])[0]
+    interior = interior_point(tag, B, ROOT[0])
     conv = [x for x in (B or {}).get("order_convergence", []) if pos and abs(x["lam"] - pos.get("lam_nm", -1)) < 1e-6]
     conv = conv[0] if conv else {}
     hi = (conv.get("by_order") or [{}])[-1]
@@ -55,6 +79,7 @@ def row_of(tag, A, B):
                 unresolved_pos=pos.get("numerically_unresolved"), dT_order_change=conv.get("dT_change_last_two"), dT_at_highest_order=hi.get("dT"),
                 highest_order=(hi.get("order") or [None])[0], linear_response=lin.get("linear_response"), S_T_spread_rel=lin.get("S_T_spread_rel"),
                 frac_dT_from_Re=lin.get("fraction_dT_from_real_part"),
+                **interior,
                 lam_op_neg=neg.get("lam_nm"), dT_max_neg=neg.get("dT"), T0_neg=neg.get("T0"), channel_neg=(neg.get("channel") or {}).get("label"),
                 dT_lamE=pE.get("dT"), T0_lamE=pE.get("T0"), A0_lamE=pE.get("A0"), Fz0_lamE=pE.get("Fz0"), eta_z_lamE=pE.get("eta_z0"),
                 A_to_R_dominant=((B or {}).get("global_scan") or {}).get("A_to_R_dominant"),
@@ -126,6 +151,7 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--root", default=None); ap.add_argument("--no-fig", action="store_true")
     a = ap.parse_args()
     root = Path(a.root) if a.root else cm.OUT / "candidates"
+    ROOT[0] = root
     TAB.mkdir(parents=True, exist_ok=True); FIG.mkdir(parents=True, exist_ok=True)
     rows, full = [], {}
     for d in sorted(root.iterdir()):
@@ -138,7 +164,7 @@ def main():
         print("no candidates found"); return
     write_csv(rows, TAB / "candidates.csv"); cm.jdump(rows, TAB / "candidates.json")
     # ---- Pareto (activation-relevant axes; larger is better everywhere) ------------------------------
-    keys = ("dT_max_pos", "T_bg", "C_res_ext", "Ftot0_pos", "eta_z_pos", "rayleigh_margin_nm_pos", "Q_r", "eta_Dz_lamE")
+    keys = ("dT_int", "T_bg", "C_res_ext", "Ftot0_int", "eta_z_int", "T0_loaded_median", "Q_r", "eta_Dz_lamE")
     designs = [r for r in rows if r["kind"] != "reference"]
     for r in rows:
         r["dominated_activation_axes"] = dominated(r, designs, keys) if r in designs else None
@@ -151,9 +177,9 @@ def main():
         for Cr in (0.05, 0.1, 0.2, 0.3):
             for Fm in (0.02, 0.05, 0.1, 0.2):
                 for Ez in (0.0, 0.5, 0.7, 0.8):
-                    surv = [r["tag"] for r in designs if (r["T_bg"] or 0) >= Tb and (r["C_res_ext"] or 0) >= Cr and (r["Ftot0_pos"] or 0) >= Fm
-                            and (r["eta_z_pos"] or 0) >= Ez and (r["dT_max_pos"] or 0) > 0 and not r.get("unresolved_pos") and not r.get("at_window_edge_pos")]
-                    best = max(surv, key=lambda t: next(r["dT_max_pos"] for r in designs if r["tag"] == t), default=None)
+                    surv = [r["tag"] for r in designs if (r["T_bg"] or 0) >= Tb and (r["C_res_ext"] or 0) >= Cr and (r.get("Ftot0_int") or 0) >= Fm
+                            and (r.get("eta_z_int") or 0) >= Ez and (r.get("dT_int") or 0) > 0]
+                    best = max(surv, key=lambda t: next(r["dT_int"] for r in designs if r["tag"] == t), default=None)
                     sweep.append(dict(T_bg_min=Tb, C_res_min=Cr, Ftot_min=Fm, eta_z_min=Ez, n_survivors=len(surv), survivors=surv, best_dT=best))
     cm.jdump(sweep, TAB / "threshold_sweep.json")
     # ---- definition sweep of T_bg from the stored spectra --------------------------------------------
@@ -179,9 +205,9 @@ def main():
     print("certified parents, spearman vs log Q_r:", json.dumps(bt["correlations"], indent=None))
     # ---- markdown table --------------------------------------------------------------------------------
     cols = [("tag", "{}"), ("kind", "{}"), ("Q_target", "{}"), ("Q_r", "{:.0f}"), ("eta_Dz_lamE", "{:.3f}"), ("eta_Dz_P_lamE", "{:.3f}"), ("T_bg", "{:.2f}"),
-            ("C_res_ext", "{:.2f}"), ("lam_op_pos", "{:.1f}"), ("dT_max_pos", "{:+.4f}"), ("S_T_pos", "{:+.3f}"), ("T0_pos", "{:.3f}"), ("Ftot0_pos", "{:.3f}"),
-            ("eta_z_pos", "{:.2f}"), ("channel_pos", "{}"), ("dT_max_neg", "{:+.4f}"), ("gamma_nr_over_gamma_r_est", "{:.1f}"), ("loaded_Q_pos", "{:.0f}"),
-            ("rayleigh_margin_nm_pos", "{:.0f}"), ("at_window_edge_pos", "{}"), ("unresolved_pos", "{}"), ("dominated_activation_axes", "{}")]
+            ("C_res_ext", "{:.2f}"), ("T0_loaded_median", "{:.2f}"), ("lam_op_int", "{:.1f}"), ("dT_int", "{:+.4f}"), ("S_T_int", "{:+.3f}"), ("T0_int", "{:.3f}"),
+            ("Ftot0_int", "{:.3f}"), ("eta_z_int", "{:.2f}"), ("lam_op_pos", "{:.1f}"), ("dT_max_pos", "{:+.4f}"), ("at_window_edge_pos", "{}"), ("channel_pos", "{}"),
+            ("dT_max_neg", "{:+.4f}"), ("gamma_nr_over_gamma_r_est", "{:.1f}"), ("loaded_Q_pos", "{:.0f}"), ("unresolved_pos", "{}"), ("dominated_activation_axes", "{}")]
     def fmt(v, f):
         if v is None or (isinstance(v, float) and not np.isfinite(v)):
             return "-"
@@ -190,8 +216,8 @@ def main():
         except Exception:
             return str(v)
     lines = ["| " + " | ".join(k for k, _ in cols) + " |", "|" + "---|" * len(cols)]
-    for r in sorted(rows, key=lambda r: -(r["dT_max_pos"] if r["dT_max_pos"] is not None else -9)):
-        lines.append("| " + " | ".join(fmt(r[k], f) for k, f in cols) + " |")
+    for r in sorted(rows, key=lambda r: -(r.get("dT_int") if r.get("dT_int") is not None else -9)):
+        lines.append("| " + " | ".join(fmt(r.get(k), f) for k, f in cols) + " |")
     (TAB / "candidates.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     print(f"\nnon-dominated on {keys}: {front}")

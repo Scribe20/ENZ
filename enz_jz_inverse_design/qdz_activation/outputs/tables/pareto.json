@@ -1,11 +1,11 @@
 {
  "axes": [
-  "dT_max_pos",
+  "dT_int",
   "T_bg",
   "C_res_ext",
-  "Ftot0_pos",
-  "eta_z_pos",
-  "rayleigh_margin_nm_pos",
+  "Ftot0_int",
+  "eta_z_int",
+  "T0_loaded_median",
   "Q_r",
   "eta_Dz_lamE"
  ],
