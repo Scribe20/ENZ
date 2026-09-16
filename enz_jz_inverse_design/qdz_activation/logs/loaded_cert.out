@@ -1,0 +1,2 @@
+[loaded deck_cylinder_P588_h970] at lambda_E: R=0.2260 T=0.5159 A=0.2581 Fz=0.2295 Ftot=0.2580 eta_z=0.890 <|Ez|^2>=4.79 | A_max=0.4656@1292 nm | 2 loaded / 2 parent poles (2565 s)
+[loaded-cert deck_cylinder_P588_h970] loaded poles: [(1275.3, 5.0), (1295.4, 52.7)] | gamma fit: Q_rad=86.30541199913635 Q_nr=126.4228626135447 ratio=1.464831227673298 resid=0.04159980641976591 n=6
