@@ -34,7 +34,7 @@ def geometry_png(rho, P, h, pad_frac, tag, role, path, ax=None):
         ax.plot([p, P - p, P - p, p, p], [p, p, P - p, P - p, p], "r--", lw=0.8, label=f"hard-air pad {pad_frac*100:.0f} % of P")
         ax.legend(fontsize=7, loc="upper right")
     ax.set_aspect("equal"); ax.set_xlabel("x [nm]"); ax.set_ylabel("y [nm]")
-    ax.set_title(f"{tag}\n{role}\nP = {P:.0f} nm, h = {h:.1f} nm, fill {rho.mean():.3f}, {rho.shape[0]}x{rho.shape[1]} px of {P/rho.shape[0]:.2f} nm; black = a-Si:H", fontsize=8)
+    ax.set_title(f"{tag}\n{role[:70] + ('...' if len(role) > 70 else '')}\nP = {P:.0f} nm, h = {h:.1f} nm, fill {rho.mean():.3f}, {rho.shape[0]}x{rho.shape[1]} px of {P/rho.shape[0]:.2f} nm; black = a-Si:H", fontsize=8)
     if own:
         fig.tight_layout(); fig.savefig(path, dpi=170); plt.close(fig)
 

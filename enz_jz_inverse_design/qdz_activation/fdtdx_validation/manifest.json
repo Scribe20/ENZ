@@ -310,7 +310,7 @@
  },
  "provenance": {
   "package": "qdz_activation",
-  "git_commit": "a0f7fcf9e507dc50b392bd30804e3fd831f56dcc",
+  "git_commit": "2be2132934f9910da55d88227bd23a129e009c8a",
   "git_dirty": true,
   "d_ito_nm": 23.0,
   "nx": 128,

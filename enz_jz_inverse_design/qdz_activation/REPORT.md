@@ -442,7 +442,54 @@ five a-Si:H depths, every ITO cell, five glass depths; one colour scale per wave
 log) with `.npz`; `Ez2_{xz,yz}_<tag>_<lam>nm.png` drawn with `pcolormesh` on the true non-uniform z edges (the
 23-nm ITO is read back at 23.00 nm in every run).
 
-FDTDX_RESULTS_PLACEHOLDER
+**Runs (`VALIDATION_SUMMARY.md` sections 2-4).**  All four candidates completed on the CPU backend (64 x 64 in-plane
+cells, 154-245 z cells, 34580-50435 steps, 690-1680 s each); no artefacts (R_max <= 0.33, T_min >= 0.06, A_min >= 0.05,
+TFSF leakage <= 2.5e-6 of P_inc), the ITO is read back at 23.00 nm from the true cell edges in every run, end-of-run probe
+fields are 1e-4-3e-3 of the peak (2.6e-2 in the ITO of finalist A, whose loaded line is the longest-lived of the three
+450-fs runs), and the early-window certificates show the DFT spectra converged: 450 fs vs 600 fs changes T by at most
+0.0056 for the cylinder (300 fs was not enough: 0.040), and 300 vs 450 fs by 0.034 (finalist A), 0.002 (finalist B),
+0.0001 (control).
+
+**H. Cross-check against TORCWA (same frozen geometry, same supplied materials, [9,9]):**
+
+| candidate | line depth / absorption (TORCWA -> FDTDX) | position | line shape after the shift | ITO <\|Ez\|^2>, F_z, A at equivalent detuning |
+|---|---|---|---|---|
+| deck cylinder | T_min 0.215 -> 0.213, A_max 0.465 -> 0.463 | FDTDX 5.5 nm blue of TORCWA (1292.5 -> 1286.0 nm); material fits explain 0.0 nm | rms dT 0.009, max dT / dR / dA 0.021 / 0.013 / 0.019 | 7.93 / 0.365 / 0.396 vs 7.76 / 0.350 / 0.380 at 1279 nm (2-4 %) |
+| finalist A (fr_Q50_final2_h680) | T_min 0.073 -> 0.060, A_max 0.900 -> 0.918 | 21.5 nm blue in FDTDX; 0.0 nm from material fits | rms dT 0.016, max 0.027 / 0.043 / 0.061 | 16.4 / 0.846 / 0.898 vs 17.8 / 0.869 / 0.916 at 1314 nm (2-8 %) |
+| finalist B (pilot_h525_Q50_fresh8080) | T_min 0.129 -> 0.140, A_max 0.758 -> 0.742 | 9.5 nm red in FDTDX (broadband, weakly defined); -1.0 nm from material fits | rms dT 0.013 (0.017 without any shift) | 15.5 / 0.675 / 0.702 vs 14.4 / 0.636 / 0.660 at 1271 nm (5-8 %) |
+| control (fr_Q200_fresh4242_h700) | flat: T 0.85-0.92, A <= 0.13 in both solvers; no loaded line in either | not defined (featureless) | rms dT 0.010 | 0.5-1.2 / 0.03-0.05 / 0.06-0.09 vs 0.5-0.8 / 0.03-0.04 / 0.06-0.07 |
+
+**L. Final reporting.**
+1. *Established by TORCWA:* the Stage A/B ranking of sections 7-13, the loss of the fresh4242 line under loading, the
+   cylinder's near-critically-coupled loaded line (exact loss scaling: Q_rad 86, Q_nr 126) and its dT = +0.019 at 1279 nm.
+2. *Independently reproduced by FDTDX:* the loaded line of the cylinder (depth, width, absorption), the strong
+   ITO-loaded absorption of both campaign finalists (A 0.74-0.92) with T of 0.06-0.2, the ABSENCE of any loaded line for
+   the campaign's transmissive high-Q / high-eta_Dz parent (T 0.85-0.92, A <= 0.09 across the whole window), and the ITO
+   longitudinal field enhancement (<|Ez/E_inc|^2> = 8 for the cylinder, 14-18 for the two finalists, < 1 for the
+   control) to 2-8 % at equivalent detuning.
+3. *What differs:* spectral positions.  FDTDX is blue-shifted by 5.5 nm for the cylinder and ~20 nm for the freeform
+   825-nm cells; the material fits contribute 0-1 nm (checked by re-running TORCWA with the FDTDX ADE models), so the
+   shift is the 64 x 64 sub-pixel raster (12.9-nm cells against 6.4-nm design pixels) plus the 12.9-nm a-Si:H z cells.
+   At a FIXED wavelength on a steep shoulder this is a large difference (cylinder at 1279 nm: T 0.55 TORCWA vs 0.40 FDTDX);
+   after the shift the residual is 0.01-0.02 rms.  The four-finalists package had seen the same ~10-nm class of shifts.
+4. *Does the longitudinal ENZ-field picture survive?*  Yes: in every FDTDX field set |Ez|^2 peaks inside the 23-nm ITO
+   (top ITO cell: 53 for the cylinder, 120 for finalist A, 112 for finalist B, 1-2 for the control), |Dz|^2 is continuous
+   through the ITO / glass interface while |Ez|^2 jumps by |eps_glass/eps_ITO|^2, the enhancement decays into the glass
+   over ~100 nm, and the control shows no ITO field enhancement, exactly as TORCWA's F_z, eta_z and <|Ez|^2> say.
+5. *Raw files behind each plot:* `VALIDATION_SUMMARY.md` section 5 and `<tag>/metadata/plot_manifest.json` (raw
+   phasors, SHA256, reference run, geometry SHA256, volume block, boundaries, colour scales).
+6. *Regions not sampled by the volume detector:* the glass deeper than ~620 nm below the ITO (24 coarse cells) and the
+   air more than ~100 nm above the a-Si:H (8 cells); the xz / yz planes cover the full height from PML to PML.
+7. *Numerical limitations:* one in-plane resolution only (64 x 64; a 128 x 128 run costs 4-8 x and was not affordable
+   on the CPU host), so the 5-20-nm spectral shifts are bounded by the TORCWA comparison, not by an FDTD refinement
+   series; 450-fs windows for the three 825-nm cells (certified to <= 0.034 by the 300-fs window; finalist A's ITO probe
+   still at 2.6e-2 of its peak); the cylinder needed 600 fs; the TFSF/CPML artefacts of the four-finalists package near
+   the glass Rayleigh cut-off (1251-1265 nm) are inherited and this band was excluded from the shift fit; single-pass
+   CPU runs, no GPU.
+
+Figures to look at: `fdtdx_validation/geometry_all_candidates.png`; per candidate `spectra/spectra_<tag>.png`,
+`profiles/zprofile_<tag>.png`, `xy_slices/Ez2_xy_slices_<tag>_<lam>nm_{lin,log}.png`, `xz_yz/Ez2_{xz,yz}_<tag>_<lam>nm.png`.
+
 
 
 
