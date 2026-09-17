@@ -1,0 +1,164 @@
+{
+ "tag": "fr_Q200_fresh4242_h700",
+ "window_nm": [
+  1256.2277971023454,
+  1384.2277971023454
+ ],
+ "shift_scan_nm": [
+  -30.0,
+  30.0,
+  0.25
+ ],
+ "best_shift_nm": 19.25,
+ "meaning": "TORCWA(lam + d) matches FDTDX(lam): d > 0 means the FDTDX line is BLUE-shifted relative to TORCWA",
+ "shift_at_scan_bound": false,
+ "rms_dT_no_shift": 0.01735053894508835,
+ "rms_dT_after_shift": 0.010106117588157918,
+ "max_dT_after_shift": 0.016499113719784075,
+ "max_dR_after_shift": 0.004172025462139239,
+ "max_dA_after_shift": 0.019373753658031997,
+ "lam_T_min": {
+  "fdtdx": 1384.0,
+  "torcwa": 1253.2277971023454
+ },
+ "T_min": {
+  "fdtdx": 0.891468398833196,
+  "torcwa": 0.8541184387068694
+ },
+ "A_max": {
+  "fdtdx": 0.07061781005395606,
+  "torcwa": 0.1304761344313744
+ },
+ "material_fit_isolation": {
+  "grid_nm": [
+   1233.2277971023454,
+   1273.2277971023454,
+   1.0
+  ],
+  "lam_T_min_torcwa_tabulated": 1253.2277971023454,
+  "lam_T_min_torcwa_fdtdx_fits": 1252.2277971023454,
+  "shift_from_material_fits_nm": -1.0,
+  "max_dT_tabulated_vs_fits": 0.008645073583867458,
+  "eps_at_line": {
+   "ITO_tab": [
+    0.24904608273336903,
+    0.36985361552556667
+   ],
+   "ITO_fit": [
+    0.24908449547002387,
+    0.3691169153545522
+   ],
+   "aSiH_tab": 8.881870781402547,
+   "aSiH_fit": 8.881872324101565,
+   "n_glass_tab": 1.51664019378796,
+   "n_glass_fit": 1.5166351312399182
+  },
+  "note": "remaining shift = discretization (64 x 64 in-plane sub-pixel raster, 12.9-nm a-Si:H z-cells, 4.6-nm ITO cells, CFL 0.95) and DFT/finite-time effects"
+ },
+ "fields_vs_torcwa": {
+  "1261.228": {
+   "shift_equivalent_lambda_clipped": false,
+   "fdtdx": {
+    "mean_Ez2": 0.839680743671271,
+    "max_Ez2": 17.81374527458459,
+    "Fz": 0.03640072932953788,
+    "Ftot": 0.0657723668952577,
+    "A_flux": 0.06619291442637161
+   },
+   "torcwa_same_lambda": {
+    "mean_Ez2": 1.9934139614077877,
+    "Fz": 0.08674088737718932,
+    "Ftot": 0.11657723916471184,
+    "A": 0.11661078582866702,
+    "T": 0.8674772711260973
+   },
+   "torcwa_shift_equivalent": {
+    "lam": 1280.478,
+    "mean_Ez2": 1.1766518925941518,
+    "Fz": 0.05364283666722262,
+    "Ftot": 0.08462586745092356,
+    "A": 0.08465545242363337,
+    "T": 0.8992212691104754
+   },
+   "ratio_mean_Ez2_fdtdx_over_torcwa_shifted": 0.7136186572734233,
+   "ratio_Fz_fdtdx_over_torcwa_shifted": 0.6785757724810967
+  },
+  "1302.282": {
+   "shift_equivalent_lambda_clipped": false,
+   "fdtdx": {
+    "mean_Ez2": 0.5344413857550816,
+    "max_Ez2": 14.75449359845647,
+    "Fz": 0.025422242226034862,
+    "Ftot": 0.0569208190982354,
+    "A_flux": 0.057419995119283675
+   },
+   "torcwa_same_lambda": {
+    "mean_Ez2": 0.8334290685629224,
+    "Fz": 0.03994921374557458,
+    "Ftot": 0.07212898370626386,
+    "A": 0.07215895848062504,
+    "T": 0.9091206023470978
+   },
+   "torcwa_shift_equivalent": {
+    "lam": 1321.532,
+    "mean_Ez2": 0.7585816904410311,
+    "Fz": 0.03792858462440277,
+    "Ftot": 0.07122056146830227,
+    "A": 0.07125437701169646,
+    "T": 0.9070073134976938
+   },
+   "ratio_mean_Ez2_fdtdx_over_torcwa_shifted": 0.7045271359560014,
+   "ratio_Fz_fdtdx_over_torcwa_shifted": 0.6702660401853887
+  },
+  "1333.228": {
+   "shift_equivalent_lambda_clipped": false,
+   "fdtdx": {
+    "mean_Ez2": 0.5643259736413179,
+    "max_Ez2": 13.611639968081597,
+    "Fz": 0.028752312736591346,
+    "Ftot": 0.062160007960758795,
+    "A_flux": 0.0627083524736922
+   },
+   "torcwa_same_lambda": {
+    "mean_Ez2": 0.7502605838981397,
+    "Fz": 0.03845350930400075,
+    "Ftot": 0.07245943229967979,
+    "A": 0.07249681385490503,
+    "T": 0.9038636132706112
+   },
+   "torcwa_shift_equivalent": {
+    "lam": 1352.478,
+    "mean_Ez2": 0.7539728490000684,
+    "Fz": 0.04019985568721416,
+    "Ftot": 0.07545206867881049,
+    "A": 0.07549700292929828,
+    "T": 0.8977660038864325
+   },
+   "ratio_mean_Ez2_fdtdx_over_torcwa_shifted": 0.7484698877283665,
+   "ratio_Fz_fdtdx_over_torcwa_shifted": 0.7152342277123203
+  }
+ },
+ "provenance": {
+  "package": "qdz_activation",
+  "git_commit": "2c29860e5cd0b529b0ad7845d44c77101092d93c",
+  "git_dirty": true,
+  "d_ito_nm": 23.0,
+  "nx": 128,
+  "sim_dtype": "torch.complex128",
+  "geo_dtype": "torch.float64",
+  "materials": {
+   "ito": "ITO_nk.csv",
+   "asi": "aSi_H_measured_Postech.txt",
+   "glass": "SiO2_substrate_measured.txt",
+   "sha256": {
+    "ito": "b765e9fea3a416ac524152a656fd012e44d5eb61895b6333478b8b1dc814db2c",
+    "asi": "854b592c162c10a73ff8693a6561d5884dc68aaac6dfc23e17944ff3e89709d3",
+    "glass": "6b4f1d5dec1b518a7de46bbd572a72a558cd976898d709620f87d8a6b8cdd4f9"
+   }
+  },
+  "order": [
+   9,
+   9
+  ]
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "candidate": "fr_Q200_fresh4242_h700",
+ "provenance": {
+  "raw_phasors": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/raw_fields/prod/phasors.npz",
+  "raw_sha256": "0767bb1da10e5177c2d2707530d8a0fa1bc3358b8a580644d59b4728aa5a5cee",
+  "run_meta": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/raw_fields/prod/run_meta.json",
+  "reference_phasors": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/reference/fr_Q200_fresh4242_h700_prod/phasors.npz",
+  "reference_sha256": "b8f810b06820748e1b2bf0b72b6a143e0ad8a1503db521270ec143917b4dacff",
+  "geometry_file": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/geometry/rho_hard_binary.npy",
+  "geometry_sha256_file": "23416e8deb2a9c2f7de0670a706f50bbfa6499282dd6c88b8d032ed7b1e67e76",
+  "geometry_sha256_uint8": "ca25e9c09a01645a644ca0e8721800c2d1d78693a64abd73f8fdaff65f495967",
+  "wavelengths_nm": [
+   1261.2280000000003,
+   1302.282,
+   1333.228
+  ],
+  "normalization": "E / E_inc, E_inc = incident Ex phasor of the empty-cell reference at the ITO mid-plane position; |E_inc| = 1 equivalent",
+  "time_convention": "exp(-i w t)",
+  "coordinates": "z = 0 at the domain bottom (glass PML); +z upward glass -> ITO -> a-Si:H -> air; source propagates -z; x, y cell-centred, period P",
+  "boundaries_nm": {
+   "ITO_bottom": 1726.2810593999993,
+   "ITO_top": 1749.2810593999989,
+   "aSiH_top": 2449.2810594000066,
+   "volume_block": [
+    1185.9374999999998,
+    2642.511528150008
+   ]
+  },
+  "n_ito_cells": 5,
+  "dz_ito_nm": 4.6,
+  "field_components_recorded": [
+   "Ex",
+   "Ey",
+   "Ez",
+   "Hx",
+   "Hy",
+   "Hz"
+  ],
+  "E_inc_nonuniformity": [
+   6.144257842360965e-08,
+   5.497809100529321e-08,
+   6.311626886406391e-08
+  ],
+  "material_eps_at_lams": {
+   "1261.2280000000003": {
+    "ITO": [
+     0.20884112953275957,
+     0.37833959190041916
+    ],
+    "aSiH": 8.876897823861775,
+    "glass": 2.300124836508506
+   },
+   "1302.282": {
+    "ITO": [
+     -0.0007746896228921774,
+     0.4286581689044019
+    ],
+    "aSiH": 8.853001691342321,
+    "glass": 2.299847362033714
+   },
+   "1333.228": {
+    "ITO": [
+     -0.16200298910777244,
+     0.4700450306406868
+    ],
+    "aSiH": 8.8366266279441,
+    "glass": 2.29965499833635
+   }
+  }
+ },
+ "figures": {
+  "spectra": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/spectra/spectra_fr_Q200_fresh4242_h700.png",
+  "zprofile": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/profiles/zprofile_fr_Q200_fresh4242_h700.png",
+  "xy_slices": [
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xy_slices/Ez2_xy_slices_fr_Q200_fresh4242_h700_1261.2nm_lin.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xy_slices/Ez2_xy_slices_fr_Q200_fresh4242_h700_1261.2nm_log.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xy_slices/Ez2_xy_slices_fr_Q200_fresh4242_h700_1302.3nm_lin.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xy_slices/Ez2_xy_slices_fr_Q200_fresh4242_h700_1302.3nm_log.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xy_slices/Ez2_xy_slices_fr_Q200_fresh4242_h700_1333.2nm_lin.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xy_slices/Ez2_xy_slices_fr_Q200_fresh4242_h700_1333.2nm_log.png"
+  ],
+  "xz_yz": [
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xz_yz/Ez2_xz_fr_Q200_fresh4242_h700_1261.2nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xz_yz/Ez2_xz_fr_Q200_fresh4242_h700_1302.3nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xz_yz/Ez2_xz_fr_Q200_fresh4242_h700_1333.2nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xz_yz/Ez2_yz_fr_Q200_fresh4242_h700_1261.2nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xz_yz/Ez2_yz_fr_Q200_fresh4242_h700_1302.3nm.png",
+   "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/xz_yz/Ez2_yz_fr_Q200_fresh4242_h700_1333.2nm.png"
+  ],
+  "geometry": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/geometry/geometry_fr_Q200_fresh4242_h700.png"
+ },
+ "colour_scales": {
+  "xy_slices": "common per wavelength across all panels; linear (0..max) and log (4 decades) versions",
+  "xz_yz": "log, per panel",
+  "zprofile": "log y, common physical normalization"
+ },
+ "field_definitions": {
+  "E2": "|Ex|^2+|Ey|^2+|Ez|^2 with |u|^2 = u conj(u)",
+  "Ez2": "Ez conj(Ez)",
+  "Dz": "eps_zz(x,y,z,lambda) Ez, eps0 omitted; per-cell eps_zz per the docstring (fill-weighted arithmetic mean in the patterned a-Si:H cells)"
+ },
+ "checks": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/spectra/checks_fr_Q200_fresh4242_h700.json",
+ "raw_normalized": "/home/user/ENZ/enz_jz_inverse_design/qdz_activation/fdtdx_validation/fr_Q200_fresh4242_h700/raw_fields/fields_normalized.npz"
+}

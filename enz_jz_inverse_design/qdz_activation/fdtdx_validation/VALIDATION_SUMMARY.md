@@ -19,15 +19,18 @@ Materials: the four-finalists ADE fits of the supplied files; ITO fit errors ove
 | candidate | cells | steps | time [fs] | dt [as] | wall [s] | final max\|E\| | probe decay a-Si / ITO | early 300 fs vs full: max dT | early 450 fs vs full: max dT | R_max | T_min | A_min | leak/P_inc | ITO thickness [nm] |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | deck_cylinder_P588_h970 | 64x64x245 | 50435 | 600 | 11.90 | 1680 | 3.7e-04 | 3.3e-04 / 6.8e-04 | 0.0398 | 0.0056 | 0.333 | 0.213 | 0.051 | 4.8e-07 | 23.00 |
-| fr_Q50_final2_h680 | (not run) | | | | | | | | | | | | | |
-| pilot_h525_Q50_fresh8080 | (not run) | | | | | | | | | | | | | |
-| fr_Q200_fresh4242_h700 | (not run) | | | | | | | | | | | | | |
+| fr_Q50_final2_h680 | 64x64x166 | 34580 | 450 | 13.01 | 758 | 1.3e-03 | 1.2e-03 / 2.6e-02 | 0.0337 | 0.0000 | 0.217 | 0.060 | 0.639 | 2.2e-06 | 23.00 |
+| pilot_h525_Q50_fresh8080 | 64x64x154 | 34580 | 450 | 13.01 | 690 | 1.4e-04 | 2.2e-03 / 6.5e-04 | 0.0019 | 0.0000 | 0.147 | 0.140 | 0.651 | 1.3e-07 | 23.00 |
+| fr_Q200_fresh4242_h700 | 64x64x167 | 34580 | 450 | 13.01 | 710 | 5.8e-05 | 1.2e-04 / 4.9e-04 | 0.0001 | 0.0000 | 0.040 | 0.889 | 0.057 | 2.5e-06 | 23.00 |
 
 ## 3. TORCWA ([9,9], tabulated materials) vs FDTDX: spectra
 
 | candidate | lam(T_min) TORCWA / FDTDX [nm] | T_min TORCWA / FDTDX | A_max TORCWA / FDTDX | best shift d [nm] (TORCWA(lam+d) = FDTDX(lam)) | rms dT no shift / after shift | max dT / dR / dA after shift | shift explained by material fits [nm] |
 |---|---|---|---|---|---|---|---|
 | deck_cylinder_P588_h970 | 1292.5 / 1286.0 | 0.215 / 0.213 | 0.465 / 0.463 | +5.50 | 0.0899 / 0.0092 | 0.021 / 0.013 / 0.019 | +0.0 |
+| fr_Q50_final2_h680 | 1337.2 / 1316.0 | 0.073 / 0.060 | 0.900 / 0.918 | +21.50 | 0.0530 / 0.0163 | 0.027 / 0.043 / 0.061 | +0.0 |
+| pilot_h525_Q50_fresh8080 | 1344.2 / 1342.0 | 0.129 / 0.140 | 0.758 / 0.742 | -9.50 | 0.0165 / 0.0134 | 0.030 / 0.043 / 0.063 | -1.0 |
+| fr_Q200_fresh4242_h700 | 1253.2 / 1384.0 | 0.854 / 0.891 | 0.130 / 0.071 | +19.25 | 0.0174 / 0.0101 | 0.016 / 0.004 / 0.019 | -1.0 |
 
 ## 4. ITO field enhancement and loss: FDTDX at lambda vs TORCWA at the same lambda and at the shift-equivalent lambda + d
 
@@ -37,7 +40,21 @@ Materials: the four-finalists ADE fits of the supplied files; ITO fit errors ove
 | deck_cylinder_P588_h970 | 1282.0 | 8.76 | 7.05 | 8.78 (1287.5 nm) | 0.398 / 0.407 | 0.429 / 0.438 | 0.426 / 0.438 |
 | deck_cylinder_P588_h970 | 1295.8 | 4.83 | 8.11 | 4.86 (1301.3 nm) | 0.226 / 0.232 | 0.256 / 0.261 | 0.254 / 0.261 |
 | deck_cylinder_P588_h970 | 1302.3 | 2.02 | 4.34 | 2.13 (1307.8 nm) | 0.096 / 0.103 | 0.127 / 0.134 | 0.128 / 0.134 |
+| fr_Q50_final2_h680 | 1302.3 | 16.51 | 14.86 | 15.39 (1323.8 nm) | 0.785 / 0.773 | 0.853 / 0.839 | 0.852 / 0.839 |
+| fr_Q50_final2_h680 | 1314.2 | 17.80 | 14.57 | 16.42 (1335.7 nm) | 0.869 / 0.846 | 0.918 / 0.898 | 0.916 / 0.898 |
+| fr_Q50_final2_h680 | 1324.7 | 17.44 | 15.52 | 16.12 (1346.2 nm) | 0.872 / 0.849 | 0.911 / 0.891 | 0.908 / 0.891 |
+| fr_Q50_final2_h680 | 1399.2 | 12.72 | 12.88 | 12.87 (1399.5 nm) | 0.747 / 0.751 | 0.790 / 0.793 | 0.794 / 0.793 |
+| pilot_h525_Q50_fresh8080 | 1261.2 | 14.62 | 15.52 | 16.34 (1251.7 nm) | 0.634 / 0.694 | 0.660 / 0.722 | 0.658 / 0.722 |
+| pilot_h525_Q50_fresh8080 | 1271.2 | 14.35 | 15.09 | 15.50 (1261.7 nm) | 0.636 / 0.675 | 0.662 / 0.702 | 0.660 / 0.702 |
+| pilot_h525_Q50_fresh8080 | 1302.3 | 13.91 | 14.31 | 14.49 (1292.8 nm) | 0.662 / 0.680 | 0.686 / 0.704 | 0.684 / 0.704 |
+| pilot_h525_Q50_fresh8080 | 1399.2 | 11.89 | 12.36 | 12.62 (1389.7 nm) | 0.699 / 0.723 | 0.738 / 0.758 | 0.740 / 0.758 |
+| fr_Q200_fresh4242_h700 | 1261.2 | 0.84 | 1.99 | 1.18 (1280.5 nm) | 0.036 / 0.054 | 0.066 / 0.085 | 0.066 / 0.085 |
+| fr_Q200_fresh4242_h700 | 1302.3 | 0.53 | 0.83 | 0.76 (1321.5 nm) | 0.025 / 0.038 | 0.057 / 0.071 | 0.057 / 0.071 |
+| fr_Q200_fresh4242_h700 | 1333.2 | 0.56 | 0.75 | 0.75 (1352.5 nm) | 0.029 / 0.040 | 0.062 / 0.075 | 0.063 / 0.075 |
 
 ## 5. Files behind every figure
 
 * **deck_cylinder_P588_h970**: raw `deck_cylinder_P588_h970/raw_fields/prod/phasors.npz` (sha256 ed58c16f296c93e3), reference `reference/deck_cylinder_P588_h970_prod/phasors.npz`, geometry sha256 7dea62acff327416; normalized fields `deck_cylinder_P588_h970/raw_fields/fields_normalized.npz`; volume block z = 1194-2729 nm (ITO 1597.6-1620.6 nm, a-Si:H top 2591.1 nm); figures: spectra, zprofile, 8 xy-slice panels, 8 xz/yz cuts; colour scales: common per wavelength across all panels; linear (0..max) and log (4 decades) versions.
+* **fr_Q50_final2_h680**: raw `fr_Q50_final2_h680/raw_fields/prod/phasors.npz` (sha256 733d4a39cb9717ab), reference `reference/fr_Q50_final2_h680_prod/phasors.npz`, geometry sha256 17156cffea03f542; normalized fields `fr_Q50_final2_h680/raw_fields/fields_normalized.npz`; volume block z = 1186-2623 nm (ITO 1726.3-1749.3 nm, a-Si:H top 2429.3 nm); figures: spectra, zprofile, 8 xy-slice panels, 8 xz/yz cuts; colour scales: common per wavelength across all panels; linear (0..max) and log (4 decades) versions.
+* **pilot_h525_Q50_fresh8080**: raw `pilot_h525_Q50_fresh8080/raw_fields/prod/phasors.npz` (sha256 52fdbdbb94209736), reference `reference/pilot_h525_Q50_fresh8080_prod/phasors.npz`, geometry sha256 5ff19e0ab9515935; normalized fields `pilot_h525_Q50_fresh8080/raw_fields/fields_normalized.npz`; volume block z = 1186-2468 nm (ITO 1726.3-1749.3 nm, a-Si:H top 2274.3 nm); figures: spectra, zprofile, 8 xy-slice panels, 8 xz/yz cuts; colour scales: common per wavelength across all panels; linear (0..max) and log (4 decades) versions.
+* **fr_Q200_fresh4242_h700**: raw `fr_Q200_fresh4242_h700/raw_fields/prod/phasors.npz` (sha256 0767bb1da10e5177), reference `reference/fr_Q200_fresh4242_h700_prod/phasors.npz`, geometry sha256 ca25e9c09a01645a; normalized fields `fr_Q200_fresh4242_h700/raw_fields/fields_normalized.npz`; volume block z = 1186-2643 nm (ITO 1726.3-1749.3 nm, a-Si:H top 2449.3 nm); figures: spectra, zprofile, 6 xy-slice panels, 6 xz/yz cuts; colour scales: common per wavelength across all panels; linear (0..max) and log (4 decades) versions.
